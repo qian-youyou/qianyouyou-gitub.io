@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1fffed;
+  background: #1fff86;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3006,7 +3006,8 @@ hr {
 }
 @media (max-width: 767px) {
   .site-meta .site-title {
-    line-height: 34px;
+    font-size: 17px;
+    line-height: 17px;
   }
 }
 .logo-line-before,
