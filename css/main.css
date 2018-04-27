@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff3238;
+  background: #a888b6;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2980,13 +2980,12 @@ hr {
 }
 .site-meta {
   float: left;
-  margin-left: -20px;
+  margin-left: 0;
   line-height: normal;
 }
 @media (max-width: 767px) {
   .site-meta {
-    margin-left: 10px;
-    float: none;
+    margin-left: 5%;
   }
 }
 .site-meta .brand {
@@ -3047,6 +3046,8 @@ hr {
 }
 .site-nav-toggle {
   position: static;
+  margin-top: 5%;
+  margin-right: 10%;
   float: right;
 }
 .menu {
