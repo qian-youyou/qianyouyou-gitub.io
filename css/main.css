@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f16c99;
+  background: #c72b1d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3193,6 +3193,31 @@ hr {
 }
 .post-button a:hover {
   border-bottom-color: #222;
+}
+.content-wrap {
+  float: right;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 700px;
+  background: #fff;
+  min-height: 700px;
+  box-shadow: $box-shadow-inner;
+  border-radius: $border-radius-inner;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .content-wrap {
+    width: 100%;
+    padding: 20px;
+    border-radius: initial;
+  }
+}
+@media (max-width: 767px) {
+  .content-wrap {
+    width: 100%;
+    padding: 20px;
+    min-height: auto;
+    border-radius: initial;
+  }
 }
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
