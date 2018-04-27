@@ -2129,7 +2129,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #850e9a;
+  background: #4a7453;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3157,10 +3157,10 @@ img:hover {
   background-color: #bbb;
 }
 .btn-bar {
-  background-color: #fff;
+  background-color: #7fffd4;
 }
 .site-nav-toggle {
-  left: 20px;
+  left: 85%;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
@@ -3352,7 +3352,4 @@ body {
 }
 .site-subtitle {
   color: #ff0;
-}
-.btn-bar {
-  background-color: #db7093;
 }
