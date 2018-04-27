@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f9ffff;
+  background: #ff3238;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3272,12 +3272,16 @@ body {
   background: #fff;
   opacity: 0.85;
 }
-.header-inner {
+.header {
   padding: 20px 0;
   color: #fff;
   background: url("../images/background.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+}
+.header-inner {
+  margin-bottom: 0;
+  padding: 0;
 }
 .site-meta {
   padding: 20px 0;
@@ -3299,4 +3303,7 @@ body {
   background: url("../images/bg.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+}
+.main {
+  padding-bottom: 50px;
 }
