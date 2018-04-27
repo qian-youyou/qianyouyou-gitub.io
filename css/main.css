@@ -2129,7 +2129,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4a7453;
+  background: #03f712;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3157,7 +3157,7 @@ img:hover {
   background-color: #bbb;
 }
 .btn-bar {
-  background-color: #7fffd4;
+  background-color: #528b8b;
 }
 .site-nav-toggle {
   left: 85%;
@@ -3345,11 +3345,11 @@ body {
   background-size: 100%;
 }
 .brand {
-  color: #7fffd4;
+  color: #528b8b;
 }
 .brand:hover {
   color: #ff0;
 }
 .site-subtitle {
-  color: #ff0;
+  color: #ffd700;
 }
