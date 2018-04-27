@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #584f6f;
+  background: #9effc7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2955,9 +2955,6 @@ hr {
 .main-inner {
   margin-top: 80px;
 }
-.header {
-  background: #fff;
-}
 .header-inner {
   padding: 25px 0 20px;
 }
@@ -3270,7 +3267,7 @@ body {
   background: #fff;
   opacity: 0.85;
 }
-.header {
+.header-inner {
   padding: 20px 0;
   color: #fff;
   background: url("../images/background.jpg");
@@ -3292,4 +3289,13 @@ body {
 }
 .site-subtitle {
   color: #ffd700;
+}
+.site-nav-on {
+  background: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.site-nav-toggle {
+  left: 85%;
+  top: 50%;
 }
