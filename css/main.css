@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff6cd7;
+  background: #ffcce4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2930,9 +2930,6 @@ img:hover {
 }
 .page-post-detail .sidebar-toggle-line {
   background: #87daff;
-}
-.page-post-detail .comments {
-  overflow: hidden;
 }
 h1,
 h2,
