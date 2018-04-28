@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-04-28T11:07:51.045Z</updated>
+  <updated>2018-04-28T13:44:25.329Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -17,9 +17,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>基于github搭建专属于自己的博客(进阶篇)</title>
+    <link href="http://qianyouyou.cn/2018/04/28/%E5%9F%BA%E4%BA%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2(%E8%BF%9B%E9%98%B6%E7%AF%87)/"/>
+    <id>http://qianyouyou.cn/2018/04/28/基于github搭建专属于自己的博客(进阶篇)/</id>
+    <published>2018-04-28T13:44:25.000Z</published>
+    <updated>2018-04-28T13:44:25.329Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文基于上篇文章基础篇所写。有许多基于hexo的主题，每个不同的主题会需要不同的配置，主题配置文件在主题目录下的_config.yml。我们可以根据自己的情况选择适合自己的主题。我们选取其中一款主题NextT为模板进行演示。以下是本文的基本流程。</p><h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><p>1.安装主题</p><p>2.启用主题</p><p>3.验证主题</p><p>4.设置语言</p><p>5.设置菜单</p><p>6.侧栏设置</p><p>7.装饰主题</p><h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p>在Hexo中有两份主要的配置文件，其名称都是 _config.yml。 其中，一份位于站点根目录下，主要包含Hexo本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。 为了描述方便，在以下说明中，将前者称为 <strong>站点配置文件</strong>， 后者称为 <strong>主题配置文件</strong>。 </p><p>以NexT为例，首先在hexo文件夹中右键点击Git Base Here，或者终端锁定hexo根目录，然后输入命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure><p>即可获取最新版主题，后续更新只需输入指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure><h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p>在hexo根目录（blog）中打开站点配置文件（_config.yml）,搜索theme字段。修改theme: next</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure><p>注意中间有空格。到此，NexT 主题安装完成。</p><h3 id="验证主题"><a href="#验证主题" class="headerlink" title="验证主题"></a>验证主题</h3><p>在切换主题之后、验证之前， 我们最好使用 hexo clean 来清除 Hexo 的缓存。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure><p>首先启动 Hexo 本地站点，并开启调试模式，整个命令是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p> 在服务启动的过程，注意观察命令行输出是否有任何异常信息。 当命令行输出中提示出：INFO Hexo is running at <a href="http://0.0.0.0:4000/" target="_blank" rel="noopener">http://0.0.0.0:4000/</a>. Press Ctrl+C to stop.此时即可使用浏览器访问 <a href="http://localhost:4000/。" target="_blank" rel="noopener">http://localhost:4000/。</a></p><p>如果端口号被占用还是得先修改端口号，然后启动服务。即先输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server -p 5000</span><br></pre></td></tr></table></figure><p> 当命令行输出中提示出：INFO Hexo is running at <a href="http://0.0.0.0:5000/" target="_blank" rel="noopener">http://0.0.0.0:5000/</a>. Press Ctrl+C to stop.此时即可使用浏览器访问 <a href="http://localhost:5000/。" target="_blank" rel="noopener">http://localhost:5000/。</a></p><p>完成之后进行主题设定。借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。在next主题目录下的_config.yml文件中目前有四种模板，他们是：</p><p>Muse - 默认 Scheme，初代 NexT ，黑白主调，大量留白</p><p>Mist - Muse 的紧凑版本，整洁有序的单栏外观</p><p>Pisces - 双栏 Scheme，小家碧玉似的清新</p><p> Gemini - 双栏Scheme，简约淡雅的风尚</p><p>注释 # 即可。 以Pisce为例，选择 Pisce Scheme</p><h3 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h3><p>在<strong>站点根目录</strong>下修改配置文件_cofig.yml中的language为zh-Hans（简体中文）</p><p>目前 NexT 支持的语言如以下表格所示：</p><table><thead><tr><th>语言</th><th>代码</th><th>设定实例</th></tr></thead><tbody><tr><td>English</td><td>en</td><td>language: en</td></tr><tr><td>简体中文</td><td>zh-Hans</td><td>language: zh-Hans</td></tr><tr><td>Français</td><td>fr-FR</td><td>language: fr-FR</td></tr><tr><td>Português</td><td>pt</td><td>language: pt</td></tr><tr><td>繁體中文</td><td>zh-hk 或者 zh-tw</td><td>language: zh-hk</td></tr><tr><td>Русский язык</td><td>ru</td><td>language: ru</td></tr><tr><td>Deutsch</td><td>de</td><td>language: de</td></tr><tr><td>日本語</td><td>ja</td><td>language: ja</td></tr><tr><td>Indonesian</td><td>id</td><td>language: id</td></tr></tbody></table><h3 id="设置菜单"><a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h3><h4 id="菜单栏设置"><a href="#菜单栏设置" class="headerlink" title="菜单栏设置"></a>菜单栏设置</h4><p>菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;本文基于上篇文章基础篇所写。有许多基于hexo的主题，每个不同的主题会需要不同的配置，主题配置文件在主题目录下的_config.yml。我们可以根据自己的情况选择适合自己的主题。我们选取其中一款主题NextT为模板进行演示。以下是本文的基本流程。&lt;/p&gt;
+&lt;h2 id=&quot;基
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="JavaScript" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/"/>
+    
+      <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
+    
+      <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
+    
+      <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
+    
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于github搭建专属于自己的博客（基础篇）</title>
-    <link href="http://qianyouyou.cn/2018/04/28/%E5%9F%BA%E4%BA%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://qianyouyou.cn/2018/04/28/基于github搭建专属于自己的博客/</id>
+    <link href="http://qianyouyou.cn/2018/04/28/%E5%9F%BA%E4%BA%8Egithub%E6%90%AD%E5%BB%BA%E4%B8%93%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2(%E5%9F%BA%E7%A1%80%E7%AF%87)/"/>
+    <id>http://qianyouyou.cn/2018/04/28/基于github搭建专属于自己的博客(基础篇)/</id>
     <published>2018-04-28T09:11:28.000Z</published>
     <updated>2018-04-28T11:07:51.045Z</updated>
     
