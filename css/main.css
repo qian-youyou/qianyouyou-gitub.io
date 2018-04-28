@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e082df;
+  background: #ff8aff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3355,5 +3355,6 @@ body {
   padding-bottom: 100px;
 }
 .comments {
-  background: #fff;
+  background: #bff;
+  min-height: 500px;
 }
