@@ -2122,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffe5e8;
+  background: #70f2a6;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3353,14 +3353,4 @@ body {
 }
 .main {
   padding-bottom: 100px;
-}
-@media (max-width: 767px) {
-  .sidebar-toggle {
-    position: absolute;
-    left: 30px;
-    top: 45px;
-    width: 14px;
-    height: 14px;
-    padding: 5px;
-  }
 }
