@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
   NexT.motion = {};
-/*
+
   var sidebarToggleLines = {
     lines: [],
     push: function (line) {
@@ -184,8 +184,7 @@ $(document).ready(function () {
     }
   };
   sidebarToggleMotion.init();
-*/  
-//分割线
+
   NexT.motion.integrator = {
     queue: [],
     cursor: -1,
