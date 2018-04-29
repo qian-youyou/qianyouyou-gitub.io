@@ -1854,6 +1854,37 @@ pre .javascript .function {
 .rtl.post-title {
   font-family: UKIJ Ekran;
 }
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 1040;
+  box-shadow: inset 0 2px 6px #000;
+  background: #222;
+  -webkit-transform: translateZ(0);
+}
+.sidebar a {
+  color: #999;
+  border-bottom-color: #555;
+}
+.sidebar a:hover {
+  color: #eee;
+}
+.sidebar-inner {
+  position: relative;
+  padding: 20px 10px;
+  color: #999;
+  text-align: center;
+}
+.site-overview-wrap {
+  overflow: hidden;
+}
+.site-overview {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .sidebar-toggle {
   position: fixed;
   right: 30px;
@@ -2091,7 +2122,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff5361;
+  background: #ffab03;
 }
 .links-of-blogroll {
   font-size: 13px;
