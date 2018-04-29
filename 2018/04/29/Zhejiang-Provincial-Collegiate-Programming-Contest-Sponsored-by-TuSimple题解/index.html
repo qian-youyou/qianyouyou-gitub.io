@@ -100,19 +100,19 @@
 
 
 
-<meta name="description" content="4月29日，13:30-18:30，浙江大学程序设计校赛  D - Sequence Swapping Time Limit: 1 Second      Memory Limit: 65536 KB  BaoBao has just found a strange sequence {&amp;lt;, &amp;gt;, &amp;lt;, &amp;gt;, , &amp;lt;, &amp;gt;} of length  in his">
+<meta name="description" content="4月29日，13:30-18:30，浙江大学程序设计校赛  A-Peak题意： 有一串数字，问这串数字是否符合以下情况： 存在一个数在这串数的第k位置，即ak，以k为基准，k之前的数呈递增趋势，即ai-1 &amp;lt; ai。k之后的数呈递减趋势，即ai-1 &amp;gt; ai。ak不能为首元素和尾元素，且ak为最大的那个数。 题解： 水题，每输入一个数直接和前一个数进行比较，先递增判断直到比比前一个数小">
 <meta name="keywords" content="算法,ACM&#x2F;ICPC,ZOJ,C&#x2F;C++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The 15ph Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple题解">
 <meta property="og:url" content="http://qianyouyou.cn/2018/04/29/Zhejiang-Provincial-Collegiate-Programming-Contest-Sponsored-by-TuSimple题解/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="4月29日，13:30-18:30，浙江大学程序设计校赛  D - Sequence Swapping Time Limit: 1 Second      Memory Limit: 65536 KB  BaoBao has just found a strange sequence {&amp;lt;, &amp;gt;, &amp;lt;, &amp;gt;, , &amp;lt;, &amp;gt;} of length  in his">
+<meta property="og:description" content="4月29日，13:30-18:30，浙江大学程序设计校赛  A-Peak题意： 有一串数字，问这串数字是否符合以下情况： 存在一个数在这串数的第k位置，即ak，以k为基准，k之前的数呈递增趋势，即ai-1 &amp;lt; ai。k之后的数呈递减趋势，即ai-1 &amp;gt; ai。ak不能为首元素和尾元素，且ak为最大的那个数。 题解： 水题，每输入一个数直接和前一个数进行比较，先递增判断直到比比前一个数小">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://acm.zju.edu.cn/onlinejudge/showImage.do?name=poem.jpg">
-<meta property="og:updated_time" content="2018-04-29T14:26:50.816Z">
+<meta property="og:updated_time" content="2018-04-29T15:18:14.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The 15ph Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple题解">
-<meta name="twitter:description" content="4月29日，13:30-18:30，浙江大学程序设计校赛  D - Sequence Swapping Time Limit: 1 Second      Memory Limit: 65536 KB  BaoBao has just found a strange sequence {&amp;lt;, &amp;gt;, &amp;lt;, &amp;gt;, , &amp;lt;, &amp;gt;} of length  in his">
+<meta name="twitter:description" content="4月29日，13:30-18:30，浙江大学程序设计校赛  A-Peak题意： 有一串数字，问这串数字是否符合以下情况： 存在一个数在这串数的第k位置，即ak，以k为基准，k之前的数呈递增趋势，即ai-1 &amp;lt; ai。k之后的数呈递减趋势，即ai-1 &amp;gt; ai。ak不能为首元素和尾元素，且ak为最大的那个数。 题解： 水题，每输入一个数直接和前一个数进行比较，先递增判断直到比比前一个数小">
 <meta name="twitter:image" content="http://acm.zju.edu.cn/onlinejudge/showImage.do?name=poem.jpg">
 
 
@@ -462,7 +462,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,599
+                  2,882
                 </span>
               
 
@@ -478,7 +478,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14
+                  15
                 </span>
               
             </div>
@@ -500,6 +500,15 @@
 
       
         <p>4月29日，13:30-18:30，<a href="http://acm.zju.edu.cn/onlinejudge/showContestProblems.do?contestId=378" target="_blank" rel="noopener">浙江大学程序设计校赛</a> </p>
+<h2 id="A-Peak"><a href="#A-Peak" class="headerlink" title="A-Peak"></a>A-Peak</h2><p>题意：</p>
+<p>有一串数字，问这串数字是否符合以下情况：</p>
+<p>存在一个数在这串数的第k位置，即ak，以k为基准，k之前的数呈递增趋势，即ai-1 &lt; ai。k之后的数呈递减趋势，即ai-1 &gt; ai。ak不能为首元素和尾元素，且ak为最大的那个数。</p>
+<p>题解：</p>
+<p>水题，每输入一个数直接和前一个数进行比较，先递增判断直到比比前一个数小，则递减判断。如果期间存在不符合情况的，则输出No,否则输出Yes。</p>
+<h2 id="B-King-of-Karaoke"><a href="#B-King-of-Karaoke" class="headerlink" title="B - King of Karaoke"></a>B - King of Karaoke</h2><p>题意：</p>
+<p>两个数组a，b，对a中的每个元素加k使得ai[i]=b[i]的个数最多。求k</p>
+<p>题解：</p>
+<p>只需用b中的每个元素减去a中的每个元素，即b[i]-a[i]，得到数组c，从中出现元素最多的那个数值的个数即为k。</p>
 <h2 id="D-Sequence-Swapping"><a href="#D-Sequence-Swapping" class="headerlink" title="D - Sequence Swapping"></a>D - Sequence Swapping</h2><hr>
 <p>Time Limit: 1 Second      Memory Limit: 65536 KB</p>
 <hr>
@@ -567,6 +576,9 @@
 <p>题解：按权值从大到小进行排序，如果权值相同则按字符串的首字符优先级从大到小排序。排完序后选择前m个字符串，第i字符串的权值乘i之后相加，输出相加值之后，再输出前m大的字符串即可。</p>
 <p>代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">	string str;</span><br><span class="line">	long long int weight;</span><br><span class="line">&#125;;</span><br><span class="line">node level[110];</span><br><span class="line">bool cmp(node a,node b) &#123;</span><br><span class="line">	if (a.weight != b.weight)</span><br><span class="line">		return a.weight &gt; b.weight;</span><br><span class="line">	else &#123;</span><br><span class="line">		return a.str &lt; b.str;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int t, n, m;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;t);</span><br><span class="line">	while (t--) &#123;</span><br><span class="line">		long long int h = 0;</span><br><span class="line">		scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">		for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">			cin &gt;&gt; level[i].str &gt;&gt; level[i].weight;</span><br><span class="line">		&#125;</span><br><span class="line">		sort(level, level + n, cmp);</span><br><span class="line">		for (int i = m; i &gt; 0; i--)</span><br><span class="line">			h += level[m - i].weight*i;</span><br><span class="line">		printf(&quot;%lld &quot;, h);</span><br><span class="line">		for (int i = 0; i &lt; m - 1; i++)</span><br><span class="line">			cout &lt;&lt; level[i].str &lt;&lt; &quot; &quot;;</span><br><span class="line">		cout &lt;&lt; level[m - 1].str &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="K-Lucky-7"><a href="#K-Lucky-7" class="headerlink" title="K - Lucky 7"></a>K - Lucky 7</h2><p>给一个数n和m，接下来n个数，问这n个数中是否存在一个数加m是7的倍数。</p>
+<p>题解：</p>
+<p>每输入一个数直接进行判断即可。</p>
 
       
     </div>
@@ -842,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Sequence-Swapping"><span class="nav-number">1.</span> <span class="nav-text">D - Sequence Swapping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input"><span class="nav-number">1.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output"><span class="nav-number">1.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.0.4.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hint"><span class="nav-number">1.0.5.</span> <span class="nav-text">Hint</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-CONTINUE…"><span class="nav-number">2.</span> <span class="nav-text">J - CONTINUE…?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-1"><span class="nav-number">2.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-Doki-Doki-Literature-Club"><span class="nav-number">3.</span> <span class="nav-text">L - Doki Doki Literature Club</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-2"><span class="nav-number">3.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-2"><span class="nav-number">3.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-2"><span class="nav-number">3.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-2"><span class="nav-number">3.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Peak"><span class="nav-number">1.</span> <span class="nav-text">A-Peak</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-King-of-Karaoke"><span class="nav-number">2.</span> <span class="nav-text">B - King of Karaoke</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Sequence-Swapping"><span class="nav-number">3.</span> <span class="nav-text">D - Sequence Swapping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input"><span class="nav-number">3.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output"><span class="nav-number">3.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input"><span class="nav-number">3.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output"><span class="nav-number">3.0.4.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hint"><span class="nav-number">3.0.5.</span> <span class="nav-text">Hint</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-CONTINUE…"><span class="nav-number">4.</span> <span class="nav-text">J - CONTINUE…?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-1"><span class="nav-number">4.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-1"><span class="nav-number">4.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-1"><span class="nav-number">4.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-1"><span class="nav-number">4.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-Doki-Doki-Literature-Club"><span class="nav-number">5.</span> <span class="nav-text">L - Doki Doki Literature Club</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Input-2"><span class="nav-number">5.0.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Output-2"><span class="nav-number">5.0.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Input-2"><span class="nav-number">5.0.3.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sample-Output-2"><span class="nav-number">5.0.4.</span> <span class="nav-text">Sample Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-Lucky-7"><span class="nav-number">6.</span> <span class="nav-text">K - Lucky 7</span></a></li></ol></div>
             
 
           </div>
