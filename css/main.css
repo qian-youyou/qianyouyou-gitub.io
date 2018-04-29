@@ -1854,36 +1854,42 @@ pre .javascript .function {
 .rtl.post-title {
   font-family: UKIJ Ekran;
 }
-.sidebar {
+.sidebar-toggle {
   position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  z-index: 1040;
-  box-shadow: inset 0 2px 6px #000;
+  right: 30px;
+  bottom: 45px;
+  width: 14px;
+  height: 14px;
+  padding: 5px;
   background: #222;
+  line-height: 0;
+  z-index: 1050;
+  cursor: pointer;
   -webkit-transform: translateZ(0);
 }
-.sidebar a {
-  color: #999;
-  border-bottom-color: #555;
+@media (min-width: 768px) and (max-width: 991px) {
+  .sidebar-toggle {
+    right: 20px;
+    opacity: 0.8;
+  }
 }
-.sidebar a:hover {
-  color: #eee;
+@media (max-width: 767px) {
+  .sidebar-toggle {
+    right: 20px;
+    opacity: 0.8;
+  }
 }
-.sidebar-inner {
+.sidebar-toggle-line {
   position: relative;
-  padding: 20px 10px;
-  color: #999;
-  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  margin-top: 3px;
 }
-.site-overview-wrap {
-  overflow: hidden;
-}
-.site-overview {
-  overflow-y: auto;
-  overflow-x: hidden;
+.sidebar-toggle-line:first-child {
+  margin-top: 0;
 }
 .site-author-image {
   display: block;
@@ -2085,7 +2091,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff2e9a;
+  background: #ff5361;
 }
 .links-of-blogroll {
   font-size: 13px;
