@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
   NexT.motion = {};
-
+/*
   var sidebarToggleLines = {
     lines: [],
     push: function (line) {
@@ -24,7 +24,7 @@ $(document).ready(function () {
       });
     }
   };
-/*
+
   function SidebarToggleLine(settings) {
     this.el = $(settings.el);
     this.status = $.extend({}, {
