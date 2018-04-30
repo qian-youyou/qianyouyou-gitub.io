@@ -2123,7 +2123,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #342bff;
+  background: #ff4441;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3052,16 +3052,6 @@ img:hover {
   width: 240px;
   background: #f5f7f9;
   box-shadow: none;
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .sidebar {
-    display: none;
-  }
-}
-@media (max-width: 767px) {
-  .sidebar {
-    display: none;
-  }
 }
 .sidebar-toggle {
   display: none;
