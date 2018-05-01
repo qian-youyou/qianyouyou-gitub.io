@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="Walking in the Forest题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re going to walk through a large forest. There is a path consisting of N ston">
+<meta name="description" content="今天刚好做了一道关于最大值最小化的问题，这类问题的基本思路就是二分加贪心。那就针对该类问题举两道经典例题进行总结吧。 Walking in the Forest （最大值最小化例题）题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re goin">
 <meta name="keywords" content="算法,ACM&#x2F;ICPC,C&#x2F;C++,贪心,二分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[贪心+二分]HUST-Walking in the Forest">
+<meta property="og:title" content="[贪心+二分]HUST-Walking in the Forest+POJ-疯牛（求最小化最大值最大化最小值两道经典例题）">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/01/贪心-二分-HUST/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="Walking in the Forest题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re going to walk through a large forest. There is a path consisting of N ston">
+<meta property="og:description" content="今天刚好做了一道关于最大值最小化的问题，这类问题的基本思路就是二分加贪心。那就针对该类问题举两道经典例题进行总结吧。 Walking in the Forest （最大值最小化例题）题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re goin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-01T15:54:07.409Z">
+<meta property="og:updated_time" content="2018-05-01T16:21:11.527Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[贪心+二分]HUST-Walking in the Forest">
-<meta name="twitter:description" content="Walking in the Forest题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re going to walk through a large forest. There is a path consisting of N ston">
+<meta name="twitter:title" content="[贪心+二分]HUST-Walking in the Forest+POJ-疯牛（求最小化最大值最大化最小值两道经典例题）">
+<meta name="twitter:description" content="今天刚好做了一道关于最大值最小化的问题，这类问题的基本思路就是二分加贪心。那就针对该类问题举两道经典例题进行总结吧。 Walking in the Forest （最大值最小化例题）题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re goin">
 
 
 
@@ -147,7 +147,7 @@
 
 
 
-  <title>[贪心+二分]HUST-Walking in the Forest | 浅悠悠的个人博客</title>
+  <title>[贪心+二分]HUST-Walking in the Forest+POJ-疯牛（求最小化最大值最大化最小值两道经典例题） | 浅悠悠的个人博客</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[贪心+二分]HUST-Walking in the Forest</h1>
+          <h1 class="post-title" itemprop="name headline">[贪心+二分]HUST-Walking in the Forest+POJ-疯牛（求最小化最大值最大化最小值两道经典例题）</h1>
         
 
         <div class="post-meta">
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  511
+                  1,291
                 </span>
               
 
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -497,7 +497,8 @@
       
 
       
-        <h2 id="Walking-in-the-Forest"><a href="#Walking-in-the-Forest" class="headerlink" title="Walking in the Forest"></a><a href="https://www.nowcoder.com/acm/contest/106/K" target="_blank" rel="noopener">Walking in the Forest</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>  It’s universally acknowledged that there’re innumerable trees in the campus of HUST. </p>
+        <p>今天刚好做了一道关于最大值最小化的问题，这类问题的基本思路就是二分加贪心。那就针对该类问题举两道经典例题进行总结吧。</p>
+<h2 id="Walking-in-the-Forest-（最大值最小化例题）"><a href="#Walking-in-the-Forest-（最大值最小化例题）" class="headerlink" title="Walking in the Forest （最大值最小化例题）"></a><a href="https://www.nowcoder.com/acm/contest/106/K" target="_blank" rel="noopener">Walking in the Forest</a> （最大值最小化例题）</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>  It’s universally acknowledged that there’re innumerable trees in the campus of HUST. </p>
 <p>  Now you’re going to walk through a large forest. There is a path consisting of N stones winding its way to the other side of the forest. Between every two stones there is a distance. Let di indicates the distance between the stone i and i+1.Initially you stand at the first stone, and your target is the N-th stone. You must stand in a stone all the time, and you can stride over arbitrary number of stones in one step. If you stepped from the stone i to the stone j, you stride a span of (di+di+1+…+dj-1). But there is a limitation. You’re so tired that you want to walk through the forest in no more than K steps. And to walk more comfortably, you have to minimize the distance of largest step.  </p>
 <h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The first line contains two integer N and K as described above.</span><br><span class="line">Then the next line N-1 positive integer followed, indicating the distance between two adjacent stone.</span><br></pre></td></tr></table></figure>
 <h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An integer, the minimum distance of the largest step.</span><br></pre></td></tr></table></figure>
@@ -507,9 +508,20 @@
 <p>题意：</p>
 <p>有n颗石子，每相邻两颗石子间又一个距离，因此n颗石子共有n-1段距离。现在要求你最多用k步从第一颗石子跳到最后一颗石子。现在让你求最大的一步至少需要跨多少距离。</p>
 <p>题解：</p>
-<p>典型的最大值最小化问题。</p>
+<p>典型的最大值最小化问题。用贪心+二分解决即可。先选取一个标准值，然后从第一颗石子往后距离相加，如果加了之后大于标准值，则步数stemp加一，距离清零。最后比较stemp是否小于等于k值。标准值的范围在相邻石子距离最大值ld与第一颗石子到最后一颗石子距离之间rd，因此每次选取中间值作为标准，如果stemp&gt;k，右边界限rd=mid-1，否则ld=mid+1。但需注意有组样例过大容易超时，因此尽量用long long代替int。</p>
 <p>代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">long long  a[100010];</span><br><span class="line">int n, k;</span><br><span class="line">bool check(long long ld,long long rd,long long mind) &#123;</span><br><span class="line">	long long cnt = 0;</span><br><span class="line">	int stemp = 1;</span><br><span class="line">	for (int i = 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">		if (cnt + a[i] &lt;= mind) &#123;</span><br><span class="line">			cnt += a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			cnt = a[i];</span><br><span class="line">			stemp++;</span><br><span class="line">		&#125;</span><br><span class="line">		if (stemp &gt; k)</span><br><span class="line">			return false;</span><br><span class="line">	&#125;</span><br><span class="line">	if (stemp &lt;= k)</span><br><span class="line">		return true;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;k)) &#123;</span><br><span class="line">		long long maxn = 0, sumn = 0;</span><br><span class="line">		for (int i = 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">			scanf(&quot;%lld&quot;, &amp;a[i]);</span><br><span class="line">			sumn += a[i];</span><br><span class="line">			if (maxn &lt; a[i])</span><br><span class="line">				maxn = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		long long ld = maxn;</span><br><span class="line">		long long rd = sumn;</span><br><span class="line">		long long mind = (ld + rd) / 2;</span><br><span class="line">		while (ld &lt;= rd) &#123;</span><br><span class="line">			bool flag = check(ld, rd, mind);</span><br><span class="line">			if (!flag) &#123;</span><br><span class="line">				ld = mind + 1;</span><br><span class="line">				mind = (ld + rd) / 2;</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				rd = mind - 1;</span><br><span class="line">				mind = (ld + rd) / 2;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%lld\n&quot;, ld);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="POJ2456疯牛-（最小值最大化例题）"><a href="#POJ2456疯牛-（最小值最大化例题）" class="headerlink" title="POJ2456疯牛 （最小值最大化例题）"></a>POJ2456疯牛 （最小值最大化例题）</h2><p>时间限制：1000 ms  |  内存限制：65535 KB</p>
+<p>难度：4</p>
+<ul>
+<li><p>描述</p>
+<p>农夫 John 建造了一座很长的畜栏，它包括N (2 &lt;= N &lt;= 100,000)个隔间，这些小隔间依次编号为x1,…,xN (0 &lt;= xi &lt;= 1,000,000,000).但是，John的C (2 &lt;= C &lt;= N)头牛们并不喜欢这种布局，而且几头牛放在一个隔间里，他们就要发生争斗。为了不让牛互相伤害。John决定自己给牛分配隔间，使任意两头牛之间的最小距离尽可能的大，那么，这个最大的最小距离是什么呢？输入有多组测试数据，以EOF结束。第一行：空格分隔的两个整数N和C第二行——第N+1行：分别指出了xi的位置输出每组测试数据输出一个整数，满足题意的最大的最小值，注意换行。样例输入<code>5 312849</code>样例输出<code>3</code></p>
+</li>
+</ul>
+<p>题意：有n个牛栏，选m个放进牛，相当于一条线段上有 n 个点，选取 m 个点，使得相邻点之间的最小距离值最大。</p>
+<p>题解：首先给出n个牛棚的位置，那么每个牛棚之间的最小距离是和相邻两个牛棚之间的距离。因此，先给牛棚的位置排个序。将第一头牛放在0号位置，二分法不断缩进距离d，如果前一头牛放到了xi处，就要将下一头放到满足xi+d&lt;=xj的最小的xj处。这样保证最近的两头牛之间的距离都不会比当前的最小值小，如果每个都能满足这样放就可以作为最小值。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;algorithm&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">int v[100005];  </span><br><span class="line">int n, c;  </span><br><span class="line">int check(int d) &#123;  </span><br><span class="line">    int tmp = v[0], cnt = 1;  </span><br><span class="line">    for (int i = 1; i &lt; n; i++) &#123;  </span><br><span class="line">        if (v[i] - tmp &gt;= d) &#123;  </span><br><span class="line">            cnt++;  </span><br><span class="line">            tmp = v[i];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    if (cnt &gt;= c)  </span><br><span class="line">        return 1;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    while (cin &gt;&gt; n &gt;&gt; c) &#123;  </span><br><span class="line">        for (int i = 0; i &lt; n; i++)  </span><br><span class="line">            cin &gt;&gt; v[i];  </span><br><span class="line">        sort(v, v + n);  </span><br><span class="line">        int l = 0, r = v[n - 1], mid;  </span><br><span class="line">        while (l &lt;= r) &#123;  </span><br><span class="line">            mid = (l + r) / 2;  </span><br><span class="line">            if (check(mid))  </span><br><span class="line">                l = mid + 1;  </span><br><span class="line">            else  </span><br><span class="line">                r = mid - 1;  </span><br><span class="line">        &#125;  </span><br><span class="line">        printf(&quot;%d\n&quot;, r);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -791,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Walking-in-the-Forest"><span class="nav-number">1.</span> <span class="nav-text">Walking in the Forest</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">1.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">1.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">1.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">1.5.</span> <span class="nav-text">输出</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Walking-in-the-Forest-（最大值最小化例题）"><span class="nav-number">1.</span> <span class="nav-text">Walking in the Forest （最大值最小化例题）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">1.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">1.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">1.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">1.5.</span> <span class="nav-text">输出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ2456疯牛-（最小值最大化例题）"><span class="nav-number">2.</span> <span class="nav-text">POJ2456疯牛 （最小值最大化例题）</span></a></li></ol></div>
             
 
           </div>
