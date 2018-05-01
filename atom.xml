@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-05-01T15:37:45.004Z</updated>
+  <updated>2018-04-29T15:33:39.228Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>[贪心+二分]HUST</title>
-    <link href="http://qianyouyou.cn/2018/05/01/%E8%B4%AA%E5%BF%83-%E4%BA%8C%E5%88%86-HUST/"/>
-    <id>http://qianyouyou.cn/2018/05/01/贪心-二分-HUST/</id>
-    <published>2018-05-01T15:37:44.000Z</published>
-    <updated>2018-05-01T15:37:45.004Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>The 15ph Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple题解</title>
