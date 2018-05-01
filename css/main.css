@@ -1163,6 +1163,8 @@ pre .javascript .function {
 }
 .header-inner {
   position: relative;
+  margin-bottom: 0;
+  padding: 0;
 }
 .headband {
   height: 3px;
@@ -2130,7 +2132,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d90eac;
+  background: #2bff83;
 }
 .links-of-blogroll {
   font-size: 13px;
