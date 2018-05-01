@@ -1161,11 +1161,13 @@ pre .javascript .function {
 .header {
   margin-bottom: 30px;
   color: #fff;
-  background: url("../images/background.jpg");
+  background: url("../images/bg.jpg");
   background-size: 100%, 100%;
 }
 @media (max-width: 767px) {
   .header {
+    background: url("../images/background.jpg");
+    background-size: 100%, 100%;
     margin-bottom: 0;
   }
 }
@@ -2147,7 +2149,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5b8f65;
+  background: #8affff;
 }
 .links-of-blogroll {
   font-size: 13px;
