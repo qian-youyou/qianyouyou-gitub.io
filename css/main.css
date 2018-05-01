@@ -1260,6 +1260,11 @@ pre .javascript .function {
     display: block !important;
   }
 }
+.site-nav-on {
+  background: url("../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 .menu {
   margin-top: 20px;
   padding-left: 0;
@@ -2132,7 +2137,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f1ffc8;
+  background: #8e0004;
 }
 .links-of-blogroll {
   font-size: 13px;
