@@ -1175,6 +1175,11 @@ pre .javascript .function {
 .site-meta {
   margin: 0;
   text-align: left;
+  padding: 20px 0;
+  color: #fff;
+  background: url("../images/background_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 @media (max-width: 767px) {
   .site-meta {
@@ -1185,12 +1190,12 @@ pre .javascript .function {
   position: relative;
   display: inline-block;
   padding: 0 40px;
-  color: #222;
+  color: #528b8b;
   background: #222;
   border-bottom: none;
 }
 .brand:hover {
-  color: #222;
+  color: #ff0;
 }
 .logo {
   display: inline-block;
@@ -2129,7 +2134,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a6afb1;
+  background: #8bc800;
 }
 .links-of-blogroll {
   font-size: 13px;
