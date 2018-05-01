@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="hexo,github,node.js,前端," />
+  <meta name="keywords" content="算法,ACM/ICPC,C/C++,贪心,二分," />
 
 
 
@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
-<meta name="keywords" content="hexo,github,node.js,前端">
+<meta name="description" content="Walking in the Forest题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re going to walk through a large forest. There is a path consisting of N ston">
+<meta name="keywords" content="算法,ACM&#x2F;ICPC,C&#x2F;C++,贪心,二分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于github搭建专属于自己的博客（基础篇）">
-<meta property="og:url" content="http://qianyouyou.cn/2018/04/28/基于github搭建专属于自己的博客(基础篇)/index.html">
+<meta property="og:title" content="[贪心+二分]HUST-Walking in the Forest">
+<meta property="og:url" content="http://qianyouyou.cn/2018/05/01/贪心-二分-HUST/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
+<meta property="og:description" content="Walking in the Forest题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re going to walk through a large forest. There is a path consisting of N ston">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-28T11:07:51.045Z">
+<meta property="og:updated_time" content="2018-05-01T15:54:07.409Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于github搭建专属于自己的博客（基础篇）">
-<meta name="twitter:description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
+<meta name="twitter:title" content="[贪心+二分]HUST-Walking in the Forest">
+<meta name="twitter:description" content="Walking in the Forest题目描述  It’s universally acknowledged that there’re innumerable trees in the campus of HUST.    Now you’re going to walk through a large forest. There is a path consisting of N ston">
 
 
 
@@ -141,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://qianyouyou.cn/2018/04/28/基于github搭建专属于自己的博客(基础篇)/"/>
+  <link rel="canonical" href="http://qianyouyou.cn/2018/05/01/贪心-二分-HUST/"/>
 
 
 
 
 
-  <title>基于github搭建专属于自己的博客（基础篇） | 浅悠悠的个人博客</title>
+  <title>[贪心+二分]HUST-Walking in the Forest | 浅悠悠的个人博客</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/28/基于github搭建专属于自己的博客(基础篇)/">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/05/01/贪心-二分-HUST/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王骏">
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于github搭建专属于自己的博客（基础篇）</h1>
+          <h1 class="post-title" itemprop="name headline">[贪心+二分]HUST-Walking in the Forest</h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T17:11:28+08:00">
-                2018-04-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T23:37:44+08:00">
+                2018-05-01
               </time>
             
 
@@ -392,8 +392,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序人生/" itemprop="url" rel="index">
-                    <span itemprop="name">程序人生</span>
+                  <a href="/categories/训练之路/" itemprop="url" rel="index">
+                    <span itemprop="name">训练之路</span>
                   </a>
                 </span>
 
@@ -403,8 +403,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序人生/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/训练之路/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -414,8 +414,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序人生/JavaScript/hexo教程/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo教程</span>
+                  <a href="/categories/训练之路/算法/二分/" itemprop="url" rel="index">
+                    <span itemprop="name">二分</span>
                   </a>
                 </span>
 
@@ -432,8 +432,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/28/基于github搭建专属于自己的博客(基础篇)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/28/基于github搭建专属于自己的博客(基础篇)/" itemprop="commentCount"></span>
+                <a href="/2018/05/01/贪心-二分-HUST/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/01/贪心-二分-HUST/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,191
+                  455
                 </span>
               
 
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  3
                 </span>
               
             </div>
@@ -497,71 +497,17 @@
       
 
       
-        <p>以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程：</p>
-<h2 id="基本流程："><a href="#基本流程：" class="headerlink" title="基本流程："></a>基本流程：</h2><p>1.搭建前的准备（包括node.js，git，github账户的配置）</p>
-<p>2.安装hexo</p>
-<p>3.配置hexo</p>
-<p>4.连接hexo与github page</p>
-<p>5.发布文章</p>
-<h3 id="搭建前的准备"><a href="#搭建前的准备" class="headerlink" title="搭建前的准备"></a>搭建前的准备</h3><p>1.安装node.js</p>
-<p>2.安装git</p>
-<p>3.github账户管理</p>
-<h4 id="配置Node-js"><a href="#配置Node-js" class="headerlink" title="配置Node.js"></a>配置Node.js</h4><p>下载<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a>。根据自己电脑的配置自行安装。</p>
-<p>安装完成后打开终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>进行是否安装成功测试。如不正确，回头检查哪一步错误。</p>
-<h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><p><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>官网。自行安装。</p>
-<p>安装完成后打开终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
-<p>以上步骤进行是否安装成功。如果安装失败自行面壁。</p>
-<h4 id="github管理"><a href="#github管理" class="headerlink" title="github管理"></a>github管理</h4><p>已拥有账号可跳过注册此步</p>
-<p>打开<a href="https://github.com/" target="_blank" rel="noopener">github</a>进行注册。</p>
-<p>登录后点击右上角加号，选择New repository新建代码库。</p>
-<p>进入代码库创建页面：</p>
-<p>在Repository name下填写yourname.github.io，Description (optional)下填写描述（此步可忽略）。</p>
-<p><strong>注意：我的github名称是qianyouyou ,这里就填qianyouyou.github.io</strong></p>
-<p>建立后，点击界面右侧的Settings，你将会打开这个库的setting页面，向下拖动，直到看见GitHub Pages。点击Automatic page generator，Github将会自动替你创建出一个gh-pages的页面。 如果你的配置没有问题，那么大约15分钟之后，yourname.github.io这个网址就可以正常访问了~ 如果yourname.github.io已经可以正常访问了，那么Github一侧的配置已经全部结束了。</p>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>在合适的地方创建文件夹，这里我以E:/blog 为例子讲解，首先在E盘目录下创建blog文件夹，终端锁定该文件夹</p>
-<p>在命令行输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g   //进行安装</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v   //检验是否安装成功。</span><br></pre></td></tr></table></figure>
-<h3 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h3><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init   //初始化该文件夹</span><br></pre></td></tr></table></figure>
-<p>看到后面的“Start blogging with Hexo！”证明正在执行。</p>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install   //安装所需要的组件</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g   //生成</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>开启服务器，访问该网址，正式体验Hexo</p>
-<h3 id="连接hexo与github-page"><a href="#连接hexo与github-page" class="headerlink" title="连接hexo与github page"></a>连接hexo与github page</h3><p>设置Git的user name和email（如果是第一次的话）在blog文件夹里面鼠标右键，点击Git Base Here。</p>
-<p>输入cd ~/.ssh，检查是否由.ssh的文件夹</p>
-<p>输入ls，列出该文件下的内容</p>
-<p>输入ssh-keygen -t rsa -C “<a href="mailto:xxxxxx@xx.com" target="_blank" rel="noopener">xxxxxx@xx.com</a>”，（你的邮箱）连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub（默认存储路径是：C:\Users\Administrator.ssh）。</p>
-<p> 输入eval “$(ssh-agent -s)”，添加密钥到ssh-agent</p>
-<p>再输入ssh-add ~/.ssh/id_rsa，添加生成的SSH key到ssh-agent</p>
-<p>登录Github，点击头像下的settings，添加ssh</p>
-<p>新建一个new ssh key，将id_rsa.pub文件里的内容复制上去</p>
-<p>输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>，测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了</p>
-<p><strong>问题：</strong>假如ssh-key配置失败，那么只要以下步骤就能完全解决</p>
-<p>首先，清除所有的key-pair<br>ssh-add -D<br>rm -r ~/.ssh<br>删除你在github中的public-key</p>
-<p>重新生成ssh密钥对<br>ssh-keygen -t rsa -C “<a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a>“</p>
-<p>接下来正常操作<br>在github上添加公钥public-key:<br>1、首先在你的终端运行 xclip -sel c ~/.ssh/id_rsa.pub将公钥内容复制到剪切板<br>2、在github上添加公钥时，直接复制即可<br>3、保存</p>
-<p>测试：<br>在终端 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-<p>配置Deployment，在其文件夹中，找到_config.yml文件，修改repo值（在末尾）</p>
-<p>repo值是你在github项目里的ssh（右下角）</p>
-<h3 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h3><p>新建一篇博客，在cmd执行命令：hexo new post “博客名”</p>
-<p>这时候在我的 电脑的目录下 E:\blog\source\ _posts 将会看到 article title.md 文件</p>
-<p>在生成以及部署文章之前，需要安装一个扩展：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g   // 生成</span><br><span class="line">hexo d   // 部署</span><br></pre></td></tr></table></figure>
-<p>当然你也可以执行下面的命令，相当于上面两条命令的效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d   //在部署前先生成</span><br></pre></td></tr></table></figure>
-<p>部署成功后访问你的地址：http://用户名.github.io。那么将看到生成的文章。</p>
-<p>到此为止，最基本的也是最全面的hexo+github搭建博客完结。</p>
+        <h2 id="Walking-in-the-Forest"><a href="#Walking-in-the-Forest" class="headerlink" title="Walking in the Forest"></a><a href="https://www.nowcoder.com/acm/contest/106/K" target="_blank" rel="noopener">Walking in the Forest</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>  It’s universally acknowledged that there’re innumerable trees in the campus of HUST. </p>
+<p>  Now you’re going to walk through a large forest. There is a path consisting of N stones winding its way to the other side of the forest. Between every two stones there is a distance. Let di indicates the distance between the stone i and i+1.Initially you stand at the first stone, and your target is the N-th stone. You must stand in a stone all the time, and you can stride over arbitrary number of stones in one step. If you stepped from the stone i to the stone j, you stride a span of (di+di+1+…+dj-1). But there is a limitation. You’re so tired that you want to walk through the forest in no more than K steps. And to walk more comfortably, you have to minimize the distance of largest step.  </p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The first line contains two integer N and K as described above.</span><br><span class="line">Then the next line N-1 positive integer followed, indicating the distance between two adjacent stone.</span><br></pre></td></tr></table></figure>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An integer, the minimum distance of the largest step.</span><br></pre></td></tr></table></figure>
+<p>示例1</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6 3</span><br><span class="line">1 3 2 2 5</span><br></pre></td></tr></table></figure>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>题意：</p>
+<p>有n颗石子，每相邻两颗石子间又一个距离，因此n颗石子共有n-1段距离。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">long long  a[100010];</span><br><span class="line">int n, k;</span><br><span class="line">bool check(long long ld,long long rd,long long mind) &#123;</span><br><span class="line">	long long cnt = 0;</span><br><span class="line">	int stemp = 1;</span><br><span class="line">	for (int i = 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">		if (cnt + a[i] &lt;= mind) &#123;</span><br><span class="line">			cnt += a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			cnt = a[i];</span><br><span class="line">			stemp++;</span><br><span class="line">		&#125;</span><br><span class="line">		if (stemp &gt; k)</span><br><span class="line">			return false;</span><br><span class="line">	&#125;</span><br><span class="line">	if (stemp &lt;= k)</span><br><span class="line">		return true;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;k)) &#123;</span><br><span class="line">		long long maxn = 0, sumn = 0;</span><br><span class="line">		for (int i = 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">			scanf(&quot;%lld&quot;, &amp;a[i]);</span><br><span class="line">			sumn += a[i];</span><br><span class="line">			if (maxn &lt; a[i])</span><br><span class="line">				maxn = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		long long ld = maxn;</span><br><span class="line">		long long rd = sumn;</span><br><span class="line">		long long mind = (ld + rd) / 2;</span><br><span class="line">		while (ld &lt;= rd) &#123;</span><br><span class="line">			bool flag = check(ld, rd, mind);</span><br><span class="line">			if (!flag) &#123;</span><br><span class="line">				ld = mind + 1;</span><br><span class="line">				mind = (ld + rd) / 2;</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				rd = mind - 1;</span><br><span class="line">				mind = (ld + rd) / 2;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%lld\n&quot;, ld);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -608,13 +554,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
-            <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
+            <a href="/tags/ACM-ICPC/" rel="tag"><i class="fa fa-tag"></i> ACM/ICPC</a>
           
-            <a href="/tags/node-js/" rel="tag"><i class="fa fa-tag"></i> node.js</a>
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
           
-            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+            <a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
+          
+            <a href="/tags/二分/" rel="tag"><i class="fa fa-tag"></i> 二分</a>
           
         </div>
       
@@ -627,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/04/29/Zhejiang-Provincial-Collegiate-Programming-Contest-Sponsored-by-TuSimple题解/" rel="next" title="The 15ph Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple题解">
+                <i class="fa fa-chevron-left"></i> The 15ph Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple题解
               </a>
             
           </div>
@@ -636,10 +584,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/28/基于github搭建专属于自己的博客(进阶篇)/" rel="prev" title="基于github搭建专属于自己的博客(进阶篇)">
-                基于github搭建专属于自己的博客(进阶篇) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -845,7 +789,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本流程："><span class="nav-number">1.</span> <span class="nav-text">基本流程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建前的准备"><span class="nav-number">1.1.</span> <span class="nav-text">搭建前的准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置Node-js"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置Git"><span class="nav-number">1.1.2.</span> <span class="nav-text">配置Git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github管理"><span class="nav-number">1.1.3.</span> <span class="nav-text">github管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置hexo"><span class="nav-number">1.3.</span> <span class="nav-text">配置hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接hexo与github-page"><span class="nav-number">1.4.</span> <span class="nav-text">连接hexo与github page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布文章"><span class="nav-number">1.5.</span> <span class="nav-text">发布文章</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Walking-in-the-Forest"><span class="nav-number">1.</span> <span class="nav-text">Walking in the Forest</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入描述"><span class="nav-number">1.2.</span> <span class="nav-text">输入描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出描述"><span class="nav-number">1.3.</span> <span class="nav-text">输出描述:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输入"><span class="nav-number">1.4.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出"><span class="nav-number">1.5.</span> <span class="nav-text">输出</span></a></li></ol></li></ol></div>
             
 
           </div>
