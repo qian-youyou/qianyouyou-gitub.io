@@ -333,6 +333,10 @@ kbd {
   padding: 0.1em 0.3em;
   white-space: nowrap;
 }
+.main-inner {
+  background: #fff;
+  opacity: 0.85;
+}
 .text-left {
   text-align: left;
 }
@@ -2125,7 +2129,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffb885;
+  background: #a6afb1;
 }
 .links-of-blogroll {
   font-size: 13px;
