@@ -1159,7 +1159,10 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: transparent;
+  padding: 20px 0;
+  color: #fff;
+  background: url("../images/background.jpg");
+  background-size: 100%, 100%;
 }
 .header-inner {
   position: relative;
@@ -2144,7 +2147,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff13ff;
+  background: #6f63ff;
 }
 .links-of-blogroll {
   font-size: 13px;
