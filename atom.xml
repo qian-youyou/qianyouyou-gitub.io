@@ -536,20 +536,20 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
+      <category term="DFS" scheme="http://qianyouyou.cn/tags/DFS/"/>
+    
       <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
     
       <category term="位运算" scheme="http://qianyouyou.cn/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
-      <category term="DFS" scheme="http://qianyouyou.cn/tags/DFS/"/>
-    
   </entry>
   
   <entry>
-    <title>[位运算]dfs+位运算解决N皇后问题</title>
+    <title>[位运算]位运算的4个简单应用</title>
     <link href="http://qianyouyou.cn/2018/04/13/2018-04-13%20-%201/"/>
     <id>http://qianyouyou.cn/2018/04/13/2018-04-13 - 1/</id>
     <published>2018-04-13T12:17:46.000Z</published>
-    <updated>2018-05-02T12:21:36.595Z</updated>
+    <updated>2018-05-02T12:49:44.437Z</updated>
     
     <content type="html"><![CDATA[<p>\1. 不用任何比较判断两个数中大的那个数</p><p>我们将两个数做差，得到另一个数，判断这个数的符号位就可以了。当然，不能直接使用判断语句，所以我们使用位运算来操作。</p><p><img src="https://img-blog.csdn.net/20180413201217682?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW5feW91eW91/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p>\2. 两个相同的数异或结果等于0。</p><p>就这道题而言，在运算过程中会产生一个中间值，即a与b的异或结果，a异或b再异或b就会等于a，如果第二次异或a就会等于b。</p><p><img src="https://img-blog.csdn.net/20180413201328872?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW5feW91eW91/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p>所以直接三个异或就可以搞定</p><p><img src="https://img-blog.csdn.net/20180413201410925?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW5feW91eW91/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p>\3. 整数的二进制中有多少个1</p><p>每次循环采用n&amp;=(n-1)，这样可以跳过二进制位是0的数。</p><p><img src="https://img-blog.csdn.net/2018041320150040?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW5feW91eW91/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p><img src="https://img-blog.csdn.net/20180413201511860?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW5feW91eW91/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p><p>\4. 数组中只有一个数出现了奇数次，其他数都出现偶数次，找出这个数</p><p>这道题还是使用了异或的性质，两个相同的数异或等于0，遍历一遍数组就可以得到出现奇数次的那个数。</p><p><img src="https://img-blog.csdn.net/20180413201623168?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW5feW91eW91/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>]]></content>
     

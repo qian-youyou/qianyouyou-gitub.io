@@ -230,13 +230,13 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>DFS</tag>
         <tag>ACM/ICPC</tag>
         <tag>位运算</tag>
-        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[[位运算]dfs+位运算解决N皇后问题]]></title>
+    <title><![CDATA[[位运算]位运算的4个简单应用]]></title>
     <url>%2F2018%2F04%2F13%2F2018-04-13%20-%201%2F</url>
     <content type="text"><![CDATA[\1. 不用任何比较判断两个数中大的那个数 我们将两个数做差，得到另一个数，判断这个数的符号位就可以了。当然，不能直接使用判断语句，所以我们使用位运算来操作。 \2. 两个相同的数异或结果等于0。 就这道题而言，在运算过程中会产生一个中间值，即a与b的异或结果，a异或b再异或b就会等于a，如果第二次异或a就会等于b。 所以直接三个异或就可以搞定 \3. 整数的二进制中有多少个1 每次循环采用n&amp;=(n-1)，这样可以跳过二进制位是0的数。 \4. 数组中只有一个数出现了奇数次，其他数都出现偶数次，找出这个数 这道题还是使用了异或的性质，两个相同的数异或等于0，遍历一遍数组就可以得到出现奇数次的那个数。]]></content>
       <categories>
@@ -367,8 +367,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>pat天梯赛</tag>
         <tag>BFS</tag>
+        <tag>pat天梯赛</tag>
       </tags>
   </entry>
   <entry>
@@ -382,10 +382,68 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>stl</tag>
+        <tag>算法</tag>
         <tag>vector</tag>
         <tag>pat天梯赛</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[BFS与DFS的用途与选择]]></title>
+    <url>%2F2018%2F02%2F01%2F2018-02-01%2F</url>
+    <content type="text"><![CDATA[1.BFS是用来搜索最短径路的解是比较合适的，比如求最少步数的解，最少交换次数的解，因为BFS搜索过程中遇到的解一定是离根最近的，所以遇到一个解，一定就是最优解，此时搜索算法可以终止。这个时候不适宜使用DFS，因为DFS搜索到的解不一定是离根最近的，只有全局搜索完毕，才能从所有解中找出离根的最近的解。（当然这个DFS的不足，可以使用迭代加深搜索ID-DFS去弥补）2.空间优劣上，DFS是有优势的，DFS不需要保存搜索过程中的状态，而BFS在搜索过程中需要保存搜索过的状态，而且一般情况需要一个队列来记录。3.DFS适合搜索全部的解，因为要搜索全部的解，那么BFS搜索过程中，遇到离根最近的解，并没有什么用，也必须遍历完整棵搜索树，DFS搜索也会搜索全部，但是相比DFS不用记录过多信息，所以搜素全部解的问题，DFS显然更加合适。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+        <category>搜索</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>DFS</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C++类的3种继承方式]]></title>
+    <url>%2F2018%2F01%2F24%2F2018-01-24%2F</url>
+    <content type="text"><![CDATA[简单地说下C++类的3种继承方式，分别是public继承，protected继承，private继承。 最常用的还是public继承。class默认的是private继承，它的member如果没写权限也是默认 private。struct则相反，默认的是public继承。结合下面的图示和代码，对C++的继承就有了 比较清晰的认识了。 继承之后，derived class 继承过后的member的属性就是图中所示。 代码主要从： 1.基类成员对其对象的可见性： 基类成员对派生类的可见性： 基类成员对派生类对象的可见性： 这3个方面谈的。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#include &lt;iostream&gt; class base&#123; public: base()&#123; a = 0; b = 1; c = 2; &#125; int a; protected: int b; private: int c; &#125;; class derived1 : public base&#123;//public继承 public: void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; class derived2 : protected base&#123;//protected继承 public: void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; class derived3 : private base&#123;//private继承 public: void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; class derived4 : public derived3&#123;//base的member不能被private继承的派生类的子类访问 public: void fun()&#123; // std::cout&lt;&lt;a; &#125; &#125;; class derived5 : base&#123;//默认private继承 void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; int main(void) &#123; base b1; derived1 d1; derived2 d2; derived3 d3; d1.fun(); d2.fun(); d3.fun(); std::cout&lt;&lt;b1.a;//base class Object只能访问public member std::cout&lt;&lt;d1.a;//public继承时 derived class Object只能访问base class的public member //std::cout&lt;&lt;d1.b&lt;&lt;d1.c;//不能访问 //std::cout&lt;&lt;d2.a&lt;&lt;d2.b;//protected继承时 derived class Object不能问访base class的member //std::cout&lt;&lt;d3.a;//private继承时 derived class Object不能问访base class的member return 0; &#125;]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>继承</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>继承</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sstream和strstream的用法]]></title>
+    <url>%2F2018%2F01%2F24%2F2018-01-24%20-%201%2F</url>
+    <content type="text"><![CDATA[在C++有两种字符串流,也称为数组I/O流，一种在 strstream 中定义，另一种在 sstream 中定义。它们实现的东西基本一样。strstream里包含： 1234class strstreambuf;class istrstream;class ostrstream;class strstream; 它们是基于C类型字符串char*编写的 sstream中包含： 1234class stringbuf;class istringstream;class ostringstream;class stringstream; 它们是基于std::string编写的 因此ostrstream::str()返回的是char*类型的字符串而ostringstream::str()返回的是std::string类型的字符串在使用的时候要注意到二者的区别，一般情况下推荐使用std::string类型的字符串当然如果为了保持和C的兼容，使用strstream也是不错的选择。但要记住一点,strstream虽仍然是C++语言标准的一部分,但已被C++标准宣称为“deprecated”，也就是不再提倡使用了，也说不定以后干粹就没了。 先介绍一下sstream 123456789//strigstream流以空格为边界符,使用其须包含sstream头文件//istringstream 用法istringstream istring;string ss(&quot;ss 8346520&quot;);istring.str(ss);int i=0;string s;istring&gt;&gt;s&gt;&gt;i;cout&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i&lt;&lt;endl; 或者 12345istringstream istring(&quot;ss 8346520&quot;);int i=0;string s;istring&gt;&gt;s&gt;&gt;i;cout&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i&lt;&lt;endl; 都将打印：s内容是ss,i内容是8346520的结果; 1234567891011//ostringstream 用法string s=&quot;test&quot;;int i=8346520;int j=0;string s1;ostringstream ostring; //不能写成ostringstream ostring&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i;ostring&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i;cout&lt;&lt;ostring.str()&lt;&lt;endl; //ostring流内保存内容是test 8346520istringstream istring(ostring.str());istring&gt;&gt;s1&gt;&gt;j;//要注意此处的顺序;cout&lt;&lt;s1&lt;&lt;&quot;――――&quot;&lt;&lt;j&lt;&lt;endl; 简单说说strstream:基于数组的类有istrstream、ostrstream和strstream。它们分别用来创建输入、输出和输入／输出流。这些类的基类之一是strstreambuf，它定义了派生类使用的几个底层的具体属性。除了strstreambuf以外，istream也是istrstream的基类。类ostrstream包括了类ostream。strstream也包括了类iostream。所以，所有基于数组的类和“普通”I／O类一样存取相同的成员函数。创建基于数组的输出流要将一个输出流和一个数组关联起来，可使用下列ostream的构造函数：ostrstream ostr（char＊buf，int size，int mode＝ios：：out）；其中，buf是指向数组的指针，该数组接收写入流的字符。数组的长度由参数size确定。缺省时，流以输出方式打开，但也可以将几项或在一起复合为所需的方式（例如，可以包含ios：：app使输出添加在数组中已存在的信息的尾部）。mode的缺省值可以满足大多数的要求。一旦打开了一个基于数组的输出流，所有对这个流的输出就放在数组中。但是，任何输出都不能写到数组的限界之外，任何这种企图都会导致错误。 下面是一个介绍基于数组的输出流的简单程序。 12345678910111213141516#include &lt;iostream&gt;#include &lt;strstream&gt;using namespace std;int main()&#123;int arraysize=50;char *pbuffer=new char[arraysize];ostrstream ostr(pbuffer,arraysize,ios::out);ostr&lt;&lt;&quot;Hello&quot;&lt;&lt;&quot; &quot;;ostr&lt;&lt;99-14&lt;&lt;hex&lt;&lt;&quot; &quot;;ostr.setf(ios::showbase);ostr&lt;&lt;100&lt;&lt;ends; //使用ostrstream输出到流对象的时候,要用ends结束字符串cout&lt;&lt;pbuffer;delete[] pbuffer;return 0;&#125; 使用数组作输入:要将输入流和数组关联起来，可使用下列istrstream的构造函数： 1istrstream istr（char*buf）； 其中，buf是指向数组的指针，该数组作为每次向流输入的字符源。buf所指的数组必须以空结束。空结束符从不从数组中读取。 下面是一个用字符串输入的例子: 1234567891011121314151617181920#include &lt;iostream&gt;#include &lt;strstream&gt;using namespace std;int main()&#123;const char s[]=&quot;10 Hello 15 12.23 done&quot;;istrstream ins(s);int i;char str[80];float f;//reading： 10 Helloins &gt;&gt;i;ins &gt;&gt;str;cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;str&lt;&lt;endl;// reading：f 12.23 done.ins&gt;&gt;i;ins&gt;&gt;f;ins&gt;&gt;str;cout&lt;&lt;hex&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;f&lt;&lt;&quot; &quot;&lt;&lt;str;return 0;&#125;]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>流</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>stl</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[正则表达式练习题集(附答案)]]></title>
+    <url>%2F2018%2F01%2F21%2F2018-01-21%2F</url>
+    <content type="text"><![CDATA[前言​ 好久到没有去写关于正则表达式的总结了，虽然自己写了一些关于正则表达式的东西。但是 ​ 感觉上对正则表达式还停留在网上查找的阶段，对于大部分的人来说，很难写自己的正则表达式 ​ 对于正则表达式笔者也做过相关的总结。呃，过了一段时间还是模糊了。因此找一些练习题来找 ​ 回自己的记忆。 ​ 需要说明的是这些练习题有的是网上的！ 初级练习​ 1、求非负整数 : ^\d+$ ​ Tips:需要注意的是这个匹配模式为多行模式下进行的 ​ ​ 2、匹配正整数： ^[1-9][1-9][0-9]$ 在网上也有这种写法的 ^[0-9][1-9][0-9]$ ​ 这里截图我也不贴了，前者指能匹配123012这种整数，而后者可以匹配001230。 ​ 取舍就看实际的需要了 ​ 3、非正整数：^(-\d+|(0+))$ ​ 4、负整数：^-[0-9][1-9][0-9]$ ​ 5、整数 ：^-?\d+$ ​ 6、非负浮点数 ：^\d+(.\d+)?$ ​ 7、正浮点数 ：^(([0-9]+.[0-9][1-9][0-9])|([0-9][1-9][0-9].[0-9]+)|([0-9][1-9][0-9]))$ ​ 8、非正浮点数 ：^((-\d+(.\d+)?)|(0+(.0+)?))$ ​ 9、负浮点数：^(-(([0-9]+.[0-9][1-9][0-9])|([0-9][1-9][0-9].[0-9]+)|([0-9][1-9][0-9])))$ ​ 10、浮点数：^(-?\d+)(.\d+)?$ ​ 11、有数字、26个英文字母组成的字符串：^[A-Za-z0-9]+$ 中级练习​ 1、长度为8-10的用户密码（以字母开头、数字、下划线） ​ ^[a-zA-Z]\w{7,10}$ ​ 2、验证输入只能是汉字 ： ^[\u4e00-\u9fa5]{0,}$ ​ 3、电子邮箱验证：^\w+([-+.]\w+)@\w+([-.]\w+).\w+([-.]\w+)*$ ​ 4、URL地址验证：^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]*)?$ ​ 5、电话号码的验证：请参考：http://blog.csdn.net/kiritor/article/details/8733469 ​ 6、简单的身份证号验证：\d{15}|\d{18}$ ​ ………………………… 高级练习​ 1、提取并捕获html标签内容： ​ &lt;a(?: [^&gt;])+href=([^ &gt;])(?: [^&gt;])&gt; ​ ​ &lt;OPTION\s.*?&gt; ​]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>正则表达式</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
 </search>
