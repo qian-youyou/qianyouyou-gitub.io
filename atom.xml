@@ -427,11 +427,11 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="BFS" scheme="http://qianyouyou.cn/tags/BFS/"/>
     
       <category term="pat天梯赛" scheme="http://qianyouyou.cn/tags/pat%E5%A4%A9%E6%A2%AF%E8%B5%9B/"/>
     
-      <category term="BFS" scheme="http://qianyouyou.cn/tags/BFS/"/>
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -463,13 +463,13 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
+      <category term="pat天梯赛" scheme="http://qianyouyou.cn/tags/pat%E5%A4%A9%E6%A2%AF%E8%B5%9B/"/>
+    
       <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="stl" scheme="http://qianyouyou.cn/tags/stl/"/>
     
       <category term="vector" scheme="http://qianyouyou.cn/tags/vector/"/>
-    
-      <category term="pat天梯赛" scheme="http://qianyouyou.cn/tags/pat%E5%A4%A9%E6%A2%AF%E8%B5%9B/"/>
     
   </entry>
   
