@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C/C++,算法,数据结构,排序," />
 
 
 
@@ -100,16 +100,18 @@
 
 
 
-<meta name="description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="浅悠悠的个人博客">
-<meta property="og:url" content="http://qianyouyou.cn/tags/算法/index.html">
+<meta name="description" content="描述： Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。 言归正传，今天他又发明了一个新的interesting game。Ar老师手上有一堆卡牌，然后卡牌上写了一个数字Ai(正整数)，当前他有n张牌，然后他总是随机取出">
+<meta name="keywords" content="C&#x2F;C++,算法,数据结构,排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[排序]求解第k大分值">
+<meta property="og:url" content="http://qianyouyou.cn/2018/04/21/2018-04-21/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta property="og:description" content="描述： Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。 言归正传，今天他又发明了一个新的interesting game。Ar老师手上有一堆卡牌，然后卡牌上写了一个数字Ai(正整数)，当前他有n张牌，然后他总是随机取出">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-02T12:07:43.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅悠悠的个人博客">
-<meta name="twitter:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="twitter:title" content="[排序]求解第k大分值">
+<meta name="twitter:description" content="描述： Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。 言归正传，今天他又发明了一个新的interesting game。Ar老师手上有一堆卡牌，然后卡牌上写了一个数字Ai(正整数)，当前他有n张牌，然后他总是随机取出">
 
 
 
@@ -139,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://qianyouyou.cn/tags/算法/"/>
+  <link rel="canonical" href="http://qianyouyou.cn/2018/04/21/2018-04-21/"/>
 
 
 
 
 
-  <title>标签: 算法 | 浅悠悠的个人博客</title>
+  <title>[排序]求解第k大分值 | 浅悠悠的个人博客</title>
   
 
 
@@ -164,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
 <a href="https://your-url" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
@@ -323,194 +325,292 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>算法<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/21/2018-04-21/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/01/2018-05-01/" itemprop="url">
-              
-                <span itemprop="name">[贪心+二分]HUST-Walking in the Forest+POJ-疯牛（求最小化最大值最大化最小值两道经典例题）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">[排序]求解第k大分值</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-01T23:37:44+08:00"
-              content="2018-05-01" >
-          05-01
-        </time>
-      </div>
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T23:42:03+08:00">
+                2018-04-21
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/" itemprop="url" rel="index">
+                    <span itemprop="name">训练之路</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/数据结构/排序/" itemprop="url" rel="index">
+                    <span itemprop="name">排序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/21/2018-04-21/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/21/2018-04-21/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  669
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/29/2018-04-29/" itemprop="url">
-              
-                <span itemprop="name">The 15ph Zhejiang Provincial Collegiate Programming Contest Sponsored by TuSimple题解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-29T20:26:44+08:00"
-              content="2018-04-29" >
-          04-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/21/2018-04-21/" itemprop="url">
-              
-                <span itemprop="name">[排序]求解第k大分值</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-21T23:42:03+08:00"
-              content="2018-04-21" >
-          04-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/28/2018-03-28/" itemprop="url">
-              
-                <span itemprop="name">[模拟]来一瓶82年拉菲（酒杯问题）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-28T11:23:18+08:00"
-              content="2018-03-28" >
-          03-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/26/2018-03-26-2/" itemprop="url">
-              
-                <span itemprop="name">[BFS]愿天下有情人都是失散多年的兄妹</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-26T23:35:06+08:00"
-              content="2018-03-26" >
-          03-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/26/2018-03-26/" itemprop="url">
-              
-                <span itemprop="name">vector的嵌套实现二维数组，解决矩阵相乘问题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-26T16:45:58+08:00"
-              content="2018-03-26" >
-          03-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>描述：</p>
+<p>Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。</p>
+<p>言归正传，今天他又发明了一个新的interesting game。Ar老师手上有一堆卡牌，然后卡牌上写了一个数字Ai(正整数)，当前他有n张牌，然后他总是随机取出两张来，然后他一眼就能看出这两牌中哪一张小（相同就取相同的，这操作好像对于Ar老师来说太简单了），作为这两张牌的有效分值，然后呢他陷入了沉思，对于n张牌取两张牌显然有确定的组合可能性，有n<em>(n-1)/2对组合，然后他想知道所有这些组合中第k大的分值是多少。输入描述:输入一个t表示数据组数；(0&lt;t&lt;=10)接下来一行是n,k,表示n张牌和最后第k大的分值；（1&lt;n&lt;2500,保证0&lt;k&lt;=n</em>(n-1)/2）接下来一行是n个值ai，表示第i张牌上的数字(0 &lt; ai &lt;= 10000000)。输出描述:每组数据输出一行，即第k大的分值为多少。</p>
+<p>示例</p>
+<p>输入</p>
+<p>2</p>
+<p>3 2</p>
+<p>1 2 3</p>
+<p>3 1</p>
+<p>4 2 1</p>
+<p>输出</p>
+<p>1</p>
+<p>2</p>
+<p>题解：</p>
+<p>首先将这n个数进行从大到小排序，a[0]储存第1大，a[1]储存第2大……第2个和第1个比较最小的是第2个，第3个和前两个比较较小的均是第3个，第4个和前3个比较均是第4个，以此递推，第n个数和n前n-1个比较均是n较小。将所有情况全排列很容易超时，因此我们可以从第k大这个k下手。由于a[0]最大，因此a[0]和任意比较都不会输出a[0]。那么首先k为1输出a[1],1&lt;k&lt;=1+2输出a[2],1+2&lt;k&lt;=1+2+3输出a[3]……现在应该很清楚了吧。可以设置一个变量cnt，和i,从1开始，cnt每次加1，i每次加cnt，直到i加到比k大或者等于时，那么此时的a[cnt]就是第k大的数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;algorithm&gt;  </span><br><span class="line">int cmp(int a, int b) &#123;  </span><br><span class="line">    return a &gt; b;  </span><br><span class="line">&#125;  </span><br><span class="line">int T, N, k, a[100010];  </span><br><span class="line">using namespace std;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    cin &gt;&gt; T;  </span><br><span class="line">    while (T--) &#123;  </span><br><span class="line">        cin &gt;&gt; N &gt;&gt; k;  </span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;  </span><br><span class="line">            cin &gt;&gt; a[i];  </span><br><span class="line">        &#125;  </span><br><span class="line">        sort(a, a + N, cmp);  </span><br><span class="line">        int cnt = 1, i = 1;  </span><br><span class="line">        for (int i = 1; i &lt; k; i += cnt) &#123;  </span><br><span class="line">            cnt++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        cout &lt;&lt; a[cnt] &lt;&lt; endl;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          
+            <a href="/tags/排序/" rel="tag"><i class="fa fa-tag"></i> 排序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/20/2018-04-20-3/" rel="next" title="[杂项项目]C语言实现小游戏——控制台扫雷">
+                <i class="fa fa-chevron-left"></i> [杂项项目]C语言实现小游戏——控制台扫雷
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/2018-04-22/" rel="prev" title="[杂项项目]C语言打造智能AI小游戏——三子棋">
+                [杂项项目]C语言打造智能AI小游戏——三子棋 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -518,6 +618,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -838,6 +945,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
 
   
 

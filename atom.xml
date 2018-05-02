@@ -299,6 +299,43 @@
   </entry>
   
   <entry>
+    <title>[排序]求解第k大分值</title>
+    <link href="http://qianyouyou.cn/2018/04/21/2018-04-21/"/>
+    <id>http://qianyouyou.cn/2018/04/21/2018-04-21/</id>
+    <published>2018-04-21T15:42:03.000Z</published>
+    <updated>2018-05-02T12:07:43.468Z</updated>
+    
+    <content type="html"><![CDATA[<p>描述：</p><p>Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。</p><p>言归正传，今天他又发明了一个新的interesting game。Ar老师手上有一堆卡牌，然后卡牌上写了一个数字Ai(正整数)，当前他有n张牌，然后他总是随机取出两张来，然后他一眼就能看出这两牌中哪一张小（相同就取相同的，这操作好像对于Ar老师来说太简单了），作为这两张牌的有效分值，然后呢他陷入了沉思，对于n张牌取两张牌显然有确定的组合可能性，有n<em>(n-1)/2对组合，然后他想知道所有这些组合中第k大的分值是多少。输入描述:输入一个t表示数据组数；(0&lt;t&lt;=10)接下来一行是n,k,表示n张牌和最后第k大的分值；（1&lt;n&lt;2500,保证0&lt;k&lt;=n</em>(n-1)/2）接下来一行是n个值ai，表示第i张牌上的数字(0 &lt; ai &lt;= 10000000)。输出描述:每组数据输出一行，即第k大的分值为多少。</p><p>示例</p><p>输入</p><p>2</p><p>3 2</p><p>1 2 3</p><p>3 1</p><p>4 2 1</p><p>输出</p><p>1</p><p>2</p><p>题解：</p><p>首先将这n个数进行从大到小排序，a[0]储存第1大，a[1]储存第2大……第2个和第1个比较最小的是第2个，第3个和前两个比较较小的均是第3个，第4个和前3个比较均是第4个，以此递推，第n个数和n前n-1个比较均是n较小。将所有情况全排列很容易超时，因此我们可以从第k大这个k下手。由于a[0]最大，因此a[0]和任意比较都不会输出a[0]。那么首先k为1输出a[1],1&lt;k&lt;=1+2输出a[2],1+2&lt;k&lt;=1+2+3输出a[3]……现在应该很清楚了吧。可以设置一个变量cnt，和i,从1开始，cnt每次加1，i每次加cnt，直到i加到比k大或者等于时，那么此时的a[cnt]就是第k大的数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;algorithm&gt;  </span><br><span class="line">int cmp(int a, int b) &#123;  </span><br><span class="line">    return a &gt; b;  </span><br><span class="line">&#125;  </span><br><span class="line">int T, N, k, a[100010];  </span><br><span class="line">using namespace std;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    cin &gt;&gt; T;  </span><br><span class="line">    while (T--) &#123;  </span><br><span class="line">        cin &gt;&gt; N &gt;&gt; k;  </span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;  </span><br><span class="line">            cin &gt;&gt; a[i];  </span><br><span class="line">        &#125;  </span><br><span class="line">        sort(a, a + N, cmp);  </span><br><span class="line">        int cnt = 1, i = 1;  </span><br><span class="line">        for (int i = 1; i &lt; k; i += cnt) &#123;  </span><br><span class="line">            cnt++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        cout &lt;&lt; a[cnt] &lt;&lt; endl;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;描述：&lt;/p&gt;
+&lt;p&gt;Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。&lt;/p&gt;
+&lt;p&gt;言归正传
+      
+    
+    </summary>
+    
+      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+    
+      <category term="数据结构" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="排序" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/"/>
+    
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="排序" scheme="http://qianyouyou.cn/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[杂项项目]C语言实现小游戏——控制台扫雷</title>
     <link href="http://qianyouyou.cn/2018/04/20/2018-04-20-3/"/>
     <id>http://qianyouyou.cn/2018/04/20/2018-04-20-3/</id>
