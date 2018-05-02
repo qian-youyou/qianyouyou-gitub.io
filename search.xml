@@ -428,9 +428,9 @@
         <category>流</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -442,8 +442,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
 </search>
