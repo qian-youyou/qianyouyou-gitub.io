@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T03:25:38.509Z">
+<meta property="og:updated_time" content="2018-05-02T03:40:37.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[杂项项目]C语言打造智能AI小游戏——三子棋">
 <meta name="twitter:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,038
+                  2,026
                 </span>
               
 
@@ -534,247 +534,11 @@
 <p>因此AI判断到这里就会堵你了。</p>
 <p>AI算法就介绍到这里，至于三子棋程序，由于过于简单，就不过多介绍了。主要介绍AI思想，Windows系统编译的程序。如果是Linux需要把以下代码改下。接下来我就贴上代码，供参考，如有不懂欢迎留言。</p>
 <p>project.h</p>
-<p><strong>[cpp]</strong> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">view plain</a> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">copy</a></p>
-<ol>
-<li>#pragma once  </li>
-<li>#define COLUMN 3  </li>
-<li>#define ROW 3  </li>
-<li>#define GOON 0  </li>
-<li>#define WIN -1  </li>
-<li>#define DEFEAT 1  </li>
-<li>void init(char(*MAP)[COLUMN]);  </li>
-<li>int victory(char(*MAP)[COLUMN]);  </li>
-<li>bool check(char(*MAP)[COLUMN]);  </li>
-<li>void show(char(*MAP)[COLUMN]);  </li>
-<li>void check_stemp(char(<em>MAP)[COLUMN], int </em>x, int *y);  </li>
-<li>void ai_auto(char(*MAP)[COLUMN]);  </li>
-<li>int menu();  </li>
-<li>int first_hand(char(*MAP)[COLUMN]);  </li>
-<li>int ai_hand(char(*MAP)[COLUMN]);  </li>
-<li>void play(char(*MAP)[COLUMN]);  </li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#pragma once  </span><br><span class="line">#define COLUMN 3  </span><br><span class="line">#define ROW 3  </span><br><span class="line">#define GOON 0  </span><br><span class="line">#define WIN -1  </span><br><span class="line">#define DEFEAT 1  </span><br><span class="line">void init(char(*MAP)[COLUMN]);  </span><br><span class="line">int victory(char(*MAP)[COLUMN]);  </span><br><span class="line">bool check(char(*MAP)[COLUMN]);  </span><br><span class="line">void show(char(*MAP)[COLUMN]);  </span><br><span class="line">void check_stemp(char(*MAP)[COLUMN], int *x, int *y);  </span><br><span class="line">void ai_auto(char(*MAP)[COLUMN]);  </span><br><span class="line">int menu();  </span><br><span class="line">int first_hand(char(*MAP)[COLUMN]);  </span><br><span class="line">int ai_hand(char(*MAP)[COLUMN]);  </span><br><span class="line">void play(char(*MAP)[COLUMN]);</span><br></pre></td></tr></table></figure>
 <p>project.c</p>
-<p><strong>[cpp]</strong> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">view plain</a> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">copy</a></p>
-<ol>
-<li>#include&lt;stdio.h&gt;  </li>
-<li>#include&lt;stdlib.h&gt;  </li>
-<li>#include&lt;string.h&gt;  </li>
-<li>#include”project.h”  </li>
-<li>int vis[ROW][COLUMN];  </li>
-<li>int weight[ROW][COLUMN];  </li>
-<li>int x, y;  </li>
-<li>void init(char(*MAP)[COLUMN]) {  </li>
-<li>​    for (int i = 0; i &lt; ROW; i++)  </li>
-<li>​        for (int j = 0; j &lt; COLUMN; j++) {  </li>
-<li>​            MAP[i][j] = ‘ ‘;  </li>
-<li>​            vis[i][j] = 0;  </li>
-<li>​        }  </li>
-<li>}  </li>
-<li>int victory(char(*MAP)[COLUMN]) {  </li>
-<li>​    for (int i = 0; i &lt; 3; i++) {  </li>
-<li>​        if (MAP[i][0] == ‘X’&amp;&amp;MAP[i][1] == ‘X’&amp;&amp;MAP[i][2] == ‘X’)  </li>
-<li>​            return WIN;  </li>
-<li>​        else if (MAP[i][0] == ‘O’&amp;&amp;MAP[i][1] == ‘O’&amp;&amp;MAP[i][2] == ‘O’)  </li>
-<li>​            return DEFEAT;  </li>
-<li>​        if (MAP[0][i] == ‘X’&amp;&amp;MAP[1][i] == ‘X’&amp;&amp;MAP[2][i] == ‘X’)  </li>
-<li>​            return WIN;  </li>
-<li>​        else if (MAP[0][i] == ‘O’&amp;&amp;MAP[1][i] == ‘O’&amp;&amp;MAP[2][i] == ‘O’)  </li>
-<li>​            return DEFEAT;  </li>
-<li>​    }  </li>
-<li>​    if (MAP[0][0] == ‘X’&amp;&amp;MAP[1][1] == ‘X’&amp;&amp;MAP[2][2] == ‘X’)  </li>
-<li>​        return WIN;  </li>
-<li>​    else if (MAP[0][0] == ‘O’&amp;&amp;MAP[1][1] == ‘O’&amp;&amp;MAP[2][2] == ‘O’)  </li>
-<li>​        return DEFEAT;  </li>
-<li>​    if (MAP[0][2] == ‘X’&amp;&amp;MAP[1][1] == ‘X’&amp;&amp;MAP[2][0] == ‘X’)  </li>
-<li>​        return WIN;  </li>
-<li>​    else if (MAP[0][2] == ‘O’&amp;&amp;MAP[1][1] == ‘O’&amp;&amp;MAP[2][0] == ‘O’)  </li>
-<li>​        return DEFEAT;  </li>
-<li>​    return GOON;  </li>
-<li>}  </li>
-<li>bool check(char(*MAP)[COLUMN]) {  </li>
-<li>​    for (int i = 0; i &lt; ROW; i++)  </li>
-<li>​        for (int j = 0; j &lt; COLUMN; j++)  </li>
-<li>​            if (!vis[i][j])  </li>
-<li>​                return false;  </li>
-<li>​    return true;  </li>
-<li>}  </li>
-<li>void show(char(*MAP)[COLUMN]) {  </li>
-<li>​    printf(“————-\n”);  </li>
-<li>​    for (int i = 0; i &lt; ROW; i++) {  </li>
-<li>​        printf(“|”);  </li>
-<li>​        for (int j = 0; j &lt; COLUMN; j++) {  </li>
-<li>​            printf(“ %c “, MAP[i][j]);  </li>
-<li>​            printf(“|”);  </li>
-<li>​        }  </li>
-<li>​        printf(“\n”);  </li>
-<li>​        printf(“————-\n”);  </li>
-<li>​    }  </li>
-<li>}  </li>
-<li>void check_stemp(char(<em>MAP)[COLUMN], int </em>x, int *y) {  </li>
-<li>​    while (<em>x &gt; 3 || </em>x &lt;= 0 || <em>y&gt;3 || </em>y &lt;= 0 || MAP[<em>y - 1][</em>x - 1] != ‘ ‘) {  </li>
-<li>​        system(“cls”);  </li>
-<li>​        show(MAP);  </li>
-<li>​        printf(“Input error, please reenter!\n”);  </li>
-<li>​        scanf(“%d%d”, x, y);  </li>
-<li>​    }  </li>
-<li>​    MAP[<em>y - 1][</em>x - 1] = ‘X’;  </li>
-<li>​    vis[<em>y - 1][</em>x - 1] = 1;  </li>
-<li>}  </li>
-<li>void Empowerment(char(<em>MAP)[COLUMN], int(</em>weight)[COLUMN], char ai_X, char ai_0, int flag) {  </li>
-<li>​    for (int i = 0; i &lt; 3; i++) {  </li>
-<li>​        if (MAP[i][0] != ai_X&amp;&amp;MAP[i][1] != ai_X&amp;&amp;MAP[i][2] != ai_X) {  </li>
-<li>​            weight[i][0]++;  </li>
-<li>​            weight[i][1]++;  </li>
-<li>​            weight[i][2]++;  </li>
-<li>​            int tmp = 1;  </li>
-<li>​            for (int j = 0; j &lt; 3; j++)  </li>
-<li>​                if (MAP[i][j] == ai_0) {  </li>
-<li>​                    weight[i][0] += tmp+flag;  </li>
-<li>​                    weight[i][1] += tmp+flag;  </li>
-<li>​                    weight[i][2] += tmp+flag;  </li>
-<li>​                    tmp += 10;  </li>
-<li>​                }  </li>
-<li>​        }  </li>
-<li>​        if (MAP[0][i] != ai_X&amp;&amp;MAP[1][i] != ai_X&amp;&amp;MAP[2][i] != ai_X) {  </li>
-<li>​            weight[0][i]++;  </li>
-<li>​            weight[1][i]++;  </li>
-<li>​            weight[2][i]++;  </li>
-<li>​            int tmp = 1;  </li>
-<li>​            for (int j = 0; j &lt; 3; j++)  </li>
-<li>​                if (MAP[j][i] == ai_0) {  </li>
-<li>​                    weight[0][i] += tmp+flag;  </li>
-<li>​                    weight[1][i] += tmp+flag;  </li>
-<li>​                    weight[2][i] += tmp+flag;  </li>
-<li>​                    tmp += 10;  </li>
-<li>​                }  </li>
-<li>​        }  </li>
-<li>​    }  </li>
-<li>​    if (MAP[0][0] != ai_X&amp;&amp;MAP[1][1] != ai_X&amp;&amp;MAP[2][2] != ai_X) {  </li>
-<li>​        weight[0][0]++;  </li>
-<li>​        weight[1][1]++;  </li>
-<li>​        weight[2][2]++;  </li>
-<li>​        int tmp = 1;  </li>
-<li>​        for (int j = 0; j &lt; 3; j++)  </li>
-<li>​            if (MAP[j][j] == ai_0) {  </li>
-<li>​                weight[0][0] += tmp+flag;  </li>
-<li>​                weight[1][1] += tmp+flag;  </li>
-<li>​                weight[2][2] += tmp+flag;  </li>
-<li>​                tmp += 10;  </li>
-<li>​            }  </li>
-<li></li>
-<li>​    }  </li>
-<li>​    if (MAP[0][2] != ai_X&amp;&amp;MAP[1][1] != ai_X&amp;&amp;MAP[2][0] != ai_X) {  </li>
-<li>​        weight[0][2]++;  </li>
-<li>​        weight[1][1]++;  </li>
-<li>​        weight[2][0]++;  </li>
-<li>​        int tmp = 1;  </li>
-<li>​        for (int j = 0; j &lt; 3; j++)  </li>
-<li>​            if (MAP[j][2 - j] == ai_0) {  </li>
-<li>​                weight[0][2] += tmp+flag;  </li>
-<li>​                weight[1][1] += tmp+flag;  </li>
-<li>​                weight[2][0] += tmp+flag;  </li>
-<li>​                tmp += 10;  </li>
-<li>​            }  </li>
-<li>​    }  </li>
-<li>}  </li>
-<li>void ai_auto(char(*MAP)[COLUMN]) {  </li>
-<li>​    int weight[3][3] = { 0 };  </li>
-<li>​    Empowerment(MAP, weight, ‘X’, ‘O’, 1);  </li>
-<li>​    Empowerment(MAP, weight, ‘O’, ‘X’, 0);  </li>
-<li>​    int maxn = -1;  </li>
-<li>​    int maxm = -1;  </li>
-<li>​    for (int i = 0; i &lt; 3; i++)  </li>
-<li>​        for (int j = 0; j &lt; 3; j++) {  </li>
-<li>​            if (vis[i][j])  </li>
-<li>​                weight[i][j] = -1;  </li>
-<li>​            if (maxn &lt; weight[i][j]) {  </li>
-<li>​                maxn = weight[i][j];  </li>
-<li>​                maxm = i * 3 + j;  </li>
-<li>​            }  </li>
-<li>​        }  </li>
-<li>​    MAP[maxm / 3][maxm % 3] = ‘O’;  </li>
-<li>​    vis[maxm / 3][maxm % 3] = 1;  </li>
-<li>}  </li>
-<li>int menu() {  </li>
-<li>​    int tmp;  </li>
-<li>​    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>\n”);  </li>
-<li>​    printf(“<em> Please enter: </em> 1:First hand <em> 2.Back hand </em> Others:Close *\n”);  </li>
-<li>​    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>\n”);  </li>
-<li>​    scanf(“%d”, &amp;tmp);  </li>
-<li>​    return tmp;  </li>
-<li>}  </li>
-<li>int first_hand(char(*MAP)[COLUMN]) {  </li>
-<li>​    system(“cls”);  </li>
-<li>​    show(MAP);  </li>
-<li>​    printf(“Please enter:x y\n”);  </li>
-<li>​    scanf(“%d%d”, &amp;x, &amp;y);  </li>
-<li>​    check_stemp(MAP, &amp;x, &amp;y);  </li>
-<li>​    system(“cls”);  </li>
-<li>​    show(MAP);  </li>
-<li>​    if (victory(MAP) == WIN) {  </li>
-<li>​        printf(“Congratulations on your victory, you are as smart as Qianyouyou.\n”);  </li>
-<li>​        return 1;  </li>
-<li>​    }  </li>
-<li>​    else if (check(MAP)) {  </li>
-<li>​        printf(“Draw.As smart as me.\n”);  </li>
-<li>​        return 1;  </li>
-<li>​    }  </li>
-<li>​    system(“pause”);  </li>
-<li>​    return 0;  </li>
-<li>}  </li>
-<li>int ai_hand(char(*MAP)[COLUMN]) {  </li>
-<li>​    ai_auto(MAP);  </li>
-<li>​    system(“cls”);  </li>
-<li>​    show(MAP);  </li>
-<li>​    if (victory(MAP) == DEFEAT) {  </li>
-<li>​        printf(“You lose, you’re as stupid as a pig.\n”);  </li>
-<li>​        return 1;  </li>
-<li>​    }  </li>
-<li>​    else if (check(MAP)) {  </li>
-<li>​        printf(“Draw.As smart as me.\n”);  </li>
-<li>​        return 1;  </li>
-<li>​    }  </li>
-<li>​    return 0;  </li>
-<li>}  </li>
-<li>void play(char(*MAP)[COLUMN]) {  </li>
-<li>​    while (!check(MAP) || victory(MAP) == GOON) {  </li>
-<li>​        if (first_hand(MAP))  </li>
-<li>​            break;  </li>
-<li>​        if (ai_hand(MAP))  </li>
-<li>​            break;  </li>
-<li>​    }  </li>
-<li>​    system(“pause”);  </li>
-<li>}  </li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;  </span><br><span class="line">#include&lt;stdlib.h&gt;  </span><br><span class="line">#include&lt;string.h&gt;  </span><br><span class="line">#include&quot;project.h&quot;  </span><br><span class="line">int vis[ROW][COLUMN];  </span><br><span class="line">int weight[ROW][COLUMN];  </span><br><span class="line">int x, y;  </span><br><span class="line">void init(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    for (int i = 0; i &lt; ROW; i++)  </span><br><span class="line">        for (int j = 0; j &lt; COLUMN; j++) &#123;  </span><br><span class="line">            MAP[i][j] = &apos; &apos;;  </span><br><span class="line">            vis[i][j] = 0;  </span><br><span class="line">        &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">int victory(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    for (int i = 0; i &lt; 3; i++) &#123;  </span><br><span class="line">        if (MAP[i][0] == &apos;X&apos;&amp;&amp;MAP[i][1] == &apos;X&apos;&amp;&amp;MAP[i][2] == &apos;X&apos;)  </span><br><span class="line">            return WIN;  </span><br><span class="line">        else if (MAP[i][0] == &apos;O&apos;&amp;&amp;MAP[i][1] == &apos;O&apos;&amp;&amp;MAP[i][2] == &apos;O&apos;)  </span><br><span class="line">            return DEFEAT;  </span><br><span class="line">        if (MAP[0][i] == &apos;X&apos;&amp;&amp;MAP[1][i] == &apos;X&apos;&amp;&amp;MAP[2][i] == &apos;X&apos;)  </span><br><span class="line">            return WIN;  </span><br><span class="line">        else if (MAP[0][i] == &apos;O&apos;&amp;&amp;MAP[1][i] == &apos;O&apos;&amp;&amp;MAP[2][i] == &apos;O&apos;)  </span><br><span class="line">            return DEFEAT;  </span><br><span class="line">    &#125;  </span><br><span class="line">    if (MAP[0][0] == &apos;X&apos;&amp;&amp;MAP[1][1] == &apos;X&apos;&amp;&amp;MAP[2][2] == &apos;X&apos;)  </span><br><span class="line">        return WIN;  </span><br><span class="line">    else if (MAP[0][0] == &apos;O&apos;&amp;&amp;MAP[1][1] == &apos;O&apos;&amp;&amp;MAP[2][2] == &apos;O&apos;)  </span><br><span class="line">        return DEFEAT;  </span><br><span class="line">    if (MAP[0][2] == &apos;X&apos;&amp;&amp;MAP[1][1] == &apos;X&apos;&amp;&amp;MAP[2][0] == &apos;X&apos;)  </span><br><span class="line">        return WIN;  </span><br><span class="line">    else if (MAP[0][2] == &apos;O&apos;&amp;&amp;MAP[1][1] == &apos;O&apos;&amp;&amp;MAP[2][0] == &apos;O&apos;)  </span><br><span class="line">        return DEFEAT;  </span><br><span class="line">    return GOON;  </span><br><span class="line">&#125;  </span><br><span class="line">bool check(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    for (int i = 0; i &lt; ROW; i++)  </span><br><span class="line">        for (int j = 0; j &lt; COLUMN; j++)  </span><br><span class="line">            if (!vis[i][j])  </span><br><span class="line">                return false;  </span><br><span class="line">    return true;  </span><br><span class="line">&#125;  </span><br><span class="line">void show(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    printf(&quot;-------------\n&quot;);  </span><br><span class="line">    for (int i = 0; i &lt; ROW; i++) &#123;  </span><br><span class="line">        printf(&quot;|&quot;);  </span><br><span class="line">        for (int j = 0; j &lt; COLUMN; j++) &#123;  </span><br><span class="line">            printf(&quot; %c &quot;, MAP[i][j]);  </span><br><span class="line">            printf(&quot;|&quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">        printf(&quot;\n&quot;);  </span><br><span class="line">        printf(&quot;-------------\n&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">void check_stemp(char(*MAP)[COLUMN], int *x, int *y) &#123;  </span><br><span class="line">    while (*x &gt; 3 || *x &lt;= 0 || *y&gt;3 || *y &lt;= 0 || MAP[*y - 1][*x - 1] != &apos; &apos;) &#123;  </span><br><span class="line">        system(&quot;cls&quot;);  </span><br><span class="line">        show(MAP);  </span><br><span class="line">        printf(&quot;Input error, please reenter!\n&quot;);  </span><br><span class="line">        scanf(&quot;%d%d&quot;, x, y);  </span><br><span class="line">    &#125;  </span><br><span class="line">    MAP[*y - 1][*x - 1] = &apos;X&apos;;  </span><br><span class="line">    vis[*y - 1][*x - 1] = 1;  </span><br><span class="line">&#125;  </span><br><span class="line">void Empowerment(char(*MAP)[COLUMN], int(*weight)[COLUMN], char ai_X, char ai_0, int flag) &#123;  </span><br><span class="line">    for (int i = 0; i &lt; 3; i++) &#123;  </span><br><span class="line">        if (MAP[i][0] != ai_X&amp;&amp;MAP[i][1] != ai_X&amp;&amp;MAP[i][2] != ai_X) &#123;  </span><br><span class="line">            weight[i][0]++;  </span><br><span class="line">            weight[i][1]++;  </span><br><span class="line">            weight[i][2]++;  </span><br><span class="line">            int tmp = 1;  </span><br><span class="line">            for (int j = 0; j &lt; 3; j++)  </span><br><span class="line">                if (MAP[i][j] == ai_0) &#123;  </span><br><span class="line">                    weight[i][0] += tmp+flag;  </span><br><span class="line">                    weight[i][1] += tmp+flag;  </span><br><span class="line">                    weight[i][2] += tmp+flag;  </span><br><span class="line">                    tmp += 10;  </span><br><span class="line">                &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if (MAP[0][i] != ai_X&amp;&amp;MAP[1][i] != ai_X&amp;&amp;MAP[2][i] != ai_X) &#123;  </span><br><span class="line">            weight[0][i]++;  </span><br><span class="line">            weight[1][i]++;  </span><br><span class="line">            weight[2][i]++;  </span><br><span class="line">            int tmp = 1;  </span><br><span class="line">            for (int j = 0; j &lt; 3; j++)  </span><br><span class="line">                if (MAP[j][i] == ai_0) &#123;  </span><br><span class="line">                    weight[0][i] += tmp+flag;  </span><br><span class="line">                    weight[1][i] += tmp+flag;  </span><br><span class="line">                    weight[2][i] += tmp+flag;  </span><br><span class="line">                    tmp += 10;  </span><br><span class="line">                &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    if (MAP[0][0] != ai_X&amp;&amp;MAP[1][1] != ai_X&amp;&amp;MAP[2][2] != ai_X) &#123;  </span><br><span class="line">        weight[0][0]++;  </span><br><span class="line">        weight[1][1]++;  </span><br><span class="line">        weight[2][2]++;  </span><br><span class="line">        int tmp = 1;  </span><br><span class="line">        for (int j = 0; j &lt; 3; j++)  </span><br><span class="line">            if (MAP[j][j] == ai_0) &#123;  </span><br><span class="line">                weight[0][0] += tmp+flag;  </span><br><span class="line">                weight[1][1] += tmp+flag;  </span><br><span class="line">                weight[2][2] += tmp+flag;  </span><br><span class="line">                tmp += 10;  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">    if (MAP[0][2] != ai_X&amp;&amp;MAP[1][1] != ai_X&amp;&amp;MAP[2][0] != ai_X) &#123;  </span><br><span class="line">        weight[0][2]++;  </span><br><span class="line">        weight[1][1]++;  </span><br><span class="line">        weight[2][0]++;  </span><br><span class="line">        int tmp = 1;  </span><br><span class="line">        for (int j = 0; j &lt; 3; j++)  </span><br><span class="line">            if (MAP[j][2 - j] == ai_0) &#123;  </span><br><span class="line">                weight[0][2] += tmp+flag;  </span><br><span class="line">                weight[1][1] += tmp+flag;  </span><br><span class="line">                weight[2][0] += tmp+flag;  </span><br><span class="line">                tmp += 10;  </span><br><span class="line">            &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">void ai_auto(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    int weight[3][3] = &#123; 0 &#125;;  </span><br><span class="line">    Empowerment(MAP, weight, &apos;X&apos;, &apos;O&apos;, 1);  </span><br><span class="line">    Empowerment(MAP, weight, &apos;O&apos;, &apos;X&apos;, 0);  </span><br><span class="line">    int maxn = -1;  </span><br><span class="line">    int maxm = -1;  </span><br><span class="line">    for (int i = 0; i &lt; 3; i++)  </span><br><span class="line">        for (int j = 0; j &lt; 3; j++) &#123;  </span><br><span class="line">            if (vis[i][j])  </span><br><span class="line">                weight[i][j] = -1;  </span><br><span class="line">            if (maxn &lt; weight[i][j]) &#123;  </span><br><span class="line">                maxn = weight[i][j];  </span><br><span class="line">                maxm = i * 3 + j;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    MAP[maxm / 3][maxm % 3] = &apos;O&apos;;  </span><br><span class="line">    vis[maxm / 3][maxm % 3] = 1;  </span><br><span class="line">&#125;  </span><br><span class="line">int menu() &#123;  </span><br><span class="line">    int tmp;  </span><br><span class="line">    printf(&quot;*************************************************************\n&quot;);  </span><br><span class="line">    printf(&quot;* Please enter: * 1:First hand * 2.Back hand * Others:Close *\n&quot;);  </span><br><span class="line">    printf(&quot;*************************************************************\n&quot;);  </span><br><span class="line">    scanf(&quot;%d&quot;, &amp;tmp);  </span><br><span class="line">    return tmp;  </span><br><span class="line">&#125;  </span><br><span class="line">int first_hand(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    show(MAP);  </span><br><span class="line">    printf(&quot;Please enter:x y\n&quot;);  </span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;x, &amp;y);  </span><br><span class="line">    check_stemp(MAP, &amp;x, &amp;y);  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    show(MAP);  </span><br><span class="line">    if (victory(MAP) == WIN) &#123;  </span><br><span class="line">        printf(&quot;Congratulations on your victory, you are as smart as Qianyouyou.\n&quot;);  </span><br><span class="line">        return 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else if (check(MAP)) &#123;  </span><br><span class="line">        printf(&quot;Draw.As smart as me.\n&quot;);  </span><br><span class="line">        return 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    system(&quot;pause&quot;);  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;  </span><br><span class="line">int ai_hand(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    ai_auto(MAP);  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    show(MAP);  </span><br><span class="line">    if (victory(MAP) == DEFEAT) &#123;  </span><br><span class="line">        printf(&quot;You lose, you&apos;re as stupid as a pig.\n&quot;);  </span><br><span class="line">        return 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else if (check(MAP)) &#123;  </span><br><span class="line">        printf(&quot;Draw.As smart as me.\n&quot;);  </span><br><span class="line">        return 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;  </span><br><span class="line">void play(char(*MAP)[COLUMN]) &#123;  </span><br><span class="line">    while (!check(MAP) || victory(MAP) == GOON) &#123;  </span><br><span class="line">        if (first_hand(MAP))  </span><br><span class="line">            break;  </span><br><span class="line">        if (ai_hand(MAP))  </span><br><span class="line">            break;  </span><br><span class="line">    &#125;  </span><br><span class="line">    system(&quot;pause&quot;);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>main.c</p>
-<p><strong>[cpp]</strong> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">view plain</a> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">copy</a></p>
-<ol>
-<li>#include&lt;stdio.h&gt;  </li>
-<li>#include&lt;stdlib.h&gt;  </li>
-<li>#include”project.h”  </li>
-<li>char MAP[ROW][COLUMN];  </li>
-<li>int main() {  </li>
-<li>​    char str[2];  </li>
-<li>​    do {  </li>
-<li>​        init(MAP);  </li>
-<li>​        switch (menu()) {  </li>
-<li>​        case 1:  </li>
-<li>​            first_hand(MAP);  </li>
-<li>​        case 2: {  </li>
-<li>​            ai_hand(MAP);  </li>
-<li>​            play(MAP);  </li>
-<li>​        }  </li>
-<li>​        default: {  </li>
-<li>​            printf(“Do you need to start again?(Y/N)”);  </li>
-<li>​            scanf(“%s”, str);  </li>
-<li>​        }break;  </li>
-<li>​        }  </li>
-<li>​    } while (str[0] == ‘Y’ || str[0] == ‘y’);  </li>
-<li>​    printf(“Thank you for using!\n”);  </li>
-<li>​    system(“pause”);  </li>
-<li>​    return 0;  </li>
-<li>}  </li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;  </span><br><span class="line">#include&lt;stdlib.h&gt;  </span><br><span class="line">#include&quot;project.h&quot;  </span><br><span class="line">char MAP[ROW][COLUMN];  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    char str[2];  </span><br><span class="line">    do &#123;  </span><br><span class="line">        init(MAP);  </span><br><span class="line">        switch (menu()) &#123;  </span><br><span class="line">        case 1:  </span><br><span class="line">            first_hand(MAP);  </span><br><span class="line">        case 2: &#123;  </span><br><span class="line">            ai_hand(MAP);  </span><br><span class="line">            play(MAP);  </span><br><span class="line">        &#125;  </span><br><span class="line">        default: &#123;  </span><br><span class="line">            printf(&quot;Do you need to start again?(Y/N)&quot;);  </span><br><span class="line">            scanf(&quot;%s&quot;, str);  </span><br><span class="line">        &#125;break;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125; while (str[0] == &apos;Y&apos; || str[0] == &apos;y&apos;);  </span><br><span class="line">    printf(&quot;Thank you for using!\n&quot;);  </span><br><span class="line">    system(&quot;pause&quot;);  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
