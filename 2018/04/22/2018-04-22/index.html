@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C/C++,模拟,博弈论,AI," />
 
 
 
@@ -100,16 +100,18 @@
 
 
 
-<meta name="description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="浅悠悠的个人博客">
-<meta property="og:url" content="http://qianyouyou.cn/tags/前端/index.html">
+<meta name="description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
+<meta name="keywords" content="C&#x2F;C++,模拟,博弈论,AI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[杂项项目]C语言打造智能AI小游戏——三子棋">
+<meta property="og:url" content="http://qianyouyou.cn/2018/04/22/2018-04-22/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta property="og:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-02T03:25:38.509Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅悠悠的个人博客">
-<meta name="twitter:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="twitter:title" content="[杂项项目]C语言打造智能AI小游戏——三子棋">
+<meta name="twitter:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
 
 
 
@@ -139,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://qianyouyou.cn/tags/前端/"/>
+  <link rel="canonical" href="http://qianyouyou.cn/2018/04/22/2018-04-22/"/>
 
 
 
 
 
-  <title>标签: 前端 | 浅悠悠的个人博客</title>
+  <title>[杂项项目]C语言打造智能AI小游戏——三子棋 | 浅悠悠的个人博客</title>
   
 
 
@@ -164,7 +166,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
 <a href="https://your-url" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
@@ -323,110 +325,550 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>前端<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/22/2018-04-22/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/28/2018-04-28-3/" itemprop="url">
-              
-                <span itemprop="name">基于github搭建专属于自己的博客(高级篇)</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">[杂项项目]C语言打造智能AI小游戏——三子棋</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-28T23:39:25+08:00"
-              content="2018-04-28" >
-          04-28
-        </time>
-      </div>
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T21:51:38+08:00">
+                2018-04-22
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/22/2018-04-22/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/22/2018-04-22/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,038
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/28/2018-04-28-2/" itemprop="url">
-              
-                <span itemprop="name">基于github搭建专属于自己的博客(进阶篇)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-28T21:44:25+08:00"
-              content="2018-04-28" >
-          04-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/28/2018-04-28-1/" itemprop="url">
-              
-                <span itemprop="name">基于github搭建专属于自己的博客（基础篇）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-28T17:11:28+08:00"
-              content="2018-04-28" >
-          04-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为：</p>
+<p>[][][]     3 2 3</p>
+<p>[][][]     2 4 2</p>
+<p>[][][]     3 2 3</p>
+<p>角落有横竖斜三种获胜方法，边有横竖两种方法，中心有横竖两斜4种方法。假如某格有X阻挡，那么权值会相应变化，例如</p>
+<p>[][][]     2 1 2</p>
+<p>[]X[]     1 0 1</p>
+<p>[][][]     2 1 2</p>
+<p>由于有中心阻挡，那么角只有横竖两种方法赢，因此权值为2。但该AI还需继续优化。例如以下：</p>
+<p>[]X[]     1 0 1</p>
+<p>[]0[]     1 0 2</p>
+<p>XX0     0 0 0</p>
+<p>AI面对这种情况，本来下在第一个格子就赢了，但他会选择权值为2的格子。因此我们可以在现有权值条件的情况下，在附加个权值。假如某一格子的路线上已经有AI的子了，那么该条路线上未落子的所有格子权值再加1，如果有两个已落子的AI格子权值就加2。例如以下情况：</p>
+<p>​            原权值       优化权值</p>
+<p>[]X[]     2 0 2          5 0 3</p>
+<p>[]0[]     2 0 2          3 0 4</p>
+<p>[]X0     2 0 0          3 0 0</p>
+<p>第一个格子5是由于斜路线上有两个子，那在原有的基础2上先加1，再加2，所以权值为2+1+2。第2行第3列权值为4，因为横竖两条路线均有1个子，因此权值为2+1+1，其余格子路线上均有1个子，因此权值为2+1。这样落在权值5那个格子上AI就赢了。</p>
+<p>但是仅仅这些判断是不够的。例如：</p>
+<p>​           初始         优化</p>
+<p>X[]X     0 1 0       0 2 0</p>
+<p>[]0[]     1 0 1       2 0 2</p>
+<p>[][]0     1 2 0       2 4 0</p>
+<p>AI会选择权值为4的格子。那此时AI选择权值为2的格子时，你只需要走一步就赢了，AI就输了，因此该AI算法还得继续。</p>
+<p>那么AI可以逆向思考一番，AI可以考虑一下当前情况在计算AI权值的同时再计算一次我们的权值。例如上面例子：</p>
+<p>​           AI权值       你的权值       优化AI      优化你</p>
+<p>X[]X     0 1 0         0 1 0            0 2 0         0 4 0</p>
+<p>[]0[]     1 0 1         1 0 0            2 0 2         2 0 0</p>
+<p>[][]0     1 2 0         1 0 0            2 4 0         2 0 0</p>
+<p>我们把两个权值相加（另外把AI的权值应该再加1，因为AI判断赢要优先于输或平，假如AI方有权值大的，代表一步能赢的，我方也有这种情况，那相加权值相同，AI既可以选择赢棋那一格，也可以选择堵你将要赢的那一格。但AI判断赢要优先于堵对方赢。例子就不举了）：</p>
+<p>​           相加权值       再加1权值</p>
+<p>X[]X     0 6 0            0 7 0</p>
+<p>[]0[]     4 0 2            5 0 3</p>
+<p>[][]0     4 4 0            5 4 0</p>
+<p>因此AI判断到这里就会堵你了。</p>
+<p>AI算法就介绍到这里，至于三子棋程序，由于过于简单，就不过多介绍了。主要介绍AI思想，Windows系统编译的程序。如果是Linux需要把以下代码改下。接下来我就贴上代码，供参考，如有不懂欢迎留言。</p>
+<p>project.h</p>
+<p><strong>[cpp]</strong> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">view plain</a> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">copy</a></p>
+<ol>
+<li>#pragma once  </li>
+<li>#define COLUMN 3  </li>
+<li>#define ROW 3  </li>
+<li>#define GOON 0  </li>
+<li>#define WIN -1  </li>
+<li>#define DEFEAT 1  </li>
+<li>void init(char(*MAP)[COLUMN]);  </li>
+<li>int victory(char(*MAP)[COLUMN]);  </li>
+<li>bool check(char(*MAP)[COLUMN]);  </li>
+<li>void show(char(*MAP)[COLUMN]);  </li>
+<li>void check_stemp(char(<em>MAP)[COLUMN], int </em>x, int *y);  </li>
+<li>void ai_auto(char(*MAP)[COLUMN]);  </li>
+<li>int menu();  </li>
+<li>int first_hand(char(*MAP)[COLUMN]);  </li>
+<li>int ai_hand(char(*MAP)[COLUMN]);  </li>
+<li>void play(char(*MAP)[COLUMN]);  </li>
+</ol>
+<p>project.c</p>
+<p><strong>[cpp]</strong> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">view plain</a> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">copy</a></p>
+<ol>
+<li>#include&lt;stdio.h&gt;  </li>
+<li>#include&lt;stdlib.h&gt;  </li>
+<li>#include&lt;string.h&gt;  </li>
+<li>#include”project.h”  </li>
+<li>int vis[ROW][COLUMN];  </li>
+<li>int weight[ROW][COLUMN];  </li>
+<li>int x, y;  </li>
+<li>void init(char(*MAP)[COLUMN]) {  </li>
+<li>​    for (int i = 0; i &lt; ROW; i++)  </li>
+<li>​        for (int j = 0; j &lt; COLUMN; j++) {  </li>
+<li>​            MAP[i][j] = ‘ ‘;  </li>
+<li>​            vis[i][j] = 0;  </li>
+<li>​        }  </li>
+<li>}  </li>
+<li>int victory(char(*MAP)[COLUMN]) {  </li>
+<li>​    for (int i = 0; i &lt; 3; i++) {  </li>
+<li>​        if (MAP[i][0] == ‘X’&amp;&amp;MAP[i][1] == ‘X’&amp;&amp;MAP[i][2] == ‘X’)  </li>
+<li>​            return WIN;  </li>
+<li>​        else if (MAP[i][0] == ‘O’&amp;&amp;MAP[i][1] == ‘O’&amp;&amp;MAP[i][2] == ‘O’)  </li>
+<li>​            return DEFEAT;  </li>
+<li>​        if (MAP[0][i] == ‘X’&amp;&amp;MAP[1][i] == ‘X’&amp;&amp;MAP[2][i] == ‘X’)  </li>
+<li>​            return WIN;  </li>
+<li>​        else if (MAP[0][i] == ‘O’&amp;&amp;MAP[1][i] == ‘O’&amp;&amp;MAP[2][i] == ‘O’)  </li>
+<li>​            return DEFEAT;  </li>
+<li>​    }  </li>
+<li>​    if (MAP[0][0] == ‘X’&amp;&amp;MAP[1][1] == ‘X’&amp;&amp;MAP[2][2] == ‘X’)  </li>
+<li>​        return WIN;  </li>
+<li>​    else if (MAP[0][0] == ‘O’&amp;&amp;MAP[1][1] == ‘O’&amp;&amp;MAP[2][2] == ‘O’)  </li>
+<li>​        return DEFEAT;  </li>
+<li>​    if (MAP[0][2] == ‘X’&amp;&amp;MAP[1][1] == ‘X’&amp;&amp;MAP[2][0] == ‘X’)  </li>
+<li>​        return WIN;  </li>
+<li>​    else if (MAP[0][2] == ‘O’&amp;&amp;MAP[1][1] == ‘O’&amp;&amp;MAP[2][0] == ‘O’)  </li>
+<li>​        return DEFEAT;  </li>
+<li>​    return GOON;  </li>
+<li>}  </li>
+<li>bool check(char(*MAP)[COLUMN]) {  </li>
+<li>​    for (int i = 0; i &lt; ROW; i++)  </li>
+<li>​        for (int j = 0; j &lt; COLUMN; j++)  </li>
+<li>​            if (!vis[i][j])  </li>
+<li>​                return false;  </li>
+<li>​    return true;  </li>
+<li>}  </li>
+<li>void show(char(*MAP)[COLUMN]) {  </li>
+<li>​    printf(“————-\n”);  </li>
+<li>​    for (int i = 0; i &lt; ROW; i++) {  </li>
+<li>​        printf(“|”);  </li>
+<li>​        for (int j = 0; j &lt; COLUMN; j++) {  </li>
+<li>​            printf(“ %c “, MAP[i][j]);  </li>
+<li>​            printf(“|”);  </li>
+<li>​        }  </li>
+<li>​        printf(“\n”);  </li>
+<li>​        printf(“————-\n”);  </li>
+<li>​    }  </li>
+<li>}  </li>
+<li>void check_stemp(char(<em>MAP)[COLUMN], int </em>x, int *y) {  </li>
+<li>​    while (<em>x &gt; 3 || </em>x &lt;= 0 || <em>y&gt;3 || </em>y &lt;= 0 || MAP[<em>y - 1][</em>x - 1] != ‘ ‘) {  </li>
+<li>​        system(“cls”);  </li>
+<li>​        show(MAP);  </li>
+<li>​        printf(“Input error, please reenter!\n”);  </li>
+<li>​        scanf(“%d%d”, x, y);  </li>
+<li>​    }  </li>
+<li>​    MAP[<em>y - 1][</em>x - 1] = ‘X’;  </li>
+<li>​    vis[<em>y - 1][</em>x - 1] = 1;  </li>
+<li>}  </li>
+<li>void Empowerment(char(<em>MAP)[COLUMN], int(</em>weight)[COLUMN], char ai_X, char ai_0, int flag) {  </li>
+<li>​    for (int i = 0; i &lt; 3; i++) {  </li>
+<li>​        if (MAP[i][0] != ai_X&amp;&amp;MAP[i][1] != ai_X&amp;&amp;MAP[i][2] != ai_X) {  </li>
+<li>​            weight[i][0]++;  </li>
+<li>​            weight[i][1]++;  </li>
+<li>​            weight[i][2]++;  </li>
+<li>​            int tmp = 1;  </li>
+<li>​            for (int j = 0; j &lt; 3; j++)  </li>
+<li>​                if (MAP[i][j] == ai_0) {  </li>
+<li>​                    weight[i][0] += tmp+flag;  </li>
+<li>​                    weight[i][1] += tmp+flag;  </li>
+<li>​                    weight[i][2] += tmp+flag;  </li>
+<li>​                    tmp += 10;  </li>
+<li>​                }  </li>
+<li>​        }  </li>
+<li>​        if (MAP[0][i] != ai_X&amp;&amp;MAP[1][i] != ai_X&amp;&amp;MAP[2][i] != ai_X) {  </li>
+<li>​            weight[0][i]++;  </li>
+<li>​            weight[1][i]++;  </li>
+<li>​            weight[2][i]++;  </li>
+<li>​            int tmp = 1;  </li>
+<li>​            for (int j = 0; j &lt; 3; j++)  </li>
+<li>​                if (MAP[j][i] == ai_0) {  </li>
+<li>​                    weight[0][i] += tmp+flag;  </li>
+<li>​                    weight[1][i] += tmp+flag;  </li>
+<li>​                    weight[2][i] += tmp+flag;  </li>
+<li>​                    tmp += 10;  </li>
+<li>​                }  </li>
+<li>​        }  </li>
+<li>​    }  </li>
+<li>​    if (MAP[0][0] != ai_X&amp;&amp;MAP[1][1] != ai_X&amp;&amp;MAP[2][2] != ai_X) {  </li>
+<li>​        weight[0][0]++;  </li>
+<li>​        weight[1][1]++;  </li>
+<li>​        weight[2][2]++;  </li>
+<li>​        int tmp = 1;  </li>
+<li>​        for (int j = 0; j &lt; 3; j++)  </li>
+<li>​            if (MAP[j][j] == ai_0) {  </li>
+<li>​                weight[0][0] += tmp+flag;  </li>
+<li>​                weight[1][1] += tmp+flag;  </li>
+<li>​                weight[2][2] += tmp+flag;  </li>
+<li>​                tmp += 10;  </li>
+<li>​            }  </li>
+<li></li>
+<li>​    }  </li>
+<li>​    if (MAP[0][2] != ai_X&amp;&amp;MAP[1][1] != ai_X&amp;&amp;MAP[2][0] != ai_X) {  </li>
+<li>​        weight[0][2]++;  </li>
+<li>​        weight[1][1]++;  </li>
+<li>​        weight[2][0]++;  </li>
+<li>​        int tmp = 1;  </li>
+<li>​        for (int j = 0; j &lt; 3; j++)  </li>
+<li>​            if (MAP[j][2 - j] == ai_0) {  </li>
+<li>​                weight[0][2] += tmp+flag;  </li>
+<li>​                weight[1][1] += tmp+flag;  </li>
+<li>​                weight[2][0] += tmp+flag;  </li>
+<li>​                tmp += 10;  </li>
+<li>​            }  </li>
+<li>​    }  </li>
+<li>}  </li>
+<li>void ai_auto(char(*MAP)[COLUMN]) {  </li>
+<li>​    int weight[3][3] = { 0 };  </li>
+<li>​    Empowerment(MAP, weight, ‘X’, ‘O’, 1);  </li>
+<li>​    Empowerment(MAP, weight, ‘O’, ‘X’, 0);  </li>
+<li>​    int maxn = -1;  </li>
+<li>​    int maxm = -1;  </li>
+<li>​    for (int i = 0; i &lt; 3; i++)  </li>
+<li>​        for (int j = 0; j &lt; 3; j++) {  </li>
+<li>​            if (vis[i][j])  </li>
+<li>​                weight[i][j] = -1;  </li>
+<li>​            if (maxn &lt; weight[i][j]) {  </li>
+<li>​                maxn = weight[i][j];  </li>
+<li>​                maxm = i * 3 + j;  </li>
+<li>​            }  </li>
+<li>​        }  </li>
+<li>​    MAP[maxm / 3][maxm % 3] = ‘O’;  </li>
+<li>​    vis[maxm / 3][maxm % 3] = 1;  </li>
+<li>}  </li>
+<li>int menu() {  </li>
+<li>​    int tmp;  </li>
+<li>​    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>\n”);  </li>
+<li>​    printf(“<em> Please enter: </em> 1:First hand <em> 2.Back hand </em> Others:Close *\n”);  </li>
+<li>​    printf(“<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>*</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>\n”);  </li>
+<li>​    scanf(“%d”, &amp;tmp);  </li>
+<li>​    return tmp;  </li>
+<li>}  </li>
+<li>int first_hand(char(*MAP)[COLUMN]) {  </li>
+<li>​    system(“cls”);  </li>
+<li>​    show(MAP);  </li>
+<li>​    printf(“Please enter:x y\n”);  </li>
+<li>​    scanf(“%d%d”, &amp;x, &amp;y);  </li>
+<li>​    check_stemp(MAP, &amp;x, &amp;y);  </li>
+<li>​    system(“cls”);  </li>
+<li>​    show(MAP);  </li>
+<li>​    if (victory(MAP) == WIN) {  </li>
+<li>​        printf(“Congratulations on your victory, you are as smart as Qianyouyou.\n”);  </li>
+<li>​        return 1;  </li>
+<li>​    }  </li>
+<li>​    else if (check(MAP)) {  </li>
+<li>​        printf(“Draw.As smart as me.\n”);  </li>
+<li>​        return 1;  </li>
+<li>​    }  </li>
+<li>​    system(“pause”);  </li>
+<li>​    return 0;  </li>
+<li>}  </li>
+<li>int ai_hand(char(*MAP)[COLUMN]) {  </li>
+<li>​    ai_auto(MAP);  </li>
+<li>​    system(“cls”);  </li>
+<li>​    show(MAP);  </li>
+<li>​    if (victory(MAP) == DEFEAT) {  </li>
+<li>​        printf(“You lose, you’re as stupid as a pig.\n”);  </li>
+<li>​        return 1;  </li>
+<li>​    }  </li>
+<li>​    else if (check(MAP)) {  </li>
+<li>​        printf(“Draw.As smart as me.\n”);  </li>
+<li>​        return 1;  </li>
+<li>​    }  </li>
+<li>​    return 0;  </li>
+<li>}  </li>
+<li>void play(char(*MAP)[COLUMN]) {  </li>
+<li>​    while (!check(MAP) || victory(MAP) == GOON) {  </li>
+<li>​        if (first_hand(MAP))  </li>
+<li>​            break;  </li>
+<li>​        if (ai_hand(MAP))  </li>
+<li>​            break;  </li>
+<li>​    }  </li>
+<li>​    system(“pause”);  </li>
+<li>}  </li>
+</ol>
+<p>main.c</p>
+<p><strong>[cpp]</strong> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">view plain</a> <a href="https://blog.csdn.net/qian_youyou/article/details/80042845#" target="_blank" rel="noopener">copy</a></p>
+<ol>
+<li>#include&lt;stdio.h&gt;  </li>
+<li>#include&lt;stdlib.h&gt;  </li>
+<li>#include”project.h”  </li>
+<li>char MAP[ROW][COLUMN];  </li>
+<li>int main() {  </li>
+<li>​    char str[2];  </li>
+<li>​    do {  </li>
+<li>​        init(MAP);  </li>
+<li>​        switch (menu()) {  </li>
+<li>​        case 1:  </li>
+<li>​            first_hand(MAP);  </li>
+<li>​        case 2: {  </li>
+<li>​            ai_hand(MAP);  </li>
+<li>​            play(MAP);  </li>
+<li>​        }  </li>
+<li>​        default: {  </li>
+<li>​            printf(“Do you need to start again?(Y/N)”);  </li>
+<li>​            scanf(“%s”, str);  </li>
+<li>​        }break;  </li>
+<li>​        }  </li>
+<li>​    } while (str[0] == ‘Y’ || str[0] == ‘y’);  </li>
+<li>​    printf(“Thank you for using!\n”);  </li>
+<li>​    system(“pause”);  </li>
+<li>​    return 0;  </li>
+<li>}  </li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+          
+            <a href="/tags/模拟/" rel="tag"><i class="fa fa-tag"></i> 模拟</a>
+          
+            <a href="/tags/博弈论/" rel="tag"><i class="fa fa-tag"></i> 博弈论</a>
+          
+            <a href="/tags/AI/" rel="tag"><i class="fa fa-tag"></i> AI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/24/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -434,6 +876,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -754,6 +1203,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
 
   
 
