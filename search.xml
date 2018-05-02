@@ -11,8 +11,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>贪心</tag>
         <tag>二分</tag>
       </tags>
@@ -28,8 +28,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>ZOJ</tag>
       </tags>
   </entry>
@@ -94,6 +94,21 @@
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[数据结构]大根堆小根堆插入操作]]></title>
+    <url>%2F2018%2F04%2F23%2F2018-04-23%2F</url>
+    <content type="text"><![CDATA[堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 以下是C/C++大根堆小根堆具体插入方法。后序会深入解析堆结构。 大根堆插入操作： 123456789101112131415161718192021void HeapAdjust(int a[], int s, int n)//构成堆 &#123; int j, t; while (2 * s + 1 &lt; n)//第s个结点有右子树 &#123; j = 2 * s + 1; if ((j + 1) &lt; n) &#123; if (a[j] &lt; a[j + 1])//左子树小于右子树，则需要比较右子树 j++;//序号增加1，指向右子树 &#125; if (a[s] &lt; a[j]) //比较s与j为序号的数据 &#123; t = a[s];//交换数据 a[s] = a[j]; a[j] = t; s = j;//堆被破坏，需要重新调整 &#125; else//比较左右孩子均大则未破坏，不再需要调整 break; &#125; &#125; 小根堆插入操作 123456789101112131415161718192021void HeapAdjust(int a[], int s, int n)//构成堆 &#123; int j, t; while (2 * s + 1 &lt; n)//第s个结点有右子树 &#123; j = 2 * s + 1; if ((j + 1) &lt; n) &#123; if (a[j] &gt; a[j + 1])//左子树大于右子树，则需要比较右子树 j++;//序号增加1，指向右子树 &#125; if (a[s] &lt; a[j]) //比较s与j为序号的数据 &#123; t = a[s];//交换数据 a[s] = a[j]; a[j] = t; s = j;//堆被破坏，需要重新调整 &#125; else//比较左右孩子均大则未破坏，不再需要调整 break; &#125; &#125;]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>数据结构</category>
+        <category>堆</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>数据结构</tag>
+        <tag>堆</tag>
       </tags>
   </entry>
   <entry>
@@ -188,6 +203,143 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[[BFS]正向BFS+hash解决八码问题]]></title>
+    <url>%2F2018%2F04%2F18%2F2018-04-18%2F</url>
+    <content type="text"><![CDATA[八数码问题，可以用单向广搜、双向广搜、A*、IDA等多种方法求解。具体可以参考：八数码的八境界 Description 1234567 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 x 123456789 1 2 3 4 1 2 3 4 1 2 3 4 1 2 3 4 5 6 7 8 5 6 7 8 5 6 7 8 5 6 7 8 9 x 10 12 9 10 x 12 9 10 11 12 9 10 11 12 13 14 11 15 13 14 11 15 13 14 x 15 13 14 15 x r-&gt; d-&gt; r-&gt; Input 123451 2 3 x 4 6 7 5 8 11 2 3 x 4 6 7 5 8 Output You will print to standard output either the word unsolvable’’, if the puzzle has no solution, or a string consisting entirely of the letters ‘r’, ‘l’, ‘u’ and ‘d’ that describes a series of moves that produce a solution. The string should include no spaces and start at the beginning of the line. Sample Input 12 3 4 1 5 x 7 6 8 Sample Output 1ullddrurdllurdruldr 题解： 本题一共仅有9！种结果，因此求解方法很多。一开始采用stl进行存储，但一直超时，后来改用hash轻轻松松就过了。判重时9！个排列如果用数组直接保存，每一位保存一个维度，数组开不了那么大。因此可以根据康托展开进行判重，每一种排列对应成一个整形数字，9！种排列一共9！个数字，提高了hash效率。此外，对于x我们暂且当做9处理，而123456789的康托展开是1，因此bfs的终止条件就设为当前状态的康拓展开是否为1。此外，由于本次采用正向bfs，而输出结果时需要输出之前的状态，string储存太慢，queue队列会丢失之前的状态，因此用数组充当队列，用pre追溯上一个状态在队列中的下标。解决代码如下： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100#include&lt;iostream&gt; #include&lt;cstdio&gt; #include&lt;string&gt; #include&lt;cstring&gt; using namespace std; const int MAXN = 400000; int fac[9] = &#123; 1, 1, 2, 6, 24, 120, 720, 5040, 40320&#125;; int dir[4][2] = &#123; &#123;-1,0&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;0,1&#125; &#125;; int opp[4] = &#123; &apos;u&apos;,&apos;d&apos;,&apos;l&apos;,&apos;r&apos; &#125;; bool vis[MAXN]; struct node &#123; int stadus; int cur[9]; int loc; char path; int pre; &#125;; node qu[MAXN]; int cantor(int s[]) &#123; int sum = 0; for (int i = 0; i&lt;9; i++) &#123; int num = 0; for (int j = i + 1; j&lt;9; j++) if (s[j]&lt;s[i]) num++; sum += num*fac[8 - i]; &#125; return sum + 1; &#125; int bfs(node now) &#123; memset(vis, false, sizeof(vis)); int x, y; int front = 0, end = 0; node no = now; qu[end++] = no; vis[now.stadus] = true; while (front &lt; end) &#123; no = qu[front++]; x = no.loc / 3; y = no.loc % 3; if (no.stadus == 1) return front - 1; for (int i = 0; i &lt; 4; i++) &#123; node cc = no; int xx = x + dir[i][0]; int yy = y + dir[i][1]; if (xx &lt; 3 &amp;&amp; xx &gt;= 0 &amp;&amp; yy &lt; 3 &amp;&amp; yy &gt;= 0) &#123; cc.cur[x * 3 + y] = cc.cur[x * 3 + y] ^ cc.cur[xx * 3 + yy]; cc.cur[xx * 3 + yy] = cc.cur[x * 3 + y] ^ cc.cur[xx * 3 + yy]; cc.cur[x * 3 + y] = cc.cur[x * 3 + y] ^ cc.cur[xx * 3 + yy]; cc.stadus = cantor(cc.cur); if (!vis[cc.stadus]) &#123; vis[cc.stadus] = true; cc.loc = xx * 3 + yy; cc.path = opp[i]; cc.pre = front - 1; qu[end++] = cc; &#125; &#125; &#125; &#125; return -1; &#125; void show(int a) &#123; if (qu[a].pre) &#123; show(qu[a].pre); &#125; printf(&quot;%c&quot;, qu[a].path); &#125; int main() &#123; string tmp; while (getline(cin, tmp)) &#123; int i = 0, cnt = 0; node temp; while (tmp[i]) &#123; if (tmp[i] == &apos; &apos;) &#123; i++; continue; &#125; else if (tmp[i] == &apos;x&apos;) &#123; temp.loc = cnt; temp.cur[cnt] = 9; cnt++; i++; &#125; else &#123; temp.cur[cnt] = tmp[i] - &apos;0&apos;; cnt++; i++; &#125; &#125; temp.stadus = cantor(temp.cur); int ans = bfs(temp); ans != -1 ? show(ans) : printf(&quot;-1&quot;); cout &lt;&lt; endl; &#125; return 0; &#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>BFS</tag>
+        <tag>康托展开</tag>
+        <tag>hash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[位运算]dfs+位运算解决N皇后问题]]></title>
+    <url>%2F2018%2F04%2F13%2F2018-04-13%2F</url>
+    <content type="text"><![CDATA[在N*N的方格棋盘放置了N个皇后，使得它们不相互攻击（即任意2个皇后不允许处在同一排，同一列，也不允许处在与棋盘边框成45角的斜线上。 你的任务是，对于给定的N，求出有多少种合法的放置方法。共有若干行，表示棋盘和皇后的数量；如果N=0，表示结束。 分析： 本篇文章重点介绍位运算解决N皇后的思想，并不是解决特定的问题。和普通算法一样，这是一个递归过程，程序一行一行地寻找可以放皇后的地方。过程带三个参数，row、ld和rd，分别表示在纵列和两个对角线方向的限制条件下这一行的哪些地方不能放。我们以6×6的棋盘为例，看看程序是怎么工作的。假设现在已经递归到第四层，前三层放的子已经标在左图上了。红色、蓝色和绿色的线分别表示三个方向上有冲突的位置，位于该行上的冲突位置就用row、ld和rd中的1来表示。把它们三个并起来，得到该行所有的禁位，取反后就得到所有可以放的位置。注意递归调用时三个参数的变化，每个参数都加上了一个禁位，但两个对角线方向的禁位对下一行的影响需要平移一位。最后，如果递归到某个时候发现row=111111了，说明六个皇后全放进去了，此时程序从第1行跳到第11行，找到的解的个数加一。 123456789101112131415161718192021#include&lt;stdio.h&gt; #include&lt;math.h&gt; int N, Count, res; void dfs(int row, int ld, int rd) &#123; if (row == res) &#123; Count++; return; &#125; for (int j = 1; j &lt;= res; j &lt;&lt;= 1) if (row != (row | j) &amp;&amp; ld != (ld | j) &amp;&amp; rd != (rd | j)) dfs(row | j, (ld | j) &lt;&lt; 1 &amp; res, (rd | j) &gt;&gt; 1); &#125; int main() &#123; while (~scanf(&quot;%d&quot;, &amp;N), N) &#123; Count = 0; res = pow(2, N) - 1; dfs(0, 0, 0); printf(&quot;%d\n&quot;, Count); &#125; return 0; &#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>DFS</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>ACM/ICPC</tag>
+        <tag>位运算</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[位运算]dfs+位运算解决N皇后问题]]></title>
+    <url>%2F2018%2F04%2F13%2F2018-04-13%20-%201%2F</url>
+    <content type="text"><![CDATA[\1. 不用任何比较判断两个数中大的那个数 我们将两个数做差，得到另一个数，判断这个数的符号位就可以了。当然，不能直接使用判断语句，所以我们使用位运算来操作。 \2. 两个相同的数异或结果等于0。 就这道题而言，在运算过程中会产生一个中间值，即a与b的异或结果，a异或b再异或b就会等于a，如果第二次异或a就会等于b。 所以直接三个异或就可以搞定 \3. 整数的二进制中有多少个1 每次循环采用n&amp;=(n-1)，这样可以跳过二进制位是0的数。 \4. 数组中只有一个数出现了奇数次，其他数都出现偶数次，找出这个数 这道题还是使用了异或的性质，两个相同的数异或等于0，遍历一遍数组就可以得到出现奇数次的那个数。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>位运算</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C语言允许初始化列表中末尾出现多余的逗号]]></title>
+    <url>%2F2018%2F04%2F01%2F2018-04-1%2F</url>
+    <content type="text"><![CDATA[C语言允许初始化列表中出现多余的逗号，例如： 1int days[] = &#123; 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, &#125;; 为什么这种特性是有用的？ 123456789101112#include &lt;stdio.h&gt; int main(int argc,char** argv)&#123; enum qs&#123; Va = 5, Vb, Vc, &#125; s; printf(&quot;a=%d,b=%d,c=%d&quot;,Va,Vb,Vc); return 0; &#125; 像enum枚举中的条目有可能是根据其它资源来的，而程序员会制作代码生成工具来生成它，所以就允许enum中的多余逗号。像int i = 9,j = 0;这种用法完全可以拆成int i=9;int j=0;因此不会增加代码生成器的负担，所以不支持int i=9,j=0,; 像这种代码，如果用代码生成器去读资源然后写进去，那么每生成一行都需要在末尾加一个逗号来分隔。C允许最后一行有多余的逗号，那就可以不用单独去处理最后一行了，减轻了代码生成器的制作负担，同时因为不用自行删除最后一个逗号，代码生成器的编写也就更不容易出错了。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>C陷阱与缺陷</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[树的遍历（根据后序遍历中序遍历推出层序遍历）]]></title>
+    <url>%2F2018%2F03%2F29%2F2018-03-29%2F</url>
+    <content type="text"><![CDATA[对于二叉树的遍历，分为深度优先遍历与广度优先遍历，广度优先遍历有时又称作层序遍历。而深度优先遍历又分为前序遍历，中序遍历和后序遍历。三者之间的区别主要在于根结点的遍历顺序。前序遍历的顺序是根结点-&gt;左子树-&gt;右子树，中序遍历顺序是左子树-&gt;根结点-&gt;右子树，后序遍历顺序是左子树-&gt;右子树-&gt;根结点。现在给出树的后序遍历与中序遍历，要求写出该树的层序遍历。以下是pat上的例题： 给定一棵二叉树的后序遍历和中序遍历，请你输出其层序遍历的序列。这里假设键值都是互不相等的正整数。 输入格式： 输入第一行给出一个正整数N（&lt;=30），是二叉树中结点的个数。第二行给出其后序遍历序列。第三行给出其中序遍历序列。数字间以空格分隔。 输出格式： 在一行中输出该树的层序遍历的序列。数字间以1个空格分隔，行首尾不得有多余空格。 输入样例： 12372 3 1 5 7 6 41 2 3 4 5 6 7 输出样例： 14 1 6 3 5 7 2 分析： 树的后序遍历特点是最后一个遍历的永远是根结点，由样例很容易看到4即为该树的根结点。而中序遍历的特点是根结点的左边永远是根结点的左子树部分，右边永远是根结点的右子树部分。而树的每一个子树都可以作为新的根。因此二者结合起来很容易将整个树构建出来。以样例为例，首先可以从后序遍历确定4为根结点，然后对照着中序遍历找到4的中序位置为第4位，然后以4为界将树分为以左子树为根的树和以右子树为根的树。现在可以确定根的左子树与右子树的个数分别为m，n，而后序遍历先遍历左子树部分，因此可以确定左子树部分为第1~m位，右子树部分为m+1~m+n位，最后一位为根结点。而左子树部分最后一位即第n位为左子树部分的根即左子树，同理右子树也一样。由此我们只需建立一个树遍历的函数ergodic(int root, int start, int end, int index)即可。其中root为根结点，start与end为由该根结点所衍生出的所有子树的范围，index记录该树的位置。由后序遍历可知end即为根结点的位置，有start开始遍历中序，直到找到根结点在中序遍历中的位置i，在以i为界划分为（start，i-1）与（i+1，end）两部分，而root则为后序遍历中（start，end）中的end位置，即为root-end+i-1的位置。我们初始树的所有结点为-1，意味空值，因此最终搭建的树只需按顺序遍历所有有值部分即可。以下是代码： 12345678910111213141516171819202122232425262728293031323334#include&lt;iostream&gt; #include&lt;vector&gt; using namespace std; vector&lt;int&gt;post, in, level(100000, -1); int N; void ergodic(int root, int start, int end, int index) &#123; int i = start; if (start &gt; end) return; while (i &lt; end&amp;&amp;in[i] != post[root]) i++; level[index] = post[root]; //cout &lt;&lt; root &lt;&lt; start &lt;&lt; end &lt;&lt; i &lt;&lt; endl; ergodic(root - 1 - end + i, start, i - 1, 2 * index + 1); ergodic(root - 1, i + 1, end, 2 * index + 2); &#125; int main() &#123; cin &gt;&gt; N; post.resize(N); in.resize(N); for (int i = 0; i &lt; N; i++) cin &gt;&gt; post[i]; for (int i = 0; i &lt; N; i++) cin &gt;&gt; in[i]; ergodic(N - 1, 0, N - 1, 0); for (int i = 0, cnt = 0; i &lt; level.size(); i++) &#123; if (level[i] != -1) &#123; cout &lt;&lt; level[i]; cnt != N - 1 ? cout &lt;&lt; &apos; &apos; : cout &lt;&lt; endl; cnt++; &#125; &#125; return 0; &#125; 对于前序遍历也一样，因为前序遍历的特点和后序遍历的特点刚好相反，前序遍历第第一位总是根结点。根据两种遍历即可推出整棵树的结构，搭建完树的结构，任何遍历都会很方便。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>数据结构</category>
+        <category>树</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>pat天梯赛</tag>
+        <tag>数据结构</tag>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C/C++八进制赋值与输入常见陷阱]]></title>
+    <url>%2F2018%2F03%2F29%2F2018-03-29%20-%201%2F</url>
+    <content type="text"><![CDATA[在C语言及C++中，一个整形数值前如果有一个数字0，则代表该整形数值为八进制数。例如int a，a = 010，则a的十进制数值为8，八进制数值为10。但是在输入a的时候，输入010，如果用scanf（“%d”，&amp;a），则将会被当做十进制10识别。而在c++中使用cout&lt;&lt;a时，也将会被默认为十进制输入。以下是测试用例。 12345678910#include&lt;iostream&gt; using namespace std; int main() &#123; int a = 010; cout &lt;&lt;&quot;将010赋给a时：a = &quot;&lt;&lt; a &lt;&lt; endl; cout &lt;&lt; &quot;请输入a:&quot;; cin &gt;&gt; a; cout &lt;&lt; &quot;将010输入给a时：a = &quot; &lt;&lt; a; return 0; &#125; 由此可知，cout默认是以十进制进行输入的。因此，我们在赋值与输入时，得格外注意进制之间的转换。例如： 12345678struct temp&#123; int a; int b; int c; &#125;temp_1 = &#123; 001, 010, 222 &#125;; 我们经常会在赋值时为了将数值对齐显得美观而在数值之前添加0，这样往往会导致得到的结果错误，因为系统将之默认为八进制赋值。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>进制</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>进制</tag>
+        <tag>C陷阱与缺陷</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[数据结构]L2-022. 重排链表]]></title>
+    <url>%2F2018%2F03%2F28%2F2018-03-28-3%2F</url>
+    <content type="text"><![CDATA[L2-022. 重排链表给定一个单链表 L1→L2→…→Ln-1→Ln，请编写程序将链表重新排列为 Ln→L1→Ln-1→L2→…。例如：给定L为1→2→3→4→5→6，则输出应该为6→1→5→2→4→3。 输入格式： 每个输入包含1个测试用例。每个测试用例第1行给出第1个结点的地址和结点总个数，即正整数N (&lt;= 105)。结点的地址是5位非负整数，NULL地址用-1表示。 接下来有N行，每行格式为： Address Data Next 其中Address是结点地址；Data是该结点保存的数据，为不超过105的正整数；Next是下一结点的地址。题目保证给出的链表上至少有两个结点。 输出格式： 对每个测试用例，顺序输出重排后的结果链表，其上每个结点占一行，格式与输入相同。 输入样例： 123456700100 600000 4 9999900100 1 1230968237 6 -133218 3 0000099999 5 6823712309 2 33218 输出样例： 12345668237 6 0010000100 1 9999999999 5 1230912309 2 0000000000 4 3321833218 3 -1 分析： 一道数据结构链表题。由于每一次输出链表两边的元素，因此可以构建一个双向链表。即结构体中储存上一个元素pre，数据data，下一个元素next。然后设置一个根结点root和尾结点tail，分别指向第一个结点地址和最后一个结点地址。先输出tail，tail指向对应上一个元素pre。再输出root，root指向对应下一个元素next，以此循环。直到tail与root相遇时输出tail，终止循环。输出tail对应数据时，可以输出tail，data，root，输出root对应数据时，可以输出root，data，tail。 12345678910111213141516171819202122232425262728293031323334353637#include&lt;cstdio&gt; #define Maxn 100000 using namespace std; struct Lists &#123; int pre; int data; int next; Lists() &#123; pre = -1; data = 0; next = -1; &#125; &#125;List[Maxn]; int main() &#123; int root, N, tail; scanf(&quot;%d%d&quot;, &amp;root, &amp;N); for (int i = 0; i &lt; N; i++) &#123; int temp; scanf(&quot;%d&quot;, &amp;temp); scanf(&quot;%d%d&quot;, &amp;List[temp].data, &amp;List[temp].next); if (List[temp].next != -1) List[List[temp].next].pre = temp; else tail = temp; &#125; int flag = 0; while (root != tail) &#123; printf(&quot;%05d %d %05d\n&quot;, tail, List[tail].data, root); tail = List[tail].pre; if (root == tail) break; printf(&quot;%05d %d %05d\n&quot;, root, List[root].data, tail); root = List[root].next; &#125; printf(&quot;%05d %d -1\n&quot;, root, List[root].data); return 0; &#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>数据结构</category>
+        <category>链表</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>pat天梯赛</tag>
+        <tag>数据结构</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[并查集]L2-024. 部落]]></title>
+    <url>%2F2018%2F03%2F28%2F2018-03-28-2%2F</url>
+    <content type="text"><![CDATA[L2-024. 部落时间限制 120 ms 内存限制 65536 kB 代码长度限制 8000 B 判题程序 Standard 作者 陈越 在一个社区里，每个人都有自己的小圈子，还可能同时属于很多不同的朋友圈。我们认为朋友的朋友都算在一个部落里，于是要请你统计一下，在一个给定社区中，到底有多少个互不相交的部落？并且检查任意两个人是否属于同一个部落。 输入格式： 输入在第一行给出一个正整数N（&lt;= 104），是已知小圈子的个数。随后N行，每行按下列格式给出一个小圈子里的人： K P[1] P[2] … P[K] 其中K是小圈子里的人数，P[i]（i=1, .., K）是小圈子里每个人的编号。这里所有人的编号从1开始连续编号，最大编号不会超过104。 之后一行给出一个非负整数Q（&lt;= 104），是查询次数。随后Q行，每行给出一对被查询的人的编号。 输出格式： 首先在一行中输出这个社区的总人数、以及互不相交的部落的个数。随后对每一次查询，如果他们属于同一个部落，则在一行中输出“Y”，否则输出“N”。 输入样例： 1234567843 10 1 22 3 44 1 5 7 83 9 6 4210 53 7 输出样例： 12310 2YN 分析： 本题又是一道并查集。我的做法是用映射，将所有人映射到对应的圈子中。例如第i个圈子共有k个人，分别为k1…kj…kk。则map[kj]=i。倘若kj已经有对应的圈子，那将两个圈子联系起来。即Union（map[kj]，i）。此外设置计数器sum，每一次执行完map[kj]=i之后sum++，即未重复的人加一。最后计算每一个圈子i是否等于pre[i]，计算独立圈子的个数。判断两个人是否是一个部落，只需查询他们映射的圈子是否相同，即root(map[a])是否等于root(map[b])。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include&lt;iostream&gt; #include&lt;cstdio&gt; #define MAXN 10005 using namespace std; int N, k; int pre[MAXN]; int maps[MAXN]; int root(int x) &#123; while (x != pre[x]) &#123; pre[x] = pre[pre[x]]; x = pre[x]; &#125; return x; &#125; void Union(int px,int py) &#123; px = root(px); py = root(py); if (px != py) pre[py] = px; &#125; int main() &#123; cin &gt;&gt; N; int sum = 0; for (int i = 0; i &lt; MAXN; i++) &#123; pre[i] = i; maps[i] = 0; &#125; for (int i = 1; i &lt;= N; i++) &#123; cin &gt;&gt; k; while (k--) &#123; int temp; cin &gt;&gt; temp; if (!maps[temp]) &#123; maps[temp] = i; sum++; &#125; else Union(maps[temp], i); &#125; &#125; int count = 0; for (int i = 1; i &lt;= N; i++) if (pre[i] == i) count++; printf(&quot;%d %d\n&quot;, sum, count); cin &gt;&gt; k; while (k--) &#123; int xx, yy; cin &gt;&gt; xx &gt;&gt; yy; if (root(maps[xx]) == root(maps[yy])) printf(&quot;Y\n&quot;); else printf(&quot;N\n&quot;); &#125; return 0; &#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>并查集</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>pat天梯赛</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C++结构体内部初始化]]></title>
+    <url>%2F2018%2F03%2F28%2F2018-03-28-1%2F</url>
+    <content type="text"><![CDATA[我都知道，c语言中结构体内部是不支持初始化的。如果要初始化结构体，可以在声明变量时进行初始化。例如： 123456struct Test&#123; int a; char b; double c; &#125;; Test test_1 = &#123; 1, &apos;a&apos;, 0 &#125;; 然而c++中结构体内部在声明变量的同时可以声明函数，这为结构体内部初始化提供了很大的便利。 因此上面用例可以写成： 12345678910struct Test&#123; int a; char b; double c; Test()&#123; a = 1; b = &apos;a&apos;; c = 0; &#125; &#125;; 这为定义结构体时关于初始化问题提供了很大的便利。 以下是代码及运行结果： 12345678910111213141516#include&lt;iostream&gt; using namespace std; struct Test &#123; int a; char b; double c; Test() &#123; a = 1; b = &apos;a&apos;; c = 0; &#125; &#125;Text_1; int main() &#123; cout &lt;&lt; Text_1.a &lt;&lt; endl &lt;&lt; Text_1.b &lt;&lt; endl &lt;&lt; Text_1.c; return 0; &#125;]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>结构体</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>结构体</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[模拟]来一瓶82年拉菲（酒杯问题）]]></title>
     <url>%2F2018%2F03%2F28%2F2018-03-28%2F</url>
     <content type="text"><![CDATA[问题描述： 悠神最近过生日，朋友纷纷来贺。现有一瓶82年拉菲与若干酒杯。酒杯呈三角形酒塔摆放，即每一个酒杯摆放在下一层两个酒杯中间，最下面一层酒杯摆放在桌面上。共有N(1&lt;=N&lt;=20)层酒杯，第k层共有k个酒杯。悠神将拉菲倒进第一层的酒杯中，速度为1杯/s，倒满后酒会向左右两个方向溢出，假设会全部溢出到这个酒杯下面相邻的两个酒杯中。然而悠神有洁癖，他不喜欢浪费，更不喜欢浸湿他心爱的桌布，所以请你计算一下第几秒之后桌布会被浸湿。 eg：如图所示为3层时的情况。第一层倒满需要1s，第二次倒满需要2s，第三层首次倒满需要2s。所以共需1+2+2=5s。 输入： 输入N(1&lt;=N&lt;=20)。 输出： 桌布浸湿时至少所需时间（取整数）。 输入样例： 2 输出样例： 3 分析： 桌布浸湿只与最下层最中间位置何时倒满有关，因此只需计算最下层中间位置酒杯的状态。由于时间取整，所以只需模拟出第一杯共倒了多少杯酒，即为多少s。而每一个酒杯共倒了多少酒与上一层相邻两个酒杯相关，及第i层第j个酒杯的酒只与第i-1层第j-1个和第j个酒杯的酒相关。及wine[i][j]=wine[i-1][j-1]+wine[i-1][j];由于酒杯有两种状态，及未满状态和倒满状态，所以要判断wine[i-1]层的酒是否&gt;1。 12345678910111213141516171819202122#include&lt;stdio.h&gt; #include&lt;string.h&gt; #define MAXN 20 int main() &#123; int N; while (~scanf(&quot;%d&quot;, &amp;N)) &#123; double wine[MAXN + 1][MAXN + 1] = &#123; 0 &#125;; double temp = 0; while (wine[N][N / 2 + 1] &lt; 1) &#123; memset(wine, 0, sizeof(wine)); temp++; wine[1][1] = temp; for (int i = 1; i &lt;= N; i++) &#123; for (int j = 1; j &lt;= i; j++) &#123; wine[i][j] += (wine[i - 1][j - 1] &gt; 1 ? (wine[i - 1][j - 1] - 1) / 2.0 : 0) + (wine[i - 1][j] &gt; 1 ? (wine[i - 1][j] - 1) / 2.0 : 0); &#125; &#125; &#125; printf(&quot;%g\n&quot;, wine[1][1]); &#125; return 0; &#125;]]></content>
@@ -198,9 +350,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>算法</tag>
         <tag>模拟</tag>
         <tag>ACM/ICPC</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -215,8 +367,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>BFS</tag>
         <tag>pat天梯赛</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -231,9 +383,9 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>pat天梯赛</tag>
         <tag>stl</tag>
         <tag>vector</tag>
+        <tag>pat天梯赛</tag>
       </tags>
   </entry>
 </search>

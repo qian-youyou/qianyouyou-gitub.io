@@ -4,6 +4,309 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/03/28/2018-03-28-3/</loc>
+    <lastmod>2018-05-02T12:43:02.755Z</lastmod>
+    <data>
+        <display>
+        <title>[数据结构]L2-022. 重排链表</title>
+        <pubTime>2018-03-28T13:44:38.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>pat天梯赛</tag>
+         
+        <tag>数据结构</tag>
+         
+        <tag>链表</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="数据结构" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+             
+              <breadCrumb title="链表" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/03/28/2018-03-28-2/</loc>
+    <lastmod>2018-05-02T12:41:01.984Z</lastmod>
+    <data>
+        <display>
+        <title>[并查集]L2-024. 部落</title>
+        <pubTime>2018-03-28T13:32:34.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>算法</tag>
+         
+        <tag>pat天梯赛</tag>
+         
+        <tag>并查集</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="并查集" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/03/28/2018-03-28-1/</loc>
+    <lastmod>2018-05-02T12:37:19.988Z</lastmod>
+    <data>
+        <display>
+        <title>C++结构体内部初始化</title>
+        <pubTime>2018-03-28T03:34:55.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>结构体</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="C/C++" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+          
+             
+              <breadCrumb title="结构体" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/%E7%BB%93%E6%9E%84%E4%BD%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/03/29/2018-03-29%20-%201/</loc>
+    <lastmod>2018-05-02T12:33:38.491Z</lastmod>
+    <data>
+        <display>
+        <title>C/C++八进制赋值与输入常见陷阱</title>
+        <pubTime>2018-03-29T11:01:30.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>进制</tag>
+         
+        <tag>C陷阱与缺陷</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="C/C++" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+          
+             
+              <breadCrumb title="进制" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/%E8%BF%9B%E5%88%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/03/29/2018-03-29/</loc>
+    <lastmod>2018-05-02T12:30:09.788Z</lastmod>
+    <data>
+        <display>
+        <title>树的遍历（根据后序遍历中序遍历推出层序遍历）</title>
+        <pubTime>2018-03-29T12:15:22.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>pat天梯赛</tag>
+         
+        <tag>数据结构</tag>
+         
+        <tag>树</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="数据结构" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+             
+              <breadCrumb title="树" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/04/01/2018-04-1/</loc>
+    <lastmod>2018-05-02T12:26:57.099Z</lastmod>
+    <data>
+        <display>
+        <title>C语言允许初始化列表中末尾出现多余的逗号</title>
+        <pubTime>2018-04-01T15:27:16.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>C陷阱与缺陷</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="C/C++" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/04/13/2018-04-13%20-%201/</loc>
+    <lastmod>2018-05-02T12:21:36.595Z</lastmod>
+    <data>
+        <display>
+        <title>[位运算]dfs+位运算解决N皇后问题</title>
+        <pubTime>2018-04-13T12:17:46.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>位运算</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="C/C++" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+          
+             
+              <breadCrumb title="位运算" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/04/13/2018-04-13/</loc>
+    <lastmod>2018-05-02T12:18:14.310Z</lastmod>
+    <data>
+        <display>
+        <title>[位运算]dfs+位运算解决N皇后问题</title>
+        <pubTime>2018-04-13T15:11:06.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>ACM/ICPC</tag>
+         
+        <tag>位运算</tag>
+         
+        <tag>DFS</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="DFS" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/DFS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/04/18/2018-04-18/</loc>
+    <lastmod>2018-05-02T12:15:20.171Z</lastmod>
+    <data>
+        <display>
+        <title>[BFS]正向BFS+hash解决八码问题</title>
+        <pubTime>2018-04-18T03:41:06.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>算法</tag>
+         
+        <tag>BFS</tag>
+         
+        <tag>康托展开</tag>
+         
+        <tag>hash</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="BFS" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/BFS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/04/23/2018-04-23/</loc>
+    <lastmod>2018-05-02T12:11:34.755Z</lastmod>
+    <data>
+        <display>
+        <title>[数据结构]大根堆小根堆插入操作</title>
+        <pubTime>2018-04-23T14:42:25.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>数据结构</tag>
+         
+        <tag>堆</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="数据结构" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+             
+              <breadCrumb title="堆" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/04/21/2018-04-21/</loc>
     <lastmod>2018-05-02T12:07:43.468Z</lastmod>
     <data>
@@ -75,11 +378,11 @@
         
         <tag>C/C++</tag>
          
+        <tag>算法</tag>
+         
         <tag>模拟</tag>
          
         <tag>ACM/ICPC</tag>
-         
-        <tag>算法</tag>
          
          
            
@@ -109,9 +412,9 @@
          
         <tag>算法</tag>
          
-        <tag>BFS</tag>
-         
         <tag>pat天梯赛</tag>
+         
+        <tag>BFS</tag>
          
          
            
@@ -141,11 +444,11 @@
          
         <tag>算法</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>stl</tag>
          
         <tag>vector</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
@@ -293,9 +596,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>ACM/ICPC</tag>
-         
         <tag>算法</tag>
+         
+        <tag>ACM/ICPC</tag>
          
         <tag>贪心</tag>
          
@@ -328,9 +631,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>ACM/ICPC</tag>
-         
         <tag>算法</tag>
+         
+        <tag>ACM/ICPC</tag>
          
         <tag>ZOJ</tag>
          
