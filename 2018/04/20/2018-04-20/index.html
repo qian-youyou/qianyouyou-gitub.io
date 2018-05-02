@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="hexo,github,node.js,前端," />
+  <meta name="keywords" content="C/C++,模拟," />
 
 
 
@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
-<meta name="keywords" content="hexo,github,node.js,前端">
+<meta name="description" content="一年前写的小游戏，当时感觉小有成就，现在发现缺陷真的很多。不禁感叹，当时为什么会用那么多goto呢。在这里真的建议大家不要用goto。只是现在懒得改了，毕竟是小程序。贴出来供大家参考。如果有时间后序再添加注释。如有问题欢迎评论。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647">
+<meta name="keywords" content="C&#x2F;C++,模拟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于github搭建专属于自己的博客（基础篇）">
-<meta property="og:url" content="http://qianyouyou.cn/2018/04/28/2018-04-28-1/index.html">
+<meta property="og:title" content="[杂项项目]纯C语言实现控制台小游戏——数字拼图">
+<meta property="og:url" content="http://qianyouyou.cn/2018/04/20/2018-04-20/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
+<meta property="og:description" content="一年前写的小游戏，当时感觉小有成就，现在发现缺陷真的很多。不禁感叹，当时为什么会用那么多goto呢。在这里真的建议大家不要用goto。只是现在懒得改了，毕竟是小程序。贴出来供大家参考。如果有时间后序再添加注释。如有问题欢迎评论。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-28T11:07:51.045Z">
+<meta property="og:updated_time" content="2018-05-02T03:53:47.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于github搭建专属于自己的博客（基础篇）">
-<meta name="twitter:description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
+<meta name="twitter:title" content="[杂项项目]纯C语言实现控制台小游戏——数字拼图">
+<meta name="twitter:description" content="一年前写的小游戏，当时感觉小有成就，现在发现缺陷真的很多。不禁感叹，当时为什么会用那么多goto呢。在这里真的建议大家不要用goto。只是现在懒得改了，毕竟是小程序。贴出来供大家参考。如果有时间后序再添加注释。如有问题欢迎评论。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647">
 
 
 
@@ -141,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://qianyouyou.cn/2018/04/28/2018-04-28-1/"/>
+  <link rel="canonical" href="http://qianyouyou.cn/2018/04/20/2018-04-20/"/>
 
 
 
 
 
-  <title>基于github搭建专属于自己的博客（基础篇） | 浅悠悠的个人博客</title>
+  <title>[杂项项目]纯C语言实现控制台小游戏——数字拼图 | 浅悠悠的个人博客</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/28/2018-04-28-1/">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/20/2018-04-20/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王骏">
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于github搭建专属于自己的博客（基础篇）</h1>
+          <h1 class="post-title" itemprop="name headline">[杂项项目]纯C语言实现控制台小游戏——数字拼图</h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T17:11:28+08:00">
-                2018-04-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T22:48:10+08:00">
+                2018-04-20
               </time>
             
 
@@ -403,8 +403,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序人生/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/程序人生/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
 
@@ -414,8 +414,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序人生/JavaScript/hexo教程/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo教程</span>
+                  <a href="/categories/程序人生/C-C/小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">小程序</span>
                   </a>
                 </span>
 
@@ -432,8 +432,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/28/2018-04-28-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/28/2018-04-28-1/" itemprop="commentCount"></span>
+                <a href="/2018/04/20/2018-04-20/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/20/2018-04-20/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,191
+                  1,446
                 </span>
               
 
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  8
                 </span>
               
             </div>
@@ -497,71 +497,8 @@
       
 
       
-        <p>以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程：</p>
-<h2 id="基本流程："><a href="#基本流程：" class="headerlink" title="基本流程："></a>基本流程：</h2><p>1.搭建前的准备（包括node.js，git，github账户的配置）</p>
-<p>2.安装hexo</p>
-<p>3.配置hexo</p>
-<p>4.连接hexo与github page</p>
-<p>5.发布文章</p>
-<h3 id="搭建前的准备"><a href="#搭建前的准备" class="headerlink" title="搭建前的准备"></a>搭建前的准备</h3><p>1.安装node.js</p>
-<p>2.安装git</p>
-<p>3.github账户管理</p>
-<h4 id="配置Node-js"><a href="#配置Node-js" class="headerlink" title="配置Node.js"></a>配置Node.js</h4><p>下载<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a>。根据自己电脑的配置自行安装。</p>
-<p>安装完成后打开终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>进行是否安装成功测试。如不正确，回头检查哪一步错误。</p>
-<h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><p><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>官网。自行安装。</p>
-<p>安装完成后打开终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
-<p>以上步骤进行是否安装成功。如果安装失败自行面壁。</p>
-<h4 id="github管理"><a href="#github管理" class="headerlink" title="github管理"></a>github管理</h4><p>已拥有账号可跳过注册此步</p>
-<p>打开<a href="https://github.com/" target="_blank" rel="noopener">github</a>进行注册。</p>
-<p>登录后点击右上角加号，选择New repository新建代码库。</p>
-<p>进入代码库创建页面：</p>
-<p>在Repository name下填写yourname.github.io，Description (optional)下填写描述（此步可忽略）。</p>
-<p><strong>注意：我的github名称是qianyouyou ,这里就填qianyouyou.github.io</strong></p>
-<p>建立后，点击界面右侧的Settings，你将会打开这个库的setting页面，向下拖动，直到看见GitHub Pages。点击Automatic page generator，Github将会自动替你创建出一个gh-pages的页面。 如果你的配置没有问题，那么大约15分钟之后，yourname.github.io这个网址就可以正常访问了~ 如果yourname.github.io已经可以正常访问了，那么Github一侧的配置已经全部结束了。</p>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>在合适的地方创建文件夹，这里我以E:/blog 为例子讲解，首先在E盘目录下创建blog文件夹，终端锁定该文件夹</p>
-<p>在命令行输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g   //进行安装</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v   //检验是否安装成功。</span><br></pre></td></tr></table></figure>
-<h3 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h3><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init   //初始化该文件夹</span><br></pre></td></tr></table></figure>
-<p>看到后面的“Start blogging with Hexo！”证明正在执行。</p>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install   //安装所需要的组件</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g   //生成</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>开启服务器，访问该网址，正式体验Hexo</p>
-<h3 id="连接hexo与github-page"><a href="#连接hexo与github-page" class="headerlink" title="连接hexo与github page"></a>连接hexo与github page</h3><p>设置Git的user name和email（如果是第一次的话）在blog文件夹里面鼠标右键，点击Git Base Here。</p>
-<p>输入cd ~/.ssh，检查是否由.ssh的文件夹</p>
-<p>输入ls，列出该文件下的内容</p>
-<p>输入ssh-keygen -t rsa -C “<a href="mailto:xxxxxx@xx.com" target="_blank" rel="noopener">xxxxxx@xx.com</a>”，（你的邮箱）连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub（默认存储路径是：C:\Users\Administrator.ssh）。</p>
-<p> 输入eval “$(ssh-agent -s)”，添加密钥到ssh-agent</p>
-<p>再输入ssh-add ~/.ssh/id_rsa，添加生成的SSH key到ssh-agent</p>
-<p>登录Github，点击头像下的settings，添加ssh</p>
-<p>新建一个new ssh key，将id_rsa.pub文件里的内容复制上去</p>
-<p>输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>，测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了</p>
-<p><strong>问题：</strong>假如ssh-key配置失败，那么只要以下步骤就能完全解决</p>
-<p>首先，清除所有的key-pair<br>ssh-add -D<br>rm -r ~/.ssh<br>删除你在github中的public-key</p>
-<p>重新生成ssh密钥对<br>ssh-keygen -t rsa -C “<a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a>“</p>
-<p>接下来正常操作<br>在github上添加公钥public-key:<br>1、首先在你的终端运行 xclip -sel c ~/.ssh/id_rsa.pub将公钥内容复制到剪切板<br>2、在github上添加公钥时，直接复制即可<br>3、保存</p>
-<p>测试：<br>在终端 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-<p>配置Deployment，在其文件夹中，找到_config.yml文件，修改repo值（在末尾）</p>
-<p>repo值是你在github项目里的ssh（右下角）</p>
-<h3 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h3><p>新建一篇博客，在cmd执行命令：hexo new post “博客名”</p>
-<p>这时候在我的 电脑的目录下 E:\blog\source\ _posts 将会看到 article title.md 文件</p>
-<p>在生成以及部署文章之前，需要安装一个扩展：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g   // 生成</span><br><span class="line">hexo d   // 部署</span><br></pre></td></tr></table></figure>
-<p>当然你也可以执行下面的命令，相当于上面两条命令的效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d   //在部署前先生成</span><br></pre></td></tr></table></figure>
-<p>部署成功后访问你的地址：http://用户名.github.io。那么将看到生成的文章。</p>
-<p>到此为止，最基本的也是最全面的hexo+github搭建博客完结。</p>
+        <p>一年前写的小游戏，当时感觉小有成就，现在发现缺陷真的很多。不禁感叹，当时为什么会用那么多goto呢。在这里真的建议大家不要用goto。只是现在懒得改了，毕竟是小程序。贴出来供大家参考。如果有时间后序再添加注释。如有问题欢迎评论。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;  </span><br><span class="line">#include &lt;stdlib.h&gt;  </span><br><span class="line">#include&lt;math.h&gt;  </span><br><span class="line">#include &lt;time.h&gt;  </span><br><span class="line">#define max 10  </span><br><span class="line">int x, y, step, label = 0;  </span><br><span class="line">typedef struct score &#123;  </span><br><span class="line">    int steps, steps2;  </span><br><span class="line">    double times;  </span><br><span class="line">    char name[18];  </span><br><span class="line">&#125;score;  </span><br><span class="line">score sco[max + 1];  </span><br><span class="line">char ch, buff[3];  </span><br><span class="line">bool flag, flag1 = false;  </span><br><span class="line">clock_t start, finish;  </span><br><span class="line">bool over()&#123;  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    printf(&quot;\n\n\n\n\t\t\t您共用了 %d 步 ,耗时 %.3f 分钟\n&quot;, step, (double)(finish - start) / 40000);  </span><br><span class="line">    system(&quot;pause&quot;);  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    printf(&quot;\n\n\n\n\n\n\n\n\t*******************  您是否重新开始游戏 (Y/N) ?  *******************\n\n&quot;);  </span><br><span class="line">    scanf(&quot;%s&quot;, buff);  </span><br><span class="line">    ch = buff[0];  </span><br><span class="line">    if (ch != &apos;n&apos;&amp;&amp;ch != &apos;N&apos;) &#123;  </span><br><span class="line">        return false;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else &#123;  </span><br><span class="line">        printf(&quot;\n\n\n\n\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n&quot;);  </span><br><span class="line">        printf(&quot;\t+++++++++++++++++++++++++   感谢您的使用   +++++++++++++++++++++++++\n&quot;, step);  </span><br><span class="line">                printf(&quot;\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n&quot;);  </span><br><span class="line">        system(&quot;pause&quot;);  </span><br><span class="line">        exit(0);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return true;  </span><br><span class="line">&#125;  </span><br><span class="line">void rank(score sco[],int n) &#123;  </span><br><span class="line">    int i, j;  </span><br><span class="line">    sco[0] = sco[n];  </span><br><span class="line">    for (i = 0; i &lt; n; i++)  </span><br><span class="line">        if (sco[n].steps2&gt;sco[i].steps2) &#123;  </span><br><span class="line">            for (j = n; j &gt; i; j--)  </span><br><span class="line">                sco[j] = sco[j - 1];  </span><br><span class="line">            sco[i] = sco[0];  </span><br><span class="line">            break;  </span><br><span class="line">        &#125;  </span><br><span class="line">    for (j = i - 1; j &gt; 0; j--)  </span><br><span class="line">        if (sco[i].steps2 == sco[j].steps2&amp;&amp;sco[i].steps &lt; sco[j].steps)  </span><br><span class="line">            sco[0] = sco[i], sco[i] = sco[j], sco[j] = sco[0], i = j;  </span><br><span class="line">        else if (sco[i].steps2 == sco[j].steps2&amp;&amp;sco[i].steps == sco[j].steps)  </span><br><span class="line">            if (sco[i].times &lt; sco[j].times)  </span><br><span class="line">                sco[0] = sco[i], sco[i] = sco[j], sco[j] = sco[0], i = j;  </span><br><span class="line">&#125;  </span><br><span class="line">int check2(int *p, int n) &#123;  </span><br><span class="line">    int i, j, flag2 = 0;  </span><br><span class="line">    for (i = 1; i &lt; n*n - 1; i++)   </span><br><span class="line">        for (j = 0; j &lt; i; j++)   </span><br><span class="line">            if (p[j] &gt; p[i])  </span><br><span class="line">                flag2++;  </span><br><span class="line">    if (!flag2)  </span><br><span class="line">        return 0;  </span><br><span class="line">    else if (flag2 % 2 == 0)  </span><br><span class="line">        return 2;  </span><br><span class="line">    else  </span><br><span class="line">        return 1;  </span><br><span class="line">&#125;  </span><br><span class="line">bool check(int *p,int n) &#123;  </span><br><span class="line">    int i;  </span><br><span class="line">    flag = true;  </span><br><span class="line">    for (i = 0; i&lt;n*n - 1; i++)  </span><br><span class="line">        if (p[i] != i + 1)  </span><br><span class="line">            flag = false;  </span><br><span class="line">    if (flag) &#123;  </span><br><span class="line">        flag1 = false;  </span><br><span class="line">        return false;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return true;  </span><br><span class="line">&#125;  </span><br><span class="line">int operation(int *p,int n) &#123;  </span><br><span class="line">    scanf(&quot;%s&quot;, buff);  </span><br><span class="line">    ch = buff[0];  </span><br><span class="line">    if (ch &gt;= &apos;a&apos;&amp;&amp;ch &lt;= &apos;z&apos;)  </span><br><span class="line">        ch -= 32;  </span><br><span class="line">    switch (ch) &#123;  </span><br><span class="line">    case &apos;A&apos;: if (y == n - 1) return 1;  </span><br><span class="line">        p[x*n + y] = p[x*n + y + 1];  </span><br><span class="line">        p[x*n + y + 1] = 0;  </span><br><span class="line">        y++;  </span><br><span class="line">        step++;  </span><br><span class="line">        return 1;  </span><br><span class="line">    case &apos;W&apos;: if (x == n - 1) return 1;  </span><br><span class="line">        p[x*n + y] = p[(x + 1)*n + y];  </span><br><span class="line">        p[(x + 1)*n + y] = 0;  </span><br><span class="line">        x++;  </span><br><span class="line">        step++;  </span><br><span class="line">        return 1;  </span><br><span class="line">    case &apos;D&apos;: if (y == 0) return 1;  </span><br><span class="line">        p[x*n + y] = p[x*n + y - 1];  </span><br><span class="line">        p[x*n + y - 1] = 0;  </span><br><span class="line">        y--;  </span><br><span class="line">        step++;  </span><br><span class="line">        return 1;  </span><br><span class="line">    case &apos;S&apos;: if (x == 0) return 1;  </span><br><span class="line">        p[x*n + y] = p[(x - 1)*n + y];  </span><br><span class="line">        p[(x - 1)*n + y] = 0;  </span><br><span class="line">        x--;  </span><br><span class="line">        step++;  </span><br><span class="line">        return 1;  </span><br><span class="line">    case &apos;R&apos;: return 2;  </span><br><span class="line">    case &apos;M&apos;: return 3;  </span><br><span class="line">    case &apos;Q&apos;: printf(&quot;\n\n\t********************* 您是否要离开游戏 (Y/N) ? *********************\n\n&quot;);  </span><br><span class="line">        scanf(&quot;%s&quot;, buff);  </span><br><span class="line">        ch = buff[0];  </span><br><span class="line">        if (ch == &apos;y&apos; || ch == &apos;Y&apos;)  </span><br><span class="line">            return 4;  </span><br><span class="line">        else  </span><br><span class="line">            return 1;  </span><br><span class="line">    default: return 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;  </span><br><span class="line">void map(int *p, int n) &#123;  </span><br><span class="line">    int i, j;  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    printf(&quot;\n\n\n&quot;);  </span><br><span class="line">    for (i = 0; i &lt; n; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(&quot;\t&quot;);  </span><br><span class="line">        for (j = 0; j &lt; n; j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if (p[n*i + j] != 0)  </span><br><span class="line">                printf(&quot;%-4d&quot;, p[n*i + j]);  </span><br><span class="line">            else  </span><br><span class="line">                printf(&quot;    &quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">        printf(&quot;\n\n&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">    printf(&quot;\n\t按方向键移动卡片至无卡片的地方  W:上 S:下 A:左 D:右 M:返回菜单 R:换图 Q:退出\n\n&quot;);  </span><br><span class="line">    finish = clock();  </span><br><span class="line">    printf(&quot;\n\t\t\t\t步数: %d\t 使用时间: %.3f 分钟 \n\n&quot;, step, (double)(finish - start) / 40000);  </span><br><span class="line">&#125;  </span><br><span class="line">void reset(int *p, int n) &#123;  </span><br><span class="line">    int i, j, flag2;  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    do &#123;  </span><br><span class="line">        for (i = 0; i &lt; n*n - 1; i++) &#123;  </span><br><span class="line">            do &#123;  </span><br><span class="line">                flag2 = 1;  </span><br><span class="line">                p[i] = rand() % (n*n - 1) + 1;  </span><br><span class="line">                for (j = 0; j &lt; i; j++)  </span><br><span class="line">                    if (p[i] == p[j])  </span><br><span class="line">                        flag2 = 0;  </span><br><span class="line">            &#125; while (!flag2);  </span><br><span class="line">        &#125;  </span><br><span class="line">        flag2 = check2(p, n);  </span><br><span class="line">        if (flag2 == 1) &#123;  </span><br><span class="line">            flag2 = p[n*n - 2];  </span><br><span class="line">            p[n*n - 2] = p[n*n - 3];  </span><br><span class="line">            p[n*n - 3] = flag2;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125; while (!flag2);  </span><br><span class="line">    p[n*n - 1] = 0;  </span><br><span class="line">    for (i = 0; i&lt;n; i++)  </span><br><span class="line">        for (j = 0; j&lt;n; j++)  </span><br><span class="line">            if (p[i*n + j] == 0)&#123;  </span><br><span class="line">                x = i;  </span><br><span class="line">                y = j;  </span><br><span class="line">            &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">void help() &#123;  </span><br><span class="line">    int i = 0;  </span><br><span class="line">    system(&quot;cls&quot;);  </span><br><span class="line">    printf(&quot;\n\n\n\n\t--------------------------------+ 基本操作 +--------------------------------\n\n&quot;);  </span><br><span class="line">    printf(&quot;\n\n\t按方向键移动卡片至无卡片的地方  W:上 S:下 A:左 D:右 M:返回菜单 R:换图 Q:退出\n\n&quot;);  </span><br><span class="line">    printf(&quot;\n\n\t---------------------------+ 浅悠悠（王骏）制作 +---------------------------\n\n&quot;);  </span><br><span class="line">    if (label == 0)  </span><br><span class="line">        printf(&quot;\n\n\t--------------------------+ 暂时没有任何游戏记录 +--------------------------\n\n&quot;);  </span><br><span class="line">    else  </span><br><span class="line">        for (i = 1; i &lt;= label; i++)  </span><br><span class="line">            printf(&quot;\n\n\t  第%02d名：%-18s  步数：%-5d   阶数：%-5d   时间：%-6.3lf分钟\n\n&quot;,  </span><br><span class="line">                i, sco[i].name, sco[i].steps, sco[i].steps2, sco[i].times);  </span><br><span class="line">    printf(&quot;\n\n\t----------------------------+ 按任意键返回菜单 +----------------------------\n\n&quot;);  </span><br><span class="line">    system(&quot;pause&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">void game() &#123;  </span><br><span class="line">    int n, *p;  </span><br><span class="line">    int mark;  </span><br><span class="line">    do &#123;  </span><br><span class="line">        system(&quot;cls&quot;);  </span><br><span class="line">        printf(&quot;\n\n\n\n\t------------------+ 请输入阶数（推荐3——20阶） +------------------\n\n&quot;);  </span><br><span class="line">        scanf(&quot;%d&quot;, &amp;n);  </span><br><span class="line">        if (n &gt; 1)  </span><br><span class="line">            p = (int*)calloc(n*n, sizeof(int));  </span><br><span class="line">        else  </span><br><span class="line">            printf(&quot;\t********************** 您输入有误，请重新输入 **********************\n\n&quot;), system(&quot;pause&quot;);  </span><br><span class="line">    &#125; while (n &lt;= 1);  </span><br><span class="line">next1:  </span><br><span class="line">    step = 0;  </span><br><span class="line">    start = clock();  </span><br><span class="line">    reset(p, n);  </span><br><span class="line">next2:  </span><br><span class="line">    map(p, n);  </span><br><span class="line">    if (check(p, n) == false) &#123;  </span><br><span class="line">        printf(&quot;\n\n\t=================+ 恭喜您完成游戏，请输入您的姓名 +=================\n\n&quot;);  </span><br><span class="line">        scanf(&quot;%s&quot;, sco[++label].name);  </span><br><span class="line">        sco[label].steps = step;  </span><br><span class="line">        sco[label].steps2 = n;  </span><br><span class="line">        sco[label].times = (double)(finish - start) / 40000;  </span><br><span class="line">        rank(sco, label);  </span><br><span class="line">        if (over() == false)  </span><br><span class="line">            return;  </span><br><span class="line">    &#125;  </span><br><span class="line">    mark = operation(p, n);  </span><br><span class="line">    if (mark == 1)  </span><br><span class="line">        goto next2;  </span><br><span class="line">    else if (mark == 2)  </span><br><span class="line">        goto next1;  </span><br><span class="line">    else if (mark == 3)  </span><br><span class="line">        return;  </span><br><span class="line">    else if (mark == 4)  </span><br><span class="line">        if (over() == false)  </span><br><span class="line">            return;  </span><br><span class="line">    free(p);  </span><br><span class="line">&#125;  </span><br><span class="line">int main()&#123;  </span><br><span class="line">    srand((int)time(0));      </span><br><span class="line">    do &#123;  </span><br><span class="line">        system(&quot;cls&quot;);  </span><br><span class="line">        printf(&quot;\t-------------+ 欢迎来到浅悠悠数字拼图，请选择您的操作 +-------------\n\n&quot;);  </span><br><span class="line">        printf(&quot;\t-----+  1.开始游戏  +-----+  2.帮助  +-----+  0(或其他).退出  +-----\n\n&quot;);  </span><br><span class="line">        printf(&quot;\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n&quot;);  </span><br><span class="line">        scanf(&quot;%s&quot;, buff);  </span><br><span class="line">        ch = buff[0];  </span><br><span class="line">        switch (ch)&#123;  </span><br><span class="line">        case&apos;1&apos;:  </span><br><span class="line">            game(); break;  </span><br><span class="line">        case&apos;2&apos;:  </span><br><span class="line">            help(); break;  </span><br><span class="line">        case&apos;0&apos;:  </span><br><span class="line">            exit(0);  </span><br><span class="line">        default:  </span><br><span class="line">            exit(0);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125; while (ch != &apos;0&apos;);  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -608,13 +545,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
           
-            <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
-          
-            <a href="/tags/node-js/" rel="tag"><i class="fa fa-tag"></i> node.js</a>
-          
-            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+            <a href="/tags/模拟/" rel="tag"><i class="fa fa-tag"></i> 模拟</a>
           
         </div>
       
@@ -627,18 +560,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/28/2018-04-28-2/" rel="prev" title="基于github搭建专属于自己的博客(进阶篇)">
-                基于github搭建专属于自己的博客(进阶篇) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/20/2018-04-20-2/" rel="prev" title="[杂项项目]纯C语言实现随机生成数独九宫格">
+                [杂项项目]纯C语言实现随机生成数独九宫格 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -696,17 +625,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -836,22 +756,6 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=470795480&auto=1&height=66"></iframe>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本流程："><span class="nav-number">1.</span> <span class="nav-text">基本流程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建前的准备"><span class="nav-number">1.1.</span> <span class="nav-text">搭建前的准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置Node-js"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置Git"><span class="nav-number">1.1.2.</span> <span class="nav-text">配置Git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github管理"><span class="nav-number">1.1.3.</span> <span class="nav-text">github管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置hexo"><span class="nav-number">1.3.</span> <span class="nav-text">配置hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接hexo与github-page"><span class="nav-number">1.4.</span> <span class="nav-text">连接hexo与github page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布文章"><span class="nav-number">1.5.</span> <span class="nav-text">发布文章</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

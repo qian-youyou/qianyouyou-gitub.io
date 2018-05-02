@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="hexo,github,node.js,前端," />
+  <meta name="keywords" content="C/C++,模拟,指针," />
 
 
 
@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
-<meta name="keywords" content="hexo,github,node.js,前端">
+<meta name="description" content="一年前的程序，可以生成一个数独的九宫格。当时想这种方法想了3天，终于实现了。由于当时刚熟悉指针，因此指针用的比较多。本人比较懒，先把代码贴出来，后序补充具体实现方法。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
+<meta name="keywords" content="C&#x2F;C++,模拟,指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于github搭建专属于自己的博客（基础篇）">
-<meta property="og:url" content="http://qianyouyou.cn/2018/04/28/2018-04-28-1/index.html">
+<meta property="og:title" content="[杂项项目]纯C语言实现随机生成数独九宫格">
+<meta property="og:url" content="http://qianyouyou.cn/2018/04/20/2018-04-20-2/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
+<meta property="og:description" content="一年前的程序，可以生成一个数独的九宫格。当时想这种方法想了3天，终于实现了。由于当时刚熟悉指针，因此指针用的比较多。本人比较懒，先把代码贴出来，后序补充具体实现方法。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-28T11:07:51.045Z">
+<meta property="og:updated_time" content="2018-05-02T03:54:20.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于github搭建专属于自己的博客（基础篇）">
-<meta name="twitter:description" content="以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程： 基本流程：1.搭建前的准备（包括node.js，git，github账户的配置） 2.安装hexo 3.配置hexo 4.连接hexo与githu">
+<meta name="twitter:title" content="[杂项项目]纯C语言实现随机生成数独九宫格">
+<meta name="twitter:description" content="一年前的程序，可以生成一个数独的九宫格。当时想这种方法想了3天，终于实现了。由于当时刚熟悉指针，因此指针用的比较多。本人比较懒，先把代码贴出来，后序补充具体实现方法。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626">
 
 
 
@@ -141,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://qianyouyou.cn/2018/04/28/2018-04-28-1/"/>
+  <link rel="canonical" href="http://qianyouyou.cn/2018/04/20/2018-04-20-2/"/>
 
 
 
 
 
-  <title>基于github搭建专属于自己的博客（基础篇） | 浅悠悠的个人博客</title>
+  <title>[杂项项目]纯C语言实现随机生成数独九宫格 | 浅悠悠的个人博客</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/28/2018-04-28-1/">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/20/2018-04-20-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王骏">
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于github搭建专属于自己的博客（基础篇）</h1>
+          <h1 class="post-title" itemprop="name headline">[杂项项目]纯C语言实现随机生成数独九宫格</h1>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-28T17:11:28+08:00">
-                2018-04-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T22:53:45+08:00">
+                2018-04-20
               </time>
             
 
@@ -403,8 +403,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序人生/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/程序人生/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
 
@@ -414,8 +414,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/程序人生/JavaScript/hexo教程/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo教程</span>
+                  <a href="/categories/程序人生/C-C/小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">小程序</span>
                   </a>
                 </span>
 
@@ -432,8 +432,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/28/2018-04-28-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/28/2018-04-28-1/" itemprop="commentCount"></span>
+                <a href="/2018/04/20/2018-04-20-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/20/2018-04-20-2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,191
+                  1,328
                 </span>
               
 
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  8
                 </span>
               
             </div>
@@ -497,71 +497,8 @@
       
 
       
-        <p>以前学Django时，看的视频教程就是以搭建博客为案例讲解的。虽然最终也没搭建成功，但是当时就想搭建属于自己的博客。偶然间了解到了hexo搭建博客，恰好最近有空，索性就利用这段时间搭建一个属于自己的博客。首先，我先介绍一下用hexo搭建博客的基本流程：</p>
-<h2 id="基本流程："><a href="#基本流程：" class="headerlink" title="基本流程："></a>基本流程：</h2><p>1.搭建前的准备（包括node.js，git，github账户的配置）</p>
-<p>2.安装hexo</p>
-<p>3.配置hexo</p>
-<p>4.连接hexo与github page</p>
-<p>5.发布文章</p>
-<h3 id="搭建前的准备"><a href="#搭建前的准备" class="headerlink" title="搭建前的准备"></a>搭建前的准备</h3><p>1.安装node.js</p>
-<p>2.安装git</p>
-<p>3.github账户管理</p>
-<h4 id="配置Node-js"><a href="#配置Node-js" class="headerlink" title="配置Node.js"></a>配置Node.js</h4><p>下载<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js</a>。根据自己电脑的配置自行安装。</p>
-<p>安装完成后打开终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-<p>进行是否安装成功测试。如不正确，回头检查哪一步错误。</p>
-<h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><p><a href="https://git-scm.com/" target="_blank" rel="noopener">git</a>官网。自行安装。</p>
-<p>安装完成后打开终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
-<p>以上步骤进行是否安装成功。如果安装失败自行面壁。</p>
-<h4 id="github管理"><a href="#github管理" class="headerlink" title="github管理"></a>github管理</h4><p>已拥有账号可跳过注册此步</p>
-<p>打开<a href="https://github.com/" target="_blank" rel="noopener">github</a>进行注册。</p>
-<p>登录后点击右上角加号，选择New repository新建代码库。</p>
-<p>进入代码库创建页面：</p>
-<p>在Repository name下填写yourname.github.io，Description (optional)下填写描述（此步可忽略）。</p>
-<p><strong>注意：我的github名称是qianyouyou ,这里就填qianyouyou.github.io</strong></p>
-<p>建立后，点击界面右侧的Settings，你将会打开这个库的setting页面，向下拖动，直到看见GitHub Pages。点击Automatic page generator，Github将会自动替你创建出一个gh-pages的页面。 如果你的配置没有问题，那么大约15分钟之后，yourname.github.io这个网址就可以正常访问了~ 如果yourname.github.io已经可以正常访问了，那么Github一侧的配置已经全部结束了。</p>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><p>在合适的地方创建文件夹，这里我以E:/blog 为例子讲解，首先在E盘目录下创建blog文件夹，终端锁定该文件夹</p>
-<p>在命令行输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g   //进行安装</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v   //检验是否安装成功。</span><br></pre></td></tr></table></figure>
-<h3 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h3><p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init   //初始化该文件夹</span><br></pre></td></tr></table></figure>
-<p>看到后面的“Start blogging with Hexo！”证明正在执行。</p>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install   //安装所需要的组件</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g   //生成</span><br></pre></td></tr></table></figure>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>开启服务器，访问该网址，正式体验Hexo</p>
-<h3 id="连接hexo与github-page"><a href="#连接hexo与github-page" class="headerlink" title="连接hexo与github page"></a>连接hexo与github page</h3><p>设置Git的user name和email（如果是第一次的话）在blog文件夹里面鼠标右键，点击Git Base Here。</p>
-<p>输入cd ~/.ssh，检查是否由.ssh的文件夹</p>
-<p>输入ls，列出该文件下的内容</p>
-<p>输入ssh-keygen -t rsa -C “<a href="mailto:xxxxxx@xx.com" target="_blank" rel="noopener">xxxxxx@xx.com</a>”，（你的邮箱）连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub（默认存储路径是：C:\Users\Administrator.ssh）。</p>
-<p> 输入eval “$(ssh-agent -s)”，添加密钥到ssh-agent</p>
-<p>再输入ssh-add ~/.ssh/id_rsa，添加生成的SSH key到ssh-agent</p>
-<p>登录Github，点击头像下的settings，添加ssh</p>
-<p>新建一个new ssh key，将id_rsa.pub文件里的内容复制上去</p>
-<p>输入ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>，测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了</p>
-<p><strong>问题：</strong>假如ssh-key配置失败，那么只要以下步骤就能完全解决</p>
-<p>首先，清除所有的key-pair<br>ssh-add -D<br>rm -r ~/.ssh<br>删除你在github中的public-key</p>
-<p>重新生成ssh密钥对<br>ssh-keygen -t rsa -C “<a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a>“</p>
-<p>接下来正常操作<br>在github上添加公钥public-key:<br>1、首先在你的终端运行 xclip -sel c ~/.ssh/id_rsa.pub将公钥内容复制到剪切板<br>2、在github上添加公钥时，直接复制即可<br>3、保存</p>
-<p>测试：<br>在终端 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-<p>配置Deployment，在其文件夹中，找到_config.yml文件，修改repo值（在末尾）</p>
-<p>repo值是你在github项目里的ssh（右下角）</p>
-<h3 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h3><p>新建一篇博客，在cmd执行命令：hexo new post “博客名”</p>
-<p>这时候在我的 电脑的目录下 E:\blog\source\ _posts 将会看到 article title.md 文件</p>
-<p>在生成以及部署文章之前，需要安装一个扩展：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g   // 生成</span><br><span class="line">hexo d   // 部署</span><br></pre></td></tr></table></figure>
-<p>当然你也可以执行下面的命令，相当于上面两条命令的效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d   //在部署前先生成</span><br></pre></td></tr></table></figure>
-<p>部署成功后访问你的地址：http://用户名.github.io。那么将看到生成的文章。</p>
-<p>到此为止，最基本的也是最全面的hexo+github搭建博客完结。</p>
+        <p>一年前的程序，可以生成一个数独的九宫格。当时想这种方法想了3天，终于实现了。由于当时刚熟悉指针，因此指针用的比较多。本人比较懒，先把代码贴出来，后序补充具体实现方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;  </span><br><span class="line">#include &lt;stdlib.h&gt;  </span><br><span class="line">#include &lt;time.h&gt;  </span><br><span class="line">  </span><br><span class="line">void main()  </span><br><span class="line">&#123;  </span><br><span class="line">    int a[9][9] = &#123; 0 &#125;;  </span><br><span class="line">    int *p[3][3], *m[3][6], *n[3][6], *r[9][4], *aa[9][9];  </span><br><span class="line">    int **q[9];  </span><br><span class="line">    int i, j, k, l, h, t, s = 0;  </span><br><span class="line">    void rank(int *x, int *y);  </span><br><span class="line">    bool check(int a[9][9], int n);  </span><br><span class="line">    srand((int)time(0));  </span><br><span class="line">  </span><br><span class="line">    for (i = 0; i &lt; 3; i++)  </span><br><span class="line">        for (j = 0; j &lt; 3; j++)  </span><br><span class="line">            p[i][j] = &amp;a[i * 3 + 1][j * 3 + 1];  </span><br><span class="line">    for (k = 0; k &lt; 9; k++)  </span><br><span class="line">        q[k] = &amp;p[k / 3][k % 3];  </span><br><span class="line">    for (i = 0; i &lt; 3; i++)  </span><br><span class="line">        for (j = 0; j &lt; 6; j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            m[i][j] = &amp;a[i * 3 + 1][2 * j - j / 2];  </span><br><span class="line">            n[i][j] = &amp;a[2 * j - j / 2][i * 3 + 1];  </span><br><span class="line">        &#125;  </span><br><span class="line">    for (k = 0; k &lt; 9; k++)  </span><br><span class="line">        for (l = 0; l &lt; 4; l++)  </span><br><span class="line">            r[k][l] = &amp;a[(k / 3) * 3 + (l / 2) * 2][(k % 3) * 3 + (l % 2) * 2];  </span><br><span class="line">    for (i = 0; i &lt; 9; i++)  </span><br><span class="line">        for (j = 0; j &lt; 9; j++)  </span><br><span class="line">            aa[i][j] = &amp;a[i][j];  </span><br><span class="line">step1:  </span><br><span class="line">    for (i = 0; i &lt; 9; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">    next1:  </span><br><span class="line">        **q[i] = rand() % 10;  </span><br><span class="line">        if (**q[i] == 0)  </span><br><span class="line">            goto next1;  </span><br><span class="line">        for (j = 0; j &lt; i; j++)  </span><br><span class="line">            if (**q[j] == **q[i])  </span><br><span class="line">                goto next1;  </span><br><span class="line">    &#125;  </span><br><span class="line">step2:  </span><br><span class="line">    for (i = 0; i &lt; 3; i++)  </span><br><span class="line">        for (j = 0; j &lt; 6; j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">        next2:  </span><br><span class="line">            *m[i][j] = rand() % 10;  </span><br><span class="line">            if (*m[i][j] == 0)  </span><br><span class="line">                goto next2;  </span><br><span class="line">            for (k = 0; k &lt; 3; k++)  </span><br><span class="line">                if (*m[i][j] == *p[i][k])  </span><br><span class="line">                    goto next2;  </span><br><span class="line">            for (k = 0; k &lt; j; k++)  </span><br><span class="line">                if (*m[i][j] == *m[i][k])  </span><br><span class="line">                    goto next2;  </span><br><span class="line">            for (k = 0; k &lt; i; k++)  </span><br><span class="line">                if (*m[i][j] == *m[k][j])  </span><br><span class="line">                    goto step2;  </span><br><span class="line">        &#125;  </span><br><span class="line">step3:  </span><br><span class="line">    for (i = 0; i &lt; 3; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">    next4:  </span><br><span class="line">        for (j = 0; j &lt; 6; j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">        next3:  </span><br><span class="line">            *n[i][j] = rand() % 10;  </span><br><span class="line">            if (*n[i][j] == 0)  </span><br><span class="line">                goto next3;  </span><br><span class="line">            for (k = 0; k &lt; 3; k++)  </span><br><span class="line">                if (*n[i][j] == *p[k][i])  </span><br><span class="line">                    goto next3;  </span><br><span class="line">            for (k = 0; k &lt; j; k++)  </span><br><span class="line">                if (*n[i][j] == *n[i][k])  </span><br><span class="line">                    goto next3;  </span><br><span class="line">            for (l = 0; l &lt; 2; l++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                if (*n[i][j] == *m[j / 2][i * 2 + l])  </span><br><span class="line">                    goto next4;  </span><br><span class="line">            &#125;  </span><br><span class="line">            for (k = 0; k &lt; i; k++)  </span><br><span class="line">                if (*n[i][j] == *n[k][j])  </span><br><span class="line">                    goto step3;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">step4:  </span><br><span class="line">    for (i = 0; i &lt; 3; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        for (h = 0; h &lt; 2; h++)  </span><br><span class="line">        &#123;  </span><br><span class="line">        next6:  </span><br><span class="line">            for (l = 0; l &lt; 3; l++)  </span><br><span class="line">                for (j = 0; j &lt; 2; j++)  </span><br><span class="line">                &#123;  </span><br><span class="line">                next5:  </span><br><span class="line">                    *r[i * 3 + l][h * 2 + j] = rand() % 10;  </span><br><span class="line">                    if (*r[i * 3 + l][h * 2 + j] == 0)  </span><br><span class="line">                        goto next5;  </span><br><span class="line">                    if (*r[i * 3 + l][h * 2 + j] == **q[i * 3 + l])  </span><br><span class="line">                        goto next5;  </span><br><span class="line">                    for (k = 0; k &lt; h * 2 + j; k++)  </span><br><span class="line">                        if (*r[i * 3 + l][h * 2 + j] == *r[i * 3 + l][k])  </span><br><span class="line">                            goto next5;  </span><br><span class="line">                    for (k = 0; k &lt; 2; k++)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        if (*r[i * 3 + l][h * 2 + j] == *m[i][l * 2 + k])  </span><br><span class="line">                            goto next5;  </span><br><span class="line">                        if (*r[i * 3 + l][h * 2 + j] == *n[l][i * 2 + k])  </span><br><span class="line">                            goto next5;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    for (k = 0; k &lt;= l * 3 + j * 2; k++)  </span><br><span class="line">                        for (t = 0; t &lt; k; t++)  </span><br><span class="line">                            if (a[i * 3 + h * 2][k] == a[i * 3 + h * 2][t])  </span><br><span class="line">                                goto next6;  </span><br><span class="line">                &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">step5:  </span><br><span class="line">    for (i = 0; i &lt; 3; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if (check(a, i) == false)  </span><br><span class="line">        &#123;  </span><br><span class="line">            for (j = 0; j &lt; 9; j++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                if (check(a, i) == false)  </span><br><span class="line">                    rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                else if (check(a, i) == true)  </span><br><span class="line">                    break;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if (check(a, i) == false)  </span><br><span class="line">        &#123;  </span><br><span class="line">            for (j = 0; j &lt; 9; j++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                for (k = 8; k &gt; j; k--)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                    rank(aa[k][i * 3], aa[k][i * 3 + 2]);  </span><br><span class="line">                    if (check(a, i) == false)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                        rank(aa[k][i * 3], aa[k][i * 3 + 2]);  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    else if (check(a, i) == true)  </span><br><span class="line">                        break;  </span><br><span class="line">                &#125;  </span><br><span class="line">                if (check(a, i) == true)  </span><br><span class="line">                    break;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if (check(a, i) == false)  </span><br><span class="line">        &#123;  </span><br><span class="line">            for (l = 0; l &lt; 9; l++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                for (j = l + 1; j &lt; 9; j++)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    for (k = 8; k &gt; j; k--)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        rank(aa[l][i * 3], aa[l][i * 3 + 2]);  </span><br><span class="line">                        rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                        rank(aa[k][i * 3], aa[k][i * 3 + 2]);  </span><br><span class="line">                        if (check(a, i) == false)  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            rank(aa[l][i * 3], aa[l][i * 3 + 2]);  </span><br><span class="line">                            rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                            rank(aa[k][i * 3], aa[k][i * 3 + 2]);  </span><br><span class="line">                        &#125;  </span><br><span class="line">                        else if (check(a, i) == true)  </span><br><span class="line">                            break;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    if (check(a, i) == true)  </span><br><span class="line">                        break;  </span><br><span class="line">                &#125;  </span><br><span class="line">                if (check(a, i) == true)  </span><br><span class="line">                    break;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if (check(a, i) == false)  </span><br><span class="line">        &#123;  </span><br><span class="line">            for (l = 0; l &lt; 6; l++)  </span><br><span class="line">            &#123;  </span><br><span class="line">                for (h = l + 1; h &lt; 7; h++)  </span><br><span class="line">                &#123;  </span><br><span class="line">                    for (j = h + 1; j &lt; 8; j++)  </span><br><span class="line">                    &#123;  </span><br><span class="line">                        for (k = 8; k &gt; j; k--)  </span><br><span class="line">                        &#123;  </span><br><span class="line">                            rank(aa[l][i * 3], aa[l][i * 3 + 2]);  </span><br><span class="line">                            rank(aa[h][i * 3], aa[h][i * 3 + 2]);  </span><br><span class="line">                            rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                            rank(aa[k][i * 3], aa[k][i * 3 + 2]);  </span><br><span class="line">                            if (check(a, i) == false)  </span><br><span class="line">                            &#123;  </span><br><span class="line">                                rank(aa[l][i * 3], aa[l][i * 3 + 2]);  </span><br><span class="line">                                rank(aa[h][i * 3], aa[h][i * 3 + 2]);  </span><br><span class="line">                                rank(aa[j][i * 3], aa[j][i * 3 + 2]);  </span><br><span class="line">                                rank(aa[k][i * 3], aa[k][i * 3 + 2]);  </span><br><span class="line">                            &#125;  </span><br><span class="line">                            else if (check(a, i) == true)  </span><br><span class="line">                                break;  </span><br><span class="line">                        &#125;  </span><br><span class="line">                        if (check(a, i) == true)  </span><br><span class="line">                            break;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                    if (check(a, i) == true)  </span><br><span class="line">                        break;  </span><br><span class="line">                &#125;  </span><br><span class="line">                if (check(a, i) == true)  </span><br><span class="line">                    break;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if (check(a, i) == false)  </span><br><span class="line">            goto step4;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    printf(&quot;+---------------+---------------+---------------+\n&quot;);  </span><br><span class="line">    printf(&quot;|               |               |               |\n&quot;);  </span><br><span class="line">    for (i = 0; i &lt; 9; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        printf(&quot;|   &quot;);  </span><br><span class="line">        for (j = 0; j &lt; 9; j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            printf(&quot;%-4d&quot;, a[i][j]);  </span><br><span class="line">            if ((j + 1) % 3 == 0)  </span><br><span class="line">                printf(&quot;|   &quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">        printf(&quot;\n&quot;);  </span><br><span class="line">        printf(&quot;|               |               |               |\n&quot;);  </span><br><span class="line">        if ((i + 1) % 3 == 0)  </span><br><span class="line">        &#123;  </span><br><span class="line">            printf(&quot;+---------------+---------------+---------------+\n&quot;);  </span><br><span class="line">            if (i &lt; 8)  </span><br><span class="line">                printf(&quot;|               |               |               |\n&quot;);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    system(&quot;pause&quot;);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">void rank(int *x, int *y)  </span><br><span class="line">&#123;  </span><br><span class="line">    int t;  </span><br><span class="line">    t = *x;  </span><br><span class="line">    *x = *y;  </span><br><span class="line">    *y = t;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">bool check(int a[9][9], int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    int i, j;  </span><br><span class="line">    for (i = 0; i &lt; 9; i++)  </span><br><span class="line">        for (j = 0; j &lt; i; j++)  </span><br><span class="line">            if (a[i][n * 3] == a[j][n * 3])  </span><br><span class="line">                return false;  </span><br><span class="line">    return true;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -608,13 +545,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
           
-            <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
+            <a href="/tags/模拟/" rel="tag"><i class="fa fa-tag"></i> 模拟</a>
           
-            <a href="/tags/node-js/" rel="tag"><i class="fa fa-tag"></i> node.js</a>
-          
-            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+            <a href="/tags/指针/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
           
         </div>
       
@@ -627,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/04/20/2018-04-20/" rel="next" title="[杂项项目]纯C语言实现控制台小游戏——数字拼图">
+                <i class="fa fa-chevron-left"></i> [杂项项目]纯C语言实现控制台小游戏——数字拼图
               </a>
             
           </div>
@@ -637,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/28/2018-04-28-2/" rel="prev" title="基于github搭建专属于自己的博客(进阶篇)">
-                基于github搭建专属于自己的博客(进阶篇) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/22/2018-04-22/" rel="prev" title="[杂项项目]C语言打造智能AI小游戏——三子棋">
+                [杂项项目]C语言打造智能AI小游戏——三子棋 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -696,17 +631,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -836,22 +762,6 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=470795480&auto=1&height=66"></iframe>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本流程："><span class="nav-number">1.</span> <span class="nav-text">基本流程：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建前的准备"><span class="nav-number">1.1.</span> <span class="nav-text">搭建前的准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置Node-js"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置Node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置Git"><span class="nav-number">1.1.2.</span> <span class="nav-text">配置Git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#github管理"><span class="nav-number">1.1.3.</span> <span class="nav-text">github管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.2.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置hexo"><span class="nav-number">1.3.</span> <span class="nav-text">配置hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接hexo与github-page"><span class="nav-number">1.4.</span> <span class="nav-text">连接hexo与github page</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布文章"><span class="nav-number">1.5.</span> <span class="nav-text">发布文章</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
