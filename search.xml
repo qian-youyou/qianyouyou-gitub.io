@@ -11,8 +11,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>贪心</tag>
         <tag>二分</tag>
       </tags>
@@ -28,8 +28,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>ZOJ</tag>
       </tags>
   </entry>
@@ -43,10 +43,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -59,10 +59,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -75,10 +75,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -94,6 +94,21 @@
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[爬虫]python自动调用浏览器访问网页增加访问量]]></title>
+    <url>%2F2018%2F04%2F22%2F2018-04-22-1%2F</url>
+    <content type="text"><![CDATA[该程序主要是为了增长访问量而写的，主要针对一些访问量与用户信息无关的网页，比如CSDN。当然前提是python安装相应的库。原理很简单，没有用到什么高端的爬虫技术，没有用到正则表达式什么的。其实就是调用你的浏览器，然后程序自动帮你打开你的博客网页，隔一段时间自动关闭，以此循环，刷访问量。不多说了，直接贴代码吧。 123456789101112131415161718192021import webbrowser as web import time import os import random count = random.randint(1, 2) j = 0 aa = [80042845,80025162,80035076,80025133,80025068,80024813,79986200,79935658,79933992,79783339,79747976,79747322,79734593,79734363,79706272,79700188,79725018,79724244] while j &lt; count: i = 0 while i &lt;= 8: k = random.randint(0,17) web.open_new_tab(&apos;https://blog.csdn.net/qian_youyou/article/details/&apos;+str(aa[k])) i = i + 1 time.sleep(3) else: time.sleep(20) os.system(&apos;taskkill /F /IM chrome.exe&apos;) # print &apos;time webbrower closed&apos; j = j + 1]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>python</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬虫</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -167,9 +182,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>模拟</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -183,9 +198,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>算法</tag>
         <tag>BFS</tag>
         <tag>pat天梯赛</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -199,8 +214,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
+        <tag>pat天梯赛</tag>
         <tag>stl</tag>
         <tag>vector</tag>
       </tags>

@@ -44,9 +44,9 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="贪心" scheme="http://qianyouyou.cn/tags/%E8%B4%AA%E5%BF%83/"/>
     
@@ -81,9 +81,9 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="ZOJ" scheme="http://qianyouyou.cn/tags/ZOJ/"/>
     
@@ -115,13 +115,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
-    
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -151,13 +151,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
-    
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -187,13 +187,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
-    
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -227,6 +227,39 @@
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="npm" scheme="http://qianyouyou.cn/tags/npm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[爬虫]python自动调用浏览器访问网页增加访问量</title>
+    <link href="http://qianyouyou.cn/2018/04/22/2018-04-22-1/"/>
+    <id>http://qianyouyou.cn/2018/04/22/2018-04-22-1/</id>
+    <published>2018-04-22T15:07:01.000Z</published>
+    <updated>2018-05-02T12:00:23.950Z</updated>
+    
+    <content type="html"><![CDATA[<p>该程序主要是为了增长访问量而写的，主要针对一些访问量与用户信息无关的网页，比如CSDN。当然前提是python安装相应的库。原理很简单，没有用到什么高端的爬虫技术，没有用到正则表达式什么的。其实就是调用你的浏览器，然后程序自动帮你打开你的博客网页，隔一段时间自动关闭，以此循环，刷访问量。不多说了，直接贴代码吧。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import webbrowser as web  </span><br><span class="line">import time  </span><br><span class="line">import os  </span><br><span class="line">import random  </span><br><span class="line">  </span><br><span class="line">count = random.randint(1, 2)  </span><br><span class="line">j = 0  </span><br><span class="line">aa = [80042845,80025162,80035076,80025133,80025068,80024813,79986200,79935658,79933992,79783339,79747976,79747322,79734593,79734363,79706272,79700188,79725018,79724244]  </span><br><span class="line">while j &lt; count:  </span><br><span class="line">    i = 0  </span><br><span class="line">    while i &lt;= 8:  </span><br><span class="line">        k = random.randint(0,17)  </span><br><span class="line">        web.open_new_tab(&apos;https://blog.csdn.net/qian_youyou/article/details/&apos;+str(aa[k]))  </span><br><span class="line">        i = i + 1  </span><br><span class="line">        time.sleep(3)  </span><br><span class="line">    else:  </span><br><span class="line">        time.sleep(20)  </span><br><span class="line">        os.system(&apos;taskkill /F /IM chrome.exe&apos;)  </span><br><span class="line">        # print &apos;time webbrower closed&apos;  </span><br><span class="line">  </span><br><span class="line">    j = j + 1</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;该程序主要是为了增长访问量而写的，主要针对一些访问量与用户信息无关的网页，比如CSDN。当然前提是python安装相应的库。原理很简单，没有用到什么高端的爬虫技术，没有用到正则表达式什么的。其实就是调用你的浏览器，然后程序自动帮你打开你的博客网页，隔一段时间自动关闭，以此循
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="python" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/python/"/>
+    
+      <category term="爬虫" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/python/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="python" scheme="http://qianyouyou.cn/tags/python/"/>
+    
+      <category term="爬虫" scheme="http://qianyouyou.cn/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -392,11 +425,11 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="模拟" scheme="http://qianyouyou.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
     
       <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -427,11 +460,11 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="BFS" scheme="http://qianyouyou.cn/tags/BFS/"/>
     
       <category term="pat天梯赛" scheme="http://qianyouyou.cn/tags/pat%E5%A4%A9%E6%A2%AF%E8%B5%9B/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -463,9 +496,9 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
-      <category term="pat天梯赛" scheme="http://qianyouyou.cn/tags/pat%E5%A4%A9%E6%A2%AF%E8%B5%9B/"/>
-    
       <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="pat天梯赛" scheme="http://qianyouyou.cn/tags/pat%E5%A4%A9%E6%A2%AF%E8%B5%9B/"/>
     
       <category term="stl" scheme="http://qianyouyou.cn/tags/stl/"/>
     
