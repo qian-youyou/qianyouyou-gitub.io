@@ -156,4 +156,53 @@
         <tag>模拟</tag>
       </tags>
   </entry>
+  <entry>
+    <title><![CDATA[[模拟]来一瓶82年拉菲（酒杯问题）]]></title>
+    <url>%2F2018%2F03%2F28%2F2018-03-28%2F</url>
+    <content type="text"><![CDATA[问题描述： 悠神最近过生日，朋友纷纷来贺。现有一瓶82年拉菲与若干酒杯。酒杯呈三角形酒塔摆放，即每一个酒杯摆放在下一层两个酒杯中间，最下面一层酒杯摆放在桌面上。共有N(1&lt;=N&lt;=20)层酒杯，第k层共有k个酒杯。悠神将拉菲倒进第一层的酒杯中，速度为1杯/s，倒满后酒会向左右两个方向溢出，假设会全部溢出到这个酒杯下面相邻的两个酒杯中。然而悠神有洁癖，他不喜欢浪费，更不喜欢浸湿他心爱的桌布，所以请你计算一下第几秒之后桌布会被浸湿。 eg：如图所示为3层时的情况。第一层倒满需要1s，第二次倒满需要2s，第三层首次倒满需要2s。所以共需1+2+2=5s。 输入： 输入N(1&lt;=N&lt;=20)。 输出： 桌布浸湿时至少所需时间（取整数）。 输入样例： 2 输出样例： 3 分析： 桌布浸湿只与最下层最中间位置何时倒满有关，因此只需计算最下层中间位置酒杯的状态。由于时间取整，所以只需模拟出第一杯共倒了多少杯酒，即为多少s。而每一个酒杯共倒了多少酒与上一层相邻两个酒杯相关，及第i层第j个酒杯的酒只与第i-1层第j-1个和第j个酒杯的酒相关。及wine[i][j]=wine[i-1][j-1]+wine[i-1][j];由于酒杯有两种状态，及未满状态和倒满状态，所以要判断wine[i-1]层的酒是否&gt;1。 12345678910111213141516171819202122#include&lt;stdio.h&gt; #include&lt;string.h&gt; #define MAXN 20 int main() &#123; int N; while (~scanf(&quot;%d&quot;, &amp;N)) &#123; double wine[MAXN + 1][MAXN + 1] = &#123; 0 &#125;; double temp = 0; while (wine[N][N / 2 + 1] &lt; 1) &#123; memset(wine, 0, sizeof(wine)); temp++; wine[1][1] = temp; for (int i = 1; i &lt;= N; i++) &#123; for (int j = 1; j &lt;= i; j++) &#123; wine[i][j] += (wine[i - 1][j - 1] &gt; 1 ? (wine[i - 1][j - 1] - 1) / 2.0 : 0) + (wine[i - 1][j] &gt; 1 ? (wine[i - 1][j] - 1) / 2.0 : 0); &#125; &#125; &#125; printf(&quot;%g\n&quot;, wine[1][1]); &#125; return 0; &#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>模拟</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>模拟</tag>
+        <tag>ACM/ICPC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[BFS]愿天下有情人都是失散多年的兄妹]]></title>
+    <url>%2F2018%2F03%2F26%2F2018-03-26-2%2F</url>
+    <content type="text"><![CDATA[题目概述：L2-016. 愿天下有情人都是失散多年的兄妹时间限制 200 ms 内存限制 65536 kB 代码长度限制 8000 B 判题程序 Standard 作者 陈越 呵呵。大家都知道五服以内不得通婚，即两个人最近的共同祖先如果在五代以内（即本人、父母、祖父母、曾祖父母、高祖父母）则不可通婚。本题就请你帮助一对有情人判断一下，他们究竟是否可以成婚？ 输入格式： 输入第一行给出一个正整数N（2 &lt;= N &lt;= 104），随后N行，每行按以下格式给出一个人的信息： 本人ID 性别 父亲ID 母亲ID 其中ID是5位数字，每人不同；性别M代表男性、F代表女性。如果某人的父亲或母亲已经不可考，则相应的ID位置上标记为-1。 接下来给出一个正整数K，随后K行，每行给出一对有情人的ID，其间以空格分隔。 注意：题目保证两个人是同辈，每人只有一个性别，并且血缘关系网中没有乱伦或隔辈成婚的情况。 输出格式： 对每一对有情人，判断他们的关系是否可以通婚：如果两人是同性，输出“Never Mind”；如果是异性并且关系出了五服，输出“Yes”；如果异性关系未出五服，输出“No”。 输入样例： 12345678910111213141516171819202122232425262728293031323334352400001 M 01111 -100002 F 02222 0333300003 M 02222 0333300004 F 04444 0333300005 M 04444 0555500006 F 04444 0555500007 F 06666 0777700008 M 06666 0777700009 M 00001 0000200010 M 00003 0000600011 F 00005 0000700012 F 00008 0888800013 F 00009 0001100014 M 00010 0999900015 M 00010 0999900016 M 10000 0001200017 F -1 0001200018 F 11000 0001300019 F 11100 0001800020 F 00015 1111000021 M 11100 0002000022 M 00016 -100023 M 10012 0001700024 M 00022 10013900021 0002400019 0002400011 0001200022 0001800001 0000400013 0001600017 0001500019 0002100010 00011 输出样例： 123456789Never MindYesNever MindNoYesNoYesNoNo 1分析： 利用广度优先搜索，将每个人及双亲放入集合mab中，假如集合长度为改变，则说明mab中已存在这个人，则证明双方是近亲。visit用来记录层数。五层时结束搜索。 AC代码BFS： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;iostream&gt; #include&lt;set&gt; #include&lt;queue&gt; #include&lt;cstring&gt; #define MAXN 100005 using namespace std; struct inf &#123; int fa; int ma; char sex; &#125;; inf node[MAXN]; int visit[MAXN]; bool flag[MAXN]; int N; bool BFS(int x1,int x2) &#123; memset(visit, 0, sizeof(visit)); queue&lt;int&gt;family; set&lt;int&gt;mab; family.push(x1); family.push(x2); visit[x1] = 1; visit[x2] = 1; while (!family.empty()) &#123; int top = family.front(); family.pop(); int size = mab.size(); mab.insert(top); if (mab.size() == size) &#123; return true; break; &#125; if (visit[top] &lt;= 4) &#123; if (node[top].fa) &#123; family.push(node[top].fa); visit[node[top].fa] += visit[top] + 1; &#125; if (node[top].ma) &#123; family.push(node[top].ma); visit[node[top].ma] += visit[top] + 1; &#125; &#125; &#125; return false; &#125; int main() &#123; cin &gt;&gt; N; memset(node, 0, sizeof(node)); memset(flag, 0, sizeof(flag)); while (N--) &#123; int id, fa, ma; char ch[2]; scanf(&quot;%d%s%d%d&quot;, &amp;id, ch, &amp;fa, &amp;ma); node[id].sex = ch[0]; flag[id] = true; if (fa != -1) &#123; node[id].fa = fa; node[fa].sex = &apos;M&apos;; flag[fa] = true; &#125; if (ma != -1) &#123; node[id].ma = ma; node[ma].sex = &apos;F&apos;; flag[ma] = true; &#125; &#125; cin &gt;&gt; N; while (N--) &#123; int per1, per2; cin &gt;&gt; per1 &gt;&gt; per2; if (node[per1].sex == node[per2].sex) printf(&quot;Never Mind\n&quot;); else &#123; if (BFS(per1, per2)) printf(&quot;No\n&quot;); else printf(&quot;Yes\n&quot;); &#125; &#125; return 0; &#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>pat天梯赛</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[vector的嵌套实现二维数组，解决矩阵相乘问题]]></title>
+    <url>%2F2018%2F03%2F26%2F2018-03-26%2F</url>
+    <content type="text"><![CDATA[定义vector的元素可以是一个vector。比如， vector&lt;vector&gt; 即表示一个二维int数组，里层的vector表示第一维， 外层的vector表示第二维。 例题描述：L1-048. 矩阵A乘以B时间限制 400 ms 内存限制 65536 kB 代码长度限制 8000 B 判题程序 Standard 给定两个矩阵A和B，要求你计算它们的乘积矩阵AB。需要注意的是，只有规模匹配的矩阵才可以相乘。即若A有Ra行、Ca列，B有Rb行、Cb列，则只有Ca与Rb相等时，两个矩阵才能相乘。 输入格式： 输入先后给出两个矩阵A和B。对于每个矩阵，首先在一行中给出其行数R和列数C，随后R行，每行给出C个整数，以1个空格分隔，且行首尾没有多余的空格。输入保证两个矩阵的R和C都是正数，并且所有整数的绝对值不超过100。 输出格式： 若输入的两个矩阵的规模是匹配的，则按照输入的格式输出乘积矩阵AB，否则输出“Error: Ca != Rb”，其中Ca是A的列数，Rb是B的行数。 输入样例1： 12345672 31 2 34 5 63 47 8 9 0-1 -2 -3 -45 6 7 8 输出样例1： 1232 420 22 24 1653 58 63 28 输入样例2： 123456783 238 2643 -50 173 2-11 5799 6881 72 输出样例2： 1Error: 2 != 3 代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;iostream&gt; #include&lt;vector&gt; using namespace std; int M1, N1, M2, N2; int main() &#123; cin &gt;&gt; M1 &gt;&gt; N1; vector&lt;int&gt;alie(N1); vector&lt;vector&lt;int&gt;&gt;ahang(M1); for (int i = 0; i &lt; M1; i++) &#123; for (int j = 0; j &lt; N1; j++) &#123; scanf(&quot;%d&quot;, &amp;alie[j]); &#125; ahang[i] = alie; &#125; cin &gt;&gt; M2 &gt;&gt; N2; vector&lt;int&gt;blie(N2); vector&lt;vector&lt;int&gt;&gt;bhang(M2); for (int i = 0; i &lt; M2; i++) &#123; for (int j = 0; j &lt; N2; j++) &#123; scanf(&quot;%d&quot;, &amp;blie[j]); &#125; bhang[i] = blie; &#125; if (N1 != M2) printf(&quot;Error: %d != %d\n&quot;, N1, M2); else &#123; vector&lt;int&gt;anslie(N2); vector&lt;vector&lt;int&gt;&gt;anshang(M1); for (int i = 0; i &lt; M1; i++) &#123; for (int j = 0; j &lt; N2; j++) &#123; anslie[j] = 0; for (int k = 0; k &lt; N1; k++) anslie[j] += ahang[i][k] * bhang[k][j]; &#125; anshang[i] = anslie; &#125; printf(&quot;%d %d\n&quot;, M1, N2); for (int i = 0; i &lt; M1; i++) &#123; for (int j = 0; j &lt; N2 - 1; j++) printf(&quot;%d &quot;, anshang[i][j]); printf(&quot;%d\n&quot;, anshang[i][N2 - 1]); &#125; &#125; return 0; &#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>stl</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>stl</tag>
+        <tag>vector</tag>
+        <tag>pat天梯赛</tag>
+      </tags>
+  </entry>
 </search>
