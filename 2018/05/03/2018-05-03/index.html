@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C/C++," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="物联网时代，微信和qq带给我们生活诸多便利。如今办公学习交流通讯已经越来越离不开微信和qq了。但是目前仍存在一些缺陷，比如如果想某条消息发给全部好友，必须得一个一个的发送。尤其是节假日发送节日祝福时该缺陷越发明显。微信针对此现象推出了群发功能，但qq目前还没有该功能。因此此次借此小程序练习C++，用C++打造qq聊天一键群发功能。该小程序还在完善中。目前只能作用于电脑Windows操作系统，并且电">
+<meta name="keywords" content="C&#x2F;C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[C++实战qqHelper]C++打造qq消息一键群发工具">
+<meta property="og:url" content="http://qianyouyou.cn/2018/05/03/2018-05-03/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="物联网时代，微信和qq带给我们生活诸多便利。如今办公学习交流通讯已经越来越离不开微信和qq了。但是目前仍存在一些缺陷，比如如果想某条消息发给全部好友，必须得一个一个的发送。尤其是节假日发送节日祝福时该缺陷越发明显。微信针对此现象推出了群发功能，但qq目前还没有该功能。因此此次借此小程序练习C++，用C++打造qq聊天一键群发功能。该小程序还在完善中。目前只能作用于电脑Windows操作系统，并且电">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/YBFUJCK%29LL7%7B%5BO4OJ0Q$8$1.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/SB%7D%7DDL9H3VT9M@QQ$E%7DIK~2.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/QQHelper.ico">
+<meta property="og:updated_time" content="2018-05-03T10:26:03.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[C++实战qqHelper]C++打造qq消息一键群发工具">
+<meta name="twitter:description" content="物联网时代，微信和qq带给我们生活诸多便利。如今办公学习交流通讯已经越来越离不开微信和qq了。但是目前仍存在一些缺陷，比如如果想某条消息发给全部好友，必须得一个一个的发送。尤其是节假日发送节日祝福时该缺陷越发明显。微信针对此现象推出了群发功能，但qq目前还没有该功能。因此此次借此小程序练习C++，用C++打造qq聊天一键群发功能。该小程序还在完善中。目前只能作用于电脑Windows操作系统，并且电">
+<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2018/05/03/2018-05-03/"/>
+
+
+
+
+
+  <title>[C++实战qqHelper]C++打造qq消息一键群发工具 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://your-url" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/05/03/2018-05-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[C++实战qqHelper]C++打造qq消息一键群发工具</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T17:42:24+08:00">
+                2018-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/项目实战/" itemprop="url" rel="index">
+                    <span itemprop="name">项目实战</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/03/2018-05-03/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/03/2018-05-03/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,882
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>物联网时代，微信和qq带给我们生活诸多便利。如今办公学习交流通讯已经越来越离不开微信和qq了。但是目前仍存在一些缺陷，比如如果想某条消息发给全部好友，必须得一个一个的发送。尤其是节假日发送节日祝福时该缺陷越发明显。微信针对此现象推出了群发功能，但qq目前还没有该功能。因此此次借此小程序练习C++，用C++打造qq聊天一键群发功能。该小程序还在完善中。目前只能作用于电脑Windows操作系统，并且电脑聊天界面发送按钮需切换到按Enter直接发送，不要选择Ctrl+Enter。当前仅有发送功能，因此消息的对象是所有好友。之后有时间会陆续添加暂停，继续等操作。</p>
+<p>具体代码以及实现过程在代码中逐条说明。这里就不具体说明了。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/YBFUJCK%29LL7%7B%5BO4OJ0Q$8$1.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/SB%7D%7DDL9H3VT9M@QQ$E%7DIK~2.png" alt=""></p>
+<p>QQmessage.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#pragma once</span><br><span class="line">class QQmessage</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	QQmessage();</span><br><span class="line">	~QQmessage();</span><br><span class="line"></span><br><span class="line">	//类的入口 </span><br><span class="line">	static QQmessage *Instance()</span><br><span class="line">	&#123;</span><br><span class="line">		static QQmessage object;</span><br><span class="line">		</span><br><span class="line">		return &amp;object;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//入口函数</span><br><span class="line">	void Start(const wchar_t *msg);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	//开始线程</span><br><span class="line">	static unsigned int WINAPI RunThreadproc(void* param);</span><br><span class="line">	</span><br><span class="line">	//发送主函数</span><br><span class="line">	void SendAll();</span><br><span class="line"></span><br><span class="line">	//找到QQ窗口</span><br><span class="line">	HWND FindQQWindow();</span><br><span class="line"></span><br><span class="line">	//模拟按键</span><br><span class="line">	void PressKey(BYTE vkey);</span><br><span class="line"></span><br><span class="line">	//发送消息</span><br><span class="line">	void SendMsg();</span><br><span class="line"></span><br><span class="line">	//添加文本到剪贴板</span><br><span class="line">	void AddTextToClipboard();</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	CString m_msg;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>QQmessage.cpp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stdafx.h&quot;</span><br><span class="line">#include &quot;QQmessage.h&quot;</span><br><span class="line"></span><br><span class="line">QQmessage::QQmessage()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QQmessage::~QQmessage()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//入口函数</span><br><span class="line">void QQmessage::Start(const wchar_t *msg)</span><br><span class="line">&#123;</span><br><span class="line">	m_msg = CString(msg); //输入的文本</span><br><span class="line"></span><br><span class="line">	_beginthreadex(NULL, 0, QQmessage::RunThreadproc, NULL, 0, NULL);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//开始线程</span><br><span class="line">unsigned int QQmessage::RunThreadproc(void* param)</span><br><span class="line">&#123;</span><br><span class="line">	QQmessage::Instance()-&gt;SendAll();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//发送主函数</span><br><span class="line">void QQmessage::SendAll()</span><br><span class="line">&#123;</span><br><span class="line">	int errorTimes = 0;  //打开对话框错误的次数!</span><br><span class="line">	//把text复制到剪贴板</span><br><span class="line">	AddTextToClipboard();</span><br><span class="line"></span><br><span class="line">	//技术到家. 做项目能力.</span><br><span class="line">	while (errorTimes&lt;= 4)</span><br><span class="line">	&#123;</span><br><span class="line">		HWND hQQWnd = FindQQWindow();</span><br><span class="line">		HWND hFrontWnd = GetForegroundWindow(); </span><br><span class="line"></span><br><span class="line">		if (hQQWnd != hFrontWnd)</span><br><span class="line">		&#123;</span><br><span class="line">			if (!SetForegroundWindow(hQQWnd))</span><br><span class="line">			&#123;</span><br><span class="line">				MessageBox(NULL, L&quot;没有找到QQ窗口&quot;, NULL, NULL);</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (errorTimes == 0)</span><br><span class="line">		&#123;</span><br><span class="line">			PressKey(VK_TAB);</span><br><span class="line">			PressKey(VK_TAB);</span><br><span class="line">		&#125;</span><br><span class="line">		PressKey(VK_DOWN);</span><br><span class="line">		PressKey(VK_RETURN);</span><br><span class="line"></span><br><span class="line">		HWND hCurFrontWnd = GetForegroundWindow();</span><br><span class="line">		if (hCurFrontWnd == hQQWnd)  //</span><br><span class="line">		&#123;</span><br><span class="line">			++errorTimes;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		errorTimes = 0;</span><br><span class="line">		SendMsg();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//找到QQ窗口</span><br><span class="line">HWND QQmessage::FindQQWindow()</span><br><span class="line">&#123;</span><br><span class="line">	HWND hWnd = FindWindow(L&quot;TXGuiFoundation&quot;,L&quot;QQ&quot;);  //Find  Window //获取QQ的窗口!!!</span><br><span class="line">	</span><br><span class="line">	//辅助工具就是这么做的</span><br><span class="line">	return hWnd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//模拟按键</span><br><span class="line">void QQmessage::PressKey(BYTE vkey)</span><br><span class="line">&#123;</span><br><span class="line">	keybd_event(vkey, 0, 0, 0);  //按下(0)和弹起(KEYEVENTF_KEYUP)</span><br><span class="line">	Sleep(100);</span><br><span class="line">	keybd_event(vkey, 0, KEYEVENTF_KEYUP, 0);  //敲击TAB</span><br><span class="line">	Sleep(100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//发送消息  16GU盘</span><br><span class="line">void QQmessage::SendMsg()</span><br><span class="line">&#123;</span><br><span class="line">	//粘贴  +  发送</span><br><span class="line">	keybd_event(VK_CONTROL, 0, 0, 0);  //按下(0)和弹起(KEYEVENTF_KEYUP)</span><br><span class="line">	Sleep(100);</span><br><span class="line">	keybd_event(0x56, 0, 0, 0);  //按下(0)和弹起(KEYEVENTF_KEYUP)</span><br><span class="line">	Sleep(100);</span><br><span class="line"></span><br><span class="line">	keybd_event(0x56, 0, KEYEVENTF_KEYUP, 0);  //敲击TAB</span><br><span class="line">	Sleep(100);</span><br><span class="line">	keybd_event(VK_CONTROL, 0, KEYEVENTF_KEYUP, 0);  //敲击TAB</span><br><span class="line">	Sleep(100); //你好 鲜花刷起来!</span><br><span class="line"></span><br><span class="line">	//发送</span><br><span class="line">	PressKey(VK_RETURN);</span><br><span class="line">	PressKey(VK_ESCAPE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加文本到剪贴板</span><br><span class="line">void QQmessage::AddTextToClipboard()</span><br><span class="line">&#123;</span><br><span class="line">	//1.把文本拷贝到全局变量!  </span><br><span class="line">	int memLen = m_msg.GetLength() * sizeof(wchar_t) + 2;</span><br><span class="line"></span><br><span class="line">	HANDLE hGloBal = GlobalAlloc(GHND,memLen);   //malloc  calloc  relloc </span><br><span class="line"></span><br><span class="line">	void* memAddr = GlobalLock(hGloBal);</span><br><span class="line"></span><br><span class="line">	ZeroMemory(memAddr, memLen);</span><br><span class="line"></span><br><span class="line">	memcpy(memAddr, (const void*)m_msg.GetBuffer(), memLen);</span><br><span class="line"></span><br><span class="line">	GlobalUnlock(hGloBal);</span><br><span class="line"></span><br><span class="line">	//操作剪贴板!  怎么把大象装进冰箱!</span><br><span class="line">	OpenClipboard(NULL);</span><br><span class="line">	EmptyClipboard();</span><br><span class="line">	SetClipboardData(CF_UNICODETEXT, hGloBal);</span><br><span class="line">	CloseClipboard();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>QQHelperDlg.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// QQHelperDlg.h : 头文件</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#pragma once</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// CQQHelperDlg 对话框</span><br><span class="line">class CQQHelperDlg : public CDialogEx</span><br><span class="line">&#123;</span><br><span class="line">// 构造</span><br><span class="line">public:</span><br><span class="line">	CQQHelperDlg(CWnd* pParent = NULL);	// 标准构造函数</span><br><span class="line"></span><br><span class="line">// 对话框数据</span><br><span class="line">#ifdef AFX_DESIGN_TIME</span><br><span class="line">	enum &#123; IDD = IDD_QQHELPER_DIALOG &#125;;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">	protected:</span><br><span class="line">	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 支持</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 实现</span><br><span class="line">protected:</span><br><span class="line">	HICON m_hIcon;</span><br><span class="line"></span><br><span class="line">	// 生成的消息映射函数</span><br><span class="line">	virtual BOOL OnInitDialog();</span><br><span class="line">	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);</span><br><span class="line">	afx_msg void OnPaint();</span><br><span class="line">	afx_msg HCURSOR OnQueryDragIcon();</span><br><span class="line">	DECLARE_MESSAGE_MAP()</span><br><span class="line">public:</span><br><span class="line">	CString m_Msg;</span><br><span class="line">	afx_msg void OnBnClickedButton1();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>QQHelperDlg.cpp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// QQHelperDlg.cpp : 实现文件</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#include &quot;stdafx.h&quot;</span><br><span class="line">#include &quot;QQHelper.h&quot;</span><br><span class="line">#include &quot;QQHelperDlg.h&quot;</span><br><span class="line">#include &quot;afxdialogex.h&quot;</span><br><span class="line">#include &quot;QQmessage.h&quot;</span><br><span class="line"></span><br><span class="line">#ifdef _DEBUG</span><br><span class="line">#define new DEBUG_NEW</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 用于应用程序“关于”菜单项的 CAboutDlg 对话框</span><br><span class="line"></span><br><span class="line">class CAboutDlg : public CDialogEx</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	CAboutDlg();</span><br><span class="line"></span><br><span class="line">// 对话框数据</span><br><span class="line">#ifdef AFX_DESIGN_TIME</span><br><span class="line">	enum &#123; IDD = IDD_ABOUTBOX &#125;;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">	protected:</span><br><span class="line">	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持</span><br><span class="line"></span><br><span class="line">// 实现</span><br><span class="line">protected:</span><br><span class="line">	DECLARE_MESSAGE_MAP()</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CAboutDlg::DoDataExchange(CDataExchange* pDX)</span><br><span class="line">&#123;</span><br><span class="line">	CDialogEx::DoDataExchange(pDX);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)</span><br><span class="line">END_MESSAGE_MAP()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// CQQHelperDlg 对话框</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CQQHelperDlg::CQQHelperDlg(CWnd* pParent /*=NULL*/)</span><br><span class="line">	: CDialogEx(IDD_QQHELPER_DIALOG, pParent)</span><br><span class="line">	, m_Msg(_T(&quot;&quot;))</span><br><span class="line">&#123;</span><br><span class="line">	m_hIcon = AfxGetApp()-&gt;LoadIcon(IDR_MAINFRAME);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CQQHelperDlg::DoDataExchange(CDataExchange* pDX)</span><br><span class="line">&#123;</span><br><span class="line">	CDialogEx::DoDataExchange(pDX);</span><br><span class="line">	DDX_Text(pDX, IDC_EDIT1, m_Msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">BEGIN_MESSAGE_MAP(CQQHelperDlg, CDialogEx)</span><br><span class="line">	ON_WM_SYSCOMMAND()</span><br><span class="line">	ON_WM_PAINT()</span><br><span class="line">	ON_WM_QUERYDRAGICON()</span><br><span class="line">	ON_BN_CLICKED(IDC_BUTTON1, &amp;CQQHelperDlg::OnBnClickedButton1)</span><br><span class="line">END_MESSAGE_MAP()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// CQQHelperDlg 消息处理程序</span><br><span class="line"></span><br><span class="line">BOOL CQQHelperDlg::OnInitDialog()</span><br><span class="line">&#123;</span><br><span class="line">	CDialogEx::OnInitDialog();</span><br><span class="line"></span><br><span class="line">	// 将“关于...”菜单项添加到系统菜单中。</span><br><span class="line"></span><br><span class="line">	// IDM_ABOUTBOX 必须在系统命令范围内。</span><br><span class="line">	ASSERT((IDM_ABOUTBOX &amp; 0xFFF0) == IDM_ABOUTBOX);</span><br><span class="line">	ASSERT(IDM_ABOUTBOX &lt; 0xF000);</span><br><span class="line"></span><br><span class="line">	CMenu* pSysMenu = GetSystemMenu(FALSE);</span><br><span class="line">	if (pSysMenu != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		BOOL bNameValid;</span><br><span class="line">		CString strAboutMenu;</span><br><span class="line">		bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX);</span><br><span class="line">		ASSERT(bNameValid);</span><br><span class="line">		if (!strAboutMenu.IsEmpty())</span><br><span class="line">		&#123;</span><br><span class="line">			pSysMenu-&gt;AppendMenu(MF_SEPARATOR);</span><br><span class="line">			pSysMenu-&gt;AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动</span><br><span class="line">	//  执行此操作</span><br><span class="line">	SetIcon(m_hIcon, TRUE);			// 设置大图标</span><br><span class="line">	SetIcon(m_hIcon, FALSE);		// 设置小图标</span><br><span class="line"></span><br><span class="line">	// TODO: 在此添加额外的初始化代码</span><br><span class="line"></span><br><span class="line">	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void CQQHelperDlg::OnSysCommand(UINT nID, LPARAM lParam)</span><br><span class="line">&#123;</span><br><span class="line">	if ((nID &amp; 0xFFF0) == IDM_ABOUTBOX)</span><br><span class="line">	&#123;</span><br><span class="line">		CAboutDlg dlgAbout;</span><br><span class="line">		dlgAbout.DoModal();</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		CDialogEx::OnSysCommand(nID, lParam);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 如果向对话框添加最小化按钮，则需要下面的代码</span><br><span class="line">//  来绘制该图标。  对于使用文档/视图模型的 MFC 应用程序，</span><br><span class="line">//  这将由框架自动完成。</span><br><span class="line"></span><br><span class="line">void CQQHelperDlg::OnPaint()</span><br><span class="line">&#123;</span><br><span class="line">	if (IsIconic())</span><br><span class="line">	&#123;</span><br><span class="line">		CPaintDC dc(this); // 用于绘制的设备上下文</span><br><span class="line"></span><br><span class="line">		SendMessage(WM_ICONERASEBKGND, reinterpret_cast&lt;WPARAM&gt;(dc.GetSafeHdc()), 0);</span><br><span class="line"></span><br><span class="line">		// 使图标在工作区矩形中居中</span><br><span class="line">		int cxIcon = GetSystemMetrics(SM_CXICON);</span><br><span class="line">		int cyIcon = GetSystemMetrics(SM_CYICON);</span><br><span class="line">		CRect rect;</span><br><span class="line">		GetClientRect(&amp;rect);</span><br><span class="line">		int x = (rect.Width() - cxIcon + 1) / 2;</span><br><span class="line">		int y = (rect.Height() - cyIcon + 1) / 2;</span><br><span class="line"></span><br><span class="line">		// 绘制图标</span><br><span class="line">		dc.DrawIcon(x, y, m_hIcon);</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		CDialogEx::OnPaint();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//当用户拖动最小化窗口时系统调用此函数取得光标</span><br><span class="line">//显示。</span><br><span class="line">HCURSOR CQQHelperDlg::OnQueryDragIcon()</span><br><span class="line">&#123;</span><br><span class="line">	return static_cast&lt;HCURSOR&gt;(m_hIcon);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//发送</span><br><span class="line">void CQQHelperDlg::OnBnClickedButton1()</span><br><span class="line">&#123;</span><br><span class="line">	// TODO: 在此添加控件通知处理程序代码</span><br><span class="line">	UpdateData(TRUE);</span><br><span class="line"></span><br><span class="line">	QQmessage::Instance()-&gt;Start(m_Msg.GetBuffer());//m_Msg实例编辑框的变量  文字</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>QQHelper.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// QQHelper.h : PROJECT_NAME 应用程序的主头文件</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#pragma once</span><br><span class="line"></span><br><span class="line">#ifndef __AFXWIN_H__</span><br><span class="line">	#error &quot;在包含此文件之前包含“stdafx.h”以生成 PCH 文件&quot;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#include &quot;resource.h&quot;		// 主符号</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// CQQHelperApp: </span><br><span class="line">// 有关此类的实现，请参阅 QQHelper.cpp</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">class CQQHelperApp : public CWinApp</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	CQQHelperApp();</span><br><span class="line"></span><br><span class="line">// 重写</span><br><span class="line">public:</span><br><span class="line">	virtual BOOL InitInstance();</span><br><span class="line"></span><br><span class="line">// 实现</span><br><span class="line"></span><br><span class="line">	DECLARE_MESSAGE_MAP()</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">extern CQQHelperApp theApp;</span><br></pre></td></tr></table></figure>
+<p>QQHelper.cpp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// QQHelper.cpp : 定义应用程序的类行为。</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#include &quot;stdafx.h&quot;</span><br><span class="line">#include &quot;QQHelper.h&quot;</span><br><span class="line">#include &quot;QQHelperDlg.h&quot;</span><br><span class="line"></span><br><span class="line">#ifdef _DEBUG</span><br><span class="line">#define new DEBUG_NEW</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// CQQHelperApp</span><br><span class="line"></span><br><span class="line">BEGIN_MESSAGE_MAP(CQQHelperApp, CWinApp)</span><br><span class="line">	ON_COMMAND(ID_HELP, &amp;CWinApp::OnHelp)</span><br><span class="line">END_MESSAGE_MAP()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// CQQHelperApp 构造</span><br><span class="line"></span><br><span class="line">CQQHelperApp::CQQHelperApp()</span><br><span class="line">&#123;</span><br><span class="line">	// 支持重新启动管理器</span><br><span class="line">	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_RESTART;</span><br><span class="line"></span><br><span class="line">	// TODO: 在此处添加构造代码，</span><br><span class="line">	// 将所有重要的初始化放置在 InitInstance 中</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 唯一的一个 CQQHelperApp 对象</span><br><span class="line"></span><br><span class="line">CQQHelperApp theApp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// CQQHelperApp 初始化</span><br><span class="line"></span><br><span class="line">BOOL CQQHelperApp::InitInstance()</span><br><span class="line">&#123;</span><br><span class="line">	// 如果一个运行在 Windows XP 上的应用程序清单指定要</span><br><span class="line">	// 使用 ComCtl32.dll 版本 6 或更高版本来启用可视化方式，</span><br><span class="line">	//则需要 InitCommonControlsEx()。  否则，将无法创建窗口。</span><br><span class="line">	INITCOMMONCONTROLSEX InitCtrls;</span><br><span class="line">	InitCtrls.dwSize = sizeof(InitCtrls);</span><br><span class="line">	// 将它设置为包括所有要在应用程序中使用的</span><br><span class="line">	// 公共控件类。</span><br><span class="line">	InitCtrls.dwICC = ICC_WIN95_CLASSES;</span><br><span class="line">	InitCommonControlsEx(&amp;InitCtrls);</span><br><span class="line"></span><br><span class="line">	CWinApp::InitInstance();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	AfxEnableControlContainer();</span><br><span class="line"></span><br><span class="line">	// 创建 shell 管理器，以防对话框包含</span><br><span class="line">	// 任何 shell 树视图控件或 shell 列表视图控件。</span><br><span class="line">	CShellManager *pShellManager = new CShellManager;</span><br><span class="line"></span><br><span class="line">	// 激活“Windows Native”视觉管理器，以便在 MFC 控件中启用主题</span><br><span class="line">	CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows));</span><br><span class="line"></span><br><span class="line">	// 标准初始化</span><br><span class="line">	// 如果未使用这些功能并希望减小</span><br><span class="line">	// 最终可执行文件的大小，则应移除下列</span><br><span class="line">	// 不需要的特定初始化例程</span><br><span class="line">	// 更改用于存储设置的注册表项</span><br><span class="line">	// TODO: 应适当修改该字符串，</span><br><span class="line">	// 例如修改为公司或组织名</span><br><span class="line">	SetRegistryKey(_T(&quot;应用程序向导生成的本地应用程序&quot;));</span><br><span class="line"></span><br><span class="line">	CQQHelperDlg dlg;</span><br><span class="line">	m_pMainWnd = &amp;dlg;</span><br><span class="line">	INT_PTR nResponse = dlg.DoModal();</span><br><span class="line">	if (nResponse == IDOK)</span><br><span class="line">	&#123;</span><br><span class="line">		// TODO: 在此放置处理何时用</span><br><span class="line">		//  “确定”来关闭对话框的代码</span><br><span class="line">	&#125;</span><br><span class="line">	else if (nResponse == IDCANCEL)</span><br><span class="line">	&#123;</span><br><span class="line">		// TODO: 在此放置处理何时用</span><br><span class="line">		//  “取消”来关闭对话框的代码</span><br><span class="line">	&#125;</span><br><span class="line">	else if (nResponse == -1)</span><br><span class="line">	&#123;</span><br><span class="line">		TRACE(traceAppMsg, 0, &quot;警告: 对话框创建失败，应用程序将意外终止。\n&quot;);</span><br><span class="line">		TRACE(traceAppMsg, 0, &quot;警告: 如果您在对话框上使用 MFC 控件，则无法 #define _AFX_NO_MFC_CONTROLS_IN_DIALOGS。\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 删除上面创建的 shell 管理器。</span><br><span class="line">	if (pShellManager != NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		delete pShellManager;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">#ifndef _AFXDLL</span><br><span class="line">	ControlBarCleanUp();</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，</span><br><span class="line">	//  而不是启动应用程序的消息泵。</span><br><span class="line">	return FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>stdafx.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">// stdafx.h : 标准系统包含文件的包含文件，</span><br><span class="line">// 或是经常使用但不常更改的</span><br><span class="line">// 特定于项目的包含文件</span><br><span class="line"></span><br><span class="line">#pragma once</span><br><span class="line"></span><br><span class="line">#ifndef VC_EXTRALEAN</span><br><span class="line">#define VC_EXTRALEAN            // 从 Windows 头中排除极少使用的资料</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#include &quot;targetver.h&quot;</span><br><span class="line"></span><br><span class="line">#define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS      // 某些 CString 构造函数将是显式的</span><br><span class="line"></span><br><span class="line">// 关闭 MFC 对某些常见但经常可放心忽略的警告消息的隐藏</span><br><span class="line">#define _AFX_ALL_WARNINGS</span><br><span class="line"></span><br><span class="line">#include &lt;afxwin.h&gt;         // MFC 核心组件和标准组件</span><br><span class="line">#include &lt;afxext.h&gt;         // MFC 扩展</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#include &lt;afxdisp.h&gt;        // MFC 自动化类</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#ifndef _AFX_NO_OLE_SUPPORT</span><br><span class="line">#include &lt;afxdtctl.h&gt;           // MFC 对 Internet Explorer 4 公共控件的支持</span><br><span class="line">#endif</span><br><span class="line">#ifndef _AFX_NO_AFXCMN_SUPPORT</span><br><span class="line">#include &lt;afxcmn.h&gt;             // MFC 对 Windows 公共控件的支持</span><br><span class="line">#endif // _AFX_NO_AFXCMN_SUPPORT</span><br><span class="line"></span><br><span class="line">#include &lt;afxcontrolbars.h&gt;     // 功能区和控件条的 MFC 支持</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#ifdef _UNICODE</span><br><span class="line">#if defined _M_IX86</span><br><span class="line">#pragma comment(linker,&quot;/manifestdependency:\&quot;type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; processorArchitecture=&apos;x86&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos;\&quot;&quot;)</span><br><span class="line">#elif defined _M_X64</span><br><span class="line">#pragma comment(linker,&quot;/manifestdependency:\&quot;type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; processorArchitecture=&apos;amd64&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos;\&quot;&quot;)</span><br><span class="line">#else</span><br><span class="line">#pragma comment(linker,&quot;/manifestdependency:\&quot;type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; processorArchitecture=&apos;*&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos;\&quot;&quot;)</span><br><span class="line">#endif</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>stdafx.cpp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// stdafx.cpp : 只包括标准包含文件的源文件</span><br><span class="line">// QQHelper.pch 将作为预编译头</span><br><span class="line">// stdafx.obj 将包含预编译类型信息</span><br><span class="line"></span><br><span class="line">#include &quot;stdafx.h&quot;</span><br></pre></td></tr></table></figure>
+<p>Resource.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//&#123;&#123;NO_DEPENDENCIES&#125;&#125;</span><br><span class="line">// Microsoft Visual C++ 生成的包含文件。</span><br><span class="line">// 供 QQHelper.rc 使用</span><br><span class="line">//</span><br><span class="line">#define IDM_ABOUTBOX                    0x0010</span><br><span class="line">#define IDD_ABOUTBOX                    100</span><br><span class="line">#define IDS_ABOUTBOX                    101</span><br><span class="line">#define IDD_QQHELPER_DIALOG             102</span><br><span class="line">#define IDR_MAINFRAME                   128</span><br><span class="line">#define IDC_EDIT1                       1000</span><br><span class="line">#define IDC_BUTTON1                     1001</span><br><span class="line"></span><br><span class="line">// Next default values for new objects</span><br><span class="line">// </span><br><span class="line">#ifdef APSTUDIO_INVOKED</span><br><span class="line">#ifndef APSTUDIO_READONLY_SYMBOLS</span><br><span class="line">#define _APS_NEXT_RESOURCE_VALUE        130</span><br><span class="line">#define _APS_NEXT_COMMAND_VALUE         32771</span><br><span class="line">#define _APS_NEXT_CONTROL_VALUE         1002</span><br><span class="line">#define _APS_NEXT_SYMED_VALUE           101</span><br><span class="line">#endif</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>targetver.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#pragma once</span><br><span class="line"></span><br><span class="line">// 包括 SDKDDKVer.h 将定义可用的最高版本的 Windows 平台。</span><br><span class="line"></span><br><span class="line">// 如果要为以前的 Windows 平台生成应用程序，请包括 WinSDKVer.h，并将</span><br><span class="line">// 将 _WIN32_WINNT 宏设置为要支持的平台，然后再包括 SDKDDKVer.h。</span><br><span class="line"></span><br><span class="line">#include &lt;SDKDDKVer.h&gt;</span><br></pre></td></tr></table></figure>
+<p>资源文件</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/QQHelper.ico" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/01/2018-05-01/" rel="next" title="[贪心+二分]HUST-Walking in the Forest+POJ-疯牛（求最小化最大值最大化最小值两道经典例题）">
+                <i class="fa fa-chevron-left"></i> [贪心+二分]HUST-Walking in the Forest+POJ-疯牛（求最小化最大值最大化最小值两道经典例题）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠的csdn博客" target="_blank">浅悠悠的csdn博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="张家辉的博客" target="_blank">张家辉的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=470795480&auto=1&height=66"></iframe>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'KP4KPCDu5JetpiSXYLKBSore-gzGzoHsz',
+        appKey: 'qrQV9W7POQWUwaTc45wyg4GB',
+        placeholder: '~\(*>∀<*)/~来呀！快活呀！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
