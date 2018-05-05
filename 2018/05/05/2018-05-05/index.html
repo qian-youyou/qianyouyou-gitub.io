@@ -109,7 +109,7 @@
 <meta property="og:description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示：  二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-5-1.png">
-<meta property="og:updated_time" content="2018-05-05T15:19:12.510Z">
+<meta property="og:updated_time" content="2018-05-05T16:07:32.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[图论]二分图匹配基本算法之匈牙利算法解析">
 <meta name="twitter:description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示：  二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E">
@@ -462,7 +462,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,022
+                  1,111
                 </span>
               
 
@@ -511,9 +511,9 @@
 <li>M为G的最大匹配当且仅当不存在相对于M的增广路径。 </li>
 </ol>
 <h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bool find(int x) &#123;</span><br><span class="line">	for (int i = 1; i &lt;= N; i++) &#123;</span><br><span class="line">		if (road[x][i] &amp;&amp; !vis[i]) &#123;</span><br><span class="line">			vis[i] = true;</span><br><span class="line">			if (!link[i] || find(link[i])) &#123;</span><br><span class="line">				link[i] = x;</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bool find(int x) &#123;	//寻找增广路</span><br><span class="line">	for (int i = 1; i &lt;= N; i++) &#123;	//遍历Y部分顶点</span><br><span class="line">		if (road[x][i] &amp;&amp; !vis[i]) &#123;	//Y某顶点与X有路且未标记</span><br><span class="line">			vis[i] = true;</span><br><span class="line">			if (!link[i] || find(link[i])) &#123;	//如果Y顶点当前未与其他X匹配则直接与该点匹配，否则寻找增广路，然后将Y顶点与该顶点匹配</span><br><span class="line">				link[i] = x;</span><br><span class="line">				return true;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>主程序调用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 1; i &lt;= N; i++)&#123;</span><br><span class="line">  memset(vis,false,sizeof(vis));</span><br><span class="line">  if(find(i))&#123;</span><br><span class="line">    ans++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 1; i &lt;= N; i++)&#123;	//对每一个X部分顶点进行遍历</span><br><span class="line">  memset(vis,false,sizeof(vis));</span><br><span class="line">  if(find(i))&#123;	//寻找增光路</span><br><span class="line">    ans++;	//最大匹配数量加1</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>例题：POJ3041</p>
 <p>给一个N*N的矩阵，有些格子有障碍，要求我们消除这些障碍，问每次消除一行或一列的障碍，</p>
 <p>最少要几次。这里将每行x看成一个X结点，每列Y看成一个Y结点，障碍的坐标x,y看成X到Y的</p>
