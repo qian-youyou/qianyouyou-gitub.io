@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[[图论]二分图匹配两大基本算法之匈牙利算法解析]]></title>
+    <title><![CDATA[[图论]二分图匹配基本算法之匈牙利算法解析]]></title>
     <url>%2F2018%2F05%2F05%2F2018-05-05%2F</url>
     <content type="text"><![CDATA[二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示： 二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E}中的任意两条边都不依附于同一个顶点，则称M是一个匹配。极大匹配(Maximal Matching)是指在当前已完成的匹配下,无法再通过增加未完成匹配的边的方式来增加匹配的边数。最大匹配(maximum matching)是所有极大匹配当中边数最大的一个匹配。选择这样的边数最大的子集称为图的最大匹配问题。如果一个匹配中，图中的每个顶点都和图中某条边相关联，则称此匹配为完全匹配，也称作完备匹配。 增广路经增广路径的定义：设M为二分图G已匹配边的集合，若P是图G中一条连通两个未匹配顶点的路径（P的起点在X部，终点在Y部，反之亦可），并且属M的边和不属M的边(即已匹配和待匹配的边)在P上交替出现，则称P为相对于M的一条增广路径。增广路径是一条“交错轨”。也就是说, 它的第一条边是目前还没有参与匹配的,第二条边参与了匹配,第三条边没有..最后一条边没有参与匹配,并且起点和终点还没有被选择过，这样交错进行,显然P有奇数条边 由增广路的定义可以推出下述三个结论： P的路径长度必定为奇数，第一条边和最后一条边都不属于M，因为两个端点分属两个集合，且未匹配。 P经过取反操作可以得到一个更大的匹配M’。 M为G的最大匹配当且仅当不存在相对于M的增广路径。 匈牙利算法匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。 123456789101112bool find(int x) &#123; for (int i = 1; i &lt;= N; i++) &#123; if (road[x][i] &amp;&amp; !vis[i]) &#123; vis[i] = true; if (!link[i] || find(link[i])) &#123; link[i] = x; return true; &#125; &#125; &#125; return false;&#125; 主程序调用： 123456for(int i = 1; i &lt;= N; i++)&#123; memset(vis,false,sizeof(vis)); if(find(i))&#123; ans++; &#125;&#125; 例题：POJ3041 给一个N*N的矩阵，有些格子有障碍，要求我们消除这些障碍，问每次消除一行或一列的障碍， 最少要几次。这里将每行x看成一个X结点，每列Y看成一个Y结点，障碍的坐标x,y看成X到Y的 一条边，构建出图后，就变成了找最少的点，使得这些点与所有的边相邻，即最小点覆盖问题。 又继续敲了一遍匈牙利算法 12345678910111213141516171819202122232425262728293031323334353637383940#include&lt;cstdio&gt;#include&lt;iostream&gt;#include&lt;cstring&gt;using namespace std;int N, K, ans;int road[520][520], head[520];bool vis[520];bool find(int x) &#123; for (int i = 1; i &lt;= N; i++) &#123; if (road[x][i] &amp;&amp; !vis[i]) &#123; vis[i] = true; if (!head[i] || find(head[i])) &#123; head[i] = x; return true; &#125; &#125; &#125; return false;&#125;int main() &#123; while (cin &gt;&gt; N &gt;&gt; K) &#123; ans = 0; int x, y; memset(road, 0, sizeof(road)); memset(head, 0, sizeof(head)); for (int i = 1; i &lt;= K; i++) &#123; cin &gt;&gt; x &gt;&gt; y; road[x][y] = 1; &#125; for (int i = 1; i &lt;= N; i++) &#123; memset(vis, false, sizeof(vis)); if (find(i)) &#123; ans++; &#125; &#125; cout &lt;&lt; ans &lt;&lt; endl; &#125; return 0;&#125;]]></content>
       <categories>
@@ -322,8 +322,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>进制</tag>
         <tag>C陷阱与缺陷</tag>
+        <tag>进制</tag>
       </tags>
   </entry>
   <entry>

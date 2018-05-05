@@ -100,18 +100,20 @@
 
 
 
-<meta name="description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示： 二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E}">
+<meta name="description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示：  二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E">
 <meta name="keywords" content="ACM&#x2F;ICPC,KM算法,图论,二分图匹配,匈牙利算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[图论]二分图匹配两大基本算法之匈牙利算法解析">
+<meta property="og:title" content="[图论]二分图匹配基本算法之匈牙利算法解析">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/05/2018-05-05/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示： 二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E}">
+<meta property="og:description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示：  二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-5-1.png">
 <meta property="og:updated_time" content="2018-05-05T15:19:12.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[图论]二分图匹配两大基本算法之匈牙利算法解析">
-<meta name="twitter:description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示： 二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E}">
+<meta name="twitter:title" content="[图论]二分图匹配基本算法之匈牙利算法解析">
+<meta name="twitter:description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示：  二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E">
+<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-5-1.png">
 
 
 
@@ -147,7 +149,7 @@
 
 
 
-  <title>[图论]二分图匹配两大基本算法之匈牙利算法解析 | 浅悠悠的个人博客</title>
+  <title>[图论]二分图匹配基本算法之匈牙利算法解析 | 浅悠悠的个人博客</title>
   
 
 
@@ -356,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[图论]二分图匹配两大基本算法之匈牙利算法解析</h1>
+          <h1 class="post-title" itemprop="name headline">[图论]二分图匹配基本算法之匈牙利算法解析</h1>
         
 
         <div class="post-meta">
@@ -499,6 +501,7 @@
       
         <h2 id="二分图概念"><a href="#二分图概念" class="headerlink" title="二分图概念"></a>二分图概念</h2><p>二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。</p>
 <p>简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示：</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-5-1.png" alt=""></p>
 <h2 id="二分图匹配"><a href="#二分图匹配" class="headerlink" title="二分图匹配"></a>二分图匹配</h2><p>给定一个二分图G，在G的一个子图M中，M的边集{E}中的任意两条边都不依附于同一个顶点，则称M是一个匹配。<br>极大匹配(Maximal Matching)是指在当前已完成的匹配下,无法再通过增加未完成匹配的边的方式来增加匹配的边数。最大匹配(maximum matching)是所有极大匹配当中边数最大的一个匹配。选择这样的边数最大的子集称为图的最大匹配问题。<br>如果一个匹配中，图中的每个顶点都和图中某条边相关联，则称此匹配为完全匹配，也称作完备匹配。</p>
 <h2 id="增广路经"><a href="#增广路经" class="headerlink" title="增广路经"></a>增广路经</h2><p>增广路径的定义：设M为二分图G已匹配边的集合，若P是图G中一条连通两个未匹配顶点的路径（P的起点在X部，终点在Y部，反之亦可），并且属M的边和不属M的边(即已匹配和待匹配的边)在P上交替出现，则称P为相对于M的一条增广路径。<br>增广路径是一条“交错轨”。也就是说, 它的第一条边是目前还没有参与匹配的,第二条边参与了匹配,第三条边没有..最后一条边没有参与匹配,并且起点和终点还没有被选择过，这样交错进行,显然P有奇数条边</p>
 <p>由增广路的定义可以推出下述三个结论：</p>
