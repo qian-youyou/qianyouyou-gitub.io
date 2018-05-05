@@ -247,8 +247,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>DFS</tag>
-        <tag>位运算</tag>
         <tag>ACM/ICPC</tag>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -367,8 +367,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>ACM/ICPC</tag>
         <tag>模拟</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -383,8 +383,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>pat天梯赛</tag>
         <tag>BFS</tag>
+        <tag>pat天梯赛</tag>
       </tags>
   </entry>
   <entry>
@@ -398,10 +398,10 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>stl</tag>
-        <tag>vector</tag>
+        <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>vector</tag>
       </tags>
   </entry>
   <entry>
