@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/5-6-5.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/5-6-6.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/5-6-7.png">
-<meta property="og:updated_time" content="2018-05-06T13:04:18.281Z">
+<meta property="og:updated_time" content="2018-05-06T14:49:32.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[图论]二分图匹配基本算法之匈牙利算法解析">
 <meta name="twitter:description" content="二分图概念二分图（二部图），图论一种特殊的模型。设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（ i，j ）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。 简而言之，一个图所有的顶点被分成两部分，同一部分的顶点之间没有边。如图所示：  二分图匹配给定一个二分图G，在G的一个子图M中，M的边集{E">
@@ -469,7 +469,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,364
+                  1,404
                 </span>
               
 
@@ -485,7 +485,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -517,7 +517,14 @@
 <li>P经过取反操作可以得到一个更大的匹配M’。</li>
 <li>M为G的最大匹配当且仅当不存在相对于M的增广路径。 </li>
 </ol>
-<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。具体过程如图所示：</p>
+<h2 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h2><p>匈牙利算法是基于Hall定理中充分性证明的思想，它是部图匹配最常见的算法，该算法的核心就是寻找增广路径，它是一种用增广路径求二分图最大匹配的算法。</p>
+<p>匈牙利算法基本模式：</p>
+<hr>
+<p>初始时最大匹配为空</p>
+<p>​    while 找到增广路经</p>
+<p>​        do 把增广路径加入到最大匹配中去</p>
+<hr>
+<p>具体过程如图所示：</p>
 <p>1.如图所示，1可以与a，c匹配，2可以与a，b匹配，3可以与c匹配</p>
 <p><img src="http://p7woygi8q.bkt.clouddn.com/5-6-1.png" alt=""></p>
 <p>2.首先将对1进行搜索，1可以与a匹配，则将1与a相连</p>
@@ -707,7 +714,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -718,7 +725,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -729,7 +736,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
