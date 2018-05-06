@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,ACM/ICPC,图论,二分图匹配,KM算法," />
 
 
 
@@ -100,16 +100,29 @@
 
 
 
-<meta name="description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="浅悠悠的个人博客">
-<meta property="og:url" content="http://qianyouyou.cn/tags/位运算/index.html">
+<meta name="description" content="最佳匹配如果一个二分图，X部和Y部的顶点数相等，若存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。 如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 带权二分图的权值最大的完备匹配称为最佳匹配。二分图的最佳匹配不一定是二分图的最大权匹配。 可以添加一些权值为0的边，使得最佳匹配和最大权匹配统一起来。 如图所示：">
+<meta name="keywords" content="算法,ACM&#x2F;ICPC,图论,二分图匹配,KM算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[图论]二分图匹配基本算法之KM算法解析">
+<meta property="og:url" content="http://qianyouyou.cn/2018/05/06/2018-05-06/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta property="og:description" content="最佳匹配如果一个二分图，X部和Y部的顶点数相等，若存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。 如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 带权二分图的权值最大的完备匹配称为最佳匹配。二分图的最佳匹配不一定是二分图的最大权匹配。 可以添加一些权值为0的边，使得最佳匹配和最大权匹配统一起来。 如图所示：">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/a.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/b.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/1.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/3.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/4.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/5.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/6.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/7.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/8.png">
+<meta property="og:updated_time" content="2018-05-06T14:14:59.663Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅悠悠的个人博客">
-<meta name="twitter:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="twitter:title" content="[图论]二分图匹配基本算法之KM算法解析">
+<meta name="twitter:description" content="最佳匹配如果一个二分图，X部和Y部的顶点数相等，若存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。 如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 带权二分图的权值最大的完备匹配称为最佳匹配。二分图的最佳匹配不一定是二分图的最大权匹配。 可以添加一些权值为0的边，使得最佳匹配和最大权匹配统一起来。 如图所示：">
+<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/a.png">
 
 
 
@@ -139,13 +152,13 @@
 
 
 
-  <link rel="canonical" href="http://qianyouyou.cn/tags/位运算/"/>
+  <link rel="canonical" href="http://qianyouyou.cn/2018/05/06/2018-05-06/"/>
 
 
 
 
 
-  <title>标签: 位运算 | 浅悠悠的个人博客</title>
+  <title>[图论]二分图匹配基本算法之KM算法解析 | 浅悠悠的个人博客</title>
   
 
 
@@ -164,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
 <a href="https://your-url" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
@@ -323,82 +336,312 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>位运算<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/05/06/2018-05-06/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/13/2018-04-13/" itemprop="url">
-              
-                <span itemprop="name">[位运算]dfs+位运算解决N皇后问题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">[图论]二分图匹配基本算法之KM算法解析</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-13T23:11:06+08:00"
-              content="2018-04-13" >
-          04-13
-        </time>
-      </div>
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-06T20:57:15+08:00">
+                2018-05-06
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/" itemprop="url" rel="index">
+                    <span itemprop="name">训练之路</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/算法/二分图匹配/" itemprop="url" rel="index">
+                    <span itemprop="name">二分图匹配</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/06/2018-05-06/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/06/2018-05-06/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,660
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/13/2018-04-13 - 1/" itemprop="url">
-              
-                <span itemprop="name">[位运算]位运算的4个简单应用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-13T20:17:46+08:00"
-              content="2018-04-13" >
-          04-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h2 id="最佳匹配"><a href="#最佳匹配" class="headerlink" title="最佳匹配"></a>最佳匹配</h2><p>如果一个二分图，X部和Y部的顶点数相等，若存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。</p>
+<p>如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。</p>
+<p><strong>带权</strong>二分图的<strong>权值最大</strong>的<strong>完备匹配</strong>称为最佳匹配。二分图的最佳匹配不一定是二分图的最大权匹配。 可以添加一些权值为0的边，使得最佳匹配和最大权匹配统一起来。 如图所示：</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/a.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/b.png" alt=""></p>
+<h2 id="KM算法"><a href="#KM算法" class="headerlink" title="KM算法"></a>KM算法</h2><p>求二分图的最佳匹配有一个非常优秀的算法,可以做到O(N^3),这就是KM算法。</p>
+<p>1.首先选择顶点数较少的为X部，初始时对X部的每一个顶点设置顶标，顶标的值为该点关联的最大边的权值，Y部的顶点顶标为0。</p>
+<p>2.对于X部中的每个顶点，在相等子图中利用匈牙利算法找一条增广路径，如果没有找到，则修改顶标，扩大相等子图，继续找增广路径。当每个点都找到增广路径时，此时意味着每个点都在匹配中，即找到了二分图的完备匹配。该完备匹配即为二分图的最佳匹配。</p>
+<p>3.当X部的所有顶点都找到了增广路径后，则找到了完备匹配，此完备匹配即为最佳匹配。</p>
+<h3 id="相等子图"><a href="#相等子图" class="headerlink" title="相等子图"></a>相等子图</h3><p>因为每个顶点有一个顶标，如果我们选择边权等于两端点的顶标之和的边，它们组成的图称为相等子图。</p>
+<h3 id="相等子图性质"><a href="#相等子图性质" class="headerlink" title="相等子图性质"></a>相等子图性质</h3><ol>
+<li>在任意时刻，相等子图上的最大权匹配一定小于等于相等子图的顶标和。</li>
+<li>在任意时刻，相等子图的顶标和即为所有顶点的顶标和。</li>
+<li>扩充相等子图后，相等子图的顶标和将会减小。</li>
+<li>当相等子图的最大匹配为原图的完备匹配时，匹配边的权值和等于所有顶点的顶标和，此匹配即为最佳匹配。</li>
+</ol>
+<h3 id="演示过程"><a href="#演示过程" class="headerlink" title="演示过程"></a>演示过程</h3><p>1.如图所示，1与a匹配权值为3，与c为4。2与a权值为2，与b权值为1，与c权值为3。3与c权值为5。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/1.png" alt=""></p>
+<p>2.首先对每个顶点赋值，将左边的顶点赋值为<strong>最大权重</strong>，右边的顶点赋值为0。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2.png" alt=""></p>
+<p>3.进行匹配，我们匹配的原则是：只与权重相同的边匹配，若是找不到边匹配，对此条路径的所有左边顶点-1，右边顶点+1，再进行匹配，若还是匹配不到，重复+1和-1操作。对1进行匹配，符合匹配条件的边只有1-c边。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/3.png" alt=""></p>
+<p>4.接着对2匹配，顶点2值为3，2-c边权重为3，但是，1已经匹配c了，发生了冲突，我们这时候第一时间应该想到的是，让2换个工作，但根据匹配原则，只有2-c边 3+0=0 满足要求，于是2不能换边了，那1能不能换边呢？对1来说，也是只有1-c边满足4+0=4的要求，于是1也不能换边，走投无路了，怎么办？</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/4.png" alt=""></p>
+<p>5.从常识的角度思考：其实我们寻找<strong>最优匹配</strong>的过程，也就是<strong>帮每个X顶点找到他们权值最高的Y顶点</strong>，但是，有些顶点会冲突，比如现在，1，2和c的权值都是最高，这时我们应该让1或者3换顶点，但是这时候换的话我们只能换到降低权值的Y顶点，也就是说，如果令R=左边顶点所有值相加，若发生了冲突，则最终权值一定小于R，但是，我们现在只要求最优匹配，所以，如果1换顶点降低的权值比较少的话，<strong>我们是能接受的</strong>（对2同样如此）。</p>
+<p>在KM算法中如何体现呢？</p>
+<p>现在参与到这个冲突的顶点是1,2和c，令所有左边顶点值-1，右边顶点值+1，即 1-1,2-1. c+1。</p>
+<p>我们进行了上述操作后会发现，若是左边有n个顶点参与运算，则右边就有n-1个顶点参与运算，整体效率值下降了1*（n-（n-1））=1，而对于1来说，1-c本来为可匹配的边，现在仍为可匹配边（3+1=4），对于2来说，2-c本来为可匹配的边，现在仍为可匹配的边（2+1=4），我们通过上述操作，为1增加了一条可匹配的边1-a，为B增加了一条可匹配的边2-a。</p>
+<p>现在我们再来匹配，对2来说，2-a边 2+0=2，满足条件，所以2换边，a现在为未匹配状态，2-a匹配！</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/5.png" alt=""></p>
+<p>6.我们现在匹配最后一条边3，3-c 5+1！=5，3边无边能匹配，所以3-1。现在3-c边 4+1=5，可以匹配，但是c已匹配了，发生冲突，3此时不能换边，于是便去找1，对于1来说，1-a此时也为可匹配边，但是a已匹配，1又去找2。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/6.png" alt=""></p>
+<p>7.2现在无边可以匹配了，2+0！=1 ，现在的路径是3→c→1→a→2，所以1-1,2-1,3-1,a+1，c+1。如下图所示。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/7.png" alt=""></p>
+<p>8.对于2来说，现在2-b 1+0=1 可匹配！使用匈牙利算法，对此条路径上的边取反。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/8.png" alt=""></p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">bool dfs(int s) //匈牙利算法找增广路径</span><br><span class="line">&#123;</span><br><span class="line">    visx[s]=1;</span><br><span class="line">    for(int i=1;i&lt;=cnty;i++) </span><br><span class="line">        if(!visy[i])&#123;</span><br><span class="line">            int t=wx[s]+wy[i]-dis[s][i];</span><br><span class="line">            if(t==0) &#123;</span><br><span class="line">                visy[i]=1;</span><br><span class="line">                if(linky[i]==0||dfs(linky[i]))&#123;</span><br><span class="line">                    linkx[s]=i,linky[i]=s;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(t&gt;0)  //找出边权与顶标和的最小的差值</span><br><span class="line">            &#123;</span><br><span class="line">                if(t&lt;minz)minz=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">void km()</span><br><span class="line">&#123;</span><br><span class="line">    memset(linkx,0,sizeof linkx); //linkx[i]表示与X部中点i匹配的点</span><br><span class="line">    memset(linky,0,sizeof linky);</span><br><span class="line">    for(int i=1;i&lt;=cntx;i++)&#123;</span><br><span class="line">        while(1)&#123;</span><br><span class="line">            minz=INF;</span><br><span class="line">            memset(visx,0,sizeof visx);</span><br><span class="line">            memset(visy,0,sizeof visy);</span><br><span class="line">            if(dfs(i))break;</span><br><span class="line">            for(int j=1;j&lt;=cntx;j++)  //将交错树中X部的点的顶标减去minz</span><br><span class="line">            if(visx[j])wx[j]-=minz;</span><br><span class="line">            for(int j=1;j&lt;=cnty;j++) //将交错树中Y部的点的顶标加上minz</span><br><span class="line">            if(visy[j])wy[j]+=minz;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          
+            <a href="/tags/ACM-ICPC/" rel="tag"><i class="fa fa-tag"></i> ACM/ICPC</a>
+          
+            <a href="/tags/图论/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
+          
+            <a href="/tags/二分图匹配/" rel="tag"><i class="fa fa-tag"></i> 二分图匹配</a>
+          
+            <a href="/tags/KM算法/" rel="tag"><i class="fa fa-tag"></i> KM算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/05/2018-05-05/" rel="next" title="[图论]二分图匹配基本算法之匈牙利算法解析">
+                <i class="fa fa-chevron-left"></i> [图论]二分图匹配基本算法之匈牙利算法解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -406,6 +649,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -428,8 +678,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -559,6 +818,22 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=37653063&auto=1&height=66"></iframe>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最佳匹配"><span class="nav-number">1.</span> <span class="nav-text">最佳匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KM算法"><span class="nav-number">2.</span> <span class="nav-text">KM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相等子图"><span class="nav-number">2.1.</span> <span class="nav-text">相等子图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相等子图性质"><span class="nav-number">2.2.</span> <span class="nav-text">相等子图性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#演示过程"><span class="nav-number">2.3.</span> <span class="nav-text">演示过程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -726,6 +1001,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
 
   
 
