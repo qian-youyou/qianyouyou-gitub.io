@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1 ) / 2。左子树的下标为2  i">
+<meta name="description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 本次操作具体以小根堆为例进行演示。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1">
 <meta name="keywords" content="C&#x2F;C++,数据结构,堆">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[数据结构]大根堆小根堆基本操作">
+<meta property="og:title" content="[数据结构]堆的基本操作">
 <meta property="og:url" content="http://qianyouyou.cn/2018/04/23/2018-04-23/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1 ) / 2。左子树的下标为2  i">
+<meta property="og:description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 本次操作具体以小根堆为例进行演示。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T12:11:34.755Z">
+<meta property="og:updated_time" content="2018-05-07T09:37:01.977Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[数据结构]大根堆小根堆基本操作">
-<meta name="twitter:description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1 ) / 2。左子树的下标为2  i">
+<meta name="twitter:title" content="[数据结构]堆的基本操作">
+<meta name="twitter:description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 本次操作具体以小根堆为例进行演示。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1">
 
 
 
@@ -147,7 +147,7 @@
 
 
 
-  <title>[数据结构]大根堆小根堆基本操作 | 浅悠悠的个人博客</title>
+  <title>[数据结构]堆的基本操作 | 浅悠悠的个人博客</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[数据结构]大根堆小根堆基本操作</h1>
+          <h1 class="post-title" itemprop="name headline">[数据结构]堆的基本操作</h1>
         
 
         <div class="post-meta">
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  987
+                  1,007
                 </span>
               
 
@@ -501,12 +501,13 @@
 <p>1.堆总是一棵完全二叉树。</p>
 <p>2.堆中某个节点的值总是不大于或不小于其父节点的值。</p>
 <p>将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。</p>
+<p>本次操作具体以小根堆为例进行演示。</p>
 <h2 id="堆的存储"><a href="#堆的存储" class="headerlink" title="堆的存储"></a>堆的存储</h2><p>一般采用树组存储，i结点的父结点下标为( i - 1 ) / 2。左子树的下标为2 <em> i + 1,右子树的下标为2 </em> i + 2。</p>
 <h2 id="堆的操作"><a href="#堆的操作" class="headerlink" title="堆的操作"></a>堆的操作</h2><h3 id="堆的插入"><a href="#堆的插入" class="headerlink" title="堆的插入"></a>堆的插入</h3><p>每次插入都是将新数据放在数组最后。可以发现从这个新数据的父结点到根结点必然为一个有序的数列，现在的任务是将这个新数据插入到这个有序数据中——这就类似于<strong>直接插入排序</strong>中将一个数据并入到有序区间中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//  新加入i结点  其父结点为(i - 1) / 2  </span><br><span class="line">void MinHeapFixup(int a[], int i)  </span><br><span class="line">&#123;  </span><br><span class="line">    int j, temp;  </span><br><span class="line">      </span><br><span class="line">    temp = a[i];  </span><br><span class="line">    j = (i - 1) / 2;      //父结点  </span><br><span class="line">    while (j &gt;= 0 &amp;&amp; i != 0)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if (a[j] &lt;= temp)  </span><br><span class="line">            break;  </span><br><span class="line">          </span><br><span class="line">        a[i] = a[j];     //把较大的子结点往下移动,替换它的子结点  </span><br><span class="line">        i = j;  </span><br><span class="line">        j = (i - 1) / 2;  </span><br><span class="line">    &#125;  </span><br><span class="line">    a[i] = temp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//  新加入i结点  其父结点为(i - 1) / 2  </span><br><span class="line">void MinHeapFixup(int a[], int i)  </span><br><span class="line">&#123;  </span><br><span class="line">    int j, temp;  </span><br><span class="line">    </span><br><span class="line">    temp = a[i];  </span><br><span class="line">    j = (i - 1) / 2;      //父结点  </span><br><span class="line">    while (j &gt;= 0 &amp;&amp; i != 0)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if (a[j] &lt;= temp)  </span><br><span class="line">            break;  </span><br><span class="line">          </span><br><span class="line">        a[i] = a[j];     //把较大的子结点往下移动,替换它的子结点  </span><br><span class="line">        i = j;  </span><br><span class="line">        j = (i - 1) / 2;  </span><br><span class="line">    &#125;  </span><br><span class="line">    a[i] = temp;</span><br></pre></td></tr></table></figure>
 <p>插入时</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void MinHeapAddNumber(int a[], int n, int nNum)  </span><br><span class="line">&#123;  </span><br><span class="line">    a[n] = nNum;  </span><br><span class="line">    MinHeapFixup(a, n);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="堆的删除"><a href="#堆的删除" class="headerlink" title="堆的删除"></a>堆的删除</h3><p>堆中每次都只能删除第0个数据。为了便于重建堆，实际的操作是将最后一个数据的值赋给根结点，然后再从根结点开始进行一次从上向下的调整。调整时先在左右儿子结点中找最小的，如果父结点比这个最小的子结点还小说明不需要调整了，反之将父结点和它交换后再考虑后面的结点。相当于从根结点将一个数据的“下沉”过程。</p>
+<h3 id="堆的删除"><a href="#堆的删除" class="headerlink" title="堆的删除"></a>堆的删除</h3><p>堆中每次都只能删除根结点，即第0个数据。为了便于重建堆，实际的操作是将最后一个数据的值赋给根结点，然后再从根结点开始进行一次从上向下的调整。调整时先在左右儿子结点中找最小的，如果父结点比这个最小的子结点还小说明不需要调整了，反之将父结点和它交换后再考虑后面的结点。相当于从根结点将一个数据的“下沉”过程。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//  从i节点开始调整,n为节点总数 从0开始计算 i节点的子节点为 2*i+1, 2*i+2  </span><br><span class="line">void MinHeapFixdown(int a[], int i, int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    int j, temp;  </span><br><span class="line">  </span><br><span class="line">    temp = a[i];  </span><br><span class="line">    j = 2 * i + 1;  </span><br><span class="line">    while (j &lt; n)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if (j + 1 &lt; n &amp;&amp; a[j + 1] &lt; a[j]) //在左右孩子中找最小的  </span><br><span class="line">            j++;  </span><br><span class="line">  </span><br><span class="line">        if (a[j] &gt;= temp)  </span><br><span class="line">            break;  </span><br><span class="line">  </span><br><span class="line">        a[i] = a[j];     //把较小的子结点往上移动,替换它的父结点  </span><br><span class="line">        i = j;  </span><br><span class="line">        j = 2 * i + 1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    a[i] = temp;  </span><br><span class="line">&#125;  </span><br><span class="line">//在最小堆中删除数  </span><br><span class="line">void MinHeapDeleteNumber(int a[], int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    Swap(a[0], a[n - 1]);  </span><br><span class="line">    MinHeapFixdown(a, 0, n - 1);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="构建堆"><a href="#构建堆" class="headerlink" title="构建堆"></a>构建堆</h3><p>有了堆的插入和删除后，再考虑下如何对一个数据进行堆化操作。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//建立最小堆  </span><br><span class="line">void MakeMinHeap(int a[], int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    for (int i = n / 2 - 1; i &gt;= 0; i--)  </span><br><span class="line">        MinHeapFixdown(a, i, n);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
