@@ -280,8 +280,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>BFS</tag>
         <tag>算法</tag>
+        <tag>BFS</tag>
         <tag>康托展开</tag>
         <tag>hash</tag>
       </tags>
@@ -298,8 +298,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>DFS</tag>
-        <tag>位运算</tag>
         <tag>ACM/ICPC</tag>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -387,8 +387,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
+        <tag>pat天梯赛</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
@@ -433,9 +433,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>BFS</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
+        <tag>pat天梯赛</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -450,9 +450,9 @@
       <tags>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
         <tag>vector</tag>
+        <tag>pat天梯赛</tag>
       </tags>
   </entry>
   <entry>
@@ -466,9 +466,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>BFS</tag>
         <tag>算法</tag>
         <tag>DFS</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -495,9 +495,9 @@
         <category>流</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -509,8 +509,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
 </search>

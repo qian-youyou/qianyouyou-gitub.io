@@ -644,9 +644,9 @@
     
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
-      <category term="BFS" scheme="http://qianyouyou.cn/tags/BFS/"/>
-    
       <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="BFS" scheme="http://qianyouyou.cn/tags/BFS/"/>
     
       <category term="康托展开" scheme="http://qianyouyou.cn/tags/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80/"/>
     
@@ -685,9 +685,9 @@
     
       <category term="DFS" scheme="http://qianyouyou.cn/tags/DFS/"/>
     
-      <category term="位运算" scheme="http://qianyouyou.cn/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    
       <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
+    
+      <category term="位运算" scheme="http://qianyouyou.cn/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     
   </entry>
   
