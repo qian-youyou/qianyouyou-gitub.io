@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[数论]数论与组合数学中的常用算法总结]]></title>
+    <url>%2F2018%2F05%2F07%2F2018-05-07%2F</url>
+    <content type="text"><![CDATA[数论欧几里得算法（gcd）欧几里得算法又称辗转相除法，设两个数为a,b,则a,b最大公约数为gcd(a,b)=gcd(b,a%b) 证明设a&gt;=b, c = gcd( a, b), a = kc, b = jc,则k,j互素（否则c不为a，b最大公约数），则设 r = a % b,则a = mb + r,则r = a - mb = kc - mjc = ( k - mj ) c，因为k,j互素，则k-mj与j互素，gcd(a,b) = gcd(b,a%b) 应用如果判断两个数是否互素(最大公约数为1)，这时辗转相除法就方便得多。因为每一步都是取模，保证了数据减小的速度特别快。能够在很短时间内找到最大公约数。 代码123456789101112131415//递归版int gcd(int a, int b) &#123; return b ? a : gcd(b, a%b);&#125;//非递归版int gcd(int a, int b) &#123; if (!a) return b; while (b) &#123; int temp = b; b = a%b; a = temp; &#125; return a;&#125; 扩展欧几里得算法（exgcd）若a , b 不全为 0，则存在整数 x,y 使得 gcd(a,b)=xa+yb对于辗转相除法的最后一项,此时 b=0,则 gcd(a,b)=1a+0b,因为 gcd(a,b)=gcd(b,a%b)则有 xa+yb=x1b+y1(a%b) 。将等式右边变形，bx1+(a%b)y1=bx1+(a-(a/b)b)y1=ay1+b(x1-(a/b)y1)则，x=y1,y=x1-(a/b)*y1 则可由后向前迭代得到 x,y 应用对于扩展欧几里德定理的题，一般都需要进行一定的推导之后得到一个形式为xa+yb=c 的方程，然后根据 c 确定解是否存在，如果 c 可以被 gcd(a,b)整除，那么方程有解，否则方程无解。而且所得的解释不唯一的，对于一组解 x0,y0 则其所有解可以表示为x=x0+b/gcd(a,b)t,y-y0-a/gcd(a,b)t,t=0,+1,+2……一般会要求找出 x 或者 y 的最小正整数解，这个时候需要做一些调整。 代码1234567891011121314int exgcd(int a, int b, int &amp;x, int &amp;y)&#123; if (b == 0) &#123; x = 1; y = 0; return a; &#125; int d = exgcd(b, a%b, x, y); int t = x; x = y; y = t - a / b*y; return d;&#125; 筛法求素数筛素数的基本方法是用来筛选出一定范围内的素数 原理利用素数只有1和本身两个约数，且约数一定不大于自身。首先筛掉1.剩下的数选择最小的数为素数，然后筛掉它范围内所有的倍数，以此类推，直到筛为空时结束。 123456789101112131415161718bool isprime[N];//N 表示范围int prime[N], cnt;void f()&#123; int i, j; cnt = 0; memset(isprime, true, sizeof(isprime)); isprime[1] = false; for (i = 2; i &lt;= N; i++) &#123; if (isprime[i]) &#123; prime[cnt++] = i;//记录素数 for (j = i*i; j &lt;= N; j += i)//因为小于 i 的所有的倍数都被筛过，所以直接从 i*i 开始，从这里也可以看出，筛素数时到 N^0.5就可以了 isprime[j] = false; &#125; &#125;&#125; 组合数学]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+        <category>数论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
+        <tag>数论</tag>
+        <tag>组合数学</tag>
+        <tag>高斯消元</tag>
+        <tag>容斥原理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[图论]最短路三大算法——Dijkstra算法，Bellman-ford，floyed]]></title>
     <url>%2F2018%2F05%2F06%2F2018-05-06-1%2F</url>
     <content type="text"><![CDATA[Dijkstra算法（单源最短路径）步骤 初使时令 S={V0},T={其余顶点}，T中顶点对应的距离值， 若存在&lt;V0,Vi&gt;，为&lt;V0,Vi&gt;弧上的权值（和ＳＰＦＡ初始化方式不同），若不存在&lt;V0,Vi&gt;，为Inf。 从T中选取一个其距离值为最小的顶点W(贪心体现在此处)，加入S(注意不是直接从S集合中选取，理解这个对于理解vis数组的作用至关重要)，对T中顶点的距离值进行修改：若加进W作中间顶点，从V0到Vi的距离值比不加W的路径要短，则修改此距离值（上面两个并列for循环，使用最小点更新）。 重复上述步骤，直到S中包含所有顶点，即S=V为止（说明最外层是除起点外的遍历）。 12345678910111213141516171819202122232425262728293031323334const int INF=0x3f3f3f3f;const int maxn=1200;int dist[maxn],g[maxn][maxn],N;bool vis[maxn];void dijkstra()&#123; for(int i=1;i&lt;=N;i++) dist[i]=(i==1)?0:INF; memset(vis,0,sizeof(vis)); for(int i=1;i&lt;=N;i++) &#123; int mark=-1,mindis=INF; for(int j=1;j&lt;=N;j++) &#123; if(!vis[j]&amp;&amp;dist[j]&lt;mindis) &#123; mindis=dist[j]; mark=j; &#125; &#125; vis[mark]=1; for(int j=1;j&lt;=N;j++) &#123; if(!vis[j]) &#123; dist[j]=min(dist[j],dist[mark]+g[mark][j]); &#125; &#125; &#125;&#125; Bellman-ford（单元最短路径，可带负环）为了能够求解边上带有负值的单源最短路径问题，Bellman(贝尔曼，动态规划提出者)和Ford(福特)提出了从源点逐次绕过其他顶点，以缩短到达终点的最短路径长度的方法。Bellman-ford算法是求含负权图的单源最短路径算法，效率很低，但代码很容易写。即进行不停地松弛，每次松弛把每条边都更新一下，若n-1次松弛后还能更新，则说明图中有负环，无法得出结果，否则就成功完成。Bellman-ford算法有一个小优化：每次松弛先设一个flag，初值为FALSE，若有边更新则赋值为TRUE，最终如果还是FALSE则直接成功退出。Bellman-ford算法浪费了许多时间做无必要的松弛，所以SPFA算法用队列进行了优化，效果十分显著，高效难以想象。SPFA还有SLF，LLL，滚动数组等优化。 递推公式(求顶点u到源点v的最短路径)：$$dist 1 [u] = Edge[v][u]$$ $$dist k [u] = min{ dist k-1 [u], min{ dist k-1 [j] + Edge[j][u] } }, j=0,1,…,n-1,j≠u$$ Dijkstra算法和Bellman算法思想有很大的区别：Dijkstra算法在求解过程中，源点到集合S内各顶点的最短路径一旦求出，则之后不变了，修改 的仅仅是源点到T集合中各顶点的最短路径长度。Bellman算法在求解过程中，每次循环都要修改所有顶点的dist[ ]，也就是说源点到各顶点最短路径长度一直要到Bellman算法结束才确定下来。 使用条件 单源最短路径(从源点s到其它所有顶点v) 有向图&amp;无向图(无向图可以看作(u,v),(v,u)同属于边集E的有向图) 边权可正可负(如有负权回路输出错误提示) 差分约束系统(至今貌似只看过一道题) 描述 初始化：将除源点外的所有顶点的最短距离估计值 d[v] ←+∞, d[s] ←0 迭代求解：反复对边集E中的每条边进行松弛操作，使得顶点集V中的每个顶点v的最短距离估计值逐步逼近其最短距离；（运行|v|-1次，看下面的描述性证明(当做树)） 检验负权回路：判断边集E中的每一条边的两个端点是否收敛。如果存在未收敛的顶点，则算法返回false，表明问题无解；否则算法返回true，并且从源点可达的顶点v的最短距离保存在d[v]中 Bellman-Ford算法是否一定要循环n-1次么？未必！其实只要在某次循环过程中，考虑每条边后，都没能改变当前源点到所有顶点的最短路径长度，那么Bellman-Ford算法就可以提前结束了(开篇提出的小优化就是这个)。 123456789101112131415161718192021222324252627282930313233343536373839bool Bellman_Ford()&#123; for(int i = 1; i &lt;= nodenum; ++i) //初始化 dis[i] = (i == original ? 0 : MAX); for(int i = 1; i &lt;= nodenum - 1; ++i) for(int j = 1; j &lt;= edgenum; ++j) if(dis[edge[j].v] &gt; dis[edge[j].u] + edge[j].cost) //松弛（顺序一定不能反~） &#123; dis[edge[j].v] = dis[edge[j].u] + edge[j].cost; pre[edge[j].v] = edge[j].u; &#125; bool flag = 1; //判断是否含有负权回路 for(int i = 1; i &lt;= edgenum; ++i) if(dis[edge[i].v] &gt; dis[edge[i].u] + edge[i].cost) &#123; flag = 0; break; &#125; return flag;&#125; floyed（全源最短路径）Floyd算法的基本思想如下：从任意节点A到任意节点B的最短路径不外乎2种可能，1是直接从A到B，2是从A经过若干个节点到B，所以，我们假设dist(AB)为节点A到节点B的最短路径的距离，对于每一个节点K，我们检查dist(AK) + dist(KB) &lt; dist(AB)是否成立，如果成立，证明从A到K再到B的路径比A直接到B的路径短，我们便设置 dist(AB) = dist(AK) + dist(KB)，这样一来，当我们遍历完所有节点K，dist(AB)中记录的便是A到B的最短路径的距离。 123456789for (int k=0; k&lt;n; ++k) for (int i=0; i&lt;n; ++i) for (int j=0; j&lt;n; ++j) /* 实际中为防止溢出，往往需要选判断 dist[i][k]和dist[k][j] 都不是Inf ，只要一个是Inf，那么就肯定不必更新。 */ if (dist[i][k] + dist[k][j] &lt; dist[i][j] ) dist[i][j] = dist[i][k] + dist[k][j]; Floyd算法另一种理解DP，为理论爱好者准备的，上面这个形式的算法其实是Floyd算法的精简版，而真正的Floyd算法是一种基于DP(Dynamic Programming)的最短路径算法。设图G中n 个顶点的编号为1到n。令c [i, j, k]表示从i 到j 的最短路径的长度，其中k 表示该路径中的最大顶点，也就是说c[i,j,k]这条最短路径所通过的中间顶点最大不超过k。因此，如果G中包含边&lt;i, j&gt;，则c[i, j, 0] =边&lt;i, j&gt; 的长度；若i= j ，则c[i,j,0]=0；如果G中不包含边&lt;i, j&gt;，则c (i, j, 0)= +∞。c[i, j, n] 则是从i 到j 的最短路径的长度。对于任意的k&gt;0，通过分析可以得到：中间顶点不超过k 的i 到j 的最短路径有两种可能：该路径含或不含中间顶点k。若不含，则该路径长度应为c[i, j, k-1]，否则长度为 c[i, k, k-1] +c [k, j, k-1]。c[i, j, k]可取两者中的最小值。状态转移方程：c[i, j, k]=min{c[i, j, k-1], c [i, k, k-1]+c [k, j, k-1]}，k＞0。这样，问题便具有了最优子结构性质，可以用动态规划方法来求解。]]></content>
       <categories>
         <category>程序人生</category>
         <category>算法</category>
-        <category>最短路</category>
+        <category>图论</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -24,7 +42,7 @@
       <categories>
         <category>训练之路</category>
         <category>算法</category>
-        <category>二分图匹配</category>
+        <category>图论</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -41,7 +59,7 @@
       <categories>
         <category>训练之路</category>
         <category>算法</category>
-        <category>二分图匹配</category>
+        <category>图论</category>
       </categories>
       <tags>
         <tag>算法</tag>
