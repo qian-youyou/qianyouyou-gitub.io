@@ -108,10 +108,12 @@
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 本次操作具体以小根堆为例进行演示。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-07T09:37:01.977Z">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/7-1.png">
+<meta property="og:updated_time" content="2018-05-07T12:29:01.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[数据结构]堆的基本操作">
 <meta name="twitter:description" content="堆（heap)是计算机科学中一类特殊的数据结构的统称。堆通常是一个可以被看做一棵树的数组对象。堆总是满足下列性质： 1.堆总是一棵完全二叉树。 2.堆中某个节点的值总是不大于或不小于其父节点的值。 将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。 本次操作具体以小根堆为例进行演示。 堆的存储一般采用树组存储，i结点的父结点下标为( i - 1">
+<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/7-1.png">
 
 
 
@@ -503,6 +505,7 @@
 <p>将根节点最大的堆叫做最大堆或大根堆，根节点最小的堆叫做最小堆或小根堆。常见的堆有二叉堆、斐波那契堆等。</p>
 <p>本次操作具体以小根堆为例进行演示。</p>
 <h2 id="堆的存储"><a href="#堆的存储" class="headerlink" title="堆的存储"></a>堆的存储</h2><p>一般采用树组存储，i结点的父结点下标为( i - 1 ) / 2。左子树的下标为2 <em> i + 1,右子树的下标为2 </em> i + 2。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/7-1.png" alt=""></p>
 <h2 id="堆的操作"><a href="#堆的操作" class="headerlink" title="堆的操作"></a>堆的操作</h2><h3 id="堆的插入"><a href="#堆的插入" class="headerlink" title="堆的插入"></a>堆的插入</h3><p>每次插入都是将新数据放在数组最后。可以发现从这个新数据的父结点到根结点必然为一个有序的数列，现在的任务是将这个新数据插入到这个有序数据中——这就类似于<strong>直接插入排序</strong>中将一个数据并入到有序区间中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//  新加入i结点  其父结点为(i - 1) / 2  </span><br><span class="line">void MinHeapFixup(int a[], int i)  </span><br><span class="line">&#123;  </span><br><span class="line">    int j, temp;  </span><br><span class="line">    </span><br><span class="line">    temp = a[i];  </span><br><span class="line">    j = (i - 1) / 2;      //父结点  </span><br><span class="line">    while (j &gt;= 0 &amp;&amp; i != 0)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if (a[j] &lt;= temp)  </span><br><span class="line">            break;  </span><br><span class="line">          </span><br><span class="line">        a[i] = a[j];     //把较大的子结点往下移动,替换它的子结点  </span><br><span class="line">        i = j;  </span><br><span class="line">        j = (i - 1) / 2;  </span><br><span class="line">    &#125;  </span><br><span class="line">    a[i] = temp;</span><br></pre></td></tr></table></figure>
 <p>插入时</p>
