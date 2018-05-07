@@ -658,7 +658,7 @@
     <lastmod>2018-05-02T12:11:34.755Z</lastmod>
     <data>
         <display>
-        <title>[数据结构]大根堆小根堆插入操作</title>
+        <title>[数据结构]大根堆小根堆基本操作</title>
         <pubTime>2018-04-23T14:42:25.000Z</pubTime>
         
         <tag>C/C++</tag>
@@ -789,9 +789,9 @@
          
         <tag>算法</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>BFS</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
@@ -823,9 +823,9 @@
          
         <tag>算法</tag>
          
-        <tag>vector</tag>
-         
         <tag>pat天梯赛</tag>
+         
+        <tag>vector</tag>
          
          
            
