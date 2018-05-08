@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[[博弈论]博弈论基本题型及5大常见博弈论原理]]></title>
     <url>%2F2018%2F05%2F08%2F2018-05-08%2F</url>
-    <content type="text"><![CDATA[取石子游戏巴什博奕（Bash Game）只有一堆 n 个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果剩下 （m+1）（r-1）个，以后保持这样的取法，那么先取者肯定获胜。总之，要保持给对手留下（m+1）的倍数，就能最后获胜。 12345678910111213#include &lt;iostream&gt; using namespace std;int main() &#123; int iCase; cin &gt;&gt; iCase; while (iCase--) &#123; int n, m; cin &gt;&gt; n &gt;&gt; m; if (n % (m + 1) == 0) cout &lt;&lt; &quot;lost&quot; &lt;&lt; endl; else cout &lt;&lt; &quot;win&quot; &lt;&lt; endl; &#125; return 0;&#125; 威佐夫博奕（Wythoff Game）有两堆各若干个物品，两个人轮流从某一堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜。 这种情况下是颇为复杂的。我们用（ak，bk）（ak ≤ bk ,k=0，1，2，…,n)表示两堆物品的数量并称其为局势，如果甲面对（0，0），那么甲已经输了，这种局势我们 称为奇异局势。前几个奇异局势是：（0，0）、（1，2）、（3，5）、（4，7）、（6，10）、（8，13）、（9，15）、（11，18）、（12，20）。 可以看出,a0=b0=0,ak 是未在前面出现过的最小自然数,而 bk= ak + k，奇异局势有 如下三条性质： 1。任何自然数都包含在一个且仅有一个奇异局势中。 2。任意操作都可将奇异局势变为非奇异局势。 3。采用适当的方法，可以将非奇异局势变为奇异局势。 1234567891011121314151617181920#include &lt;stdio.h&gt; #include &lt;math.h&gt; const double ep1 = (sqrt(5.0) - 1.0) / 2.0;const double ep2 = (sqrt(5.0) + 1.0) / 2.0;int main() &#123; int m, n; while (scanf(&quot;%d %d&quot;, &amp;m, &amp;n) != EOF) &#123; if (m &gt; n) &#123; int tmp; tmp = m, m = n, n = tmp; &#125; int id = m * ep1; int tmp1 = ep2 * id, tmp2 = id + tmp1; int tmp3 = ep2 * (id + 1), tmp4 = id + 1 + tmp3; if (tmp1 == m &amp;&amp; tmp2 == n) printf(&quot;0\n&quot;); else if (tmp3 == m &amp;&amp; tmp4 == n) printf(&quot;0\n&quot;); else printf(&quot;1\n&quot;); &#125; return 0;&#125; Fibonacci Nim （斐波那契博弈）有一堆个数为 n 的石子，游戏双方轮流取石子，满足： 1)先手不能在第一次把所有的石子取完； 2)之后每次可以取的石子数介于 1 到对手刚取的石子数的 2 倍之间（包含 1 和对手刚取的石子数的 2 倍）。 约定取走最后一个石子的人为赢家，求必败态。 这个和之前的 Wythoff’s Game 和取石子游戏 有一个很大的不同点，就是游戏规则的动态化。之前的规则中，每次可以取的石子的策略集合是基本固定的，但是这次有规则 2：一方每次可以取的石子数依赖于对手刚才取的石子数。 胜利法则：先手胜当且 仅当 n 不是 Fibonacci 数。换句话说，必败态构成 Fibonacci 数列。 证明： 这里需要借助“Zeckendorf定理”（齐肯多夫定理）：任何正整数可以表示为若干个不连续的 Fibonacci 数之和。 FIB 数列的必败证明： 1、当 i=2 时，先手只能取 1 颗，显然必败，结论成立。 2、假设当 i&lt;=k 时，结论成立。则当 i=k+1 时，f[i] = f[k]+f[k-1]。 12345678910111213141516171819#include &lt;iostream&gt; using namespace std;long long int f[50];int main() &#123; int n, i; f[0] = f[1] = 1; for (i = 2; i &lt; 50; i++) &#123; f[i] = f[i - 1] + f[i - 2]; &#125; while (cin &gt;&gt; n) &#123; if (n == 0) break; for (i = 0; i &lt; 50; i++) &#123; if (f[i] == n) break; &#125; if (i &lt; 50) cout &lt;&lt; &quot;Second win&quot; &lt;&lt; endl; else cout &lt;&lt; &quot;First win&quot; &lt;&lt; endl; &#125; return 0;&#125; K 倍博弈两人取一堆 n 个石子 先手不能全部取完 之后每人取的个数不能超过另一个人上轮取的 K倍。 对于给定的 n, k， 先手是否有必胜的策略。 12345678910111213141516171819202122232425262728293031323334#include &lt;stdio.h&gt; #include &lt;string.h&gt; #include &lt;iostream&gt; using namespace std;const int maxn = 2000000;int a[maxn], b[maxn];int main()&#123; int n, k; int cas = 0, cass; for (scanf(&quot;%d&quot;, &amp;cass); cass--;) &#123; scanf(&quot;%d%d&quot;, &amp;n, &amp;k); ++cas; printf(&quot;Case %d: &quot;, cas); int i = 0, j = 0; a[0] = b[0] = 1; while (a[i]&lt;n) &#123; i++; a[i] = b[i - 1] + 1; while (a[j + 1] * k&lt;a[i]) j++; if (a[j] * k&lt;a[i]) b[i] = a[i] + b[j]; else b[i] = a[i]; &#125; if (a[i] == n) puts(&quot;lose&quot;); else puts(&quot;win&quot;); &#125; return 0;&#125; ＳＧ函数的求解(SG 博弈）给定一个有向无环图和一个起始顶点上的一枚棋子，两名选手交替的将这枚棋子沿有向边进行移动，无法移 动者判负。 12345678910111213141516171819#include &lt;iostream&gt; using namespace std;int main() &#123; int iCase; cin &gt;&gt; iCase; while (iCase--) &#123; int n, cnt = 0, num; cin &gt;&gt; n; while (n--) &#123; cin &gt;&gt; num; if (num % 4 == 0) num--; else if (num % 4 == 3) num++; cnt ^= num; &#125; if (cnt == 0) cout &lt;&lt; &quot;Bob&quot; &lt;&lt; endl; else cout &lt;&lt; &quot;Alice&quot; &lt;&lt; endl; &#125; return 0;&#125; 寻找必败态必败态就是“在对方使用最优策略时，无论做出什么决策都会导致失败的局面”。其他的局面称为胜态，值得注意的是在 胜态下做出错误的决策也有可能导致失败。此类博弈问题的精髓就是让对手永远面对必败态。 必败态和胜态有着如下性质： 1、若面临末状态者为获胜则末状态为胜态否则末状态为必败态。 2、一个局面是胜态的充要条件是该局面进行某种决策后会成为必败态。 3、一个局面是必败态的充要条件是该局面无论进行何种决策均会成为胜态。 这三条性质正是博弈树的原理，但博弈树是通过计算每一个局面是胜态还是必败态来解题，这样在局面数很多的情况下是很难做到的，此时，我们可以利用人脑的推演归纳能力找 到必败态的共性，就可以比较好的解决此类问题了。 解题思路分析初始局势是属于哪种形态，然后根据博弈中的些结论去推导当前状态是否是必败态。]]></content>
+    <content type="text"><![CDATA[取石子游戏巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果剩下 （m+1）（r-1）个，以后保持这样的取法，那么先取者肯定获胜。总之，要保持给对手留下（m+1）的倍数，就能最后获胜。 12345678910111213#include &lt;iostream&gt; using namespace std;int main() &#123; int iCase; cin &gt;&gt; iCase; while (iCase--) &#123; int n, m; cin &gt;&gt; n &gt;&gt; m; if (n % (m + 1) == 0) cout &lt;&lt; &quot;lost&quot; &lt;&lt; endl; else cout &lt;&lt; &quot;win&quot; &lt;&lt; endl; &#125; return 0;&#125; 威佐夫博奕（Wythoff Game）有两堆物品，每堆各若干物品，两个人轮流从某堆或同时从两堆中取同样多的物品，规定每次至少取一个，多者不限，最后取光者得胜。 这种情况下是颇为复杂的。我们用（ak，bk）（ak ≤ bk ,k=0，1，2，…,n)表示两堆物品的数量并称其为局势，如果甲面对（0，0），那么甲已经输了，这种局势我们 称为奇异局势。前几个奇异局势是：（0，0）、（1，2）、（3，5）、（4，7）、（6，10）、（8，13）、（9，15）、（11，18）、（12，20）。 可以看出,a0=b0=0,ak 是未在前面出现过的最小自然数,而 bk= ak + k，奇异局势有 如下三条性质： 1。任何自然数都包含在一个且仅有一个奇异局势中。 2。任意操作都可将奇异局势变为非奇异局势。 3。采用适当的方法，可以将非奇异局势变为奇异局势。 1234567891011121314151617181920#include &lt;stdio.h&gt; #include &lt;math.h&gt; const double ep1 = (sqrt(5.0) - 1.0) / 2.0;const double ep2 = (sqrt(5.0) + 1.0) / 2.0;int main() &#123; int m, n; while (scanf(&quot;%d %d&quot;, &amp;m, &amp;n) != EOF) &#123; if (m &gt; n) &#123; int tmp; tmp = m, m = n, n = tmp; &#125; int id = m * ep1; int tmp1 = ep2 * id, tmp2 = id + tmp1; int tmp3 = ep2 * (id + 1), tmp4 = id + 1 + tmp3; if (tmp1 == m &amp;&amp; tmp2 == n) printf(&quot;0\n&quot;); else if (tmp3 == m &amp;&amp; tmp4 == n) printf(&quot;0\n&quot;); else printf(&quot;1\n&quot;); &#125; return 0;&#125; Fibonacci Nim （斐波那契博弈）有一堆个数为 n 的石子，游戏双方轮流取石子，满足： 1)先手不能在第一次把所有的石子取完； 2)之后每次可以取的石子数介于 1 到对手刚取的石子数的 2 倍之间（包含 1 和对手刚取的石子数的 2 倍）。 约定取走最后一个石子的人为赢家，求必败态。 这个和之前的 Wythoff’s Game 和取石子游戏 有一个很大的不同点，就是游戏规则的动态化。之前的规则中，每次可以取的石子的策略集合是基本固定的，但是这次有规则 2：一方每次可以取的石子数依赖于对手刚才取的石子数。 胜利法则：先手胜当且 仅当 n 不是 Fibonacci 数。换句话说，必败态构成 Fibonacci 数列。 证明： 这里需要借助“Zeckendorf定理”（齐肯多夫定理）：任何正整数可以表示为若干个不连续的 Fibonacci 数之和。 FIB 数列的必败证明： 1、当 i=2 时，先手只能取 1 颗，显然必败，结论成立。 2、假设当 i&lt;=k 时，结论成立。则当 i=k+1 时，f[i] = f[k]+f[k-1]。 12345678910111213141516171819#include &lt;iostream&gt; using namespace std;long long int f[50];int main() &#123; int n, i; f[0] = f[1] = 1; for (i = 2; i &lt; 50; i++) &#123; f[i] = f[i - 1] + f[i - 2]; &#125; while (cin &gt;&gt; n) &#123; if (n == 0) break; for (i = 0; i &lt; 50; i++) &#123; if (f[i] == n) break; &#125; if (i &lt; 50) cout &lt;&lt; &quot;Second win&quot; &lt;&lt; endl; else cout &lt;&lt; &quot;First win&quot; &lt;&lt; endl; &#125; return 0;&#125; K 倍博弈共 n 个石子，两个人按顺序依次取石子。先手不能全部取完，之后每人取的个数不能超过另一个人上轮取的 K倍。 对于给定的 n, k， 先手是否有必胜的策略。 当 k=1 的时候 可知必败局面都是 2^i 将 n 分解成二进制，然后先手取掉最后一个 1.然后对方必然无法去掉更高的 1，而对方取完我方至少还能拿掉最后一 个 1 导致对方永远取不完。 当 k=2 的时候，必败局面都是斐波那契数列。利用“先手去掉最后一个 1，则后手必不能去掉更高阶的 1 导致取不完”的思想，斐波那契数列有一个非常好 的性质就是：任意一个整数可以写成斐波那契数列中的不相邻的项的和，于是将 n 写成这种形式，先取走最后一个 1，对方能取的数是这个数*2，小于高 2 位的 1，所以取不完。 当 K 的时候， 想办法构造数列，将 n 写成数列中一些项的和，使得这些被取到的项的相邻两个倍数差距&gt;k 那么每次去掉最后一个 1 还是符合上面的条件。 设这个数列已经被构造了 i 项，第 i 项为 a[ i ]，前 i 项可以完美对 1..b[ i ] 编码使得每个编码的任意两项倍数&gt;K 那么有 a[ i+1 ] = b[ i ] + 1;这是显然的 因为 b[ i ] + 1 没法构造出来，只能新建一项表示。然后计算 b[ i+1] 既然要使用 a[ i+1 ] 那么下一项最多只能是某个 a[ t ] 使得 a[ t ] * K &lt; a[ i+1 ] 于是b[ i ] = b[ t ] + a[ i+1 ] 然后判断 n 是否在这个数列里面如果在，那么先手必败。否则不停的减掉数列 a 中的项构造出 n 的分解，最后一位就是了。 12345678910111213141516171819202122232425262728293031323334#include &lt;stdio.h&gt; #include &lt;string.h&gt; #include &lt;iostream&gt; using namespace std;const int maxn = 2000000;int a[maxn], b[maxn];int main()&#123; int n, k; int cas = 0, cass; for (scanf(&quot;%d&quot;, &amp;cass); cass--;) &#123; scanf(&quot;%d%d&quot;, &amp;n, &amp;k); ++cas; printf(&quot;Case %d: &quot;, cas); int i = 0, j = 0; a[0] = b[0] = 1; while (a[i]&lt;n) &#123; i++; a[i] = b[i - 1] + 1; while (a[j + 1] * k&lt;a[i]) j++; if (a[j] * k&lt;a[i]) b[i] = a[i] + b[j]; else b[i] = a[i]; &#125; if (a[i] == n) puts(&quot;lose&quot;); else puts(&quot;win&quot;); &#125; return 0;&#125; ＳＧ函数的求解(SG 博弈）给定一个有向无环图和一个起始顶点上的一枚棋子，两名选手交替的将这枚棋子沿有向边进行移动，无法移 动者判负。 这个游戏可以认为是所有 Impartial Combinatorial Games 的抽象模型。也就是说，任何一个 ICG 都可以通过把每个局面看成一个顶点，对每个局面和它的子局面连一条有向边来抽象成这个“有向图游戏”。 12345678910111213141516171819#include &lt;iostream&gt; using namespace std;int main() &#123; int iCase; cin &gt;&gt; iCase; while (iCase--) &#123; int n, cnt = 0, num; cin &gt;&gt; n; while (n--) &#123; cin &gt;&gt; num; if (num % 4 == 0) num--; else if (num % 4 == 3) num++; cnt ^= num; &#125; if (cnt == 0) cout &lt;&lt; &quot;Bob&quot; &lt;&lt; endl; else cout &lt;&lt; &quot;Alice&quot; &lt;&lt; endl; &#125; return 0;&#125; 寻找必败态必败态就是“在对方使用最优策略时，无论做出什么决策都会导致失败的局面”。其他的局面称为胜态，值得注意的是在 胜态下做出错误的决策也有可能导致失败。此类博弈问题的精髓就是让对手永远面对必败态。 必败态和胜态有着如下性质： 1、若面临末状态者为获胜则末状态为胜态否则末状态为必败态。 2、一个局面是胜态的充要条件是该局面进行某种决策后会成为必败态。 3、一个局面是必败态的充要条件是该局面无论进行何种决策均会成为胜态。 这三条性质正是博弈树的原理，但博弈树是通过计算每一个局面是胜态还是必败态来解题，这样在局面数很多的情况下是很难做到的，此时，我们可以利用人脑的推演归纳能力找 到必败态的共性，就可以比较好的解决此类问题了。 解题思路分析初始局势是属于哪种形态，然后根据博弈中的些结论去推导当前状态是否是必败态。]]></content>
       <categories>
         <category>程序人生</category>
         <category>算法</category>
@@ -313,8 +313,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>BFS</tag>
+        <tag>算法</tag>
         <tag>康托展开</tag>
         <tag>hash</tag>
       </tags>
@@ -420,8 +420,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
@@ -466,9 +466,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>BFS</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -483,8 +483,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
         <tag>vector</tag>
       </tags>
   </entry>
@@ -499,9 +499,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>BFS</tag>
         <tag>算法</tag>
         <tag>DFS</tag>
-        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
