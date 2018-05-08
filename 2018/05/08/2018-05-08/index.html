@@ -103,14 +103,14 @@
 <meta name="description" content="取石子游戏巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果">
 <meta name="keywords" content="算法,ACM&#x2F;ICPC,博弈论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅悠悠的个人博客">
+<meta property="og:title" content="[博弈论]博弈论基本题型及5大常见博弈论原理">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/08/2018-05-08/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="取石子游戏巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-08T15:52:23.165Z">
+<meta property="og:updated_time" content="2018-05-08T16:17:14.025Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅悠悠的个人博客">
+<meta name="twitter:title" content="[博弈论]博弈论基本题型及5大常见博弈论原理">
 <meta name="twitter:description" content="取石子游戏巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果">
 
 
@@ -147,7 +147,7 @@
 
 
 
-  <title> | 浅悠悠的个人博客</title>
+  <title>[博弈论]博弈论基本题型及5大常见博弈论原理 | 浅悠悠的个人博客</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">[博弈论]博弈论基本题型及5大常见博弈论原理</h1>
         
 
         <div class="post-meta">
@@ -525,7 +525,7 @@
 <p>2、假设当 i&lt;=k 时，结论成立。则当 i=k+1 时，f[i] = f[k]+f[k-1]。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt; </span><br><span class="line">using namespace std;</span><br><span class="line">long long int f[50];</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n, i;</span><br><span class="line">	f[0] = f[1] = 1;</span><br><span class="line">	for (i = 2; i &lt; 50; i++) &#123;</span><br><span class="line">		f[i] = f[i - 1] + f[i - 2];</span><br><span class="line">	&#125;</span><br><span class="line">	while (cin &gt;&gt; n) &#123;</span><br><span class="line">		if (n == 0) break;</span><br><span class="line">		for (i = 0; i &lt; 50; i++) &#123;</span><br><span class="line">			if (f[i] == n) break;</span><br><span class="line">		&#125;</span><br><span class="line">		if (i &lt; 50) cout &lt;&lt; &quot;Second win&quot; &lt;&lt; endl;</span><br><span class="line">		else cout &lt;&lt; &quot;First win&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="K倍博弈"><a href="#K倍博弈" class="headerlink" title="K倍博弈"></a>K倍博弈</h3><p>共 n 个石子，两个人按顺序依次取石子。先手不能全部取完，之后每人取的个数不能超过另一个人上轮取的 K倍。 对于给定的 n, k， 先手是否有必胜的策略。</p>
-<p>当 k=1 的时候 可知必败局面都是 2^i 将 n 分解成二进制，然后先手取掉最后一个 1.然后对方必然无法去掉更高的 1，而对方取完我方至少还能拿掉最后一 个 1 导致对方永远取不完。 </p>
+<p>当 k=1 的时候 可知必败局面都是 2^i 将 n 分解成二进制，然后先手取掉最后一个 1，然后对方必然无法去掉更高的 1，而对方取完我方至少还能拿掉最后一 个 1 导致对方永远取不完。 </p>
 <p>当 k=2 的时候，必败局面都是斐波那契数列。利用“先手去掉最后一个 1，则后手必不能去掉更高阶的 1 导致取不完”的思想，斐波那契数列有一个非常好 的性质就是：任意一个整数可以写成斐波那契数列中的不相邻的项的和，于是将 n 写成这种形式，先取走最后一个 1，对方能取的数是这个数*2，小于高 2 位的 1，所以取不完。</p>
 <p>当 K 的时候， 想办法构造数列，将 n 写成数列中一些项的和，使得这些被取到的项的相邻两个倍数差距&gt;k 那么每次去掉最后一个 1 还是符合上面的条件。</p>
 <p>设这个数列已经被构造了 i 项，第 i 项为 a[ i ]，前 i 项可以完美对 1..b[ i ] 编码使得每个编码的任意两项倍数&gt;K 那么有 a[ i+1 ] = b[ i ] + 1;这是显然的 因为 b[ i ] + 1 没法构造出来，只能新建一项表示。然后计算 b[ i+1] 既然要使用 a[ i+1 ] 那么下一项最多只能是某个 a[ t ] 使得 a[ t ] * K &lt; a[ i+1 ] 于是b[ i ] = b[ t ] + a[ i+1 ] 然后判断 n 是否在这个数列里面如果在，那么先手必败。否则不停的减掉数列 a 中的项构造出 n 的分解，最后一位就是了。 </p>
