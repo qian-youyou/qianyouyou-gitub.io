@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-05-08T16:17:14.025Z</updated>
+  <updated>2018-05-09T13:42:37.364Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[计算几何]二维计算几何基础</title>
+    <link href="http://qianyouyou.cn/2018/05/09/2018-05-09/"/>
+    <id>http://qianyouyou.cn/2018/05/09/2018-05-09/</id>
+    <published>2018-05-09T13:42:37.000Z</published>
+    <updated>2018-05-09T13:42:37.364Z</updated>
+    
+    <content type="html"><![CDATA[<p>用解析几何借助计算机处理几何问题存在着两大缺陷：</p><p>1）方程解的情况复杂，例如Ax+By+C=0；</p><p>2）存在着浮点误差积累。</p><p>计算几何采用了介于代数与几何之间的方式解决几何问题。它利用几何特性辅助简单的代数运算解决几何问题，既能精确求解，有提高了算法效率，并且不失几何的优美特性。</p><h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>向量：既有大小又有方向的量。</p><h3 id="向量的比较"><a href="#向量的比较" class="headerlink" title="向量的比较"></a>向量的比较</h3><p>在平面坐标系下，某点的坐标用（x，y）表示，向量和点一样，也可以用x,y表示。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct Point&#123;//点</span><br><span class="line">    double x,y;</span><br><span class="line">    Point(double x=0,double y=0):x(x),y(y) &#123;&#125;//构造函数方便代码编写</span><br><span class="line">&#125;;</span><br><span class="line">typedef Point Vector;//向量。从程序实现上，Vector只是Point的别名</span><br></pre></td></tr></table></figure><h3 id="向量的加减乘除"><a href="#向量的加减乘除" class="headerlink" title="向量的加减乘除"></a>向量的加减乘除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//向量+向量=向量，点+向量=点</span><br><span class="line">Vector operator + (Vector A, Vector B) &#123;</span><br><span class="line">return Vector(A.x + B.x, A.y + B.y);</span><br><span class="line">&#125;</span><br><span class="line">//点-点=向量</span><br><span class="line">Vector operator - (Point A, Point B) &#123;</span><br><span class="line">return Vector(A.x - B.x, A.y - B.y);</span><br><span class="line">&#125;</span><br><span class="line">//向量*数=向量</span><br><span class="line">Vector operator * (Vector A, double p) &#123;</span><br><span class="line">return Vector(A.x * p, A.y * p);</span><br><span class="line">&#125;</span><br><span class="line">//向量/数=向量</span><br><span class="line">Vector operator * (Vector A, double p) &#123;</span><br><span class="line">return Vector(A.x / p, A.y / p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="向量的比较-1"><a href="#向量的比较-1" class="headerlink" title="向量的比较"></a>向量的比较</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">bool operator &lt; (const Point&amp; a, const Point&amp; b) &#123;</span><br><span class="line">return a.x &lt; b.x || (a.x == b.x&amp;&amp;a.y &lt; b.y);</span><br><span class="line">&#125;</span><br><span class="line">//减下误差的必要比较</span><br><span class="line">const double eps=1e-8;</span><br><span class="line">int dcmp(double x)</span><br><span class="line">&#123;</span><br><span class="line">    if(fabs(x)&lt;eps) return 0;</span><br><span class="line">    if(x&gt;0) return 1;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line">bool operator ==(const point&amp; a,const point&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">    return dcmp(a.x-b.x)==0&amp;&amp;dcmp(a.y-b.y)==0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意上面的“相等”函数用到“三态函数”dcmp,减少了精度问题。另外，向量有一个所谓的“极角”，即从x轴正半轴旋转到该向量方向所需要的角度。C标注库里的atan2函数就是用来求极角的。如向量（x,y）的极角就是atan2（y，x）（单位：弧度）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;用解析几何借助计算机处理几何问题存在着两大缺陷：&lt;/p&gt;
+&lt;p&gt;1）方程解的情况复杂，例如Ax+By+C=0；&lt;/p&gt;
+&lt;p&gt;2）存在着浮点误差积累。&lt;/p&gt;
+&lt;p&gt;计算几何采用了介于代数与几何之间的方式解决几何问题。它利用几何特性辅助简单的代数运算解决几何问题，既能精确求
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="计算几何" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/"/>
+    
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
+    
+      <category term="计算几何" scheme="http://qianyouyou.cn/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/"/>
+    
+      <category term="点积/叉积" scheme="http://qianyouyou.cn/tags/%E7%82%B9%E7%A7%AF-%E5%8F%89%E7%A7%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>[博弈论]博弈论基本题型及5大常见博弈论原理</title>
@@ -418,8 +458,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://qianyouyou.cn/2018/04/24/hello-world/"/>
-    <id>http://qianyouyou.cn/2018/04/24/hello-world/</id>
+    <link href="http://qianyouyou.cn/2018/04/24/2018-04-24/"/>
+    <id>http://qianyouyou.cn/2018/04/24/2018-04-24/</id>
     <published>2018-04-24T01:22:39.624Z</published>
     <updated>2018-04-28T11:01:20.104Z</updated>
     
@@ -686,43 +726,6 @@
       <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
     
       <category term="模拟" scheme="http://qianyouyou.cn/tags/%E6%A8%A1%E6%8B%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[BFS]正向BFS+hash解决八码问题</title>
-    <link href="http://qianyouyou.cn/2018/04/18/2018-04-18/"/>
-    <id>http://qianyouyou.cn/2018/04/18/2018-04-18/</id>
-    <published>2018-04-18T03:41:06.000Z</published>
-    <updated>2018-05-02T12:15:20.171Z</updated>
-    
-    <content type="html"><![CDATA[<p>八数码问题，可以用单向广搜、双向广搜、A*、IDA等多种方法求解。具体可以参考：<a href="http://www.cnblogs.com/goodness/archive/2010/05/04/1727141.html" target="_blank" rel="noopener">八数码的八境界</a></p><p>Description</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 1  2  3  4 </span><br><span class="line"></span><br><span class="line"> 5  6  7  8 </span><br><span class="line"></span><br><span class="line"> 9 10 11 12 </span><br><span class="line"></span><br><span class="line">13 14 15  x</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> 1  2  3  4    1  2  3  4    1  2  3  4    1  2  3  4 </span><br><span class="line"></span><br><span class="line"> 5  6  7  8    5  6  7  8    5  6  7  8    5  6  7  8 </span><br><span class="line"></span><br><span class="line"> 9  x 10 12    9 10  x 12    9 10 11 12    9 10 11 12 </span><br><span class="line"></span><br><span class="line">13 14 11 15   13 14 11 15   13 14  x 15   13 14 15  x </span><br><span class="line"></span><br><span class="line">           r-&gt;           d-&gt;           r-&gt;</span><br></pre></td></tr></table></figure><p>Input</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1  2  3 </span><br><span class="line"></span><br><span class="line">x  4  6 </span><br><span class="line"></span><br><span class="line">7  5  8</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 x 4 6 7 5 8</span><br></pre></td></tr></table></figure><p>Output</p><p>You will print to standard output either the word <code></code>unsolvable’’, if the puzzle has no solution, or a string consisting entirely of the letters ‘r’, ‘l’, ‘u’ and ‘d’ that describes a series of moves that produce a solution. The string should include no spaces and start at the beginning of the line.</p><p>Sample Input</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2  3  4  1  5  x  7  6  8</span><br></pre></td></tr></table></figure><p>Sample Output</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ullddrurdllurdruldr</span><br></pre></td></tr></table></figure><p>题解：</p><p>本题一共仅有9！种结果，因此求解方法很多。一开始采用stl进行存储，但一直超时，后来改用hash轻轻松松就过了。判重时9！个排列如果用数组直接保存，每一位保存一个维度，数组开不了那么大。因此可以根据康托展开进行判重，每一种排列对应成一个整形数字，9！种排列一共9！个数字，提高了hash效率。此外，对于x我们暂且当做9处理，而123456789的康托展开是1，因此bfs的终止条件就设为当前状态的康拓展开是否为1。此外，由于本次采用正向bfs，而输出结果时需要输出之前的状态，string储存太慢，queue队列会丢失之前的状态，因此用数组充当队列，用pre追溯上一个状态在队列中的下标。解决代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;cstdio&gt;  </span><br><span class="line">#include&lt;string&gt;  </span><br><span class="line">#include&lt;cstring&gt;  </span><br><span class="line">using namespace std;  </span><br><span class="line">const int MAXN = 400000;  </span><br><span class="line">int fac[9] = &#123; 1, 1, 2, 6, 24, 120, 720, 5040, 40320&#125;;  </span><br><span class="line">int dir[4][2] = &#123; &#123;-1,0&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;0,1&#125; &#125;;  </span><br><span class="line">int opp[4] = &#123; &apos;u&apos;,&apos;d&apos;,&apos;l&apos;,&apos;r&apos; &#125;;  </span><br><span class="line">bool vis[MAXN];  </span><br><span class="line">struct node &#123;  </span><br><span class="line">    int stadus;  </span><br><span class="line">    int cur[9];  </span><br><span class="line">    int loc;  </span><br><span class="line">    char path;  </span><br><span class="line">    int pre;  </span><br><span class="line">&#125;;  </span><br><span class="line">node qu[MAXN];  </span><br><span class="line">int cantor(int s[])  </span><br><span class="line">&#123;  </span><br><span class="line">    int sum = 0;  </span><br><span class="line">    for (int i = 0; i&lt;9; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        int num = 0;  </span><br><span class="line">        for (int j = i + 1; j&lt;9; j++)  </span><br><span class="line">            if (s[j]&lt;s[i])  </span><br><span class="line">                num++;  </span><br><span class="line">        sum += num*fac[8 - i];  </span><br><span class="line">    &#125;  </span><br><span class="line">    return sum + 1;  </span><br><span class="line">&#125;  </span><br><span class="line">int bfs(node now) &#123;  </span><br><span class="line">    memset(vis, false, sizeof(vis));  </span><br><span class="line">    int x, y;  </span><br><span class="line">    int front = 0, end = 0;  </span><br><span class="line">    node no = now;  </span><br><span class="line">    qu[end++] = no;  </span><br><span class="line">    vis[now.stadus] = true;  </span><br><span class="line">    while (front &lt; end) &#123;  </span><br><span class="line">        no = qu[front++];  </span><br><span class="line">        x = no.loc / 3;  </span><br><span class="line">        y = no.loc % 3;  </span><br><span class="line">        if (no.stadus == 1)  </span><br><span class="line">            return front - 1;  </span><br><span class="line">        for (int i = 0; i &lt; 4; i++) &#123;  </span><br><span class="line">            node cc = no;  </span><br><span class="line">            int xx = x + dir[i][0];  </span><br><span class="line">            int yy = y + dir[i][1];  </span><br><span class="line">            if (xx &lt; 3 &amp;&amp; xx &gt;= 0 &amp;&amp; yy &lt; 3 &amp;&amp; yy &gt;= 0) &#123;  </span><br><span class="line">                cc.cur[x * 3 + y] = cc.cur[x * 3 + y] ^ cc.cur[xx * 3 + yy];  </span><br><span class="line">                cc.cur[xx * 3 + yy] = cc.cur[x * 3 + y] ^ cc.cur[xx * 3 + yy];  </span><br><span class="line">                cc.cur[x * 3 + y] = cc.cur[x * 3 + y] ^ cc.cur[xx * 3 + yy];  </span><br><span class="line">                cc.stadus = cantor(cc.cur);  </span><br><span class="line">                if (!vis[cc.stadus]) &#123;  </span><br><span class="line">                    vis[cc.stadus] = true;  </span><br><span class="line">                    cc.loc = xx * 3 + yy;  </span><br><span class="line">                    cc.path = opp[i];  </span><br><span class="line">                    cc.pre = front - 1;  </span><br><span class="line">                    qu[end++] = cc;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return -1;  </span><br><span class="line">&#125;  </span><br><span class="line">void show(int a) &#123;  </span><br><span class="line">    if (qu[a].pre) &#123;  </span><br><span class="line">        show(qu[a].pre);  </span><br><span class="line">    &#125;  </span><br><span class="line">    printf(&quot;%c&quot;, qu[a].path);  </span><br><span class="line">&#125;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    string tmp;  </span><br><span class="line">    while (getline(cin, tmp)) &#123;  </span><br><span class="line">        int i = 0, cnt = 0;  </span><br><span class="line">        node temp;  </span><br><span class="line">        while (tmp[i]) &#123;  </span><br><span class="line">            if (tmp[i] == &apos; &apos;) &#123;  </span><br><span class="line">                i++;  </span><br><span class="line">                continue;  </span><br><span class="line">            &#125;  </span><br><span class="line">            else if (tmp[i] == &apos;x&apos;) &#123;  </span><br><span class="line">                temp.loc = cnt;  </span><br><span class="line">                temp.cur[cnt] = 9;  </span><br><span class="line">                cnt++;  </span><br><span class="line">                i++;  </span><br><span class="line">            &#125;  </span><br><span class="line">            else &#123;  </span><br><span class="line">                temp.cur[cnt] = tmp[i] - &apos;0&apos;;  </span><br><span class="line">                cnt++;  </span><br><span class="line">                i++;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        temp.stadus = cantor(temp.cur);  </span><br><span class="line">        int ans = bfs(temp);  </span><br><span class="line">        ans != -1 ? show(ans) : printf(&quot;-1&quot;);  </span><br><span class="line">        cout &lt;&lt; endl;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;八数码问题，可以用单向广搜、双向广搜、A*、IDA等多种方法求解。具体可以参考：&lt;a href=&quot;http://www.cnblogs.com/goodness/archive/2010/05/04/1727141.html&quot; target=&quot;_blank&quot; rel=&quot;no
-      
-    
-    </summary>
-    
-      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="BFS" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/BFS/"/>
-    
-    
-      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="BFS" scheme="http://qianyouyou.cn/tags/BFS/"/>
-    
-      <category term="康托展开" scheme="http://qianyouyou.cn/tags/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80/"/>
-    
-      <category term="hash" scheme="http://qianyouyou.cn/tags/hash/"/>
     
   </entry>
   
