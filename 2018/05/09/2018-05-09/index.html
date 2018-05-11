@@ -118,6 +118,9 @@
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E7%82%B9%E5%88%B0%E7%BA%BF%E6%AE%B5%E8%B7%9D%E7%A6%BB.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E8%A7%84%E8%8C%83%E7%9B%B8%E4%BA%A4%E4%B8%8E%E9%9D%9E%E8%A7%84%E8%8C%83%E7%9B%B8%E4%BA%A4.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E8%B7%A8%E7%AB%8B%E5%AE%9E%E9%AA%8C.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E5%87%B8.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E5%87%B9.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E5%A4%9A%E8%BE%B9%E5%BD%A2%E9%9D%A2%E7%A7%AF.png">
 <meta property="og:updated_time" content="2018-05-11T09:22:02.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[计算几何]二维计算几何基础">
@@ -471,7 +474,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,953
+                  2,248
                 </span>
               
 
@@ -487,7 +490,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  10
                 </span>
               
             </div>
@@ -565,6 +568,14 @@
 <p>如果交点是端点</p>
 <p>就判断几次点是否在线段上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//判断点p是否在线段a1 a2上</span><br><span class="line">bool OnSegment(point p,point a1,point a2)</span><br><span class="line">&#123;</span><br><span class="line">  return dcmp(cross(a1-p,a2-p))==0&amp;&amp;dcmp(dot(a1-p,a2-p))&lt;0; //线段包含端点时改成&lt;=</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多边形问题"><a href="#多边形问题" class="headerlink" title="多边形问题"></a>多边形问题</h2><h3 id="多边形面积"><a href="#多边形面积" class="headerlink" title="多边形面积"></a>多边形面积</h3><p>两向量的叉积的几何意义是以这两个向量为邻边的平行四边形的有向面积，我们可以利用这一点来求简单多边形的面积。所谓简单多边形就是任何不相邻的两条边都没有交点，包括凸多边形和凹多边形。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E5%87%B8.png" alt=""><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E5%87%B9.png" alt=""></p>
+<p>求下面多边形的面积，已知个顶点的坐标。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-11-%E5%A4%9A%E8%BE%B9%E5%BD%A2%E9%9D%A2%E7%A7%AF.png" alt=""></p>
+<p>注意：在引入叉积后，面积就可以为负值，就有了“负面积”的概念。“负面积”方便了我们的运算。</p>
+<p>可以取p[0]点为划分顶点，一方面可以少算两个叉积（0和任何向量的叉积都等于0），另一方面也减少乘法溢出的可能性，还不用特殊处理（i=n-1时，下一个顶点p[0]而不是p[n]，因为p[n]不存在）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//取p[0]为划分顶点</span><br><span class="line">double PolygonArea(vector&lt;Point&gt; p) &#123;</span><br><span class="line">  int n = p.size();</span><br><span class="line">  double area = 0;</span><br><span class="line">  for(int i = 1; i &lt; n-1; i++)</span><br><span class="line">    area += Cross(p[i]-p[0], p[i+1]-p[0]);</span><br><span class="line">  return area/2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以取坐标原点为划分点，乘法次数减少。</p>
 
       
     </div>
@@ -869,7 +880,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#向量"><span class="nav-number">1.</span> <span class="nav-text">向量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向量-1"><span class="nav-number">1.1.</span> <span class="nav-text">向量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的比较"><span class="nav-number">1.1.1.</span> <span class="nav-text">向量的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的加减乘除"><span class="nav-number">1.1.2.</span> <span class="nav-text">向量的加减乘除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的比较-1"><span class="nav-number">1.1.3.</span> <span class="nav-text">向量的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量內积（点积）"><span class="nav-number">1.2.</span> <span class="nav-text">向量內积（点积）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几何意义"><span class="nav-number">1.2.1.</span> <span class="nav-text">几何意义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量外积（叉积）"><span class="nav-number">1.3.</span> <span class="nav-text">向量外积（叉积）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几何意义-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">几何意义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两向量的位置关系"><span class="nav-number">1.4.</span> <span class="nav-text">两向量的位置关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点和直线"><span class="nav-number">2.</span> <span class="nav-text">点和直线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#点到直线的距离"><span class="nav-number">2.1.</span> <span class="nav-text">点到直线的距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点到线段的距离"><span class="nav-number">2.2.</span> <span class="nav-text">点到线段的距离</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#判断点是否在线段上"><span class="nav-number">2.2.1.</span> <span class="nav-text">判断点是否在线段上</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段相交"><span class="nav-number">2.3.</span> <span class="nav-text">线段相交</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线段规范相交"><span class="nav-number">2.3.1.</span> <span class="nav-text">线段规范相交</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#跨立实验"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">跨立实验</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#规范相交"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">规范相交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线段相交-1"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">线段相交</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#向量"><span class="nav-number">1.</span> <span class="nav-text">向量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向量-1"><span class="nav-number">1.1.</span> <span class="nav-text">向量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的比较"><span class="nav-number">1.1.1.</span> <span class="nav-text">向量的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的加减乘除"><span class="nav-number">1.1.2.</span> <span class="nav-text">向量的加减乘除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向量的比较-1"><span class="nav-number">1.1.3.</span> <span class="nav-text">向量的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量內积（点积）"><span class="nav-number">1.2.</span> <span class="nav-text">向量內积（点积）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几何意义"><span class="nav-number">1.2.1.</span> <span class="nav-text">几何意义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向量外积（叉积）"><span class="nav-number">1.3.</span> <span class="nav-text">向量外积（叉积）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几何意义-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">几何意义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两向量的位置关系"><span class="nav-number">1.4.</span> <span class="nav-text">两向量的位置关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点和直线"><span class="nav-number">2.</span> <span class="nav-text">点和直线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#点到直线的距离"><span class="nav-number">2.1.</span> <span class="nav-text">点到直线的距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点到线段的距离"><span class="nav-number">2.2.</span> <span class="nav-text">点到线段的距离</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#判断点是否在线段上"><span class="nav-number">2.2.1.</span> <span class="nav-text">判断点是否在线段上</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段相交"><span class="nav-number">2.3.</span> <span class="nav-text">线段相交</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线段规范相交"><span class="nav-number">2.3.1.</span> <span class="nav-text">线段规范相交</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#跨立实验"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">跨立实验</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#规范相交"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">规范相交</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#线段相交-1"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">线段相交</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多边形问题"><span class="nav-number">3.</span> <span class="nav-text">多边形问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多边形面积"><span class="nav-number">3.1.</span> <span class="nav-text">多边形面积</span></a></li></ol></li></ol></div>
             
 
           </div>
