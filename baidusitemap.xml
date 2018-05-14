@@ -4,6 +4,36 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/05/14/2018-05-14/</loc>
+    <lastmod>2018-05-14T09:19:32.804Z</lastmod>
+    <data>
+        <display>
+        <title>陕西师范大学第七届程序设计竞赛题解</title>
+        <pubTime>2018-05-14T08:42:18.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>算法</tag>
+         
+        <tag>ACM/ICPC</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="题解" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E9%A2%98%E8%A7%A3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/05/12/2018-05-12/</loc>
     <lastmod>2018-05-12T15:20:58.292Z</lastmod>
     <data>
@@ -467,9 +497,9 @@
         <title>正则表达式练习题集(附答案)</title>
         <pubTime>2018-01-21T10:41:35.000Z</pubTime>
         
-        <tag>字符串</tag>
-         
         <tag>正则表达式</tag>
+         
+        <tag>字符串</tag>
          
          
            
@@ -492,11 +522,11 @@
         <title>sstream和strstream的用法</title>
         <pubTime>2018-01-24T05:31:04.000Z</pubTime>
         
+        <tag>字符串</tag>
+         
         <tag>C/C++</tag>
          
         <tag>stl</tag>
-         
-        <tag>字符串</tag>
          
          
            
@@ -526,9 +556,9 @@
          
         <tag>算法</tag>
          
-        <tag>BFS</tag>
-         
         <tag>DFS</tag>
+         
+        <tag>BFS</tag>
          
          
            
@@ -953,9 +983,9 @@
          
         <tag>算法</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>BFS</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
