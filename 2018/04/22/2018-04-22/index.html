@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
+<meta name="description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3]，[3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为：    [] [] []  3 2 3     [] [] []  2 4 2   [] []">
 <meta name="keywords" content="C&#x2F;C++,模拟,博弈论,AI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[杂项项目]C语言打造智能AI小游戏——三子棋">
 <meta property="og:url" content="http://qianyouyou.cn/2018/04/22/2018-04-22/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
+<meta property="og:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3]，[3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为：    [] [] []  3 2 3     [] [] []  2 4 2   [] []">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T03:40:37.823Z">
+<meta property="og:updated_time" content="2018-05-15T15:58:38.222Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[杂项项目]C语言打造智能AI小游戏——三子棋">
-<meta name="twitter:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为： [][][]     3 2 3 [][][]     2 4 2 [][][]     3">
+<meta name="twitter:description" content="三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3]，[3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为：    [] [] []  3 2 3     [] [] []  2 4 2   [] []">
 
 
 
@@ -460,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,026
+                  1,905
                 </span>
               
 
@@ -476,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  10
                 </span>
               
             </div>
@@ -497,40 +497,398 @@
       
 
       
-        <p>三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3][3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为：</p>
-<p>[][][]     3 2 3</p>
-<p>[][][]     2 4 2</p>
-<p>[][][]     3 2 3</p>
+        <p>三子棋具体就不多介绍了，AI棋用O表示，我们的棋用X表示。先手后手自己选。这里主要说一下AI算法。首先AI会对整个棋盘MAP[3]，[3]进行遍历，每个格子都有一个权值weight[i][j]。权值的第一次计算方法是对每一行i每一列j进行计算，计算基于这一格有几种获胜的路线。例如没有走时，9个格的权值为：</p>
+<table>
+<thead>
+<tr>
+<th>[]</th>
+<th>[]</th>
+<th>[]</th>
+<th></th>
+<th>3</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>[]</td>
+<td>[]</td>
+<td></td>
+<td>2</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>[]</td>
+<td>[]</td>
+<td></td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 <p>角落有横竖斜三种获胜方法，边有横竖两种方法，中心有横竖两斜4种方法。假如某格有X阻挡，那么权值会相应变化，例如</p>
-<p>[][][]     2 1 2</p>
-<p>[]X[]     1 0 1</p>
-<p>[][][]     2 1 2</p>
+<table>
+<thead>
+<tr>
+<th>[]</th>
+<th>[]</th>
+<th>[]</th>
+<th></th>
+<th>2</th>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>X</td>
+<td>[]</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>[]</td>
+<td>[]</td>
+<td></td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
 <p>由于有中心阻挡，那么角只有横竖两种方法赢，因此权值为2。但该AI还需继续优化。例如以下：</p>
-<p>[]X[]     1 0 1</p>
-<p>[]0[]     1 0 2</p>
-<p>XX0     0 0 0</p>
+<table>
+<thead>
+<tr>
+<th>[]</th>
+<th>X</th>
+<th>[]</th>
+<th></th>
+<th>1</th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>0</td>
+<td>[]</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>AI面对这种情况，本来下在第一个格子就赢了，但他会选择权值为2的格子。因此我们可以在现有权值条件的情况下，在附加个权值。假如某一格子的路线上已经有AI的子了，那么该条路线上未落子的所有格子权值再加1，如果有两个已落子的AI格子权值就加2。例如以下情况：</p>
-<p>​            原权值       优化权值</p>
-<p>[]X[]     2 0 2          5 0 3</p>
-<p>[]0[]     2 0 2          3 0 4</p>
-<p>[]X0     2 0 0          3 0 0</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>原权值</th>
+<th></th>
+<th></th>
+<th></th>
+<th>优化</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>X</td>
+<td>[]</td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td></td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>0</td>
+<td>[]</td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td></td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>X</td>
+<td>0</td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>第一个格子5是由于斜路线上有两个子，那在原有的基础2上先加1，再加2，所以权值为2+1+2。第2行第3列权值为4，因为横竖两条路线均有1个子，因此权值为2+1+1，其余格子路线上均有1个子，因此权值为2+1。这样落在权值5那个格子上AI就赢了。</p>
 <p>但是仅仅这些判断是不够的。例如：</p>
-<p>​           初始         优化</p>
-<p>X[]X     0 1 0       0 2 0</p>
-<p>[]0[]     1 0 1       2 0 2</p>
-<p>[][]0     1 2 0       2 4 0</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>原权值</th>
+<th></th>
+<th></th>
+<th></th>
+<th>优化</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>[]</td>
+<td>X</td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>0</td>
+<td>[]</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>[]</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td>2</td>
+<td>4</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>AI会选择权值为4的格子。那此时AI选择权值为2的格子时，你只需要走一步就赢了，AI就输了，因此该AI算法还得继续。</p>
 <p>那么AI可以逆向思考一番，AI可以考虑一下当前情况在计算AI权值的同时再计算一次我们的权值。例如上面例子：</p>
-<p>​           AI权值       你的权值       优化AI      优化你</p>
-<p>X[]X     0 1 0         0 1 0            0 2 0         0 4 0</p>
-<p>[]0[]     1 0 1         1 0 0            2 0 2         2 0 0</p>
-<p>[][]0     1 2 0         1 0 0            2 4 0         2 0 0</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>AI</th>
+<th></th>
+<th></th>
+<th></th>
+<th>你</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>[]</td>
+<td>X</td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>0</td>
+<td>[]</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>[]</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>优化AI</td>
+<td></td>
+<td></td>
+<td></td>
+<td>优化你</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>4</td>
+<td>0</td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>我们把两个权值相加（另外把AI的权值应该再加1，因为AI判断赢要优先于输或平，假如AI方有权值大的，代表一步能赢的，我方也有这种情况，那相加权值相同，AI既可以选择赢棋那一格，也可以选择堵你将要赢的那一格。但AI判断赢要优先于堵对方赢。例子就不举了）：</p>
-<p>​           相加权值       再加1权值</p>
-<p>X[]X     0 6 0            0 7 0</p>
-<p>[]0[]     4 0 2            5 0 3</p>
-<p>[][]0     4 4 0            5 4 0</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th>相加权</th>
+<th></th>
+<th></th>
+<th></th>
+<th>加1权</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>[]</td>
+<td>X</td>
+<td></td>
+<td>0</td>
+<td>6</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>7</td>
+<td>0</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>0</td>
+<td>[]</td>
+<td></td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td></td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>[]</td>
+<td>0</td>
+<td></td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td></td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>因此AI判断到这里就会堵你了。</p>
 <p>AI算法就介绍到这里，至于三子棋程序，由于过于简单，就不过多介绍了。主要介绍AI思想，Windows系统编译的程序。如果是Linux需要把以下代码改下。接下来我就贴上代码，供参考，如有不懂欢迎留言。</p>
 <p>project.h</p>
