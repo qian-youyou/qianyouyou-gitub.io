@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-05-14T10:53:18.699Z</updated>
+  <updated>2018-05-16T17:11:05.779Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>艾教习题总结</title>
+    <link href="http://qianyouyou.cn/2018/05/16/2018-05-16/"/>
+    <id>http://qianyouyou.cn/2018/05/16/2018-05-16/</id>
+    <published>2018-05-16T14:51:02.000Z</published>
+    <updated>2018-05-16T17:11:05.779Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="管道取珠"><a href="#管道取珠" class="headerlink" title="管道取珠"></a>管道取珠</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/%E7%AE%A1%E9%81%93%E5%8F%96%E7%8F%A0_1.jpg" alt=""></p><p><img src="http://p7woygi8q.bkt.clouddn.com/%E7%AE%A1%E9%81%93%E5%8F%96%E7%8F%A0_2.jpg" alt=""></p><p><strong>输入</strong></p><p>第一行包含两个整数n, m，分别表示上下两个管道中球的数目。 第二行为一个AB字符串，长度为n，表示上管道中从左到右球的类型。其中A表示浅色球，B表示深色球。 第三行为一个AB字符串，长度为m，表示下管道中的情形。</p><p><strong>输出</strong></p><p>仅包含一行，即为 Sigma(Ai^2) i从1到k 除以1024523的余数。</p><p><strong>输入示例</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 1</span><br><span class="line">AB</span><br><span class="line">B</span><br></pre></td></tr></table></figure><p><strong>输出示例</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure><p><strong>数据规模及约定</strong></p><p>约30%的数据满足 n, m ≤ 12；<br>约100%的数据满足n, m ≤ 500。</p><p><strong>题解</strong></p><p>这题思路比较妙，我们需要先想想 ∑ai2 有什么意义。如果我们构造出这样一个游戏场景，即两个人同时玩两份同样的如题目所述的管道取珠的游戏，那么这两个人游戏结束后取到的珠子颜色序列一模一样的方案数就是题目里要求的答案。</p><p>令这两个人分别是 p1 和 p2。于是设 f[i][j][k] 表示 p1 取了第二个管道中的前 i 个珠子，第一个管道中的前 j 个珠子；p2 取了第一个管道的前 k 个珠子，这个状态下颜色序列相同的方案数，转移显然。</p><p>注：n为12以内一般是阶乘的题，n为30以内可以考虑状态压缩，莫队，线段树等各种情况，50左右选择二分，100以上需要另想方法。</p><h2 id="问号猜数"><a href="#问号猜数" class="headerlink" title="问号猜数"></a>问号猜数</h2><p>有一堆数按照递增的顺序排列，然而这些数的某些位我们并不知道，我们知道的只是这些数是从小到大排列的，现在依次给出这些数，不知道的位用？表示。我们需要猜这个数能满足递增条件的最小数。例如：</p><p>??</p><p>1?</p><p>?1</p><p>???</p><p>?99</p><p>?9?</p><p>?4?5</p><p>第一个数是10，第2个11，第3个21，第4个100，第5个199，第6个290，第7个1405。</p><p><strong>题解</strong></p><p>用贪心虽然比较快，但代码不容易写，须考虑情况挺多。因此我们分析一下。首先n&lt;=6，代表最大位数是6，也就是说最大的数也就是百万位。因此直接从1枚举，另设指针指向第1个数，每枚举到某个数满足该指针指向的数，则将指针指向下一个数，然后继续枚举，因此扫描一遍之后就得到所有的答案了。</p><p>接下来，假如n&lt;=15，由于数是递增的，则将枚举用二分来完成。假如n&gt;=100，这时再考虑贪心。</p><h2 id="取牌去牌"><a href="#取牌去牌" class="headerlink" title="取牌去牌"></a>取牌去牌</h2><p>有n张牌，每个牌有一个a属性和1个b属性，第i张牌的属性为ai，bi。现在每次从牌中选两张牌ii.j，得到一个ai <em> bj + bi </em> aj的分数，然后从这两张牌中去掉1张牌。经过n-1次操作之后就剩1张牌了。问经过n-1次操作后得到的最大的分数和是多少。</p><p><strong>题解</strong></p><p>主要是删除牌的问题。但是假如我们将每张牌看成1个结点，属性的乘积得到的分数为1条路径，那么n张牌构成了n个结点n*（n-1）/2条边的强联通无向图，那么只需求每次分数最大的最小生成树即可。</p><h2 id="铁索连环"><a href="#铁索连环" class="headerlink" title="铁索连环"></a>铁索连环</h2><p>有n个数，现在有m次查询，每次查询[l,r]范围所有不同的数。假设n很大</p><p><strong>题解</strong></p><p>我的思路是打表记录上一个相同元素的位置，比如a[1-10]=1,2,4,3,2,4,5,6,3,4,那么b[1-10]=0,0,0,0,2,3,0,0,4,6。这样l，r的范围内只需扫描1遍即可，扫到0结果加1，扫到非0的数看该下标是否 &lt; l，是则加1，否则不处理。时间复杂度是0mn。</p><p>艾教的方法不是很懂，不过举了一个例子，假如(3(3(3(3(3)))))，查询范围为括号所示，那么只需将第5个3赋为1，其他3赋为0即可。看起来最后就像一条链子捆绑着相同的元素。</p><h2 id="狭路相逢"><a href="#狭路相逢" class="headerlink" title="狭路相逢"></a>狭路相逢</h2><p>有一个图，每条路上都有强盗，每个节点都有驴友，假如到某条路上，该路上的强盗抢劫你的条件是强盗人数大于等于你们人数。你们每经过一个节点可以拉驴友入伍结伴而行，问（忘记问什么了，尴尬~QAQ~）</p><p><strong>题解</strong></p><p>并查集</p><h2 id="区间gcd"><a href="#区间gcd" class="headerlink" title="区间gcd"></a>区间gcd</h2><p>给定l，r，问多少种gcd(l,r)==gcd(l2.r2)</p><p><strong>题解</strong></p><p>1、两个条件，从1到n，最大公约数呈递减阶梯式。</p><p>2、gcd(gcd（a,b）,gcd(c,d))==gcd(a,d)</p><p>根据性质2可以用st表列出范围内l，r的最大公约数，即1，n最大公约数</p><p>根据性质1，二分求解</p><h2 id="信号误差"><a href="#信号误差" class="headerlink" title="信号误差"></a>信号误差</h2><p>艾教给女朋友传情发信号，信号是01串（16位）组成的字母，但是有情敌的干扰，途中可能至多会有两位进制会发生改变。问如何设置01串才能无视干扰准确将信号传给女盆友。例如1111111111111111，那么该2个1也是比0多，所以无视干扰。但每次只能处理一个字母，效率太慢。</p><p><strong>题解</strong></p><p>图论。将距离2以内的所有结点全部连起来。贪心选取结点，可以直接选择第一个结点开始。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;管道取珠&quot;&gt;&lt;a href=&quot;#管道取珠&quot; class=&quot;headerlink&quot; title=&quot;管道取珠&quot;&gt;&lt;/a&gt;管道取珠&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://p7woygi8q.bkt.clouddn.com/%E7%AE%A1%E9%81%93%
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>陕西师范大学第七届程序设计竞赛题解</title>
@@ -299,11 +320,11 @@
     
       <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
     
+      <category term="KM算法" scheme="http://qianyouyou.cn/tags/KM%E7%AE%97%E6%B3%95/"/>
+    
       <category term="图论" scheme="http://qianyouyou.cn/tags/%E5%9B%BE%E8%AE%BA/"/>
     
       <category term="二分图匹配" scheme="http://qianyouyou.cn/tags/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/"/>
-    
-      <category term="KM算法" scheme="http://qianyouyou.cn/tags/KM%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -472,13 +493,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
+    
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="html/css" scheme="http://qianyouyou.cn/tags/html-css/"/>
     
@@ -510,13 +531,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
+    
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="html/css" scheme="http://qianyouyou.cn/tags/html-css/"/>
     
@@ -548,13 +569,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
+    
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="html/css" scheme="http://qianyouyou.cn/tags/html-css/"/>
     
@@ -654,11 +675,11 @@
       <category term="爬虫" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/python/%E7%88%AC%E8%99%AB/"/>
     
     
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="python" scheme="http://qianyouyou.cn/tags/python/"/>
     
       <category term="爬虫" scheme="http://qianyouyou.cn/tags/%E7%88%AC%E8%99%AB/"/>
-    
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -694,43 +715,6 @@
       <category term="博弈论" scheme="http://qianyouyou.cn/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
       <category term="AI" scheme="http://qianyouyou.cn/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[排序]求解第k大分值</title>
-    <link href="http://qianyouyou.cn/2018/04/21/2018-04-21/"/>
-    <id>http://qianyouyou.cn/2018/04/21/2018-04-21/</id>
-    <published>2018-04-21T15:42:03.000Z</published>
-    <updated>2018-05-02T12:07:43.468Z</updated>
-    
-    <content type="html"><![CDATA[<p>描述：</p><p>Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。</p><p>言归正传，今天他又发明了一个新的interesting game。Ar老师手上有一堆卡牌，然后卡牌上写了一个数字Ai(正整数)，当前他有n张牌，然后他总是随机取出两张来，然后他一眼就能看出这两牌中哪一张小（相同就取相同的，这操作好像对于Ar老师来说太简单了），作为这两张牌的有效分值，然后呢他陷入了沉思，对于n张牌取两张牌显然有确定的组合可能性，有n<em>(n-1)/2对组合，然后他想知道所有这些组合中第k大的分值是多少。输入描述:输入一个t表示数据组数；(0&lt;t&lt;=10)接下来一行是n,k,表示n张牌和最后第k大的分值；（1&lt;n&lt;2500,保证0&lt;k&lt;=n</em>(n-1)/2）接下来一行是n个值ai，表示第i张牌上的数字(0 &lt; ai &lt;= 10000000)。输出描述:每组数据输出一行，即第k大的分值为多少。</p><p>示例</p><p>输入</p><p>2</p><p>3 2</p><p>1 2 3</p><p>3 1</p><p>4 2 1</p><p>输出</p><p>1</p><p>2</p><p>题解：</p><p>首先将这n个数进行从大到小排序，a[0]储存第1大，a[1]储存第2大……第2个和第1个比较最小的是第2个，第3个和前两个比较较小的均是第3个，第4个和前3个比较均是第4个，以此递推，第n个数和n前n-1个比较均是n较小。将所有情况全排列很容易超时，因此我们可以从第k大这个k下手。由于a[0]最大，因此a[0]和任意比较都不会输出a[0]。那么首先k为1输出a[1],1&lt;k&lt;=1+2输出a[2],1+2&lt;k&lt;=1+2+3输出a[3]……现在应该很清楚了吧。可以设置一个变量cnt，和i,从1开始，cnt每次加1，i每次加cnt，直到i加到比k大或者等于时，那么此时的a[cnt]就是第k大的数。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;  </span><br><span class="line">#include&lt;algorithm&gt;  </span><br><span class="line">int cmp(int a, int b) &#123;  </span><br><span class="line">    return a &gt; b;  </span><br><span class="line">&#125;  </span><br><span class="line">int T, N, k, a[100010];  </span><br><span class="line">using namespace std;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    cin &gt;&gt; T;  </span><br><span class="line">    while (T--) &#123;  </span><br><span class="line">        cin &gt;&gt; N &gt;&gt; k;  </span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;  </span><br><span class="line">            cin &gt;&gt; a[i];  </span><br><span class="line">        &#125;  </span><br><span class="line">        sort(a, a + N, cmp);  </span><br><span class="line">        int cnt = 1, i = 1;  </span><br><span class="line">        for (int i = 1; i &lt; k; i += cnt) &#123;  </span><br><span class="line">            cnt++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        cout &lt;&lt; a[cnt] &lt;&lt; endl;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;描述：&lt;/p&gt;
-&lt;p&gt;Arch0n老师is a rich man, 他靠自己的才华和智商年纪轻轻就赚了不少钱。为了训练自己的智商，他经常玩一些interesting的游戏来训练自己的智商，比如什么RGB游戏，还有和妹子一块玩Don’t Starve。&lt;/p&gt;
-&lt;p&gt;言归正传
-      
-    
-    </summary>
-    
-      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
-    
-      <category term="数据结构" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="排序" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F/"/>
-    
-    
-      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="排序" scheme="http://qianyouyou.cn/tags/%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
