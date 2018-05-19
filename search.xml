@@ -411,8 +411,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>DFS</tag>
-        <tag>ACM/ICPC</tag>
         <tag>位运算</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -562,8 +562,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>stl</tag>
         <tag>算法</tag>
+        <tag>stl</tag>
         <tag>pat天梯赛</tag>
         <tag>vector</tag>
       </tags>
@@ -609,8 +609,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>stl</tag>
         <tag>字符串</tag>
+        <tag>stl</tag>
       </tags>
   </entry>
   <entry>
@@ -622,8 +622,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
 </search>
