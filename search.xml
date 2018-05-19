@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ACM全国邀请赛热身赛题2并查集]]></title>
+    <url>%2F2018%2F05%2F19%2F2018-05-19%2F</url>
+    <content type="text"><![CDATA[真是糟糕的一天，愿不要影响到明天邀请赛发挥。 题意： 有n个人。m次询问。每次询问包含两个数x和y，代表第x人和和第y人中有一个人是叛徒，一个不是叛徒。如果遇到第i次询问和之前询问出现冲突，则该询问为谎言。如果m条询问没有谎言，则输出1，和最大可能叛徒数，否则输出-1，遇到第几条时判断是谎言。 例： 输入 3 3 1 2 2 3 3 1 输出 -1 3 输入 5 4 1 2 2 3 3 4 4 1 输出 1 3 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;iostream&gt;using namespace std;const int MAXX = 100010;int fa[MAXX], r[MAXX];int vis[MAXX];int find(int x)&#123; if (fa[x] == x) return fa[x]; int tmp = fa[x]; fa[x] = find(fa[x]); r[x] = (r[tmp] + r[x]) % 2; return fa[x];&#125;void fun(int x, int y)&#123; int fx = find(x), fy = find(y); if (fx == fy) return; fa[fy] = fx; r[fy] = (r[x] + 1 - r[y]) % 2;&#125;int main()&#123; int T; scanf(&quot;%d&quot;, &amp;T); while (T--) &#123; int N, M, x, y, flag = 0, cnt = 0; scanf(&quot;%d%d&quot;, &amp;N, &amp;M); memset(vis, 0, sizeof(vis)); for (int i = 0; i &lt;= N; i++) fa[i] = i, r[i] = 0; for (int i = 1; i &lt;= M; i++) &#123; scanf(&quot;%d%d&quot;, &amp;x, &amp;y); if (!vis[x]) cnt++; if (!vis[y]) cnt++; vis[x] = vis[y] = 1; if (flag) continue; if (find(x) == find(y)) &#123; if (r[x] == r[y]) flag = i; &#125; else fun(x, y); &#125; if (flag) printf(&quot;-1 %d\n&quot;, flag); else &#123; int cnt2 = 0; for (int i = 1; i &lt;= N; i++) &#123; find(i); if (r[i] == 1 || !vis[i]) cnt2++; &#125; printf(&quot;1 %d\n&quot;, cnt - cnt2 &gt; cnt2 ? cnt - cnt2 : cnt2); &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>ACM/ICPC</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[牛客小白月赛&&艾教习题总结]]></title>
     <url>%2F2018%2F05%2F16%2F2018-05-16%2F</url>
     <content type="text"><![CDATA[管道取珠 输入 第一行包含两个整数n, m，分别表示上下两个管道中球的数目。 第二行为一个AB字符串，长度为n，表示上管道中从左到右球的类型。其中A表示浅色球，B表示深色球。 第三行为一个AB字符串，长度为m，表示下管道中的情形。 输出 仅包含一行，即为 Sigma(Ai^2) i从1到k 除以1024523的余数。 输入示例 1232 1ABB 输出示例 15 数据规模及约定 约30%的数据满足 n, m ≤ 12；约100%的数据满足n, m ≤ 500。 题解 这题思路比较妙，我们需要先想想 ∑ai2 有什么意义。如果我们构造出这样一个游戏场景，即两个人同时玩两份同样的如题目所述的管道取珠的游戏，那么这两个人游戏结束后取到的珠子颜色序列一模一样的方案数就是题目里要求的答案。 令这两个人分别是 p1 和 p2。于是设 f[i][j][k] 表示 p1 取了第二个管道中的前 i 个珠子，第一个管道中的前 j 个珠子；p2 取了第一个管道的前 k 个珠子，这个状态下颜色序列相同的方案数，转移显然。 注：n为12以内一般是阶乘的题，n为30以内可以考虑状态压缩，莫队，线段树等各种情况，50左右选择二分，100以上需要另想方法。 问号猜数有一堆数按照递增的顺序排列，然而这些数的某些位我们并不知道，我们知道的只是这些数是从小到大排列的，现在依次给出这些数，不知道的位用？表示。我们需要猜这个数能满足递增条件的最小数。例如： ?? 1? ?1 ??? ?99 ?9? ?4?5 第一个数是10，第2个11，第3个21，第4个100，第5个199，第6个290，第7个1405。 题解 用贪心虽然比较快，但代码不容易写，须考虑情况挺多。因此我们分析一下。首先n&lt;=6，代表最大位数是6，也就是说最大的数也就是百万位。因此直接从1枚举，另设指针指向第1个数，每枚举到某个数满足该指针指向的数，则将指针指向下一个数，然后继续枚举，因此扫描一遍之后就得到所有的答案了。 接下来，假如n&lt;=15，由于数是递增的，则将枚举用二分来完成。假如n&gt;=100，这时再考虑贪心。 取牌去牌有n张牌，每个牌有一个a属性和1个b属性，第i张牌的属性为ai，bi。现在每次从牌中选两张牌ii.j，得到一个ai bj + bi aj的分数，然后从这两张牌中去掉1张牌。经过n-1次操作之后就剩1张牌了。问经过n-1次操作后得到的最大的分数和是多少。 题解 主要是删除牌的问题。但是假如我们将每张牌看成1个结点，属性的乘积得到的分数为1条路径，那么n张牌构成了n个结点n*（n-1）/2条边的强联通无向图，那么只需求每次分数最大的最小生成树即可。 铁索连环有n个数，现在有m次查询，每次查询[l,r]范围所有不同的数。假设n很大 题解 我的思路是打表记录上一个相同元素的位置，比如a[1-10]=1,2,4,3,2,4,5,6,3,4,那么b[1-10]=0,0,0,0,2,3,0,0,4,6。这样l，r的范围内只需扫描1遍即可，扫到0结果加1，扫到非0的数看该下标是否 &lt; l，是则加1，否则不处理。时间复杂度是0mn。 艾教的方法不是很懂，不过举了一个例子，假如(3(3(3(3(3)))))，查询范围为括号所示，那么只需将第5个3赋为1，其他3赋为0即可。看起来最后就像一条链子捆绑着相同的元素。 狭路相逢有一个图，每条路上都有强盗，每个节点都有驴友，假如到某条路上，该路上的强盗抢劫你的条件是强盗人数大于等于你们人数。你们每经过一个节点可以拉驴友入伍结伴而行，问（忘记问什么了，尴尬~QAQ~） 题解 并查集 区间gcd给定l，r，问多少种gcd(l,r)==gcd(l2.r2) 题解 1、两个条件，从1到n，最大公约数呈递减阶梯式。 2、gcd(gcd（a,b）,gcd(c,d))==gcd(a,d) 根据性质2可以用st表列出范围内l，r的最大公约数，即1，n最大公约数 根据性质1，二分求解 信号误差艾教给女朋友传情发信号，信号是01串（16位）组成的字母，但是有情敌的干扰，途中可能至多会有两位进制会发生改变。问如何设置01串才能无视干扰准确将信号传给女盆友。例如1111111111111111，那么该2个1也是比0多，所以无视干扰。但每次只能处理一个字母，效率太慢。 题解 图论。将距离2以内的所有结点全部连起来。贪心选取结点，可以直接选择第一个结点开始。 牛客小白月赛音标题目描述 我们规定元音字母有a、e、i、o、u，并且规定半元音字母y也是元音字母。 Cwbc在学习英语，XHRlyb为了让Cwbc的记忆更加深刻，于是她让Cwbc把每个字符串的所有字母都变成一个恰好**不大于它本身的小写元音字母**。 输入描述:1输入数据有多行，每行有一个仅包含小写字母的字符串。 输出描述:1输出数据应有多行，每行有一个变化后的字符串。 示例1 输入1aeiou 输出1aeiou 说明1元音字母变为一个恰好不大于它本身的字母，也就是元音字母本身 示例2 输入1bfjpv 输出1aeiou 说明1输入样例是由元音字母a、e、i、o、u的后一个字母组成，每个字母变为一个恰好不大于它本身的字母，也就是a、e、i、o、u。 备注:1每行字符串长度不超过2×105，字符串总长度不超过106。 代码upper_bound的应用 12345678910111213141516#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;char s[210000];char a[]=&quot;aeiouy&quot;;int main()&#123; while(cin&gt;&gt;s) &#123; for(int i=0;s[i];i++) &#123; s[i]=a[upper_bound(a,a+6,s[i])-a-1]; &#125; puts(s); &#125;&#125; 躲藏题目描述XHRlyb和她的小伙伴Cwbc在玩捉迷藏游戏。 Cwbc藏在多个不区分大小写的字符串中。 好奇的XHRlyb想知道，在每个字符串中Cwbc作为子序列分别出现了多少次。 由于Cwbc可能出现的次数过多，你只需要输出每个答案对2000120420010122取模后的结果。 聪明的你在仔细阅读题目后，一定可以顺利的解决这个问题！ 输入描述:1输入数据有多行，每行有一个字符串。 输出描述:1输出数据应有多行，每行表示一个答案取模后的结果。 示例1 输入1Cwbc 输出11 说明1Cwbc作为子序列仅出现了1次。 示例2 输入1acdcecfwgwhwibjbkblcmcnco 输出181 说明1Cwbc作为子序列出现了34=81次。 备注:1每行字符串长度不超过2×105，字符串总长度不超过106。 代码一个memset导致超时，也是够无语。时间复杂度4 On，加上memset是5 On，就差1个On就超时。 1234567891011121314151617181920212223#include&lt;stdio.h&gt;#include&lt;ctype.h&gt;char str[200010];long long dp[5][200010];int main() &#123; int i; while (scanf(&quot;%s&quot;, str + 2) != EOF) &#123; dp[1][0] = &apos;c&apos;, dp[2][0] = &apos;w&apos;, dp[3][0] = &apos;b&apos;,dp[4][0] = &apos;c&apos;; for (i = 2; str[i]; i++) &#123; dp[0][i] = 1; str[i] = tolower(str[i]); for (int k = 1; k &lt; 5; k++) &#123; dp[k][i] = dp[k][i - 1]; if (str[i] == dp[k][0]) &#123; dp[k][i] += dp[k - 1][i]; dp[k][i] %= 2000120420010122; &#125; &#125; &#125; printf(&quot;%lld\n&quot;, dp[4][i - 1]); &#125; return 0;&#125; 博弈 博弈双方都是绝顶聪明的，并且XHRlyb先手，请你来帮XHRlyb预测这一局游戏谁会获胜。 如果博弈双方谁也无法取胜，那么判定为平局。 输入描述:1输入数据有多行，每行有三个正整数，l，r，k。 输出描述:1输出数据应有多行，如果这一局XHRlyb获胜，那么请输出XHRlyb；如果Cwbc获胜，请输出Cwbc；如果两人平局，请输出Draw。 示例1 输入11 3 2 输出1XHRlyb 示例2 输入11 4 2 输出1Cwbc 备注:1231 ≤ l ≤ r ≤ 105。1 ≤ k ≤ 100。1 ≤ T ≤ 1000。 代码水dp，l，r写反了，一直报错 123456789101112131415161718192021222324252627282930#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;using namespace std;int dp[100005];int sum[100005];int main() &#123; int l, r, k; while (cin &gt;&gt; l &gt;&gt; r &gt;&gt; k) &#123; memset(dp, 0, sizeof(dp)); memset(sum, 0, sizeof(sum)); if (k == 1) &#123; cout &lt;&lt; &quot;Draw&quot; &lt;&lt; endl; continue; &#125; for (int i = 1; i &lt; k; i++) &#123; dp[i] = 1; sum[i] = (sum[i - 1] + 1); &#125; for (int i = k; i &lt;= r; i++) &#123; dp[i] = (dp[i / k] * k + 1); sum[i] = (sum[i - 1] + dp[i]); &#125; if (abs(sum[r] - sum[l - 1]) % 2 == 1) cout &lt;&lt; &quot;XHRlyb&quot; &lt;&lt; endl; else cout &lt;&lt; &quot;Cwbc&quot; &lt;&lt; endl; &#125; return 0;&#125;]]></content>
@@ -142,9 +156,9 @@
       <tags>
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>KM算法</tag>
         <tag>图论</tag>
         <tag>二分图匹配</tag>
-        <tag>KM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -393,8 +407,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>BFS</tag>
+        <tag>算法</tag>
         <tag>康托展开</tag>
         <tag>hash</tag>
       </tags>
@@ -411,8 +425,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>DFS</tag>
-        <tag>位运算</tag>
         <tag>ACM/ICPC</tag>
+        <tag>位运算</tag>
       </tags>
   </entry>
   <entry>
@@ -500,8 +514,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
@@ -546,9 +560,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>BFS</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -562,9 +576,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>pat天梯赛</tag>
         <tag>算法</tag>
         <tag>stl</tag>
-        <tag>pat天梯赛</tag>
         <tag>vector</tag>
       </tags>
   </entry>
@@ -579,9 +593,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>BFS</tag>
         <tag>算法</tag>
         <tag>DFS</tag>
-        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
