@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="数据库,数据库基础,[object Object]," />
+  <meta name="keywords" content="数据库,[object Object]," />
 
 
 
@@ -101,7 +101,7 @@
 
 
 <meta name="description" content="努力，努力，再努力。因为我要在这虚假的世界里为她撑起一片童话的天空。——随笔 数据库系统概述四个基本概念数据（Data）数据(Data)：数据库中存储的基本对象。 定义：描述事物的符号记录 种类：文本、图形、图像、音频、视频、学生的档案记录、货物的运输情况等 特点：数据与其语义是不可分的。 eg： 54是一个数据 语义1：学生某门课的成绩 语义2：某人的体重 语义3：计算机系2011级学生人数 e">
-<meta name="keywords" content="数据库,数据库基础,[object Object]">
+<meta name="keywords" content="数据库,[object Object]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[数据库]数据库概论基础整理">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/21/2018-05-21/index.html">
@@ -111,7 +111,9 @@
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-21-DBMS.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-05-21-DBS.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-05-21-DBS2.png">
-<meta property="og:updated_time" content="2018-05-21T06:29:27.328Z">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-21%E4%B8%A4%E5%A4%A7%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-21%E4%B8%A4%E5%A4%A7%E5%AE%9E%E4%BD%93.png">
+<meta property="og:updated_time" content="2018-05-21T10:01:03.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[数据库]数据库概论基础整理">
 <meta name="twitter:description" content="努力，努力，再努力。因为我要在这虚假的世界里为她撑起一片童话的天空。——随笔 数据库系统概述四个基本概念数据（Data）数据(Data)：数据库中存储的基本对象。 定义：描述事物的符号记录 种类：文本、图形、图像、音频、视频、学生的档案记录、货物的运输情况等 特点：数据与其语义是不可分的。 eg： 54是一个数据 语义1：学生某门课的成绩 语义2：某人的体重 语义3：计算机系2011级学生人数 e">
@@ -464,7 +466,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,409
+                  2,509
                 </span>
               
 
@@ -480,7 +482,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  9
                 </span>
               
             </div>
@@ -616,6 +618,56 @@
 <p>(4)数据库恢复（Recovery）</p>
 <p>将数据库从错误状态恢复到某一已知的正确状态。</p>
 <h5 id="应用程序与数据的对应关系-数据库系统"><a href="#应用程序与数据的对应关系-数据库系统" class="headerlink" title="应用程序与数据的对应关系(数据库系统)"></a>应用程序与数据的对应关系(数据库系统)</h5><p><img src="http://p7woygi8q.bkt.clouddn.com/2018-05-21-DBS2.png" alt=""></p>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><h3 id="两大类数据模型"><a href="#两大类数据模型" class="headerlink" title="两大类数据模型"></a>两大类数据模型</h3><p>数据模型分为两类（分属两个不同的层次）</p>
+<p>(1) 概念模型</p>
+<p>也称信息模型，它是按用户的观点来对数据和信息建模，用于数据库设计。</p>
+<p>(2) 逻辑模型和物理模型</p>
+<p>逻辑模型主要包括网状模型、层次模型、关系模型、面向对象模型等，按计算机系统的观点对数据建模，用于DBMS实现。</p>
+<p>物理模型是对数据最底层的抽象，描述数据在系统内部的表示方式和存取方法，在磁盘或磁带上的存储方式和存取方法。</p>
+<p>设计人员了解和选择物理模型。</p>
+<p><strong>客观对象的抽象过程—两步抽象</strong></p>
+<p>现实世界中的客观对象抽象为概念模型；</p>
+<p>把概念模型转换为某一DBMS支持的数据模型。</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-21%E4%B8%A4%E5%A4%A7%E6%A8%A1%E5%9E%8B.png" alt=""></p>
+<h3 id="数据模型组成元素"><a href="#数据模型组成元素" class="headerlink" title="数据模型组成元素"></a>数据模型组成元素</h3><p>数据结构，数据操作，完整性约束条件</p>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><p>描述数据库的组成对象，以及对象之间的联系</p>
+<p>数据结构是对系统静态特性的描述（描述对象类型的集合）</p>
+<h5 id="描述的内容"><a href="#描述的内容" class="headerlink" title="描述的内容"></a>描述的内容</h5><p>与数据类型、内容、性质有关的对象（域、属性、关系）</p>
+<p>与数据之间联系有关的对象</p>
+<h4 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h4><p>对数据库中各种对象(型)的实例(值)允许执行的操作及有关的操作规则</p>
+<h5 id="数据操作的类型"><a href="#数据操作的类型" class="headerlink" title="数据操作的类型"></a>数据操作的类型</h5><p>查询</p>
+<p>更新(包括插入、删除、修改)</p>
+<h5 id="数据模型对操作的定义"><a href="#数据模型对操作的定义" class="headerlink" title="数据模型对操作的定义"></a>数据模型对操作的定义</h5><p>操作的确切含义</p>
+<p>操作符号</p>
+<p>操作规则（如优先级）</p>
+<p>实现操作的语言</p>
+<p><strong>数据操作是对系统动态特性的描述</strong></p>
+<h4 id="数据的完整性约束条件"><a href="#数据的完整性约束条件" class="headerlink" title="数据的完整性约束条件"></a>数据的完整性约束条件</h4><p>一组完整性规则的集合。</p>
+<p>完整性规则：给定的数据模型中数据及其联系所具有的制约和储存规则</p>
+<p>用以限定符合数据模型的数据库状态以及状态的变化，以保证数据的正确、有效、相容。</p>
+<h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>反映和规定本数据模型必须遵守的基本的通用的完整性约束条件。例如在关系模型中，任何关系必须满足实体完整性和参照完整性两个条件。</p>
+<p>提供定义完整性约束条件的机制，以反映具体应用所涉及的数据必须遵守的特定的语义约束条件。如：退休</p>
+<h3 id="概念模型"><a href="#概念模型" class="headerlink" title="概念模型"></a>概念模型</h3><h4 id="用途-1"><a href="#用途-1" class="headerlink" title="用途"></a>用途</h4><p>概念模型用于信息世界的建模</p>
+<p>是现实世界到机器世界的一个中间层次</p>
+<p>是数据库设计的有力工具</p>
+<p>数据库设计人员和用户之间进行交流的语言</p>
+<h4 id="对概念模型的基本要求"><a href="#对概念模型的基本要求" class="headerlink" title="对概念模型的基本要求"></a>对概念模型的基本要求</h4><p>较强的语义表达能力</p>
+<p>能够方便、直接地表达应用中的各种语义知识</p>
+<p>简单、清晰、易于用户理解</p>
+<h4 id="信息世界中的基本概念"><a href="#信息世界中的基本概念" class="headerlink" title="信息世界中的基本概念"></a>信息世界中的基本概念</h4><h5 id="实体（Entity）"><a href="#实体（Entity）" class="headerlink" title="实体（Entity）"></a>实体（Entity）</h5><p>客观存在并可相互区别的事物称为实体。</p>
+<p>可以是具体的人、事、物或抽象的概念。如：选课</p>
+<h5 id="属性（Attribute）"><a href="#属性（Attribute）" class="headerlink" title="属性（Attribute）"></a>属性（Attribute）</h5><p>实体所具有的某一特性称为属性。</p>
+<p>一个实体可以由若干个属性来刻画。</p>
+<h5 id="码（Key）"><a href="#码（Key）" class="headerlink" title="码（Key）"></a>码（Key）</h5><p> 唯一标识实体的属性集称为码。如：Snum</p>
+<h5 id="域（Domain）"><a href="#域（Domain）" class="headerlink" title="域（Domain）"></a>域（Domain）</h5><p>属性的取值范围称为该属性的域。  如：Grade</p>
+<h5 id="实体型（Entity-Type）"><a href="#实体型（Entity-Type）" class="headerlink" title="实体型（Entity Type）"></a>实体型（Entity Type）</h5><p> 用实体名及其属性名集合来抽象和刻画同类实体称为实体型 如：Student(Snum,Sname,Grade )</p>
+<h5 id="实体集（Entity-Set）"><a href="#实体集（Entity-Set）" class="headerlink" title="实体集（Entity Set）"></a>实体集（Entity Set）</h5><p>同一类型实体的集合称为实体集</p>
+<h5 id="联系（Relationship）"><a href="#联系（Relationship）" class="headerlink" title="联系（Relationship）"></a>联系（Relationship）</h5><p>现实世界中事物内部以及事物之间的联系在信息世界中反映为实体内部的联系和实体之间的联系。</p>
+<p>实体内部的联系通常是指组成实体的各属性之间的联系</p>
+<p>实体之间的联系通常是指不同实体集之间的联系</p>
+<h4 id="两个实体型之间的联系"><a href="#两个实体型之间的联系" class="headerlink" title="两个实体型之间的联系"></a>两个实体型之间的联系</h4><p>用图形来表示两个实体型之间的这三类联系</p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-21%E4%B8%A4%E5%A4%A7%E5%AE%9E%E4%BD%93.png" alt=""></p>
+<h5 id="一对一联系（1-1）"><a href="#一对一联系（1-1）" class="headerlink" title="一对一联系（1:1）"></a>一对一联系（1:1）</h5><p> 如果对于实体集A中的每一个实体，实体集B中至多有一个（也可以没有）实体与之联系，反之亦然，则称实体集A与实体集B具有一对一联系，记为1:1</p>
 
       
     </div>
@@ -673,8 +725,6 @@
         <div class="post-tags">
           
             <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
-          
-            <a href="/tags/数据库基础/" rel="tag"><i class="fa fa-tag"></i> 数据库基础</a>
           
             <a href="/tags/object-Object/" rel="tag"><i class="fa fa-tag"></i> [object Object]</a>
           
@@ -805,7 +855,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -920,7 +970,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统概述"><span class="nav-number">1.</span> <span class="nav-text">数据库系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四个基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">四个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据（Data）"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据（Data）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点："><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库（DB）"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据库（DB）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特征"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库管理系统（DBMS）"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据库管理系统（DBMS）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用途"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库在计算机系统中的位置"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">数据库在计算机系统中的位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#功能"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库系统（DBS"><span class="nav-number">1.1.4.</span> <span class="nav-text">数据库系统（DBS)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#构成"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">构成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理技术的产生和发展"><span class="nav-number">1.2.</span> <span class="nav-text">数据管理技术的产生和发展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是数据管理"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是数据管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据管理技术的发展过程"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据管理技术的发展过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据管理技术的发展动力"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据管理技术的发展动力</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库系统的特点"><span class="nav-number">1.3.</span> <span class="nav-text">数据库系统的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构化"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据结构化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#整体结构化"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">整体结构化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库中实现的是数据的真正结构化"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">数据库中实现的是数据的真正结构化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据的共享性高，冗余度低，易扩充"><span class="nav-number">1.3.2.</span> <span class="nav-text">数据的共享性高，冗余度低，易扩充</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据共享的好处"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">数据共享的好处</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据独立性高"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据独立性高</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#物理独立性"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">物理独立性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑独立性"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">逻辑独立性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据由DBMS统一管理和控制"><span class="nav-number">1.3.4.</span> <span class="nav-text">数据由DBMS统一管理和控制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DBMS提供的数据控制功能"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">DBMS提供的数据控制功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用程序与数据的对应关系-数据库系统"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">应用程序与数据的对应关系(数据库系统)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库系统概述"><span class="nav-number">1.</span> <span class="nav-text">数据库系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四个基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">四个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据（Data）"><span class="nav-number">1.1.1.</span> <span class="nav-text">数据（Data）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特点："><span class="nav-number">1.1.1.1.</span> <span class="nav-text">特点：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库（DB）"><span class="nav-number">1.1.2.</span> <span class="nav-text">数据库（DB）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特征"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">特征</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库管理系统（DBMS）"><span class="nav-number">1.1.3.</span> <span class="nav-text">数据库管理系统（DBMS）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用途"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库在计算机系统中的位置"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">数据库在计算机系统中的位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#功能"><span class="nav-number">1.1.3.4.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库系统（DBS"><span class="nav-number">1.1.4.</span> <span class="nav-text">数据库系统（DBS)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#构成"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">构成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理技术的产生和发展"><span class="nav-number">1.2.</span> <span class="nav-text">数据管理技术的产生和发展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是数据管理"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是数据管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据管理技术的发展过程"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据管理技术的发展过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据管理技术的发展动力"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据管理技术的发展动力</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库系统的特点"><span class="nav-number">1.3.</span> <span class="nav-text">数据库系统的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构化"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据结构化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#整体结构化"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">整体结构化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库中实现的是数据的真正结构化"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">数据库中实现的是数据的真正结构化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据的共享性高，冗余度低，易扩充"><span class="nav-number">1.3.2.</span> <span class="nav-text">数据的共享性高，冗余度低，易扩充</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据共享的好处"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">数据共享的好处</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据独立性高"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据独立性高</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#物理独立性"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">物理独立性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑独立性"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">逻辑独立性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据由DBMS统一管理和控制"><span class="nav-number">1.3.4.</span> <span class="nav-text">数据由DBMS统一管理和控制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DBMS提供的数据控制功能"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">DBMS提供的数据控制功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#应用程序与数据的对应关系-数据库系统"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">应用程序与数据的对应关系(数据库系统)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据模型"><span class="nav-number">2.</span> <span class="nav-text">数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两大类数据模型"><span class="nav-number">2.1.</span> <span class="nav-text">两大类数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据模型组成元素"><span class="nav-number">2.2.</span> <span class="nav-text">数据模型组成元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#描述的内容"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">描述的内容</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据操作"><span class="nav-number">2.2.2.</span> <span class="nav-text">数据操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据操作的类型"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">数据操作的类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据模型对操作的定义"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">数据模型对操作的定义</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据的完整性约束条件"><span class="nav-number">2.2.3.</span> <span class="nav-text">数据的完整性约束条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义-1"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#概念模型"><span class="nav-number">2.3.</span> <span class="nav-text">概念模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用途-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对概念模型的基本要求"><span class="nav-number">2.3.2.</span> <span class="nav-text">对概念模型的基本要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息世界中的基本概念"><span class="nav-number">2.3.3.</span> <span class="nav-text">信息世界中的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实体（Entity）"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">实体（Entity）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性（Attribute）"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">属性（Attribute）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#码（Key）"><span class="nav-number">2.3.3.3.</span> <span class="nav-text">码（Key）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#域（Domain）"><span class="nav-number">2.3.3.4.</span> <span class="nav-text">域（Domain）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实体型（Entity-Type）"><span class="nav-number">2.3.3.5.</span> <span class="nav-text">实体型（Entity Type）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实体集（Entity-Set）"><span class="nav-number">2.3.3.6.</span> <span class="nav-text">实体集（Entity Set）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#联系（Relationship）"><span class="nav-number">2.3.3.7.</span> <span class="nav-text">联系（Relationship）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个实体型之间的联系"><span class="nav-number">2.3.4.</span> <span class="nav-text">两个实体型之间的联系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一对一联系（1-1）"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">一对一联系（1:1）</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
