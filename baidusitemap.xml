@@ -4,6 +4,34 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/05/22/2018-05-22/</loc>
+    <lastmod>2018-05-22T06:18:34.144Z</lastmod>
+    <data>
+        <display>
+        <title>[数据库]关系数据库标准语言sql</title>
+        <pubTime>2018-05-22T04:39:35.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+        <tag>sql语言</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="数据库" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+             
+              <breadCrumb title="关系数据库" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/05/21/2018-05-21/</loc>
     <lastmod>2018-05-21T14:52:40.030Z</lastmod>
     <data>
@@ -672,11 +700,11 @@
         
         <tag>C/C++</tag>
          
-        <tag>BFS</tag>
-         
         <tag>算法</tag>
          
         <tag>DFS</tag>
+         
+        <tag>BFS</tag>
          
          
            
@@ -792,9 +820,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>算法</tag>
+         
+        <tag>pat天梯赛</tag>
          
         <tag>并查集</tag>
          
@@ -971,9 +999,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>BFS</tag>
-         
         <tag>算法</tag>
+         
+        <tag>BFS</tag>
          
         <tag>康托展开</tag>
          
@@ -1099,11 +1127,11 @@
         
         <tag>C/C++</tag>
          
+        <tag>算法</tag>
+         
         <tag>BFS</tag>
          
         <tag>pat天梯赛</tag>
-         
-        <tag>算法</tag>
          
          
            
@@ -1133,11 +1161,11 @@
          
         <tag>stl</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>算法</tag>
          
         <tag>vector</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
