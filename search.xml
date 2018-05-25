@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[组合数学]取石子]]></title>
+    <url>%2F2018%2F05%2F25%2F2018-05-25%2F</url>
+    <content type="text"><![CDATA[取石子题目描述给出四堆石子，石子数分别为a,b,c,d。规定每次只能从堆顶取走石子，问取走所有石子的方案数。 输入描述:1在一行内读入四个由空格分隔的整数a,b,c,d， 输入均为不超过500的正整数 输出描述:1输出一个整数表示答案，答案对109+7取模 输入13 5 4 2 输出12522520 备注:输入均为不超过500的正整数 题解：我们一堆一堆的考虑。第一堆a，第2堆b，第3堆c，第4堆d。假如只有一堆，则只有1种情况，即C(a,a)。假如有两堆，我们可以当做这两堆石子的排列组合。可以算出两堆石子的方案数。即C(b,a+b)。第三堆我们可以把前两堆看成一堆，然后继续排列组合，即C(c,a+b+c)。第4队即C(d,a+b+c+d)。最后全部相乘即可，即C(a,a) C(b,a+b) C(c,a+b+c)*C(d,a+b+c+d)。 暴力枚举首先想到暴力枚举，虽然一定超时。以下是代码。只需要把所有情况列一遍即可。 1234567891011121314151617181920212223242526#include&lt;stdio.h&gt;#define ll long longll a[4];ll cnt = 0;void dfs(ll a, ll b, ll c, ll d) &#123; if (!a&amp;&amp;!b&amp;&amp;!c&amp;&amp;!d) &#123; cnt++; cnt %= 1000000000 + 7; return; &#125; if (a) dfs(a - 1, b, c, d); if (b) dfs(a, b - 1, c, d); if (c) dfs(a, b, c - 1, d); if (d) dfs(a, b, c, d - 1);&#125;int main() &#123; for (int i = 0; i &lt; 4; i++) scanf(&quot;%lld&quot;, &amp;a[i]); dfs(a[0], a[1], a[2], a[3]); printf(&quot;%lld\n&quot;, cnt); return 0;&#125; python由于数据过大，c++没有大数类，所以用python首先A了一下。 123456789101112f = input().split()ans = 1sum = [int(f[0]),0,0,0]for i in range(1,4): sum[i]=sum[i-1]+int(f[i]) for j in range(sum[i]-int(f[i])+1,sum[i]+1): ans*=jfor i in range(1,4): for j in range(1,int(f[i])+1): ans//=jans%=1000000007print(ans) c++由于acm不能用python，所以只能再考虑c++。首先由于涉及到除法，所以不能直接取余。 我没知道公式：C(M,N)=C(M-1,N)+C(M-1，N-1)，这样把除法转化成加法，就可以模运算了。 1234567891011121314151617181920212223242526272829303132333435#include&lt;iostream&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;const int maxn = 501;const ll mod = 1000000007;ll a[4], sum[4] = &#123; 0 &#125;;ll dp[maxn * 4][maxn * 4];void init() &#123; dp[0][0] = 0; for (int i = 1; i &lt; 4 * maxn; i++) &#123; dp[i][0] = 1; for (int j = 1; j &lt; i; j++) &#123; dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1]; dp[i][j] %= mod; &#125; dp[i][i] = 1; &#125;&#125;int main() &#123; init(); ll ans = 1; for (int i = 0; i &lt; 4; i++) &#123; !i ? sum[i] = 0 : sum[i] = sum[i - 1]; cin &gt;&gt; a[i]; sum[i] += a[i]; if (a[i] &gt; sum[i] - a[i]) a[i] = sum[i] - a[i]; &#125; for (int i = 1; i &lt; 4; i++) &#123; ans *= dp[sum[i]][a[i]]; ans %= mod; &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>组合数学</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>算法</tag>
+        <tag>python</tag>
+        <tag>组合数学</tag>
+        <tag>暴力枚举</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[数据库]关系数据库标准语言sql]]></title>
     <url>%2F2018%2F05%2F22%2F2018-05-22%2F</url>
     <content type="text"><![CDATA[有些人生而成功，像你。有些人生而失败，像我。——随笔 概述SQL（Structured Query Language） 结构化查询语言，是关系数据库的标准语言。 SQL是一个通用的、功能极强的关系数据库语言。 特点综合统一集数据查询，数据定义语言（DDL），数据操纵语言（DML），数据控制语言（DCL）功能于一体。 可以独立完成数据库生命周期中的全部活动： 定义关系模式，插入数据，建立数据库； 对数据库中的数据进行查询和更新； 数据库重构和维护 数据库安全性、完整性控制等 用户数据库投入运行后，可根据需要随时逐步修改模式，不影响数据的运行。 数据操作符统一 高度非过程化非关系数据模型的数据操纵语言“面向过程”，必须制定存取路径。 SQL只要提出“做什么”，无须了解存取路径。 存取路径的选择以及SQL的操作过程由系统自动完成。 面向集合的操作方式非关系数据模型采用面向记录的操作方式，操作对象是一条记录。 SQL采用集合操作方式 操作对象、查找结果可以是元组的集合 一次插入、删除、更新操作的对象可以是元组的集合 以同一种语法结构提供多种使用方式SQL是独立的语言，能够独立地用于联机交互的使用方式。 SQL又是嵌入式语言，SQL能够嵌入到高级语言（例如C，C++，Java）程序中，供程序员设计程序时使用。 语言简洁，易学易用SQL功能极强，完成核心功能只用了9个动词。 SQL功能 动词 数据查询 SELECT 数据定义 CREATE, DROP, ALTER 数据操纵 INSERT, UPDATE, DELETE 数据控制 GRANT, REVOKE SQL基本概念SQL支持关系数据库三级模式结构 基本表本身独立存在的表 SQL中一个关系就对应一个基本表 一个(或多个)基本表对应一个存储文件 一个表可以带若干索引 存储文件逻辑结构组成了关系数据库的内模式 物理结构是任意的，对用户透明 视图从一个或几个基本表 导出的表数据库中只存放视图的定义而不存放视图对应的数据 视图是一个虚表 用户可以在视图上再定义视图 学生-课程数据库学生-课程模式 S-T :学生表：Student(Sno,Sname,Ssex,Sage,Sdept) 课程表：Course(Cno,Cname,Cpno,Ccredit) 学生选课表：SC(Sno,Cno,Grade) Student表 学 号 Sno 姓 名 Sname 性 别 Ssex 年 龄 Sage 所 在 系 Sdept 200215121 李勇 男 20 CS 200215122 刘晨 女 19 CS 200215123 王敏 女 18 MA 200515125 张立 男 19 IS Course表 课程号 Cno 课程名 Cname 先行课 Cpno 学分 Ccredit 1 数据库 5 4 2 数学 2 3 信息系统 1 4 4 操作系统 6 3 5 数据结构 7 4 6 数据处理 2 7 PASCAL语言 6 4 SC表 学 号 Sno 课程号 Cno 成绩 Grade 200215121 1 92 200215121 2 85 200215121 3 88 200215122 2 90 200215122 3 80 数据定义SQL的数据定义功能: 模式定义、表定义、视图和索引的定义 模式的定义与删除[例1]定义一个学生-课程模式S-T CREATE SCHEMA “S-T” AUTHORIZATION WANG; 为用户WANG定义了一个模式S-T [例2]CREATE SCHEMA AUTHORIZATION WANG； &lt;模式名&gt;隐含为用户名WANG 如果没有指定&lt;模式名&gt;，那么&lt;模式名&gt;隐含为&lt;用户名&gt; 定义模式定义模式实际上定义了一个命名空间 在这个空间中可以定义该模式包含的数据库对象，例如基本表、视图、索引等。 在CREATE SCHEMA中可以接受CREATE TABLE，CREATE VIEW和GRANT子句。 CREATE SCHEMA [&lt;模式名&gt;] AUTHORIZATION &lt;用户名&gt;[&lt;表定义子句&gt;|&lt;视图定义子句&gt;|&lt;授权定义子句&gt;] [例3] CREATE SCHEMA TEST AUTHORIZATION ZHANG ​ CREATE TABLE TAB1(COL1 SMALLINT， ​ COL2 INT， ​ COL3 CHAR(20)， ​ COL4 NUMERIC(10，3)， ​ COL5 DECIMAL(5，2) ​ )； ​ 为用户ZHANG创建了一个模式TEST，并在其中定义了一个表TAB1。 删除模式DROP SCHEMA &lt;模式名&gt; &lt;CASCADE|RESTRICT&gt; CASCADE(级联) 删除模式的同时把该模式中所有的数据库对象全部删除RESTRICT(限制) 如果该模式中定义了下属的数据库对象（如表、视图等），则拒绝该删除语句的执行。 当该模式中没有任何下属的对象时才能执行。 [例4] DROP SCHEMA TEST CASCADE； ​ 删除模式ZHANG ​ 同时该模式中定义的表TAB1也被删除 基本表的定义、删除与修改定义基本表CREATE TABLE &lt;表名&gt; ​ （&lt;列名&gt; &lt;数据类型&gt;[ &lt;列级完整性约束条件&gt; ] ​ [，&lt;列名&gt; &lt;数据类型&gt;[ &lt;列级完整性约束条件&gt;] ] … ​ [，&lt;表级完整性约束条件&gt; ] ）； 如果完整性约束条件涉及到该表的多个属性列，则必须定义在表级上，否则既可以定义在列级也可以定义在表级。 [例5] 建立“学生”表Student，学号是主码，姓名取值唯一。 CREATE TABLE Student ​ (Sno CHAR(9) PRIMARY KEY， / 列级完整性约束条件 / ​ Sname CHAR(20) UNIQUE， / Sname取唯一值/ ​ Ssex CHAR(2)， ​ Sage SMALLINT， ​ Sdept CHAR(20) ​ )； ​ [，PRIMARY KEY （Sno）] [例6] 建立一个“课程”表Course CREATE TABLE Course ​ ( Cno CHAR(4) PRIMARY KEY， ​ Cname CHAR(40)， ​ Cpno CHAR(4) ， / 先行课 / ​ Ccredit SMALLINT， ​ FOREIGN KEY (Cpno) REFERENCES Course(Cno) / Cpno是外码，被参照表是Course，被参照列是Cno / ​ ); [例7] 建立一个“学生选课”表SC CREATE TABLE SC ​ (Sno CHAR(9)， ​ Cno CHAR(4)， ​ Grade SMALLINT， ​ PRIMARY KEY (Sno，Cno)，/ 主码由两个属性构成，必须作为表级完整性进行定义/ ​ FOREIGN KEY (Sno) REFERENCES Student(Sno)， / 表级完整性约束条件，Sno是外码，被参照表是Student / ​ FOREIGN KEY (Cno) REFERENCES Course(Cno) / 表级完整性约束条件， Cno是外码，被参照表是Course/ ); 数据类型SQL中域的概念用数据类型来实现 定义表的属性时 需要指明其数据类型及长度 选用哪种数据类型 取值范围 要做哪些运算 数据类型 含义 CHAR(n) 长度为n的定长字符串 VARCHAR(n) 最大长度为n的变长字符串 INT 长整数（也可以写作INTEGER） SMALLINT 短整数 NUMERIC(p，d) 定点数，由p位数字（不包括符号、小数点）组成，小数后面有d位数字 REAL 取决于机器精度的浮点数 Double Precision 取决于机器精度的双精度浮点数 FLOAT(n) 浮点数，精度至少为n位数字 DATE 日期，包含年、月、日，格式为YYYY-MM-DD TIME 时间，包含一日的时、分、秒，格式为HH:MM:SS 模式与表每一个基本表都属于某一个模式 一个模式包含多个基本表 定义基本表所属模式方法一：在表名中明显地给出模式名 Create table “S-T”.Student（……）; /模式名为 S-T/ Create table “S-T”.Cource（……）; Create table “S-T”.SC（……）; 方法二：在创建模式语句中同时创建表 方法三：设置所属的模式 创建基本表（其他数据库对象也一样）时，若没有指定模式，系统根据搜索路径来确定该对象所属的模式。 RDBMS会使用模式列表中第一个存在的模式作为数据库对象的模式名 。 若搜索路径中的模式名都不存在，系统将给出错误 显示当前的搜索路径： SHOW search_path; 搜索路径的当前默认值是：$user， PUBLIC 先搜索与用户名相同的模式，若不存在，则使用PUBLIC 模式与表DBA用户可以设置搜索路径，然后定义基本表 ​ SET search_path TO “S-T”，PUBLIC； ​ Create table Student（……）; 结果建立了S-T.Student基本表。 RDBMS发现搜索路径中第一个模式名S-T存在，就把该模式作为基本表Student所属的模式。 修改基本表ALTER TABLE &lt;表名&gt; [ ADD [&lt;新列名&gt; &lt;数据类型&gt;].[完整性约束 ]] [ DROP &lt;完整性约束名&gt; ] [ ALTER COLUMN&lt;列名&gt; &lt;数据类型&gt; ]； MODIFY 约束（属性名）]]></content>
@@ -37,8 +54,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>并查集</tag>
         <tag>ACM/ICPC</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -261,10 +278,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -278,10 +295,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -295,10 +312,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -342,9 +359,9 @@
         <category>爬虫</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>python</tag>
         <tag>爬虫</tag>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -510,8 +527,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>进制</tag>
         <tag>C陷阱与缺陷</tag>
+        <tag>进制</tag>
       </tags>
   </entry>
   <entry>
@@ -603,8 +620,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>stl</tag>
         <tag>算法</tag>
+        <tag>stl</tag>
         <tag>vector</tag>
         <tag>pat天梯赛</tag>
       </tags>

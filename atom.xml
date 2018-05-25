@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-05-22T06:18:34.144Z</updated>
+  <updated>2018-05-25T15:23:16.634Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[组合数学]取石子</title>
+    <link href="http://qianyouyou.cn/2018/05/25/2018-05-25/"/>
+    <id>http://qianyouyou.cn/2018/05/25/2018-05-25/</id>
+    <published>2018-05-25T14:42:37.000Z</published>
+    <updated>2018-05-25T15:23:16.634Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="取石子"><a href="#取石子" class="headerlink" title="取石子"></a><a href="https://www.nowcoder.com/acm/contest/113/A" target="_blank" rel="noopener">取石子</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出四堆石子，石子数分别为a,b,c,d。规定每次只能从堆顶取走石子，问取走所有石子的方案数。</p><h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在一行内读入四个由空格分隔的整数a,b,c,d， 输入均为不超过500的正整数</span><br></pre></td></tr></table></figure><h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出一个整数表示答案，答案对109+7取模</span><br></pre></td></tr></table></figure><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 5 4 2</span><br></pre></td></tr></table></figure><h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2522520</span><br></pre></td></tr></table></figure><h3 id="备注"><a href="#备注" class="headerlink" title="备注:"></a>备注:</h3><p>输入均为不超过500的正整数</p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>我们一堆一堆的考虑。第一堆a，第2堆b，第3堆c，第4堆d。假如只有一堆，则只有1种情况，即C(a,a)。假如有两堆，我们可以当做这两堆石子的排列组合。可以算出两堆石子的方案数。即C(b,a+b)。第三堆我们可以把前两堆看成一堆，然后继续排列组合，即C(c,a+b+c)。第4队即C(d,a+b+c+d)。最后全部相乘即可，即C(a,a) <em> C(b,a+b) </em> C(c,a+b+c)*C(d,a+b+c+d)。</p><h4 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h4><p>首先想到暴力枚举，虽然一定超时。以下是代码。只需要把所有情况列一遍即可。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">ll a[4];</span><br><span class="line">ll cnt = 0;</span><br><span class="line">void dfs(ll a, ll b, ll c, ll d) &#123;</span><br><span class="line">if (!a&amp;&amp;!b&amp;&amp;!c&amp;&amp;!d) &#123;</span><br><span class="line">cnt++;</span><br><span class="line">cnt %= 1000000000 + 7;</span><br><span class="line">return;</span><br><span class="line">&#125;</span><br><span class="line">if (a)</span><br><span class="line">dfs(a - 1, b, c, d);</span><br><span class="line">if (b)</span><br><span class="line">dfs(a, b - 1, c, d);</span><br><span class="line">if (c)</span><br><span class="line">dfs(a, b, c - 1, d);</span><br><span class="line">if (d)</span><br><span class="line">dfs(a, b, c, d - 1);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">for (int i = 0; i &lt; 4; i++)</span><br><span class="line">scanf(&quot;%lld&quot;, &amp;a[i]);</span><br><span class="line">dfs(a[0], a[1], a[2], a[3]);</span><br><span class="line">printf(&quot;%lld\n&quot;, cnt);</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><p>由于数据过大，c++没有大数类，所以用python首先A了一下。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">f = input().split()</span><br><span class="line">ans = 1</span><br><span class="line">sum = [int(f[0]),0,0,0]</span><br><span class="line">for i in range(1,4):</span><br><span class="line">    sum[i]=sum[i-1]+int(f[i])</span><br><span class="line">    for j in range(sum[i]-int(f[i])+1,sum[i]+1):</span><br><span class="line">        ans*=j</span><br><span class="line">for i in range(1,4):</span><br><span class="line">    for j in range(1,int(f[i])+1):</span><br><span class="line">        ans//=j</span><br><span class="line">ans%=1000000007</span><br><span class="line">print(ans)</span><br></pre></td></tr></table></figure><h4 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h4><p>由于acm不能用python，所以只能再考虑c++。首先由于涉及到除法，所以不能直接取余。</p><p>我没知道公式：C(M,N)=C(M-1,N)+C(M-1，N-1)，这样把除法转化成加法，就可以模运算了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 501;</span><br><span class="line">const ll mod = 1000000007;</span><br><span class="line">ll a[4], sum[4] = &#123; 0 &#125;;</span><br><span class="line">ll dp[maxn * 4][maxn * 4];</span><br><span class="line">void init() &#123;</span><br><span class="line">dp[0][0] = 0;</span><br><span class="line">for (int i = 1; i &lt; 4 * maxn; i++) &#123;</span><br><span class="line">dp[i][0] = 1;</span><br><span class="line">for (int j = 1; j &lt; i; j++) &#123;</span><br><span class="line">dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];</span><br><span class="line">dp[i][j] %= mod;</span><br><span class="line">&#125;</span><br><span class="line">dp[i][i] = 1;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">init();</span><br><span class="line">ll ans = 1;</span><br><span class="line">for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">!i ? sum[i] = 0 : sum[i] = sum[i - 1];</span><br><span class="line">cin &gt;&gt; a[i];</span><br><span class="line">sum[i] += a[i];</span><br><span class="line">if (a[i] &gt; sum[i] - a[i]) a[i] = sum[i] - a[i];</span><br><span class="line">&#125;</span><br><span class="line">for (int i = 1; i &lt; 4; i++) &#123;</span><br><span class="line">ans *= dp[sum[i]][a[i]];</span><br><span class="line">ans %= mod;</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;取石子&quot;&gt;&lt;a href=&quot;#取石子&quot; class=&quot;headerlink&quot; title=&quot;取石子&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.nowcoder.com/acm/contest/113/A&quot; target=&quot;_blank&quot; rel=&quot;noo
+      
+    
+    </summary>
+    
+      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="组合数学" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="http://qianyouyou.cn/tags/python/"/>
+    
+      <category term="组合数学" scheme="http://qianyouyou.cn/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="暴力枚举" scheme="http://qianyouyou.cn/tags/%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>[数据库]关系数据库标准语言sql</title>
@@ -106,9 +143,9 @@
       <category term="题解" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="并查集" scheme="http://qianyouyou.cn/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-    
       <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
+    
+      <category term="并查集" scheme="http://qianyouyou.cn/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
     
   </entry>
   
@@ -603,13 +640,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
+    
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="html/css" scheme="http://qianyouyou.cn/tags/html-css/"/>
     
@@ -641,13 +678,13 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
+    
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="html/css" scheme="http://qianyouyou.cn/tags/html-css/"/>
     
@@ -679,48 +716,15 @@
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
     
       <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
     
       <category term="node.js" scheme="http://qianyouyou.cn/tags/node-js/"/>
     
+      <category term="前端" scheme="http://qianyouyou.cn/tags/%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="html/css" scheme="http://qianyouyou.cn/tags/html-css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://qianyouyou.cn/2018/04/24/2018-04-24/"/>
-    <id>http://qianyouyou.cn/2018/04/24/2018-04-24/</id>
-    <published>2018-04-24T01:22:39.624Z</published>
-    <updated>2018-04-28T11:01:20.104Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://qianyouyou.cn/">My Blog</a>! This is my very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><p>1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://qianyouyou.cn/&quot;&gt;My Blog&lt;/a&gt;! This is my very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="JavaScript" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/"/>
-    
-      <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
-    
-    
-      <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
-    
-      <category term="github" scheme="http://qianyouyou.cn/tags/github/"/>
-    
-      <category term="npm" scheme="http://qianyouyou.cn/tags/npm/"/>
     
   </entry>
   

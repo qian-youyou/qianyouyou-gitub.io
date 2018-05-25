@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/05/25/2018-05-25/</loc>
+    <lastmod>2018-05-25T15:23:16.634Z</lastmod>
+    <data>
+        <display>
+        <title>[组合数学]取石子</title>
+        <pubTime>2018-05-25T14:42:37.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>算法</tag>
+         
+        <tag>python</tag>
+         
+        <tag>组合数学</tag>
+         
+        <tag>暴力枚举</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="组合数学" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/05/22/2018-05-22/</loc>
     <lastmod>2018-05-22T06:18:34.144Z</lastmod>
     <data>
@@ -65,9 +99,9 @@
         <title>ACM全国邀请赛热身赛题2并查集</title>
         <pubTime>2018-05-19T15:37:32.000Z</pubTime>
         
-        <tag>并查集</tag>
-         
         <tag>ACM/ICPC</tag>
+         
+        <tag>并查集</tag>
          
          
            
@@ -541,13 +575,13 @@
         <title>基于github搭建专属于自己的博客(高级篇)</title>
         <pubTime>2018-04-28T15:39:25.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>hexo</tag>
          
         <tag>github</tag>
          
         <tag>node.js</tag>
+         
+        <tag>前端</tag>
          
         <tag>html/css</tag>
          
@@ -575,13 +609,13 @@
         <title>基于github搭建专属于自己的博客(进阶篇)</title>
         <pubTime>2018-04-28T13:44:25.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>hexo</tag>
          
         <tag>github</tag>
          
         <tag>node.js</tag>
+         
+        <tag>前端</tag>
          
         <tag>html/css</tag>
          
@@ -609,13 +643,13 @@
         <title>基于github搭建专属于自己的博客（基础篇）</title>
         <pubTime>2018-04-28T09:11:28.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>hexo</tag>
          
         <tag>github</tag>
          
         <tag>node.js</tag>
+         
+        <tag>前端</tag>
          
         <tag>html/css</tag>
          
@@ -880,9 +914,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>进制</tag>
-         
         <tag>C陷阱与缺陷</tag>
+         
+        <tag>进制</tag>
          
          
            
@@ -1063,11 +1097,11 @@
         <title>[爬虫]python自动调用浏览器访问网页增加访问量</title>
         <pubTime>2018-04-22T15:07:01.000Z</pubTime>
         
+        <tag>前端</tag>
+         
         <tag>python</tag>
          
         <tag>爬虫</tag>
-         
-        <tag>前端</tag>
          
          
            
@@ -1159,9 +1193,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>stl</tag>
-         
         <tag>算法</tag>
+         
+        <tag>stl</tag>
          
         <tag>vector</tag>
          
