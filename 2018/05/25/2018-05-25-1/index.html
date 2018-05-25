@@ -108,10 +108,12 @@
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="为什么要介绍C语言的const呢？因为它和C++中的const不一样。许多人经常.CPP和.C混用，导致这两个概念经常混用分不清，导致有时候莫名其妙的错误，包括我。当然，这只是原因之一。最主要的原因是C语言的const实在是太虚伪了。我们知道我平时最讨厌虚伪的东西，所以今天把C语言中这个狡猾的const列出来，以免之后犯错。 用法首先以int为例定义整形常量a的两种方法： 12const int">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-25T16:46:19.537Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20150730174925609">
+<meta property="og:updated_time" content="2018-05-25T16:57:46.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C常量]C语言中的伪装大佬——伪常量const">
 <meta name="twitter:description" content="为什么要介绍C语言的const呢？因为它和C++中的const不一样。许多人经常.CPP和.C混用，导致这两个概念经常混用分不清，导致有时候莫名其妙的错误，包括我。当然，这只是原因之一。最主要的原因是C语言的const实在是太虚伪了。我们知道我平时最讨厌虚伪的东西，所以今天把C语言中这个狡猾的const列出来，以免之后犯错。 用法首先以int为例定义整形常量a的两种方法： 12const int">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20150730174925609">
 
 
 
@@ -460,7 +462,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  856
+                  1,707
                 </span>
               
 
@@ -476,7 +478,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  6
                 </span>
               
             </div>
@@ -517,7 +519,37 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 void main() &#123;</span><br><span class="line">2     //num在栈区，只有栈区会自动回收释放</span><br><span class="line">3     //局部const常量在栈区，而不在静态区(静态区会一直存在)</span><br><span class="line">4     const int num = 10;//num就是一个常量</span><br><span class="line">5     //num = 11; //const本质，限定一个变量不能直接赋值</span><br><span class="line">6 &#125;</span><br></pre></td></tr></table></figure>
 <p>　　前面一直强调const是伪常量，因为可以间接的去改变它的值。利用指针变量</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> 1 void main() &#123;</span><br><span class="line"> 2     //num在栈区，只有栈区会自动回收释放</span><br><span class="line"> 3     //局部const常量在栈区，而不在静态区(静态区会一直存在)</span><br><span class="line"> 4     const int num = 10;//num就是一个常量</span><br><span class="line"> 5     //num = 11; //error const本质，限定一个变量不能直接赋值</span><br><span class="line"> 6 </span><br><span class="line"> 7     //间接改变常量值</span><br><span class="line"> 8     const int *p = &amp;num;//定义一个指针指向一个常量，存储num的地址</span><br><span class="line"> 9     int *pv = (int *)p;//对指向常量的指针进行强制转换</span><br><span class="line">10     *pv = 8;//对指针指向内容赋值</span><br><span class="line">11 </span><br><span class="line">12     printf(&quot;%d&quot;,num); //8</span><br><span class="line">13 </span><br><span class="line">14 &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>c语言的const是冒牌货。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>c语言的const是冒牌货。C语言const的含义是被称为一个不能被改变的普通变量 ，它一定会分配内存。</p>
+<h2 id="内存5大区"><a href="#内存5大区" class="headerlink" title="内存5大区"></a>内存5大区</h2><ul>
+<li><p><strong>BSS段( bss segment )</strong></p>
+<p>  通常是指用来存放程序中<code>未初始化的全局变量和静态变量</code> （这里注意一个问题:一般的书上都会说全局变量和静态变量是会自动初始化的,那么哪来的未初始化的变量呢?变量的初始化可以分为显示初始化和隐式初始化,全局变量和静态变量如果程序员自己不初始化的话的确也会被初始化,那就是不管什么类型都初始化为0,这种没有显示初始化的就 是我们这里所说的未初始化。既然都是0那么就<code>没必要把每个0都存储起来</code>,从而节省磁盘空间,这是BSS的主要作用）的一块内存区域。BSS是英文Block Started by Symbol的简称。BSS段属于静态内存分配。 BSS节不包含任何数据,只是简单的维护开始和结束的地址,即总大小。以便内存区能在运行时分配并被有效地清零。BSS节在应用程序的二进制映象文件中并不存在,即不占用 磁盘空间 而只在运行的时候占用内存空间 ,所以如果全局变量和静态变量未初始化那么其可执行文件要小很多。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>数据段(data segment)</strong></p>
+<p>通常是指用来存放程序中已经<code>初始化的全局变量和静态变量</code>的一块内存区域。数据段属于静态内存分配,可以分为只读数据段和读写数据段。字符串常量等,但一般都是放在只读数据段中。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>代码段(code segment/text segment)</strong></p>
+<p>  通常是指用来存放<code>程序执行代码的一块内存区域</code>。这部分区域的大小在程序运行前就已经确定,并且内存区域通常属于只读, 某些架构也允许代码段为可写,即允许修改程序。在代码段中,也有可能包含一些只读的常数变量,例如字符串常量等,但一般都是放在只读数据段中 。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>堆(heap)</strong></p>
+<p>  堆是用于存放进程运行中被<code>动态分配的内存段</code>,它的大小并不固定,可动态扩张或 缩减。当进程调用malloc等函数分配内存时,新分配的内存就被动态添加到堆上(堆被扩张); 当利用free等函数释放内存时,被释放的内存从堆中被剔除(堆被缩减)</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>栈 (stack)</strong></p>
+<p>  栈又称堆栈, 是<code>用户存放程序临时创建的局部变量</code>,也就是说我们函数括弧“{}” 中定义的变量(但不包括static声明的变量,static意味着在数据段中存放变 量)。除此以外, 在函数被调用时,其参数也会被压入发起调用的进程栈中,并且待到调用结束后,函数的返回值 也会被存放回栈中。由于栈的先进先出特点,所以 栈特别方便用来保存/恢复调用现场。从这个意义上讲,我们可以把堆栈看成一个寄存、交换临时数据的内存区。 </p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdn.net/20150730174925609" alt="内存分区图"></p>
 
       
     </div>
@@ -822,7 +854,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪常量"><span class="nav-number">2.</span> <span class="nav-text">伪常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪常量"><span class="nav-number">2.</span> <span class="nav-text">伪常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存5大区"><span class="nav-number">4.</span> <span class="nav-text">内存5大区</span></a></li></ol></div>
             
 
           </div>
