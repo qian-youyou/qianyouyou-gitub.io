@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[C常量]C语言中的伪装大佬——伪常量const]]></title>
+    <url>%2F2018%2F05%2F25%2F2018-05-25-1%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[[C指针进阶]二阶指针做输入的3种内存模型]]></title>
+    <url>%2F2018%2F05%2F25%2F2018-05-25-0%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[[组合数学]取石子]]></title>
     <url>%2F2018%2F05%2F25%2F2018-05-25%2F</url>
-    <content type="text"><![CDATA[取石子题目描述给出四堆石子，石子数分别为a,b,c,d。规定每次只能从堆顶取走石子，问取走所有石子的方案数。 输入描述:1在一行内读入四个由空格分隔的整数a,b,c,d， 输入均为不超过500的正整数 输出描述:1输出一个整数表示答案，答案对109+7取模 输入13 5 4 2 输出12522520 备注:输入均为不超过500的正整数 题解：我们一堆一堆的考虑。第一堆a，第2堆b，第3堆c，第4堆d。假如只有一堆，则只有1种情况，即C(a,a)。假如有两堆，我们可以当做这两堆石子的排列组合。可以算出两堆石子的方案数。即C(b,a+b)。第三堆我们可以把前两堆看成一堆，然后继续排列组合，即C(c,a+b+c)。第4队即C(d,a+b+c+d)。最后全部相乘即可，即C(a,a) C(b,a+b) C(c,a+b+c)*C(d,a+b+c+d)。 暴力枚举首先想到暴力枚举，虽然一定超时。以下是代码。只需要把所有情况列一遍即可。 1234567891011121314151617181920212223242526#include&lt;stdio.h&gt;#define ll long longll a[4];ll cnt = 0;void dfs(ll a, ll b, ll c, ll d) &#123; if (!a&amp;&amp;!b&amp;&amp;!c&amp;&amp;!d) &#123; cnt++; cnt %= 1000000000 + 7; return; &#125; if (a) dfs(a - 1, b, c, d); if (b) dfs(a, b - 1, c, d); if (c) dfs(a, b, c - 1, d); if (d) dfs(a, b, c, d - 1);&#125;int main() &#123; for (int i = 0; i &lt; 4; i++) scanf(&quot;%lld&quot;, &amp;a[i]); dfs(a[0], a[1], a[2], a[3]); printf(&quot;%lld\n&quot;, cnt); return 0;&#125; python由于数据过大，c++没有大数类，所以用python首先A了一下。 123456789101112f = input().split()ans = 1sum = [int(f[0]),0,0,0]for i in range(1,4): sum[i]=sum[i-1]+int(f[i]) for j in range(sum[i]-int(f[i])+1,sum[i]+1): ans*=jfor i in range(1,4): for j in range(1,int(f[i])+1): ans//=jans%=1000000007print(ans) c++由于acm不能用python，所以只能再考虑c++。首先由于涉及到除法，所以不能直接取余。 我没知道公式：C(M,N)=C(M-1,N)+C(M-1，N-1)，这样把除法转化成加法，就可以模运算了。 1234567891011121314151617181920212223242526272829303132333435#include&lt;iostream&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;const int maxn = 501;const ll mod = 1000000007;ll a[4], sum[4] = &#123; 0 &#125;;ll dp[maxn * 4][maxn * 4];void init() &#123; dp[0][0] = 0; for (int i = 1; i &lt; 4 * maxn; i++) &#123; dp[i][0] = 1; for (int j = 1; j &lt; i; j++) &#123; dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1]; dp[i][j] %= mod; &#125; dp[i][i] = 1; &#125;&#125;int main() &#123; init(); ll ans = 1; for (int i = 0; i &lt; 4; i++) &#123; !i ? sum[i] = 0 : sum[i] = sum[i - 1]; cin &gt;&gt; a[i]; sum[i] += a[i]; if (a[i] &gt; sum[i] - a[i]) a[i] = sum[i] - a[i]; &#125; for (int i = 1; i &lt; 4; i++) &#123; ans *= dp[sum[i]][a[i]]; ans %= mod; &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[为什么要写关于这道题的博客呢？首先本题本人用python成功ac，要知道很少有人用Python做算法题。而且本人已经好几个月没用Python了，所以记录一下。此外，本题用到了排列组合打表，整理好代码，以后要用模板就不用再找了。 取石子题目描述给出四堆石子，石子数分别为a,b,c,d。规定每次只能从堆顶取走石子，问取走所有石子的方案数。 输入描述:1在一行内读入四个由空格分隔的整数a,b,c,d， 输入均为不超过500的正整数 输出描述:1输出一个整数表示答案，答案对109+7取模 输入13 5 4 2 输出12522520 备注:输入均为不超过500的正整数 题解：我们一堆一堆的考虑。第一堆a，第2堆b，第3堆c，第4堆d。假如只有一堆，则只有1种情况，即C(a,a)。假如有两堆，我们可以当做这两堆石子的排列组合。可以算出两堆石子的方案数。即C(b,a+b)。第三堆我们可以把前两堆看成一堆，然后继续排列组合，即C(c,a+b+c)。第4队即C(d,a+b+c+d)。最后全部相乘即可，即C(a,a) C(b,a+b) C(c,a+b+c)*C(d,a+b+c+d)。 暴力枚举首先想到暴力枚举，虽然一定超时。以下是代码。只需要把所有情况列一遍即可。 1234567891011121314151617181920212223242526#include&lt;stdio.h&gt;#define ll long longll a[4];ll cnt = 0;void dfs(ll a, ll b, ll c, ll d) &#123; if (!a&amp;&amp;!b&amp;&amp;!c&amp;&amp;!d) &#123; cnt++; cnt %= 1000000000 + 7; return; &#125; if (a) dfs(a - 1, b, c, d); if (b) dfs(a, b - 1, c, d); if (c) dfs(a, b, c - 1, d); if (d) dfs(a, b, c, d - 1);&#125;int main() &#123; for (int i = 0; i &lt; 4; i++) scanf(&quot;%lld&quot;, &amp;a[i]); dfs(a[0], a[1], a[2], a[3]); printf(&quot;%lld\n&quot;, cnt); return 0;&#125; python由于数据过大，c++没有大数类，所以用python首先A了一下。 123456789101112f = input().split()ans = 1sum = [int(f[0]),0,0,0]for i in range(1,4): sum[i]=sum[i-1]+int(f[i]) for j in range(sum[i]-int(f[i])+1,sum[i]+1): ans*=jfor i in range(1,4): for j in range(1,int(f[i])+1): ans//=jans%=1000000007print(ans) c++由于acm不能用python，所以只能再考虑c++。首先由于涉及到除法，所以不能直接取余。 我没知道公式：C(M,N)=C(M-1,N)+C(M-1，N-1)，这样把除法转化成加法，就可以模运算了。 1234567891011121314151617181920212223242526272829303132333435#include&lt;iostream&gt;#include&lt;cstring&gt;#define ll long longusing namespace std;const int maxn = 501;const ll mod = 1000000007;ll a[4], sum[4] = &#123; 0 &#125;;ll dp[maxn * 4][maxn * 4];void init() &#123; dp[0][0] = 0; for (int i = 1; i &lt; 4 * maxn; i++) &#123; dp[i][0] = 1; for (int j = 1; j &lt; i; j++) &#123; dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1]; dp[i][j] %= mod; &#125; dp[i][i] = 1; &#125;&#125;int main() &#123; init(); ll ans = 1; for (int i = 0; i &lt; 4; i++) &#123; !i ? sum[i] = 0 : sum[i] = sum[i - 1]; cin &gt;&gt; a[i]; sum[i] += a[i]; if (a[i] &gt; sum[i] - a[i]) a[i] = sum[i] - a[i]; &#125; for (int i = 1; i &lt; 4; i++) &#123; ans *= dp[sum[i]][a[i]]; ans %= mod; &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; C(M,N)模板1234567891011void init() &#123; dp[0][0] = 0; for (int i = 1; i &lt; 4 * maxn; i++) &#123; dp[i][0] = 1; for (int j = 1; j &lt; i; j++) &#123; dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1]; dp[i][j] %= mod; &#125; dp[i][i] = 1; &#125;&#125;]]></content>
       <categories>
         <category>训练之路</category>
         <category>算法</category>
@@ -69,8 +79,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>线性dp</tag>
       </tags>
   </entry>
@@ -85,8 +95,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +110,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>贪心</tag>
         <tag>差分数组</tag>
       </tags>
@@ -117,8 +127,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -132,8 +142,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>计算几何</tag>
         <tag>点积/叉积</tag>
       </tags>
@@ -148,8 +158,8 @@
         <category>博弈论</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>博弈论</tag>
       </tags>
   </entry>
@@ -163,8 +173,8 @@
         <category>数论</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>数论</tag>
         <tag>组合数学</tag>
         <tag>高斯消元</tag>
@@ -181,8 +191,8 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>图论</tag>
         <tag>最短路</tag>
         <tag>Dijkstra算法</tag>
@@ -198,8 +208,8 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>图论</tag>
         <tag>二分图匹配</tag>
         <tag>KM算法</tag>
@@ -215,8 +225,8 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>图论</tag>
         <tag>二分图匹配</tag>
         <tag>匈牙利算法</tag>
@@ -246,8 +256,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>贪心</tag>
         <tag>二分</tag>
       </tags>
@@ -263,8 +273,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
         <tag>ZOJ</tag>
       </tags>
   </entry>
@@ -278,10 +288,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -295,10 +305,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -312,10 +322,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -359,9 +369,9 @@
         <category>爬虫</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>python</tag>
         <tag>爬虫</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -468,8 +478,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>DFS</tag>
         <tag>ACM/ICPC</tag>
+        <tag>DFS</tag>
         <tag>位运算</tag>
       </tags>
   </entry>
@@ -527,8 +537,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>C陷阱与缺陷</tag>
         <tag>进制</tag>
+        <tag>C陷阱与缺陷</tag>
       </tags>
   </entry>
   <entry>
@@ -588,9 +598,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>模拟</tag>
         <tag>ACM/ICPC</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -620,10 +630,10 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>stl</tag>
-        <tag>vector</tag>
+        <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>vector</tag>
       </tags>
   </entry>
   <entry>
@@ -638,8 +648,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>DFS</tag>
         <tag>BFS</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -666,9 +676,9 @@
         <category>流</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -680,8 +690,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>正则表达式</tag>
         <tag>字符串</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
 </search>
