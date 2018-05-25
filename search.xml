@@ -3,12 +3,17 @@
   <entry>
     <title><![CDATA[[C常量]C语言中的伪装大佬——伪常量const]]></title>
     <url>%2F2018%2F05%2F25%2F2018-05-25-1%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[[C指针进阶]二阶指针做输入的3种内存模型]]></title>
-    <url>%2F2018%2F05%2F25%2F2018-05-25-0%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[为什么要介绍C语言的const呢？因为它和C++中的const不一样。许多人经常.CPP和.C混用，导致这两个概念经常混用分不清，导致有时候莫名其妙的错误，包括我。当然，这只是原因之一。最主要的原因是C语言的const实在是太虚伪了。我们知道我平时最讨厌虚伪的东西，所以今天把C语言中这个狡猾的const列出来，以免之后犯错。 用法首先以int为例定义整形常量a的两种方法： 12const int a;int const a; 当然，这两种方法其实是一样的，都代表的是整形常量。对于其他类型也是同样的方法。 不过对于指针，就有点特别了。首先强调，const和 的优先级是 优先级高于const。以下是以字符串为例的 3种定义方法。 123const char *p; //char const *p;char * const p;const char * const p; //char const * const p; 第一种指的是p是指向常量字符型数的指针，所指向的内存数据不可以被修改，但是本身可修改。 第2种指的是p是指向字符型数的常指针，所指向的内存数据可以被修改，但是本身不可被修改。 第3种是指向常量字符型数的常指针，所指向的内存数据补可被修改，本身也不可被修改。 伪常量用法介绍完了，但为什么说C的const是伪常量呢？因为常量是不可被更改的，但const可以通过简介赋值所改变。 const是伪常量，无法用于数组的初始化和全局变量的初始化,本质就是限定一个变量不能直接赋值。 如以下代码： 123456781 #define A 102 int arr[A];3 4 //const本质，伪常量 ,无法用于数组初始化和全局变量初始化5 /*6 const int B = 10;7 int arr[B];8 */ 但是如果局部变量是能够初始化编译并运行的 123451 void main()2 &#123;3 const int B = 10;4 int arr[B];5 &#125; const是伪常量，都知道常量是不能改变值的。例如这样是根本无法编译的。 1234561 void main() &#123;2 //num在栈区，只有栈区会自动回收释放3 //局部const常量在栈区，而不在静态区(静态区会一直存在)4 const int num = 10;//num就是一个常量5 //num = 11; //const本质，限定一个变量不能直接赋值6 &#125; 前面一直强调const是伪常量，因为可以间接的去改变它的值。利用指针变量 1234567891011121314 1 void main() &#123; 2 //num在栈区，只有栈区会自动回收释放 3 //局部const常量在栈区，而不在静态区(静态区会一直存在) 4 const int num = 10;//num就是一个常量 5 //num = 11; //error const本质，限定一个变量不能直接赋值 6 7 //间接改变常量值 8 const int *p = &amp;num;//定义一个指针指向一个常量，存储num的地址 9 int *pv = (int *)p;//对指向常量的指针进行强制转换10 *pv = 8;//对指针指向内容赋值11 12 printf(&quot;%d&quot;,num); //813 14 &#125; 结论c语言的const是冒牌货。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>常量</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>指针</tag>
+        <tag>const</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[[组合数学]取石子]]></title>
@@ -64,8 +69,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>并查集</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -79,8 +84,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>线性dp</tag>
       </tags>
   </entry>
@@ -95,8 +100,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -110,8 +115,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>贪心</tag>
         <tag>差分数组</tag>
       </tags>
@@ -127,8 +132,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -142,8 +147,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>计算几何</tag>
         <tag>点积/叉积</tag>
       </tags>
@@ -158,8 +163,8 @@
         <category>博弈论</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>博弈论</tag>
       </tags>
   </entry>
@@ -173,8 +178,8 @@
         <category>数论</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>数论</tag>
         <tag>组合数学</tag>
         <tag>高斯消元</tag>
@@ -191,8 +196,8 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>图论</tag>
         <tag>最短路</tag>
         <tag>Dijkstra算法</tag>
@@ -208,8 +213,8 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>图论</tag>
         <tag>二分图匹配</tag>
         <tag>KM算法</tag>
@@ -225,8 +230,8 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>图论</tag>
         <tag>二分图匹配</tag>
         <tag>匈牙利算法</tag>
@@ -256,8 +261,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>贪心</tag>
         <tag>二分</tag>
       </tags>
@@ -273,8 +278,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
         <tag>ZOJ</tag>
       </tags>
   </entry>
@@ -478,8 +483,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>ACM/ICPC</tag>
         <tag>DFS</tag>
+        <tag>ACM/ICPC</tag>
         <tag>位运算</tag>
       </tags>
   </entry>
@@ -598,9 +603,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>算法</tag>
         <tag>模拟</tag>
         <tag>ACM/ICPC</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -648,8 +653,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>BFS</tag>
         <tag>DFS</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>

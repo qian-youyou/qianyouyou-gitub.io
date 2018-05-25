@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C/C++,指针,const," />
 
 
 
@@ -100,17 +100,18 @@
 
 
 
-<meta name="description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="description" content="为什么要介绍C语言的const呢？因为它和C++中的const不一样。许多人经常.CPP和.C混用，导致这两个概念经常混用分不清，导致有时候莫名其妙的错误，包括我。当然，这只是原因之一。最主要的原因是C语言的const实在是太虚伪了。我们知道我平时最讨厌虚伪的东西，所以今天把C语言中这个狡猾的const列出来，以免之后犯错。 用法首先以int为例定义整形常量a的两种方法： 12const int">
+<meta name="keywords" content="C&#x2F;C++,指针,const">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[C常量]C语言中的伪装大佬——伪常量const">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/25/2018-05-25-1/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta property="og:description" content="为什么要介绍C语言的const呢？因为它和C++中的const不一样。许多人经常.CPP和.C混用，导致这两个概念经常混用分不清，导致有时候莫名其妙的错误，包括我。当然，这只是原因之一。最主要的原因是C语言的const实在是太虚伪了。我们知道我平时最讨厌虚伪的东西，所以今天把C语言中这个狡猾的const列出来，以免之后犯错。 用法首先以int为例定义整形常量a的两种方法： 12const int">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-25T15:40:21.547Z">
+<meta property="og:updated_time" content="2018-05-25T16:46:19.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C常量]C语言中的伪装大佬——伪常量const">
-<meta name="twitter:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="twitter:description" content="为什么要介绍C语言的const呢？因为它和C++中的const不一样。许多人经常.CPP和.C混用，导致这两个概念经常混用分不清，导致有时候莫名其妙的错误，包括我。当然，这只是原因之一。最主要的原因是C语言的const实在是太虚伪了。我们知道我平时最讨厌虚伪的东西，所以今天把C语言中这个狡猾的const列出来，以免之后犯错。 用法首先以int为例定义整形常量a的两种方法： 12const int">
 
 
 
@@ -379,6 +380,50 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/常量/" itemprop="url" rel="index">
+                    <span itemprop="name">常量</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -415,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  856
                 </span>
               
 
@@ -431,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -452,7 +497,28 @@
       
 
       
-        
+        <p>为什么要介绍C语言的const呢？因为它和C++中的const不一样。许多人经常.CPP和.C混用，导致这两个概念经常混用分不清，导致有时候莫名其妙的错误，包括我。当然，这只是原因之一。最主要的原因是C语言的const实在是太虚伪了。我们知道我平时最讨厌虚伪的东西，所以今天把C语言中这个狡猾的const列出来，以免之后犯错。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>首先以int为例定义整形常量a的两种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int a;</span><br><span class="line">int const a;</span><br></pre></td></tr></table></figure>
+<p>当然，这两种方法其实是一样的，都代表的是整形常量。对于其他类型也是同样的方法。</p>
+<p>不过对于指针，就有点特别了。首先强调，const和 <em> 的优先级是 </em> 优先级高于const。以下是以字符串为例的</p>
+<p>3种定义方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const char *p;	//char const *p;</span><br><span class="line">char * const p;</span><br><span class="line">const char * const p;	//char const * const p;</span><br></pre></td></tr></table></figure>
+<p>第一种指的是p是指向常量字符型数的指针，所指向的内存数据不可以被修改，但是本身可修改。</p>
+<p>第2种指的是p是指向字符型数的常指针，所指向的内存数据可以被修改，但是本身不可被修改。</p>
+<p>第3种是指向常量字符型数的常指针，所指向的内存数据补可被修改，本身也不可被修改。</p>
+<h2 id="伪常量"><a href="#伪常量" class="headerlink" title="伪常量"></a>伪常量</h2><p>用法介绍完了，但为什么说C的const是伪常量呢？因为常量是不可被更改的，但const可以通过简介赋值所改变。</p>
+<p>const是伪常量，无法用于数组的初始化和全局变量的初始化,本质就是限定一个变量不能直接赋值。</p>
+<p>　　如以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 #define A 10</span><br><span class="line">2 int arr[A];</span><br><span class="line">3 </span><br><span class="line">4 //const本质，伪常量 ,无法用于数组初始化和全局变量初始化</span><br><span class="line">5 /*</span><br><span class="line">6 const int B = 10;</span><br><span class="line">7 int arr[B];</span><br><span class="line">8 */</span><br></pre></td></tr></table></figure>
+<p>　　但是如果局部变量是能够初始化编译并运行的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 void main()</span><br><span class="line">2 &#123;</span><br><span class="line">3     const int B = 10;</span><br><span class="line">4     int arr[B];</span><br><span class="line">5 &#125;</span><br></pre></td></tr></table></figure>
+<p>　　const是伪常量，都知道常量是不能改变值的。例如这样是根本无法编译的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 void main() &#123;</span><br><span class="line">2     //num在栈区，只有栈区会自动回收释放</span><br><span class="line">3     //局部const常量在栈区，而不在静态区(静态区会一直存在)</span><br><span class="line">4     const int num = 10;//num就是一个常量</span><br><span class="line">5     //num = 11; //const本质，限定一个变量不能直接赋值</span><br><span class="line">6 &#125;</span><br></pre></td></tr></table></figure>
+<p>　　前面一直强调const是伪常量，因为可以间接的去改变它的值。利用指针变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> 1 void main() &#123;</span><br><span class="line"> 2     //num在栈区，只有栈区会自动回收释放</span><br><span class="line"> 3     //局部const常量在栈区，而不在静态区(静态区会一直存在)</span><br><span class="line"> 4     const int num = 10;//num就是一个常量</span><br><span class="line"> 5     //num = 11; //error const本质，限定一个变量不能直接赋值</span><br><span class="line"> 6 </span><br><span class="line"> 7     //间接改变常量值</span><br><span class="line"> 8     const int *p = &amp;num;//定义一个指针指向一个常量，存储num的地址</span><br><span class="line"> 9     int *pv = (int *)p;//对指向常量的指针进行强制转换</span><br><span class="line">10     *pv = 8;//对指针指向内容赋值</span><br><span class="line">11 </span><br><span class="line">12     printf(&quot;%d&quot;,num); //8</span><br><span class="line">13 </span><br><span class="line">14 &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>c语言的const是冒牌货。</p>
+
       
     </div>
     
@@ -506,6 +572,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+          
+            <a href="/tags/指针/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
+          
+            <a href="/tags/const/" rel="tag"><i class="fa fa-tag"></i> const</a>
+          
+        </div>
+      
 
       
       
@@ -515,8 +591,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/25/2018-05-25-0/" rel="next" title="[C指针进阶]二阶指针做输入的3种内存模型">
-                <i class="fa fa-chevron-left"></i> [C指针进阶]二阶指针做输入的3种内存模型
+              <a href="/2018/05/25/2018-05-25/" rel="next" title="[组合数学]取石子">
+                <i class="fa fa-chevron-left"></i> [组合数学]取石子
               </a>
             
           </div>
@@ -580,8 +656,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -600,7 +685,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -611,7 +696,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -622,7 +707,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -727,6 +812,22 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
 	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用法"><span class="nav-number">1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪常量"><span class="nav-number">2.</span> <span class="nav-text">伪常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
