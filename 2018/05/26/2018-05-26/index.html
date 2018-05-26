@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C/C++,指针," />
 
 
 
@@ -100,17 +100,21 @@
 
 
 
-<meta name="description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="description" content="内存5大区 BSS段( bss segment ) 通常是指用来存放程序中未初始化的全局变量和静态变量 （这里注意一个问题:一般的书上都会说全局变量和静态变量是会自动初始化的,那么哪来的未初始化的变量呢?变量的初始化可以分为显示初始化和隐式初始化,全局变量和静态变量如果程序员自己不初始化的话的确也会被初始化,那就是不管什么类型都初始化为0,这种没有显示初始化的就 是我们这里所说的未初始化。既然都是">
+<meta name="keywords" content="C&#x2F;C++,指针">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[C指针进阶]二级指针做输入的3种内存模型">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/26/2018-05-26/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta property="og:description" content="内存5大区 BSS段( bss segment ) 通常是指用来存放程序中未初始化的全局变量和静态变量 （这里注意一个问题:一般的书上都会说全局变量和静态变量是会自动初始化的,那么哪来的未初始化的变量呢?变量的初始化可以分为显示初始化和隐式初始化,全局变量和静态变量如果程序员自己不初始化的话的确也会被初始化,那就是不管什么类型都初始化为0,这种没有显示初始化的就 是我们这里所说的未初始化。既然都是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-26T06:24:45.840Z">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-25-%E5%86%85%E5%AD%985%E5%8C%BA.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-26-%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:updated_time" content="2018-05-26T10:43:55.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C指针进阶]二级指针做输入的3种内存模型">
-<meta name="twitter:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="twitter:description" content="内存5大区 BSS段( bss segment ) 通常是指用来存放程序中未初始化的全局变量和静态变量 （这里注意一个问题:一般的书上都会说全局变量和静态变量是会自动初始化的,那么哪来的未初始化的变量呢?变量的初始化可以分为显示初始化和隐式初始化,全局变量和静态变量如果程序员自己不初始化的话的确也会被初始化,那就是不管什么类型都初始化为0,这种没有显示初始化的就 是我们这里所说的未初始化。既然都是">
+<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-25-%E5%86%85%E5%AD%985%E5%8C%BA.png">
 
 
 
@@ -379,6 +383,50 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/指针/" itemprop="url" rel="index">
+                    <span itemprop="name">指针</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -415,7 +463,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,515
                 </span>
               
 
@@ -431,7 +479,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -452,7 +500,39 @@
       
 
       
-        
+        <h2 id="内存5大区"><a href="#内存5大区" class="headerlink" title="内存5大区"></a>内存5大区</h2><ul>
+<li><p><strong>BSS段( bss segment )</strong></p>
+<p>通常是指用来存放程序中<code>未初始化的全局变量和静态变量</code> （这里注意一个问题:一般的书上都会说全局变量和静态变量是会自动初始化的,那么哪来的未初始化的变量呢?变量的初始化可以分为显示初始化和隐式初始化,全局变量和静态变量如果程序员自己不初始化的话的确也会被初始化,那就是不管什么类型都初始化为0,这种没有显示初始化的就 是我们这里所说的未初始化。既然都是0那么就<code>没必要把每个0都存储起来</code>,从而节省磁盘空间,这是BSS的主要作用）的一块内存区域。BSS是英文Block Started by Symbol的简称。BSS段属于静态内存分配。 BSS节不包含任何数据,只是简单的维护开始和结束的地址,即总大小。以便内存区能在运行时分配并被有效地清零。BSS节在应用程序的二进制映象文件中并不存在,即不占用 磁盘空间 而只在运行的时候占用内存空间 ,所以如果全局变量和静态变量未初始化那么其可执行文件要小很多。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>数据段(data segment)</strong></p>
+<p>通常是指用来存放程序中已经<code>初始化的全局变量和静态变量</code>的一块内存区域。数据段属于静态内存分配,可以分为只读数据段和读写数据段。字符串常量等,但一般都是放在只读数据段中。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>代码段(code segment/text segment)</strong></p>
+<p>通常是指用来存放<code>程序执行代码的一块内存区域</code>。这部分区域的大小在程序运行前就已经确定,并且内存区域通常属于只读, 某些架构也允许代码段为可写,即允许修改程序。在代码段中,也有可能包含一些只读的常数变量,例如字符串常量等,但一般都是放在只读数据段中 。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>堆(heap)</strong></p>
+<p>堆是用于存放进程运行中被<code>动态分配的内存段</code>,它的大小并不固定,可动态扩张或 缩减。当进程调用malloc等函数分配内存时,新分配的内存就被动态添加到堆上(堆被扩张); 当利用free等函数释放内存时,被释放的内存从堆中被剔除(堆被缩减)</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><strong>栈 (stack)</strong></p>
+<p>栈又称堆栈, 是<code>用户存放程序临时创建的局部变量</code>,也就是说我们函数括弧“{}” 中定义的变量(但不包括static声明的变量,static意味着在数据段中存放变 量)。除此以外, 在函数被调用时,其参数也会被压入发起调用的进程栈中,并且待到调用结束后,函数的返回值 也会被存放回栈中。由于栈的先进先出特点,所以 栈特别方便用来保存/恢复调用现场。从这个意义上讲,我们可以把堆栈看成一个寄存、交换临时数据的内存区。 </p>
+</li>
+</ul>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-25-%E5%86%85%E5%AD%985%E5%8C%BA.png" alt="内存分区图"></p>
+<h2 id="内存模型示意图"><a href="#内存模型示意图" class="headerlink" title="内存模型示意图"></a>内存模型示意图</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-26-%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png" alt=""></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">/*排序并输出第1种内存模型:指针数组*/</span><br><span class="line">void sort_myArray1(char **myArray, int len) &#123;</span><br><span class="line">	printf(&quot;排序前：\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)</span><br><span class="line">		printf(&quot;%s\n&quot;, myArray[i]);</span><br><span class="line">	printf(&quot;******************\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)	/*改变指针的指向*/</span><br><span class="line">		for (int j = len - 1; j &gt; i; j--) &#123;</span><br><span class="line">			if (strcmp(myArray[j], myArray[j - 1])&gt;0) &#123;</span><br><span class="line">				char *tmp = myArray[j];</span><br><span class="line">				myArray[j] = myArray[j - 1];</span><br><span class="line">				myArray[j - 1] = tmp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	printf(&quot;排序后：\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)</span><br><span class="line">		printf(&quot;%s\n&quot;, myArray[i]);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">/*排序并输出第2种内存模型：二维数组（数组指针）*/</span><br><span class="line">void sort_myArray2(char(*myArray)[4], int len) &#123;</span><br><span class="line">	printf(&quot;排序前：\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)</span><br><span class="line">		printf(&quot;%s\n&quot;, myArray[i]);</span><br><span class="line">	printf(&quot;******************\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)	/*改变指针所指向内存的值*/</span><br><span class="line">		for (int j = len - 1; j &gt; i; j--) &#123;</span><br><span class="line">			if (strcmp(myArray[j], myArray[j - 1])&gt;0) &#123;</span><br><span class="line">				char tmp[4];</span><br><span class="line">				strcpy(tmp, myArray[j]);</span><br><span class="line">				strcpy(myArray[j], myArray[j - 1]);</span><br><span class="line">				strcpy(myArray[j - 1], tmp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	printf(&quot;排序后：\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)</span><br><span class="line">		printf(&quot;%s\n&quot;, myArray[i]);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">/*排序并输出第3种内存模型：二维指针*/</span><br><span class="line">void sort_myArray3(char **myArray, int len) &#123;</span><br><span class="line">	printf(&quot;排序前：\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)</span><br><span class="line">		printf(&quot;%s\n&quot;, myArray[i]);</span><br><span class="line">	printf(&quot;******************\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)	/*改变指针所指向内存的值，也可以改写成改变指针的指向*/</span><br><span class="line">		for (int j = len - 1; j &gt; i; j--) &#123;</span><br><span class="line">			if (strcmp(myArray[j], myArray[j - 1])&gt;0) &#123;</span><br><span class="line">				char tmp[4];</span><br><span class="line">				strcpy(tmp, myArray[j]);</span><br><span class="line">				strcpy(myArray[j], myArray[j - 1]);</span><br><span class="line">				strcpy(myArray[j - 1], tmp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	printf(&quot;排序后：\n&quot;);</span><br><span class="line">	for (int i = 0; i &lt; len; i++)</span><br><span class="line">		printf(&quot;%s\n&quot;, myArray[i]);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">/*为二级指针分配动态内存并赋值*/</span><br><span class="line">char**get_myArray3(int len) &#123;</span><br><span class="line">	char**myArray = NULL;</span><br><span class="line">	while ((myArray = (char**)malloc(3 * sizeof(char*))) == NULL) &#123;</span><br><span class="line">		printf(&quot;Error.\n&quot;);</span><br><span class="line">		exit(1);</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">		while ((myArray[i] = (char*)calloc(100, sizeof(char))) == NULL) &#123;</span><br><span class="line">			printf(&quot;Error.\n&quot;);</span><br><span class="line">			exit(1);</span><br><span class="line">		&#125;</span><br><span class="line">		sprintf(myArray[i], &quot;%d%d%d&quot;, i + 1, i + 2, i + 3);</span><br><span class="line">	&#125;</span><br><span class="line">	return myArray;</span><br><span class="line">&#125;</span><br><span class="line">/*将动态分配的内存空间释放掉*/</span><br><span class="line">void init_myArray3(char**myArray, int len) &#123;</span><br><span class="line">	for (int i = 0; i &lt; len; i++)</span><br><span class="line">		if (myArray[i] != NULL) &#123;</span><br><span class="line">			free(myArray[i]);</span><br><span class="line">			myArray[i] = NULL;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	char*p1[] = &#123; &quot;123&quot;,&quot;456&quot;,&quot;789&quot; &#125;;		/*第1种内存模型：指针数组*/</span><br><span class="line">	char p2[3][4] = &#123; &quot;abc&quot;,&quot;def&quot;,&quot;ghi&quot; &#125;;	/*第2种内存模型：多维数组*/</span><br><span class="line">	char**p3 = get_myArray3(3);				/*第3种内存模型：二维指针*/</span><br><span class="line">	sort_myArray1(p1, sizeof(p1) / sizeof(p1[0]));	/*数组的指针个数*/</span><br><span class="line">	sort_myArray2(p2, sizeof(p2) / sizeof(p2[0]));	/*数组的行数*/</span><br><span class="line">	sort_myArray3(p3, 3);	/*由于sizeof(p3)为4，即一个指针的大小，故不能用sizeof(p3) / sizeof(p2[3])*/</span><br><span class="line">	init_myArray3(p3, 3);</span><br><span class="line">	if (p3 != NULL)</span><br><span class="line">		free(p3);	/*释放掉二维指针分配的内存*/</span><br><span class="line">	p3 = NULL;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -505,6 +585,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+          
+            <a href="/tags/指针/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
+          
+        </div>
       
 
       
@@ -580,8 +668,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -611,7 +708,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -727,6 +824,22 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
 	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内存5大区"><span class="nav-number">1.</span> <span class="nav-text">内存5大区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型示意图"><span class="nav-number">2.</span> <span class="nav-text">内存模型示意图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
