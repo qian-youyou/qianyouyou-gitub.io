@@ -87,7 +87,7 @@
 
 
 
-  <meta name="keywords" content="C/C++,DFS,ACM/ICPC,位运算," />
+  <meta name="keywords" content="算法,模拟,ACM/ICPC,暴力枚举," />
 
 
 
@@ -100,20 +100,18 @@
 
 
 
-<meta name="description" content="在N*N的方格棋盘放置了N个皇后，使得它们不相互攻击（即任意2个皇后不允许处在同一排，同一列，也不允许处在与棋盘边框成45角的斜线上。 你的任务是，对于给定的N，求出有多少种合法的放置方法。共有若干行，表示棋盘和皇后的数量；如果N=0，表示结束。 分析： 本篇文章重点介绍位运算解决N皇后的思想，并不是解决特定的问题。和普通算法一样，这是一个递归过程，程序一行一行地寻找可以放皇后的地方。过程带三个参">
-<meta name="keywords" content="C&#x2F;C++,DFS,ACM&#x2F;ICPC,位运算">
+<meta name="description" content="首先，一般的模拟类型的题如果按照题面做一般就入坑了。因为此类题如果按照题面一步一步模拟，那时间复杂度会相当大，如果此模拟题数据不是很水，一般都不会通过，所以时间复杂度至少要降维处理。而模拟题一般的做法是推导，把模拟的过程推成一个公式，而公式的时间复杂度为常数，即O(1),即实现由0(…)0(N)-&amp;gt;0(…)0(1)的降维过程。但推导公式往往是一件很麻烦的事情，因此推导公式是模拟类题的关键。以">
+<meta name="keywords" content="算法,模拟,ACM&#x2F;ICPC,暴力枚举">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[位运算]dfs+位运算解决N皇后问题">
-<meta property="og:url" content="http://qianyouyou.cn/2018/04/13/2018-04-13/index.html">
+<meta property="og:title" content="关于模拟或暴力类型题的时间复杂度降维优化举例">
+<meta property="og:url" content="http://qianyouyou.cn/2018/05/29/2018-05-29/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="在N*N的方格棋盘放置了N个皇后，使得它们不相互攻击（即任意2个皇后不允许处在同一排，同一列，也不允许处在与棋盘边框成45角的斜线上。 你的任务是，对于给定的N，求出有多少种合法的放置方法。共有若干行，表示棋盘和皇后的数量；如果N=0，表示结束。 分析： 本篇文章重点介绍位运算解决N皇后的思想，并不是解决特定的问题。和普通算法一样，这是一个递归过程，程序一行一行地寻找可以放皇后的地方。过程带三个参">
+<meta property="og:description" content="首先，一般的模拟类型的题如果按照题面做一般就入坑了。因为此类题如果按照题面一步一步模拟，那时间复杂度会相当大，如果此模拟题数据不是很水，一般都不会通过，所以时间复杂度至少要降维处理。而模拟题一般的做法是推导，把模拟的过程推成一个公式，而公式的时间复杂度为常数，即O(1),即实现由0(…)0(N)-&amp;gt;0(…)0(1)的降维过程。但推导公式往往是一件很麻烦的事情，因此推导公式是模拟类题的关键。以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdn.net/20180413230947558">
-<meta property="og:updated_time" content="2018-05-02T12:18:14.310Z">
+<meta property="og:updated_time" content="2018-05-29T12:50:23.458Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[位运算]dfs+位运算解决N皇后问题">
-<meta name="twitter:description" content="在N*N的方格棋盘放置了N个皇后，使得它们不相互攻击（即任意2个皇后不允许处在同一排，同一列，也不允许处在与棋盘边框成45角的斜线上。 你的任务是，对于给定的N，求出有多少种合法的放置方法。共有若干行，表示棋盘和皇后的数量；如果N=0，表示结束。 分析： 本篇文章重点介绍位运算解决N皇后的思想，并不是解决特定的问题。和普通算法一样，这是一个递归过程，程序一行一行地寻找可以放皇后的地方。过程带三个参">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180413230947558">
+<meta name="twitter:title" content="关于模拟或暴力类型题的时间复杂度降维优化举例">
+<meta name="twitter:description" content="首先，一般的模拟类型的题如果按照题面做一般就入坑了。因为此类题如果按照题面一步一步模拟，那时间复杂度会相当大，如果此模拟题数据不是很水，一般都不会通过，所以时间复杂度至少要降维处理。而模拟题一般的做法是推导，把模拟的过程推成一个公式，而公式的时间复杂度为常数，即O(1),即实现由0(…)0(N)-&amp;gt;0(…)0(1)的降维过程。但推导公式往往是一件很麻烦的事情，因此推导公式是模拟类题的关键。以">
 
 
 
@@ -143,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://qianyouyou.cn/2018/04/13/2018-04-13/"/>
+  <link rel="canonical" href="http://qianyouyou.cn/2018/05/29/2018-05-29/"/>
 
 
 
 
 
-  <title>[位运算]dfs+位运算解决N皇后问题 | 浅悠悠的个人博客</title>
+  <title>关于模拟或暴力类型题的时间复杂度降维优化举例 | 浅悠悠的个人博客</title>
   
 
 
@@ -341,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/04/13/2018-04-13/">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/05/29/2018-05-29/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王骏">
@@ -358,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[位运算]dfs+位运算解决N皇后问题</h1>
+          <h1 class="post-title" itemprop="name headline">关于模拟或暴力类型题的时间复杂度降维优化举例</h1>
         
 
         <div class="post-meta">
@@ -371,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-13T23:11:06+08:00">
-                2018-04-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T20:39:04+08:00">
+                2018-05-29
               </time>
             
 
@@ -416,8 +414,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/训练之路/算法/DFS/" itemprop="url" rel="index">
-                    <span itemprop="name">DFS</span>
+                  <a href="/categories/训练之路/算法/模拟/" itemprop="url" rel="index">
+                    <span itemprop="name">模拟</span>
                   </a>
                 </span>
 
@@ -434,8 +432,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/04/13/2018-04-13/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/13/2018-04-13/" itemprop="commentCount"></span>
+                <a href="/2018/05/29/2018-05-29/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/29/2018-05-29/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -462,7 +460,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  526
+                  1,033
                 </span>
               
 
@@ -478,7 +476,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  5
                 </span>
               
             </div>
@@ -499,12 +497,39 @@
       
 
       
-        <p>在N*N的方格棋盘放置了N个皇后，使得它们不相互攻击（即任意2个皇后不允许处在同一排，同一列，也不允许处在与棋盘边框成45角的斜线上。</p>
-<p>你的任务是，对于给定的N，求出有多少种合法的放置方法。共有若干行，表示棋盘和皇后的数量；如果N=0，表示结束。</p>
-<p>分析：</p>
-<p>本篇文章重点介绍位运算解决N皇后的思想，并不是解决特定的问题。和普通算法一样，这是一个递归过程，程序一行一行地寻找可以放皇后的地方。过程带三个参数，row、ld和rd，分别表示在纵列和两个对角线方向的限制条件下这一行的哪些地方不能放。我们以6×6的棋盘为例，看看程序是怎么工作的。假设现在已经递归到第四层，前三层放的子已经标在左图上了。红色、蓝色和绿色的线分别表示三个方向上有冲突的位置，位于该行上的冲突位置就用row、ld和rd中的1来表示。把它们三个并起来，得到该行所有的禁位，取反后就得到所有可以放的位置。注意递归调用时三个参数的变化，每个参数都加上了一个禁位，但两个对角线方向的禁位对下一行的影响需要平移一位。最后，如果递归到某个时候发现row=111111了，说明六个皇后全放进去了，此时程序从第1行跳到第11行，找到的解的个数加一。</p>
-<p><img src="https://img-blog.csdn.net/20180413230947558" alt="img"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;  </span><br><span class="line">#include&lt;math.h&gt;  </span><br><span class="line">int N, Count, res;  </span><br><span class="line">void dfs(int row, int ld, int rd) &#123;  </span><br><span class="line">    if (row == res) &#123;  </span><br><span class="line">        Count++;  </span><br><span class="line">        return;  </span><br><span class="line">    &#125;  </span><br><span class="line">    for (int j = 1; j &lt;= res; j &lt;&lt;= 1)  </span><br><span class="line">        if (row != (row | j) &amp;&amp; ld != (ld | j) &amp;&amp; rd != (rd | j))  </span><br><span class="line">            dfs(row | j, (ld | j) &lt;&lt; 1 &amp; res, (rd | j) &gt;&gt; 1);  </span><br><span class="line">&#125;  </span><br><span class="line">int main() &#123;  </span><br><span class="line">    while (~scanf(&quot;%d&quot;, &amp;N), N) &#123;  </span><br><span class="line">        Count = 0;  </span><br><span class="line">        res = pow(2, N) - 1;  </span><br><span class="line">        dfs(0, 0, 0);  </span><br><span class="line">        printf(&quot;%d\n&quot;, Count);  </span><br><span class="line">    &#125;  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>首先，一般的模拟类型的题如果按照题面做一般就入坑了。因为此类题如果按照题面一步一步模拟，那时间复杂度会相当大，如果此模拟题数据不是很水，一般都不会通过，所以时间复杂度至少要降维处理。而模拟题一般的做法是推导，把模拟的过程推成一个公式，而公式的时间复杂度为常数，即O(1),即实现由0(…)0(N)-&gt;0(…)0(1)的降维过程。但推导公式往往是一件很麻烦的事情，因此推导公式是模拟类题的关键。以下两道题原本是用模拟或暴力来解决，但其实它们都是可以优化的，例如第一题只需要求周期内的数与周期即可，不用遍历全部数，第2题只需对该数n进行分析即可，时间复杂度0(1)，不用从1遍历到n一个个进行统计。</p>
+<h2 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h2><p>百度熊对数学一直都非常感兴趣。最近在学习斐波那契数列的它，向你展示了一个数字串，它称之为“斐波那契”串：</p>
+<p>1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11235813471123581347112358…</span><br></pre></td></tr></table></figure>
+<p>聪明的你当然一眼就看出了这个串是这么构造的：</p>
+<ol>
+<li><p>先写下两位在0~9范围内的数字a, b，构成串ab；</p>
+</li>
+<li><p>取串最后的两位数字相加，将和写在串的最后面。</p>
+</li>
+</ol>
+<p>上面百度熊向你展示的串就是取a = b = 1构造出来的串。</p>
+<p>显然，步骤1之后不停地进行步骤2，数字串可以无限扩展。现在，百度熊希望知道串的第n位是什么数字。</p>
+<p>输入数据的第一行为一个整数T（1 ≤ T ≤1000）, 表示有T组测试数据；每组测试数据为三个正整数a, b, n（0 ≤ a, b &lt; 10, 0 &lt; n ≤109）。</p>
+<p>对于每组测试数据，输出一行“Case #c: ans”（不包含引号） c是测试数据的组数，从1开始。</p>
+<p>提示：</p>
+<ol>
+<li><p>对于第一、二组数据，串为112358134711235…</p>
+</li>
+<li><p>对于第三组数据，串为14591459145914…</p>
+</li>
+</ol>
+<h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 1 2</span><br><span class="line">1 1 8</span><br><span class="line">1 4 8</span><br></pre></td></tr></table></figure>
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Case #1: 1</span><br><span class="line">Case #2: 3</span><br><span class="line">Case #3: 9</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 500;</span><br><span class="line">int t, c, d, n, cyc, cnt;</span><br><span class="line">int a[maxn], vis[maxn];</span><br><span class="line">int init()&#123;</span><br><span class="line">    memset(a,0,sizeof(a));</span><br><span class="line">    memset(vis,0,sizeof(vis));</span><br><span class="line">    a[1] = c;</span><br><span class="line">    a[2] = d;</span><br><span class="line">    cnt = 2;</span><br><span class="line">    while(!vis[a[cnt-1]*10+a[cnt-0]])&#123;</span><br><span class="line">        vis[a[cnt-1]*10+a[cnt]] = cnt;</span><br><span class="line">        int tmp = a[cnt-1] + a[cnt];</span><br><span class="line">        if(tmp&lt;10)</span><br><span class="line">            a[++cnt]=tmp;</span><br><span class="line">        else&#123;</span><br><span class="line">            a[++cnt]=tmp/10;</span><br><span class="line">            a[++cnt]=tmp%10;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return vis[a[cnt-1]*10+a[cnt]];</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    for(int i = 1;i&lt;=t;i++)&#123;</span><br><span class="line">        cin &gt;&gt; c &gt;&gt; d &gt;&gt; n;</span><br><span class="line">        int res = init();</span><br><span class="line">        cout&lt;&lt;&quot;Case #&quot;&lt;&lt;i&lt;&lt;&quot;: &quot;;</span><br><span class="line">        if(cnt&gt;=n)</span><br><span class="line">            cout&lt;&lt;a[n]&lt;&lt;endl;</span><br><span class="line">        else</span><br><span class="line">            cout&lt;&lt;a[res+(n-res)%(cnt-res)]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="计数问题"><a href="#计数问题" class="headerlink" title="计数问题"></a>计数问题</h2><p>试计算在区间 11 到 nn 的所有整数中，数字 xx（0 \leq x \leq 90≤x≤9）共出现了多少次？例如，在 11 到 1111 中，即在 11、22、33、44、55、66、77、88、99、1010、1111 中，数字 11 出现了 4 次。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入共 1 行，包含 2 个整数 nn、xx，之间用一个空格隔开。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出共 1 行，包含一个整数，表示 xx 出现的次数。</p>
+<h3 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h3><p>对于 100% 的数据，1 \leq n \leq 1,000,0001≤n≤1,000,000，0 \leq x \leq 90≤x≤9。</p>
+<p>忽略每行输出的末尾多余空格</p>
+<h4 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11 1</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n, x;</span><br><span class="line">int main()&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;x;</span><br><span class="line">    int cnt = 0, res = 1, re = 1;</span><br><span class="line">    int tmp = n;</span><br><span class="line">    if(x)&#123;</span><br><span class="line">        while(tmp)&#123;</span><br><span class="line">            int mod = tmp%10;</span><br><span class="line">            cnt+=(res-re)/10*mod;</span><br><span class="line">            if(mod&gt;x)</span><br><span class="line">                cnt+=re;</span><br><span class="line">            else if(mod==x)</span><br><span class="line">                cnt+=n%re+1;</span><br><span class="line">            re*=10;</span><br><span class="line">            res*=10;</span><br><span class="line">            res+=re;</span><br><span class="line">            tmp/=10;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        for(int i = 1;i&lt;=n;i++)</span><br><span class="line">            for(int j=i;j;j/=10)</span><br><span class="line">                if(j%10==x)cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;cnt&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -561,13 +586,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
-            <a href="/tags/DFS/" rel="tag"><i class="fa fa-tag"></i> DFS</a>
+            <a href="/tags/模拟/" rel="tag"><i class="fa fa-tag"></i> 模拟</a>
           
             <a href="/tags/ACM-ICPC/" rel="tag"><i class="fa fa-tag"></i> ACM/ICPC</a>
           
-            <a href="/tags/位运算/" rel="tag"><i class="fa fa-tag"></i> 位运算</a>
+            <a href="/tags/暴力枚举/" rel="tag"><i class="fa fa-tag"></i> 暴力枚举</a>
           
         </div>
       
@@ -580,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/13/2018-04-13 - 1/" rel="next" title="[位运算]位运算的4个简单应用">
-                <i class="fa fa-chevron-left"></i> [位运算]位运算的4个简单应用
+              <a href="/2018/05/26/2018-05-26/" rel="next" title="[C指针进阶]二级指针做输入的3种内存模型">
+                <i class="fa fa-chevron-left"></i> [C指针进阶]二级指针做输入的3种内存模型
               </a>
             
           </div>
@@ -589,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/18/2018-04-18/" rel="prev" title="[BFS]正向BFS+hash解决八码问题">
-                [BFS]正向BFS+hash解决八码问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -649,8 +670,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -796,6 +826,22 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
 	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">1.</span> <span class="nav-text">斐波那契数列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#样例输入"><span class="nav-number">1.1.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例输出"><span class="nav-number">1.2.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计数问题"><span class="nav-number">2.</span> <span class="nav-text">计数问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入格式"><span class="nav-number">2.1.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出格式"><span class="nav-number">2.2.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据规模与约定"><span class="nav-number">2.3.</span> <span class="nav-text">数据规模与约定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#样例输入-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样例输出-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">样例输出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
