@@ -572,8 +572,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>进制</tag>
         <tag>C陷阱与缺陷</tag>
+        <tag>进制</tag>
       </tags>
   </entry>
   <entry>
@@ -667,8 +667,8 @@
         <tag>C/C++</tag>
         <tag>stl</tag>
         <tag>算法</tag>
-        <tag>vector</tag>
         <tag>pat天梯赛</tag>
+        <tag>vector</tag>
       </tags>
   </entry>
   <entry>
@@ -711,9 +711,9 @@
         <category>流</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -725,8 +725,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>正则表达式</tag>
         <tag>字符串</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
 </search>
