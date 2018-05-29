@@ -533,6 +533,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[随笔]]></title>
+    <url>%2F2018%2F04%2F11%2F2018-04-11%2F</url>
+    <content type="text"><![CDATA[每个人曾经都是这样。生病时才会回忆健康的时光是多么舒畅，重病时才会怀念轻病时的日子是多么安详。陷入低谷时才会醒悟平坦的道路上多么晴朗，堕入深渊时才会感谢低谷时的阳光多么豁亮。终于明白，每时每刻的我们都是幸运的，因为任何苦难之后都可能会加上一个“更”字。]]></content>
+      <categories>
+        <category>心路历程</category>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C语言允许初始化列表中末尾出现多余的逗号]]></title>
     <url>%2F2018%2F04%2F01%2F2018-04-1%2F</url>
     <content type="text"><![CDATA[C语言允许初始化列表中出现多余的逗号，例如： 1int days[] = &#123; 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, &#125;; 为什么这种特性是有用的？ 123456789101112#include &lt;stdio.h&gt; int main(int argc,char** argv)&#123; enum qs&#123; Va = 5, Vb, Vc, &#125; s; printf(&quot;a=%d,b=%d,c=%d&quot;,Va,Vb,Vc); return 0; &#125; 像enum枚举中的条目有可能是根据其它资源来的，而程序员会制作代码生成工具来生成它，所以就允许enum中的多余逗号。像int i = 9,j = 0;这种用法完全可以拆成int i=9;int j=0;因此不会增加代码生成器的负担，所以不支持int i=9,j=0,; 像这种代码，如果用代码生成器去读资源然后写进去，那么每生成一行都需要在末尾加一个逗号来分隔。C允许最后一行有多余的逗号，那就可以不用单独去处理最后一行了，减轻了代码生成器的制作负担，同时因为不用自行删除最后一个逗号，代码生成器的编写也就更不容易出错了。]]></content>
@@ -667,8 +679,56 @@
         <tag>C/C++</tag>
         <tag>stl</tag>
         <tag>算法</tag>
-        <tag>pat天梯赛</tag>
         <tag>vector</tag>
+        <tag>pat天梯赛</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[随笔]]></title>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+      <categories>
+        <category>心路历程</category>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[随笔]]></title>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+      <categories>
+        <category>心路历程</category>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[随笔]]></title>
+    <url>%2F2018%2F02%2F22%2F2018-02-22%2F</url>
+    <content type="text"><![CDATA[缘，妙不可言，在于你永远无法预料，下一秒将会和谁分离，一个转身，永不相见：在于你永远无法预料，下一秒将会和谁相遇，一个眼神，为他沦陷。]]></content>
+      <categories>
+        <category>心路历程</category>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[随笔]]></title>
+    <url>%2F2018%2F02%2F03%2F2018-02-03%2F</url>
+    <content type="text"><![CDATA[韶光浅， 岁月转轴调弦 悠悠流曲耳边， 依依情记心间 又是一季似水流年 愿你跨过千山， 归来一如从前 ——浅悠悠]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>摘星集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
       </tags>
   </entry>
   <entry>
@@ -711,9 +771,9 @@
         <category>流</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -725,8 +785,320 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[梦的索引]]></title>
+    <url>%2F2017%2F05%2F20%2F2017-5-20%2F</url>
+    <content type="text"><![CDATA[梦的索引 浅悠悠 5.20 to.** (从此，某人不理我) 一 风，轻拢着寒衣， 愁云，悄然漫入天际。 夜，显得如此孤寂。 寂静，淹没了每一个字节， 而我，沉浸在如梦般的程序。 不妨覆盖这寂寞的夜色， 将整个世界虚拟。 二 调用一个time函数， 永不熄灭的星空由我来设计。 早晨迎接春的花香， 午后拥抱夏的暖阳， 黄昏品尝秋的硕果， 静夜寻觅冬的足迹。 四季以奇幻的循环交替。 三 调用一个process函数， 柏拉图的理想国由我来开辟。 辽阔的天空一碧如洗， 雄鹰与黄鹂整齐地共鸣， 城市以和谐的进程刷新， 物竞天择已被仁爱更替。 世界如蒲公英般无忧无虑。 四 再定义一个爱你的函数， 永恒是爱的生命周期。 星空因你而努力闪耀， 四季因你而相伴朝夕， 花儿酿香渲染着你的气息， 阳光拂晓映射着你的甜蜜。 在这个世界里， 你是唯一的主题。 五 我将自己作为参数， 向爱你的函数传递， 却意外发现你并不在我的域。 我开始不断重载爱的定义， 将你我的变量封存在同一结构体。 但很快系统出现了bug。 当进程陷入死循环时， 才发现此算法不可逆。 六 也许你已在我的世界 永远赋上了静态的属性。 系统不断将思念返回压入我的堆栈， 而我的内存此刻已满满是你。 我向系统申请最后一点内存， 打开心的端口监听你的信息， 返回却总是操作失败的消息。 七 我想重写爱的模板， 再一次将爱传递， 却无法返回你也爱我的信息。 我试图虚拟出最后一点内存， 将“你爱我吗”的字符串压入栈尾， 打开最后的端口传递给你。 八 倘若返回值为真， 我愿释放掉整个世界的内存， 从此只储存关于你的回忆。 否则我愿析构自己， 将所有的喜怒哀乐封进内域。 从此不需要让你知道， 我一直爱你。 九 此端，彼岸， 谁在孤独地将二叉树上的结点遍历？ 谁苦苦寻找连接着爱的网络服务器？ 虚拟，现实， 我是茫茫内存中哪一个孤独的进程？ 又是匆匆人海里哪一个寻梦的躯体？ 十 我能编译出整个世界， 却无法虚拟你。 爱的程序， 也解不开你我的局。 也许程序注定是梦， 而你， 永远是我梦的索引。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>摘星集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[丽日芳馨]]></title>
+    <url>%2F2017%2F05%2F11%2F2017-05-11%2F</url>
+    <content type="text"><![CDATA[映日清风浴春蕾，萋萋谁解芳草馨。 蝶羽蹁跹花儿醉，野韵泊然守天浔。 春风化雨蝶双去，冷月袭风蕊浸淋。 愁霖散尽曙光见，一片清新护花魂。 （本来是写给方大仙的，然后就误会了，方大仙再也没理过我。唉，从此江郎才尽。不过至少曾经我一直在像她学习）]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[绛影流风]]></title>
+    <url>%2F2016%2F12%2F09%2F2016-12-09%2F</url>
+    <content type="text"><![CDATA[红尘滚滚浸离情，泪眼朦胧残月明。 乍见羲和乘风耀，一笑淡然气自雄。 流飞翰墨升丹气，朗润丹青贯玉虹。 愿效流风倾岁月，何人与我竞峥嵘。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[雪韵]]></title>
+    <url>%2F2016%2F11%2F23%2F2016-11-23%2F</url>
+    <content type="text"><![CDATA[霞霄铸雪竟蹁跹，荡入苍穹冻川峦。 乾坤万里皆悸颤，日恼月愧不胜寒。 借得阳煦三分暖，化作凌霜戏犂元。 莫道冰心无暖意，且看清洁满人间。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[踏莎行·缘归梦]]></title>
+    <url>%2F2016%2F10%2F13%2F2016-10-13%2F</url>
+    <content type="text"><![CDATA[晨曦送暖，莺韵翩跹，桃花春风共缠绵。 笑靥倾墨润青笺，无悔牵绊话尘缘。 暮色如烟，花落无言，江水未竭浸桑田。 梦里飞花随风远，空留一诺伴心眠。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[长相思·空城]]></title>
+    <url>%2F2016%2F09%2F15%2F2016-09-15%2F</url>
+    <content type="text"><![CDATA[秋谧静，月朦胧， 中秋晚月浸空城。城涌人匆匆。 人味浓，情味空， 万径同归意难融。双袖迎清风。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[十六字令]]></title>
+    <url>%2F2016%2F09%2F11%2F2016-09-11%2F</url>
+    <content type="text"><![CDATA[琴，一曲弦歌揽客心。曲终尽，何处觅知音。 棋，黑白博弈方寸迷。红尘局，进退两迷离。 书，满腹离愁一纸出。皆归寂，墨韵话孤独。 画，妙笔浸润满庭花。花易落，秀色映谁家。 诗，相思化作墨中痴。声声慢，平仄为谁织。 酒，彼时笑靥遵底留。断肠人，独酌夜无休。 花，群芳争艳恋春霞。秋风起，流水逝芳华。 茶，一叶清香静繁华。淳意散，花叶隔天涯。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[一剪梅·尘埃]]></title>
+    <url>%2F2016%2F07%2F12%2F2016-07-12%2F</url>
+    <content type="text"><![CDATA[风起流尘自轻狂，翛然而往，孑然飘扬。 奈何落地满凄凉，天也苍苍，路也茫茫。 泪浸尘埃人断肠，烟隐轩窗，人隐何方？ 莫如引歌醉残阳，一曲新词，笑尽沧桑。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[参商永离]]></title>
+    <url>%2F2016%2F06%2F20%2F2016-06-20%2F</url>
+    <content type="text"><![CDATA[白首双星寄麒麟， 只是相觅恰黄昏。 夕阳有意聚离人， 冷月无情散星辰。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[十六字令]]></title>
+    <url>%2F2016%2F05%2F21%2F2016-05-21%2F</url>
+    <content type="text"><![CDATA[棉，细雨蒙蒙润娇颜，风飘絮，离絮苦缠绵。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[云行在天]]></title>
+    <url>%2F2016%2F04%2F26%2F2016-04-26%2F</url>
+    <content type="text"><![CDATA[玄霄蔽月百生愁， 星海云游榆光羞。 御风万里乾坤尽， 谁人与我竞风流？]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[情茧]]></title>
+    <url>%2F2016%2F03%2F28%2F2016-03-28%2F</url>
+    <content type="text"><![CDATA[残阳月掩掠青笺，青笺墨泣染长夜。 长夜辗转盼天明，天明又患残阳浅。 今宵又惊昨日梦，梦里飞花舞翩跹。 落英片片蝶成茧，为孰憔悴为孰残。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[西江月·蝶双飞]]></title>
+    <url>%2F2016%2F02%2F14%2F2016-02-14%2F</url>
+    <content type="text"><![CDATA[华灯逐日争明，烟花伴月共辉。身隔千里心相随，胜过瑶池相会。今夕天涯独行，明夕伴君同归。风雨缠绵蝶双飞，换得此生无悔。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[长相思·寄云梦]]></title>
+    <url>%2F2016%2F02%2F08%2F2016-02-08%2F</url>
+    <content type="text"><![CDATA[风萧萧， 雨萧萧， 风雨同程伴君老， 奈何山水遥。 云悄悄， 梦悄悄， 行云织梦芳踪渺， 梦里相思扰。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[词穷墨尽]]></title>
+    <url>%2F2016%2F01%2F28%2F2016-01-28%2F</url>
+    <content type="text"><![CDATA[词叹墨尽难续情， 墨笑词穷一场空。 风润墨痕惊旧梦， 伊人随梦泪随风。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[心泪无痕]]></title>
+    <url>%2F2016%2F01%2F08%2F2016-01-08%2F</url>
+    <content type="text"><![CDATA[瑟瑟寒风眷高楼， 街明巷寂夜悠悠。 独倚寒窗忆旧梦， 痴笑不觉心泪流。 青丝悄然落眉头， 欲笺新词只剩愁。 满腹情思何处寄？ 唯有黯然藏心头。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[梦里飞花]]></title>
+    <url>%2F2015%2F12%2F27%2F2015-12-27%2F</url>
+    <content type="text"><![CDATA[梦里飞花 浅悠悠 梨花点点， 琴瑟缓缓。 谁把情话， 浸润成芽？ …… 繁花艳艳， 诗意绵绵。 谁把韶光， 谱写成夏？ …… 黄花依依， 棋子稀稀。 谁把芳华， 飘落成砂？ …… 雪花凄凄， 画笔寂寂。 谁把青丝， 染成白发？ …… 梦里飞花， 孑然自暇。 谁的牵挂， 散尽天涯。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>摘星集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[冲高]]></title>
+    <url>%2F2015%2F12%2F19%2F2015-12-19%2F</url>
+    <content type="text"><![CDATA[凌云雄鹰击红日，悬崖欲起先折翅； 梧桐枝头重生凤，涅槃之时浴火噬； 不经雨困长风袭，怎显鸿鹄冲天势； 孰敢与天试比高？且看我辈腾飞时。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[冰清]]></title>
+    <url>%2F2015%2F11%2F20%2F2015-11-20%2F</url>
+    <content type="text"><![CDATA[霜飘雪绵竞翩跹， 巧借寒气铸玉颜。 冷面洁骨身如镜， 笑看浮云舞成眠。 栖居严冬梅相伴， 不与浑水染尘烟。 岂是冰蕊无情意？ 因守清纯在人间。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[沁园春·约定]]></title>
+    <url>%2F2015%2F11%2F07%2F2015-11-07%2F</url>
+    <content type="text"><![CDATA[一日倾心，百日梦萦，终日魂销。 叹忆中所思，芳踪飘渺，梦中所念，素裹妖娆。 一向情深，奈何缘浅，咫尺之川万里遥。 平生意，化双飞双宿，共度花朝。 西风锐利如刀，惟连理双枝紧缠绕。 看风吹雾散，雨驻清涟。海誓山盟，怎能风飘。 山重水复，柳暗花明，一叶轻舟过险涛。 天涯路，愿青骢共骑，轻揽子腰。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[鹧鸪天·断肠人]]></title>
+    <url>%2F2015%2F10%2F31%2F2015-10-31%2F</url>
+    <content type="text"><![CDATA[风袭青枝花欲坠，青枝倾尽心中累。 长恨残风戏嫩蕊，此身无力空心碎。 词中意，曲中悲。哀弦危柱有谁醉？ 潇潇冷雨送寒归，点滴皆是离人泪。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[梦·曲]]></title>
+    <url>%2F2015%2F10%2F21%2F2015-10-21%2F</url>
+    <content type="text"><![CDATA[夜轻轻舞动着寒衣， 风放纵着月色般的音律。 指尖轻触着跳动的音符， 在轻快的乐曲中将双目微闭。 …… 曲中回荡着少年悠扬的乐音， 陪伴着少女轻盈的笑语。 琴声轻拂着清脆的鸟鸣， 与你我一起赞美这自由的天地。 …… 风儿为这祥和的音符歌唱， 雨点为这宁静的四季舞动， 悠闲的人们不再追名逐利， 星星在你我怀中无忧的睡去。 …… 我没有那演绎梦境的曲， 只有一把弹奏孤独的琴。 漫天繁星早已没了踪迹， 只留下忧郁的孩子沉醉在梦里……]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>摘星集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[遥光]]></title>
+    <url>%2F2015%2F10%2F14%2F2015-10-14%2F</url>
+    <content type="text"><![CDATA[日逐朝霞去昨痕， 轻抚晨光盼伊人。 繁星带月匆匆过， 只盼芳踪梦里寻。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[月隐风轻]]></title>
+    <url>%2F2015%2F09%2F27%2F2015-09-27%2F</url>
+    <content type="text"><![CDATA[风暖寒霜月无踪， 惟有孤夜伴秋风。 纵使秋风解我意， 旧愁吹去新愁生。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[鹊桥仙·一眼万年]]></title>
+    <url>%2F2015%2F08%2F20%2F2015-08-20%2F</url>
+    <content type="text"><![CDATA[双星作合， 金风玉露， 朗月惹得谁羡。 悠悠天上一光年， 隔不断、深情一眼。 丝落无声， 天涯遥望， 织云又忆初见。 依依心上一瞬间， 便无悔、挚爱万年。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[蝶恋花·相思字]]></title>
+    <url>%2F2015%2F08%2F14%2F2015-08-14%2F</url>
+    <content type="text"><![CDATA[秋风落尽花憔悴， 蝶欲起舞， 只怜茧中愧。 共饮青春赋一醉， 却叹聚散最心累。 此刻相思赋予谁， 彼时笑语， 漫天随风归。 失散绝句谁轻吟， 空弹高山对流水。]]></content>
+      <categories>
+        <category>诗词歌赋</category>
+        <category>冰清集</category>
+      </categories>
+      <tags>
+        <tag>原创诗词</tag>
       </tags>
   </entry>
 </search>
