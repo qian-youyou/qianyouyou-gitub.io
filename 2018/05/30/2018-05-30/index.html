@@ -117,14 +117,14 @@
 <meta name="description" content="浅copy：编译器仅仅拷贝了结构体的值，而没有创建新的内存空间，而是共享同一块内存空间。当结构体成员中含有Buf的时候，拷贝之后释放内存就不会出现问题。但是如果结构体中含有指针变量的时候，编译器只会copy指针变量，而对应的内存空间却不会缺不再多分配。 代码： 1234567891011121314151617181920212223242526272829303132333435#define">
 <meta name="keywords" content="C&#x2F;C++,结构体">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++结构体中的深copy和浅copy及结构体偏移量的两种求法">
+<meta property="og:title" content="C&#x2F;C++结构体中的深copy和浅copy&amp;&amp;结构体偏移量的两种求法">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/30/2018-05-30/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="浅copy：编译器仅仅拷贝了结构体的值，而没有创建新的内存空间，而是共享同一块内存空间。当结构体成员中含有Buf的时候，拷贝之后释放内存就不会出现问题。但是如果结构体中含有指针变量的时候，编译器只会copy指针变量，而对应的内存空间却不会缺不再多分配。 代码： 1234567891011121314151617181920212223242526272829303132333435#define">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-30T13:28:54.757Z">
+<meta property="og:updated_time" content="2018-05-30T13:36:55.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C&#x2F;C++结构体中的深copy和浅copy及结构体偏移量的两种求法">
+<meta name="twitter:title" content="C&#x2F;C++结构体中的深copy和浅copy&amp;&amp;结构体偏移量的两种求法">
 <meta name="twitter:description" content="浅copy：编译器仅仅拷贝了结构体的值，而没有创建新的内存空间，而是共享同一块内存空间。当结构体成员中含有Buf的时候，拷贝之后释放内存就不会出现问题。但是如果结构体中含有指针变量的时候，编译器只会copy指针变量，而对应的内存空间却不会缺不再多分配。 代码： 1234567891011121314151617181920212223242526272829303132333435#define">
 
 
@@ -161,7 +161,7 @@
 
 
 
-  <title>C/C++结构体中的深copy和浅copy及结构体偏移量的两种求法 | 浅悠悠的个人博客</title>
+  <title>C/C++结构体中的深copy和浅copy&&结构体偏移量的两种求法 | 浅悠悠的个人博客</title>
   
 
 
@@ -370,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C/C++结构体中的深copy和浅copy及结构体偏移量的两种求法</h1>
+          <h1 class="post-title" itemprop="name headline">C/C++结构体中的深copy和浅copy&&结构体偏移量的两种求法</h1>
         
 
         <div class="post-meta">

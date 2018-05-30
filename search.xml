@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[C/C++结构体中的深copy和浅copy及结构体偏移量的两种求法]]></title>
+    <title><![CDATA[C/C++结构体中的深copy和浅copy&&结构体偏移量的两种求法]]></title>
     <url>%2F2018%2F05%2F30%2F2018-05-30%2F</url>
     <content type="text"><![CDATA[浅copy：编译器仅仅拷贝了结构体的值，而没有创建新的内存空间，而是共享同一块内存空间。当结构体成员中含有Buf的时候，拷贝之后释放内存就不会出现问题。但是如果结构体中含有指针变量的时候，编译器只会copy指针变量，而对应的内存空间却不会缺不再多分配。 代码： 1234567891011121314151617181920212223242526272829303132333435#define _CRT_SECUFE_NO_WARNINGS#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;string.h&gt;typedef struct note &#123; char a[64]; int b; char*c;&#125;note;void my_copy(note*from, note*to) &#123; *to = *from; //memcpy(to,from,sizeof(note));//和上述操作等效&#125;int main() &#123; note d, e; strcpy(d.a, &quot;123&quot;); d.b = 456; while ((d.c = (char*)malloc(64 * sizeof(char))) == NULL) exit(1); strcpy(d.c, &quot;789&quot;); printf(&quot;d的值为：\n&quot;); printf(&quot;%s\n%d\n%s\n&quot;, d.a, d.b, d.c); my_copy(&amp;d, &amp;e); printf(&quot;e的值为：\n&quot;); printf(&quot;%s\n%d\n%s\n&quot;, e.a, e.b, e.c); if (d.c != NULL) &#123; free(d.c); d.c = NULL; &#125; if (e.c != NULL) &#123; free(e.c); e.c = NULL; &#125; return 0;&#125; 以此样例为例，输出结果为： 12345678d的值为：123456789e的值为：123456789 然后接着某些编译器如vs的编译器就会报错。出错位置为 1234if (e.c != NULL) &#123; free(e.c); e.c = NULL; &#125; 这是由于将结构体d内存元素直接赋给结构体e时，即进行 e= d操作时，由于结构体中含有指针元素，d结构体中的指针已经动态分配内存，而操作完成之后e中指针的值也会写上d动态分配内存的地址，因此d和e指向同一内存空间。这样当d中指针d.c释放内存之后，由于e.c仍然指向该部分内存，而不指向空，此时会强制释放掉e.c所指向内存，由于此处内存已经释放过了，处于不能被访问状态，而e.c又强制释放该内存，就会造成vs编译器报错。这就是前copy的弊端。 深copy：编译器会为拷贝的对象分配一定的内存空间。 以上述代码为例，只需在进行 e= d操作之后再为e.c重新分配内存，然后执行strcpy(e,d)即可。这样e.c和d.c分别指向两块不同的内存，这样就不会出现上面那种错误。 代码: 1234567891011121314151617181920212223242526272829303132333435363738#define _CRT_SECUFE_NO_WARNINGS#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;string.h&gt;typedef struct note &#123; char a[64]; int b; char*c;&#125;note;void my_copy(note*from, note*to) &#123; *to = *from; //memcpy(to,from,sizeof(note));//和上述操作等效 while ((to-&gt;c = (char*)malloc(64 * sizeof(char))) == NULL) exit(1); strcpy(to-&gt;c, from-&gt;c);&#125;int main() &#123; note d, e; strcpy(d.a, &quot;123&quot;); d.b = 456; while ((d.c = (char*)malloc(64 * sizeof(char))) == NULL) exit(1); strcpy(d.c, &quot;789&quot;); printf(&quot;d的值为：\n&quot;); printf(&quot;%s\n%d\n%s\n&quot;, d.a, d.b, d.c); my_copy(&amp;d, &amp;e); printf(&quot;e的值为：\n&quot;); printf(&quot;%s\n%d\n%s\n&quot;, e.a, e.b, e.c); if (d.c != NULL) &#123; free(d.c); d.c = NULL; &#125; if (e.c != NULL) &#123; free(e.c); e.c = NULL; &#125; return 0;&#125; 偏移量的求法123456struct note&#123; char name[64]; int age; int sex;&#125;a,*p;p=&amp;a; 以p为例求p-&gt;age偏移量 直接法1int offsize = (int)&amp;(p-&gt;age)-(int)p; 间接法1int offsize = (int)&amp;(((*note)0)-&gt;age);]]></content>
       <categories>
@@ -693,14 +693,14 @@
         <tag>C/C++</tag>
         <tag>stl</tag>
         <tag>算法</tag>
-        <tag>pat天梯赛</tag>
         <tag>vector</tag>
+        <tag>pat天梯赛</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -711,8 +711,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
