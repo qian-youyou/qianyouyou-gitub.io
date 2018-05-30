@@ -117,14 +117,14 @@
 <meta name="description" content="浅copy：编译器仅仅拷贝了结构体的值，而没有创建新的内存空间，而是共享同一块内存空间。当结构体成员中含有Buf的时候，拷贝之后释放内存就不会出现问题。但是如果结构体中含有指针变量的时候，编译器只会copy指针变量，而对应的内存空间却不会缺不再多分配。 代码： 1234567891011121314151617181920212223242526272829303132333435#define">
 <meta name="keywords" content="C&#x2F;C++,结构体">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C&#x2F;C++结构体中的深copy和浅copy">
+<meta property="og:title" content="C&#x2F;C++结构体中的深copy和浅copy及结构体偏移量的两种求法">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/30/2018-05-30/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="浅copy：编译器仅仅拷贝了结构体的值，而没有创建新的内存空间，而是共享同一块内存空间。当结构体成员中含有Buf的时候，拷贝之后释放内存就不会出现问题。但是如果结构体中含有指针变量的时候，编译器只会copy指针变量，而对应的内存空间却不会缺不再多分配。 代码： 1234567891011121314151617181920212223242526272829303132333435#define">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-30T12:35:59.226Z">
+<meta property="og:updated_time" content="2018-05-30T13:28:54.757Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C&#x2F;C++结构体中的深copy和浅copy">
+<meta name="twitter:title" content="C&#x2F;C++结构体中的深copy和浅copy及结构体偏移量的两种求法">
 <meta name="twitter:description" content="浅copy：编译器仅仅拷贝了结构体的值，而没有创建新的内存空间，而是共享同一块内存空间。当结构体成员中含有Buf的时候，拷贝之后释放内存就不会出现问题。但是如果结构体中含有指针变量的时候，编译器只会copy指针变量，而对应的内存空间却不会缺不再多分配。 代码： 1234567891011121314151617181920212223242526272829303132333435#define">
 
 
@@ -161,7 +161,7 @@
 
 
 
-  <title>C/C++结构体中的深copy和浅copy | 浅悠悠的个人博客</title>
+  <title>C/C++结构体中的深copy和浅copy及结构体偏移量的两种求法 | 浅悠悠的个人博客</title>
   
 
 
@@ -370,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C/C++结构体中的深copy和浅copy</h1>
+          <h1 class="post-title" itemprop="name headline">C/C++结构体中的深copy和浅copy及结构体偏移量的两种求法</h1>
         
 
         <div class="post-meta">
@@ -474,7 +474,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  816
+                  871
                 </span>
               
 
@@ -523,6 +523,10 @@
 <p>以上述代码为例，只需在进行 <em> e= </em> d操作之后再为e.c重新分配内存，然后执行strcpy(e,d)即可。这样e.c和d.c分别指向两块不同的内存，这样就不会出现上面那种错误。</p>
 <p>代码:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#define _CRT_SECUFE_NO_WARNINGS</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">typedef struct note &#123;</span><br><span class="line">	char a[64];</span><br><span class="line">	int b;</span><br><span class="line">	char*c;</span><br><span class="line">&#125;note;</span><br><span class="line">void my_copy(note*from, note*to) &#123;</span><br><span class="line">	*to = *from;</span><br><span class="line">	//memcpy(to,from,sizeof(note));//和上述操作等效</span><br><span class="line">	while ((to-&gt;c = (char*)malloc(64 * sizeof(char))) == NULL)</span><br><span class="line">		exit(1);</span><br><span class="line">	strcpy(to-&gt;c, from-&gt;c);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	note d, e;</span><br><span class="line">	strcpy(d.a, &quot;123&quot;);</span><br><span class="line">	d.b = 456;</span><br><span class="line">	while ((d.c = (char*)malloc(64 * sizeof(char))) == NULL)</span><br><span class="line">		exit(1);</span><br><span class="line">	strcpy(d.c, &quot;789&quot;);</span><br><span class="line">	printf(&quot;d的值为：\n&quot;);</span><br><span class="line">	printf(&quot;%s\n%d\n%s\n&quot;, d.a, d.b, d.c);</span><br><span class="line">	my_copy(&amp;d, &amp;e);</span><br><span class="line">	printf(&quot;e的值为：\n&quot;);</span><br><span class="line">	printf(&quot;%s\n%d\n%s\n&quot;, e.a, e.b, e.c);</span><br><span class="line">	if (d.c != NULL) &#123;</span><br><span class="line">		free(d.c);</span><br><span class="line">		d.c = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	if (e.c != NULL) &#123;</span><br><span class="line">		free(e.c);</span><br><span class="line">		e.c = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="偏移量的求法"><a href="#偏移量的求法" class="headerlink" title="偏移量的求法"></a>偏移量的求法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">struct note&#123;</span><br><span class="line">    char name[64];</span><br><span class="line">    int age;</span><br><span class="line">    int sex;</span><br><span class="line">&#125;a,*p;</span><br><span class="line">p=&amp;a;</span><br></pre></td></tr></table></figure>
+<p>以p为例求p-&gt;age偏移量</p>
+<h3 id="直接法"><a href="#直接法" class="headerlink" title="直接法"></a>直接法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int offsize = (int)&amp;(p-&gt;age)-(int)p;</span><br></pre></td></tr></table></figure>
+<h3 id="间接法"><a href="#间接法" class="headerlink" title="间接法"></a>间接法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int offsize = (int)&amp;(((*note)0)-&gt;age);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -825,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浅copy："><span class="nav-number">1.</span> <span class="nav-text">浅copy：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深copy："><span class="nav-number">2.</span> <span class="nav-text">深copy：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浅copy："><span class="nav-number">1.</span> <span class="nav-text">浅copy：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深copy："><span class="nav-number">2.</span> <span class="nav-text">深copy：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#偏移量的求法"><span class="nav-number">3.</span> <span class="nav-text">偏移量的求法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直接法"><span class="nav-number">3.1.</span> <span class="nav-text">直接法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#间接法"><span class="nav-number">3.2.</span> <span class="nav-text">间接法</span></a></li></ol></li></ol></div>
             
 
           </div>
