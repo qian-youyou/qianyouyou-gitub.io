@@ -114,18 +114,18 @@
 
 
 
-<meta name="description" content="取石子游戏巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果">
+<meta name="description" content="取石子游戏根据题目的意思，看它属于哪种博弈，属于哪种博弈的变形。 然后根据对应的博弈模型的解题策略来求解， 有时候并不一定能够直接看出它属于哪种模型，那这个时候就可以通过判断自己每步可选的策略，对于自己每步走的，对当前局势的影响。然后推断出与之相对应的博弈模型。 巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m">
 <meta name="keywords" content="算法,ACM&#x2F;ICPC,博弈论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[博弈论]博弈论基本题型及5大常见博弈论原理">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/08/2018-05-08/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="取石子游戏巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果">
+<meta property="og:description" content="取石子游戏根据题目的意思，看它属于哪种博弈，属于哪种博弈的变形。 然后根据对应的博弈模型的解题策略来求解， 有时候并不一定能够直接看出它属于哪种模型，那这个时候就可以通过判断自己每步可选的策略，对于自己每步走的，对当前局势的影响。然后推断出与之相对应的博弈模型。 巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-08T16:17:14.025Z">
+<meta property="og:updated_time" content="2018-06-02T05:25:48.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[博弈论]博弈论基本题型及5大常见博弈论原理">
-<meta name="twitter:description" content="取石子游戏巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。 胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果">
+<meta name="twitter:description" content="取石子游戏根据题目的意思，看它属于哪种博弈，属于哪种博弈的变形。 然后根据对应的博弈模型的解题策略来求解， 有时候并不一定能够直接看出它属于哪种模型，那这个时候就可以通过判断自己每步可选的策略，对于自己每步走的，对当前局势的影响。然后推断出与之相对应的博弈模型。 巴什博奕（Bash Game）有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。 假设n = m">
 
 
 
@@ -463,7 +463,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,089
+                  4,138
                 </span>
               
 
@@ -479,7 +479,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13
+                  17
                 </span>
               
             </div>
@@ -500,7 +500,8 @@
       
 
       
-        <h2 id="取石子游戏"><a href="#取石子游戏" class="headerlink" title="取石子游戏"></a>取石子游戏</h2><h3 id="巴什博奕（Bash-Game）"><a href="#巴什博奕（Bash-Game）" class="headerlink" title="巴什博奕（Bash Game）"></a>巴什博奕（Bash Game）</h3><p>有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。</p>
+        <h2 id="取石子游戏"><a href="#取石子游戏" class="headerlink" title="取石子游戏"></a>取石子游戏</h2><p>根据题目的意思，看它属于哪种博弈，属于哪种博弈的变形。 然后根据对应的博弈模型的解题策略来求解， 有时候并不一定能够直接看出它属于哪种模型，那这个时候就可以通过判断自己每步可选的策略，对于自己每步走的，对当前局势的影响。然后推断出与之相对应的博弈模型。</p>
+<h3 id="巴什博奕（Bash-Game）"><a href="#巴什博奕（Bash-Game）" class="headerlink" title="巴什博奕（Bash Game）"></a>巴什博奕（Bash Game）</h3><p>有n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取 m个。最后取光者得胜。</p>
 <p>假设n = m + 1，那么无论如何取，先取者必输。因为先取者无论取多少，后者一次性便可将剩余取完。</p>
 <p>胜利法则：如果 n=（m+1）r+s，（r 为任意自然数，s≤m),那么先取者要拿走 s 个物品，如果后取者拿走 k（≤m)个，那么先取者再拿走 m+1-k 个，结果剩下 （m+1）（r-1）个，以后保持这样的取法，那么先取者肯定获胜。总之，要保持给对手留下（m+1）的倍数，就能最后获胜。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt; </span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int iCase;</span><br><span class="line">	cin &gt;&gt; iCase;</span><br><span class="line">	while (iCase--) &#123;</span><br><span class="line">		int n, m;</span><br><span class="line">		cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">		if (n % (m + 1) == 0) cout &lt;&lt; &quot;lost&quot; &lt;&lt; endl;</span><br><span class="line">		else cout &lt;&lt; &quot;win&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -535,16 +536,25 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt; </span><br><span class="line">#include &lt;string.h&gt; </span><br><span class="line">#include &lt;iostream&gt; </span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 2000000;</span><br><span class="line">int a[maxn], b[maxn];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n, k;</span><br><span class="line">	int cas = 0, cass;</span><br><span class="line">	for (scanf(&quot;%d&quot;, &amp;cass); cass--;)</span><br><span class="line">	&#123;</span><br><span class="line">		scanf(&quot;%d%d&quot;, &amp;n, &amp;k);</span><br><span class="line">		++cas;</span><br><span class="line">		printf(&quot;Case %d: &quot;, cas);</span><br><span class="line">		int i = 0, j = 0;</span><br><span class="line">		a[0] = b[0] = 1;</span><br><span class="line">		while (a[i]&lt;n)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">			a[i] = b[i - 1] + 1;</span><br><span class="line">			while (a[j + 1] * k&lt;a[i])</span><br><span class="line">				j++;</span><br><span class="line">			if (a[j] * k&lt;a[i])</span><br><span class="line">				b[i] = a[i] + b[j];</span><br><span class="line">			else</span><br><span class="line">				b[i] = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		if (a[i] == n)</span><br><span class="line">			puts(&quot;lose&quot;);</span><br><span class="line">		else puts(&quot;win&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="SG函数的求解-SG博弈）"><a href="#SG函数的求解-SG博弈）" class="headerlink" title="ＳＧ函数的求解(SG博弈）"></a>ＳＧ函数的求解(SG博弈）</h3><p>给定一个有向无环图和一个起始顶点上的一枚棋子，两名选手交替的将这枚棋子沿有向边进行移动，无法移动者判负。</p>
 <p>这个游戏可以认为是所有 Impartial Combinatorial Games 的抽象模型。也就是说，任何一个 ICG 都可以通过把每个局面看成一个顶点，对每个局面和它的子局面连一条有向边来抽象成这个“有向图游戏”。</p>
-<p>首先定义 mex(minimal excludant)运算，这是施加于一个集合的运算，表示最小的不属于这个集合的非负整数。例如 mex{0,1,2,4}=3、mex{2,3,5}=0、mex{}=0。 </p>
-<p>对于一个给定的有向无环图，定义关于图的每个顶点的 Sprague-Grundy 函数 g如下：g(x)=mex{ g(y) | y 是 x 的后继 }。</p>
-<p>SG 函数的性质。首先，所有的 terminal position 所对应的顶点，也就是没有出边的顶点，其 SG 值为 0，因为它的后继集合是空集。然后对于一个 g(x)=0 的顶点 x，它的所有后继 y 都满足 g(y)!=0。对于一个 g(x)!=0 的顶点，必定存在一个后继 y 满足 g(y)=0。 </p>
+<p>下 面我们就在有向无环图的顶点上定义 Sprague-Garundy 函数。首先定义 mex(minimal excludant)运算，这是施加于一个集合的运算，表示最小的不属于这个集合的非负整数。例如 mex{0,1,2,4}=3、mex{2,3,5}=0、mex{}=0。 </p>
+<p>对于一个给定的有向无环图，定义关于图的每个顶点的 Sprague-Grundy 函数 g如下：<strong>g(x)=mex{ g(y) | y 是 x 的后继 }</strong>。</p>
+<p>SG 函数的性质：</p>
+<p>1.首先，所有的 terminal position 所对应的顶点，也就是没有出边的顶点，其 SG 值为 0，因为它的后继集合是空集。</p>
+<p>2.然后对于一个 g(x)=0 的顶点 x，它的所有后继 y 都满足 g(y)!=0。</p>
+<p>3.对于一个 g(x)!=0 的顶点，必定存在一个后继 y 满足 g(y)=0。 </p>
 <p>以上这三句话表明，顶点 x 所代表的 postion 是 P-position 当且仅当 g(x)=0。我们通过计算有向无环图的每个顶点的 SG 值，就可以对每种局面找到必胜策略了。</p>
-<h4 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h4><p>假设不是一枚棋子，而是n枚棋子，如何获胜</p>
+<h4 id="Nim-游戏的规则："><a href="#Nim-游戏的规则：" class="headerlink" title="Nim 游戏的规则："></a>Nim 游戏的规则：</h4><p>每次选择 一堆数量为 k 的石子，可以把它变成 0、变成 1、……、变成 k-1，但绝对不能保持 k不变。</p>
+<h4 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h4><p>假设不是一枚棋子，而是n枚棋子，如何获胜？</p>
 <p>让我们再来考虑一下顶点的 SG 值的意义。当 g(x)=k 时，表明对于任意一个0&lt;=i&lt;k，都存在 x 的一个后继 y 满足 g(y)=i。也 就是说，当某枚棋子的 SG 值是 k 时，我们可以把它变成 0、变成 1、……、变成 k-1，但绝对不能保持 k 不变。</p>
-<p> Nim 游戏的规则就是：每次选择 一堆数量为 k 的石子，可以把它变成 0、变成 1、……、变成 k-1，但绝对不能保持 k不变。这表明，如果将 n 枚棋子所在的顶 点的 SG 值看作 n 堆相应数量的石子，那么这个 Nim 游戏的每个必胜策略都对应于原来这 n 枚棋子的必胜策略！</p>
+<p>这表明，如果将 n 枚棋子所在的顶 点的 SG 值看作 n 堆相应数量的石子，那么这个 Nim 游戏的每个必胜策略都对应于原来这 n 枚棋子的必胜策略！</p>
 <p>对于 n 个棋子，设它们对应的顶点的 SG 值分别为(a1,a2,…,an)，再设局面(a1,a2,…,an)时的 Nim 游戏的一种必胜策略是把 ai 变成 k，那么原游戏的一种必胜策略就是把第 i 枚棋子移动到一个 SG 值为 k 的顶点。</p>
 <p>其实我们还是只要证明这种多棋子的有向图游戏的局面是 P-position 当且仅当所有棋子所在的位置的 SG 函数的异或为 0。这个证明与上节的 Bouton’s Theorem 几乎是完全相同的，只需要适当的改几个名词就行了。</p>
-<p>SG 函数与“游戏的和”的概念不是让我们去组合、制造稀奇古怪的游戏，而是把遇到的看上去有些复杂的游戏试图分成若干个子游戏，对于每个比原游戏简化很多的子游戏找出它的 SG 函数，然后全部异或起来就得到了原游戏的 SG 函数，就可以解决原游戏了。</p>
+<p>刚才，我为了使问题看上去更容易一些，认为 n 枚棋子是在一个有向图上移动，但如果不是在一个有向图上，而是每个棋子在一个有向图上，每次可 以任选一个棋子（也就是任选一个有向图）进行移动，这样也不会给结论带来任何变化。 所以我们可以定义有向图游戏的和(Sum of Graph Games)：设 G1、G2、……、Gn是 n 个有向图游戏，定义游戏 G 是 G1、G2、……、Gn 的和(Sum)，游戏 G的移动规则是：任选一个子游戏 Gi 并移动上面的棋子。Sprague-Grundy Theorem 就是：<strong>g(G)=g(G1)^g(G2)^…^g(Gn)</strong>。也就是说，游戏的和的 SG 函数值是它的所有子游戏的 SG 函数值的异或。 </p>
+<p>再考虑在本文一开头的一句话：任何一个 ICG 都可以抽象成一个有向图游戏。所以“SG 函数”和“游戏的和”的概念就不是局限于有向图游戏。我们给每 个 ICG 的每个 position 定义 SG 值，也可以定义 n 个 ICG 的和。所以说当我们面对由 n 个游戏组合成的一个游戏时，只需对于每个游戏找出求它的每个 局面的 SG 值的方法，就可以把这些 SG 值全部看成 Nim 的石子堆，然后依照找 Nim 的必胜策略的方法来找这个游戏的必胜策略了！</p>
+<h4 id="NIM游戏"><a href="#NIM游戏" class="headerlink" title="NIM游戏"></a>NIM游戏</h4><p>有 n 堆石子，每次可以从第 1 堆石子里取 1 颗、2 颗或 3颗，可以从第 2 堆石子里取奇数颗，可以从第 3 堆及以后石子里取任意颗… … 我们可以把它看作 3 个子游戏，第 1 个子游戏只有一堆石子，每次可以取 1、2、3颗，很容易看出 x 颗石子的局面的 SG 值是 x%4。第 2 个子游戏也是只有一 堆 石子，每次可以取奇数颗，经过简单的画图可以知道这个游戏有 x 颗石子时的 SG值是 x%2。第 3 个游戏有 n-2 堆石子，就是一个 Nim 游戏。对于原游戏的每 个局面，把三个子游戏的 SG 值异或一下就得到了整个游戏的 SG 值，然后就可以根据这个 SG 值判断是否有必胜策略以及做出决策了。其实看作 3 个子游戏还是保守了些，干脆看作 n 个子游戏，其中第 1、2 个子游戏如上所述，第 3 个及以后的子游戏都是“1 堆石子，每次取几颗都可以”，称为“任取石子游戏”，这个超简 单的游戏有 x 颗石子的 SG 值显然就是 x。其实，n 堆石子的 Nim 游戏本身不就是 n 个“任取石子游戏”的和吗？</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>SG 函数与“游戏的和”的概念不是让我们去组合、制造稀奇古怪的游戏，而是把遇到的看上去有些复杂的游戏试图分成若干个子游戏，对于每个比原游戏简化很多的子游戏找出它的 SG 函数，然后全部异或起来就得到了原游戏的 SG 函数，就可以解决原游戏了。</p>
+<h4 id="HDU-3032-Nim-or-not-Nim"><a href="#HDU-3032-Nim-or-not-Nim" class="headerlink" title="HDU 3032 Nim or not Nim"></a>HDU 3032 Nim or not Nim</h4><p>Lasker’s Nim 游戏：每一轮允许两会中操作之一：①、从一堆石子中取走任意多个，②、将一堆数量不少于 2 的石子分成都不为空的两堆。</p>
+<p>很明显：sg(0) = 0，sg(1) = 1。  状态 2 的后继有：0，1 和（1，1），他们的 SG 值分别为 0，1，0，所以 sg(2)=2。 状态 3 的后继有：0、1、2、（1，2），他们的 SG 值分别为 0、1、2、3，所以sg(3) = 4。 状态 4 的后继有：0、1、2、3、（1，3）和（2，2），他们的 SG 值分别为 0，1，2，4，5，0，所以 sg(4) = 3. 由数学归纳法可以得出 sg(4k)=4k-1;sg(4k+1)=4k+1;sg(4k+2)=4k+2;sg(4k+3)=4k+4;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt; </span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int iCase;</span><br><span class="line">	cin &gt;&gt; iCase;</span><br><span class="line">	while (iCase--) &#123;</span><br><span class="line">		int n, cnt = 0, num;</span><br><span class="line">		cin &gt;&gt; n;</span><br><span class="line">		while (n--) &#123;</span><br><span class="line">			cin &gt;&gt; num;</span><br><span class="line">			if (num % 4 == 0) num--;</span><br><span class="line">			else if (num % 4 == 3) num++;</span><br><span class="line">			cnt ^= num;</span><br><span class="line">		&#125;</span><br><span class="line">		if (cnt == 0) cout &lt;&lt; &quot;Bob&quot; &lt;&lt; endl;</span><br><span class="line">		else cout &lt;&lt; &quot;Alice&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="寻找必败态"><a href="#寻找必败态" class="headerlink" title="寻找必败态"></a>寻找必败态</h2><p>必败态就是“在对方使用最优策略时，无论做出什么决策都会导致失败的局面”。其他的局面称为胜态，值得注意的是在 胜态下做出错误的决策也有可能导致失败。此类博弈问题的精髓就是让对手永远面对必败态。</p>
 <p>必败态和胜态有着如下性质： </p>
@@ -863,7 +873,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#取石子游戏"><span class="nav-number">1.</span> <span class="nav-text">取石子游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#巴什博奕（Bash-Game）"><span class="nav-number">1.1.</span> <span class="nav-text">巴什博奕（Bash Game）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#威佐夫博奕（Wythoff-Game）"><span class="nav-number">1.2.</span> <span class="nav-text">威佐夫博奕（Wythoff Game）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#斐波那契博弈（Fibonacci-Nim）"><span class="nav-number">1.3.</span> <span class="nav-text">斐波那契博弈（Fibonacci Nim）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K倍博弈"><span class="nav-number">1.4.</span> <span class="nav-text">K倍博弈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SG函数的求解-SG博弈）"><span class="nav-number">1.5.</span> <span class="nav-text">ＳＧ函数的求解(SG博弈）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变形"><span class="nav-number">1.5.1.</span> <span class="nav-text">变形</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找必败态"><span class="nav-number">2.</span> <span class="nav-text">寻找必败态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#取石子游戏"><span class="nav-number">1.</span> <span class="nav-text">取石子游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#巴什博奕（Bash-Game）"><span class="nav-number">1.1.</span> <span class="nav-text">巴什博奕（Bash Game）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#威佐夫博奕（Wythoff-Game）"><span class="nav-number">1.2.</span> <span class="nav-text">威佐夫博奕（Wythoff Game）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#斐波那契博弈（Fibonacci-Nim）"><span class="nav-number">1.3.</span> <span class="nav-text">斐波那契博弈（Fibonacci Nim）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K倍博弈"><span class="nav-number">1.4.</span> <span class="nav-text">K倍博弈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SG函数的求解-SG博弈）"><span class="nav-number">1.5.</span> <span class="nav-text">ＳＧ函数的求解(SG博弈）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nim-游戏的规则："><span class="nav-number">1.5.1.</span> <span class="nav-text">Nim 游戏的规则：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变形"><span class="nav-number">1.5.2.</span> <span class="nav-text">变形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NIM游戏"><span class="nav-number">1.5.3.</span> <span class="nav-text">NIM游戏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.5.4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HDU-3032-Nim-or-not-Nim"><span class="nav-number">1.5.5.</span> <span class="nav-text">HDU 3032 Nim or not Nim</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找必败态"><span class="nav-number">2.</span> <span class="nav-text">寻找必败态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol></div>
             
 
           </div>
