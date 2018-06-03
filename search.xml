@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[‘API函数配置读写文件’]]></title>
+    <url>%2F2018%2F06%2F03%2F2018-06-03%2F</url>
+    <content type="text"><![CDATA[cfg_op.h 1234567891011#pragma once#ifdef __cplusplusextern &quot;C&quot; &#123;#endif //获取配置项 int GetCfgItem(char *pFileName/*in*/, char*pKey/*in*/, char *pValue/*in out*/, int *pValueLen/*out*/); //写配置项 int WriteCfgItem(char*pFileName/*in*/, char *pKey/*in*/, char *pValue/*in*/, int *ValueLen/*in*/);#ifdef __cplusplus&#125;#endif cfg_op.c 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152#define _CRT_SECURE_NO_WARNINGS#include&lt;stdio.h&gt;#include&lt;string.h&gt;#include&lt;stdio.h&gt;#define Maxline 2048extern &quot;C&quot; &#123; int GetCfgItem(char *pFileName, char*pKey, char *pValue, int *pValueLen) &#123; int ret = 0; FILE *fp = NULL; char lineBuf[Maxline]; char *pTmp = NULL, *pEnd = NULL, *pBegin = NULL; fp = fopen(pFileName, &quot;r&quot;); if (fp == NULL) &#123; ret = -1; return ret; &#125; while (!feof(fp)) &#123; memset(lineBuf, 0, sizeof(lineBuf)); fgets(lineBuf, Maxline, fp); printf(&quot;lineBuf:%s &quot;, lineBuf); pTmp = strchr(lineBuf, &apos;=&apos;); if (pTmp == NULL) &#123; //没有=号 continue; &#125; pTmp = strstr(lineBuf, pKey); if (pTmp == NULL) &#123; //判断key是不是在//所在行 是不是有key continue; &#125; pTmp = pTmp + strlen(pKey); // mykey1 = myvalue11111111==&gt;&quot;myvalue11111111&quot; pTmp = strchr(pTmp, &apos;=&apos;); if (pTmp == NULL) &#123; //判断所在行是不是有key continue; &#125; pTmp++; printf(&quot;pTmp:%s &quot;, pTmp); //获取value起点 while (1) &#123; if (*pTmp == &apos; &apos;) &#123; pTmp++; &#125; else &#123; pBegin = pTmp; if (*pBegin == &apos;\n&apos;) &#123; //没有配置value printf(&quot;配置项:%s 没有配置value \n&quot;, pKey); goto End; &#125; break; &#125; &#125; //获取value结束点 while (1) &#123; if (*pTmp == &apos; &apos; || *pTmp == &apos;\n&apos;) &#123; break; &#125; else &#123; pTmp++; &#125; &#125; pEnd = pTmp; //赋值 *pValueLen = pEnd - pBegin; memcpy(pValue, pBegin, pEnd - pBegin); &#125; End: if (fp == NULL) fclose(fp); return ret; &#125; int WriteCfgItem(char*pFileName, char *pKey, char *pValue, int *ValueLen) &#123; int rv = 0, iTag = 0, length = 0; FILE *fp = NULL; char lineBuf[Maxline]; char *pTmp = NULL, *pBegin = NULL, *pEnd = NULL; char filebuf[1024 * 8] = &#123; 0 &#125;; if (pFileName == NULL || pKey == NULL || pValue == NULL) &#123; rv = -1; printf(&quot;SetCfgItem() err. param err \n&quot;); goto End; &#125; fp = fopen(pFileName, &quot;r+&quot;); if (fp == NULL) &#123; rv = -2; printf(&quot;fopen() err.\n&quot;); &#125; if (fp == NULL) &#123; fp = fopen(pFileName, &quot;w+t&quot;); if (fp == NULL) &#123; rv = -3; printf(&quot;fopen() err.\n&quot;); goto End; &#125; &#125; fseek(fp, 0L, SEEK_END);//把文件指针从0位置开始，移动到文件末尾 //获取文件长度 length = ftell(fp); fseek(fp, 0L, SEEK_SET); if (length &gt; 1024 * 8) &#123; rv = -3; printf(&quot;文件超过1024*8,nunsupport&quot;); goto End; &#125; while (!feof(fp)) &#123; //读每一行 memset(lineBuf, 0, sizeof(lineBuf)); pTmp = fgets(lineBuf, Maxline, fp); if (pTmp == NULL) &#123; break; &#125; //key关键字是否在本行 pTmp = strstr(lineBuf, pKey); if (pTmp == NULL)//key关键字不在本行，copy到filebuf中 &#123; strcat(filebuf, lineBuf); continue; &#125; else//key关键字在本行中，替换旧的行，再copy到filebuf中 &#123; sprintf(lineBuf, &quot;%s = %s\n&quot;, pKey, pValue); strcat(filebuf, lineBuf); //若存在key iTag = 1; &#125; &#125; //若key关键字，不存在 追加 if (iTag == 0) &#123; fprintf(fp, &quot;%s = %s\n&quot;, pKey, pValue); &#125; else &#123;//若key关键字，存在，则重新创建文件 if (fp != NULL) &#123; fclose(fp); fp = NULL;//避免野指针 &#125; fp = fopen(pFileName, &quot;w+t&quot;); if (fp == NULL) &#123; rv = -4; printf(&quot;fopen() err.\n&quot;); goto End; &#125; fputs(filebuf, fp); &#125; End: if (fp != NULL) &#123; fclose(fp); &#125; return rv; &#125;&#125; main.c 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#define _CRT_SECURE_NO_WARNINGS#include&quot;cfg_op.h&quot;#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;#include&lt;string.h&gt;#define CFGNAME &quot;d:/mycfg.ini&quot;//读配置项int GetCfg() &#123; int ret = 0; char name[1024] = &#123; 0 &#125;; char value[1024] = &#123; 0 &#125;; int vlen = 0; printf(&quot;\n请输入Key:&quot;); scanf(&quot;%s&quot;, name); ret = GetCfgItem(CFGNAME, name, value, &amp;vlen); if (ret != 0) &#123; printf(&quot;func GetCfgItem err:%d \n&quot;, ret); return ret; &#125; printf(&quot;value:%s \n&quot;); return ret;&#125;//写配置项int TWriteCfg() &#123; int ret = 0; char name[1024] = &#123; 0 &#125;; char value[1024] = &#123; 0 &#125;; int vlen = 0; printf(&quot;\n请输入Key:&quot;); scanf(&quot;%s&quot;, name); printf(&quot;\n请输入Value:&quot;); scanf(&quot;%s&quot;, value); WriteCfgItem(CFGNAME, name, value, &amp;vlen); if (ret != 0) &#123; printf(&quot;func WriteCfgItem err:%d \n&quot;, ret); return ret; &#125; printf(&quot;您的输入是：%s = %s \n&quot;, name, value); return ret;&#125;void show_menu() &#123; printf(&quot;==========================\n&quot;); printf(&quot;1.测试写配置文件\n&quot;); printf(&quot;2.测试读配置文件\n&quot;); printf(&quot;0.退出\n&quot;); printf(&quot;==========================\n&quot;);&#125;int main() &#123; int choice; show_menu(); while (~scanf(&quot;%d&quot;, &amp;choice)) &#123; //显示一个菜单 switch (choice) &#123; case 1: TWriteCfg(); break; case 2: GetCfg(); break; default: exit(0); &#125; system(&quot;pause&quot;); system(&quot;cls&quot;); show_menu(); &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>文件</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>API函数</tag>
+        <tag>文件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[牛客训练赛19之托米专场]]></title>
     <url>%2F2018%2F06%2F01%2F2018-06-01%2F</url>
     <content type="text"><![CDATA[托米的简单表示法题目描述 作为故事主角的托米是一名老师。 一天，他正在为解析算术表达式的课程准备课件。 在课程的第一部分，他只想专注于解析括号。 他为他的学生发明了一个有趣的正确括号序列的几何表示，如下图所示: 几何表示的定义： 1. 对于一个括号序列A，我们定义g(A)是A的几何表示形式,则 “()”的表示是一个1*1的方块，高度为1; 2.对于一个括号序列A，”(A)”的表示是由一个比g(A)宽2个单位高1个单位的矩形包围g(A)，它的高度为A+1; 3.对于两个括号序列A和B，A+B的几何表示形式为把g(B)放置在g(A)右边的一个单位，且高度为A和B的高度的较大值。 其中+指的是字符串的连接符。 ​ 在完成课件后，托米老师开始玩他做好的图片。 他将图像的有限区域交替地涂成黑色和白色，使最外面的区域全部涂成黑色。 对于上面的例子，这个着色如下所示： 输入描述:123输入的第一行包含一个整数T，表示指定测试用例的数量。每个测试用例前面都有一个空白行。每个测试用例由一个合法括号序列组成。 每行只包含字符&apos;(&apos;和&apos;)&apos;。 输出描述:1对于每个测试用例，输出一行包含一个整数,表示相应几何表示的黑色部分的面积。 示例1 输入复制 123452((()))(())(()(())) 输出复制 121020 说明1第二个测试案例是上图中显示的案例。 备注:121≤T≤10一个合法括号序列长度≤4 x 105 题解这道题提交了好多次，一直WA。后来改成long long就过了。原理很简单，就是遇见左括号入栈，遇见右括号出栈。在入栈出栈时执行操作。先入栈的高度比后入栈的最高高度要高1，初始宽度为1，每执行一次出栈操作，出栈元素前一个元素的宽度等于他自身宽度加上出栈元素宽度再加1。而出栈元素的面积等于宽乘高减去包含元素的面积。就这样，每次出栈时，前一个元素宽度加上该元素宽度加1，前元素将要减去的面积area等于出栈元素的面积minu。而出栈元素的面积area等于高乘宽减去将要减去的面积minu。最终由于0位置没有面积，就是全域，那他的minu即将要减去的面积就是总面积。 代码123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;bits/stdc++.h&gt;#define ll long longusing namespace std;const int maxn = 200010;char str[maxn*2];ll high[maxn],wed[maxn],area[maxn],minu[maxn],mystack[maxn];ll fun()&#123; int cnt = 1,head = 1,tail = 1,len = strlen(str); memset(high,0,sizeof(high)); memset(wed,0,sizeof(wed)); memset(minu,0,sizeof(minu)); memset(mystack,0,sizeof(mystack)); for(int i = 0;i &lt; len;i++)&#123; if(str[i] == &apos;(&apos;)&#123; mystack[tail++]=cnt++; high[mystack[tail - 1]]++; wed[mystack[tail - 1]] = 1; if(high[mystack[tail - 2]] &lt;= high[mystack[tail - 1]]) high[mystack[tail - 2]] = high[mystack[tail - 1]] + 1; &#125; else if(str[i] == &apos;)&apos;)&#123; if(tail &gt; 1)&#123; if(high[mystack[tail-2]] &lt;= high[mystack[tail-1]]) high[mystack[tail-2]] = high[mystack[tail-1]] + 1; tail--; wed[mystack[tail - 1]] += wed[mystack[tail]] + 1; area[mystack[tail]] = wed[mystack[tail]] * high[mystack[tail]] - minu[mystack[tail]]; minu[mystack[tail - 1]] += area[mystack[tail]]; &#125; &#125; &#125; return minu[0];&#125;int main()&#123; int T; cin &gt;&gt; T; while(T--)&#123; scanf(&quot;%s&quot;,str); cout &lt;&lt; fun() &lt;&lt; endl; &#125; return 0;&#125; 托米的饮料题目描述 好了，现在是小托米的故事啦~~~ 可爱的小托米得到了n瓶饮料. 但他不小心把开盖的工具弄丢了,所以他只能利用饮料瓶来开盖. 已知第i个瓶子的品牌为a i ,且其能打开b i 品牌的瓶子. 问有几瓶饮料托米无法喝到. 被用于打开饮料瓶的瓶子不一定需要被打开. 一个瓶子不能打开其本身. 输入描述:12第一行一个整数n,表示饮料的瓶数.接下来n行,每行两个整数ai,bi. 输出描述:1输出一行一个整数,表示小托米无法喝到的饮料瓶数. 示例1 输入复制 1234541 12 23 34 4 输出复制 14 示例2 输入复制 1234541 22 33 44 1 输出复制 10 备注:121≤n≤1001≤ ai,bi≤ 1000 题解本题坑人之处在于理解题意。因为没理解题意导致提交了好多次才提交成功。本题实质很简单，就是每个瓶子对应有一个编号b，可以开这个编号b除了自己以外的所有的瓶子。但仅限于该瓶子，其他瓶子也只能执行自己的编号b。首先输入完成时记录下所有编号的瓶子个数，把n赋给瓶子个数cnt，因为一开始n个瓶子都没打开。接着对b按顺序进行遍历，如果对应编号的瓶子不存在，则不执行操作，否则接着判断，如果a和b不同，则cnt减去该瓶子的数量，然后数量置零，因为该类瓶子已经打开完了，之后不需要再打开，否则执行完操作后再加1，因为不能打开自己。最后cnt就是剩下没打开的数量。 代码123456789101112131415161718192021222324#include&lt;bits/stdc++.h&gt;using namespace std;int vis[1010]=&#123;0&#125;,a[1010],b[1010];int main()&#123; int n; cin&gt;&gt;n; int cnt = n; for(int i = 1;i&lt;=n;i++)&#123; cin&gt;&gt;a[i]&gt;&gt;b[i]; vis[a[i]]++; &#125; for(int i = 1;i&lt;=n;i++)&#123; if(vis[b[i]])&#123; cnt-=vis[b[i]]; vis[b[i]]=0; if(a[i]==b[i])&#123; cnt++; vis[b[i]]=1; &#125; &#125; &#125; cout&lt;&lt;cnt&lt;&lt;endl; return 0;&#125; 托米搭积木题目描述 小托米真的很可爱呀(&gt;_&lt;) 这天,可爱的小托米得到了n堆积木,且第i堆积木初始时有ai块积木. 输入描述:1234567第一行两个整数n,m.第二行n个整数,第i个整数代表ai的值.接下来m行,每行代表一个操作:第一个整数t代表操作的类型若t=1,则接下来两个整数v,x,代表操作1.若t=2,则接下来一个整数y,代表操作2.若t=3,则接下来一个整数q,代表操作3. 输出描述:1对于每个操作3,输出其对应的答案. 示例1 输入复制 1234567891011121310 111 2 3 4 5 6 7 8 9 103 23 92 103 13 101 1 102 102 103 13 103 9 输出复制 1234567291120304039 备注:1234561≤n,m≤ 1051≤ai≤1091≤t≤31≤v≤ n,1≤ x≤1091≤y≤1041≤q≤n 题解很简单的一道题，3种操作，第1操作是把第i位置的数该为另一个数x，第2个操作是所有数加v，第3个操作是查询某一位置的数。首先分析，第1种操作和第3种操作时间复杂度都是O(1),第2中操作如果每位加v的话时间复杂度O(n)。所以优化在于第2操作。不过对于此操作我们可以降维优化，因为是所有数都加v，那么我们只需把v记录下来，每次查询时对查询的数直接加v就行了。这样就又遇到了一个问题，就是假如所有的数现在的状态是加v，而i位置元素现在变成了x，这样就会造成所有元素相加不一致。解决也很简单，只需每次变成x后，给x减去v就行了，这样查询时再加上v结果并没变。 代码1234567891011121314151617181920212223242526272829#include&lt;bits/stdc++.h&gt;#define ll long longusing namespace std;int m,n;int a[100010], cnt;int main()&#123; cin&gt;&gt;n&gt;&gt;m; for(int i=1;i&lt;=n;i++) cin&gt;&gt;a[i]; int t,x,y; cnt=0; while(m--)&#123; cin&gt;&gt;t; if(t==3)&#123; cin&gt;&gt;x; cout&lt;&lt;a[x]+cnt&lt;&lt;endl; &#125; else if(t==2)&#123; cin&gt;&gt;x; cnt+=x; &#125; else if(t==1)&#123; cin&gt;&gt;x&gt;&gt;y; a[x]=y; a[x]-=cnt; &#125; &#125; return 0;&#125;]]></content>
@@ -140,8 +155,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>并查集</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -286,9 +301,9 @@
       <tags>
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
-        <tag>KM算法</tag>
         <tag>图论</tag>
         <tag>二分图匹配</tag>
+        <tag>KM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -364,10 +379,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -381,10 +396,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -398,10 +413,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
-        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -445,9 +460,9 @@
         <category>爬虫</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>python</tag>
         <tag>爬虫</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -537,8 +552,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>BFS</tag>
         <tag>算法</tag>
+        <tag>BFS</tag>
         <tag>康托展开</tag>
         <tag>hash</tag>
       </tags>
@@ -656,8 +671,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
+        <tag>pat天梯赛</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
@@ -702,9 +717,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>算法</tag>
         <tag>BFS</tag>
         <tag>pat天梯赛</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -719,8 +734,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
+        <tag>pat天梯赛</tag>
         <tag>vector</tag>
       </tags>
   </entry>
@@ -783,9 +798,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>BFS</tag>
         <tag>算法</tag>
         <tag>DFS</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -812,9 +827,9 @@
         <category>流</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -826,8 +841,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>

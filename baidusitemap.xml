@@ -4,6 +4,36 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/06/03/2018-06-03/</loc>
+    <lastmod>2018-06-03T15:27:42.613Z</lastmod>
+    <data>
+        <display>
+        <title>‘API函数配置读写文件’</title>
+        <pubTime>2018-06-03T15:19:41.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>API函数</tag>
+         
+        <tag>文件</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="C/C++" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+          
+             
+              <breadCrumb title="文件" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/%E6%96%87%E4%BB%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/05/08/2018-05-08/</loc>
     <lastmod>2018-06-02T05:25:48.400Z</lastmod>
     <data>
@@ -1014,9 +1044,9 @@
         <title>ACM全国邀请赛热身赛题2并查集</title>
         <pubTime>2018-05-19T15:37:32.000Z</pubTime>
         
-        <tag>ACM/ICPC</tag>
-         
         <tag>并查集</tag>
+         
+        <tag>ACM/ICPC</tag>
          
          
            
@@ -1372,11 +1402,11 @@
          
         <tag>ACM/ICPC</tag>
          
-        <tag>KM算法</tag>
-         
         <tag>图论</tag>
          
         <tag>二分图匹配</tag>
+         
+        <tag>KM算法</tag>
          
          
            
@@ -1460,13 +1490,13 @@
         <title>基于github搭建专属于自己的博客(高级篇)</title>
         <pubTime>2018-04-28T15:39:25.000Z</pubTime>
         
+        <tag>前端</tag>
+         
         <tag>hexo</tag>
          
         <tag>github</tag>
          
         <tag>node.js</tag>
-         
-        <tag>前端</tag>
          
         <tag>html/css</tag>
          
@@ -1494,13 +1524,13 @@
         <title>基于github搭建专属于自己的博客(进阶篇)</title>
         <pubTime>2018-04-28T13:44:25.000Z</pubTime>
         
+        <tag>前端</tag>
+         
         <tag>hexo</tag>
          
         <tag>github</tag>
          
         <tag>node.js</tag>
-         
-        <tag>前端</tag>
          
         <tag>html/css</tag>
          
@@ -1528,13 +1558,13 @@
         <title>基于github搭建专属于自己的博客（基础篇）</title>
         <pubTime>2018-04-28T09:11:28.000Z</pubTime>
         
+        <tag>前端</tag>
+         
         <tag>hexo</tag>
          
         <tag>github</tag>
          
         <tag>node.js</tag>
-         
-        <tag>前端</tag>
          
         <tag>html/css</tag>
          
@@ -1562,9 +1592,9 @@
         <title>正则表达式练习题集(附答案)</title>
         <pubTime>2018-01-21T10:41:35.000Z</pubTime>
         
-        <tag>字符串</tag>
-         
         <tag>正则表达式</tag>
+         
+        <tag>字符串</tag>
          
          
            
@@ -1587,11 +1617,11 @@
         <title>sstream和strstream的用法</title>
         <pubTime>2018-01-24T05:31:04.000Z</pubTime>
         
+        <tag>字符串</tag>
+         
         <tag>C/C++</tag>
          
         <tag>stl</tag>
-         
-        <tag>字符串</tag>
          
          
            
@@ -1619,11 +1649,11 @@
         
         <tag>C/C++</tag>
          
-        <tag>BFS</tag>
-         
         <tag>算法</tag>
          
         <tag>DFS</tag>
+         
+        <tag>BFS</tag>
          
          
            
@@ -1739,9 +1769,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>算法</tag>
+         
+        <tag>pat天梯赛</tag>
          
         <tag>并查集</tag>
          
@@ -1918,9 +1948,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>BFS</tag>
-         
         <tag>算法</tag>
+         
+        <tag>BFS</tag>
          
         <tag>康托展开</tag>
          
@@ -1982,11 +2012,11 @@
         <title>[爬虫]python自动调用浏览器访问网页增加访问量</title>
         <pubTime>2018-04-22T15:07:01.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>python</tag>
          
         <tag>爬虫</tag>
+         
+        <tag>前端</tag>
          
          
            
@@ -2046,11 +2076,11 @@
         
         <tag>C/C++</tag>
          
+        <tag>算法</tag>
+         
         <tag>BFS</tag>
          
         <tag>pat天梯赛</tag>
-         
-        <tag>算法</tag>
          
          
            
@@ -2080,9 +2110,9 @@
          
         <tag>stl</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>算法</tag>
+         
+        <tag>pat天梯赛</tag>
          
         <tag>vector</tag>
          
