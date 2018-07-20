@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://qianyouyou.cn"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="问题 B: yoyo思维题(困难)问题A同问题B 提交: 4  解决: 2[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述小琳，小花，小薇，yoyo，他们每个人手上有一堆牌，牌的张数分别为x1，x2，x3，x4，每张牌都不一样。现有n名同学，n=x1+x2+x3+x4。每名同学均需要一张牌，于是他们按顺序每人随机到四个人那里拿取牌顶的一张牌，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.20-stl专项训练题解">
+<meta property="og:url" content="http://qianyouyou.cn/2018/07/20/2018-07-20/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="问题 B: yoyo思维题(困难)问题A同问题B 提交: 4  解决: 2[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述小琳，小花，小薇，yoyo，他们每个人手上有一堆牌，牌的张数分别为x1，x2，x3，x4，每张牌都不一样。现有n名同学，n=x1+x2+x3+x4。每名同学均需要一张牌，于是他们按顺序每人随机到四个人那里拿取牌顶的一张牌，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.liuchuo.net/wp-content/uploads/2016/07/Snip20160719_118.png">
+<meta property="og:updated_time" content="2018-07-20T16:08:07.819Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.20-stl专项训练题解">
+<meta name="twitter:description" content="问题 B: yoyo思维题(困难)问题A同问题B 提交: 4  解决: 2[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述小琳，小花，小薇，yoyo，他们每个人手上有一堆牌，牌的张数分别为x1，x2，x3，x4，每张牌都不一样。现有n名同学，n=x1+x2+x3+x4。每名同学均需要一张牌，于是他们按顺序每人随机到四个人那里拿取牌顶的一张牌，">
+<meta name="twitter:image" content="http://www.liuchuo.net/wp-content/uploads/2016/07/Snip20160719_118.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2018/07/20/2018-07-20/"/>
+
+
+
+
+
+  <title>7.20-stl专项训练题解 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/qian-youyou" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/07/20/2018-07-20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.20-stl专项训练题解</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T15:00:15+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,915
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="问题-B-yoyo思维题-困难"><a href="#问题-B-yoyo思维题-困难" class="headerlink" title="问题 B: yoyo思维题(困难)"></a>问题 B: yoyo思维题(困难)</h1><p>问题A同问题B</p>
+<p>提交: 4  解决: 2<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1003&amp;pid=1&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1731" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1731&amp;cid=1003" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1731&amp;getkey=4DE1A19111" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1731" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小琳，小花，小薇，yoyo，他们每个人手上有一堆牌，牌的张数分别为x1，x2，x3，x4，每张牌都不一样。现有n名同学，n=x1+x2+x3+x4。每名同学均需要一张牌，于是他们按顺序每人随机到四个人那里拿取牌顶的一张牌，最后一个人刚好拿到剩下的最后一张牌。排队拿牌的同学的顺序是固定的，选择拿谁的牌是不确定的。假如发牌的人手上的牌发完了，则要拿牌的同学会选择其他发牌的人。请问有多少种取法取走所有的牌。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>首行输入t，代表t组测试样例</p>
+<p>对于每一行，输入四个整数a，b，c，d，输入为均不超过500的正整数</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>对于每组样例，输出一个整数表示答案，答案对10^9+7取模</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5 4 2 3</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2522520</span><br></pre></td></tr></table></figure>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>本题作为思维题，并未用到stl，仅锻炼一下大家解决问题的能力。用到的数学知识相对多一点。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>题目大致可以理解为4堆牌a,b,c,d，每次从一堆牌里拿出牌顶的一张牌，问共有多少种拿法。其实我们可以一堆一堆的分析，假设只有一堆a时只有1种拿法，那两堆a,b时我们可以认为是从a个牌中插入b张牌，用数学表达式就是C(b,a+b);那么三堆的话我们可以把前两堆看成一堆，那么表达式就是C(c,a+b+c)，这是我们需要与前两堆的组成方法相乘，就是C(b,a+b)C(c,a+b+c)。4堆的话就是C(b,a+b)C(c,a+b+c)C(d,a+b+c+d)。所以答案就是C(a,a)C(b,a+b)C(c,a+b+c)C(d,a+b+c+d)。此外，有一公式C(a,b) = C(a,b-1)+C(a-1,b-1)，所以我们用数组来代替C(m,n)操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 9;</span><br><span class="line">ll a[4], sum[4] = &#123; 0 &#125;;</span><br><span class="line">ll dp[maxn * 4][maxn * 4];</span><br><span class="line">//打表，递推公式C(a,b) = C(a,b-1)+C(a-1,b-1)</span><br><span class="line">void init() &#123;</span><br><span class="line">	dp[0][0] = 0;</span><br><span class="line">	for (int i = 1; i &lt; 4 * maxn; i++) &#123;</span><br><span class="line">		dp[i][0] = 1;</span><br><span class="line">		for (int j = 1; j &lt; i; j++) &#123;</span><br><span class="line">			dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];</span><br><span class="line">		&#125;</span><br><span class="line">		dp[i][i] = 1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">	init();//打表</span><br><span class="line">	ll ans = 1;</span><br><span class="line">	//这一步可要可不要，其实就是将a,a+b,a+b+c,a+b+c+d存进sum里</span><br><span class="line">	for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">		!i ? sum[i] = 0 : sum[i] = sum[i - 1];</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line">		sum[i] += a[i];</span><br><span class="line">		if (a[i] &gt; sum[i] - a[i]) a[i] = sum[i] - a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	//将对应3组排列组合相乘，及C(b,a+b)C(c,a+b+c)C(d,a+b+c+d)</span><br><span class="line">	for (int i = 1; i &lt; 4; i++) &#123;</span><br><span class="line">		ans *= dp[sum[i]][a[i]];</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-C-悠派计算器"><a href="#问题-C-悠派计算器" class="headerlink" title="问题 C: 悠派计算器"></a>问题 C: 悠派计算器</h1><p>提交: 4  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1003&amp;pid=2&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1732" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1732&amp;cid=1003" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1732&amp;getkey=C0EA34F688" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1732" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>yoyo的小老弟小渣渣灰特别懒，兴趣爱好并不多，就睡觉一个。为了多睡会儿懒觉，他把数学老师布置的作业全部推给yoyo计算。yoyo很头疼，于是请你帮他写一个计算器帮忙计算。现有多个数学表达式，请你写一个计算器算出结果，表达式只包含’+’’-‘’*’’/‘’%’’(‘’)’操作，其中表达式中’-‘作为减运算符，不会作为负号出现，此外’/‘为整除运算符，’%’为取余运算符。表达式保证合法。</p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>输入第一行t，表示共有t行测试用例，接下来t行每一行均为一个合法的数学表达式。保证每个数在[09999]范围内，保证计算过程中不会出现超范围情况。（注：没有空格）</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>输出计算结果</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">0*1</span><br><span class="line">5%6</span><br><span class="line">1-2*(3+4*5%6)+7/8-9*10%11*12</span><br><span class="line">(1+2*3)</span><br><span class="line">1-(100%5)</span><br><span class="line">(3+2*5)/(5)</span><br><span class="line">(11-11)+(33)*64-11</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">5</span><br><span class="line">-135</span><br><span class="line">7</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">2101</span><br></pre></td></tr></table></figure>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>数据很水，不用考虑long long或取余等情况。</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>逆波兰表达式是一种十分有用的表达式，它将复杂表达式转换为可以依靠简单的操作得到计算结果的表达式。例如(a+b)<em>(c+d)转换为ab+cd+</em></p>
+<p>如果当前字符为变量或者为数字，则压栈，如果是运算符，则将栈顶两个元素弹出作相应运算，结果再入栈，最后当表达式扫描完后，栈里的就是结果。</p>
+<p>例如(a+b)<em>(c+d)转换为ab+cd+</em>   计算机在计算普通表达式时，要对运算优先级用递归进行判断，对于更为复杂的表达式会使计算机运算效率变低甚至崩溃。而逆波兰表达式只需要进行简单的入栈出栈操作就可以完成任何普通表达式的运算。</p>
+<p>普通表达式——&gt;逆波兰表达式</p>
+<p>(1)a+b——&gt;a b +</p>
+<p>(2)a+(b-c)——&gt;a b c - +</p>
+<p>(3)a+(b-c)<em>d——&gt;a b c -  d </em> +</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 100007;</span><br><span class="line">map&lt;char,int&gt;Pri;//其实可以不必用map，只是为了方便大家理解map而多添加的一步</span><br><span class="line">stack&lt;int&gt;num;</span><br><span class="line">stack&lt;char&gt;Ope;</span><br><span class="line">char str[maxn];</span><br><span class="line">//初始化</span><br><span class="line">void init()&#123;</span><br><span class="line">    Pri[&apos;+&apos;] = Pri[&apos;-&apos;] = 1;</span><br><span class="line">    Pri[&apos;*&apos;] = Pri[&apos;/&apos;] = Pri[&apos;%&apos;] = Pri[&apos;(&apos;] = Pri[&apos;)&apos;] = 2;</span><br><span class="line">    while(!num.empty())</span><br><span class="line">        num.pop();</span><br><span class="line">    while(!Ope.empty())</span><br><span class="line">        Ope.pop();</span><br><span class="line">&#125;</span><br><span class="line">//基本运算操作</span><br><span class="line">void operation_1(int &amp;a,int &amp;b, char c)&#123;</span><br><span class="line">    if(c == &apos;+&apos;)</span><br><span class="line">        a += b;</span><br><span class="line">    else if(c == &apos;-&apos;)</span><br><span class="line">        a = b-a;</span><br><span class="line">    else if(c == &apos;*&apos;)</span><br><span class="line">        a *= b;</span><br><span class="line">    else if(c == &apos;/&apos;)</span><br><span class="line">        a = b/a;</span><br><span class="line">    else if(c == &apos;%&apos;)</span><br><span class="line">        a = b%a;</span><br><span class="line">&#125;</span><br><span class="line">//遇到+或者)时执行的操作</span><br><span class="line">void operation_2()&#123;</span><br><span class="line">    char ch = Ope.top();</span><br><span class="line">        while(ch != &apos;(&apos;&amp;&amp;!Ope.empty())&#123;</span><br><span class="line">            Ope.pop();</span><br><span class="line">            int a = num.top();</span><br><span class="line">            num.pop();</span><br><span class="line">            int b = num.top();</span><br><span class="line">            num.pop();</span><br><span class="line">            operation_1(a,b,ch);</span><br><span class="line">            num.push(a);</span><br><span class="line">            if(!Ope.empty())</span><br><span class="line">                ch = Ope.top();</span><br><span class="line">        &#125;</span><br><span class="line">        if(!Ope.empty()&amp;&amp;Ope.top() == &apos;(&apos;)</span><br><span class="line">            Ope.pop();</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;getchar();</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        cin.getline(str,maxn);</span><br><span class="line">        stringstream s(str);</span><br><span class="line">        init();</span><br><span class="line">        char tmp;</span><br><span class="line">        while(s &gt;&gt; tmp)&#123;</span><br><span class="line">        	//遇到数字字符时，需要判断下一位是否依旧是数字，是的话需要合并</span><br><span class="line">            if(tmp &gt;= &apos;0&apos; &amp;&amp; tmp &lt;= &apos;9&apos;)&#123;</span><br><span class="line">                int t = 0;</span><br><span class="line">                do&#123;</span><br><span class="line">                    if(Pri[tmp])&#123;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                    t *= 10;</span><br><span class="line">                    t += tmp - &apos;0&apos;;</span><br><span class="line">                &#125;while(s &gt;&gt; tmp);</span><br><span class="line">                num.push(t);</span><br><span class="line">            &#125;</span><br><span class="line">            //遇到&apos;)&apos;时</span><br><span class="line">            if(tmp == &apos;)&apos;)&#123;</span><br><span class="line">                operation_2();</span><br><span class="line">            &#125;</span><br><span class="line">            //遇到&apos;+&apos; ‘-’时</span><br><span class="line">            else if(Pri[tmp]==1)&#123;</span><br><span class="line">                if(!Ope.empty()&amp;&amp;Ope.top()!=&apos;(&apos;)&#123;</span><br><span class="line">                    operation_2();</span><br><span class="line">                &#125;</span><br><span class="line">                Ope.push(tmp);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(Pri[tmp])&#123;</span><br><span class="line">                Ope.push(tmp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int ans = num.top();</span><br><span class="line">        num.pop();</span><br><span class="line">        while(!num.empty()&amp;&amp;!Ope.empty())&#123;</span><br><span class="line">            operation_1(ans,num.top(),Ope.top());</span><br><span class="line">            Ope.pop();</span><br><span class="line">            num.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return  0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-D-留胡子"><a href="#问题-D-留胡子" class="headerlink" title="问题 D: 留胡子"></a>问题 D: 留胡子</h1><p>提交: 53  解决: 6<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1003&amp;pid=3&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1733" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1733&amp;cid=1003" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1733&amp;getkey=3B707F894D" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1733" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>众所周知，刘虎子同学爱留胡子，人送外号刘胡子。为了留一抹性感又忧郁的小胡子，刘虎子专门与yoyo合作研发了一套算法，俗称油胡子算法。油胡子算法原理很简单，要想获得油胡子，首先将胡子从左到右分为n撮胡子，第i撮胡子的平均长度为xi。现每次从n中选出最左边的相邻胡子长度之差的绝对值为1的两撮胡子，减掉较长的1撮胡子，减掉的那撮胡子可以认为从n撮胡子中删除，剩下n-1撮胡子待修剪，再将剩下的n-1撮胡子从左到右重新排列成相邻的数继续如此操作，直到没有两撮相邻差的绝对值为1的胡子为止。此时的胡子称为完美油胡子。请问刘虎子同学最多需要剪多少次才能得到自己心仪的性感小胡子。</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>输入第一行为n，接下来一行n个数x1x2…xi…xn。</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>输出最多执行次数。</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">3 2 3 1 0 1</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p><strong>用栈来维护每次合并完的数，每入栈一个数以后栈顶和次栈顶比较，如果可以合并就合并为新的栈顶，并且再次与次栈顶比较直至无法合并，在合并过程中统计次数即可。</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,x;</span><br><span class="line">int ans=0;     //最大操作次数</span><br><span class="line">stack&lt;int&gt; st;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(i=0;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;x;</span><br><span class="line">		//将x与当前栈顶元素st.top()比较，若栈不空且st.top()比x大1，则合并一次(此时即当前栈顶元素出栈)</span><br><span class="line">		//然后x与次栈顶比较，以此类推，直到不满足栈不空且st.top()比x大1</span><br><span class="line">		while(!st.empty() &amp;&amp; st.top()-x==1)</span><br><span class="line">		&#123;</span><br><span class="line">			st.pop();</span><br><span class="line">			ans++;</span><br><span class="line">		&#125;</span><br><span class="line">		//若栈不空且x比st.top()大1，则合并一次</span><br><span class="line">		//(此时即x&quot;出栈&quot;，也就是忽略此x继续看下一个输入的x 但栈不发生任何变化)</span><br><span class="line">		if(!st.empty() &amp;&amp; x-st.top()==1)</span><br><span class="line">			ans++;</span><br><span class="line">		//其他情况(x为第一个元素或不满足上述两种情况)：将x入栈</span><br><span class="line">		else</span><br><span class="line">			st.push(x);</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-E-卜卦"><a href="#问题-E-卜卦" class="headerlink" title="问题 E: 卜卦"></a>问题 E: 卜卦</h1><p>提交: 1  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?id=1734" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1734" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1734" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1734&amp;getkey=7E5D1F2620" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1734" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>赵神是一个特别特别闷骚的人。别看他平日表现很高冷，其实他一直暗恋着自己的小迷妹小花花，一日不见兮，思之如狂。马上快七夕了，赵神想卜一卦算一下他的爱情幸运数，于是他找到了yoyo半仙替他卜卦。yoyo半仙需要赵神的3个幸运数字以及小花花的3个幸运数字方可进行卜卦。已知赵神的3个幸运数字是’5’’2’’0’而小花花的幸运数字是abc，(保证由5，2，0，a，b，c，这6个数各不相同，且abc均为30以内的素数)。卜卦规则如下：<br>由{520abc}组成的6个各不相同数中选取最小的3个数作为加数，其余最大的3个数作为基数。每一个数若加上加数仅能被基数整除，其他素数均不能整除，则该数称为幸运数。其中第1314个幸运数为爱情幸运数。<br>现在你刚好知道小花花的幸运数，请你帮yoyo完成卜卦吧。PS：顺利完成任务后则会收获赵神珍藏版kiss一枚。</p>
+<h2 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h2><p>首行输入t，代表t组测试样例</p>
+<p>接下来t行输入三个数abc。</p>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><p>输出第1314个幸运值</p>
+<h2 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">7 3 11</span><br><span class="line">7 11 13</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">29541015622</span><br><span class="line">1775105893556</span><br></pre></td></tr></table></figure>
+<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><p>待写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">const int fort = 1314;</span><br><span class="line">ll coeff[6];</span><br><span class="line">int cmp(ll a,ll b)&#123;</span><br><span class="line">    return a &gt; b;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        cin&gt;&gt;coeff[0]&gt;&gt;coeff[1]&gt;&gt;coeff[2];</span><br><span class="line">        coeff[3] = 5;</span><br><span class="line">        coeff[4] = 2;</span><br><span class="line">        coeff[5] = 0;</span><br><span class="line">        sort(coeff,  coeff + 6, cmp);</span><br><span class="line">        priority_queue&lt;ll, vector&lt;ll&gt;, greater&lt;ll&gt; &gt; pq;</span><br><span class="line">        set&lt;ll&gt;s;</span><br><span class="line">        set&lt;ll&gt;ans;</span><br><span class="line">        pq.push(1);</span><br><span class="line">        s.insert(1);</span><br><span class="line">        for(int i = 0;;i++)&#123;</span><br><span class="line">            ll x = pq.top();</span><br><span class="line">            pq.pop();</span><br><span class="line">            if(i)&#123;</span><br><span class="line">                for(int k = 3;k &lt; 6;k++)&#123;</span><br><span class="line">                    ans.insert(x - coeff[k]);</span><br><span class="line">                    if(ans.size()==fort)</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">                if(ans.size()==fort)&#123;</span><br><span class="line">                    /*int ttt = 1;</span><br><span class="line">                    for(set&lt;ll&gt;::iterator it = ans.begin();it!=ans.end();it++)</span><br><span class="line">                        cout&lt;&lt;ttt++&lt;&lt;&apos; &apos;&lt;&lt;*it&lt;&lt;endl;*/</span><br><span class="line">                    set&lt;ll&gt;::reverse_iterator it = ans.rbegin();</span><br><span class="line">                    cout&lt;&lt;*it&lt;&lt;endl;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for(int j = 0;j&lt;3;j++)&#123;</span><br><span class="line">                ll x2=x*coeff[j];</span><br><span class="line">                if(!s.count(x2))&#123;</span><br><span class="line">                    s.insert(x2);</span><br><span class="line">                    pq.push(x2);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-F-成绩互评"><a href="#问题-F-成绩互评" class="headerlink" title="问题 F: 成绩互评"></a>问题 F: 成绩互评</h1><p>提交: 117  解决: 40<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1003&amp;pid=5&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1738" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1738&amp;cid=1003" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1738&amp;getkey=9C71BFBEA7" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1738" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>学生互评作业的简单规则是这样定的：每个人的作业会被k个同学评审，得到k个成绩。系统需要去掉一个最高分和一个最低分，将剩下的分数取平均，就得到这个学生的最后成绩。本题就要求你编写这个互评系统的算分模块。</p>
+<h2 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h2><p>输入第一行给出3个正整数N（3&lt; N &lt;= 104，学生总数）、k（3&lt;= k &lt;= 10，每份作业的评审数）、M（&lt;= 20，需要输出的学生数）。随后N行，每行给出一份作业得到的k个评审成绩（在区间[0 100]内），其间以空格分隔。</p>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><p>按非递减顺序输出最后得分最高的M个成绩，保留小数点后3位。分数间有1个空格，行首尾不得有多余空格。</p>
+<h2 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6 5 3</span><br><span class="line">88 90 85 99 60</span><br><span class="line">67 60 80 76 70</span><br><span class="line">90 93 96 99 99</span><br><span class="line">78 65 77 70 72</span><br><span class="line">88 88 88 88 88</span><br><span class="line">55 55 55 55 55</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">87.667 88.000 96.000</span><br></pre></td></tr></table></figure>
+<h2 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h2><p><strong>total数组保存各个同学的平均分，v数组保存每次接收得到的分数，排序后取前m名，按递增输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int cmp(double a, double b) &#123;</span><br><span class="line">	return a &gt; b;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int N, K, M;</span><br><span class="line">	while (cin &gt;&gt; N &gt;&gt; K &gt;&gt; M) &#123;</span><br><span class="line">		vector&lt;double&gt;v(K);</span><br><span class="line">		vector&lt;double&gt;v2(N);</span><br><span class="line">		for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">			double sum = 0;</span><br><span class="line">			for (int j = 0; j &lt; K; j++) &#123;</span><br><span class="line">				cin &gt;&gt; v[j];</span><br><span class="line">				sum += v[j];</span><br><span class="line">			&#125;</span><br><span class="line">			sort(v.begin(), v.end(), cmp);</span><br><span class="line">			sum -= v[0] + v[K - 1];</span><br><span class="line">			sum /= K - 2;</span><br><span class="line">			v2[i] = sum;</span><br><span class="line">		&#125;</span><br><span class="line">		sort(v2.begin(), v2.end(), cmp);</span><br><span class="line">		for (int i = M - 1; i &gt; 0; i--)</span><br><span class="line">			printf(&quot;%.3lf &quot;, v2[i]);</span><br><span class="line">		printf(&quot;%.3lf\n&quot;, v2[0]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-G-列车"><a href="#问题-G-列车" class="headerlink" title="问题 G: 列车"></a>问题 G: 列车</h1><p>提交: 18  解决: 10<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1003&amp;pid=6&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1736" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1736&amp;cid=1003" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1736&amp;getkey=EDCA6F0278" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1736" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>火车站的列车调度铁轨的结构如下图所示。<br><img src="http://www.liuchuo.net/wp-content/uploads/2016/07/Snip20160719_118.png" alt="img">tle=”” align=”” /&gt;</p>
+<p>两端分别是一条入口（Entrance）轨道和一条出口（Exit）轨道，它们之间有N条平行的轨道。每趟列车从入口可以选择任意一条轨道进入，最后从出口离开。在图中有9趟列车，在入口处按照{8，4，2，5，3，9，1，6，7}的顺序排队等待进入。如果要求它们必须按序号递减的顺序从出口离开，则至少需要多少条平行铁轨用于调度？</p>
+<h2 id="输入-5"><a href="#输入-5" class="headerlink" title="输入"></a>输入</h2><p>输入第一行给出一个整数N (2 &lt;= N &lt;= 105)，下一行给出从1到N的整数序号的一个重排列。数字间以空格分隔。</p>
+<h2 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h2><p>在一行中输出可以将输入的列车按序号递减的顺序调离所需要的最少的铁轨条数。</p>
+<h2 id="样例输入-5"><a href="#样例输入-5" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">8 4 2 5 3 9 1 6 7</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-5"><a href="#样例输出-5" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h2 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h2><p><strong>必须要车号大的先出，小的后出。所以列车排队的每一队必须是从大到小排列（从右往左看），才能保证开出去的车也是从大到小的。</strong> <strong>对于每一个想要进入并列铁轨的车，如果车号大于每一队的队尾的车号，说明不能进入已经有的队伍，必须进入新的铁轨</strong> <strong>否则，选择一个最接近它车号的尾部车号的队伍进入</strong> <strong>其实无需保存每一个并行队列的所有值，只需要保存当前队伍的车尾（就是每一列最左边 即 每一列的最小值）即可</strong> <strong>因为每一次都是需要排序比较大小的，所以用set自动排序</strong> <strong>首先把set里面放入一个0值。每一次set的最后一个值s.rbegin()都是当前所有队列队尾的最大值.</strong> <strong>如果当前想要进入排队队伍的t值比集合里面最大值小，就移除第一个比他大的值，然后把t插入集合中。表示的是将t值插入了最接近它车号的队伍的队尾</strong> <strong>否则就直接插入进去t值。作为新的队伍。</strong>s.upper_bound(t)返回的是第一个大于t的迭代器的位置<strong> </strong>在前面加星号表示取这个位置的值<strong> </strong>所以s.erase(*(s.upper_bound(t)));表示删除当前这个刚好大于t的位置处的值<strong> </strong>因为一开始插入了一个没有的0，所以最后输出是s.size()-1。** </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n, t;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    set&lt;int&gt; s;</span><br><span class="line">    s.insert(0);</span><br><span class="line">    for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; t;</span><br><span class="line">        if(t &lt; *s.rbegin()) &#123;</span><br><span class="line">            s.erase(*(s.upper_bound(t)));</span><br><span class="line">        &#125;</span><br><span class="line">        s.insert(t);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; s.size() - 1;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-H-新浪关注"><a href="#问题-H-新浪关注" class="headerlink" title="问题 H: 新浪关注"></a>问题 H: 新浪关注</h1><p>提交: 24  解决: 14<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1003&amp;pid=7&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1737" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1737&amp;cid=1003" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1737&amp;getkey=EB2FC0BAF0" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1737" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h2><p>新浪微博上有个“悄悄关注”，一个用户悄悄关注的人，不出现在这个用户的关注列表上，但系统会推送其悄悄关注的人发表的微博给该用户。现在我们来做一回网络侦探，根据某人的关注列表和其对其他用户的点赞情况，扒出有可能被其悄悄关注的人。</p>
+<h2 id="输入-6"><a href="#输入-6" class="headerlink" title="输入"></a>输入</h2><p>输入首先在第一行给出某用户的关注列表，格式如下：</p>
+<p>人数N 用户1 用户2 …… 用户N</p>
+<p>其中N是不超过5000的正整数，每个“用户i”（i=1 … N）是被其关注的用户的ID，是长度为4位的由数字和英文字母组成的字符串，各项间以空格分隔。</p>
+<p>之后给出该用户点赞的信息：首先给出一个不超过10000的正整数M，随后M行，每行给出一个被其点赞的用户ID和对该用户的点赞次数（不超过1000），以空格分隔。注意：用户ID是一个用户的唯一身份标识。题目保证在关注列表中没有重复用户，在点赞信息中也没有重复用户。</p>
+<h2 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h2><p>我们认为被该用户点赞次数大于其点赞平均数、且不在其关注列表上的人，很可能是其悄悄关注的人。根据这个假设，请你按用户ID字母序的升序输出可能是其悄悄关注的人，每行1个ID。如果其实并没有这样的人，则输出“Bing Mei You”。</p>
+<h2 id="样例输入-6"><a href="#样例输入-6" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">10 GAO3 Magi Zha1 Sen1 Quan FaMK LSum Eins FatM LLao</span><br><span class="line">8</span><br><span class="line">Magi 50</span><br><span class="line">Pota 30</span><br><span class="line">LLao 3</span><br><span class="line">Ammy 48</span><br><span class="line">Dave 15</span><br><span class="line">GAO3 31</span><br><span class="line">Zoro 1</span><br><span class="line">Cath 60</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-6"><a href="#样例输出-6" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ammy</span><br><span class="line">Cath</span><br><span class="line">Pota</span><br></pre></td></tr></table></figure>
+<h2 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h2><p><strong>将关注的人存储在集合set里，将点赞的人和点赞的次数存储在map中，并统计点赞的平均次数sum / M，遍历map，如果map的值大于平均次数，且在set中找不到该用户名，就输出当前用户名（因为map中的键是已经按照字典序排序过的，所以直接输出就可以），并用flag标记是否有过输出，如果从始至终没有输出，说明没有悄悄关注的人，就输出Bing Mei You</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;set&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int m, n;</span><br><span class="line">	while (cin &gt;&gt; n) &#123;</span><br><span class="line">		set&lt;string&gt;id;</span><br><span class="line">		while (n--) &#123;</span><br><span class="line">			string name;</span><br><span class="line">			cin &gt;&gt; name;</span><br><span class="line">			id.insert(name);</span><br><span class="line">		&#125;</span><br><span class="line">		cin &gt;&gt; m;</span><br><span class="line">		map&lt;string, int&gt;mm;</span><br><span class="line">		int sum = 0;</span><br><span class="line">		for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">			int cnt;</span><br><span class="line">			string str;</span><br><span class="line">			cin &gt;&gt; str &gt;&gt; cnt;</span><br><span class="line">			mm[str] = cnt;</span><br><span class="line">			sum += cnt;</span><br><span class="line">		&#125;</span><br><span class="line">		sum /= m;</span><br><span class="line">		int flag = 0;</span><br><span class="line">		for (auto it : mm) &#123;</span><br><span class="line">			if (it.second &gt; sum&amp;&amp;id.find(it.first) == id.end()) &#123;</span><br><span class="line">				cout &lt;&lt; it.first &lt;&lt; endl;</span><br><span class="line">				flag = 1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (!flag)</span><br><span class="line">			cout &lt;&lt; &quot;Bing Mei You&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-I-礼物"><a href="#问题-I-礼物" class="headerlink" title="问题 I: 礼物"></a>问题 I: 礼物</h1><p>提交: 94  解决: 44<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1003&amp;pid=8&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1739" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1739&amp;cid=1003" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1739&amp;getkey=09962A88B1" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1739" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h2><p>四月一日快到了，Vayko想了个愚人的好办法——送礼物。嘿嘿，不要想的太好，这礼物可没那么简单，Vayko为了愚人，准备了一堆盒子，其中有一个盒子里面装了礼物。盒子里面可以再放零个或者多个盒子。假设放礼物的盒子里不再放其他盒子。<br>用()表示一个盒子，B表示礼物，Vayko想让你帮她算出愚人指数，即最少需要拆多少个盒子才能拿到礼物。 </p>
+<h2 id="输入-7"><a href="#输入-7" class="headerlink" title="输入"></a>输入</h2><p>本题目包含多组测试，请处理到文件结束。<br>每组测试包含一个长度不大于1000只包含’(‘’)’和’B’三种字符的字符串，代表Vayko设计的礼物透视图。<br>你可以假设，每个透视图画的都是合法的。 </p>
+<h2 id="输出-7"><a href="#输出-7" class="headerlink" title="输出"></a>输出</h2><p>对于每组测试，请在一行里面输出愚人指数。</p>
+<h2 id="样例输入-7"><a href="#样例输入-7" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">((((B)()))())</span><br><span class="line">(B)</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-7"><a href="#样例输出-7" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h2 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h2><p><strong>看上去像是编译原理的文法识别，要用到栈，其实不是，只要看准备上面红色的字，就知道，只有三种字符()B，且待处理的串为合法的文法，所以要知道包装盒的个数，只要知道B前面有多少(字符，但可能有(()B)这种情况，B前面有)，但因为合法，所以可以在B之前的找到(与)相匹配，就剔除掉了，所以盒子的个数就是B之前的串中(的个数减去)的个数。</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main() &#123;</span><br><span class="line">	string str;</span><br><span class="line">	while (cin &gt;&gt; str) &#123;</span><br><span class="line">		int sco = 0;</span><br><span class="line">		for (int i = 0; i &lt; str.length(); i++) &#123;</span><br><span class="line">			if (str[i] == &apos;(&apos;)</span><br><span class="line">				sco++;</span><br><span class="line">			else if (str[i] == &apos;)&apos;)</span><br><span class="line">				sco--;</span><br><span class="line">			else if (str[i] == &apos;B&apos;)</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; sco &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-J-Sunscreen"><a href="#问题-J-Sunscreen" class="headerlink" title="问题 J: Sunscreen"></a>问题 J: Sunscreen</h1><p>题意：有C头奶牛要去沐光浴，太阳光太强烈会晒坏皮肤，太弱又会没效果。每头牛都有一个太阳光适宜的范围经行沐光浴，分别给出minspf_i和maxspf_i。  有L种防晒霜，每种防晒霜可以把所受阳光固定于一个值spf_i，每种有cover_i瓶。  问最多会有几头牛得到合适的光晒强度？ </p>
+<p><strong>题解：贪心策略，在满足minspf的条件下，尽量将spf的防晒霜涂到maxspf小的奶牛身上，因为maxspf大的奶牛有更多的选择。这里就需要一个优先队列来储存满足minspf的奶牛的maxspf的值。     具体解题步骤如下：</strong></p>
+<p><strong>1.将奶牛按照minspf升序排列，将防晒霜按照spf升序排列。</strong></p>
+<p><strong>2.枚举防晒霜，将minspf&lt;=spf的奶牛的maxspf存到优先队列中，然后值小的先出队列，看是否满足maxspf&gt;=spf，更新记录值。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int MAXN = 12505;</span><br><span class="line">struct spf &#123;</span><br><span class="line">	int max;</span><br><span class="line">	int min;</span><br><span class="line">	friend bool operator &lt; (spf a, spf b) &#123;</span><br><span class="line">		return a.min &lt; b.min;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;cow[MAXN], bot[MAXN];</span><br><span class="line">struct cmp &#123;</span><br><span class="line">	bool operator()(const int a, const int b)const &#123;</span><br><span class="line">		return a &gt; b;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int C, L, i;</span><br><span class="line">	priority_queue&lt;int, vector&lt;int&gt;, cmp&gt;pq;</span><br><span class="line">	while (cin &gt;&gt; C &gt;&gt; L) &#123;</span><br><span class="line">		for (i = 0; i &lt; C; i++)</span><br><span class="line">			cin &gt;&gt; cow[i].min &gt;&gt; cow[i].max;</span><br><span class="line">		for (i = 0; i &lt; L;i++)</span><br><span class="line">			cin &gt;&gt; bot[i].min &gt;&gt; bot[i].max;</span><br><span class="line">		sort(cow, cow + C);</span><br><span class="line">		sort(bot, bot + L);</span><br><span class="line">		int cur = 0, ans = 0;</span><br><span class="line">		for(int i=0;i&lt;L;i++)&#123;</span><br><span class="line">			while(cur &lt; C&amp;&amp;cow[cur].min &lt;= bot[i].min) &#123; </span><br><span class="line">				pq.push(cow[cur].max); </span><br><span class="line">				cur++; </span><br><span class="line">			&#125;</span><br><span class="line">			while(!pq.empty()&amp;&amp;bot[i].max) &#123; </span><br><span class="line">				int maxSPF = pq.top(); </span><br><span class="line">				pq.pop();</span><br><span class="line">				if(maxSPF &gt;= bot[i].min)&#123;</span><br><span class="line">					ans++; </span><br><span class="line">					bot[i].max--;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><hr>纸短情长啊<i class="fa fa-paw"></i>文章结束了<i class="fa fa-paw"></i>但我们的故事还在继续</div>
+    
+</div>
+    
+	  </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/14/2018-07-14/" rel="next" title="[少年班]天分与平凡，青春与坚守">
+                <i class="fa fa-chevron-left"></i> [少年班]天分与平凡，青春与坚守
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA4NC8xMjYxOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠CSDN" target="_blank">浅悠悠CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="张家辉CSDN" target="_blank">张家辉CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/sophia__yu" title="杨祥钰CSDN" target="_blank">杨祥钰CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/bailerong123" title="白乐荣CSDN" target="_blank">白乐荣CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://amon1997.com/" title="曹静的博客" target="_blank">曹静的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/messhiro" title="赵神CSDN" target="_blank">赵神CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
+	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-B-yoyo思维题-困难"><span class="nav-number">1.</span> <span class="nav-text">问题 B: yoyo思维题(困难)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">1.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">1.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入"><span class="nav-number">1.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出"><span class="nav-number">1.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示"><span class="nav-number">1.6.</span> <span class="nav-text">提示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.6.1.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-C-悠派计算器"><span class="nav-number">2.</span> <span class="nav-text">问题 C: 悠派计算器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-1"><span class="nav-number">2.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-1"><span class="nav-number">2.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-1"><span class="nav-number">2.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-1"><span class="nav-number">2.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示-1"><span class="nav-number">2.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-1"><span class="nav-number">2.7.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-D-留胡子"><span class="nav-number">3.</span> <span class="nav-text">问题 D: 留胡子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-2"><span class="nav-number">3.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-2"><span class="nav-number">3.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-2"><span class="nav-number">3.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-2"><span class="nav-number">3.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-2"><span class="nav-number">3.6.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-E-卜卦"><span class="nav-number">4.</span> <span class="nav-text">问题 E: 卜卦</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-3"><span class="nav-number">4.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-3"><span class="nav-number">4.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-3"><span class="nav-number">4.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-3"><span class="nav-number">4.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#来源"><span class="nav-number">4.6.</span> <span class="nav-text">来源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-3"><span class="nav-number">4.7.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-F-成绩互评"><span class="nav-number">5.</span> <span class="nav-text">问题 F: 成绩互评</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-4"><span class="nav-number">5.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-4"><span class="nav-number">5.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-4"><span class="nav-number">5.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-4"><span class="nav-number">5.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-4"><span class="nav-number">5.6.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-G-列车"><span class="nav-number">6.</span> <span class="nav-text">问题 G: 列车</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-5"><span class="nav-number">6.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-5"><span class="nav-number">6.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-5"><span class="nav-number">6.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-5"><span class="nav-number">6.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-5"><span class="nav-number">6.6.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-H-新浪关注"><span class="nav-number">7.</span> <span class="nav-text">问题 H: 新浪关注</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-6"><span class="nav-number">7.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-6"><span class="nav-number">7.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-6"><span class="nav-number">7.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-6"><span class="nav-number">7.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-6"><span class="nav-number">7.6.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-I-礼物"><span class="nav-number">8.</span> <span class="nav-text">问题 I: 礼物</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-7"><span class="nav-number">8.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-7"><span class="nav-number">8.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-7"><span class="nav-number">8.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-7"><span class="nav-number">8.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-7"><span class="nav-number">8.6.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-J-Sunscreen"><span class="nav-number">9.</span> <span class="nav-text">问题 J: Sunscreen</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
