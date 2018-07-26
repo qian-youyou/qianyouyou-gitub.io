@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://qianyouyou.cn"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="问题 A: 签到题之青蛙爬楼梯时间限制: 1 Sec  内存限制: 128 MB提交: 117  解决: 37[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述楼梯有n阶台阶，青蛙每次可以跳1~n阶台阶，问青蛙共有多少种上楼梯的方法。 输入输入仅一行，一个整数n（n&amp;lt;=50） 输出输出n阶台阶对应上楼梯的方法。 样例输入13 样例输出14">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.26图论基础专项训练题解">
+<meta property="og:url" content="http://qianyouyou.cn/2018/07/26/2018-07-26/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="问题 A: 签到题之青蛙爬楼梯时间限制: 1 Sec  内存限制: 128 MB提交: 117  解决: 37[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述楼梯有n阶台阶，青蛙每次可以跳1~n阶台阶，问青蛙共有多少种上楼梯的方法。 输入输入仅一行，一个整数n（n&amp;lt;=50） 输出输出n阶台阶对应上楼梯的方法。 样例输入13 样例输出14">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-26T15:10:56.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7.26图论基础专项训练题解">
+<meta name="twitter:description" content="问题 A: 签到题之青蛙爬楼梯时间限制: 1 Sec  内存限制: 128 MB提交: 117  解决: 37[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述楼梯有n阶台阶，青蛙每次可以跳1~n阶台阶，问青蛙共有多少种上楼梯的方法。 输入输入仅一行，一个整数n（n&amp;lt;=50） 输出输出n阶台阶对应上楼梯的方法。 样例输入13 样例输出14">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2018/07/26/2018-07-26/"/>
+
+
+
+
+
+  <title>7.26图论基础专项训练题解 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/qian-youyou" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/07/26/2018-07-26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">7.26图论基础专项训练题解</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T22:22:06+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,020
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="问题-A-签到题之青蛙爬楼梯"><a href="#问题-A-签到题之青蛙爬楼梯" class="headerlink" title="问题 A: 签到题之青蛙爬楼梯"></a>问题 A: 签到题之青蛙爬楼梯</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 117  解决: 37<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1009&amp;pid=0&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1784" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1784&amp;cid=1009" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1784&amp;getkey=3D275E187A" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1784" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>楼梯有n阶台阶，青蛙每次可以跳1~n阶台阶，问青蛙共有多少种上楼梯的方法。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>输入仅一行，一个整数n（n&lt;=50）</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出n阶台阶对应上楼梯的方法。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>本题作为水题，不作为图论题。样例提示（1，1，1），（1，2），（2，1），（3）共4种方法</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>第n阶台阶，我们可以从n-1跳到n，可以从n-2跳到n……可以从1跳到n，也可以从0跳到n。那么要求第n阶的数量，只需求前n-1阶，前n-2阶……前1阶的方法，所以我们列出关系式为F(n)=F(n-1)+F(n-2)+……+F(1)+1。同理，第n-1阶的关系式为F(n-2)+F(n-3)+……+F(1)+1。两个式子合并得F(n)=2*F(n-1)。由于F(1)=1,所以F(n)=2^(n-1)。</p>
+<h2 id="代码参考"><a href="#代码参考" class="headerlink" title="代码参考"></a>代码参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    ll a = pow(2,n-1);</span><br><span class="line">    cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-B-排名"><a href="#问题-B-排名" class="headerlink" title="问题 B: 排名"></a>问题 B: 排名</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 60  解决: 24<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1009&amp;pid=1&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1785" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1785&amp;cid=1009" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1785&amp;getkey=40F8E5A0BF" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1785" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>有 N 个比赛队（1&lt;=N&lt;=500），编号依次为 1，2，3……N 进行比赛，比赛结束后，裁判委员会要将所有参赛队伍从前往后依次排名，但现在裁判委员会不能直接获得每个队的比赛成绩，只知道每场比赛的结果，即 P1 赢 P2，用 P1，P2 表示，排名时 P1 在 P2之前。现在请你编程序确定排名。</p>
+<p>符合条件的排名可能不是唯一的。此时要求输出时编号小的队伍在前。输入数据保证是正确的，即输入数据确保一定能有一个符合要求的排名。</p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>输入有若干组。每组中的第一行为二个数N（1&lt;=N&lt;=500）。M；当中N表示队伍的个数，M表示接着有M行的输入数据。接下来的M行数据中。每行也有两个整数P1。P2表示即P1队赢了P2队。</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>给出一个符合要求的排名。输出时队伍号之间有空格。最后一名后面没有空格。</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4 3</span><br><span class="line">1 4</span><br><span class="line">4 3</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 4 3</span><br></pre></td></tr></table></figure>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>拓扑排序模板题，唯一可能出现问题的地方就是题目要求同样拓扑序的两个编号小的要在前面，这点可以通过将普通拓扑排序中的队列改为使用优先队列或者堆来实现。</p>
+<h2 id="代码参考-1"><a href="#代码参考-1" class="headerlink" title="代码参考"></a>代码参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=510;</span><br><span class="line">int graph[maxn][maxn];//保存图</span><br><span class="line">int degree[maxn];//保存入度</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        memset(graph,0,sizeof(graph));</span><br><span class="line">        memset(degree,0,sizeof(degree));</span><br><span class="line">        for(int i=0;i&lt;m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int u,v;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;u,&amp;v);</span><br><span class="line">            if(!graph[u][v])</span><br><span class="line">            &#123;</span><br><span class="line">                graph[u][v]=1;</span><br><span class="line">                degree[v]++;//的入度++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt;q;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">            if(degree[i]==0)</span><br><span class="line">            q.push(i);</span><br><span class="line">        bool first=1;</span><br><span class="line">        while(!q.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            int cur=q.top();</span><br><span class="line">            q.pop();</span><br><span class="line">            if(first)</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt;cur;</span><br><span class="line">                first=0;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                cout&lt;&lt;&quot; &quot;&lt;&lt;cur;</span><br><span class="line">            for(int i=1;i&lt;=n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(graph[cur][i]==1)</span><br><span class="line">                &#123;</span><br><span class="line">                    degree[i]--;//相连的点的入度减1</span><br><span class="line">                    if(degree[i]==0)//假设入度为0，增加队列</span><br><span class="line">                        q.push(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-C-系兄弟就来砍我"><a href="#问题-C-系兄弟就来砍我" class="headerlink" title="问题 C: 系兄弟就来砍我"></a>问题 C: 系兄弟就来砍我</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 34  解决: 10<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1009&amp;pid=2&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1787" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1787&amp;cid=1009" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1787&amp;getkey=584D6A6FD5" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1787" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>渣渣灰因为一句“大家好，我系渣渣辉，系兄弟就来砍我”引得众粉丝纷纷拿两米长的大刀寻找。现有n个据点，编号（1~n），有m条单向路使据点相连。每个据点仅有一个人。这n个人中有k个粉丝。其中渣渣灰在s据点处。请问这k个粉丝到渣渣灰的最短距离是多少</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>首行输入nmks。(k&lt;=n&lt;=100m&lt;=500)s为渣渣灰所在位置</p>
+<p>接下来m行，每行输入xyz，表示从x到y的距离是z，由于是单向边，则y到x的距离不一定是z。</p>
+<p>接下来k个数字，表示粉丝所在据点。</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>对于每一个粉丝，输出对应的最短距离。</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3 3 2 1</span><br><span class="line">1 2 1</span><br><span class="line">2 3 1</span><br><span class="line">3 1 1</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 1</span><br></pre></td></tr></table></figure>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>数据保证k个粉丝均能到达渣渣灰的据点</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>首先，既然要求k个点到s点的最短路，我们可以反过来求s到这k个点的最短路。这样就变成了单源最短路问题，dijkstra算法和spfa算法都可以做。由于图为有向图，我们在存图时反向存图即可，原本a[i][j]表示i-&gt;j，我们可以将它重新定义为j-&gt;i，或者存图时直接写成a[j][i]即可。</p>
+<h2 id="代码参考-2"><a href="#代码参考-2" class="headerlink" title="代码参考"></a>代码参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int maxn = 107;</span><br><span class="line">const int inf = 0x3f3f3f3f; //需将road及dis初始化为正无穷inf</span><br><span class="line">int n,m,k,s;</span><br><span class="line">int dis[maxn];  //储存各个点到源点的最短距离,dis[s]为0</span><br><span class="line">int road[maxn][maxn];   //两点之间直接距离关系</span><br><span class="line">bool vis[maxn];     //判断源点到该点的距离是否为最短距离</span><br><span class="line">int fans[maxn];</span><br><span class="line">void dijkstra(int s)</span><br><span class="line">&#123;</span><br><span class="line">    memset(vis, false, sizeof(vis));</span><br><span class="line">    vis[s] = true;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++)</span><br><span class="line">        dis[i] = road[s][i];</span><br><span class="line">    for(int u = 1; u&lt;n; u++)</span><br><span class="line">    &#123;</span><br><span class="line">        int minD = inf,k = -1;</span><br><span class="line">        for(int i = 1; i&lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!vis[i]&amp;&amp;dis[i]&lt;minD)</span><br><span class="line">            &#123;</span><br><span class="line">                k = i;</span><br><span class="line">                minD = dis[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[k] = true;</span><br><span class="line">        for(int i = 1; i&lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!vis[i]&amp;&amp;dis[k]+road[k][i]&lt;dis[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dis[i]=dis[k]+road[k][i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m&gt;&gt;k&gt;&gt;s;</span><br><span class="line">    memset(road,inf,sizeof(road));</span><br><span class="line">    for(int i = 1; i&lt;=m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int tmp;</span><br><span class="line">        int x,y;</span><br><span class="line">        cin&gt;&gt;x&gt;&gt;y&gt;&gt;tmp;</span><br><span class="line">        road[y][x]=tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    dijkstra(s);</span><br><span class="line">    for(int i = 0; i&lt;k; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;fans[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0; i&lt;k-1; i++)</span><br><span class="line">        cout&lt;&lt;dis[fans[i]]&lt;&lt;&apos; &apos;;</span><br><span class="line">    cout&lt;&lt;dis[fans[k-1]]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-D-躁动的小Z"><a href="#问题-D-躁动的小Z" class="headerlink" title="问题 D: 躁动的小Z"></a>问题 D: 躁动的小Z</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 7  解决: 2<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1009&amp;pid=3&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1669" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1669&amp;cid=1009" target="_blank" rel="noopener">讨论版</a>][命题人:外部导入][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1669&amp;getkey=F81CC9CF2B" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1669" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>你猜怎么样？小Z追到Gakki了！Gakki邀请小Z去她家共进晚餐，小Z喜出望外。小Z的家和Gakki的家隔着几个街区，所以他决定乘坐公交车前往</p>
+<p>Gakki家赴约。小Z的家在公交站台的起始站（编号为1），而Gakki家正好在末站（编号为n）。城市中有许多公交站台，有些站台之间可以通过公交</p>
+<p>线路互相到达。现在给你n个公交站台和m条不同的公交线路的时间花费，请你帮助小Z分析一下最短的可以从家里来到Gakki身边的路径？</p>
+<h2 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h2><p>有多组测试样例。</p>
+<p>第一行两个正整数n,m(2≤n≤10^5,0≤m≤10^5)，代表站台数与公交线路数量。</p>
+<p>接下来m行每行三个正整数a[i],b[i],w[i],代表从公交站a[i]到b[i]需要花费的时间为w[i]。(1≤a[i],b[i]≤n,1≤w[i]≤10^6)</p>
+<p>注意：公交线路可能会产生环，并且两个站台之间可能有多条公交线路。</p>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><p>单独一行，输出花费时间最小时小Z经过的公交站台编号，以空格隔开；如果小Z无法到达Gakki的家，则输出-1.</p>
+<h2 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5 6</span><br><span class="line">1 2 2</span><br><span class="line">2 5 5</span><br><span class="line">2 3 4</span><br><span class="line">1 4 1</span><br><span class="line">4 3 3</span><br><span class="line">3 5 1</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 4 3 5</span><br></pre></td></tr></table></figure>
+<h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><p>半年前写的代码。其实原理很简单，在dijkstra算法模板的基础上加上一个pre数组，用于记录该节点的上一个节点，即该点是经过哪一点才到达该点的。pre数组具体在边松弛的过程中进行重新赋值，松弛成功就将pre值记录k点，及该点是由起点经过k点后所得到的。最后把pre数组中的值递归输出一遍即可。</p>
+<h2 id="代码参考-3"><a href="#代码参考-3" class="headerlink" title="代码参考"></a>代码参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt; </span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#define max 900000</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">	int d; </span><br><span class="line">	int pre;</span><br><span class="line">&#125;path;</span><br><span class="line">path to[1000 + 2];</span><br><span class="line">int g[1000 + 2][1000 + 2], vis[1000 + 2]; </span><br><span class="line">void fun(int ddd) &#123;</span><br><span class="line">	if (ddd == 1) &#123;</span><br><span class="line">		printf(&quot;%d&quot;, ddd);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	int j= to[ddd].pre;</span><br><span class="line">	fun(j);</span><br><span class="line">	printf(&quot; %d&quot;, ddd);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n, m, a, b, v, i, j, min, k, from;</span><br><span class="line">	while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;m)) &#123; </span><br><span class="line">		memset(vis, 0, sizeof(vis));</span><br><span class="line">		for (i = 0; i &lt;= n; i++) &#123;</span><br><span class="line">			for (j = 0; j &lt;= n; j++) &#123;</span><br><span class="line">				g[i][j] = max;</span><br><span class="line">			&#125;</span><br><span class="line">			to[i].d = max;</span><br><span class="line">		&#125;</span><br><span class="line">		for (i = 0; i &lt; m; i++) &#123; </span><br><span class="line">			scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;v);</span><br><span class="line">			g[a][b] = v;</span><br><span class="line">			g[b][a] = v;</span><br><span class="line">		&#125;</span><br><span class="line">		for (i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">			to[i].d = g[1][i];</span><br><span class="line">			if (g[1][i] != max) &#123;</span><br><span class="line">				to[i].pre = 1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		vis[1] = 1;</span><br><span class="line">		for (i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">			min = max;</span><br><span class="line">			for (j = 2; j &lt;= n; j++) &#123;</span><br><span class="line">				if (to[j].d &lt; min&amp;&amp;vis[j] == 0) &#123;</span><br><span class="line">					min = to[j].d;</span><br><span class="line">					k = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			vis[k] = 1;</span><br><span class="line">			for (j = 2; j &lt;= n; j++) &#123;</span><br><span class="line">				if (to[j].d &gt; to[k].d + g[k][j] &amp;&amp; vis[j] == 0) &#123;</span><br><span class="line">					to[j].d = to[k].d + g[k][j];</span><br><span class="line">					to[j].pre = k;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		fun(n);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-E-逛街"><a href="#问题-E-逛街" class="headerlink" title="问题 E: 逛街"></a>问题 E: 逛街</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 8  解决: 2<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1009&amp;pid=4&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1788" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1788&amp;cid=1009" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1788&amp;getkey=7BBB5CA0F9" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1788" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>假设渣渣灰有一个女朋友，他的女朋友要他陪着一起去公园。由于渣渣灰不喜欢运动，所以他想找一条最短的路到达公园。由于途中会有许多消费点，而每到一个消费点女朋友就要购物，而渣渣灰比较抠，所以假如有多条最短路，则他会选择途中消费点最便宜的。给你n个点，m条无向边，每条边都有长度d和花费p，给你起点s终点t，要求输出起点到终点的最短距离及其花费，如果最短距离有多条路线，则输出花费最少的。</p>
+<h2 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h2><p>输入nm，点的编号是1~n然后是m行，每行4个数 abdp，表示a和b之间有一条边，且其长度为d，花费为p。最后一行是两个数 st;起点s，终点。n和m为0时输入结束。<br>(1&lt;n&lt;=1000 0&lt;m&lt;100000 s != t)</p>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><p>输出 一行有两个数， 最短距离及其花费。</p>
+<h2 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2 5 6</span><br><span class="line">2 3 4 5</span><br><span class="line">1 3</span><br><span class="line"></span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9 11</span><br></pre></td></tr></table></figure>
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>输入样例的空行只是为了让大家分辨数据，输入有没有空行都没关系。输出样例没有空行。</p>
+<h2 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h2><p>同上一道题的方法，我们再创建一个value数组储存花费情况。在松弛时对value进行改变。松弛成功则value（s-&gt;i）=value(s-&gt;k-&gt;i)。若最短路相等则对value值进行比较，即value（s-&gt;i）=min(value(s-&gt;k-&gt;i),value（s-&gt;i))。s为源点，i为当前终点，k为中间点。最终输出最短路及对应value值即可。</p>
+<h2 id="代码参考-4"><a href="#代码参考-4" class="headerlink" title="代码参考"></a>代码参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define Min(a,b) a&gt;b?b:a</span><br><span class="line">struct Node</span><br><span class="line">&#123;</span><br><span class="line">	int adj,val;</span><br><span class="line">&#125;g[1005][1005];</span><br><span class="line">int dist[1005];//距离</span><br><span class="line">int value[1005];//费用</span><br><span class="line">int used[1005];//标记</span><br><span class="line">int n,m,i,j;</span><br><span class="line">void Dijkstra(int s)</span><br><span class="line">&#123;</span><br><span class="line">	memset(dist,0x3f,sizeof(dist));</span><br><span class="line">	memset(value,0x3f,sizeof(value));</span><br><span class="line">	memset(used,0,sizeof(used));</span><br><span class="line">	dist[s]=0;//从起点开始</span><br><span class="line">	value[s]=0;</span><br><span class="line">	while(1)</span><br><span class="line">	&#123;</span><br><span class="line">		int k,u=-1,d[1005];</span><br><span class="line">		int min=INF;</span><br><span class="line">		memset(d,0,sizeof(d));</span><br><span class="line">		for(i=1;i&lt;=n;i++)</span><br><span class="line">			if(used[i]==0&amp;&amp;dist[i]&lt;min)//找出从起点到下一个最小距离的顶点</span><br><span class="line">			&#123;</span><br><span class="line">				min=dist[i];</span><br><span class="line">				u=i;//记录下标</span><br><span class="line">			&#125;</span><br><span class="line">		if(u==-1)//判断所有顶点是否都到达过</span><br><span class="line">			return ;</span><br><span class="line">		for(i=1,k=0;i&lt;=n;i++)</span><br><span class="line">			if(dist[u]==dist[i]&amp;&amp;used[i]==0)</span><br><span class="line">				d[k++]=i;//从起点到下一个要访问的顶点的最小距离可能有多个</span><br><span class="line">		for(i=0;i&lt;k;i++)</span><br><span class="line">			used[d[i]]=1;</span><br><span class="line">		for(i=0;i&lt;k;i++)//多个满足的点分别进行迪杰斯特拉最短路查找</span><br><span class="line">			for(j=1;j&lt;=n;j++)</span><br><span class="line">				if(g[d[i]][j].adj!=INF &amp;&amp; (dist[d[i]]+g[d[i]][j].adj)&lt;=dist[j])</span><br><span class="line">				&#123;//原理与 main()函数中建立邻接矩阵一样</span><br><span class="line">					if((dist[d[i]]+g[d[i]][j].adj)&lt;dist[j])</span><br><span class="line">						value[j]=value[d[i]]+g[d[i]][j].val;</span><br><span class="line">					else</span><br><span class="line">						value[j]=Min(value[j],value[d[i]]+g[d[i]][j].val);</span><br><span class="line">					dist[j]=dist[d[i]]+g[d[i]][j].adj;</span><br><span class="line">				&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m) &amp;&amp; (n||m))</span><br><span class="line">	&#123;</span><br><span class="line">		int a,b,d,p;</span><br><span class="line">		memset(g,0x3f,sizeof(g));</span><br><span class="line">		for(i=1;i&lt;=m;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			scanf(&quot;%d%d%d%d&quot;,&amp;a,&amp;b,&amp;d,&amp;p);</span><br><span class="line">			if(d&lt;=g[a][b].adj)//处理路径距离问题</span><br><span class="line">			&#123;</span><br><span class="line">				if(d==g[a][b].adj)//如果距离相等，则存放最少的费用</span><br><span class="line">					g[a][b].val=g[b][a].val=Min(p,g[a][b].val);</span><br><span class="line">				else//否则，存放新路径距离的费用</span><br><span class="line">					g[a][b].val=g[b][a].val=p;</span><br><span class="line">				g[a][b].adj=g[b][a].adj=d;//填充路径距离</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int s,t;</span><br><span class="line">		scanf(&quot;%d%d&quot;,&amp;s,&amp;t);</span><br><span class="line">		Dijkstra(s);</span><br><span class="line">		printf(&quot;%d %d\n&quot;,dist[t],value[t]);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-F-足球"><a href="#问题-F-足球" class="headerlink" title="问题 F: 足球"></a>问题 F: 足球</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 3  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1009&amp;pid=5&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1786" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1786&amp;cid=1009" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1786&amp;getkey=C290CA1E34" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1786" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>yoyo得到了一个足球，这个足球与其他的足球一样，表面有 12 个正五边形和 20 个正六边形组成，足球的每个面初始的时候都为白色。现在yoyo把这个足球拆解开来，32个面编号为1~32。爱画画的yoyo希望将足球的某些面涂为黑色（可能是 0 个），在每次涂色操作中，慢慢只可以将某一些相邻或者联通的面一起涂为黑色（两个面相邻当且仅当他们共用一条边）。例如，yoyo可以在一次涂色操作中将面 1、2、3、4、5 涂为黑色，但是他不可以将面11 和 24 涂为白色，因为面 11 和 24 是不相邻也不联通的。求yoyo所需要的最少的涂色次数。</p>
+<h2 id="输入-5"><a href="#输入-5" class="headerlink" title="输入"></a>输入</h2><p>第一行包含一个整数 t，表示有t组测试数据，对于每组测试数据：</p>
+<p>输入包含一行，该行包含 32 个整数，每个数的值等于 0 时表示白色，等于 1 时表示黑色。</p>
+<h2 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h2><p>对于每组测试数据，输出Case c: ans，其中 c 为测试数据编号，ans 为最少的操作次数。</p>
+<h2 id="样例输入-5"><a href="#样例输入-5" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span><br><span class="line">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line">1 1 1 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-5"><a href="#样例输出-5" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Case 1: 1</span><br><span class="line">Case 2: 0</span><br><span class="line">Case 3: 2</span><br></pre></td></tr></table></figure>
+<h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><p>除了相邻的数面也相邻外，面 1 和面 13 是相邻的，面 13 和面 17 是相邻的，面 17 和面 32 是相邻的，面 15 和面 32 是相邻的，面 19 和面 32 是相邻的。</p>
+<p>PS:1和32不相邻。</p>
+<h2 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h2><p>先把所有相邻的点赋值为1，再用Floyd算法把所有点之间的最短距离打表求出来。之后每输入一组样例，则对样例中的1dfs深搜，然后深搜把所有相邻为1且值为1的点重新赋值为0。最后记录下主循环中dfs的次数即可。</p>
+<h2 id="代码参考-5"><a href="#代码参考-5" class="headerlink" title="代码参考"></a>代码参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 32 + 1;</span><br><span class="line">int dis[maxn][maxn];</span><br><span class="line">int vis[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    memset(dis,0x3f3f3f3f,sizeof(dis));</span><br><span class="line">    dis[32][32] = 0;</span><br><span class="line">    for(int i = 1; i &lt; maxn - 1; i++)&#123;</span><br><span class="line">        dis[i][i] = 0;</span><br><span class="line">        dis[i][i + 1] = 1;</span><br><span class="line">        dis[i + 1][i] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    dis[1][13] = dis[13][1] = 1;</span><br><span class="line">    dis[17][13] = dis[13][17] = 1;</span><br><span class="line">    dis[17][32] = dis[32][17] = 1;</span><br><span class="line">    dis[15][32] = dis[32][15] = 1;</span><br><span class="line">    dis[19][32] = dis[32][19] = 1;</span><br><span class="line">    for(int k = 1; k &lt; maxn; k++)&#123;</span><br><span class="line">        for(int i = 1; i &lt; maxn; i++)</span><br><span class="line">            for(int j = 1; j &lt; maxn; j++)</span><br><span class="line">                if(dis[i][j] &gt; dis[i][k]+dis[k][j])</span><br><span class="line">                    dis[i][j] = dis[i][k]+dis[k][j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void dfs(int x)&#123;</span><br><span class="line">    vis[x] = 0;</span><br><span class="line">    for(int i = 1; i &lt; maxn; i++)&#123;</span><br><span class="line">        if(vis[i]&amp;&amp;dis[x][i]==1)</span><br><span class="line">            dfs(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line"></span><br><span class="line">    init();</span><br><span class="line">    int t;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    for(int u = 1;u &lt;= t;u++)&#123;</span><br><span class="line">        for(int i = 1;i &lt; maxn; i++)</span><br><span class="line">            cin&gt;&gt;vis[i];</span><br><span class="line">        int ans = 0;</span><br><span class="line">        for(int i = 1; i &lt; maxn; i++)&#123;</span><br><span class="line">            if(vis[i])&#123;</span><br><span class="line">                ans++;</span><br><span class="line">                dfs(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;&quot;Case &quot;&lt;&lt;u&lt;&lt;&quot;: &quot;&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-G-牌"><a href="#问题-G-牌" class="headerlink" title="问题 G: 牌"></a>问题 G: 牌</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 2  解决: 2<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1009&amp;pid=6&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1789" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1789&amp;cid=1009" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1789&amp;getkey=86CA76A96B" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1789" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h2><p>有n张牌，每个牌有一个a属性和1个b属性，第i张牌的属性为ai，bi。现在每次从牌中选两张牌i，j，得到一个ai <em> bj + bi </em> aj的分数，然后从这两张牌中去掉1张牌。经过n-1次操作之后就剩1张牌了。问经过n-1次操作后得到的最大的分数和是多少。</p>
+<h2 id="输入-6"><a href="#输入-6" class="headerlink" title="输入"></a>输入</h2><p>首行输入n，代表n个点</p>
+<p>接下来n行，每一行两个属性ab第i行代表第i张牌，属性为ai，bi。数据范围保持在200以内。</p>
+<h2 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h2><p>输出最大分数</p>
+<h2 id="样例输入-6"><a href="#样例输入-6" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">2 4</span><br><span class="line">3 3</span><br><span class="line">1 7</span><br><span class="line">2 5</span><br><span class="line">4 4</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-6"><a href="#样例输出-6" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">108</span><br></pre></td></tr></table></figure>
+<h2 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h2><p>主要是删除牌的问题。但是假如我们将每张牌看成1个结点，属性的乘积得到的分数为1条路径，那么n张牌构成了n个结点n*（n-1）/2条边的强联通无向图，那么只需求每次分数最大的最小生成树即可。</p>
+<h2 id="代码参考-6"><a href="#代码参考-6" class="headerlink" title="代码参考"></a>代码参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt; </span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#define max 900000</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">	int d; </span><br><span class="line">	int pre;</span><br><span class="line">&#125;path;</span><br><span class="line">path to[1000 + 2];</span><br><span class="line">int g[1000 + 2][1000 + 2], vis[1000 + 2]; </span><br><span class="line">void fun(int ddd) &#123;</span><br><span class="line">	if (ddd == 1) &#123;</span><br><span class="line">		printf(&quot;%d&quot;, ddd);</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	int j= to[ddd].pre;</span><br><span class="line">	fun(j);</span><br><span class="line">	printf(&quot; %d&quot;, ddd);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int n, m, a, b, v, i, j, min, k, from;</span><br><span class="line">	while (~scanf(&quot;%d%d&quot;, &amp;n, &amp;m)) &#123; </span><br><span class="line">		memset(vis, 0, sizeof(vis));</span><br><span class="line">		for (i = 0; i &lt;= n; i++) &#123;</span><br><span class="line">			for (j = 0; j &lt;= n; j++) &#123;</span><br><span class="line">				g[i][j] = max;</span><br><span class="line">			&#125;</span><br><span class="line">			to[i].d = max;</span><br><span class="line">		&#125;</span><br><span class="line">		for (i = 0; i &lt; m; i++) &#123; </span><br><span class="line">			scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;v);</span><br><span class="line">			g[a][b] = v;</span><br><span class="line">			g[b][a] = v;</span><br><span class="line">		&#125;</span><br><span class="line">		for (i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">			to[i].d = g[1][i];</span><br><span class="line">			if (g[1][i] != max) &#123;</span><br><span class="line">				to[i].pre = 1;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		vis[1] = 1;</span><br><span class="line">		for (i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">			min = max;</span><br><span class="line">			for (j = 2; j &lt;= n; j++) &#123;</span><br><span class="line">				if (to[j].d &lt; min&amp;&amp;vis[j] == 0) &#123;</span><br><span class="line">					min = to[j].d;</span><br><span class="line">					k = j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			vis[k] = 1;</span><br><span class="line">			for (j = 2; j &lt;= n; j++) &#123;</span><br><span class="line">				if (to[j].d &gt; to[k].d + g[k][j] &amp;&amp; vis[j] == 0) &#123;</span><br><span class="line">					to[j].d = to[k].d + g[k][j];</span><br><span class="line">					to[j].pre = k;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		fun(n);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="常用模板代码"><a href="#常用模板代码" class="headerlink" title="常用模板代码"></a>常用模板代码</h1><h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=510;</span><br><span class="line">int graph[maxn][maxn];//保存图</span><br><span class="line">int degree[maxn];//保存入度</span><br><span class="line">int TOP[maxn];//保存已删除点</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,m;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">    	int now = 0；//指针作用记录TOP中可插入的位置</span><br><span class="line">        memset(graph,0,sizeof(graph));</span><br><span class="line">        memset(degree,0,sizeof(degree));</span><br><span class="line">        for(int i=0;i&lt;m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int u,v;</span><br><span class="line">            scanf(&quot;%d%d&quot;,&amp;u,&amp;v);</span><br><span class="line">            if(!graph[u][v])</span><br><span class="line">            &#123;</span><br><span class="line">                graph[u][v]=1;</span><br><span class="line">                degree[v]++;//v的入度++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        queue&lt;int&gt;q;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">            if(degree[i]==0)</span><br><span class="line">            q.push(i);</span><br><span class="line">        while(!q.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            int cur=q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            TOP[now++]=cur;</span><br><span class="line">            for(int i=1;i&lt;=n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(graph[cur][i]==1)</span><br><span class="line">                &#123;</span><br><span class="line">                    degree[i]--;//相连的点的入度减1</span><br><span class="line">                    if(degree[i]==0)//假设入度为0，增加队列</span><br><span class="line">                        q.push(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //这里可以添加输出，排序已保存在TOP数组中</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="dijkstra（单元最短路径）"><a href="#dijkstra（单元最短路径）" class="headerlink" title="dijkstra（单元最短路径）"></a>dijkstra（单元最短路径）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int maxn = 107;</span><br><span class="line">const int inf = 0x3f3f3f3f; //需将road及dis初始化为正无穷inf</span><br><span class="line">int n,m,k,s;</span><br><span class="line">int dis[maxn];  //储存各个点到源点的最短距离,dis[s]为0</span><br><span class="line">int road[maxn][maxn];   //两点之间直接距离关系</span><br><span class="line">bool vis[maxn];     //判断源点到该点的距离是否为最短距离</span><br><span class="line">int fans[maxn];</span><br><span class="line">void dijkstra(int s)</span><br><span class="line">&#123;</span><br><span class="line">    memset(vis, false, sizeof(vis));</span><br><span class="line">    vis[s] = true;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++)</span><br><span class="line">        dis[i] = road[s][i];</span><br><span class="line">    for(int u = 1; u&lt;n; u++)</span><br><span class="line">    &#123;</span><br><span class="line">        int minD = inf,k = -1;</span><br><span class="line">        for(int i = 1; i&lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!vis[i]&amp;&amp;dis[i]&lt;minD)</span><br><span class="line">            &#123;</span><br><span class="line">                k = i;</span><br><span class="line">                minD = dis[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vis[k] = true;</span><br><span class="line">        for(int i = 1; i&lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!vis[i]&amp;&amp;dis[k]+road[k][i]&lt;dis[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dis[i]=dis[k]+road[k][i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    memset(road,inf,sizeof(road));</span><br><span class="line">    //主函数添加程序与数据以及调用dijkstra</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="SPFA（单元最短路径，可带负环）"><a href="#SPFA（单元最短路径，可带负环）" class="headerlink" title="SPFA（单元最短路径，可带负环）"></a>SPFA（单元最短路径，可带负环）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define N 105</span><br><span class="line">int res[N];//存储源点到每个顶点的最短距离值</span><br><span class="line">int g[N][N];</span><br><span class="line">int cnt[N];//每个点入队次数，判断是否出现负环</span><br><span class="line">int que[N*N];//队列</span><br><span class="line">bool in_que[N];//标记一个点是否已在队列中</span><br><span class="line">int front;//队首位置</span><br><span class="line">int rear;//队尾位置</span><br><span class="line">void spfa(int n,int src)</span><br><span class="line">&#123;</span><br><span class="line">    rear=front=0;</span><br><span class="line">    que[++rear]=src;</span><br><span class="line">    memset(res,0x3f3f3f3f,sizeof(res));</span><br><span class="line">    memset(in_que,0,sizeof(in_que));</span><br><span class="line">    res[src]=0;</span><br><span class="line">    while(front&lt;rear)</span><br><span class="line">    &#123;</span><br><span class="line">        int cur=que[++front];</span><br><span class="line">        in_que[cur]=0;</span><br><span class="line">        int i;</span><br><span class="line">        for(i=1; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(res[cur]+g[cur][i]&lt;res[i])</span><br><span class="line">            &#123;</span><br><span class="line">                res[i]=res[cur]+g[cur][i];</span><br><span class="line">                if(!in_que[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    que[++rear]=i;</span><br><span class="line">                    in_que=1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Floyed（全源最短路径）"><a href="#Floyed（全源最短路径）" class="headerlink" title="Floyed（全源最短路径）"></a>Floyed（全源最短路径）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for (int k=0; k&lt;n; ++k)</span><br><span class="line">  for (int i=0; i&lt;n; ++i)</span><br><span class="line">    for (int j=0; j&lt;n; ++j)</span><br><span class="line">            /*</span><br><span class="line">            实际中为防止溢出，往往需要选判断 dist[i][k]和dist[k][j]</span><br><span class="line">            都不是Inf ，只要一个是Inf，那么就肯定不必更新。 </span><br><span class="line">            */</span><br><span class="line">      if (dist[i][k] + dist[k][j] &lt; dist[i][j] )</span><br><span class="line">        dist[i][j] = dist[i][k] + dist[k][j];</span><br></pre></td></tr></table></figure>
+<h2 id="Prim最小生成树"><a href="#Prim最小生成树" class="headerlink" title="Prim最小生成树"></a>Prim最小生成树</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">void Prim()&#123;</span><br><span class="line">	int i,j,k,tmp,ans;</span><br><span class="line">	for(i=1;i&lt;=n;i++)</span><br><span class="line">	dis[i]=inf;//初始化 </span><br><span class="line">	dis[1]=0;</span><br><span class="line">	for(i=1;i&lt;=n;i++)&#123;</span><br><span class="line">		tmp=inf;</span><br><span class="line">		for(j=1;j&lt;=n;j++)&#123;</span><br><span class="line">			if(!vis[j]&amp;&amp;tmp&gt;dis[j])&#123;</span><br><span class="line">				tmp=dis[j];</span><br><span class="line">				k=j;</span><br><span class="line">			&#125;//找出最小距离的节点 </span><br><span class="line">		&#125;</span><br><span class="line">		vis[k]=1;//把访问的节点做标记</span><br><span class="line">		for(j=1;j&lt;=n;j++)&#123;</span><br><span class="line">			if(!vis[j]&amp;&amp;dis[j]&gt;map[k][j])</span><br><span class="line">			dis[j]=map[k][j];//更新最短距离 </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="kruskal"><a href="#kruskal" class="headerlink" title="kruskal"></a>kruskal</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 1007;</span><br><span class="line">int n,m;</span><br><span class="line">struct Edge</span><br><span class="line">&#123;</span><br><span class="line">    int x;</span><br><span class="line">    int y;</span><br><span class="line">    int l;</span><br><span class="line">&#125; edge[maxn];</span><br><span class="line">int fa[maxn];</span><br><span class="line">int init()</span><br><span class="line">&#123;</span><br><span class="line">    for(int i = 0; i&lt;maxn; i++)</span><br><span class="line">        fa[i] = i;</span><br><span class="line">&#125;</span><br><span class="line">int findfa(int x)</span><br><span class="line">&#123;</span><br><span class="line">    return fa[x] == x ? x : (fa[x] = findfa(fa[x]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int merge_1(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    fa[findfa(x)] = findfa(y);</span><br><span class="line">&#125;</span><br><span class="line">int kruskal()</span><br><span class="line">&#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for(int i = 0; i&lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int fx = findfa(edge[i].x);</span><br><span class="line">        int fy = findfa(edge[i].y);</span><br><span class="line">        if(fx!=fy)</span><br><span class="line">        &#123;</span><br><span class="line">            merge_1(fx,fy);</span><br><span class="line">            cnt++;</span><br><span class="line">            sum+=edge[i].l;</span><br><span class="line">            if(cnt&gt;=n-1)</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    //此处填写边以及点等待输入数据，填写完成后须对边的权值进行排序</span><br><span class="line">    kruskal();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><hr>纸短情长啊<i class="fa fa-paw"></i>文章结束了<i class="fa fa-paw"></i>但我们的故事还在继续</div>
+    
+</div>
+    
+	  </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/20/2018-07-20/" rel="next" title="7.20-stl专项训练题解">
+                <i class="fa fa-chevron-left"></i> 7.20-stl专项训练题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA4NC8xMjYxOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠CSDN" target="_blank">浅悠悠CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="张家辉CSDN" target="_blank">张家辉CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/sophia__yu" title="杨祥钰CSDN" target="_blank">杨祥钰CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/bailerong123" title="白乐荣CSDN" target="_blank">白乐荣CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://amon1997.com/" title="曹静的博客" target="_blank">曹静的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/messhiro" title="赵神CSDN" target="_blank">赵神CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
+	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-A-签到题之青蛙爬楼梯"><span class="nav-number">1.</span> <span class="nav-text">问题 A: 签到题之青蛙爬楼梯</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">1.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">1.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入"><span class="nav-number">1.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出"><span class="nav-number">1.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示"><span class="nav-number">1.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.7.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码参考"><span class="nav-number">1.8.</span> <span class="nav-text">代码参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-B-排名"><span class="nav-number">2.</span> <span class="nav-text">问题 B: 排名</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-1"><span class="nav-number">2.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-1"><span class="nav-number">2.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-1"><span class="nav-number">2.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-1"><span class="nav-number">2.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-1"><span class="nav-number">2.6.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码参考-1"><span class="nav-number">2.7.</span> <span class="nav-text">代码参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-C-系兄弟就来砍我"><span class="nav-number">3.</span> <span class="nav-text">问题 C: 系兄弟就来砍我</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-2"><span class="nav-number">3.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-2"><span class="nav-number">3.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-2"><span class="nav-number">3.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-2"><span class="nav-number">3.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示-1"><span class="nav-number">3.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-2"><span class="nav-number">3.7.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码参考-2"><span class="nav-number">3.8.</span> <span class="nav-text">代码参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-D-躁动的小Z"><span class="nav-number">4.</span> <span class="nav-text">问题 D: 躁动的小Z</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-3"><span class="nav-number">4.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-3"><span class="nav-number">4.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-3"><span class="nav-number">4.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-3"><span class="nav-number">4.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-3"><span class="nav-number">4.6.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码参考-3"><span class="nav-number">4.7.</span> <span class="nav-text">代码参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-E-逛街"><span class="nav-number">5.</span> <span class="nav-text">问题 E: 逛街</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-4"><span class="nav-number">5.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-4"><span class="nav-number">5.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-4"><span class="nav-number">5.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-4"><span class="nav-number">5.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示-2"><span class="nav-number">5.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-4"><span class="nav-number">5.7.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码参考-4"><span class="nav-number">5.8.</span> <span class="nav-text">代码参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-F-足球"><span class="nav-number">6.</span> <span class="nav-text">问题 F: 足球</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-5"><span class="nav-number">6.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-5"><span class="nav-number">6.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-5"><span class="nav-number">6.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-5"><span class="nav-number">6.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示-3"><span class="nav-number">6.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-5"><span class="nav-number">6.7.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码参考-5"><span class="nav-number">6.8.</span> <span class="nav-text">代码参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-G-牌"><span class="nav-number">7.</span> <span class="nav-text">问题 G: 牌</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-6"><span class="nav-number">7.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-6"><span class="nav-number">7.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-6"><span class="nav-number">7.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-6"><span class="nav-number">7.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-6"><span class="nav-number">7.6.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码参考-6"><span class="nav-number">7.7.</span> <span class="nav-text">代码参考</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用模板代码"><span class="nav-number">8.</span> <span class="nav-text">常用模板代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#拓扑排序"><span class="nav-number">8.1.</span> <span class="nav-text">拓扑排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dijkstra（单元最短路径）"><span class="nav-number">8.2.</span> <span class="nav-text">dijkstra（单元最短路径）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPFA（单元最短路径，可带负环）"><span class="nav-number">8.3.</span> <span class="nav-text">SPFA（单元最短路径，可带负环）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Floyed（全源最短路径）"><span class="nav-number">8.4.</span> <span class="nav-text">Floyed（全源最短路径）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prim最小生成树"><span class="nav-number">8.5.</span> <span class="nav-text">Prim最小生成树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kruskal"><span class="nav-number">8.6.</span> <span class="nav-text">kruskal</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
