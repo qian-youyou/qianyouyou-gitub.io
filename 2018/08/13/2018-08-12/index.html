@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://qianyouyou.cn"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="WANNAFLY_DAY1Problem A. Birthday恬恬的生日临近了。宇扬给她准备了一个大蛋糕。 正如往常一样，宇扬在蛋糕上插了n支蜡烛，并把蛋糕分为m个区域。因为某种原因，他必须把第i根蜡烛插在第ai个区域或第bi个区域。区域之间是不相交的。宇扬在一个区域内同时摆放x支蜡烛就要花费x2的时间。宇扬布置蛋糕所用的总时间是他在每个区域花的时间的和。 宇扬想快些见到恬恬，你能告诉他布置蛋糕">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ccpc-wannafly秦皇岛站集训部分题解">
+<meta property="og:url" content="http://qianyouyou.cn/2018/08/13/2018-08-12/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="WANNAFLY_DAY1Problem A. Birthday恬恬的生日临近了。宇扬给她准备了一个大蛋糕。 正如往常一样，宇扬在蛋糕上插了n支蜡烛，并把蛋糕分为m个区域。因为某种原因，他必须把第i根蜡烛插在第ai个区域或第bi个区域。区域之间是不相交的。宇扬在一个区域内同时摆放x支蜡烛就要花费x2的时间。宇扬布置蛋糕所用的总时间是他在每个区域花的时间的和。 宇扬想快些见到恬恬，你能告诉他布置蛋糕">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/1%60_0EI$RPOB1E$BDXEDC2%25W.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/1%25%7B0%29ORKZ_W%29T4%7B3$FKU3R9.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/7WIGFX9JGWV%5DBD0A9XRS%5DG8.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/3XW5G5R%7DEQ~Y6M%25%5BM4G6O1T.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/1UEZSLL%25IWJN7N%60%7D~ID$R%5DQ.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/1K%7DH9GVNQ5%2943T$8IZ3HUY7.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/1GP5%60K5WW_NQ%60S%5B4GR8T%5B%29Y.png">
+<meta property="og:updated_time" content="2018-08-13T13:46:46.038Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ccpc-wannafly秦皇岛站集训部分题解">
+<meta name="twitter:description" content="WANNAFLY_DAY1Problem A. Birthday恬恬的生日临近了。宇扬给她准备了一个大蛋糕。 正如往常一样，宇扬在蛋糕上插了n支蜡烛，并把蛋糕分为m个区域。因为某种原因，他必须把第i根蜡烛插在第ai个区域或第bi个区域。区域之间是不相交的。宇扬在一个区域内同时摆放x支蜡烛就要花费x2的时间。宇扬布置蛋糕所用的总时间是他在每个区域花的时间的和。 宇扬想快些见到恬恬，你能告诉他布置蛋糕">
+<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/1%60_0EI$RPOB1E$BDXEDC2%25W.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2018/08/13/2018-08-12/"/>
+
+
+
+
+
+  <title>ccpc-wannafly秦皇岛站集训部分题解 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/qian-youyou" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/08/13/2018-08-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ccpc-wannafly秦皇岛站集训部分题解</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T19:10:46+08:00">
+                2018-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,480
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="WANNAFLY-DAY1"><a href="#WANNAFLY-DAY1" class="headerlink" title="WANNAFLY_DAY1"></a>WANNAFLY_DAY1</h1><h2 id="Problem-A-Birthday"><a href="#Problem-A-Birthday" class="headerlink" title="Problem A. Birthday"></a>Problem A. Birthday</h2><p>恬恬的生日临近了。宇扬给她准备了一个大蛋糕。</p>
+<p>正如往常一样，宇扬在蛋糕上插了n支蜡烛，并把蛋糕分为m个区域。因为某种原因，他必须把第i根蜡烛插在第ai个区域或第bi个区域。区域之间是不相交的。宇扬在一个区域内同时摆放x支蜡烛就要花费x2的时间。宇扬布置蛋糕所用的总时间是他在每个区域花的时间的和。</p>
+<p>宇扬想快些见到恬恬，你能告诉他布置蛋糕最少需要多少时间吗？</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>第一行包含两个整数n，m（1 ≤ n ≤ 50， 2 ≤ m ≤ 50）。<br>接下来n行，每行两个整数ai, bi（1 ≤ ai, bi ≤ m）。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>一个整数表示答案</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>standard input<br>3 3<br>1 2<br>1 2<br>1 2</p>
+<p>standard output</p>
+<p>5</p>
+<p>standard input </p>
+<p>3 3<br>1 2<br>2 3<br>1 3</p>
+<p>standard output</p>
+<p>3</p>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>考虑费用流时把每个part拆成n个点，选择第i个点的代表为放置i块蛋糕和(i - 1)块蛋糕的时间差，这个时间差是增的，因此在费用流的过程中必定会从小到大选择<br>具体建图：左边n个点代表n个蛋糕，右边m * n个点代表m个part,每个part拆成n个点。源点向每个左边的点连一条流量1费用0的边，每个右边的点向汇点连一条流量1费用0的编。每个蛋糕向可以放的两个part的所有点连边，连向第i个点的费用为i^2 - (i - 1)^2，流量为1。这样求最小费用流既为答案。</p>
+<h2 id="Problem-B-Board"><a href="#Problem-B-Board" class="headerlink" title="Problem B. Board"></a>Problem B. Board</h2><p>恬恬有一个n × n的数组。她在用这个数组玩游戏：</p>
+<p>开始时，数组中每一个元素都是0。</p>
+<p>恬恬会做某些操作。在一次操作中，她可以将某一行的所有元素同时加上一个值，也可以将某一列的所有元素同时加上一个值。</p>
+<p>在几次操作后，一个元素被隐藏了。你能帮助她回忆隐藏的数是几吗？</p>
+<h3 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h3><p>第一行一个整数n（1 ≤ n ≤ 1000）。<br>接下来n行每行n个整数表示数组a。<br>第(i + 1)行的第j个元素表示aij（aij = −1或0 ≤ aij ≤ 100000）。−1表示隐藏的元素</p>
+<h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><p>仅一个整数表示答案</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>standard input<br>3<br>1 2 1<br>0 -1 0<br>0 1 0</p>
+<p> standard output</p>
+<p>1</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>把格子N染色，第i行第j列格子的颜色为(i + j) % N。那么每次操作时，必定是N种不同的颜色都有一格被操作到，因此最后任何颜色格子的和必定是相等的。因此只需要记录每种颜色格子的和，并算出缺失格子的颜色C，用其余颜色的和减去颜色C的和即可</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 1005;</span><br><span class="line">int map[maxn][maxn];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n;</span><br><span class="line">	int x,y;</span><br><span class="line">	while(cin&gt;&gt;n)</span><br><span class="line">	&#123;</span><br><span class="line">		for(int i=0;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for(int j=0;j&lt;n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				cin&gt;&gt;map[i][j];</span><br><span class="line">				if(map[i][j]==-1) </span><br><span class="line">				&#123;</span><br><span class="line">					x=i;</span><br><span class="line">					y=j;	</span><br><span class="line">				&#125;	</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		for(int i=0;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(i==x) continue;</span><br><span class="line">			int minn=0x3f3f3f;</span><br><span class="line">			for(int j=0;j&lt;n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				minn=min(minn,map[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">			for(int j=0;j&lt;n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				map[i][j]-=minn;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i=0;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(i==y) continue;</span><br><span class="line">			int minn=0x3f3f3f;</span><br><span class="line">			for(int j=0;j&lt;n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				minn=min(minn,map[j][i]);</span><br><span class="line">			&#125;</span><br><span class="line">			for(int j=0;j&lt;n;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				map[j][i]-=minn;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		int ans1=0,ans2=0;</span><br><span class="line">		for(int i=0;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(map[i][y]!=0 &amp;&amp; map[i][y]!=-1) ans1=map[i][y];</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i=0;i&lt;n;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(map[x][i]!=0 &amp;&amp; map[x][i]!=-1) ans2=map[x][i];</span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;ans1+ans2&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Problem-C-Circle"><a href="#Problem-C-Circle" class="headerlink" title="Problem C. Circle"></a>Problem C. Circle</h2><p>现在我们要把1 . . . n这n个数字首尾连接组成一个环，使得相邻元素互质的对数尽可能多。请输出最大对数。</p>
+<h3 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h3><p>一行一个整数n(1 ≤ n ≤ 1000)。</p>
+<h3 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h3><p>一行一个整数表示答案。</p>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h3><p>standard input </p>
+<p>4</p>
+<p>standard output<br>4</p>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>样例的一种构造方法为1 4 3 2。</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>因为(i,i+1)=1且(1,n)=1，所以把1…n依次放进一个环，就可以啦。答案为n。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=1e5+7;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int t;</span><br><span class="line">	while(cin&gt;&gt;t)&#123;</span><br><span class="line">	cout&lt;&lt;t&lt;&lt;endl;	</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Problem-D-土龙弟弟"><a href="#Problem-D-土龙弟弟" class="headerlink" title="Problem D. 土龙弟弟"></a>Problem D. 土龙弟弟</h2><h2 id="Problem-E-Growth"><a href="#Problem-E-Growth" class="headerlink" title="Problem E. Growth"></a>Problem E. Growth</h2><p>弱弱有两个属性a和b，这两个属性初始的时候均为0，每一天他可以通过努力，让a涨1点或b涨1点。</p>
+<p>为了激励弱弱努力学习，我们共有n种奖励，第i种奖励有xi，yi，zi三种属性，若a ≥ xi且b ≥ yi，则弱<br>弱在接下来的每一天都可以得到zi的分数。</p>
+<p>问m天以后弱弱最多能得到多少分数。</p>
+<h3 id="Input-3"><a href="#Input-3" class="headerlink" title="Input"></a>Input</h3><p>第一行一个两个整数n和m（1 ≤ n ≤ 1000，1 ≤ m ≤ 2000000000）。<br>接下来n行，每行三个整数xi，yi，zi（1 ≤ xi, yi ≤ 1000000000，1 ≤ zi ≤ 1000000）。</p>
+<h3 id="Output-3"><a href="#Output-3" class="headerlink" title="Output"></a>Output</h3><p>一行一个整数表示答案。</p>
+<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example"></a>Example</h3><p>standard input<br>2 4<br>2 1 10<br>1 2 20</p>
+<p> standard output</p>
+<p>50</p>
+<h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h3><p>在样例中，弱弱可以这样规划：第一天a涨1，第二天b涨1，第三天b涨1，第四天a涨1。<br>共获得0 + 0 + 20 + 30 = 50分</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>把奖励的x拿出来从小到大排序，得到x1,x2,…,xn。<br>把奖励的y拿出来从小到大排序，得到y1,y2,…,yn。<br>用v[i][j]表示a值到达xi，b值达到yi时接下来每天可以得到的奖励。<br>v[i][j] = v[i - 1][j] + v[i][j - 1] - v[i - 1][j - 1] + t[i][j]<br>其中t[i][j]为满足x=i，y=j的奖励的总和。<br>用f[i][j]表示a值达到xi，b值达到yj时已经拿到的奖励的最大值。<br>f[i][j] + (x[i + 1] - x[i] - 1) <em> t[i][j] + t[i + 1][j] -&gt; f[i + 1][j]<br>f[i][j] + (y[j + 1] - y[j] - 1) </em> t[i][j] + t[i][j + 1] -&gt; f[i][j + 1]<br>最后统计一下答案就可以了。</p>
+<h2 id="Problem-F-Kingdom"><a href="#Problem-F-Kingdom" class="headerlink" title="Problem F. Kingdom"></a>Problem F. Kingdom</h2><p>X王国有n位官员，编号从1到n。国王是1号官员。除了国王以外，每个官员都有一个上司。我们称这个<br>官员是这个上司的下属。上司的编号总比下属小。</p>
+<p>我们定义一个官员的影响力为他所有下属的影响力之和再加1。例如，一个没有下属的官员的影响力<br>是1。国王的影响力总是n。</p>
+<p>任何一位有下属的官员总是选择他的下属中影响力最高的作为他的心腹（有若干下属影响力相同的话则<br>会选择编号最小的）。</p>
+<p>一位官员得到一条消息后，他就要把消息传达给国王。我们定义一位官员的花费为他将消息传达给国王<br>的花费。国王自己的花费为0。如果一位官员是他上司的心腹，则他的花费等于他上司的花费，否则他<br>的花费为他上司的花费加1。</p>
+<p>由于时代和平，消息并不需要传递的太快。我们希望你决定每位官员（除了国王）的上司，使得所有官<br>员的花费之和和尽量小。</p>
+<h3 id="Input-4"><a href="#Input-4" class="headerlink" title="Input"></a>Input</h3><p>一个整数n（1 ≤ n ≤ 8000）表示包括国王在内的官员的总数。</p>
+<h3 id="Output-4"><a href="#Output-4" class="headerlink" title="Output"></a>Output</h3><p>一个整数表示最大的花费之和。</p>
+<h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example"></a>Example</h3><p>standard input<br>4</p>
+<p> standard output</p>
+<p>2</p>
+<h3 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h3><p>f[i]代表i个点时的答案，g[i][j]代表若干颗树加起来，size和为i，每棵树size&lt;=j时，这些树的代价和最大是多少<br>从1到n枚举i，在i固定时枚举心腹的影响力大小更新f[i]，然后用类似背包的思路更新g[i][1]~g[i][i]<br>复杂度O(N^2)</p>
+<h2 id="Problem-G-Matrix"><a href="#Problem-G-Matrix" class="headerlink" title="Problem G. Matrix"></a>Problem G. Matrix</h2><p>弱弱有一个n × m的矩阵，第i行第j列位置上的值为aij。<br>弱弱定义以(x, y)为顶点，大小为k的三角形为：</p>
+<p>第x行y位置，<br>第x + 1行y − 1，y，y + 1位置，<br>. . .，<br>第x + k − 1行y − k + 1，. . .，y + k − 1位置组成的区域。</p>
+<p>比如说，以(1, 3)为顶点，大小为3的三角形为</p>
+<p>OOXOOOO<br>OXXXOOO<br>XXXXXOO<br>OOOOOOO<br>中打叉的位置。</p>
+<p>现在弱弱想要知道所有大小为k的三角形中，重心位置离顶点最近的是哪个？重心是三角形中每个位置<br>按照它们的值加权平均所得的点。<br>请输出这个最小距离（欧几里得距离）。</p>
+<h3 id="Input-5"><a href="#Input-5" class="headerlink" title="Input"></a>Input</h3><p>第一行一个三个整数n，m，k（1 ≤ n ≤ 1000，1 ≤ m ≤ 1000，1 ≤ k ≤ min n,(m + 1)/2</p>
+<p>接下来n行，每行m个整数aij（1 ≤ aij ≤ 1000）表示每个位置的重量。</p>
+<h3 id="Output-5"><a href="#Output-5" class="headerlink" title="Output"></a>Output</h3><p>一行一个数表示答案。相对误差或绝对误差在10−5（1e-5）之内均会被判断为正确。</p>
+<h3 id="Example-4"><a href="#Example-4" class="headerlink" title="Example"></a>Example</h3><p>standard input<br>2 3 2<br>1 1 1<br>1 1 1</p>
+<p>standard output</p>
+<p>0.7500000000</p>
+<h3 id="Note-2"><a href="#Note-2" class="headerlink" title="Note"></a>Note</h3><p>只有一个大小为2的三角形。</p>
+<h3 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h3><p>w个格子的重心的坐标为（∑xi<em>wi / ∑wi, ∑yi</em>wi / ∑wi)。<br>那么其实我们只要维护∑xi<em>wi，∑yi</em>wi，∑wi就可以了。<br>假设我们现在有一个顶点为(x, y)的三角形，我们想要推到顶点为(x, y+1)的三角形，观察两者之间的差异，会发现在推过去的过程中，其实就是删去了一个斜条，又加入了一个斜条。<br>同理，从(x, y)到(x+1, y)其实只是删去了两个斜条，加上了底上的横条，而这些关键的值都是可以通过前缀和的方法维护。</p>
+<h2 id="Problem-H-Mountain"><a href="#Problem-H-Mountain" class="headerlink" title="Problem H. Mountain"></a>Problem H. Mountain</h2><p>平面上有n座山，每座山都有左右两面，第i座山的高度为ai，现在弱弱在第一座山的左边山脚下（高度为0），他想要依此爬过这些山，到达第n座山的右边山脚下。</p>
+<p>除了简单的爬上爬下，还有一种特殊操作。</p>
+<p>如果弱弱目前在第i座山右面的海拔x的位置，且第j(i &lt; j)座山的海拔大于等于x，且第i + 1, . . . , j − 1座山中没有一座山的海拔高于x，那么他可以使用绳索滑到第j座山左面海拔x的位置。</p>
+<p>弱弱想找到一种方式，使得他在行程中海拔变化的幅度最小。请输出最小幅度。</p>
+<h3 id="Input-6"><a href="#Input-6" class="headerlink" title="Input"></a>Input</h3><p>第一行一个整数n（1 ≤ n ≤ 1000）。<br>接下来一行n个整数ai（1 ≤ ai ≤ 1000）表示每座山的高度。</p>
+<h3 id="Output-6"><a href="#Output-6" class="headerlink" title="Output"></a>Output</h3><p>一行一个整数表示答案。</p>
+<h3 id="Example-5"><a href="#Example-5" class="headerlink" title="Example"></a>Example</h3><p>standard input<br>5<br>1 3 5 4 2</p>
+<p>standard output</p>
+<p>10</p>
+<h3 id="思路-5"><a href="#思路-5" class="headerlink" title="思路"></a>思路</h3><p>考虑山中最高的一座，最优操作一定是从第一座山的左下角开始不停地往上爬，然后从最高的山不停地往下爬爬到最后一座山的右下角。<br>所以答案为最高山的高度*2。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[1007], n;</span><br><span class="line">int main()&#123;</span><br><span class="line"> while(cin&gt;&gt;n)&#123;</span><br><span class="line">  int cnt = 0;</span><br><span class="line">  a[0] = 0;</span><br><span class="line">  int cur = 0;</span><br><span class="line">  for(int i = 1;i&lt;=n;i++)&#123;</span><br><span class="line">   cin&gt;&gt;a[i];</span><br><span class="line">   if(a[i] &gt;= a[cur])&#123;</span><br><span class="line">    cnt += abs(a[i] - a[cur]);</span><br><span class="line">    cur = i;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  while(cur&lt;n)&#123;</span><br><span class="line">   int cur2 = cur+1;</span><br><span class="line">   for(int i = cur2;i&lt;=n;i++)&#123;</span><br><span class="line">    if(a[i] &gt;= a[cur2])&#123;</span><br><span class="line">     cur2 = i;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   cnt+=abs(a[cur2]-a[cur]);</span><br><span class="line">   cur = cur2;</span><br><span class="line">  &#125;</span><br><span class="line">  cnt+=a[n];</span><br><span class="line">  cout&lt;&lt;cnt&lt;&lt;endl;</span><br><span class="line"> &#125;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Problem-I-清明梦超能力者黄"><a href="#Problem-I-清明梦超能力者黄" class="headerlink" title="Problem I. 清明梦超能力者黄"></a>Problem I. 清明梦超能力者黄</h2><p>黄YY是一个清明梦超能力者，同时也是一个记忆大师。他能够轻松控制自己在梦中的一切，在醒来之<br>后还能清晰的记得梦中所有的细节，这让他的朋友们都十分羡慕。</p>
+<p>又是一个晚上，黄YY又到了自己的梦中，并且随手造出了一棵有n个点的树，树上每个点有一个初始颜<br>色0。为了让这棵树不那么单调，黄YY拿起了画笔在上面尽情上色。每一次上色可以用u, v, c来描述，代<br>表黄YY把u, v这条路径上的点都染色成了c。</p>
+<p>正当黄YY开心的完成了m次染色，准备在早上醒来之时向朋友们炫耀。但现实中的黄YY由于过于兴奋<br>滚到了床下，撞到了脑袋，在剧痛中醒来。由于脑部受到了严重创伤，黄YY对刚才梦境中发生的一切<br>发生了严重的信息丢失。</p>
+<p>但英俊潇洒的黄YY当然不希望自己的窘态被朋友们发现。为了证明自己还是那个清明梦超能力者，他<br>希望告诉朋友们自己上色后每个节点的颜色。同时为了更进一步证明他还是个记忆大师，他希望干脆直<br>接说出每个点在倒数第k次染色时的颜色。</p>
+<p>当然，现在的黄YY已经成了弱智了，作为黄YY最亲密的朋友，你快来帮帮黄YY吧！</p>
+<h3 id="Input-7"><a href="#Input-7" class="headerlink" title="Input"></a>Input</h3><p>第一行三个整数n, m, k，代表树的点数，黄YY染色的次数，以及最后求颜色时，倒数的次数<br>（1 ≤ n, m, k ≤ 100000）。</p>
+<p>接下来n − 1行，每行u, v代表u, v两点之间有一条边。这里保证1 ≤ u, v ≤ n，且无重边与自环，是一棵<br>标准的树。</p>
+<p>接下来m行，每一行三个数字u, v, c代表黄YY在第这次用c颜色的画笔从u涂到了v。</p>
+<h3 id="Output-7"><a href="#Output-7" class="headerlink" title="Output"></a>Output</h3><p>一行n个数字，输出每个点倒数第k次染色时的颜色。如果本身不足k次，输出0。</p>
+<h3 id="Example-6"><a href="#Example-6" class="headerlink" title="Example"></a>Example</h3><p>standard input </p>
+<p>3 3 2</p>
+<p>1 2</p>
+<p>2 3</p>
+<p>1 2 1</p>
+<p>2 3 2</p>
+<p>1 3 3</p>
+<p>standard output</p>
+<p>1 2 2</p>
+<h3 id="Note-3"><a href="#Note-3" class="headerlink" title="Note"></a>Note</h3><p>对于点1在第一次和第三次染色的时候分别被染色为1, 3，倒数第二次的颜色就是1。</p>
+<p>对于点2在第一、二、三次染色的时候分别被染色为1, 2, 3，倒数第二次的颜色就是2。</p>
+<p>对于点3在第二次和第三次染色的时候分别被染色为2, 3，倒数第二次的颜色就是2。</p>
+<h3 id="思路-6"><a href="#思路-6" class="headerlink" title="思路"></a>思路</h3><p>首先每条路径从LCA处分开可以拆成两条链<br>假设链A-&gt;B执行了第i次染色操作，假设A是B的祖先，那么我们在B点加入一个”插入i”的事件，在A的父亲点加入一个”删除i”的事件<br>然后dfs整颗树求解，每个点维护一个线段树。处理一个点时先合并所有儿子的线段树，然后再处理这个点上的事件，得到线段树之后询问第K大值既可得到答案。<br>复杂度分析：<br>Node<em> merge(Node</em> a, Node* b) {<br>    if (a == NULL) return b;<br>    if (b == NULL) return a;<br>    a-&gt;sum += b-&gt;sum;<br>    a-&gt;child[0] = merge(a-&gt;child[0], b-&gt;child[0]);<br>    a-&gt;child[1] = merge(a-&gt;child[1], b-&gt;child[1]);<br>    return a;<br>}<br>考虑以上的线段树合并，每次合并会减少一个区间。而在事件点插入、删除的时候会产生至多log个区间，因此复杂度为O(NLogN)</p>
+<h2 id="Problem-J-最短路"><a href="#Problem-J-最短路" class="headerlink" title="Problem J. 最短路"></a>Problem J. 最短路</h2><p>给一个连通图，每次询问两点间最短路。每条边的长度都是1。</p>
+<h3 id="Input-8"><a href="#Input-8" class="headerlink" title="Input"></a>Input</h3><p>第一行两个整数n和m，表示图的点数和边数（1 ≤ n ≤ 100000, 1 ≤ m ≤ n + 100）。</p>
+<p>接下来m行每行两个整数a和b，表示一条边（1 ≤ a, b ≤ n）。保证没有自环和重边。保证图连通。</p>
+<p>接下来一个整数q表示询问的个数（1 ≤ q ≤ 100000）。</p>
+<p>接下来q行每行两个整数a和b表示询问a和b之间的最短路。</p>
+<h3 id="Output-8"><a href="#Output-8" class="headerlink" title="Output"></a>Output</h3><p>每个询问输出一行表示答案</p>
+<h3 id="Example-7"><a href="#Example-7" class="headerlink" title="Example"></a>Example</h3><p>input</p>
+<p>4 5<br>1 2<br>2 3<br>1 4<br>4 3<br>2 4<br>4<br>1 4<br>1 2<br>2 4<br>1 3</p>
+<p>output</p>
+<p>1<br>1<br>1<br>2</p>
+<h3 id="思路-7"><a href="#思路-7" class="headerlink" title="思路"></a>思路</h3><p>本题十分直接。我们不断地把度数为1的点删掉，把度数为2的点收缩，最后会得到一个图，和原图的点数与边数之差相同，且新图中每个点的度数都至少是3。这就是说我们会得到一个200个点300条边以内的图。新图可以用Floyd算法预处理所有点对之间最短路。询问时，将询问转化到新图上即可。转化时需要注意细节。</p>
+<h1 id="WANNAFLY-DAY2"><a href="#WANNAFLY-DAY2" class="headerlink" title="WANNAFLY_DAY2"></a>WANNAFLY_DAY2</h1><h2 id="Problem-A-Tobaku-Mokushiroku-Kaiji"><a href="#Problem-A-Tobaku-Mokushiroku-Kaiji" class="headerlink" title="Problem A. Tobaku Mokushiroku Kaiji"></a>Problem A. Tobaku Mokushiroku Kaiji</h2><p>开司正在与另外一人玩石头剪刀布。双方各有一些代表石头、剪刀、布的卡牌，每局两人各出一张卡<br>牌，根据卡牌的内容决定这一局的胜负。胜负规则为：石头赢剪刀、剪刀赢布、布赢石头、相同为平<br>局。每张卡牌至多被使用一次。<br>已知双方的卡牌数量，问开司最多赢几局？</p>
+<h3 id="Input-9"><a href="#Input-9" class="headerlink" title="Input"></a>Input</h3><p>一行六个数字a, b, c, d, e, f(0 ≤ a, b, c, d, e, f ≤ 50)，a, b, c分别表示开司的石头、剪刀、布的牌的数<br>量，d, e, f分别表示此时另一人的石头、剪刀、布的牌的数量。</p>
+<h2 id="Output-9"><a href="#Output-9" class="headerlink" title="Output"></a>Output</h2><p>一个整数表示开司最多赢几局</p>
+<h3 id="Example-8"><a href="#Example-8" class="headerlink" title="Example"></a>Example</h3><p>in</p>
+<p>29 7 41 14 12 42</p>
+<p>out</p>
+<p>33</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a[6];</span><br><span class="line">	for(int i = 0;i&lt;6;i++)</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">	cout&lt;&lt;min(a[0],a[4])+min(a[1],a[5])+min(a[2],a[3])&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Problem-E-Eustia-of-the-Tarnished-Wings"><a href="#Problem-E-Eustia-of-the-Tarnished-Wings" class="headerlink" title="Problem E. Eustia of the Tarnished Wings"></a>Problem E. Eustia of the Tarnished Wings</h2><p>Novus Aither是一个潜藏着多个势力的城市。每个势力都有一个唯一的领导人，每个领导人有一个属性<br>值。如果两个势力的领导人的属性值分别为a, b，且|a − b| ≤ m，说明这两个领导人的思想有一定的相似<br>之处，这两个势力可以合并，新的领导人可以指定为原来的两个领导人中的任意一个。新产生的势力可<br>以依照相同的的规则，继续与其他势力合并。问在所有可能的合并情况中，最少会剩下几个势力。</p>
+<h3 id="Input-10"><a href="#Input-10" class="headerlink" title="Input"></a>Input</h3><p>第一行两个空格隔开的整数n(1 ≤ n ≤ 106<br>), m(0 ≤ m109<br>)。n代表当前势力的个数。m的含义如题目描<br>述。<br>第二行n个空格隔开的整数di(0 ≤ di ≤ 109<br>)，代表第i个势力的领导人的属性值。</p>
+<h3 id="Output-10"><a href="#Output-10" class="headerlink" title="Output"></a>Output</h3><p>输出一个数表示势力的最少数量。</p>
+<p>Example<br>standard input<br>4 1<br>2 1 3 10</p>
+<p>standard output</p>
+<p>2</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const int maxn = 1e6+7;</span><br><span class="line">ll a[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	ios::sync_with_stdio(false);</span><br><span class="line">	cin.tie(0);</span><br><span class="line">	ll n,m;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	for(int i = 0;i&lt;n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	sort(a,a+n);</span><br><span class="line">	int cnt = 1;</span><br><span class="line">	for(int i = 1;i&lt;n;i++)&#123;</span><br><span class="line">		if(a[i]-a[i-1]&gt;m)</span><br><span class="line">			cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;cnt&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="WANNAFLY-DAY3"><a href="#WANNAFLY-DAY3" class="headerlink" title="WANNAFLY_DAY3"></a>WANNAFLY_DAY3</h1><h2 id="Problem-D-Shopping"><a href="#Problem-D-Shopping" class="headerlink" title="Problem D. Shopping"></a>Problem D. Shopping</h2><p>你要买n件物品，其中有一些是凳子。<br>商场正在举行促销活动，如果购物车中有至少一个凳子，那么你可以半价购买这个购物车中最贵的一个<br>物品。<br>你有m辆购物车，请最小小化你的花费。</p>
+<h3 id="Input-11"><a href="#Input-11" class="headerlink" title="Input"></a>Input</h3><p>第一行一个整数t表示数据组数(1 ≤ t ≤ 100)。</p>
+<p>每组数据第一行两个整数n, m (1 ≤ n, m ≤ 1000)，接下来n行每行两个整数ai<br>, bi，分别表示第i件物品的<br>价格以及它是否是凳子(1 ≤ ai ≤ 105<br>, 0 ≤ bi ≤ 1)。</p>
+<h3 id="Output-11"><a href="#Output-11" class="headerlink" title="Output"></a>Output</h3><p>每组数据输出一行一个实数表示最小花费，保留一位小数。</p>
+<p>Example<br>stdin<br>2<br>5 1<br>1 0<br>2 1<br>3 1<br>4 0<br>5 0<br>5 10<br>1 0<br>2 1<br>3 1<br>4 0<br>5 0</p>
+<p>stdout</p>
+<p>12.5<br>10.5</p>
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,m;</span><br><span class="line">const int maxn = 1007;</span><br><span class="line">struct node&#123;</span><br><span class="line">	double cost;</span><br><span class="line">	int flag;</span><br><span class="line">&#125;a[maxn];</span><br><span class="line">int cmp(node a,node b)&#123;</span><br><span class="line">	return a.cost&gt;b.cost;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin &gt;&gt; t;</span><br><span class="line">	while(t--)&#123;</span><br><span class="line">		cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">		int cnt = 0;</span><br><span class="line">		double all = 0;</span><br><span class="line">		for(int i = 0;i&lt;n;i++)&#123;</span><br><span class="line">			cin&gt;&gt;a[i].cost;</span><br><span class="line">			cin&gt;&gt;a[i].flag;</span><br><span class="line">			if(a[i].flag==1)</span><br><span class="line">				cnt++;</span><br><span class="line">			all+=a[i].cost;</span><br><span class="line">		&#125;</span><br><span class="line">		if(cnt&gt;m)</span><br><span class="line">			cnt = m;</span><br><span class="line">		sort(a,a+n,cmp);</span><br><span class="line">		for(int i = 0;i&lt;cnt;i++)&#123;</span><br><span class="line">			all-=(a[i].cost/2.0);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%.1lf\n&quot;,all);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="WANNAFLY-DAY4"><a href="#WANNAFLY-DAY4" class="headerlink" title="WANNAFLY_DAY4"></a>WANNAFLY_DAY4</h1><h2 id="7-贵族用户"><a href="#7-贵族用户" class="headerlink" title="7 贵族用户"></a>7 贵族用户</h2><p>终于活成了自己讨厌的样子。<br>充钱能让你变得更强。</p>
+<p>在暖婊这个游戏里面，如果你充了 x 元钱，那么你能获得 10x 个钻石。同时暖婊也有 m 档VIP，如果你往暖婊里面充了 ai 个钻石，那么你能成为第 i 档贵族用户。当你成为为第 i 档贵族用户。当你成为第 i 档贵族用户之后，那么你可以获得 pi% 的优惠。</p>
+<p>你需要 k 件材料合成衣服，其中第 i 件材料原价为 di 个钻石，你一共需要 ci 件这种材料。<br>当你获得 p 的优惠时，这个材料的真实价格为 ⌈di(1 − p)⌉。<br>请问栗子米最少需要氪多少钱，这里我们规定只能氪整数的钱。</p>
+<h3 id="7-2-输入格式"><a href="#7-2-输入格式" class="headerlink" title="7.2 输入格式"></a>7.2 输入格式</h3><p>第一行一个整数 T(T ≤ 1000)，表示数据组数。<br>每组数据第一行两个整数 m, k(1 ≤ m, k ≤ 15)。</p>
+<p>接下来 m 行每行两个正整数 1 ≤ ai ≤ 105<br>, 1 ≤ pi ≤ 100，保证 ai &lt; ai+1, pi ≤ pi+1。<br>接下来 k 行每行两个正整数 1 ≤ ci<br>, di ≤ 1000。</p>
+<h3 id="7-3-输出格式"><a href="#7-3-输出格式" class="headerlink" title="7.3 输出格式"></a>7.3 输出格式</h3><p>对于每组数据，输出一个整数，表示至少要氪多少钱。</p>
+<h3 id="7-4-样例输入"><a href="#7-4-样例输入" class="headerlink" title="7.4 样例输入"></a>7.4 样例输入</h3><p>1<br>1 1<br>100 100<br>100 100</p>
+<h3 id="7-5-样例输出"><a href="#7-5-样例输出" class="headerlink" title="7.5 样例输出"></a>7.5 样例输出</h3><p>10</p>
+<h3 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int m,k;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int a;</span><br><span class="line">	int p;</span><br><span class="line">&#125;vip[20];</span><br><span class="line">struct cost&#123;</span><br><span class="line">	int cc;</span><br><span class="line">	int dd;</span><br><span class="line">&#125;dim[20];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin&gt;&gt;t;</span><br><span class="line">	while(t--)&#123;</span><br><span class="line">		cin&gt;&gt;m&gt;&gt;k;</span><br><span class="line">		for(int i = 0;i&lt;m;i++)&#123;</span><br><span class="line">			cin&gt;&gt;vip[i].a&gt;&gt;vip[i].p;</span><br><span class="line">			if(vip[i].a%10)</span><br><span class="line">				vip[i].a+=10-(vip[i].a%10);</span><br><span class="line">		&#125;</span><br><span class="line">		int ans = 0;</span><br><span class="line">		for(int i = 0;i&lt;k;i++)&#123;</span><br><span class="line">			cin&gt;&gt;dim[i].cc&gt;&gt;dim[i].dd;</span><br><span class="line">			ans+=dim[i].cc*dim[i].dd;</span><br><span class="line">		&#125;</span><br><span class="line">		if(ans%10)</span><br><span class="line">			ans+=10-(ans%10);</span><br><span class="line">		int minx = ans;</span><br><span class="line">		for(int u = 0;u&lt;m;u++)&#123;</span><br><span class="line">			int ans2 = 0;</span><br><span class="line">			for(int i = 0;i&lt;k;i++)&#123;</span><br><span class="line">				ans2 += dim[i].cc*(ceil((1-((double)vip[u].p/100.0))*dim[i].dd));</span><br><span class="line">			&#125;</span><br><span class="line">			if(ans2%10)&#123;</span><br><span class="line">				ans2+=10-(ans2%10);</span><br><span class="line">			&#125;</span><br><span class="line">			if(ans2&lt;=vip[u].a)&#123;</span><br><span class="line">				ans2 = vip[u].a;</span><br><span class="line">			&#125;</span><br><span class="line">			minx = min(minx,ans2);</span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;minx/10&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="WANNAFLY-DAY6"><a href="#WANNAFLY-DAY6" class="headerlink" title="WANNAFLY_DAY6"></a>WANNAFLY_DAY6</h2><h2 id="F平衡二叉树"><a href="#F平衡二叉树" class="headerlink" title="F平衡二叉树"></a>F平衡二叉树</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/1%60_0EI$RPOB1E$BDXEDC2%25W.png" alt=""></p>
+<h3 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 70;</span><br><span class="line">ll n,d;</span><br><span class="line">ll a,b;</span><br><span class="line">ll c[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;d;</span><br><span class="line">	a = 1;</span><br><span class="line">	b = 0;</span><br><span class="line">	memset(c,0,sizeof(c));</span><br><span class="line">	for(int i = 0;i&lt;n-1;i++)</span><br><span class="line">		a*=2;</span><br><span class="line">	a-=1;</span><br><span class="line">	for(int i = 0;i&lt;=d;i++)&#123;</span><br><span class="line">		c[i] = 1;</span><br><span class="line">	&#125;</span><br><span class="line">	c[d+1] = 2;</span><br><span class="line">	for(int i = d+2;i&lt;n-1-d;i++)&#123;</span><br><span class="line">		c[i] = c[i-1]+c[i-d-1];</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = 0;i&lt;n-1-d;i++)</span><br><span class="line">		b+=c[i];</span><br><span class="line">	cout&lt;&lt;a-b&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="H卡牌游戏"><a href="#H卡牌游戏" class="headerlink" title="H卡牌游戏"></a>H卡牌游戏</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/1%25%7B0%29ORKZ_W%29T4%7B3$FKU3R9.png" alt=""></p>
+<h3 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int t;</span><br><span class="line">	cin&gt;&gt;t;</span><br><span class="line">	for(int u = 1;u&lt;=t;u++)&#123;</span><br><span class="line">		long double x,y;</span><br><span class="line">		int z;</span><br><span class="line">		cin&gt;&gt;x&gt;&gt;y;</span><br><span class="line">		cin&gt;&gt;z;</span><br><span class="line">		printf(&quot;Case #%d: &quot;,u);</span><br><span class="line">		long double ans = 0;</span><br><span class="line">		for(int i = 0;i&lt;z;i++)&#123;</span><br><span class="line">			ans += x/y;</span><br><span class="line">			x--;</span><br><span class="line">			y--;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%Lf\n&quot;,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="WANNAFLY-DAY7"><a href="#WANNAFLY-DAY7" class="headerlink" title="WANNAFLY_DAY7"></a>WANNAFLY_DAY7</h1><h2 id="A-机器学习"><a href="#A-机器学习" class="headerlink" title="A.机器学习"></a>A.机器学习</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/7WIGFX9JGWV%5DBD0A9XRS%5DG8.png" alt="http://p7woygi8q.bkt.clouddn.com/7WIGFX9JGWV%5DBD0A9XRS%5DG8.png"></p>
+<h3 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()&#123;</span><br><span class="line">	double n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	printf(&quot;%.2lf\n&quot;,n);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D最小生成树"><a href="#D最小生成树" class="headerlink" title="D最小生成树"></a>D最小生成树</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/3XW5G5R%7DEQ~Y6M%25%5BM4G6O1T.png" alt=""></p>
+<h3 id="代码-10"><a href="#代码-10" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 1e5+7;</span><br><span class="line">ll a[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	ll minx = 0x3fffffff;</span><br><span class="line">	ll sum = 0;</span><br><span class="line">	for(int i = 0;i&lt;n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">		minx = min(minx,a[i]);</span><br><span class="line">		sum+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	sum += minx*(n-1);</span><br><span class="line">	sum-=minx;</span><br><span class="line">	cout&lt;&lt;sum&lt;&lt;endl;;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="G区间权值"><a href="#G区间权值" class="headerlink" title="G区间权值"></a>G区间权值</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/1UEZSLL%25IWJN7N%60%7D~ID$R%5DQ.png" alt=""></p>
+<h3 id="代码-11"><a href="#代码-11" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxx = 1e7+7;</span><br><span class="line">const int maxn = 300007;</span><br><span class="line">const int mod = 1e9+7;</span><br><span class="line">ll a[maxn] = &#123;0&#125;;</span><br><span class="line">ll w[maxn] = &#123;0&#125;;</span><br><span class="line">ll dpa[maxn] = &#123;0&#125;;</span><br><span class="line">ll dpb[maxn] = &#123;0&#125;;</span><br><span class="line">ll dpl[maxn] = &#123;0&#125;;</span><br><span class="line">ll dpr[maxn] = &#123;0&#125;;</span><br><span class="line">int n;</span><br><span class="line">void init()&#123;</span><br><span class="line">	for(int i = 1;i&lt;=n;i++)&#123;</span><br><span class="line">		int tmp = min(i,n-i+1);</span><br><span class="line">		dpb[i] = tmp*dpa[n]%mod;</span><br><span class="line">		dpb[i] -= dpl[tmp-1];</span><br><span class="line">		dpb[i] -= dpr[n-tmp+2];</span><br><span class="line">		dpb[i]%=mod;</span><br><span class="line">		dpb[i] *= w[i];</span><br><span class="line">		dpb[i]%=mod;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	ios::sync_with_stdio(false);</span><br><span class="line">	cin.tie(0);</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(int i = 1;i&lt;=n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">		dpa[i] = a[i];</span><br><span class="line">		dpa[i]+=dpa[i-1];</span><br><span class="line">		dpa[i]%=mod;</span><br><span class="line">		dpl[i] = dpl[i-1];</span><br><span class="line">		dpl[i]+=dpa[i];</span><br><span class="line">		dpl[i]%=mod;</span><br><span class="line">	&#125; </span><br><span class="line">	dpr[n+1] = 0;</span><br><span class="line">	for(int i = n;i&gt;=1;i--)&#123;</span><br><span class="line">		dpr[i] = dpr[i+1];</span><br><span class="line">		dpr[i]+=dpa[n]-dpa[i-1];</span><br><span class="line">		dpr[i]%=mod;</span><br><span class="line">	&#125; </span><br><span class="line">	for(int i = 1;i&lt;=n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans = 0;</span><br><span class="line">	init();</span><br><span class="line">	for(int i = 1;i&lt;=n;i++)&#123;</span><br><span class="line">		ans+=dpb[i];</span><br><span class="line">		ans%=mod;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="I联通块计数"><a href="#I联通块计数" class="headerlink" title="I联通块计数"></a>I联通块计数</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/1K%7DH9GVNQ5%2943T$8IZ3HUY7.png" alt=""></p>
+<h3 id="代码-12"><a href="#代码-12" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxx = 1e7+7;</span><br><span class="line">const int maxn = 1e5+7;</span><br><span class="line">const ll mod = 998244353;</span><br><span class="line">int n;</span><br><span class="line">ll a[maxn];</span><br><span class="line">ll dp[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">	for(int i = 0;i&lt;n;i++)&#123;</span><br><span class="line">		dp[i] = a[i];</span><br><span class="line">		dp[i]%=mod;</span><br><span class="line">		if(i&gt;0)&#123;</span><br><span class="line">			dp[i]*=dp[i-1];</span><br><span class="line">			dp[i]%=mod;</span><br><span class="line">			dp[i]+=a[i];</span><br><span class="line">			dp[i]%=mod;</span><br><span class="line">			dp[i]+=dp[i-1];</span><br><span class="line">			dp[i]%=mod;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	ll ans = 1;</span><br><span class="line">	for(int i = 0;i&lt;n;i++)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">		ans+=(a[i]*(a[i]+1)/2)%mod;</span><br><span class="line">		ans%=mod;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	init();</span><br><span class="line">	if(n&gt;0)&#123;</span><br><span class="line">		ans+=dp[n-1];</span><br><span class="line">		ans%=mod;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans%mod&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="J寻找复读机"><a href="#J寻找复读机" class="headerlink" title="J寻找复读机"></a>J寻找复读机</h2><p><img src="http://p7woygi8q.bkt.clouddn.com/1GP5%60K5WW_NQ%60S%5B4GR8T%5B%29Y.png" alt=""></p>
+<h3 id="代码-13"><a href="#代码-13" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn = 1e3+7;</span><br><span class="line">int n,m;</span><br><span class="line">int vis[maxn];</span><br><span class="line">int main()&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	memset(vis,0,sizeof(vis));</span><br><span class="line">	string str1, tmp;</span><br><span class="line">	int d;</span><br><span class="line">	while(m--)&#123;</span><br><span class="line">		cin&gt;&gt;d;</span><br><span class="line">		cin&gt;&gt;tmp;</span><br><span class="line">		if(str1==tmp)&#123;</span><br><span class="line">			if(vis[d]!=-1)</span><br><span class="line">				vis[d]++;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			vis[d]=-1;</span><br><span class="line">		&#125;</span><br><span class="line">		str1 = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	int flag = 0;</span><br><span class="line">	for(int i = 1;i&lt;=n;i++)&#123;</span><br><span class="line">		if(vis[i]!=-1)&#123;</span><br><span class="line">			if(flag==0)&#123;</span><br><span class="line">				cout&lt;&lt;i;</span><br><span class="line">				flag = 1;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">				cout&lt;&lt;&apos; &apos;&lt;&lt;i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><hr>纸短情长啊<i class="fa fa-paw"></i>文章结束了<i class="fa fa-paw"></i>但我们的故事还在继续</div>
+    
+</div>
+    
+	  </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/26/2018-07-26/" rel="next" title="7.26图论基础专项训练题解">
+                <i class="fa fa-chevron-left"></i> 7.26图论基础专项训练题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA4NC8xMjYxOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠CSDN" target="_blank">浅悠悠CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="张家辉CSDN" target="_blank">张家辉CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/sophia__yu" title="杨祥钰CSDN" target="_blank">杨祥钰CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/bailerong123" title="白乐荣CSDN" target="_blank">白乐荣CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://amon1997.com/" title="曹静的博客" target="_blank">曹静的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/messhiro" title="赵神CSDN" target="_blank">赵神CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
+	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WANNAFLY-DAY1"><span class="nav-number">1.</span> <span class="nav-text">WANNAFLY_DAY1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-A-Birthday"><span class="nav-number">1.1.</span> <span class="nav-text">Problem A. Birthday</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.1.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.1.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Examples"><span class="nav-number">1.1.3.</span> <span class="nav-text">Examples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路："><span class="nav-number">1.1.4.</span> <span class="nav-text">思路：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-B-Board"><span class="nav-number">1.2.</span> <span class="nav-text">Problem B. Board</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.2.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.4.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.5.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-C-Circle"><span class="nav-number">1.3.</span> <span class="nav-text">Problem C. Circle</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">1.3.4.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">1.3.5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">1.3.6.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-D-土龙弟弟"><span class="nav-number">1.4.</span> <span class="nav-text">Problem D. 土龙弟弟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-E-Growth"><span class="nav-number">1.5.</span> <span class="nav-text">Problem E. Growth</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-3"><span class="nav-number">1.5.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-3"><span class="nav-number">1.5.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-2"><span class="nav-number">1.5.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note-1"><span class="nav-number">1.5.4.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">1.5.5.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-F-Kingdom"><span class="nav-number">1.6.</span> <span class="nav-text">Problem F. Kingdom</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-4"><span class="nav-number">1.6.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-4"><span class="nav-number">1.6.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-3"><span class="nav-number">1.6.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-3"><span class="nav-number">1.6.4.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-G-Matrix"><span class="nav-number">1.7.</span> <span class="nav-text">Problem G. Matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-5"><span class="nav-number">1.7.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-5"><span class="nav-number">1.7.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-4"><span class="nav-number">1.7.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note-2"><span class="nav-number">1.7.4.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-4"><span class="nav-number">1.7.5.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-H-Mountain"><span class="nav-number">1.8.</span> <span class="nav-text">Problem H. Mountain</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-6"><span class="nav-number">1.8.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-6"><span class="nav-number">1.8.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-5"><span class="nav-number">1.8.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-5"><span class="nav-number">1.8.4.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">1.8.5.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-I-清明梦超能力者黄"><span class="nav-number">1.9.</span> <span class="nav-text">Problem I. 清明梦超能力者黄</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-7"><span class="nav-number">1.9.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-7"><span class="nav-number">1.9.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-6"><span class="nav-number">1.9.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note-3"><span class="nav-number">1.9.4.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-6"><span class="nav-number">1.9.5.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-J-最短路"><span class="nav-number">1.10.</span> <span class="nav-text">Problem J. 最短路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-8"><span class="nav-number">1.10.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-8"><span class="nav-number">1.10.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-7"><span class="nav-number">1.10.3.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-7"><span class="nav-number">1.10.4.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WANNAFLY-DAY2"><span class="nav-number">2.</span> <span class="nav-text">WANNAFLY_DAY2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-A-Tobaku-Mokushiroku-Kaiji"><span class="nav-number">2.1.</span> <span class="nav-text">Problem A. Tobaku Mokushiroku Kaiji</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-9"><span class="nav-number">2.1.1.</span> <span class="nav-text">Input</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-9"><span class="nav-number">2.2.</span> <span class="nav-text">Output</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Example-8"><span class="nav-number">2.2.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-3"><span class="nav-number">2.2.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-E-Eustia-of-the-Tarnished-Wings"><span class="nav-number">2.3.</span> <span class="nav-text">Problem E. Eustia of the Tarnished Wings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-10"><span class="nav-number">2.3.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-10"><span class="nav-number">2.3.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-4"><span class="nav-number">2.3.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WANNAFLY-DAY3"><span class="nav-number">3.</span> <span class="nav-text">WANNAFLY_DAY3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-D-Shopping"><span class="nav-number">3.1.</span> <span class="nav-text">Problem D. Shopping</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Input-11"><span class="nav-number">3.1.1.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-11"><span class="nav-number">3.1.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-5"><span class="nav-number">3.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WANNAFLY-DAY4"><span class="nav-number">4.</span> <span class="nav-text">WANNAFLY_DAY4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-贵族用户"><span class="nav-number">4.1.</span> <span class="nav-text">7 贵族用户</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-输入格式"><span class="nav-number">4.1.1.</span> <span class="nav-text">7.2 输入格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-输出格式"><span class="nav-number">4.1.2.</span> <span class="nav-text">7.3 输出格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-样例输入"><span class="nav-number">4.1.3.</span> <span class="nav-text">7.4 样例输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-样例输出"><span class="nav-number">4.1.4.</span> <span class="nav-text">7.5 样例输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-6"><span class="nav-number">4.1.5.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WANNAFLY-DAY6"><span class="nav-number">4.2.</span> <span class="nav-text">WANNAFLY_DAY6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F平衡二叉树"><span class="nav-number">4.3.</span> <span class="nav-text">F平衡二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-7"><span class="nav-number">4.3.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H卡牌游戏"><span class="nav-number">4.4.</span> <span class="nav-text">H卡牌游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-8"><span class="nav-number">4.4.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WANNAFLY-DAY7"><span class="nav-number">5.</span> <span class="nav-text">WANNAFLY_DAY7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-机器学习"><span class="nav-number">5.1.</span> <span class="nav-text">A.机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-9"><span class="nav-number">5.1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D最小生成树"><span class="nav-number">5.2.</span> <span class="nav-text">D最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-10"><span class="nav-number">5.2.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G区间权值"><span class="nav-number">5.3.</span> <span class="nav-text">G区间权值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-11"><span class="nav-number">5.3.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I联通块计数"><span class="nav-number">5.4.</span> <span class="nav-text">I联通块计数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-12"><span class="nav-number">5.4.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J寻找复读机"><span class="nav-number">5.5.</span> <span class="nav-text">J寻找复读机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-13"><span class="nav-number">5.5.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
