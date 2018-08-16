@@ -133,6 +133,7 @@
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-15-c.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-15-d.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-15-2-sat%E9%97%AE%E9%A2%981.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-15-2-sat%E9%97%AE%E9%A2%982.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF.gif">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-14%E4%B8%83%E6%A1%A5%E9%97%AE%E9%A2%981.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-14%E4%B8%83%E6%A1%A5%E9%97%AE%E9%A2%982.png">
@@ -160,7 +161,7 @@
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-15-%E4%BA%8C%E5%88%86%E5%9B%BE%E8%BE%B9%E8%89%B2.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-15-%E7%AC%AC%E4%B8%80%E7%AC%AC%E4%BA%8C%E7%B1%BB%E5%9B%BE.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-8-15-%E8%BE%B9%E7%82%B9%E7%9D%80%E8%89%B2.png">
-<meta property="og:updated_time" content="2018-08-16T03:29:53.242Z">
+<meta property="og:updated_time" content="2018-08-16T04:16:40.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论2（强连通 + 2-SAT + 欧拉图 + 着色问题）">
 <meta name="twitter:description" content="图的连通性连通图所谓连通性，直观的讲，就是“连成一片”。  我们发现，按照上面的划分方法，我们可以把G1分为三部分，因此，G1是不连通的，但是，这三个部分，我们把它们叫做图G1的三个连通分量。 定义无向图G中，如果任意两顶点u和v，都能找到从一条u到v的路径。称无向图G是连通的。 当G为有向图时，若G中存在一条以 u为起点 v为终点的有向路P，则称从 u到 v是可达的。 如果G的任何两个顶点都是相">
@@ -502,7 +503,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  12,272
+                  12,687
                 </span>
               
 
@@ -518,7 +519,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  48
+                  50
                 </span>
               
             </div>
@@ -642,6 +643,25 @@
 <p>由于 Ai,Ai’ 都是尚未确定的，它们不与之前的组相关联，前面的选择不会影响 Ai,Ai’ 。<br>算法的时间复杂度在最坏的情况下为 O(nm)。</p>
 <p>在这个算法中，并没有很好的利用图中边的对称性<br>观察图（1）可以发现，1 和 3 构成一个环，这样 1 和 3 要么都被选中，要么都不选。2和 4 也同样如此。</p>
 <p>在每个一个环里，任意一个点的选择代表将要选择此环里的每一个点。不妨把环收缩成一个子节点。新节点的选择表示选择这个节点所对应的环中的每一个节点。</p>
+<p>对于原图中的每条边 Ai → Aj（设 Ai 属于环 Si，Aj 属于环 Sj）如果 Si≠Sj，则在新图中连边：</p>
+<p>Si → Sj </p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-8-15-2-sat%E9%97%AE%E9%A2%982.png" alt=""></p>
+<p>这样构造的有向无环图和原图是等价的，这样我们就可以用之前介绍过的强连通分量的算法把图转化成有向无环图，在这个基础上，如果存在一对 Ai, Ai’属于同一个环，则判无解，否则将采用拓扑排序，以自底向上的顺序进行推导，一定能找到可行解。</p>
+<p>下面给出 2-SAT 问题中常用的建边方式：</p>
+<p>2-SAT 中元素关系常见有以下 11 种</p>
+<p>A[x]</p>
+<p>NOT A[x]</p>
+<p>A[x] AND A[y]</p>
+<p>A[x] AND NOT A[y]</p>
+<p>A[x] OR A[y]</p>
+<p>A[x] OR NOT A[y]</p>
+<p>NOT (A[x] AND A[y]) </p>
+<p>NOT (A[x] OR A[y]) </p>
+<p>A[x] XOR A[y]</p>
+<p>NOT (A[x] XOR A[y]) </p>
+<p>A[x] XOR NOT A[y]</p>
+<p>And 结果为 1：建边 ~x-&gt;y, ~y-&gt;x (两个数都为 1)<br>And 结果为 0：建边 y-&gt;~x , x-&gt;~y(两个数至少有一个为 0)<br>OR 结果为 1：建边 ~x-&gt;y ,  ~y-&gt;x(两个数至少有一个为 1)<br>OR 结果为 0：建边 x-&gt;~x , y-&gt;~y(两个数都为 0)<br>XOR 结果为 1：建边 x-&gt;~y , ~x-&gt;y , ~y-&gt;x , y -&gt; ~x (两个数一个为 0，一个为 1)<br>XOR 结果为 0：建边 x-&gt;y , ~x-&gt;~y , y-&gt;x ~y-&gt;~x(两个数同为 1 或者同为 0) </p>
+<p>对于一般判定是不是有解的情况，我们可以直接采用 tarjan 算法求强联通，然后缩点，如果 x 与~x 染色相同，说明无解，否则有解。有的时候，可能需要用二分++tarjan 算法</p>
 <h1 id="欧拉图"><a href="#欧拉图" class="headerlink" title="欧拉图"></a>欧拉图</h1><p>每个小点最后都会回到自己原来的位置上吗？注意，这些小点并不是沿着一个回路在运动，而是沿着三个交替出现的回路在运动。</p>
 <p> <img src="http://p7woygi8q.bkt.clouddn.com/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF.gif" alt=""></p>
 <p>答案是肯定的。 math 版上的 <a href="https://www.reddit.com/r/math/comments/3hz9u9/will_each_jellyfish_in_this_gif_eventually_end_up/cubw779" target="_blank" rel="noopener">OmnipotentEntity</a> 给出了一个简短的证明。假设某个地方的小点出发后永远不会回到原地。由于小点的运动规律是三步一个周期，因此每三步之后从此处出发的小点将会拥有完全相同的命运——永远不会回到原地。既然从这里出发的小点会不断地发生有去无回的情况，那么总有一个时候小点会被用光，此时就再也没有小点能从这里出发了。但这与我们看到的实际情况相矛盾：每个地方的小点都是用之不竭的。</p>
