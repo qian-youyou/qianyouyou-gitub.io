@@ -4,6 +4,119 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/08/19/2018-08-18/</loc>
+    <lastmod>2018-08-17T12:50:16.315Z</lastmod>
+    <data>
+        <display>
+        <title>进击的网络流</title>
+        <pubTime>2018-08-19T12:38:54.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>网络流</tag>
+         
+        <tag>预流推进</tag>
+         
+        <tag>最大流</tag>
+         
+        <tag>最小割</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="图论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E5%9B%BE%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/08/19/2018-08-19/</loc>
+    <lastmod>2018-08-17T12:48:54.074Z</lastmod>
+    <data>
+        <display>
+        <title>图论3(网络流 + 二分图 + 匹配)</title>
+        <pubTime>2018-08-19T12:38:54.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/05/07/2018-05-07/</loc>
+    <lastmod>2018-08-17T12:43:40.704Z</lastmod>
+    <data>
+        <display>
+        <title>[数论]数论与与组合数学与线性代数中的常用算法总结</title>
+        <pubTime>2018-05-07T10:08:16.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>数论</tag>
+         
+        <tag>组合数学</tag>
+         
+        <tag>高斯消元</tag>
+         
+        <tag>容斥原理</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="数论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/08/17/2018-08-17/</loc>
+    <lastmod>2018-08-17T12:42:54.750Z</lastmod>
+    <data>
+        <display>
+        <title>那些年我们一起学过的线性代数</title>
+        <pubTime>2018-08-17T12:38:28.000Z</pubTime>
+        
+        <tag>高斯消元</tag>
+         
+        <tag>矩阵论</tag>
+         
+        <tag>快速幂</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="矩阵论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E7%9F%A9%E9%98%B5%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/05/05/2018-05-05/</loc>
     <lastmod>2018-08-17T12:22:11.884Z</lastmod>
     <data>
@@ -95,40 +208,6 @@
           
              
               <breadCrumb title="博弈论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://qianyouyou.cn/2018/05/07/2018-05-07/</loc>
-    <lastmod>2018-08-17T12:18:30.439Z</lastmod>
-    <data>
-        <display>
-        <title>[数论]数论与组合数学中的常用算法总结</title>
-        <pubTime>2018-05-07T10:08:16.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-        <tag>数论</tag>
-         
-        <tag>组合数学</tag>
-         
-        <tag>高斯消元</tag>
-         
-        <tag>容斥原理</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-          
-             
-              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="数论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/"/>
           
         </display>
     </data>
