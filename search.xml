@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[组合数学总结]]></title>
+    <url>%2F2018%2F08%2F16%2F2018-08-16%2F</url>
+    <content type="text"><![CDATA[排列组合加法/乘法法则加法法则相互独立的事件 A、B 分别有 k 和 l 种方法产生，则产生 A 或 B 的方法数为 k+l 种。 集合论定义若|A|=k，|B|=l ，且A∩B=Φ ，则|A∪B| = k+l 。 S = S1 ∪ S2 ∪ · · · ∪ Sm, Si ∩ Sj = ∅ (i ≠ j) ⇒ |S| = |S1| + |S2| + · · · + |Sm|。 例1a食堂有3种汉堡，b食堂有4种小吃，c食堂有2种包子，你的早餐只想吃一种，共有多少种选择方法？ 解： 设S是所有食物的集合，Si是第i类食物的集合(i=1,2,3)，显然，Si∩Sj=Φ (i≠j) ，根据加法法则有： |S| = |S1| + |S2| + |S3| = 3 + 4 + 2 = 9。 例2大于0小于10的奇偶数有多少个？ 解： 设S是符合条件数的集合，S1、S2分别是符合条件的奇数、偶数集合，显然，S1∩S2=Φ ，根据加法法则有： |S| = |S1| + |S2| = 5 + 4 = 9。 乘法法则相互独立的事件 A、B 分别有 k 和 l 种方法产生，则选取A以后再选取B 的方法数为 k×l 种。 集合论定义若|A|=k，|B|=l ，A×B={(a,b)|a∈A，b∈B}，则|A×B| = k×l 。 S = P × Q ⇒ |S| = |P | × |Q|。 例从A 地到B地有二条不同的道路，从B地到C地有四条不同的道路，而从C地到D地有三条不同的道路。求从A地经B、C两地到达D地的道路数。 解： 设S是所求的道路数集合，S1、S2、S3分别是从A到B、从B到C、从C到D的道路集合，根据乘法法则有 |S| = |S1 | × |S2| × |S3| = 2 × 4 × 3 = 24。 计数问题的分类有序安排或有序选择 ​ ——允许重复/不允许重复 无序安排或无序选择 ​ ——允许重复/不允许重复 重集的概念标准集的特性：确定、无序、相异等。 重集：B={k1 b1, k2 b2, …, kn * bn}，其中：bi为n个互不相同的元素，称 ki为bi的重数， i = 1, 2, …, n，n=1,2,…, ∞，ki = 1, 2, …, ∞。 排列线排列从n个不同元素中，取r个(0≤r≤n)按一定顺序排列起来，其排列数P(n,r)。 集合论定义设A={an} ，从A中选择r个(0≤r≤n)元素排列起来，A的r−有序子集，A的r−排列。 定理若n, r∈Z且n≥r≥0, P(n,r)=n!/(n-r)!。 若n=r，称全排列P(n,n)= n!； 若n＜r, P(n,r)=0； 若r=0, P(n,r)=1。 证明构造集合A的r−排列时，可以从A的n各元素中任选一个作为排列的第一项，有n种选法；第一项选定后从剩下的n-1个元素中选排列的第二项有n-1种选法；…由此类推，第r项有n-r+1种选法。根据乘法原理： P(n,r) = n(n-1)……(n-r+1) = n!/(n-r)! 。 推论1若n, r∈N且n≥r≥2，则P(n,r)=n×P(n-1,r-1) 。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+        <category>组合数学</category>
+      </categories>
+      <tags>
+        <tag>组合数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数论总结]]></title>
     <url>%2F2018%2F08%2F15%2F2018-08-15%2F</url>
     <content type="text"></content>
@@ -492,10 +505,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -509,10 +522,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -526,10 +539,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -573,9 +586,9 @@
         <category>爬虫</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>python</tag>
         <tag>爬虫</tag>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -753,8 +766,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>进制</tag>
         <tag>C陷阱与缺陷</tag>
+        <tag>进制</tag>
       </tags>
   </entry>
   <entry>
@@ -854,8 +867,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -866,8 +879,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -940,9 +953,9 @@
         <category>流</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -954,8 +967,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>正则表达式</tag>
         <tag>字符串</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
