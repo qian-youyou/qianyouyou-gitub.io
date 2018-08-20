@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title><![CDATA[进击的网络流]]></title>
-    <url>%2F2018%2F08%2F23%2F2018-08-23%2F</url>
-    <content type="text"></content>
+    <url>%2F2018%2F08%2F22%2F2018-08-22%2F</url>
+    <content type="text"><![CDATA[]]></content>
       <categories>
         <category>程序人生</category>
         <category>算法</category>
@@ -12,15 +12,15 @@
       <tags>
         <tag>算法</tag>
         <tag>网络流</tag>
-        <tag>最大流</tag>
         <tag>预流推进</tag>
+        <tag>最大流</tag>
         <tag>最小割</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[图论3(网络流 + 二分图 + 匹配)]]></title>
     <url>%2F2018%2F08%2F19%2F2018-08-19%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[网络流基础最大流问题的解决一般基于两种方法，即增广路算法与预流推进算法。 网络一个连通的赋权有向图D=（V、E、C），其中V是该图的顶点集，E是有向边(即弧)集，C是弧上的容量。此外顶点集中包括一个起点和一个终点。 流网络上的流就是由起点流向终点的可行流 正方向设P为容量网络中源点到汇点的一条链，由源点s到汇点t的方向就为正方向。 残量网络在一个图中，残留网络指在既有的容量和已具备的流量条件下，网络中仍然可以继续增大流量的边所组成的网络。 增广路经在残留网络中的一条从源点s流向汇点t的路径叫做一条增广路。 割图的割可以用来表示对图的一个划分，将原图 G=(V,E)的顶点集 V 分为 S、T 两部分，让源点 s 在 S 中，汇点 t 在 T 中，能够通过 S、T 间的最大净流量为割(S,T)的容量，最小割为图中具有最小容量的割。 最大流增广路算法利用不断寻找增广路并在其上对流量进行更新的方法寻找网络的最大流。 每次用BFS找一条最短的增广路径，然后沿着这条路径修改流量值（实际修改的是残量网络的边权）。当没有增广路时，算法停止，此时的流就是最大流。 最大流最小割定理：在网络的一个流量状态下，通过图的任意一个割的流量都与该流量相同，所以具有最小容量的割的的容量就是该图的流量的最大值即最大流。 最小费用最大流有上下界的最大流二分图网络流匹配]]></content>
       <categories>
         <category>程序人生</category>
         <category>算法</category>
@@ -818,8 +818,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>进制</tag>
         <tag>C陷阱与缺陷</tag>
+        <tag>进制</tag>
       </tags>
   </entry>
   <entry>
@@ -919,8 +919,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -931,8 +931,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>

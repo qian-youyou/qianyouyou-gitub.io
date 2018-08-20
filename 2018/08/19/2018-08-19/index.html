@@ -114,18 +114,18 @@
 
 
 
-<meta name="description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="description" content="网络流基础最大流问题的解决一般基于两种方法，即增广路算法与预流推进算法。 网络一个连通的赋权有向图D=（V、E、C），其中V是该图的顶点集，E是有向边(即弧)集，C是弧上的容量。此外顶点集中包括一个起点和一个终点。 流网络上的流就是由起点流向终点的可行流 正方向设P为容量网络中源点到汇点的一条链，由源点s到汇点t的方向就为正方向。 残量网络在一个图中，残留网络指在既有的容量和已具备的流量条件下，网">
 <meta name="keywords" content="匹配,二分图,匈牙利算法,KM算法,网络流,最大流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论3(网络流 + 二分图 + 匹配)">
 <meta property="og:url" content="http://qianyouyou.cn/2018/08/19/2018-08-19/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta property="og:description" content="网络流基础最大流问题的解决一般基于两种方法，即增广路算法与预流推进算法。 网络一个连通的赋权有向图D=（V、E、C），其中V是该图的顶点集，E是有向边(即弧)集，C是弧上的容量。此外顶点集中包括一个起点和一个终点。 流网络上的流就是由起点流向终点的可行流 正方向设P为容量网络中源点到汇点的一条链，由源点s到汇点t的方向就为正方向。 残量网络在一个图中，残留网络指在既有的容量和已具备的流量条件下，网">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-18T04:23:06.357Z">
+<meta property="og:updated_time" content="2018-08-18T06:51:38.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论3(网络流 + 二分图 + 匹配)">
-<meta name="twitter:description" content="浪打浮沉惊白昼，沧海一笑浅悠悠。">
+<meta name="twitter:description" content="网络流基础最大流问题的解决一般基于两种方法，即增广路算法与预流推进算法。 网络一个连通的赋权有向图D=（V、E、C），其中V是该图的顶点集，E是有向边(即弧)集，C是弧上的容量。此外顶点集中包括一个起点和一个终点。 流网络上的流就是由起点流向终点的可行流 正方向设P为容量网络中源点到汇点的一条链，由源点s到汇点t的方向就为正方向。 残量网络在一个图中，残留网络指在既有的容量和已具备的流量条件下，网">
 
 
 
@@ -463,7 +463,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  499
                 </span>
               
 
@@ -479,7 +479,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -500,7 +500,17 @@
       
 
       
-        
+        <h1 id="网络流"><a href="#网络流" class="headerlink" title="网络流"></a>网络流</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>最大流问题的解决一般基于两种方法，即<strong>增广路算法</strong>与<strong>预流推进算法</strong>。</p>
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><p>一个连通的赋权有向图D=（V、E、C），其中V是该图的顶点集，E是有向边(即弧)集，C是弧上的容量。此外顶点集中包括一个起点和一个终点。</p>
+<h3 id="流"><a href="#流" class="headerlink" title="流"></a>流</h3><p>网络上的流就是由起点流向终点的可行流</p>
+<h3 id="正方向"><a href="#正方向" class="headerlink" title="正方向"></a>正方向</h3><p>设P为容量网络中源点到汇点的一条链，由源点s到汇点t的方向就为正方向。</p>
+<h3 id="残量网络"><a href="#残量网络" class="headerlink" title="残量网络"></a>残量网络</h3><p>在一个图中，<strong>残留网络</strong>指在既有的容量和已具备的流量条件下，网络中仍然可以继续增大流量的边所组成的网络。</p>
+<h3 id="增广路经"><a href="#增广路经" class="headerlink" title="增广路经"></a>增广路经</h3><p>在残留网络中的一条从源点s流向汇点t的路径叫做一条<strong>增广路。</strong></p>
+<h3 id="割"><a href="#割" class="headerlink" title="割"></a>割</h3><p>图的<strong>割</strong>可以用来表示对图的一个划分，将原图 G=(V,E)的顶点集 V 分为 S、T 两部分，让源点 s 在 S 中，汇点 t 在 T 中，能够通过 S、T 间的最大净流量为割(S,T)的容量，<strong>最小割</strong>为图中具有最小容量的割。</p>
+<h2 id="最大流"><a href="#最大流" class="headerlink" title="最大流"></a>最大流</h2><h3 id="增广路算法"><a href="#增广路算法" class="headerlink" title="增广路算法"></a>增广路算法</h3><p>利用不断寻找增广路并在其上对流量进行更新的方法寻找网络的最大流。</p>
+<p>每次用BFS找一条最短的增广路径，然后沿着这条路径修改流量值（实际修改的是残量网络的边权）。当没有增广路时，算法停止，此时的流就是最大流。</p>
+<h3 id="最大流最小割定理："><a href="#最大流最小割定理：" class="headerlink" title="最大流最小割定理："></a>最大流最小割定理：</h3><p>在网络的一个流量状态下，通过图的任意一个割的流量都与该流量相同，所以具有最小容量的割的的容量就是该图的流量的最大值即最大流。</p>
+<h2 id="最小费用最大流"><a href="#最小费用最大流" class="headerlink" title="最小费用最大流"></a>最小费用最大流</h2><h2 id="有上下界的最大流"><a href="#有上下界的最大流" class="headerlink" title="有上下界的最大流"></a>有上下界的最大流</h2><h2 id="二分图网络流匹配"><a href="#二分图网络流匹配" class="headerlink" title="二分图网络流匹配"></a>二分图网络流匹配</h2>
       
     </div>
     
@@ -589,7 +599,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/23/2018-08-23/" rel="prev" title="进击的网络流">
+              <a href="/2018/08/22/2018-08-22/" rel="prev" title="进击的网络流">
                 进击的网络流 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -650,8 +660,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -797,6 +816,22 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
 	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络流"><span class="nav-number">1.</span> <span class="nav-text">网络流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络"><span class="nav-number">1.1.1.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流"><span class="nav-number">1.1.2.</span> <span class="nav-text">流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正方向"><span class="nav-number">1.1.3.</span> <span class="nav-text">正方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#残量网络"><span class="nav-number">1.1.4.</span> <span class="nav-text">残量网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增广路经"><span class="nav-number">1.1.5.</span> <span class="nav-text">增广路经</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#割"><span class="nav-number">1.1.6.</span> <span class="nav-text">割</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大流"><span class="nav-number">1.2.</span> <span class="nav-text">最大流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增广路算法"><span class="nav-number">1.2.1.</span> <span class="nav-text">增广路算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大流最小割定理："><span class="nav-number">1.2.2.</span> <span class="nav-text">最大流最小割定理：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小费用最大流"><span class="nav-number">1.3.</span> <span class="nav-text">最小费用最大流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有上下界的最大流"><span class="nav-number">1.4.</span> <span class="nav-text">有上下界的最大流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分图网络流匹配"><span class="nav-number">1.5.</span> <span class="nav-text">二分图网络流匹配</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
