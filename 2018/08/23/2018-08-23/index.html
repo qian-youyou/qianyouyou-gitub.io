@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://qianyouyou.cn"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="问题 A: 赛马时间限制: 1 Sec  内存限制: 128 MB提交: 32  解决: 5[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述古有田忌赛马戏齐王，今有悠悠赛马虐渣渣。悠悠和他的小老弟渣渣每人有n匹马，每匹马都有一个评分，分数越高速度越快。现在渣渣不甘于当小老弟，随着赛马曲的想起，渣渣决定挑战悠悠，规则同田忌赛马。每胜一局得1分，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8.23网络流专项训练题解">
+<meta property="og:url" content="http://qianyouyou.cn/2018/08/23/2018-08-23/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="问题 A: 赛马时间限制: 1 Sec  内存限制: 128 MB提交: 32  解决: 5[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述古有田忌赛马戏齐王，今有悠悠赛马虐渣渣。悠悠和他的小老弟渣渣每人有n匹马，每匹马都有一个评分，分数越高速度越快。现在渣渣不甘于当小老弟，随着赛马曲的想起，渣渣决定挑战悠悠，规则同田忌赛马。每胜一局得1分，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://sustoj.com/JudgeOnline/upload/image/20180822/20180822133414_80763.png">
+<meta property="og:image" content="http://sustoj.com/JudgeOnline/upload/image/20180822/20180822133437_68424.png">
+<meta property="og:image" content="http://sustoj.com/JudgeOnline/upload/image/20180821/20180821210755_92707.png">
+<meta property="og:image" content="http://sustoj.com/JudgeOnline/upload/image/20180821/20180821211137_35539.png">
+<meta property="og:updated_time" content="2018-08-23T09:05:06.377Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8.23网络流专项训练题解">
+<meta name="twitter:description" content="问题 A: 赛马时间限制: 1 Sec  内存限制: 128 MB提交: 32  解决: 5[提交][状态][讨论版][命题人:qianyouyou][Edit] [TestData)] 题目描述古有田忌赛马戏齐王，今有悠悠赛马虐渣渣。悠悠和他的小老弟渣渣每人有n匹马，每匹马都有一个评分，分数越高速度越快。现在渣渣不甘于当小老弟，随着赛马曲的想起，渣渣决定挑战悠悠，规则同田忌赛马。每胜一局得1分，">
+<meta name="twitter:image" content="http://sustoj.com/JudgeOnline/upload/image/20180822/20180822133414_80763.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2018/08/23/2018-08-23/"/>
+
+
+
+
+
+  <title>8.23网络流专项训练题解 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/qian-youyou" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/08/23/2018-08-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">8.23网络流专项训练题解</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T16:02:47+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8,485
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  42
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="问题-A-赛马"><a href="#问题-A-赛马" class="headerlink" title="问题 A: 赛马"></a>问题 A: 赛马</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 32  解决: 5<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=0&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1890" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1890&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1890&amp;getkey=A121ED5825" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1890" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>古有田忌赛马戏齐王，今有悠悠赛马虐渣渣。悠悠和他的小老弟渣渣每人有n匹马，每匹马都有一个评分，分数越高速度越快。现在渣渣不甘于当小老弟，随着赛马曲的想起，渣渣决定挑战悠悠，规则同田忌赛马。每胜一局得1分，每负一局减一分，赵神做裁判，悠悠为了捍卫自己的王者地位，决定出老千，问了赵神关于渣渣的赛马顺序，请问悠悠最高能得多少分。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>文件有多组测试样例，遇0为止。</p>
+<p>首行一个整数n，n&lt;=1000;</p>
+<p>第2行n个整数表示悠悠每匹马的分数。</p>
+<p>第3行n个整数表示渣渣每匹马的分数。0&lt;=分数&lt;500;</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出悠悠最高分。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">192 173 71</span><br><span class="line">195 177 74</span><br><span class="line">2</span><br><span class="line">10 10</span><br><span class="line">10 10</span><br><span class="line">2</span><br><span class="line">220 219</span><br><span class="line">222 218</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>水题，可以用网络流或者匹配，也可以用更简单的方法。</p>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=0&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1890" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1890&amp;getkey=A121ED5825" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1890" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[1005],b[1005];</span><br><span class="line">int main()&#123;</span><br><span class="line">    int n;</span><br><span class="line">    while(cin&gt;&gt;n&amp;&amp;n)&#123;</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">            cin&gt;&gt;a[i];</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">            cin&gt;&gt;b[i];</span><br><span class="line">        sort(a,a+n);</span><br><span class="line">        sort(b,b+n);</span><br><span class="line">        int s=0;</span><br><span class="line">        for(int i=0,j=0,k=n-1,l=n-1; i&lt;=k;)&#123;</span><br><span class="line">            if(a[i]&gt;b[j])	//如果我们速度最慢的马比对方速度最慢的要快，直接赢</span><br><span class="line">            	s++,i++,j++;</span><br><span class="line">            else if(a[k]&gt;b[l])	//如果我们的速度最快的马比对方速度最快的要快，直接赢</span><br><span class="line">            	s++,k--,l--;</span><br><span class="line">            else&#123;</span><br><span class="line">                if(a[i]&lt;b[l])//我们速度最慢的和对方速度最快的马比较，如果小于就直接输,否则为平局</span><br><span class="line">                	s--;</span><br><span class="line">                i++,l--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;s&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-B-海上钢琴师"><a href="#问题-B-海上钢琴师" class="headerlink" title="问题 B: 海上钢琴师"></a>问题 B: 海上钢琴师</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 1  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=1&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1894" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1894&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1894&amp;getkey=93904EDF34" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1894" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>宁愿一生孤独，不愿随波逐流。海上钢琴师毅然留在了船上，与大海为伴，此生再不上岸。</p>
+<p>然而，他的音乐却已名扬四海。为了将他的钢琴声可以传播到陆地以便欣赏，人们决定在陆地与钢琴师所在的船之间的n-2座岛屿上建立声音保留设备。每当声音传到该设备处时，以该设备为起点可以将声音信号发送到其他与该设备有信号连接的设备那里。信号传播是单向的，且是有限的。当该设备将一部分信号传给其他设备时，该设备所拥有的总信号要减去相应传出去的信号，所保留的信号可以继续传给其他的设备。船上也有该设备，由于岛屿与船的位置不同，所以钢琴声传到设备的声音有限。设备与设备之间的传播分贝也有限。陆地的总接收设备与某些岛屿上的设备有信号连接，请问陆地最多能收到多少分贝的钢琴声。</p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>第一行输入两个数m，n。m代表共有m对设备建立了单向连接。n代表包括船和陆地在内共有n个设备。编号1为船，编号n为陆地，其他为岛屿（n&lt;=100，m&lt;=1000）</p>
+<p>接下来m行，每行三个数a，b，c，代表a-&gt;b，即a的信号可以传到b信号，最大可以通过该信号传送c分贝。c&lt;=2000</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>输出陆地上最大可以收到多少分贝声音。（海上钢琴声不超过10000分贝）</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5 4</span><br><span class="line">1 2 100</span><br><span class="line">1 3 50</span><br><span class="line">2 3 2</span><br><span class="line">3 4 60</span><br><span class="line">2 4 99</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">150</span><br></pre></td></tr></table></figure>
+<h2 id="提示-1"><a href="#提示-1" class="headerlink" title="提示"></a>提示</h2><p>样例解释：（容量，流量）</p>
+<p>方案1：</p>
+<p><img src="http://sustoj.com/JudgeOnline/upload/image/20180822/20180822133414_80763.png" alt="img"></p>
+<p>方案2：</p>
+<p><img src="http://sustoj.com/JudgeOnline/upload/image/20180822/20180822133437_68424.png" alt="img"></p>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=1&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1894" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1894&amp;getkey=93904EDF34" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1894" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=205;</span><br><span class="line">const int inf=0x7fffffff;</span><br><span class="line">int r[maxn][maxn]; //残留网络，初始化为原图</span><br><span class="line">bool visit[maxn];</span><br><span class="line">int pre[maxn];</span><br><span class="line">int m,n;</span><br><span class="line">bool bfs(int s,int t)  //寻找一条从s到t的增广路，若找到返回true</span><br><span class="line">&#123;</span><br><span class="line">    int p;</span><br><span class="line">    queue&lt;int &gt; q;</span><br><span class="line">    memset(pre,-1,sizeof(pre));</span><br><span class="line">    memset(visit,false,sizeof(visit));</span><br><span class="line"></span><br><span class="line">    pre[s]=s;</span><br><span class="line">    visit[s]=true;</span><br><span class="line">    q.push(s);</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        p=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(r[p][i]&gt;0&amp;&amp;!visit[i])</span><br><span class="line">            &#123;</span><br><span class="line">                pre[i]=p;</span><br><span class="line">                visit[i]=true;</span><br><span class="line">                if(i==t) return true;</span><br><span class="line">                q.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int EdmondsKarp(int s,int t)</span><br><span class="line">&#123;</span><br><span class="line">   int flow=0,d,i;</span><br><span class="line">   while(bfs(s,t))</span><br><span class="line">   &#123;</span><br><span class="line">       d=inf;</span><br><span class="line">       for(i=t;i!=s;i=pre[i])</span><br><span class="line">           d=d&lt;r[pre[i]][i]? d:r[pre[i]][i];</span><br><span class="line">       for(i=t;i!=s;i=pre[i])</span><br><span class="line">       &#123;</span><br><span class="line">           r[pre[i]][i]-=d;</span><br><span class="line">           r[i][pre[i]]+=d;</span><br><span class="line">       &#125;</span><br><span class="line">       flow+=d;</span><br><span class="line">   &#125;</span><br><span class="line">   return flow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;m,&amp;n)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        int u,v,w;</span><br><span class="line">        memset(r,0,sizeof(r));</span><br><span class="line">        for(int i=0;i&lt;m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);</span><br><span class="line">            r[u][v]+=w;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,EdmondsKarp(1,n));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-C-进击的巨人"><a href="#问题-C-进击的巨人" class="headerlink" title="问题 C: 进击的巨人"></a>问题 C: 进击的巨人</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 1  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=2&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1895" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1895&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1895&amp;getkey=DF84EFB393" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1895" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>那一年，巨人发起了第一轮进击，s城破，埃尔文团长带领众居民计划逃往较安全的t城。从s城到t城之间共有m坐城市，某些城市之间构成单向通路。由s城到t城恰构成一个有向无环图。然而每条路上都有限定的最大人流量。埃尔文团长想知道每一次最多有多少居民能到达t城。</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>首行输入两个数n，m（n，m&lt;=100），n0为s城，nn为t城。s城到t城之间的城用n1——nn表示。m表示单项通道数。</p>
+<p>接下来m行，每行三个数a，b，c，代表a到b的最大人流量是c。c&lt;1000。</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>输出最多有多少人到t</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">6 14</span><br><span class="line">0 2 5</span><br><span class="line">0 1 10</span><br><span class="line">1 2 6</span><br><span class="line">0 3 5</span><br><span class="line">3 1 2</span><br><span class="line">1 5 3</span><br><span class="line">5 2 3</span><br><span class="line">5 4 3</span><br><span class="line">3 5 3</span><br><span class="line">3 4 4</span><br><span class="line">3 6 5</span><br><span class="line">2 6 6</span><br><span class="line">4 6 10</span><br><span class="line">2 4 4</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">18</span><br></pre></td></tr></table></figure>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=2&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1895" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1895&amp;getkey=DF84EFB393" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1895" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=205;</span><br><span class="line">const int inf=0x7fffffff;</span><br><span class="line">int r[maxn][maxn]; //残留网络，初始化为原图</span><br><span class="line">bool visit[maxn];</span><br><span class="line">int pre[maxn];</span><br><span class="line">int m,n;</span><br><span class="line">bool bfs(int s,int t)  //寻找一条从s到t的增广路，若找到返回true</span><br><span class="line">&#123;</span><br><span class="line">    int p;</span><br><span class="line">    queue&lt;int &gt; q;</span><br><span class="line">    memset(pre,-1,sizeof(pre));</span><br><span class="line">    memset(visit,false,sizeof(visit));</span><br><span class="line"></span><br><span class="line">    pre[s]=s;</span><br><span class="line">    visit[s]=true;</span><br><span class="line">    q.push(s);</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        p=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(r[p][i]&gt;0&amp;&amp;!visit[i])</span><br><span class="line">            &#123;</span><br><span class="line">                pre[i]=p;</span><br><span class="line">                visit[i]=true;</span><br><span class="line">                if(i==t) return true;</span><br><span class="line">                q.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int EdmondsKarp(int s,int t)</span><br><span class="line">&#123;</span><br><span class="line">   int flow=0,d,i;</span><br><span class="line">   while(bfs(s,t))</span><br><span class="line">   &#123;</span><br><span class="line">       d=inf;</span><br><span class="line">       for(i=t;i!=s;i=pre[i])</span><br><span class="line">           d=d&lt;r[pre[i]][i]? d:r[pre[i]][i];</span><br><span class="line">       for(i=t;i!=s;i=pre[i])</span><br><span class="line">       &#123;</span><br><span class="line">           r[pre[i]][i]-=d;</span><br><span class="line">           r[i][pre[i]]+=d;</span><br><span class="line">       &#125;</span><br><span class="line">       flow+=d;</span><br><span class="line">   &#125;</span><br><span class="line">   return flow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        int u,v,w;</span><br><span class="line">        memset(r,0,sizeof(r));</span><br><span class="line">        for(int i=0;i&lt;m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);</span><br><span class="line">            r[u][v]+=w;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,EdmondsKarp(0,n));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-D-X档案"><a href="#问题-D-X档案" class="headerlink" title="问题 D: X档案"></a>问题 D: X档案</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 5  解决: 3<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=3&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1883" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1883&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1883&amp;getkey=B46583A0E8" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1883" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>据X档案记载，倘若外星文明即将攻击地球，会在战争之前发动病毒袭击，最合理的对象是鸟或狗，因为鸟在空中传播病毒的范围2较广，而狗相较于其他动物来说和人类接触最频繁。X城作为全球反外星文明的重要基地，对外星文明来说威胁最大而作为外星文明首先攻击的目标。因此，X长官下令捕杀了全城的鸟，而狗由于受到爱狗人士们的保护免于此劫。然而灾难还是降临了，外星文明悄无声息地将病毒注入到一些狗体内。据全球卫星显示，X城的地形是一个n<em>m的矩阵，划分成了n</em>m个1<em>1的小矩阵。矩阵的四周被城墙所围。而在某些单位1</em>1的小矩阵中有居民，或者有被感染的狗。我们已经知道了狗的全部坐标，为了安全起见，X长官启动了X计划，将这些狗在未发作之前用围栏隔离起来以防止狗攻击人类，每个1*1的小矩阵四周均可建立围栏。该计划收录到了X档案中。围栏使得狗和人类均无法通过。由于计划的机密性，长官不想动用太多的财力，现求最少需要多长围栏才能将所有狗隔离。</p>
+<h2 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h2><p>输入包含多组样例，读到文件结束。</p>
+<p>第一行为n，m，代表n*m的矩阵。（0&lt;n，m&lt;=150）</p>
+<p>接下来n行，每行m个由0，1，2组成的数。</p>
+<p>0代表此处没有任何东西，1代表此处有人，2代表此处有被感染的狗。</p>
+<h2 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h2><p>输出格式为：Case i: k</p>
+<p>i为第i组样例，k为所需最短的围栏长度。</p>
+<h2 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">5 6</span><br><span class="line">0 0 0 1 0 0</span><br><span class="line">2 0 0 0 0 1</span><br><span class="line">0 0 1 0 0 0</span><br><span class="line">0 0 2 0 0 1</span><br><span class="line">0 0 0 1 0 0</span><br><span class="line">4 6</span><br><span class="line">0 0 1 0 0 1</span><br><span class="line">0 0 0 1 1 0</span><br><span class="line">0 0 0 0 2 2</span><br><span class="line">0 1 1 0 2 0</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Case 1: 6</span><br><span class="line">Case 2: 4</span><br></pre></td></tr></table></figure>
+<h2 id="提示-2"><a href="#提示-2" class="headerlink" title="提示"></a>提示</h2><p>第1组样例解释：</p>
+<p><img src="http://sustoj.com/JudgeOnline/upload/image/20180821/20180821210755_92707.png" alt="img"> </p>
+<p>第2组样例解释：</p>
+<p><img src="http://sustoj.com/JudgeOnline/upload/image/20180821/20180821211137_35539.png" alt="img"> </p>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=3&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1883" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1883&amp;getkey=B46583A0E8" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1883" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define maxn 100100</span><br><span class="line">#define inf 99999999</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int to[maxn],c[maxn],first[maxn],Next[maxn],N;</span><br><span class="line">int d[maxn];</span><br><span class="line">int s,t,n,m,tmp,ans,cas=0;</span><br><span class="line">int Q[maxn],bot,top,tag[maxn],can[maxn],TAG=423;</span><br><span class="line"></span><br><span class="line">void _init()</span><br><span class="line">&#123;</span><br><span class="line">    ans=s=0,t=n*m+1,N=-1;</span><br><span class="line">    for (int i=s; i&lt;=t; i++) first[i]=-1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void edge(int U,int V,int W)</span><br><span class="line">&#123;</span><br><span class="line">    N++;</span><br><span class="line">    to[N]=V,c[N]=W;</span><br><span class="line">    Next[N]=first[U],first[U]=N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void _input()</span><br><span class="line">&#123;</span><br><span class="line">    int cur=0;</span><br><span class="line">    for (int i=1; i&lt;=n; i++)</span><br><span class="line">        for (int j=1; j&lt;=m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;tmp);</span><br><span class="line">            cur++;</span><br><span class="line">            if (i&lt;n) edge(cur,cur+m,1),edge(cur+m,cur,1);</span><br><span class="line">            if (j&lt;m) edge(cur,cur+1,1),edge(cur+1,cur,1);</span><br><span class="line">            if (tmp==2) edge(s,cur,inf),edge(cur,s,inf);</span><br><span class="line">                else if (tmp==1) edge(cur,t,inf),edge(t,cur,inf);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool bfs()</span><br><span class="line">&#123;</span><br><span class="line">    TAG++;</span><br><span class="line">    Q[bot=top=1]=t,d[t]=0,tag[t]=TAG;</span><br><span class="line">    while (bot&lt;=top)</span><br><span class="line">    &#123;</span><br><span class="line">        int cur=Q[bot++];</span><br><span class="line">        for (int i=first[cur]; i!=-1; i=Next[i])</span><br><span class="line">        &#123;</span><br><span class="line">            if (c[i^1]&lt;=0 || tag[to[i]]==TAG) continue;</span><br><span class="line">            tag[to[i]]=TAG,d[to[i]]=d[cur]+1,Q[++top]=to[i];</span><br><span class="line">            if (to[i]==s) return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dfs(int cur,int num)</span><br><span class="line">&#123;</span><br><span class="line">    if (cur==t) return num;</span><br><span class="line">    int tmp=num,k;</span><br><span class="line">    for (int i=first[cur]; i!=-1; i=Next[i])</span><br><span class="line">    &#123;</span><br><span class="line">        if (d[cur]!=d[to[i]]+1 || c[i]&lt;=0 || tag[to[i]]!=TAG || can[to[i]]==TAG) continue;</span><br><span class="line">        k=dfs(to[i],min(num,c[i]));</span><br><span class="line">        if (k) c[i]-=k,c[i^1]+=k,num-=k;</span><br><span class="line">        if (num==0) break;</span><br><span class="line">    &#125;</span><br><span class="line">    if (num) can[cur]=TAG;</span><br><span class="line">    return tmp-num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while (scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        _init();</span><br><span class="line">        _input();</span><br><span class="line">        while (bfs()) ans+=dfs(s,inf);</span><br><span class="line">        printf(&quot;Case %d: %d\n&quot;,++cas,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-E-同桌的你"><a href="#问题-E-同桌的你" class="headerlink" title="问题 E: 同桌的你"></a>问题 E: 同桌的你</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 1  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=4&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1892" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1892&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1892&amp;getkey=FA65543DBF" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1892" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h2><p>据yoyo统计，青春期的情侣80%都是曾经的同桌。因此，选择好的同桌对你日后的感情发展有很大的帮助。高一7班共有n个男生，m个女生，男生们听过分析后纷纷要求重新排座位，以期待和心仪的女生做同桌。每个男生都有自己的暗恋对象，0&lt;=暗恋对象的个数&lt;=m，也就是说某个男生最多暗恋全班女生，最少一个都不暗恋。汪老师知道这件事后很是重视，于是开始调座位，优先考虑男生和他的暗恋女生坐在一起。男生用a表示，女生用n表示。请问最多有多少男生能和自己心仪的对象坐在一起。</p>
+<h2 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h2><p>首行输入n，m，e（0&lt;n，m&lt;=1000，0&lt;=e&lt;=10000）n男m女e为所有男生暗恋女生的个数之和。</p>
+<p>接下来e行，每行两个数i，j，代表ai男生暗恋bj女生。</p>
+<h2 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h2><p>一个整数，最优分配下最多有多少男生能和自己心仪的对象坐在一起。</p>
+<h2 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2 1 2</span><br><span class="line">2 1</span><br><span class="line">1 1</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+<h2 id="提示-3"><a href="#提示-3" class="headerlink" title="提示"></a>提示</h2><p>样例解释：</p>
+<p>全班两个男生暗恋班里唯一一个女生，无论怎么分配只能凑成一对。</p>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=4&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1892" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1892&amp;getkey=FA65543DBF" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1892" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n,m;</span><br><span class="line">int cnt=2;</span><br><span class="line">int alist[6000001];</span><br><span class="line">struct data&#123;</span><br><span class="line">    int v;int next;int value;</span><br><span class="line">&#125;edge[6000001];</span><br><span class="line">void add(int u,int v,int value)</span><br><span class="line">&#123;</span><br><span class="line">    edge[cnt].v=v;</span><br><span class="line">    edge[cnt].value=value;</span><br><span class="line">    edge[cnt].next=alist[u];</span><br><span class="line">    alist[u]=cnt++;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line">int h[1000001];</span><br><span class="line">int q[1000001];</span><br><span class="line">bool bfs()</span><br><span class="line">&#123;</span><br><span class="line">    int x,next;</span><br><span class="line">    memset(h,-1,sizeof(h));</span><br><span class="line">    int head=0,tail=1;</span><br><span class="line">    q[head]=1;</span><br><span class="line">    h[1]=0;</span><br><span class="line">    while(head&lt;tail)</span><br><span class="line">    &#123;</span><br><span class="line">        x=q[head++];</span><br><span class="line">        next=alist[x];</span><br><span class="line">        while(next)</span><br><span class="line">        &#123;</span><br><span class="line">            int v=edge[next].v;</span><br><span class="line">            int value=edge[next].value;</span><br><span class="line">            if(value&amp;&amp;h[v]&lt;0)</span><br><span class="line">            &#123;</span><br><span class="line">                q[tail++]=v;</span><br><span class="line">                h[v]=h[x]+1;</span><br><span class="line">            &#125;</span><br><span class="line">            next=edge[next].next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(h[n]==-1) return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">int ans;</span><br><span class="line">int dfs(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    if(x==n) return y;</span><br><span class="line">    int next=alist[x];</span><br><span class="line">    int w,used=0;</span><br><span class="line">    while(next)</span><br><span class="line">    &#123;</span><br><span class="line">        int v=edge[next].v;</span><br><span class="line">        int value=edge[next].value;</span><br><span class="line">        if(value&amp;&amp;h[v]==h[x]+1)</span><br><span class="line">        &#123;</span><br><span class="line">                w=y-used;</span><br><span class="line">                w=dfs(v,min(w,value));</span><br><span class="line">                edge[next].value-=w;</span><br><span class="line">                edge[next^1].value+=w;</span><br><span class="line">                used+=w;</span><br><span class="line">                if(used==y) return y;</span><br><span class="line">        &#125;</span><br><span class="line">        next=edge[next].next;</span><br><span class="line">    &#125;</span><br><span class="line">    if(!used) h[x]=-1;</span><br><span class="line">    return used;</span><br><span class="line">&#125;</span><br><span class="line">void dinic()</span><br><span class="line">&#123;</span><br><span class="line">    while(bfs()) ans+=dfs(1,0x7fffffff);</span><br><span class="line">&#125;</span><br><span class="line">int n1,m1,e1;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;,&amp;n1,&amp;m1,&amp;e1);</span><br><span class="line">    n=n1+m1+2;</span><br><span class="line">    for(int i=1;i&lt;=n1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add(1,i+1,1);</span><br><span class="line">        add(i+1,1,1);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=e1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int u,v;</span><br><span class="line">        scanf(&quot;%d%d&quot;,&amp;u,&amp;v);</span><br><span class="line">        if(u&lt;=n1&amp;&amp;v&lt;=m1)</span><br><span class="line">        add(u+1,v+n1+1,1),</span><br><span class="line">        add(v+n1+1,u+1,1);</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=m1;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        add(i+n1+1,n,1);</span><br><span class="line">        add(n,i+n1+1,1);</span><br><span class="line">    &#125;</span><br><span class="line">    dinic();//暴力跑最大流</span><br><span class="line">    printf(&quot;%d&quot;,ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-F-奇迹暖暖"><a href="#问题-F-奇迹暖暖" class="headerlink" title="问题 F: 奇迹暖暖"></a>问题 F: 奇迹暖暖</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 1  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=5&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1893" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1893&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1893&amp;getkey=5F0E1E84F3" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1893" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h2><p>梅拉抢走了绫罗的设计图，暖暖决定帮绫罗抢过来。于是梅拉和暖暖开始了搭配比赛。梅拉和暖暖各有n套衣服。由于暖暖是天才服装搭配师，且自带主角光环，又怎会输呢，（废话，输了你怎么通关啊）只不过暖暖为了让梅拉输的心服口服，决定狠狠虐梅拉一把。针对梅拉的n套衣服，暖暖的每套衣服i得分都比梅拉的任意一套衣服j得分高出score(ij)，0&lt;=score(ij)&lt;100000。然而每比完一场，他们之后的比赛都不能再用这套的衣服了。所以对于n场比赛，求出暖暖最高能比梅拉高多少分？（至少为0）</p>
+<h2 id="输入-5"><a href="#输入-5" class="headerlink" title="输入"></a>输入</h2><p>首行输入n(n&lt;=300)</p>
+<p>接下来n行，第i行表示暖暖的第i套衣服，每行n个数，第j个数表示暖暖第i套衣服比梅拉第j套衣服的分高多少分。</p>
+<p>0&lt;=score(ij)&lt;100000</p>
+<h2 id="输出-5"><a href="#输出-5" class="headerlink" title="输出"></a>输出</h2><p>输出一个整数，即最高高出多少分</p>
+<h2 id="样例输入-5"><a href="#样例输入-5" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">100 5</span><br><span class="line">20 23</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-5"><a href="#样例输出-5" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=5&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1893" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1893&amp;getkey=5F0E1E84F3" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1893" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N=310;</span><br><span class="line">const int INF=0x3f3f3f3f;</span><br><span class="line"></span><br><span class="line">int n,nx,ny;</span><br><span class="line">int linker[N],lx[N],ly[N],slack[N];  //lx,ly为顶标，nx,ny分别为x点集y点集的个数</span><br><span class="line">int visx[N],visy[N],w[N][N];</span><br><span class="line"></span><br><span class="line">int DFS(int x)&#123;</span><br><span class="line">    visx[x]=1;</span><br><span class="line">    for(int y=1;y&lt;=ny;y++)&#123;</span><br><span class="line">        if(visy[y])</span><br><span class="line">            continue;</span><br><span class="line">        int tmp=lx[x]+ly[y]-w[x][y];</span><br><span class="line">        if(tmp==0)&#123;</span><br><span class="line">            visy[y]=1;</span><br><span class="line">            if(linker[y]==-1 || DFS(linker[y]))&#123;</span><br><span class="line">                linker[y]=x;</span><br><span class="line">                return 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if(slack[y]&gt;tmp)&#123; //不在相等子图中slack 取最小的</span><br><span class="line">            slack[y]=tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int KM()&#123;</span><br><span class="line">    int i,j;</span><br><span class="line">    memset(linker,-1,sizeof(linker));</span><br><span class="line">    memset(ly,0,sizeof(ly));</span><br><span class="line">    for(i=1;i&lt;=nx;i++)      //lx初始化为与它关联边中最大的</span><br><span class="line">        for(j=1,lx[i]=-INF;j&lt;=ny;j++)</span><br><span class="line">            if(w[i][j]&gt;lx[i])</span><br><span class="line">                lx[i]=w[i][j];</span><br><span class="line">    for(int x=1;x&lt;=nx;x++)&#123;</span><br><span class="line">        for(i=1;i&lt;=ny;i++)</span><br><span class="line">            slack[i]=INF;</span><br><span class="line">        while(1)&#123;</span><br><span class="line">            memset(visx,0,sizeof(visx));</span><br><span class="line">            memset(visy,0,sizeof(visy));</span><br><span class="line">            if(DFS(x))  //若成功（找到了增广轨），则该点增广完成，进入下一个点的增广</span><br><span class="line">                break;  //若失败（没有找到增广轨），则需要改变一些点的标号，使得图中可行边的数量增加。</span><br><span class="line">                        //方法为：将所有在增广轨中（就是在增广过程中遍历到）的X方点的标号全部减去一个常数d，</span><br><span class="line">                        //所有在增广轨中的Y方点的标号全部加上一个常数d</span><br><span class="line">            int d=INF;</span><br><span class="line">            for(i=1;i&lt;=ny;i++)</span><br><span class="line">                if(!visy[i] &amp;&amp; d&gt;slack[i])</span><br><span class="line">                    d=slack[i];</span><br><span class="line">            for(i=1;i&lt;=nx;i++)</span><br><span class="line">                if(visx[i])</span><br><span class="line">                    lx[i]-=d;</span><br><span class="line">            for(i=1;i&lt;=ny;i++)  //修改顶标后，要把所有不在交错树中的Y顶点的slack值都减去d</span><br><span class="line">                if(visy[i])</span><br><span class="line">                    ly[i]+=d;</span><br><span class="line">                else</span><br><span class="line">                    slack[i]-=d;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int res=0;</span><br><span class="line">    for(i=1;i&lt;=ny;i++)</span><br><span class="line">        if(linker[i]!=-1)</span><br><span class="line">            res+=w[linker[i]][i];</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    while(~scanf(&quot;%d&quot;,&amp;n))&#123;</span><br><span class="line">        nx=ny=n;</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">            for(int j=1;j&lt;=n;j++)</span><br><span class="line">                scanf(&quot;%d&quot;,&amp;w[i][j]);</span><br><span class="line">        int ans=KM();</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-G-巨人也疯狂"><a href="#问题-G-巨人也疯狂" class="headerlink" title="问题 G: 巨人也疯狂"></a>问题 G: 巨人也疯狂</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 2  解决: 2<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=6&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1896" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1896&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1896&amp;getkey=53D9617A4C" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1896" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h2><p>人类发现巨人控制吃人的神经是由一些神经元和一些神经通道组成的，每个神经通道两端各有一个神经元，且这个通道是单向的。吃人信号从脑部神经元S发出到控制吃人的神经元T，S、T之间是一个有向无环图。人类想把某些神经通道切断达到S的信号无法传到T（由于神经元太小不容易砍掉，所以考虑神经元），每个神经通道由于位置不同也有砍断所需的力量。人类想知道如何花最小的力气而使S的信号传不到T。</p>
+<h2 id="输入-6"><a href="#输入-6" class="headerlink" title="输入"></a>输入</h2><p>首行输入两个数，n，m，（n，m&lt;1000）。n代表包括s，t在内共有n个节点，1为s，n为t。</p>
+<p>接下来m行，每行3个数，a，b，c，表示a到b的神经通路需要花费c力气。</p>
+<h2 id="输出-6"><a href="#输出-6" class="headerlink" title="输出"></a>输出</h2><p>输出最小的力气。</p>
+<h2 id="样例输入-6"><a href="#样例输入-6" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">7 8</span><br><span class="line">1 2 2</span><br><span class="line">1 3 2</span><br><span class="line">2 4 2</span><br><span class="line">2 5 2</span><br><span class="line">3 5 2</span><br><span class="line">4 6 2</span><br><span class="line">6 7 2</span><br><span class="line">5 7 2</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-6"><a href="#样例输出-6" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=6&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1896" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1896&amp;getkey=53D9617A4C" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1896" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=205;</span><br><span class="line">const int inf=0x7fffffff;</span><br><span class="line">int r[maxn][maxn]; //残留网络，初始化为原图</span><br><span class="line">bool visit[maxn];</span><br><span class="line">int pre[maxn];</span><br><span class="line">int m,n;</span><br><span class="line">bool bfs(int s,int t)  //寻找一条从s到t的增广路，若找到返回true</span><br><span class="line">&#123;</span><br><span class="line">    int p;</span><br><span class="line">    queue&lt;int &gt; q;</span><br><span class="line">    memset(pre,-1,sizeof(pre));</span><br><span class="line">    memset(visit,false,sizeof(visit));</span><br><span class="line"></span><br><span class="line">    pre[s]=s;</span><br><span class="line">    visit[s]=true;</span><br><span class="line">    q.push(s);</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        p=q.front();</span><br><span class="line">        q.pop();</span><br><span class="line">        for(int i=1;i&lt;=n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(r[p][i]&gt;0&amp;&amp;!visit[i])</span><br><span class="line">            &#123;</span><br><span class="line">                pre[i]=p;</span><br><span class="line">                visit[i]=true;</span><br><span class="line">                if(i==t) return true;</span><br><span class="line">                q.push(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int EdmondsKarp(int s,int t)</span><br><span class="line">&#123;</span><br><span class="line">   int flow=0,d,i;</span><br><span class="line">   while(bfs(s,t))</span><br><span class="line">   &#123;</span><br><span class="line">       d=inf;</span><br><span class="line">       for(i=t;i!=s;i=pre[i])</span><br><span class="line">           d=d&lt;r[pre[i]][i]? d:r[pre[i]][i];</span><br><span class="line">       for(i=t;i!=s;i=pre[i])</span><br><span class="line">       &#123;</span><br><span class="line">           r[pre[i]][i]-=d;</span><br><span class="line">           r[i][pre[i]]+=d;</span><br><span class="line">       &#125;</span><br><span class="line">       flow+=d;</span><br><span class="line">   &#125;</span><br><span class="line">   return flow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        int u,v,w;</span><br><span class="line">        memset(r,0,sizeof(r));</span><br><span class="line">        for(int i=0;i&lt;m;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);</span><br><span class="line">            r[u][v]+=w;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,EdmondsKarp(1,n));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-H-过河拆桥"><a href="#问题-H-过河拆桥" class="headerlink" title="问题 H: 过河拆桥"></a>问题 H: 过河拆桥</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 1  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=7&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1891" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1891&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1891&amp;getkey=EC9961F440" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1891" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h2><p>猴子是一种自私的动物。动物世界由河流分成了n个岛屿。这天，猴子在a1岛屿上望见an岛屿上有一片桃林。a1到an之间有n-2个岛屿，分别是a2——an-1。岛屿之间共有m坐桥，每座桥都有一定的距离。现在猴子通过这些桥从a1走到了an，然而由于猴子怕其他动物也过去享受那片桃林，于是每走一座桥都会拆一座桥。终于到了an，吃完桃子后，正直涨潮，于是他必须马上回到a1，由于之前走过的桥被拆了，所以只能寻找一条新的路回到a1。请问猴子从a1到an，再从an回到a1的最短路径是多少。</p>
+<h2 id="输入-7"><a href="#输入-7" class="headerlink" title="输入"></a>输入</h2><p>首行输入nm（n&lt;=1000m&lt;=10000）</p>
+<p>接下来m行，每行三个数x，y，z，代表ax岛与ay岛之间有桥，距离是z。（z&lt;=35000）</p>
+<h2 id="输出-7"><a href="#输出-7" class="headerlink" title="输出"></a>输出</h2><p>输出一个整数，为最短距离。</p>
+<h2 id="样例输入-7"><a href="#样例输入-7" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">4 5</span><br><span class="line">2 3 1</span><br><span class="line">2 4 2</span><br><span class="line">1 2 1</span><br><span class="line">3 4 1</span><br><span class="line">1 3 2</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-7"><a href="#样例输出-7" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=7&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1891" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1891&amp;getkey=EC9961F440" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1891" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=1e5;</span><br><span class="line">const int inf=1e9;</span><br><span class="line">struct edge</span><br><span class="line">&#123;</span><br><span class="line">    int to,cap,cost ,rev;</span><br><span class="line">&#125;;</span><br><span class="line">int V;</span><br><span class="line">vector&lt;edge&gt;G[maxn];</span><br><span class="line">int dist[maxn];</span><br><span class="line">int prevv[maxn],preve[maxn];</span><br><span class="line">void add(int from,int to,int cap,int cost)</span><br><span class="line">&#123;</span><br><span class="line">    edge e,w;</span><br><span class="line">    e.to=to;</span><br><span class="line">    e.cap=cap;</span><br><span class="line">    e.cost=cost;</span><br><span class="line">    e.rev=G[to].size();</span><br><span class="line">    G[from].push_back(e);</span><br><span class="line">    w.to=from;</span><br><span class="line">    w.cap=0;</span><br><span class="line">    w.cost=-cost;</span><br><span class="line">    w.rev=G[from].size()-1;</span><br><span class="line">    G[to].push_back(w);</span><br><span class="line">&#125;</span><br><span class="line">int min_ans(int s,int t,int f)</span><br><span class="line">&#123;</span><br><span class="line">    int res=0;</span><br><span class="line"></span><br><span class="line">    while(f&gt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int i=0; i&lt;V; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            dist[i]=inf;</span><br><span class="line">        &#125;</span><br><span class="line">        dist[s]=0;</span><br><span class="line">        bool update=true;</span><br><span class="line">        while(update)</span><br><span class="line">        &#123;</span><br><span class="line"></span><br><span class="line">            update=false;</span><br><span class="line">            for(int v=0; v&lt;V; v++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(dist[v]==inf)</span><br><span class="line">                &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                for(int i=0; i&lt;G[v].size(); i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    edge &amp;e=G[v][i];</span><br><span class="line">                    if(e.cap&gt;0&amp;&amp;dist[e.to]&gt;dist[v]+e.cost)</span><br><span class="line">                    &#123;</span><br><span class="line">                        dist[e.to]=dist[v]+e.cost;</span><br><span class="line">                        prevv[e.to]=v;</span><br><span class="line">                        preve[e.to]=i;</span><br><span class="line">                        update=true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(dist[t]==inf)</span><br><span class="line">            return -1;</span><br><span class="line">        int d=f;</span><br><span class="line">        for(int v=t; v!=s; v=prevv[v])</span><br><span class="line">        &#123;</span><br><span class="line">            d=min(d,G[prevv[v]][preve[v]].cap);</span><br><span class="line">        &#125;</span><br><span class="line">        f-=d;</span><br><span class="line">        res+=d*dist[t];</span><br><span class="line">        for(int v=t; v!=s; v=prevv[v])</span><br><span class="line">        &#123;</span><br><span class="line">            edge &amp;e =G[prevv[v]][preve[v]];</span><br><span class="line">            e.cap-=d;</span><br><span class="line">            G[v][e.rev].cap+=d;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">int N,M;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a,b,c;</span><br><span class="line">    while(cin&gt;&gt;N&gt;&gt;M)</span><br><span class="line">    &#123;</span><br><span class="line">        V=N;</span><br><span class="line">        for(int i=0; i&lt;=N; i++)</span><br><span class="line">            G[i].clear();</span><br><span class="line">        for(int i=0; i&lt;M; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</span><br><span class="line">            a--;</span><br><span class="line">            b--;</span><br><span class="line">            add(a,b,1,c);</span><br><span class="line">            add(b,a,1,c);</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,min_ans(0,N-1,2));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-I-植物大战僵尸"><a href="#问题-I-植物大战僵尸" class="headerlink" title="问题 I: 植物大战僵尸"></a>问题 I: 植物大战僵尸</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 1  解决: 1<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=8&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1889" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1889&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1889&amp;getkey=31996BAC1B" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1889" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h2><p>Plants vs. Zombies（PVZ）是最近十分风靡的一款小游戏。Plants（植物）和Zombies（僵尸）是游戏的主角，其中Plants防守，而Zombies进攻。该款游戏包含多种不同的挑战系列，比如Protect Your Brain、Bowling等等。其中最为经典的，莫过于玩家通过控制Plants来防守Zombies的进攻，或者相反地由玩家通过控制Zombies对Plants发起进攻。</p>
+<p>现在，我们将要考虑的问题是游戏中Zombies对Plants的进攻，请注意，本题中规则与实际游戏有所不同。游戏中有两种角色，Plants和Zombies，每个Plant有一个攻击位置集合，它可以对这些位置进行保护；而Zombie进攻植物的方式是走到植物所在的位置上并将其吃掉。</p>
+<p>游戏的地图可以抽象为一个N行M列的矩阵，行从上到下用0到N–1编号，列从左到右用0到M–1编号；在地图的每个位置上都放有一个Plant，为简单起见，我们把位于第r行第c列的植物记为Pr c。</p>
+<p>Plants分很多种，有攻击类、防守类和经济类等等。为了简单的描述每个Plant，定义Score和Attack如下：</p>
+<p>Score[Pr c]</p>
+<p>Zombie击溃植物Pr c可获得的能源。若Score[Pr c]为非负整数，则表示击溃植物Pr c可获得能源Score[Pr c]，若为负数表示击溃Pr c需要付出能源 -Score[Pr c]。</p>
+<p>Attack[Pr c]</p>
+<p>植物Pr c能够对Zombie进行攻击的位置集合。</p>
+<p>Zombies必须从地图的右侧进入，且只能沿着水平方向进行移动。Zombies攻击植物的唯一方式就是走到该植物所在的位置并将植物吃掉。因此Zombies的进攻总是从地图的右侧开始。也就是说，对于第r行的进攻，Zombies必须首先攻击Pr M-1；若需要对Pr c（0≤c&lt;M-1）攻击，必须将PrM-1 Pr M-2 … Pr c+1先击溃，并移动到位置(r c)才可进行攻击。</p>
+<p>在本题的设定中，Plants的攻击力是无穷大的，一旦Zombie进入某个Plant的攻击位置，该Zombie会被瞬间消灭，而该Zombie没有时间进行任何攻击操作。因此，即便Zombie进入了一个Plant所在的位置，但该位置属于其他植物的攻击位置集合，则Zombie会被瞬间消灭而所在位置的植物则安然无恙（在我们的设定中，Plant的攻击位置不包含自身所在位置，否则你就不可能击溃它了）。</p>
+<p>Zombies的目标是对Plants的阵地发起进攻并获得最大的能源收入。每一次，你可以选择一个可进攻的植物进行攻击。本题的目标为，制定一套Zombies的进攻方案，选择进攻哪些植物以及进攻的顺序，从而获得最大的能源收入。</p>
+<h2 id="输入-8"><a href="#输入-8" class="headerlink" title="输入"></a>输入</h2><p>输入的第一行包含两个整数N M，分别表示地图的行数和列数。</p>
+<p>接下来N×M行描述每个位置上植物的信息。第r×M + c + 1行按照如下格式给出植物Pr c的信息：第一个整数为Score[Pr c] 第二个整数为集合Attack[Pr c]中的位置个数w，接下来w个位置信息（r’ c’），表示Pr c可以攻击位置第r’ 行第c’ 列。</p>
+<h2 id="输出-8"><a href="#输出-8" class="headerlink" title="输出"></a>输出</h2><p>输出仅包含一个整数，表示可以获得的最大能源收入。注意，你也可以选择不进行任何攻击，这样能源收入为0。</p>
+<h2 id="样例输入-8"><a href="#样例输入-8" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">10 0</span><br><span class="line">20 0</span><br><span class="line">-10 0</span><br><span class="line">-5 1 0 0</span><br><span class="line">100 1 2 1</span><br><span class="line">100 0</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-8"><a href="#样例输出-8" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">25</span><br></pre></td></tr></table></figure>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=8&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1889" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1889&amp;getkey=31996BAC1B" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1889" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">#define inf 0x3f3f3f3f</span><br><span class="line">#define M 1000</span><br><span class="line">using namespace std;</span><br><span class="line">int now,tot,s,t,va[M],du[M],H[M],h[M],ok[M],d[M],v[M],cur[M];</span><br><span class="line">int n,m;</span><br><span class="line">queue&lt;int&gt; q;</span><br><span class="line">struct edge1</span><br><span class="line">&#123;</span><br><span class="line">	int x,y,ne;</span><br><span class="line">&#125;e[500000];</span><br><span class="line">struct edge</span><br><span class="line">&#123;</span><br><span class="line">	int from,to,cap,flow,ne;</span><br><span class="line">&#125;E[500000];</span><br><span class="line">int C(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	return (x-1)*m+y;</span><br><span class="line">&#125;</span><br><span class="line">void Add(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	e[++tot].y=y;</span><br><span class="line">	e[tot].x=x;</span><br><span class="line">	e[tot].ne=H[x];</span><br><span class="line">	H[x]=tot;</span><br><span class="line">	du[y]++;</span><br><span class="line">&#125;</span><br><span class="line">void Addedge(int from,int to,int cap)</span><br><span class="line">&#123;</span><br><span class="line">	E[++tot]=(edge)&#123;from,to,cap,0,h[from]&#125;;</span><br><span class="line">	h[from]=tot;</span><br><span class="line">	E[++tot]=(edge)&#123;to,from,0,0,h[to]&#125;;</span><br><span class="line">	h[to]=tot;</span><br><span class="line">&#125;</span><br><span class="line">bool bfs()</span><br><span class="line">&#123;</span><br><span class="line">	for (int i=s;i&lt;=t;i++)</span><br><span class="line">		v[i]=0;</span><br><span class="line">	v[s]=1;</span><br><span class="line">	d[s]=0;</span><br><span class="line">	q.push(s);</span><br><span class="line">	while (!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		int x=q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		for (int i=h[x];i;i=E[i].ne)</span><br><span class="line">		&#123;</span><br><span class="line">			edge e=E[i];</span><br><span class="line">			if (!v[e.to]&amp;&amp;e.cap&gt;e.flow)</span><br><span class="line">			&#123;</span><br><span class="line">				v[e.to]=1;</span><br><span class="line">				d[e.to]=d[x]+1;</span><br><span class="line">				q.push(e.to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return v[t];</span><br><span class="line">&#125;</span><br><span class="line">int dfs(int x,int a)</span><br><span class="line">&#123;</span><br><span class="line">	if (x==t||!a) return a;</span><br><span class="line">	int flow=0;</span><br><span class="line">	for (int &amp;i=cur[x];i;i=E[i].ne)</span><br><span class="line">	&#123;</span><br><span class="line">		edge &amp;e=E[i];</span><br><span class="line">		if (d[e.to]!=d[x]+1) continue;</span><br><span class="line">		int f=dfs(e.to,min(a,e.cap-e.flow));</span><br><span class="line">		if (f)</span><br><span class="line">		&#123;</span><br><span class="line">			flow+=f;</span><br><span class="line">			a-=f;</span><br><span class="line">			e.flow+=f;</span><br><span class="line">			E[i^1].flow-=f;</span><br><span class="line">			if (!a) break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return flow;</span><br><span class="line">&#125;</span><br><span class="line">int dinic()</span><br><span class="line">&#123;</span><br><span class="line">	int flow=0;</span><br><span class="line">	while (bfs())</span><br><span class="line">	&#123;</span><br><span class="line">		for (int i=s;i&lt;=t;i++)</span><br><span class="line">			cur[i]=h[i];</span><br><span class="line">		flow+=dfs(s,inf);</span><br><span class="line">	&#125;</span><br><span class="line">	return flow;</span><br><span class="line">&#125;</span><br><span class="line">void Topsort()</span><br><span class="line">&#123;</span><br><span class="line">	queue&lt;int&gt; q;</span><br><span class="line">	for (int i=1;i&lt;=now;i++)</span><br><span class="line">		if (!du[i]) ok[i]=1,q.push(i);</span><br><span class="line">	while (!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		int x=q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		for (int i=H[x];i;i=e[i].ne)</span><br><span class="line">		&#123;</span><br><span class="line">			int y=e[i].y;</span><br><span class="line">			du[y]--;</span><br><span class="line">			if (!du[y])</span><br><span class="line">			&#123;</span><br><span class="line">				ok[y]=1;</span><br><span class="line">				q.push(y);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">	for (int i=1;i&lt;=n;i++)</span><br><span class="line">		for (int j=1;j&lt;=m;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			now++;</span><br><span class="line">			int w;</span><br><span class="line">			scanf(&quot;%d%d&quot;,&amp;va[now],&amp;w);</span><br><span class="line">			for (int k=1;k&lt;=w;k++)</span><br><span class="line">			&#123;</span><br><span class="line">				int x,y;</span><br><span class="line">				scanf(&quot;%d%d&quot;,&amp;x,&amp;y);</span><br><span class="line">				x++,y++;</span><br><span class="line">				Add(now,C(x,y));</span><br><span class="line">			&#125;</span><br><span class="line">			if (j!=m) Add(now+1,now);</span><br><span class="line">		&#125;</span><br><span class="line">	Topsort();</span><br><span class="line">	s=0,t=now+1;</span><br><span class="line">	int ans=0;</span><br><span class="line">	tot=1;</span><br><span class="line">	for (int x=1;x&lt;=now;x++)</span><br><span class="line">		if (ok[x])</span><br><span class="line">		&#123;</span><br><span class="line">			if (va[x]&gt;0) ans+=va[x],Addedge(s,x,va[x]);</span><br><span class="line">			else Addedge(x,t,-va[x]);</span><br><span class="line">			for (int i=H[x];i;i=e[i].ne)</span><br><span class="line">			&#123;</span><br><span class="line">				int y=e[i].y;</span><br><span class="line">				if (ok[y])</span><br><span class="line">					Addedge(y,x,inf);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	cout&lt;&lt;ans-dinic()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-J-Pigs"><a href="#问题-J-Pigs" class="headerlink" title="问题 J: Pigs"></a>问题 J: Pigs</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 2  解决: 2<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=9&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1887" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1887&amp;cid=1024" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1887&amp;getkey=874A405F35" target="_blank" rel="noopener">Edit</a>] [<a href="javascript:phpfm(1887" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h2><p>Mirko works on a pig farm that consists of M locked pig-houses and Mirko can’t unlock any pighouse because he doesn’t have the keys. Customers come to the farm one after another. Each of them has keys to some pig-houses and wants to buy a certain number of pigs.<br>All data concerning customers planning to visit the farm on that particular day are available to Mirko early in the morning so that he can make a sales-plan in order to maximize the number of pigs sold.<br>More precisely the procedure is as following: the customer arrives opens all pig-houses to which he has the key Mirko sells a certain number of pigs from all the unlocked pig-houses to him and if Mirko wants he can redistribute the remaining pigs across the unlocked pig-houses.<br>An unlimited number of pigs can be placed in every pig-house.<br>Write a program that will find the maximum number of pigs that he can sell on that day.</p>
+<h2 id="输入-9"><a href="#输入-9" class="headerlink" title="输入"></a>输入</h2><p>The first line of input contains two integers M and N 1 &lt;= M &lt;= 1000 1 &lt;= N &lt;= 100 number of pighouses and number of customers. Pig houses are numbered from 1 to M and customers are numbered from 1 to N.<br>The next line contains M integeres for each pig-house initial number of pigs. The number of pigs in each pig-house is greater or equal to 0 and less or equal to 1000.<br>The next N lines contains records about the customers in the following form ( record about the i-th customer is written in the (i+2)-th line):<br>A K1 K2 … KA B It means that this customer has key to the pig-houses marked with the numbers K1 K2 … KA (sorted nondecreasingly ) and that he wants to buy B pigs. Numbers A and B can be equal to 0.</p>
+<h2 id="输出-9"><a href="#输出-9" class="headerlink" title="输出"></a>输出</h2><p>The first and only line of the output should contain the number of sold pigs.</p>
+<h2 id="样例输入-9"><a href="#样例输入-9" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">3 1 10</span><br><span class="line">2 1 2 2</span><br><span class="line">2 1 3 3</span><br><span class="line">1 2 6</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-9"><a href="#样例输出-9" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
+<p>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1024&amp;pid=9&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1887" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/admin/problem_edit.php?id=1887&amp;getkey=874A405F35" target="_blank" rel="noopener">Edit</a>][<a href="javascript:phpfm(1887" target="_blank" rel="noopener">TestData</a>)]</p>
+<h2 id="代码-9"><a href="#代码-9" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N=105,M=1005,INF=1e9;</span><br><span class="line">inline int read()&#123;</span><br><span class="line">    char c=getchar();int x=0,f=1;</span><br><span class="line">    while(c&lt;&apos;0&apos;||c&gt;&apos;9&apos;)&#123;if(c==&apos;-&apos;)f=-1; c=getchar();&#125;</span><br><span class="line">    while(c&gt;=&apos;0&apos;&amp;&amp;c&lt;=&apos;9&apos;)&#123;x=x*10+c-&apos;0&apos;; c=getchar();&#125;</span><br><span class="line">    return x*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int m,n,s,t;</span><br><span class="line">int pig[M],now[M];</span><br><span class="line">struct edge&#123;</span><br><span class="line">    int v,c,f,ne;</span><br><span class="line">&#125;e[N*M&lt;&lt;1];</span><br><span class="line">int cnt,h[N];</span><br><span class="line">inline void ins(int u,int v,int c)&#123;</span><br><span class="line">    cnt++;</span><br><span class="line">    e[cnt].v=v;e[cnt].c=c;e[cnt].f=0;e[cnt].ne=h[u];h[u]=cnt;</span><br><span class="line">    cnt++;</span><br><span class="line">    e[cnt].v=u;e[cnt].c=0;e[cnt].f=0;e[cnt].ne=h[v];h[v]=cnt;</span><br><span class="line">&#125;</span><br><span class="line">int q[N],head,tail,vis[N],d[N];</span><br><span class="line">bool bfs()&#123;</span><br><span class="line">    memset(vis,0,sizeof(vis));</span><br><span class="line">    memset(d,0,sizeof(d));</span><br><span class="line">    head=tail=1;</span><br><span class="line">    d[s]=0;vis[s]=1;</span><br><span class="line">    q[tail++]=s;</span><br><span class="line">    while(head!=tail)&#123;</span><br><span class="line">        int u=q[head++];</span><br><span class="line">        for(int i=h[u];i;i=e[i].ne)&#123;</span><br><span class="line">            int v=e[i].v;</span><br><span class="line">            if(!vis[v]&amp;&amp;e[i].c&gt;e[i].f)&#123;</span><br><span class="line">                vis[v]=1;</span><br><span class="line">                d[v]=d[u]+1;</span><br><span class="line">                q[tail++]=v;</span><br><span class="line">                if(v==t) return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">int cur[N];</span><br><span class="line">int dfs(int u,int a)&#123;</span><br><span class="line">    if(u==t||a==0) return a;</span><br><span class="line">    int flow=0,f;</span><br><span class="line">    for(int &amp;i=cur[u];i;i=e[i].ne)&#123;</span><br><span class="line">        int v=e[i].v;</span><br><span class="line">        if(d[v]==d[u]+1&amp;&amp;(f=dfs(v,min(a,e[i].c-e[i].f)))&gt;0)&#123;</span><br><span class="line">            flow+=f;</span><br><span class="line">            e[i].f+=f;</span><br><span class="line">            e[((i-1)^1)+1].f-=f;</span><br><span class="line">            a-=f;</span><br><span class="line">            if(a==0) break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return flow;</span><br><span class="line">&#125;</span><br><span class="line">int dinic()&#123;</span><br><span class="line">    int flow=0;</span><br><span class="line">    while(bfs())&#123;</span><br><span class="line">        for(int i=s;i&lt;=t;i++) cur[i]=h[i];</span><br><span class="line">        flow+=dfs(s,INF);</span><br><span class="line">    &#125;</span><br><span class="line">    return flow;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    m=read();n=read();s=0;t=n+1;</span><br><span class="line">    for(int i=1;i&lt;=m;i++) pig[i]=read();</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        int A=read(),B,x;</span><br><span class="line">        while(A--)&#123;</span><br><span class="line">            x=read();</span><br><span class="line">            if(!now[x]) ins(s,i,pig[x]),now[x]=i;</span><br><span class="line">            else ins(now[x],i,INF),now[x]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        B=read();</span><br><span class="line">        ins(i,t,B);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d&quot;,dinic());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><hr>纸短情长啊<i class="fa fa-paw"></i>文章结束了<i class="fa fa-paw"></i>但我们的故事还在继续</div>
+    
+</div>
+    
+	  </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/22/2018-08-22/" rel="next" title="进击的网络流">
+                <i class="fa fa-chevron-left"></i> 进击的网络流
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA4NC8xMjYxOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠CSDN" target="_blank">浅悠悠CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="渣渣灰CSDN" target="_blank">渣渣灰CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/messhiro" title="赵神CSDN" target="_blank">赵神CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.matrix67.com/" title="matrix67博客" target="_blank">matrix67博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://amon1997.com/" title="曹静的博客" target="_blank">曹静的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/sophia__yu" title="杨祥钰CSDN" target="_blank">杨祥钰CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
+	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-A-赛马"><span class="nav-number">1.</span> <span class="nav-text">问题 A: 赛马</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">1.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">1.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入"><span class="nav-number">1.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出"><span class="nav-number">1.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示"><span class="nav-number">1.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.7.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-B-海上钢琴师"><span class="nav-number">2.</span> <span class="nav-text">问题 B: 海上钢琴师</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-1"><span class="nav-number">2.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-1"><span class="nav-number">2.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-1"><span class="nav-number">2.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-1"><span class="nav-number">2.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示-1"><span class="nav-number">2.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-1"><span class="nav-number">2.7.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-C-进击的巨人"><span class="nav-number">3.</span> <span class="nav-text">问题 C: 进击的巨人</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-2"><span class="nav-number">3.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-2"><span class="nav-number">3.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-2"><span class="nav-number">3.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-2"><span class="nav-number">3.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-2"><span class="nav-number">3.6.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-D-X档案"><span class="nav-number">4.</span> <span class="nav-text">问题 D: X档案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-3"><span class="nav-number">4.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-3"><span class="nav-number">4.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-3"><span class="nav-number">4.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-3"><span class="nav-number">4.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示-2"><span class="nav-number">4.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-3"><span class="nav-number">4.7.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-E-同桌的你"><span class="nav-number">5.</span> <span class="nav-text">问题 E: 同桌的你</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-4"><span class="nav-number">5.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-4"><span class="nav-number">5.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-4"><span class="nav-number">5.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-4"><span class="nav-number">5.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提示-3"><span class="nav-number">5.6.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-4"><span class="nav-number">5.7.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-F-奇迹暖暖"><span class="nav-number">6.</span> <span class="nav-text">问题 F: 奇迹暖暖</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-5"><span class="nav-number">6.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-5"><span class="nav-number">6.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-5"><span class="nav-number">6.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-5"><span class="nav-number">6.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-5"><span class="nav-number">6.6.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-G-巨人也疯狂"><span class="nav-number">7.</span> <span class="nav-text">问题 G: 巨人也疯狂</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-6"><span class="nav-number">7.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-6"><span class="nav-number">7.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-6"><span class="nav-number">7.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-6"><span class="nav-number">7.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-6"><span class="nav-number">7.6.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-H-过河拆桥"><span class="nav-number">8.</span> <span class="nav-text">问题 H: 过河拆桥</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-7"><span class="nav-number">8.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-7"><span class="nav-number">8.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-7"><span class="nav-number">8.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-7"><span class="nav-number">8.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-7"><span class="nav-number">8.6.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-I-植物大战僵尸"><span class="nav-number">9.</span> <span class="nav-text">问题 I: 植物大战僵尸</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-8"><span class="nav-number">9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-8"><span class="nav-number">9.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-8"><span class="nav-number">9.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-8"><span class="nav-number">9.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-8"><span class="nav-number">9.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-8"><span class="nav-number">9.6.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-J-Pigs"><span class="nav-number">10.</span> <span class="nav-text">问题 J: Pigs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-9"><span class="nav-number">10.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-9"><span class="nav-number">10.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-9"><span class="nav-number">10.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-9"><span class="nav-number">10.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-9"><span class="nav-number">10.5.</span> <span class="nav-text">样例输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码-9"><span class="nav-number">10.6.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
