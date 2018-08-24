@@ -114,18 +114,107 @@
 
 
 
-<meta name="description" content="简介图论起源于著名的哥尼斯堡七桥问题。在哥尼斯堡的普莱格尔河上有七座桥将河中的岛及岛与河岸联结起来问题是要从这四块陆地中任何一块开始，通过每一座桥正好一次，再回到起点。然而无数次的尝试都没有成功。欧拉在1736年解决了这个问题，他用抽像分析法将这个问题化为第一个图论问题：即把每一块陆地用一个点来代替，将每一座桥用联接相应的两个点的一条线来代替，从而相当于得到一个“图”。欧拉证明了这个问题没有解，并">
+<meta name="description" content="内容：图论基础 时间：2018-7-26 课件by.浅悠悠 主讲人：王骏">
 <meta name="keywords" content="图论,最短路,最小生成树,拓扑排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论1（拓扑排序 + 最短路 + 最小生成树）">
 <meta property="og:url" content="http://qianyouyou.cn/2018/07/26/2018-07-26-1/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="简介图论起源于著名的哥尼斯堡七桥问题。在哥尼斯堡的普莱格尔河上有七座桥将河中的岛及岛与河岸联结起来问题是要从这四块陆地中任何一块开始，通过每一座桥正好一次，再回到起点。然而无数次的尝试都没有成功。欧拉在1736年解决了这个问题，他用抽像分析法将这个问题化为第一个图论问题：即把每一块陆地用一个点来代替，将每一座桥用联接相应的两个点的一条线来代替，从而相当于得到一个“图”。欧拉证明了这个问题没有解，并">
+<meta property="og:description" content="内容：图论基础 时间：2018-7-26 课件by.浅悠悠 主讲人：王骏">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-18T03:56:16.641Z">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%872.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%873.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%874.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%875.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%876.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%877.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%878.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%879.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8710.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8711.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8712.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8713.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8714.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8715.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8716.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8717.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8718.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8719.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8720.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8721.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8722.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8723.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8724.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8725.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8726.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8727.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8728.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8729.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8730.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8731.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8732.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8733.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8734.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8735.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8736.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8737.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8738.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8739.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8740.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8741.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8742.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8743.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8744.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8745.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8746.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8747.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8748.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8749.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8750.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8751.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8752.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8753.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8754.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8755.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8756.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8757.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8758.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8759.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8760.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8761.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8762.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8763.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8764.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8765.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8766.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8767.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8768.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8769.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8770.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8771.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8772.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8773.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8774.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8775.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8776.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8777.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8778.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8779.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8780.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8781.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8782.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8783.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8784.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8785.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8786.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8787.jpg">
+<meta property="og:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8788.jpg">
+<meta property="og:updated_time" content="2018-08-24T16:35:42.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论1（拓扑排序 + 最短路 + 最小生成树）">
-<meta name="twitter:description" content="简介图论起源于著名的哥尼斯堡七桥问题。在哥尼斯堡的普莱格尔河上有七座桥将河中的岛及岛与河岸联结起来问题是要从这四块陆地中任何一块开始，通过每一座桥正好一次，再回到起点。然而无数次的尝试都没有成功。欧拉在1736年解决了这个问题，他用抽像分析法将这个问题化为第一个图论问题：即把每一块陆地用一个点来代替，将每一座桥用联接相应的两个点的一条线来代替，从而相当于得到一个“图”。欧拉证明了这个问题没有解，并">
+<meta name="twitter:description" content="内容：图论基础 时间：2018-7-26 课件by.浅悠悠 主讲人：王骏">
+<meta name="twitter:image" content="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg">
 
 
 
@@ -463,7 +552,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  798
+                  22
                 </span>
               
 
@@ -479,7 +568,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -500,30 +589,99 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>图论起源于著名的哥尼斯堡七桥问题。在哥尼斯堡的普莱格尔河上有七座桥将河中的岛及岛与河岸联结起来问题是要从这四块陆地中任何一块开始，通过每一座桥正好一次，再回到起点。然而无数次的尝试都没有成功。欧拉在1736年解决了这个问题，他用抽像分析法将这个问题化为第一个图论问题：即把每一块陆地用一个点来代替，将每一座桥用联接相应的两个点的一条线来代替，从而相当于得到一个“图”。欧拉证明了这个问题没有解，并且推广了这个问题，给出了对于一个给定的图可以某种方式走遍的判定法则。这就是后来的欧拉路径和欧拉回路。这项工作使欧拉成为图论〔及拓扑学〕的创始人。</p>
-<h2 id="欧拉回路"><a href="#欧拉回路" class="headerlink" title="欧拉回路"></a>欧拉回路</h2><p>若图G中存在这样一条路径，使得它恰通过G中每条边一次,则称该路径为欧拉路径。若该路径是一个圈，则称为欧拉(Euler)回路。</p>
-<p>定理：（一）一个图有欧拉回路当且仅当它是连通的且每个顶点都有偶数度。（二）一个图有欧拉通路当且经当它是连通的且除两个顶点外，其他顶点都有偶数度。</p>
-<p>在第二个定理下，含奇数度的两个节点中，一个必为欧拉通路起点，另一个必为欧拉通路的终点。</p>
-<h2 id="图是什么"><a href="#图是什么" class="headerlink" title="图是什么"></a>图是什么</h2><p>图的的定义      图是由顶点V的集合和边E的集合组成的二元组：             </p>
-<p>记G=（V，E）    存在一个结点v，可能含有多个前驱结点和后继结点。</p>
-<h2 id="图的分类"><a href="#图的分类" class="headerlink" title="图的分类"></a>图的分类</h2><p>有向图</p>
-<p>无向图</p>
-<p>无权图</p>
-<p>带权图</p>
-<p>连通图</p>
-<p>二分图…</p>
-<p>有向图:    点与有向边的集合</p>
-<p>带权图（网）：图中的边加上表示某种含义的数值，数值称为边的权</p>
-<p>连通：两顶点间有路可通。</p>
-<p>连通图：能连成一片的图。</p>
-<p>连通分量：无向图中的极大连通子图</p>
-<h3 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h3><p>​    在图G=（V，E）中，如果对于结点a，b，存在满足下述条件的结点序列x1……xk(k&gt;1)        ⑴ x1=a，xk=b     ⑵ (xi，xi+1)∈E         i=1‥k-1则称结点序列x1=a，x2，…，xk=b为结点a到结点b的一条路径，而路径上边的数目（k-1）称为该路径的长度。</p>
-<p>图1: 1、(1,2,3,5)    长度=3        2、(1,2,3,5,2)  长度=4        3、(1,2,5,4,1)  长度=4</p>
-<p>图2: (1,2,5,4) 长度=3</p>
-<p>若起点与终点相同着为环（也叫做回路）</p>
-<h3 id="顶点的度、入度、出度"><a href="#顶点的度、入度、出度" class="headerlink" title="顶点的度、入度、出度"></a>顶点的度、入度、出度</h3><p>在无向图中：顶点v的度是指与顶点v相连的边的数目。D( 2 )=3</p>
-<p>在有向图中：入度——以该顶点为终点的边的数目 . ID(3)=2  出度——以该顶点为起点的边的数目 . OD(3)=1度：等于该顶点的入度与出度之和。D(5)=ID(5)+OD(5)=1+2=3 </p>
-<h2 id="太多了，有时间再添加"><a href="#太多了，有时间再添加" class="headerlink" title="太多了，有时间再添加"></a>太多了，有时间再添加</h2>
+        <p>内容：图论基础</p>
+<p>时间：2018-7-26</p>
+<p>课件by.浅悠悠</p>
+<p>主讲人：王骏</p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%872.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%873.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%874.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%875.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%876.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%877.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%878.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%879.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8710.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8711.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8712.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8713.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8714.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8715.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8716.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8717.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8718.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8719.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8720.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8721.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8722.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8723.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8724.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8725.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8726.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8727.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8728.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8729.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8730.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8731.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8732.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8733.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8734.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8735.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8736.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8737.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8738.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8739.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8740.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8741.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8742.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8743.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8744.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8745.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8746.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8747.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8748.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8749.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8750.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8751.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8752.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8753.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8754.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8755.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8756.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8757.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8758.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8759.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8760.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8761.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8762.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8763.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8764.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8765.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8766.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8767.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8768.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8769.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8770.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8771.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8772.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8773.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8774.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8775.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8776.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8777.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8778.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8779.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8780.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8781.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8782.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8783.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8784.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8785.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8786.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8787.jpg" alt=""></p>
+<p><img src="http://pdz3k72o2.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8788.jpg" alt=""></p>
+
       
     </div>
     
@@ -608,8 +766,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/26/2018-07-26/" rel="prev" title="7.26图论基础专项训练题解">
-                7.26图论基础专项训练题解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/26/2018-07-28/" rel="prev" title="sg函数与nim博弈">
+                sg函数与nim博弈 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -669,17 +827,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -698,7 +847,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">95</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -709,7 +858,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -720,7 +869,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -825,22 +974,6 @@
       </section>
 	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
 	  
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉回路"><span class="nav-number">2.</span> <span class="nav-text">欧拉回路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图是什么"><span class="nav-number">3.</span> <span class="nav-text">图是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的分类"><span class="nav-number">4.</span> <span class="nav-text">图的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#路径"><span class="nav-number">4.1.</span> <span class="nav-text">路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶点的度、入度、出度"><span class="nav-number">4.2.</span> <span class="nav-text">顶点的度、入度、出度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#太多了，有时间再添加"><span class="nav-number">5.</span> <span class="nav-text">太多了，有时间再添加</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
