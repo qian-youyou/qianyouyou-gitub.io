@@ -45,9 +45,9 @@
     
       <category term="二分图" scheme="http://qianyouyou.cn/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/"/>
     
-      <category term="网路流" scheme="http://qianyouyou.cn/tags/%E7%BD%91%E8%B7%AF%E6%B5%81/"/>
-    
       <category term="最大流" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
+    
+      <category term="网路流" scheme="http://qianyouyou.cn/tags/%E7%BD%91%E8%B7%AF%E6%B5%81/"/>
     
       <category term="最小费用最大流" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E5%B0%8F%E8%B4%B9%E7%94%A8%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
     
@@ -84,9 +84,9 @@
     
       <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="最大流" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
-    
       <category term="网络流" scheme="http://qianyouyou.cn/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
+    
+      <category term="最大流" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
     
       <category term="预流推进" scheme="http://qianyouyou.cn/tags/%E9%A2%84%E6%B5%81%E6%8E%A8%E8%BF%9B/"/>
     
@@ -127,9 +127,9 @@
     
       <category term="KM算法" scheme="http://qianyouyou.cn/tags/KM%E7%AE%97%E6%B3%95/"/>
     
-      <category term="最大流" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
-    
       <category term="网络流" scheme="http://qianyouyou.cn/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/"/>
+    
+      <category term="最大流" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E5%A4%A7%E6%B5%81/"/>
     
   </entry>
   
@@ -281,6 +281,43 @@
   </entry>
   
   <entry>
+    <title>sg函数与nim博弈</title>
+    <link href="http://qianyouyou.cn/2018/07/28/2018-07-28/"/>
+    <id>http://qianyouyou.cn/2018/07/28/2018-07-28/</id>
+    <published>2018-07-28T04:26:14.000Z</published>
+    <updated>2018-08-25T09:29:31.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>内容：sg函数</p><p>时间：2018-7-28</p><p>课件by.浅悠悠</p><p>主讲人：王骏</p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%872.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%873.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%874.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%875.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%876.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%877.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%878.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%879.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8710.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8711.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8712.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8713.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8714.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8715.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8716.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8717.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8718.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8719.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8720.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8721.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8722.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8723.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8724.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;内容：sg函数&lt;/p&gt;
+&lt;p&gt;时间：2018-7-28&lt;/p&gt;
+&lt;p&gt;课件by.浅悠悠&lt;/p&gt;
+&lt;p&gt;主讲人：王骏&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="博弈论" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+    
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="sg函数" scheme="http://qianyouyou.cn/tags/sg%E5%87%BD%E6%95%B0/"/>
+    
+      <category term="博弈" scheme="http://qianyouyou.cn/tags/%E5%8D%9A%E5%BC%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>7.26图论基础专项训练题解</title>
     <link href="http://qianyouyou.cn/2018/07/26/2018-07-26/"/>
     <id>http://qianyouyou.cn/2018/07/26/2018-07-26/</id>
@@ -314,43 +351,6 @@
       <category term="最小生成树" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"/>
     
       <category term="拓扑排序" scheme="http://qianyouyou.cn/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sg函数与nim博弈</title>
-    <link href="http://qianyouyou.cn/2018/07/26/2018-07-28/"/>
-    <id>http://qianyouyou.cn/2018/07/26/2018-07-28/</id>
-    <published>2018-07-26T04:26:14.000Z</published>
-    <updated>2018-08-24T16:37:08.090Z</updated>
-    
-    <content type="html"><![CDATA[<p>内容：sg函数</p><p>时间：2018-7-28</p><p>课件by.浅悠悠</p><p>主讲人：王骏</p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%872.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%873.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%874.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%875.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%876.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%877.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%878.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%879.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8710.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8711.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8712.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8713.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8714.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8715.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8716.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8717.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8718.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8719.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8720.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8721.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8722.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8723.jpg" alt=""></p><p><img src="http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8724.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;内容：sg函数&lt;/p&gt;
-&lt;p&gt;时间：2018-7-28&lt;/p&gt;
-&lt;p&gt;课件by.浅悠悠&lt;/p&gt;
-&lt;p&gt;主讲人：王骏&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://pdz4tz3be.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="博弈论" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
-    
-    
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="sg函数" scheme="http://qianyouyou.cn/tags/sg%E5%87%BD%E6%95%B0/"/>
-    
-      <category term="博弈" scheme="http://qianyouyou.cn/tags/%E5%8D%9A%E5%BC%88/"/>
     
   </entry>
   
@@ -394,6 +394,41 @@
   </entry>
   
   <entry>
+    <title>7.20-C++标本模板库stl</title>
+    <link href="http://qianyouyou.cn/2018/07/20/2018-07-20-1/"/>
+    <id>http://qianyouyou.cn/2018/07/20/2018-07-20-1/</id>
+    <published>2018-07-20T07:00:15.000Z</published>
+    <updated>2018-08-25T09:29:06.278Z</updated>
+    
+    <content type="html"><![CDATA[<p>内容：stl</p><p>时间：2018-7-20</p><p>主讲人：王骏</p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%872.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%873.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%874.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%875.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%876.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%877.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%878.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%879.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8710.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8711.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8712.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8713.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8714.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8715.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8716.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8717.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8718.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8719.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8720.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8721.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8722.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8723.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8724.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8725.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8726.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8727.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8728.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8729.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8730.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8731.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8732.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8733.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8734.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8735.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8736.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8737.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8738.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8739.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8740.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8741.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8742.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8743.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8744.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8745.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8746.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8747.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8748.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8749.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8750.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8751.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8752.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8753.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8754.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8755.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8756.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8757.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8758.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8759.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8760.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8761.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8762.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8763.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8764.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8765.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8766.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8767.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8768.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8769.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8770.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8771.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8772.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8773.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8774.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8775.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8776.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8777.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8778.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8779.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8780.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;内容：stl&lt;/p&gt;
+&lt;p&gt;时间：2018-7-20&lt;/p&gt;
+&lt;p&gt;主讲人：王骏&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+    
+      <category term="stl" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/stl/"/>
+    
+    
+      <category term="stl" scheme="http://qianyouyou.cn/tags/stl/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>7.20-stl专项训练题解</title>
     <link href="http://qianyouyou.cn/2018/07/20/2018-07-20/"/>
     <id>http://qianyouyou.cn/2018/07/20/2018-07-20/</id>
@@ -419,44 +454,9 @@
       <category term="题解" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="stl" scheme="http://qianyouyou.cn/tags/stl/"/>
     
-  </entry>
-  
-  <entry>
-    <title>7.20-stl专项训练题解</title>
-    <link href="http://qianyouyou.cn/2018/07/20/2018-07-20-1/"/>
-    <id>http://qianyouyou.cn/2018/07/20/2018-07-20-1/</id>
-    <published>2018-07-20T07:00:15.000Z</published>
-    <updated>2018-08-24T17:03:38.711Z</updated>
-    
-    <content type="html"><![CDATA[<p>内容：stl</p><p>时间：2018-7-20</p><p>主讲人：王骏</p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%872.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%873.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%874.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%875.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%876.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%877.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%878.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%879.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8710.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8711.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8712.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8713.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8714.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8715.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8716.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8717.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8718.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8719.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8720.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8721.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8722.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8723.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8724.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8725.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8726.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8727.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8728.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8729.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8730.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8731.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8732.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8733.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8734.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8735.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8736.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8737.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8738.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8739.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8740.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8741.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8742.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8743.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8744.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8745.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8746.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8747.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8748.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8749.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8750.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8751.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8752.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8753.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8754.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8755.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8756.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8757.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8758.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8759.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8760.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8761.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8762.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8763.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8764.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8765.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8766.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8767.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8768.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8769.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8770.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8771.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8772.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8773.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8774.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8775.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8776.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8777.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8778.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8779.jpg" alt=""></p><p><img src="http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%8780.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;内容：stl&lt;/p&gt;
-&lt;p&gt;时间：2018-7-20&lt;/p&gt;
-&lt;p&gt;主讲人：王骏&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://pdz5m676b.bkt.clouddn.com/%E5%B9%BB%E7%81%AF%E7%89%871.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="C/C++" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
-    
-      <category term="stl" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/stl/"/>
-    
-    
       <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="stl" scheme="http://qianyouyou.cn/tags/stl/"/>
     
   </entry>
   

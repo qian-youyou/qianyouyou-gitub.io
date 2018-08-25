@@ -4,16 +4,46 @@
 
     
   <url>
-    <loc>http://qianyouyou.cn/2018/07/20/2018-07-20-1/</loc>
-    <lastmod>2018-08-24T17:03:38.711Z</lastmod>
+    <loc>http://qianyouyou.cn/2018/07/28/2018-07-28/</loc>
+    <lastmod>2018-08-25T09:29:31.994Z</lastmod>
     <data>
         <display>
-        <title>7.20-stl专项训练题解</title>
-        <pubTime>2018-07-20T07:00:15.000Z</pubTime>
+        <title>sg函数与nim博弈</title>
+        <pubTime>2018-07-28T04:26:14.000Z</pubTime>
         
         <tag>算法</tag>
          
+        <tag>sg函数</tag>
+         
+        <tag>博弈</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="博弈论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/07/20/2018-07-20-1/</loc>
+    <lastmod>2018-08-25T09:29:06.278Z</lastmod>
+    <data>
+        <display>
+        <title>7.20-C++标本模板库stl</title>
+        <pubTime>2018-07-20T07:00:15.000Z</pubTime>
+        
         <tag>stl</tag>
+         
+        <tag>算法</tag>
          
          
            
@@ -43,9 +73,9 @@
          
         <tag>二分图</tag>
          
-        <tag>网路流</tag>
-         
         <tag>最大流</tag>
+         
+        <tag>网路流</tag>
          
         <tag>最小费用最大流</tag>
          
@@ -75,9 +105,9 @@
         
         <tag>算法</tag>
          
-        <tag>最大流</tag>
-         
         <tag>网络流</tag>
+         
+        <tag>最大流</tag>
          
         <tag>预流推进</tag>
          
@@ -93,36 +123,6 @@
           
              
               <breadCrumb title="图论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E5%9B%BE%E8%AE%BA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://qianyouyou.cn/2018/07/26/2018-07-28/</loc>
-    <lastmod>2018-08-24T16:37:08.090Z</lastmod>
-    <data>
-        <display>
-        <title>sg函数与nim博弈</title>
-        <pubTime>2018-07-26T04:26:14.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-        <tag>sg函数</tag>
-         
-        <tag>博弈</tag>
-         
-         
-           
-             
-              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-          
-             
-              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="博弈论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
           
         </display>
     </data>
@@ -177,9 +177,9 @@
          
         <tag>KM算法</tag>
          
-        <tag>最大流</tag>
-         
         <tag>网络流</tag>
+         
+        <tag>最大流</tag>
          
          
            
@@ -205,9 +205,9 @@
         <title>7.20-stl专项训练题解</title>
         <pubTime>2018-07-20T07:00:15.000Z</pubTime>
         
-        <tag>算法</tag>
-         
         <tag>stl</tag>
+         
+        <tag>算法</tag>
          
          
            
@@ -269,9 +269,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>进制</tag>
-         
         <tag>C陷阱与缺陷</tag>
+         
+        <tag>进制</tag>
          
          
            
@@ -1897,9 +1897,9 @@
         <title>ACM全国邀请赛热身赛题2并查集</title>
         <pubTime>2018-05-19T15:37:32.000Z</pubTime>
         
-        <tag>并查集</tag>
-         
         <tag>ACM/ICPC</tag>
+         
+        <tag>并查集</tag>
          
          
            
@@ -2336,9 +2336,9 @@
          
         <tag>算法</tag>
          
-        <tag>并查集</tag>
-         
         <tag>pat天梯赛</tag>
+         
+        <tag>并查集</tag>
          
          
            
@@ -2643,13 +2643,13 @@
         
         <tag>C/C++</tag>
          
-        <tag>算法</tag>
-         
         <tag>stl</tag>
          
-        <tag>pat天梯赛</tag>
+        <tag>算法</tag>
          
         <tag>vector</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
