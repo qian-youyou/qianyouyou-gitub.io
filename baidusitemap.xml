@@ -4,40 +4,8 @@
 
     
   <url>
-    <loc>http://qianyouyou.cn/2018/08/25/2018-08-25-2/</loc>
-    <lastmod>2018-08-26T12:16:59.500Z</lastmod>
-    <data>
-        <display>
-        <title>2018中国大学生程序设计竞赛 - 网络选拔赛 1001 Buy and Resell</title>
-        <pubTime>2018-08-25T14:55:54.000Z</pubTime>
-        
-        <tag>算法</tag>
-         
-        <tag>贪心</tag>
-         
-        <tag>CCPC</tag>
-         
-        <tag>ICPC/ACM</tag>
-         
-         
-           
-             
-              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
-          
-             
-              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
-          
-             
-              <breadCrumb title="贪心" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://qianyouyou.cn/2018/08/25/2018-08-25/</loc>
-    <lastmod>2018-08-26T12:05:15.945Z</lastmod>
+    <lastmod>2018-08-26T12:27:27.506Z</lastmod>
     <data>
         <display>
         <title>2018中国大学生程序设计竞赛 - 网络选拔赛 1004 Find Integer</title>
@@ -45,11 +13,11 @@
         
         <tag>算法</tag>
          
+        <tag>ACM/ICPC</tag>
+         
         <tag>数论</tag>
          
         <tag>CCPC</tag>
-         
-        <tag>ICPC/ACM</tag>
          
         <tag>费马大定理</tag>
          
@@ -71,7 +39,7 @@
     
   <url>
     <loc>http://qianyouyou.cn/2018/08/25/2018-08-25-1/</loc>
-    <lastmod>2018-08-26T12:04:59.695Z</lastmod>
+    <lastmod>2018-08-26T12:27:00.509Z</lastmod>
     <data>
         <display>
         <title>2018中国大学生程序设计竞赛 - 网络选拔赛 1009 Tree and Permutation</title>
@@ -79,11 +47,11 @@
         
         <tag>算法</tag>
          
+        <tag>ACM/ICPC</tag>
+         
         <tag>组合数学</tag>
          
         <tag>CCPC</tag>
-         
-        <tag>ICPC/ACM</tag>
          
          
            
@@ -95,6 +63,38 @@
           
              
               <breadCrumb title="组合数学" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/08/25/2018-08-25-2/</loc>
+    <lastmod>2018-08-26T12:26:24.038Z</lastmod>
+    <data>
+        <display>
+        <title>2018中国大学生程序设计竞赛 - 网络选拔赛 1001 Buy and Resell</title>
+        <pubTime>2018-08-25T14:55:54.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>ACM/ICPC</tag>
+         
+        <tag>贪心</tag>
+         
+        <tag>CCPC</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="贪心" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83/"/>
           
         </display>
     </data>
