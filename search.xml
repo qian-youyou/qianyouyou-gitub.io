@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2018中国大学生程序设计竞赛 - 网络选拔赛 1001 Buy and Resell]]></title>
+    <url>%2F2018%2F08%2F25%2F2018-08-25-2%2F</url>
+    <content type="text"><![CDATA[Buy and ResellTime Limit: 2000/1000 MS (Java/Others) Memory Limit: 65536/65536 K (Java/Others)Total Submission(s): 0 Accepted Submission(s): 0 Problem Description The Power Cube is used as a stash of Exotic Power. There are n cities numbered 1,2,…,n where allowed to trade it. The trading price of the Power Cube in the i-th city is ai dollars per cube. Noswal is a foxy businessman and wants to quietly make a fortune by buying and reselling Power Cubes. To avoid being discovered by the police, Noswal will go to the i-th city and choose exactly one of the following three options on the i-th day:\1. spend ai dollars to buy a Power Cube\2. resell a Power Cube and get ai dollars if he has at least one Power Cube\3. do nothingObviously, Noswal can own more than one Power Cubes at the same time. After going to the n cities, he will go back home and stay away from the cops. He wants to know the maximum profit he can earn. In the meanwhile, to lower the risks, he wants to minimize the times of trading (include buy and sell) to get the maximum profit. Noswal is a foxy and successful businessman so you can assume that he has infinity money at the beginning. Input There are multiple test cases. The first line of input contains a positive integer T (T≤250), indicating the number of test cases. For each test case:The first line has an integer n. (1≤n≤105)The second line has n integers a1,a2,…,an where ai means the trading price (buy or sell) of the Power Cube in the i-th city. (1≤ai≤109)It is guaranteed that the sum of all n is no more than 5×105. Output For each case, print one line with two integers —— the maximum profit and the minimum times of trading to get the maximum profit. Sample Input 3 4 1 2 10 9 5 9 5 9 10 5 2 2 1 Sample Output Hint profit = - 1 - 2 + 10 + 9 = 16 profit = - 5 + 10 = 5 profit = 0 题解： n天，每天商品有个价格，或买或卖或不买不卖。 贪心策略：分为两个堆（或优先队列），一个堆v为储存买的价格，一个堆s储存卖的价格。第i天的商品和之前买与卖两个堆中的最小值进行比较。共分为四种情况：1.如果第i天的价格比买的堆v里最小值大，且买的堆v里最小值比卖的堆s里最小值小，则买掉买的堆v里最小的，再卖出去，交易次数加2，即v.pop(),s.push(),cnt+2。2.如果第i天的价格比卖的堆s里最小值大，且买的堆v里最小值比卖的堆s里最小值大，则买掉卖的堆s里最小的，再卖出去，意思为现在卖比之前卖的那次更划算，我们把它买回来就等于之前那次没有卖，再卖出去等于现在才卖，即s.pop(),v.push(),s.push()。3.如果当天的价格即小于s中最小又小于v中最小，则把他放到买的堆v里，即v.push()。 这样下来，最后买的堆里剩下的就是没买没卖的。 代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long longint main()&#123; ll t; scanf(&quot;%lld&quot;,&amp;t); while(t--)&#123; ll n, tmp, cnt = 0,sum = 0; scanf(&quot;%lld&quot;,&amp;n); priority_queue&lt;ll,vector&lt;ll&gt;,greater&lt;ll&gt; &gt;v,s; for(ll i = 0;i&lt;n;i++)&#123; scanf(&quot;%lld&quot;,&amp;tmp); if(!v.empty())&#123; if(!s.empty()&amp;&amp;tmp&gt;s.top()&amp;&amp;s.top()&lt;=v.top())&#123; sum+=tmp-(s.top()); v.push(s.top()); s.pop(); s.push(tmp); &#125; else if(tmp&gt;v.top()&amp;&amp;(s.empty()||s.top()&gt;v.top()))&#123; s.push(tmp); sum+=tmp-(v.top()); v.pop(); cnt++; &#125; else if(tmp&lt;=v.top())&#123; v.push(tmp); &#125; &#125; else&#123; if(!s.empty()&amp;&amp;tmp&gt;s.top())&#123; v.push(s.top()); sum+=tmp-s.top(); s.pop(); s.push(tmp); &#125; else v.push(tmp); &#125; &#125; printf(&quot;%lld %lld\n&quot;,sum,2*cnt); &#125; return 0;&#125;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[2018中国大学生程序设计竞赛 - 网络选拔赛 1009 Tree and Permutation]]></title>
     <url>%2F2018%2F08%2F25%2F2018-08-25-1%2F</url>
     <content type="text"><![CDATA[Tree and PermutationTime Limit: 2000/1000 MS (Java/Others) Memory Limit: 65536/65536 K (Java/Others)Total Submission(s): 0 Accepted Submission(s): 0 Problem Description There are N vertices connected by N?1 edges, each edge has its own length.The set { 1,2,3,…,N } contains a total of N! unique permutations, let’s say the i-th permutation is Pi and Pi,j is its j-th number.For the i-th permutation, it can be a traverse sequence of the tree with N vertices, which means we can go from the Pi,1-th vertex to the Pi,2-th vertex by the shortest path, then go to the Pi,3-th vertex ( also by the shortest path ) , and so on. Finally we’ll reach the Pi,N-th vertex, let’s define the total distance of this route as D(Pi) , so please calculate the sum of D(Pi) for all N! permutations. Input There are 10 test cases at most.The first line of each test case contains one integer N ( 1≤N≤105 ) .For the next N?1 lines, each line contains three integer X, Y and L, which means there is an edge between X-th vertex and Y-th of length L ( 1≤X,Y≤N,1≤L≤109 ) . Output For each test case, print the answer module 109+7 in one line. Sample Input 3 1 2 1 2 3 1 3 1 2 1 1 3 2 Sample Output 16 24 题意： 首先给出一个含有n个节点的树，边权为距离。 对于1-n的某一种排列p1,p2,p3……pn，贡献为dis(p1,p2)+dis(p2,p3)+dis(p3,p4)+……+dis(pn-1,pn) 求所有排列的贡献和 题解： 一棵树n个结点n-1条边，所以任意两点之间都有最短距离。由于所有遍历方式可以看做n个结点的排列，而每次有直接关系的只有两点之间的距离，因此只需求出两点之间的距离在所有排列中一共出现多少次即可。 比如n=2时，两个点1,2，共有两种排列方式，即1,2,和2,1 n=3时，三个点1,2,3,其中1,2共有4种方法得到，即1,2,3,和2,1,3,和3,1,2,和3,2,1 n=4时，三个点1,2,3,4,其中1,2共有12种方法得到，即1,2,3,4,和1,2,4,3,和2,1,3,4,和2,1,4,3,和3,1,2,4,和3,2,1,4和4,1,2,3,和4,2,1,3,和3,4,1,2,和4,3,1,2,和3,4,2,1,和4,3,2,1, n=jie[n-1]*（n-1）。 先用树状dp求出所有两两结点之间的距离之和，再乘以每条边在所有结点排列的n！方式中一共用到的次数。 代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int maxn = 1e5+7;const ll mod = 1e9+7;ll sum[maxn], n;ll dp[maxn];ll jie[maxn];ll jie2[maxn];struct Edge&#123; ll v, w;&#125;;vector&lt;Edge&gt; tree[maxn];void init()&#123; jie[2] = 2; for(ll i = 3;i&lt;maxn;i++)&#123; jie[i] = jie[i-1]*(i-1)%mod; &#125;&#125;void dfs(ll cur, ll father)&#123; sum[cur] = 1; for(ll i = 0; i &lt; tree[cur].size(); i++) &#123; ll son = tree[cur][i].v; ll len = tree[cur][i].w; if(father == son) continue; dfs(son, cur); sum[cur] += sum[son]%mod; sum[cur]%=mod; dp[cur] += (dp[son]%mod + (n-sum[son])%mod*sum[son]%mod * len%mod)%mod; dp[cur]%=mod; &#125;&#125;int main()&#123; init(); ll u, v, w; while(scanf(&quot;%lld&quot;, &amp;n)!=EOF) &#123; if(n&lt;=2)&#123; if(n==1)&#123; printf(&quot;0\n&quot;); continue; &#125; scanf(&quot;%lld%lld%lld&quot;, &amp;u, &amp;v, &amp;w); printf(&quot;%lld\n&quot;, 2*w%mod); continue; &#125; for(ll i = 0; i &lt; n; i++) tree[i].clear(); memset(sum, 0, sizeof(sum)); memset(dp, 0, sizeof(dp)); for(ll i = 0; i &lt; n-1; i++) &#123; scanf(&quot;%lld%lld%lld&quot;, &amp;u, &amp;v, &amp;w); u--,v--; Edge t1, t2; t1.v = v; t1.w = w; t2.v = u; t2.w = w; tree[u].push_back(t1); tree[v].push_back(t2); &#125; dfs(0, -1); printf(&quot;%lld\n&quot;, (dp[0]%mod)*jie[n]%mod); &#125; return 0;&#125;]]></content>
@@ -407,8 +412,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>并查集</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -891,8 +896,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>进制</tag>
         <tag>C陷阱与缺陷</tag>
+        <tag>进制</tag>
       </tags>
   </entry>
   <entry>
@@ -986,8 +991,8 @@
         <tag>C/C++</tag>
         <tag>stl</tag>
         <tag>算法</tag>
-        <tag>pat天梯赛</tag>
         <tag>vector</tag>
+        <tag>pat天梯赛</tag>
       </tags>
   </entry>
   <entry>
@@ -1078,9 +1083,9 @@
         <category>C++基础</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1092,8 +1097,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
