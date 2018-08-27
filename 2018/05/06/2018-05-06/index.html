@@ -101,7 +101,7 @@
 
 
 
-  <meta name="keywords" content="算法,匹配,图论,二分图,KM算法," />
+  <meta name="keywords" content="算法,图论,KM算法,二分图,匹配," />
 
 
 
@@ -115,7 +115,7 @@
 
 
 <meta name="description" content="最佳匹配如果一个二分图，X部和Y部的顶点数相等，若存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。 如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 带权二分图的权值最大的完备匹配称为最佳匹配。二分图的最佳匹配不一定是二分图的最大权匹配。 可以添加一些权值为0的边，使得最佳匹配和最大权匹配统一起来。 如图所示：">
-<meta name="keywords" content="算法,匹配,图论,二分图,KM算法">
+<meta name="keywords" content="算法,图论,KM算法,二分图,匹配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[图论]二分图匹配基本算法之KM算法解析">
 <meta property="og:url" content="http://qianyouyou.cn/2018/05/06/2018-05-06/index.html">
@@ -128,11 +128,13 @@
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/3.png">
 <meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/4.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/5.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/6.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/7.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/8.png">
-<meta property="og:updated_time" content="2018-08-17T12:17:36.858Z">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-6-5.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-6-6.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-6-7.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-6-9%20.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-6-8.png">
+<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/2018-5-6-10.png">
+<meta property="og:updated_time" content="2018-08-27T12:35:07.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[图论]二分图匹配基本算法之KM算法解析">
 <meta name="twitter:description" content="最佳匹配如果一个二分图，X部和Y部的顶点数相等，若存在一个匹配包含X部与Y部的所有顶点，则称为完美匹配。 如果一个二分图，X部中的每一个顶点都与Y部中的一个顶点匹配，或者Y部中的每一个顶点也与X部中的一个顶点匹配，则该匹配为完备匹配。 带权二分图的权值最大的完备匹配称为最佳匹配。二分图的最佳匹配不一定是二分图的最大权匹配。 可以添加一些权值为0的边，使得最佳匹配和最大权匹配统一起来。 如图所示：">
@@ -540,13 +542,15 @@
 <p>现在参与到这个冲突的顶点是1,2和c，令所有左边顶点值-1，右边顶点值+1，即 1-1,2-1. c+1。</p>
 <p>我们进行了上述操作后会发现，若是左边有n个顶点参与运算，则右边就有n-1个顶点参与运算，整体效率值下降了1*（n-（n-1））=1，而对于1来说，1-c本来为可匹配的边，现在仍为可匹配边（3+1=4），对于2来说，2-c本来为可匹配的边，现在仍为可匹配的边（2+1=4），我们通过上述操作，为1增加了一条可匹配的边1-a，为B增加了一条可匹配的边2-a。</p>
 <p>现在我们再来匹配，对2来说，2-a边 2+0=2，满足条件，所以2换边，a现在为未匹配状态，2-a匹配！</p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/5.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-6-5.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-6-6.png" alt=""></p>
 <p>6.我们现在匹配最后一条边3，3-c 5+1！=5，3边无边能匹配，所以3-1。现在3-c边 4+1=5，可以匹配，但是c已匹配了，发生冲突，3此时不能换边，于是便去找1，对于1来说，1-a此时也为可匹配边，但是a已匹配，1又去找2。</p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/6.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-6-7.png" alt=""></p>
 <p>7.2现在无边可以匹配了，2+0！=1 ，现在的路径是3→c→1→a→2，所以1-1,2-1,3-1,a+1，c+1。如下图所示。</p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/7.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-6-9%20.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-6-8.png" alt=""></p>
 <p>8.对于2来说，现在2-b 1+0=1 可匹配！使用匈牙利算法，对此条路径上的边取反。</p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/8.png" alt=""></p>
+<p><img src="http://p7woygi8q.bkt.clouddn.com/2018-5-6-10.png" alt=""></p>
 <h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">bool dfs(int s) //匈牙利算法找增广路径</span><br><span class="line">&#123;</span><br><span class="line">    visx[s]=1;</span><br><span class="line">    for(int i=1;i&lt;=cnty;i++) </span><br><span class="line">        if(!visy[i])&#123;</span><br><span class="line">            int t=wx[s]+wy[i]-dis[s][i];</span><br><span class="line">            if(t==0) &#123;</span><br><span class="line">                visy[i]=1;</span><br><span class="line">                if(linky[i]==0||dfs(linky[i]))&#123;</span><br><span class="line">                    linkx[s]=i,linky[i]=s;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(t&gt;0)  //找出边权与顶标和的最小的差值</span><br><span class="line">            &#123;</span><br><span class="line">                if(t&lt;minz)minz=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">void km()</span><br><span class="line">&#123;</span><br><span class="line">    memset(linkx,0,sizeof linkx); //linkx[i]表示与X部中点i匹配的点</span><br><span class="line">    memset(linky,0,sizeof linky);</span><br><span class="line">    for(int i=1;i&lt;=cntx;i++)&#123;</span><br><span class="line">        while(1)&#123;</span><br><span class="line">            minz=INF;</span><br><span class="line">            memset(visx,0,sizeof visx);</span><br><span class="line">            memset(visy,0,sizeof visy);</span><br><span class="line">            if(dfs(i))break;</span><br><span class="line">            for(int j=1;j&lt;=cntx;j++)  //将交错树中X部的点的顶标减去minz</span><br><span class="line">            if(visx[j])wx[j]-=minz;</span><br><span class="line">            for(int j=1;j&lt;=cnty;j++) //将交错树中Y部的点的顶标加上minz</span><br><span class="line">            if(visy[j])wy[j]+=minz;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -606,13 +610,13 @@
           
             <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
           
-            <a href="/tags/匹配/" rel="tag"><i class="fa fa-tag"></i> 匹配</a>
-          
             <a href="/tags/图论/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
+          
+            <a href="/tags/KM算法/" rel="tag"><i class="fa fa-tag"></i> KM算法</a>
           
             <a href="/tags/二分图/" rel="tag"><i class="fa fa-tag"></i> 二分图</a>
           
-            <a href="/tags/KM算法/" rel="tag"><i class="fa fa-tag"></i> KM算法</a>
+            <a href="/tags/匹配/" rel="tag"><i class="fa fa-tag"></i> 匹配</a>
           
         </div>
       
@@ -747,7 +751,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">84</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
