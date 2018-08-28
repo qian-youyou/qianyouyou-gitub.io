@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="Find IntegerTime Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/65536 K (Java/Others)Total Submission(s): 0    Accepted Submission(s): 0Special Judge Problem Description people in USSS love">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-26T12:27:27.506Z">
+<meta property="og:updated_time" content="2018-08-28T06:36:13.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018中国大学生程序设计竞赛 - 网络选拔赛 1004 Find Integer">
 <meta name="twitter:description" content="Find IntegerTime Limit: 2000/1000 MS (Java/Others)    Memory Limit: 65536/65536 K (Java/Others)Total Submission(s): 0    Accepted Submission(s): 0Special Judge Problem Description people in USSS love">
@@ -463,7 +463,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  648
+                  714
                 </span>
               
 
@@ -511,8 +511,7 @@
 <p>1 2 3</p>
 <p>Sample Output</p>
 <p>4 5</p>
-<p>题解：</p>
-<p>本题首先用到了费马大定理，即a^n+b^n≠c^n。(a,b,c∈Z，n&gt;2)</p>
+<h2 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h2><p>本题首先用到了费马大定理，即a^n+b^n≠c^n。(a,b,c∈Z，n&gt;2)</p>
 <p>所以当n大于2或者n为0时直接输出-1,-1，当n=1时直接输出1,a+1。</p>
 <p>当n=2时，输出勾股数。</p>
 <p>首先a²+b²=c²，a²=c²-b²，a²=(c+b)(c-b)。</p>
@@ -524,6 +523,22 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">struct node&#123;</span><br><span class="line">    ll b,c;</span><br><span class="line">&#125;aa[40007];</span><br><span class="line">void init()&#123;</span><br><span class="line">    memset(aa,0,sizeof(aa));</span><br><span class="line">    for(ll i = 3;i&lt;=40000;i++)&#123;</span><br><span class="line">        for(ll j = 1;j&lt;i;j++)&#123;</span><br><span class="line">            if(i*i%j==0)&#123;</span><br><span class="line">                ll x = j;</span><br><span class="line">                ll y = i*i/j;</span><br><span class="line">                if((x+y)%2==0)&#123;</span><br><span class="line">                    aa[i].c=(x+y)/2;</span><br><span class="line">                    aa[i].b=(y-x)/2;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    int t;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        ll a,b,c,n;</span><br><span class="line">        scanf(&quot;%lld%lld&quot;,&amp;n,&amp;a);</span><br><span class="line">        if(n&gt;2||n==0)&#123;</span><br><span class="line">            printf(&quot;-1 -1\n&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(n==1)&#123;</span><br><span class="line">            printf(&quot;1 %lld\n&quot;,a+1);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            if(aa[a].b)&#123;</span><br><span class="line">                printf(&quot;%lld %lld\n&quot;,aa[a].b,aa[a].c);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                printf(&quot;-1 -1\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>0(1)代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int t;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        ll a,b,c,n;</span><br><span class="line">        scanf(&quot;%lld%lld&quot;,&amp;n,&amp;a);</span><br><span class="line">        if(n&gt;2||n==0)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;-1 -1\n&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        else if(n==1)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;1 %lld\n&quot;,a+1);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            if(a%2==1&amp;&amp;a&gt;1)</span><br><span class="line">            &#123;</span><br><span class="line">                ll cc=(a-1)/2;</span><br><span class="line">                b=2*cc*(cc+1);</span><br><span class="line">                c=2*cc*(cc+1)+1;</span><br><span class="line">                printf(&quot;%lld %lld\n&quot;,b,c);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(a%2==0&amp;&amp;a&gt;2)</span><br><span class="line">            &#123;</span><br><span class="line">                ll cc=a/2;</span><br><span class="line">                b=cc*cc-1;</span><br><span class="line">                c=cc*cc+1;</span><br><span class="line">                printf(&quot;%lld %lld\n&quot;,b,c);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                printf(&quot;-1 -1\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="推导过程："><a href="#推导过程：" class="headerlink" title="推导过程："></a>推导过程：</h2><p>a为任意情况</p>
+<p>a² = c² - b²</p>
+<p>a² = (c+b)(c-b)</p>
+<p>a²  = a² * 1</p>
+<p>c + b = a² </p>
+<p>c - b = 1</p>
+<p>c = (a²  + 1) / 2</p>
+<p>b = (a²  - 1) / 2</p>
+<p>a为偶数情况：</p>
+<p>if(a² % 2 == 0)</p>
+<p>a²  = a²/2 * 2</p>
+<p>c + b = a²/2 </p>
+<p>c - b = 2</p>
+<p>c = a²/4 + 1</p>
+<p>b =a²/4 - 1</p>
+<p>证毕</p>
 
       
     </div>
@@ -838,7 +853,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Find-Integer"><span class="nav-number">1.</span> <span class="nav-text">Find Integer</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Find-Integer"><span class="nav-number">1.</span> <span class="nav-text">Find Integer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题解："><span class="nav-number">1.1.</span> <span class="nav-text">题解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推导过程："><span class="nav-number">1.2.</span> <span class="nav-text">推导过程：</span></a></li></ol></li></ol></div>
             
 
           </div>
