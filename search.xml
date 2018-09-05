@@ -17,7 +17,7 @@
   <entry>
     <title><![CDATA[An Olympian Math Problem]]></title>
     <url>%2F2018%2F09%2F03%2F2018-09-03-1%2F</url>
-    <content type="text"><![CDATA[问题描述： 求解(1 1! + 2 2! + …… + (n-2) (n-2)! + (n-1) (n-1)!) mod n = n - 1。 PS：n! = 1 2 …… * n。 证明过程： Alice, a student of grade 66, is thinking about an Olympian Math problem, but she feels so despair that she cries. And her classmate, Bob, has no idea about the problem. Thus he wants you to help him. The problem is: We denote k!k!: k! = 1 \times 2 \times \cdots \times (k - 1) \times kk!=1×2×⋯×(k−1)×k We denote SS: S = 1 \times 1! + 2 \times 2! + \cdots +S=1×1!+2×2!+⋯+(n - 1) \times (n-1)!(n−1)×(n−1)! Then SS module nn is ____ You are given an integer nn. You have to calculate SS modulo nn. InputThe first line contains an integer T(T \le 1000)T(T≤1000), denoting the number of test cases. For each test case, there is a line which has an integer nn. It is guaranteed that 2 \le n\le 10^{18}2≤n≤1018. OutputFor each test case, print an integer SS modulo nn. HintThe first test is: S = 1\times 1!= 1S=1×1!=1, and 11modulo 22 is 11. The second test is: S = 1\times 1!+2 \times 2!= 5S=1×1!+2×2!=5, and 55 modulo 33 is 22. 样例输入复制123223 样例输出复制1212 题目来源ACM-ICPC 2018 南京赛区网络预赛 123456789101112#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long longll t,n;int main()&#123; scanf(&quot;%lld&quot;,&amp;t); while(t--)&#123; scanf(&quot;%lld&quot;,&amp;n); printf(&quot;%lld\n&quot;,n-1); &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[问题描述： 求解(1 * 1! + 2 * 2! + …… + (n-2) * (n-2)! + (n-1) * (n-1)!) mod n = n - 1。 PS：n! = 1 * 2 * …… * n。 证明过程： Alice, a student of grade 66, is thinking about an Olympian Math problem, but she feels so despair that she cries. And her classmate, Bob, has no idea about the problem. Thus he wants you to help him. The problem is: We denote k!k!: k! = 1 \times 2 \times \cdots \times (k - 1) \times kk!=1×2×⋯×(k−1)×k We denote SS: S = 1 \times 1! + 2 \times 2! + \cdots +S=1×1!+2×2!+⋯+(n - 1) \times (n-1)!(n−1)×(n−1)! Then SS module nn is ____ You are given an integer nn. You have to calculate SS modulo nn. InputThe first line contains an integer T(T \le 1000)T(T≤1000), denoting the number of test cases. For each test case, there is a line which has an integer nn. It is guaranteed that 2 \le n\le 10^{18}2≤n≤1018. OutputFor each test case, print an integer SS modulo nn. HintThe first test is: S = 1\times 1!= 1S=1×1!=1, and 11modulo 22 is 11. The second test is: S = 1\times 1!+2 \times 2!= 5S=1×1!+2×2!=5, and 55 modulo 33 is 22. 样例输入复制123223 样例输出复制1212 题目来源ACM-ICPC 2018 南京赛区网络预赛 123456789101112#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long longll t,n;int main()&#123; scanf(&quot;%lld&quot;,&amp;t); while(t--)&#123; scanf(&quot;%lld&quot;,&amp;n); printf(&quot;%lld\n&quot;,n-1); &#125; return 0;&#125;]]></content>
       <categories>
         <category>训练之路</category>
         <category>算法</category>
@@ -1055,8 +1055,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -1067,8 +1067,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -1141,9 +1141,9 @@
         <category>C++基础</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1155,8 +1155,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
