@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[路径规划总结之A*搜索]]></title>
+    <url>%2F2018%2F09%2F10%2F2018-09-10%2F</url>
+    <content type="text"><![CDATA[路径规划路径规划是指的是机器人的最优路径规划问题，即依据某个或某些优化准则（如工作代价最小、行走路径最短、行走时间最短等），在工作空间中找到一个从起始状态到目标状态能避开障碍物的最优路径。机器人的路径规划应用场景极丰富，最常见如游戏中NPC及控制角色的位置移动，百度地图等导航问题，小到家庭扫地机器人、无人机大到各公司正争相开拓的无人驾驶汽车等。 目前路径规划算法分为： A*算法首先，我们来看看A*算法的定义：A*（A-Star)算法是一种静态路网中求解最短路径最有效的直接搜索方法，也是解决许多搜索问题的有效算法。 采用广度优先搜索策略，在搜索过程中使用启发函数，即有大致方向的向前进虽然目标有时候不是很明确。 在计算机科学中，A*算法作为Dijkstra算法的扩展，因其高效性而被广泛应用于寻路及图的遍历，如星际争霸等游戏中就大量使用。在理解算法前，我们需要知道几个概念： 搜索区域（The Search Area）：图中的搜索区域被划分为了简单的二维数组，数组每个元素对应一个小方格，当然我们也可以将区域等分成是五角星，矩形等，通常将一个单位的中心点称之为搜索区域节点（Node）。 开放列表(Open List)：我们将路径规划过程中待检测的节点存放于Open List中，而已检测过的格子则存放于Close List中。 父节点（parent）：在路径规划中用于回溯的节点，开发时可考虑为双向链表结构中的父结点指针。 路径排序（Path Sorting）：具体往哪个节点移动由以下公式确定：F(n) = G + H 。G代表的是从初始位置A沿着已生成的路径到指定待检测格子的移动开销。H指定待测格子到目标节点B的估计移动开销。 启发函数（Heuristics Function）：H为启发函数，也被认为是一种试探，由于在找到唯一路径前，我们不确定在前面会出现什么障碍物，因此用了一种计算H的算法，具体根据实际场景决定。在我们简化的模型中，H采用的是传统的曼哈顿距离（Manhattan Distance），也就是横纵向走的距离之和。 可能看定义不是很好理解，那么我们根据例子具体看看什么是A*算法吧。 详细讲解参考： 启发式算法 A*算法]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+        <category>图论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>A*算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ACM-ICPC 2018 徐州赛区网络预赛]]></title>
     <url>%2F2018%2F09%2F09%2F2018-09-09%2F</url>
     <content type="text"><![CDATA[Characters with Hash问答 26.45% 1000ms 262144K Mur loves hash algorithm, and he sometimes encrypt another one’s name, and call him with that encrypted value. For instance, he calls Kimura KMR, and calls Suzuki YJSNPI. One day he read a book about SHA-256256 , which can transit a string into just 256256 bits. Mur thought that is really cool, and he came up with a new algorithm to do the similar work. The algorithm works this way: first we choose a single letter L as the seed, and for the input(you can regard the input as a string ss, s[i]s[i] represents the iith character in the string) we calculates the value(|(int) L - s[i]|∣(int)L−s[i]∣), and write down the number(keeping leading zero. The length of each answer equals to 22because the string only contains letters and numbers). Numbers writes from left to right, finally transfer all digits into a single integer(without leading zero(ss)). For instance, if we choose ‘z’ as the seed, the string “oMl” becomes “1111 4545 1414”. It’s easy to find out that the algorithm cannot transfer any input string into the same length. Though in despair, Mur still wants to know the length of the answer the algorithm produces. Due to the silliness of Mur, he can even not figure out this, so you are assigned with the work to calculate the answer. InputFirst line a integer TT , the number of test cases (T \le 10)(T≤10). For each test case: First line contains a integer NN and a character zz, (N \le 1000000)(N≤1000000). Second line contains a string with length NN . Problem makes sure that all characters referred in the problem are only letters. OutputA single number which gives the answer. 样例输入复制1234523 zoMl6 YYJSNPI 样例输出复制12610 题目来源ACM-ICPC 2018 徐州赛区网络预赛 代码123456789101112131415161718192021222324#include&lt;bits/stdc++.h&gt;using namespace std;char str[1000007],ch[2];int main()&#123; int t,n; scanf(&quot;%d&quot;,&amp;t); while(t--)&#123; scanf(&quot;%d%s%s&quot;,&amp;n,ch,str); int ans = 2*n; for(int i = 0; i&lt;n; i++)&#123; if(str[i]==ch[0]) ans-=2; else&#123; if(abs(str[i]-ch[0])&lt;10) ans-=1; break; &#125; &#125; if(ans==0) ans++; printf(&quot;%d\n&quot;,ans); &#125; return 0;&#125;]]></content>
@@ -1251,9 +1265,9 @@
         <category>C++基础</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1265,8 +1279,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>正则表达式</tag>
         <tag>字符串</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
