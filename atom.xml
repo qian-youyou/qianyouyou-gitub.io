@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-09-10T13:39:49.870Z</updated>
+  <updated>2018-09-17T10:55:49.102Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2018-09-13</title>
+    <link href="http://qianyouyou.cn/2018/09/13/2018-09-13/"/>
+    <id>http://qianyouyou.cn/2018/09/13/2018-09-13/</id>
+    <published>2018-09-13T10:54:41.000Z</published>
+    <updated>2018-09-17T10:55:49.102Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数论" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>路径规划总结之A*搜索</title>
@@ -629,11 +649,11 @@
       <category term="矩阵论" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E7%9F%A9%E9%98%B5%E8%AE%BA/"/>
     
     
-      <category term="高斯消元" scheme="http://qianyouyou.cn/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"/>
-    
       <category term="矩阵论" scheme="http://qianyouyou.cn/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/"/>
     
       <category term="快速幂" scheme="http://qianyouyou.cn/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
+    
+      <category term="高斯消元" scheme="http://qianyouyou.cn/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"/>
     
   </entry>
   
@@ -663,28 +683,6 @@
     
     
       <category term="组合数学" scheme="http://qianyouyou.cn/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数论1(辗转相除法 + 欧拉筛 + 杜教筛 + 模运算 + 快速幂)</title>
-    <link href="http://qianyouyou.cn/2018/08/15/2018-08-15/"/>
-    <id>http://qianyouyou.cn/2018/08/15/2018-08-15/</id>
-    <published>2018-08-15T15:29:57.000Z</published>
-    <updated>2018-08-17T12:09:46.257Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数论" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/"/>
-    
-    
-      <category term="数论" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
   

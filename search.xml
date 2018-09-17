@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2018-09-13]]></title>
+    <url>%2F2018%2F09%2F13%2F2018-09-13%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+        <category>数论</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[路径规划总结之A*搜索]]></title>
     <url>%2F2018%2F09%2F10%2F2018-09-10%2F</url>
     <content type="text"><![CDATA[路径规划路径规划是指的是机器人的最优路径规划问题，即依据某个或某些优化准则（如工作代价最小、行走路径最短、行走时间最短等），在工作空间中找到一个从起始状态到目标状态能避开障碍物的最优路径。机器人的路径规划应用场景极丰富，最常见如游戏中NPC及控制角色的位置移动，百度地图等导航问题，小到家庭扫地机器人、无人机大到各公司正争相开拓的无人驾驶汽车等。 目前路径规划算法分为： A*算法首先，我们来看看A*算法的定义：A*（A-Star)算法是一种静态路网中求解最短路径最有效的直接搜索方法，也是解决许多搜索问题的有效算法。 采用广度优先搜索策略，在搜索过程中使用启发函数，即有大致方向的向前进虽然目标有时候不是很明确。 在计算机科学中，A*算法作为Dijkstra算法的扩展，因其高效性而被广泛应用于寻路及图的遍历，如星际争霸等游戏中就大量使用。在理解算法前，我们需要知道几个概念： 搜索区域（The Search Area）：图中的搜索区域被划分为了简单的二维数组，数组每个元素对应一个小方格，当然我们也可以将区域等分成是五角星，矩形等，通常将一个单位的中心点称之为搜索区域节点（Node）。 开放列表(Open List)：我们将路径规划过程中待检测的节点存放于Open List中，而已检测过的格子则存放于Close List中。 父节点（parent）：在路径规划中用于回溯的节点，开发时可考虑为双向链表结构中的父结点指针。 路径排序（Path Sorting）：具体往哪个节点移动由以下公式确定：F(n) = G + H 。G代表的是从初始位置A沿着已生成的路径到指定待检测格子的移动开销。H指定待测格子到目标节点B的估计移动开销。 启发函数（Heuristics Function）：H为启发函数，也被认为是一种试探，由于在找到唯一路径前，我们不确定在前面会出现什么障碍物，因此用了一种计算H的算法，具体根据实际场景决定。在我们简化的模型中，H采用的是传统的曼哈顿距离（Manhattan Distance），也就是横纵向走的距离之和。 可能看定义不是很好理解，那么我们根据例子具体看看什么是A*算法吧。 详细讲解参考： 启发式算法 A*算法]]></content>
@@ -275,9 +285,9 @@
         <category>矩阵论</category>
       </categories>
       <tags>
-        <tag>高斯消元</tag>
         <tag>矩阵论</tag>
         <tag>快速幂</tag>
+        <tag>高斯消元</tag>
       </tags>
   </entry>
   <entry>
@@ -334,8 +344,8 @@
       </categories>
       <tags>
         <tag>ACM/ICPC</tag>
-        <tag>wannafly</tag>
         <tag>CCPC</tag>
+        <tag>wannafly</tag>
       </tags>
   </entry>
   <entry>
@@ -536,8 +546,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>指针</tag>
         <tag>const</tag>
+        <tag>指针</tag>
       </tags>
   </entry>
   <entry>
@@ -704,8 +714,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>数论</tag>
         <tag>组合数学</tag>
+        <tag>数论</tag>
         <tag>高斯消元</tag>
         <tag>容斥原理</tag>
       </tags>
@@ -1179,8 +1189,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -1191,8 +1201,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -1265,9 +1275,9 @@
         <category>C++基础</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1279,8 +1289,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
