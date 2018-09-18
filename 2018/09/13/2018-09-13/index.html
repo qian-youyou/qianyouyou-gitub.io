@@ -121,7 +121,7 @@
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="由于这几天电脑坏掉了，这个算法是之前总结出来的，当时没来的及总结。具体就不介绍了。作用是范围内某数快速分解质因数相乘。 12345678910111213void Prime()&amp;#123;	memset(tag,0,sizeof(tag));	int cnt=0;	for(int i = 2; i&amp;lt;N; i++)&amp;#123;		if(tag[i])			prime[cnt++]=i;		f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-17T11:06:47.461Z">
+<meta property="og:updated_time" content="2018-09-18T08:18:21.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="质因数分解原创算法">
 <meta name="twitter:description" content="由于这几天电脑坏掉了，这个算法是之前总结出来的，当时没来的及总结。具体就不介绍了。作用是范围内某数快速分解质因数相乘。 12345678910111213void Prime()&amp;#123;	memset(tag,0,sizeof(tag));	int cnt=0;	for(int i = 2; i&amp;lt;N; i++)&amp;#123;		if(tag[i])			prime[cnt++]=i;		f">
@@ -462,7 +462,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  112
+                  151
                 </span>
               
 
@@ -501,6 +501,7 @@
       
         <p>由于这几天电脑坏掉了，这个算法是之前总结出来的，当时没来的及总结。具体就不介绍了。作用是范围内某数快速分解质因数相乘。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void Prime()&#123;</span><br><span class="line">	memset(tag,0,sizeof(tag));</span><br><span class="line">	int cnt=0;</span><br><span class="line">	for(int i = 2; i&lt;N; i++)&#123;</span><br><span class="line">		if(tag[i])</span><br><span class="line">			prime[cnt++]=i;</span><br><span class="line">		for(int j=0;j&lt;cnt &amp;&amp; prime[j]*i&lt;N; j++)&#123;</span><br><span class="line">			tag[i*prime[j]] = i;</span><br><span class="line">			if(i % prime[j]==0)</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打表时表中储存为该数最小质数，这样给一个数只需除以对应表中数，直到除到最后为1为止</p>
 
       
     </div>
@@ -574,8 +575,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/17/2018-09-17/" rel="prev" title="重装系统后，如何快速搭建之前基于github的博客">
-                重装系统后，如何快速搭建之前基于github的博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/16/2018-09-16/" rel="prev" title="数论小问题">
+                数论小问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,7 +656,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
