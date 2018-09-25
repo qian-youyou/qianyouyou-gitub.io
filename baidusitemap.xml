@@ -4,6 +4,64 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/09/25/2018-09-25/</loc>
+    <lastmod>2018-09-25T11:19:58.871Z</lastmod>
+    <data>
+        <display>
+        <title>求解逆元的3种方法</title>
+        <pubTime>2018-09-25T11:15:39.000Z</pubTime>
+        
+        <tag>逆元</tag>
+         
+        <tag>exgcd</tag>
+         
+        <tag>费马小定理</tag>
+         
+        <tag>欧拉函数</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="数论" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/09/24/2018-09-24/</loc>
+    <lastmod>2018-09-25T11:18:20.711Z</lastmod>
+    <data>
+        <display>
+        <title>生成函数小结</title>
+        <pubTime>2018-09-24T11:15:23.000Z</pubTime>
+        
+        <tag>生成函数</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="组合数学" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/09/22/2018-09-22-1/</loc>
     <lastmod>2018-09-23T06:29:27.079Z</lastmod>
     <data>
@@ -47,9 +105,9 @@
          
         <tag>组合数学</tag>
          
-        <tag>动态规划</tag>
-         
         <tag>划分</tag>
+         
+        <tag>动态规划</tag>
          
          
            
@@ -1009,9 +1067,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>const</tag>
-         
         <tag>指针</tag>
+         
+        <tag>const</tag>
          
          
            
@@ -1065,11 +1123,11 @@
         <title>sstream和strstream的用法</title>
         <pubTime>2018-01-24T05:31:04.000Z</pubTime>
         
-        <tag>字符串</tag>
-         
         <tag>C/C++</tag>
          
         <tag>stl</tag>
+         
+        <tag>字符串</tag>
          
          
            
@@ -2891,9 +2949,9 @@
         <title>正则表达式练习题集(附答案)</title>
         <pubTime>2018-01-21T10:41:35.000Z</pubTime>
         
-        <tag>正则表达式</tag>
-         
         <tag>字符串</tag>
+         
+        <tag>正则表达式</tag>
          
          
            

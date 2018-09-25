@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[求解逆元的3种方法]]></title>
+    <url>%2F2018%2F09%2F25%2F2018-09-25%2F</url>
+    <content type="text"><![CDATA[简述逆元逆元(Inverse element)就是在mod意义下，不能直接除以一个数，而要乘以它的逆元。 比如a∗b≡1(modp)a∗b≡1(modp)，那么a，b互为模n意义下的逆元，比如你要算x/a，就可以改成x*b%p 观察a∗b≡1(modp)a∗b≡1(modp),变形为a∗b+k∗p=1a∗b+k∗p=1，就可以用扩展欧几里得算法求a了，同时这里也说明了a和p只有在互素的情况下才存在逆元。 注意在下面所有的算法中，最好先把除数取个模再运算。 方法一：扩展欧几里得算法原理a∗b≡1(modp)a∗b≡1(modp) a∗b+k∗p=1a∗b+k∗p=1 然后a就是我们要求的逆元，最终得到一个正数a的话就要对a mod p，因为a加上mp的时侯k减少mb可以使得等式依然成立。 如果你不想让逆元为正数，那么直接返回x也是可以正确的逆元 代码1234567891011121314151617LL exgcd(LL a,LL b,LL &amp;x,LL &amp;y)//扩展欧几里得算法 &#123; if(b==0) &#123; x=1,y=0; return a; &#125; LL ret=exgcd(b,a%b,y,x); y-=a/b*x; return ret;&#125;LL getInv(int a,int mod)//求a在mod下的逆元，不存在逆元返回-1 &#123; LL x,y; LL d=exgcd(a,mod,x,y); return d==1?(x%mod+mod)%mod:-1;&#125;1234567891011121314151617 注意：返回的时候可以改成(x+mod)%mod，因为扩展欧几里得算法算出来的x应该不会太大. 性能分析: 时间复杂度:O(logn)（实际是斐波那契数列） 适用范围：只要存在逆元即可求，适用于个数不多但是mod很大的时候，也是最常见的一种求逆元的方法。 方法二:费马小定理/欧拉定理原理费马小定理：若p为素数，则有ap−1≡1(modp)ap−1≡1(modp) ap−2∗a≡1(modp)ap−2∗a≡1(modp) ap−2ap−2就是a在mod p意义下的逆元啦。 欧拉定理：若a、p互素，则有aφ(p)≡1(modp)aφ(p)≡1(modp)(费马小定理的一般形式) aφ(p)∗a≡1(modp)aφ(p)∗a≡1(modp) aφ(p)−1aφ(p)−1就是a在mod p意义下的逆元啦。 代码123456789101112131415LL qkpow(LL a,LL p,LL mod)&#123; LL t=1,tt=a%mod; while(p) &#123; if(p&amp;1)t=t*tt%mod; tt=tt*tt%mod; p&gt;&gt;=1; &#125; return t;&#125;LL getInv(LL a,LL mod)&#123; return qkpow(a,mod-2,mod);&#125;123456789101112131415 性能分析： O(logmod) 适用范围：一般在mod是个素数的时候用，比扩欧快一点而且好写。 但是如果是合数，相信一般没人无聊到去算个欧拉函数。 方法三：递推求逆元原理p是模数，i是待求的逆元，我们求的是i−1i−1在mod p意义下的值 p=k∗i+rp=k∗i+r令 r &lt; i,则k=p/i,r=p%i k∗i+r≡0(modp)k∗i+r≡0(modp) k∗r−1+i−1≡0(modp)k∗r−1+i−1≡0(modp) i−1≡−k∗r−1(modp)i−1≡−k∗r−1(modp) i−1≡−p/i∗inv[pmodi]i−1≡−p/i∗inv[pmodi] 嗯。。好难看的公式 说白了就是:inv[i]=-(mod/i)*inv[i%mod] 然后边界是inv[1]=1 这不仅为我们提供了一个线性求逆元的方法，也提供了一种O(logmod)求逆元的方法 代码线性求逆元1234567LL inv[mod+5];void getInv(LL mod)&#123; inv[1]=1; for(int i=2;i&lt;mod;i++) inv[i]=(mod-mod/i)*inv[mod%i]%mod;&#125;1234567 注意： 调用前要先预处理 调用的时候要先对除数取mod 性能分析： 时间复杂度O(n) 适用范围：mod数是不大的素数而且多次调用，比如卢卡斯定理。 递归求逆元12345LL inv(LL i)&#123; if(i==1)return 1; return (mod-mod/i)*inv(mod%i)%mod;&#125;12345 性能分析 时间复杂度:O(logmod) 好像找到了最简单的算法了！！ 适用范围： mod数是素数，所以并不好用，比如中国剩余定理中就不好使，因为很多时候可能会忘记考虑mod数是不是素数。]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+        <category>数论</category>
+      </categories>
+      <tags>
+        <tag>逆元</tag>
+        <tag>exgcd</tag>
+        <tag>费马小定理</tag>
+        <tag>欧拉函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[生成函数小结]]></title>
+    <url>%2F2018%2F09%2F24%2F2018-09-24%2F</url>
+    <content type="text"><![CDATA[母函数母函数是用于解决组合问题计数的一种方法。 在了解它之前我们先看看熟悉的杨辉三角。 杨辉三角的第n行(注意是从0开始标号的)的数字就是(1+x)n(1+x)n的展开式从低项到高项的各项系数，也可以表示为组合数的形式CinCni。如果将两者联系起来我们会发现，(1+x)(1+x)可以看成对于一件取舍，1=x01=x0就是不取，x就是取。这样在(1+x)n(1+x)n的展开式中xixi项的系数就是从n件物品选取i件的方案数。 定义给定数列a0,a1,a2…ana0,a1,a2…an，构造函数G(x)=a0f0(x)+a1f1(x)+a2f2(x)…anfn(x)G(x)=a0f0(x)+a1f1(x)+a2f2(x)…anfn(x),其中G(x)G(x)就是该序列的母函数，f0(x),f1(x),f2(x)…fn(x)f0(x),f1(x),f2(x)…fn(x)为标志函数。 母函数主要有两种形式：普通型母函数和指数型母函数。 普通型母函数先看一个例题：HDU 1085 普通型母函数的标志函数一般为x0，x1,x2…xnx0，x1,x2…xn 因为每个硬币有个数限制，但是也不难构造出 G(x)=(1+x+x2+x3+…+xnum1)(1+x2+x4+…+x2∗num2)(1+x5+x10+…+x5∗num5)G(x)=(1+x+x2+x3+…+xnum1)(1+x2+x4+…+x2∗num2)(1+x5+x10+…+x5∗num5) xixi 指数型母函数再看一个例题：HDU 1521 指数型母函数的标志函数一般为x00!,x11!,x22!…xnn!x00!,x11!,x22!…xnn!，对于xii!xii!表示在一个方案中某个元素出现了ii次，而不同位置的该种元素本质不同，所以在记方案数时只算作一种，所以最后结果应处以i！i！。 对于这道题就不难构造出母函数为 G(x)=(1/ 0!+X / 1!+X2 / 2!+…+Xa1 / a1!)(1 / 0!+X / 1!+X2 / 2!+…+Xa2 / a2!)( / 0!+X / 1!+X2 / 2!+…+Xan / an!)]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+        <category>组合数学</category>
+      </categories>
+      <tags>
+        <tag>生成函数</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[2018-ACM/ICPC北京网络赛D题 80 Days（非暴力0(n)解法）]]></title>
     <url>%2F2018%2F09%2F22%2F2018-09-22-1%2F</url>
     <content type="text"><![CDATA[描述80 Days is an interesting game based on Jules Verne’s science fiction “Around the World in Eighty Days”. In this game, you have to manage the limited money and time. Now we simplified the game as below: There are n cities on a circle around the world which are numbered from 1 to n by their order on the circle. When you reach the city i at the first time, you will get ai dollars (ai can even be negative), and if you want to go to the next city on the circle, you should pay bi dollars. At the beginning you have c dollars. The goal of this game is to choose a city as start point, then go along the circle and visit all the city once, and finally return to the start point. During the trip, the money you have must be no less than zero. Here comes a question: to complete the trip, which city will you choose to be the start city? If there are multiple answers, please output the one with the smallest number. 输入The first line of the input is an integer T (T ≤ 100), the number of test cases. For each test case, the first line contains two integers n and c (1 ≤ n ≤ 10^6, 0 ≤ c ≤ 10^9). The second line contains n integers a1, …, an (-10^9 ≤ ai ≤ 10^9), and the third line contains n integers b1, …, bn (0 ≤ bi ≤ 10^9). It’s guaranteed that the sum of n of all test cases is less than 106 输出For each test case, output the start city you should choose. 提示For test case 1, both city 2 and 3 could be chosen as start point, 2 has smaller number. But if you start at city 1, you can’t go anywhere. For test case 2, start from which city seems doesn’t matter, you just don’t have enough money to complete a trip. 利用前缀和与后缀和优化dp 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include&lt;bits/stdc++.h&gt;using namespace std;#define LL long longconst LL maxn = 1e6+7;LL a[maxn],b[maxn],cha[maxn],qian[maxn],qian2[maxn], hou[maxn], hou2[maxn];void init(LL n,LL c)&#123; hou[n+1] = qian[0] = 0; hou2[n] = hou[n] = cha[n]; qian2[1] = qian[1] = cha[1]; for(int i = 2;i&lt;=n;i++)&#123; qian[i] = cha[i]+qian[i-1]; qian2[i] = min(qian[i],qian2[i-1]); &#125; LL sum = 0; for(int i = n-1;i&gt;0;i--)&#123; hou[i] = cha[i]+hou[i+1]; hou2[i] = min(hou[i]-sum,cha[i]); if(hou2[i]&gt;=0)&#123; sum=hou[i]; hou2[i]=0; &#125; &#125;&#125;int fun(LL n,LL c)&#123; if(qian[n]+c&lt;0) return -1; for(int i = 1;i&lt;=n;i++)&#123; if(cha[i]+c&gt;=0&amp;&amp;cha[i]+c+hou2[i+1]&gt;=0)&#123; if(hou[i]+c+qian2[i-1]&gt;=0)&#123; return i; &#125; &#125; &#125; return -1;&#125;int main()&#123; int t; LL n,c; scanf(&quot;%d&quot;,&amp;t); while(t--)&#123; scanf(&quot;%lld%lld&quot;,&amp;n,&amp;c); for(int i = 1;i&lt;=n;i++)&#123; scanf(&quot;%lld&quot;,&amp;a[i]); &#125; for(int i = 1;i&lt;=n;i++)&#123; scanf(&quot;%lld&quot;,&amp;b[i]); cha[i] = a[i] - b[i]; &#125; init(n,c); int tmp = fun(n,c); printf(&quot;%d\n&quot;,tmp); &#125; return 0;&#125; 尺取法 12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;stdio.h&gt;#define MAX 1000005 int p[MAX&lt;&lt;1],a[MAX],b[MAX]; int main()&#123; int t; scanf(&quot;%d&quot;,&amp;t); while(t--) &#123; int n; long long c; scanf(&quot;%d%lld&quot;,&amp;n,&amp;c); for(int i = 1;i &lt;= n;i++) &#123; scanf(&quot;%d&quot;,&amp;a[i]); &#125; for(int i = 1;i &lt;= n;i++) &#123; scanf(&quot;%d&quot;,&amp;b[i]); &#125; for(int i = 1;i &lt;= n;i++) &#123; p[i] = p[i + n] = a[i] - b[i]; &#125; int l = 1,r = 1; while(l &lt;= n &amp;&amp; r - l + 1 &lt;= n) &#123; c = c + p[r]; r ++; while(c &lt; 0) &#123; c = c - p[l]; l ++; &#125; &#125; if(l &gt; n) printf(&quot;-1\n&quot;); else printf(&quot;%d\n&quot;,l); &#125;&#125;]]></content>
@@ -28,8 +57,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>动态规划</tag>
         <tag>划分</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -656,8 +685,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>const</tag>
         <tag>指针</tag>
+        <tag>const</tag>
       </tags>
   </entry>
   <entry>
@@ -1385,9 +1414,9 @@
         <category>C++基础</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1399,8 +1428,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>正则表达式</tag>
         <tag>字符串</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
