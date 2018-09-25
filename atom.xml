@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-09-25T11:19:58.871Z</updated>
+  <updated>2018-09-25T11:30:45.090Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>容斥原理的三种运用方式</title>
+    <link href="http://qianyouyou.cn/2018/09/25/2018-09-25-1/"/>
+    <id>http://qianyouyou.cn/2018/09/25/2018-09-25-1/</id>
+    <published>2018-09-25T11:25:41.000Z</published>
+    <updated>2018-09-25T11:30:45.090Z</updated>
+    
+    <content type="html"><![CDATA[<p>在计数时，必须注意无一重复，无一遗漏。为了使重叠部分不被重复计算，人们研究出一种新的计数方法，这种方法的基本思想是：先不考虑重叠的情况，把包含于某内容中的所有对象的数目先计算出来，然后再把计数时重复计算的数目排斥出去，使得计算的结果既无遗漏又无重复，这种计数的方法称为容斥原理。 集合相交通常情况为奇加偶减，即加上重叠为奇次的，减去重叠为偶次的。</p><p>容斥原理是属于一种模板题目，一般简单的都是之间打模板，稍难的题目运用到了数学分析和数论的其他知识。</p><p>容斥原理分为三种实现：</p><p>1.位运算与二进制枚举（容易理解）</p><p>2.队列数组（耗时最短）</p><p>3.递归（代码最短但不容易理解）</p><p><a href="http://blog.csdn.net/deepseazbw/article/details/76187211" target="_blank" rel="noopener">http://blog.csdn.net/deepseazbw/article/details/76187211</a></p><p>HDU的一道题目用的三种方法实现，一般都是找出一个数字的素因子，然后用cnt（计算器）记录下来，然后分别三种方法实现.</p><p>实现容斥原理的时候</p><p>1.先计算出容斥部分，然后再用总数减去 <a href="http://blog.csdn.net/deepseazbw/article/details/76187211" target="_blank" rel="noopener">http://blog.csdn.net/deepseazbw/article/details/76187211</a></p><p>2.在容斥部分的时候，就将总数带入进去 <a href="http://blog.csdn.net/deepseazbw/article/details/76660935" target="_blank" rel="noopener">http://blog.csdn.net/deepseazbw/article/details/76660935</a></p><p>模板题目： HDU  4135  1695</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在计数时，必须注意无一重复，无一遗漏。为了使重叠部分不被重复计算，人们研究出一种新的计数方法，这种方法的基本思想是：先不考虑重叠的情况，把包含于某内容中的所有对象的数目先计算出来，然后再把计数时重复计算的数目排斥出去，使得计算的结果既无遗漏又无重复，这种计数的方法称为容斥原
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="组合数学" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+    
+      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="组合数学" scheme="http://qianyouyou.cn/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="容斥原理" scheme="http://qianyouyou.cn/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>求解逆元的3种方法</title>
@@ -148,9 +181,9 @@
     
       <category term="组合数学" scheme="http://qianyouyou.cn/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
     
-      <category term="划分" scheme="http://qianyouyou.cn/tags/%E5%88%92%E5%88%86/"/>
-    
       <category term="动态规划" scheme="http://qianyouyou.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="划分" scheme="http://qianyouyou.cn/tags/%E5%88%92%E5%88%86/"/>
     
   </entry>
   
@@ -633,38 +666,6 @@
       <category term="最短路" scheme="http://qianyouyou.cn/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
       <category term="分层最短路" scheme="http://qianyouyou.cn/tags/%E5%88%86%E5%B1%82%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[数论]辗转相除法求gcd的数学证明</title>
-    <link href="http://qianyouyou.cn/2018/09/03/2018-09-03-2/"/>
-    <id>http://qianyouyou.cn/2018/09/03/2018-09-03-2/</id>
-    <published>2018-09-03T15:57:36.000Z</published>
-    <updated>2018-09-04T10:48:32.100Z</updated>
-    
-    <content type="html"><![CDATA[<p>在写证明过程之前，我们先回顾一下最大公约数gcd的欧几里得求法。</p><p>gcd，即最大公因数。为了书写方便，人们常习惯以gcd(a,b)表示a,b的最大公因数。那最小公倍数呢？我们知道若已知a,b,gcd(a,b),那么最小公倍数就自然等于a * b / gcd(a,b)。这里就不证明了。</p><p>我们接着看gcd，如何高效求gcd呢？目前最快的方法算是欧几里得算法了。</p><p>欧几里得算法其实很简单，已知a，b，其中a&gt;b，求gcd(a,b)。</p><p>解：用b整除a，得到余数c，再用c整除b，得到余数d，再用d整除c，得到余数e……不断这样操作，最后直到没有余数为止。假设e再整除d，余数为0，则e为最大公因数。</p><p>列式子即为：</p><p>a = x1 * b + r1;</p><p>b = x2 * r1 + r2;</p><p>r1 = x3 * r2 + r3;</p><p>……</p><p>rn-1= xn+1 * rn + rn+1;</p><p>rn = xn+2 * rn+1 + 0;</p><p>若设a为r-1，b为r0，则通项公式即为rn-1 / rn = xn+1 <em> rn + rn+1，最后一项为rn / rn+1 = xn+2 </em> rn+1。</p><p>很容易理解，若某一步余数为0，则上一步的余数即为最大公约数。很容易证明该循环一定会终止，因为最坏的情况下a和b的最大公因数是1，那么任何一个数都是1的倍数，所以任何数取余1都为0，所以循环必会结束。</p><p>该算法历经千年，直到现在依然为求解gcd最高效的算法，gcd(a,b)最坏的情况下运算次数最多才是b位数的7位，这里就不详细介绍了。</p><p>那么为什么最后的结果就是最大公因数呢，接下来我们来证明一下。</p><p>假设g为gcd(a,b)，即g为g，b的最大公因数，则带到上式记为rn = xn+2 * g，这个式子g必然为rn的因数。</p><p>那再带到上一个式子，rn-1 = xn+1 * rn + g，由于g既是rn的因数，又是g的因数，则g是rn-1的因数。</p><p>再带到上一个式子，rn-2 = xn * rn-1 + rn，由于g是rn-1，rn的因数，所以g必然是rn-2的因数。</p><p>……</p><p>最终带到第一组式子中，即g既是a的因数，也是b的因数。</p><p>那如何证明它是最大公因数呢？</p><p>我们假设h为a，b的任意因数，则h整除a，且h整除b，带到第一个式子，则h整除r1，再带到第2个式子，h整除r2，再带到第3个式子，h整除r3……直到倒数第二个式子，h整除rn+1，即h整除g由于最后一个式子余数为0，那么既然g为a，b的因数，h为g的因数，则h&lt;=g，故g为gcd(a,b)。</p><p>证毕。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在写证明过程之前，我们先回顾一下最大公约数gcd的欧几里得求法。&lt;/p&gt;
-&lt;p&gt;gcd，即最大公因数。为了书写方便，人们常习惯以gcd(a,b)表示a,b的最大公因数。那最小公倍数呢？我们知道若已知a,b,gcd(a,b),那么最小公倍数就自然等于a * b / gcd(a
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数论" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/"/>
-    
-    
-      <category term="数论" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E8%AE%BA/"/>
-    
-      <category term="gcd" scheme="http://qianyouyou.cn/tags/gcd/"/>
     
   </entry>
   
