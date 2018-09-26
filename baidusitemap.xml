@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/09/26/2018-09-26/</loc>
+    <lastmod>2018-09-26T12:30:10.294Z</lastmod>
+    <data>
+        <display>
+        <title>利用容斥原理求解范围内互素数对数例题</title>
+        <pubTime>2018-09-26T12:11:17.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>ACM/ICPC</tag>
+         
+        <tag>组合数学</tag>
+         
+        <tag>gcd</tag>
+         
+        <tag>容斥原理</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="组合数学" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/09/25/2018-09-25-1/</loc>
     <lastmod>2018-09-25T11:30:45.090Z</lastmod>
     <data>
@@ -1153,11 +1187,11 @@
         <title>sstream和strstream的用法</title>
         <pubTime>2018-01-24T05:31:04.000Z</pubTime>
         
+        <tag>字符串</tag>
+         
         <tag>C/C++</tag>
          
         <tag>stl</tag>
-         
-        <tag>字符串</tag>
          
          
            
@@ -2979,9 +3013,9 @@
         <title>正则表达式练习题集(附答案)</title>
         <pubTime>2018-01-21T10:41:35.000Z</pubTime>
         
-        <tag>字符串</tag>
-         
         <tag>正则表达式</tag>
+         
+        <tag>字符串</tag>
          
          
            

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[利用容斥原理求解范围内互素数对数例题]]></title>
+    <url>%2F2018%2F09%2F26%2F2018-09-26%2F</url>
+    <content type="text"><![CDATA[GCDGiven 5 integers: a, b, c, d, k, you’re to find x in a…b, y in c…d that GCD(x, y) = k. GCD(x, y) means the greatest common divisor of x and y. Since the number of choices may be very large, you’re only required to output the total number of different number pairs.Please notice that, (x=5, y=7) and (x=7, y=5) are considered to be the same.Yoiu can assume that a = c = 1 in all test cases. Input The input consists of several test cases. The first line of the input is the number of the cases. There are no more than 3,000 cases.Each case contains five integers: a, b, c, d, k, 0 &lt; a &lt;= b &lt;= 100,000, 0 &lt; c &lt;= d &lt;= 100,000, 0 &lt;= k &lt;= 100,000, as described above. Output For each test case, print the number of choices. Use the format in the example. Sample Input 12321 3 1 5 11 11014 1 14409 9 Sample Output 12Case 1: 9Case 2: 736427 Hint 1For the first sample input, all the 9 pairs of numbers are (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 5), (3, 4), (3, 5). 题意： 求解[1,b]范围内和[1,d]范围内最大公约数为k的二元组的对数 题解： gcd(a,b)=k，我们可以写成gcd(a/k,b/k)=1。因此我们只需求[1,b/k]和[1,d/k]范围内互素数的对数。首先利用欧拉函数很容易求解[1,min(a,b)]范围内互素数的对数，将φ(1~min(a,b))全部加起来，就求出1~min(a,b)所有互素对数，假设d永远＞=b,那么接下来我们只需求[1,b]范围内和[b+1,d]范围内互素的数，此时需用容斥原理。对于[1,b]范围内和x互素的数，最多为b个，而在这b个数中我们只需减去不互素的对数即可。我们需先求出x的所有质因数，然后这些质因数的倍数在[1,b]范围内的个数为b/g，因此只需减去这些对数即可，然而由于会有重复的情况出现，因此需用容斥原理处理一下。 代码： 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn = 1e5+7;typedef long long ll;ll oula[maxn];int a,b,c,d,k;struct Number&#123; int cnt; int prime[20];&#125; fac[maxn];void getLa( int n)&#123; memset(fac,0,sizeof(fac)); for(int i = 0; i &lt; n; ++i) oula[i] = i; for(int i = 2; i &lt; n; ++i) if( oula[i] == i ) for(int j = 1; j*i &lt; n; ++j)&#123; oula[j*i] -= oula[j*i]/i; fac[j*i].prime[fac[j*i].cnt++]=i; &#125;&#125;ll inc(int index,int b,int m)&#123; ll r=0,t; for(int i=index; i&lt;fac[m].cnt; ++i) &#123; t=b/fac[m].prime[i];//b范围内有多少个数和m的因数为prime[i] r+=t-inc(i+1,t,m);//减去这些数就是b范围内和m互质的数的个数。 &#125; return r;&#125;ll solve()&#123; b/=k; d/=k; if(b&gt;d) swap(b,d); ll ans = 0; for(int i = 1; i &lt;= b; ++i) ans+=oula[i]; for(int i=b+1; i&lt;=d; ++i) ans+=b-inc(0,b,i); return ans;&#125;int main()&#123; getLa(maxn); int t; scanf(&quot;%d&quot;,&amp;t); for(int cas = 1; cas&lt;=t; ++cas)&#123; scanf(&quot;%d%d%d%d%d&quot;,&amp;a,&amp;b,&amp;c,&amp;d,&amp;k); if(k==0)&#123; printf(&quot;Case %d: 0\n&quot;,cas); continue; &#125; printf(&quot;Case %d: %lld\n&quot;,cas,solve()); &#125; return 0;&#125; 下面那道和上面这道类似，稍微改一下就好。 Visible TreesThere are many trees forming a m * n grid, the grid starts from (1,1). Farmer Sherlock is standing at (0,0) point. He wonders how many trees he can see.If two trees and Sherlock are in one line, Farmer Sherlock can only see the tree nearest to him. Input The first line contains one integer t, represents the number of test cases. Then there are multiple test cases. For each test case there is one line containing two integers m and n(1 ≤ m, n ≤ 100000) Output For each test case output one line represents the number of trees Farmer Sherlock can see. Sample Input 12321 12 3 Sample Output 1215 题意 求解[1,b]范围内和[1,d]范围内最大公约数为k的二元组的对数。当然和上面不同之处在于对数左右数不同也认为不同。(2,3)和(3,2)为不同的对数。 代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn = 1e5+7;typedef long long ll;ll oula[maxn];int m,n;struct Number&#123; int cnt; int prime[20];&#125; fac[maxn];void getLa( int n)&#123; memset(fac,0,sizeof(fac)); for(int i = 0; i &lt; n; ++i) oula[i] = i; for(int i = 2; i &lt; n; ++i) if( oula[i] == i ) for(int j = 1; j*i &lt; n; ++j)&#123; oula[j*i] -= oula[j*i]/i; fac[j*i].prime[fac[j*i].cnt++]=i; &#125;&#125;ll inc(int index,int b,int m)&#123; ll r=0,t; for(int i=index; i&lt;fac[m].cnt; ++i) &#123; t=b/fac[m].prime[i]; r+=t-inc(i+1,t,m); &#125; return r;&#125;ll solve()&#123; if(m&gt;n) swap(m,n); ll ans = 0; for(int i = 1; i &lt;= m; ++i) ans+=oula[i]; ans=ans*2-1; for(int i=m+1; i&lt;=n; ++i) ans+=m-inc(0,m,i); return ans;&#125;int main()&#123; getLa(maxn); int t; scanf(&quot;%d&quot;,&amp;t); while(t--)&#123; scanf(&quot;%d%d&quot;,&amp;m,&amp;n); printf(&quot;%lld\n&quot;,solve()); &#125; return 0;&#125; 跳蚤Z城市居住着很多只跳蚤。在Z城市周六生活频道有一个娱乐节目。一只跳蚤将被请上一个高空钢丝的正中央。钢丝很长，可以看作是无限长。节目主持人会给该跳蚤发一张卡片。卡片上写有N+1个自然数。其中最后一个是M，而前N个数都不超过M，卡片上允许有相同的数字。跳蚤每次可以从卡片上任意选择一个自然数S，然后向左，或向右跳S个单位长度。而他最终的任务是跳到距离他左边一个单位长度的地方，并捡起位于那里的礼物。比如当N=2，M=18时，持有卡片(10, 15, 18)的跳蚤，就可以完成任务：他可以先向左跳10个单位长度，然后再连向左跳3次，每次15个单位长度，最后再向右连跳3次，每次18个单位长度。而持有卡片(12, 15, 18)的跳蚤，则怎么也不可能跳到距他左边一个单位长度的地方。当确定N和M后，显然一共有M^N张不同的卡片。现在的问题是，在这所有的卡片中，有多少张可以完成任务。 Input 两个整数N和M(N &lt;= 15 , M &lt;= 100000000)。 Output 可以完成任务的卡片数。 Sample Input 12 4 Sample Output 112 Hint 这12张卡片分别是：(1, 1, 4), (1, 2, 4), (1, 3, 4), (1, 4, 4), (2, 1, 4), (2, 3, 4),(3, 1, 4), (3, 2, 4), (3, 3, 4), (3, 4, 4), (4, 1, 4), (4, 3, 4) 123456789101112131415161718192021222324252627282930313233343536373839#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#define LL long long intusing namespace std;const int maxn = 1005,maxm = 100005,INF = 1000000000;LL N,M;int fac[maxn],faci = 0;void Sp()&#123; LL e = M; for (LL i = 2; i * i &lt;= e; i++)&#123; if (e % i == 0)&#123; fac[++faci] = i; while (e % i == 0) e /= i; &#125; &#125; if (e - 1) fac[++faci] = e;&#125;LL qpow(LL a,LL b)&#123; LL ans = 1; for (; b; b &gt;&gt;= 1, a *= a) if (b &amp; 1) ans *= a; return ans;&#125;LL cal(int s)&#123; LL mult = 1,pos = 1; for (int i = 1; s; i++,s &gt;&gt;= 1)&#123; if (s &amp; 1)&#123; mult *= fac[i]; pos *= -1; &#125; &#125; return qpow(M/mult,N) * pos;&#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>组合数学</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
+        <tag>组合数学</tag>
+        <tag>gcd</tag>
+        <tag>容斥原理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[容斥原理的三种运用方式]]></title>
     <url>%2F2018%2F09%2F25%2F2018-09-25-1%2F</url>
     <content type="text"><![CDATA[在计数时，必须注意无一重复，无一遗漏。为了使重叠部分不被重复计算，人们研究出一种新的计数方法，这种方法的基本思想是：先不考虑重叠的情况，把包含于某内容中的所有对象的数目先计算出来，然后再把计数时重复计算的数目排斥出去，使得计算的结果既无遗漏又无重复，这种计数的方法称为容斥原理。 集合相交通常情况为奇加偶减，即加上重叠为奇次的，减去重叠为偶次的。 容斥原理是属于一种模板题目，一般简单的都是之间打模板，稍难的题目运用到了数学分析和数论的其他知识。 容斥原理分为三种实现： 1.位运算与二进制枚举（容易理解） 2.队列数组（耗时最短） 3.递归（代码最短但不容易理解） http://blog.csdn.net/deepseazbw/article/details/76187211 HDU的一道题目用的三种方法实现，一般都是找出一个数字的素因子，然后用cnt（计算器）记录下来，然后分别三种方法实现. 实现容斥原理的时候 1.先计算出容斥部分，然后再用总数减去 http://blog.csdn.net/deepseazbw/article/details/76187211 2.在容斥部分的时候，就将总数带入进去 http://blog.csdn.net/deepseazbw/article/details/76660935 模板题目： HDU 4135 1695]]></content>
@@ -1343,8 +1360,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -1355,8 +1372,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -1429,9 +1446,9 @@
         <category>C++基础</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1443,8 +1460,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
