@@ -4,6 +4,60 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/10/02/2018-10-02/</loc>
+    <lastmod>2018-10-02T08:12:28.266Z</lastmod>
+    <data>
+        <display>
+        <title>NAIPC2016-F.Mountain Scenes</title>
+        <pubTime>2018-10-02T07:55:38.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="组合数学" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2018/09/29/2018-09-29/</loc>
+    <lastmod>2018-10-02T08:03:36.983Z</lastmod>
+    <data>
+        <display>
+        <title>分时最短路+次小生成树+最小费用最大流题解</title>
+        <pubTime>2018-09-29T07:54:04.000Z</pubTime>
+        
+        <tag>最短路</tag>
+         
+        <tag>最小费用最大流</tag>
+         
+        <tag>次小生成树</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="图论" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E5%9B%BE%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/09/26/2018-09-26/</loc>
     <lastmod>2018-09-26T12:30:10.294Z</lastmod>
     <data>
@@ -169,9 +223,9 @@
          
         <tag>组合数学</tag>
          
-        <tag>动态规划</tag>
-         
         <tag>划分</tag>
+         
+        <tag>动态规划</tag>
          
          
            
@@ -813,9 +867,9 @@
         
         <tag>算法</tag>
          
-        <tag>匹配</tag>
-         
         <tag>图论</tag>
+         
+        <tag>匹配</tag>
          
         <tag>二分图</tag>
          
@@ -1007,9 +1061,9 @@
         <title>7.20-C++标本模板库stl</title>
         <pubTime>2018-07-20T07:00:15.000Z</pubTime>
         
-        <tag>stl</tag>
-         
         <tag>算法</tag>
+         
+        <tag>stl</tag>
          
          
            
@@ -1071,9 +1125,9 @@
         <title>7.20-stl专项训练题解</title>
         <pubTime>2018-07-20T07:00:15.000Z</pubTime>
         
-        <tag>stl</tag>
-         
         <tag>算法</tag>
+         
+        <tag>stl</tag>
          
          
            
@@ -1131,9 +1185,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>const</tag>
-         
         <tag>指针</tag>
+         
+        <tag>const</tag>
          
          
            
@@ -1464,9 +1518,9 @@
         
         <tag>算法</tag>
          
-        <tag>匹配</tag>
-         
         <tag>图论</tag>
+         
+        <tag>匹配</tag>
          
         <tag>二分图</tag>
          
@@ -2911,11 +2965,11 @@
         <title>基于github搭建专属于自己的博客(高级篇)</title>
         <pubTime>2018-04-28T15:39:25.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>hexo</tag>
          
         <tag>github</tag>
+         
+        <tag>前端</tag>
          
         <tag>node.js</tag>
          
@@ -2945,11 +2999,11 @@
         <title>基于github搭建专属于自己的博客(进阶篇)</title>
         <pubTime>2018-04-28T13:44:25.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>hexo</tag>
          
         <tag>github</tag>
+         
+        <tag>前端</tag>
          
         <tag>node.js</tag>
          
@@ -2979,11 +3033,11 @@
         <title>基于github搭建专属于自己的博客（基础篇）</title>
         <pubTime>2018-04-28T09:11:28.000Z</pubTime>
         
-        <tag>前端</tag>
-         
         <tag>hexo</tag>
          
         <tag>github</tag>
+         
+        <tag>前端</tag>
          
         <tag>node.js</tag>
          
@@ -3441,13 +3495,13 @@
         
         <tag>C/C++</tag>
          
-        <tag>stl</tag>
-         
         <tag>算法</tag>
          
-        <tag>pat天梯赛</tag>
+        <tag>stl</tag>
          
         <tag>vector</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            

@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://qianyouyou.cn"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="最短路,最小费用最大流,次小生成树," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="问题 A: 高速时间限制: 1 Sec  内存限制: 128 MB提交: 15  解决: 4[提交][状态][讨论版][命题人:qianyouyou] 题目描述教练开车去东北，因为比赛地点在东北。共有 n 座城，已知教练在 s 城，比赛地点在 t 城，n 座城之间共有 m 条高速，每条高速连接两座城市，每两座城市之间最多两条高速。每条高速都有权值 v，表示两个城市之间最快可以 v 小时到达。 然而">
+<meta name="keywords" content="最短路,最小费用最大流,次小生成树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分时最短路+次小生成树+最小费用最大流题解">
+<meta property="og:url" content="http://qianyouyou.cn/2018/09/29/2018-09-29/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="问题 A: 高速时间限制: 1 Sec  内存限制: 128 MB提交: 15  解决: 4[提交][状态][讨论版][命题人:qianyouyou] 题目描述教练开车去东北，因为比赛地点在东北。共有 n 座城，已知教练在 s 城，比赛地点在 t 城，n 座城之间共有 m 条高速，每条高速连接两座城市，每两座城市之间最多两条高速。每条高速都有权值 v，表示两个城市之间最快可以 v 小时到达。 然而">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-02T08:03:36.983Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分时最短路+次小生成树+最小费用最大流题解">
+<meta name="twitter:description" content="问题 A: 高速时间限制: 1 Sec  内存限制: 128 MB提交: 15  解决: 4[提交][状态][讨论版][命题人:qianyouyou] 题目描述教练开车去东北，因为比赛地点在东北。共有 n 座城，已知教练在 s 城，比赛地点在 t 城，n 座城之间共有 m 条高速，每条高速连接两座城市，每两座城市之间最多两条高速。每条高速都有权值 v，表示两个城市之间最快可以 v 小时到达。 然而">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2018/09/29/2018-09-29/"/>
+
+
+
+
+
+  <title>分时最短路+次小生成树+最小费用最大流题解 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/qian-youyou" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2018/09/29/2018-09-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">分时最短路+次小生成树+最小费用最大流题解</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-29T15:54:04+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/" itemprop="url" rel="index">
+                    <span itemprop="name">训练之路</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/训练之路/算法/图论/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,571
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="问题-A-高速"><a href="#问题-A-高速" class="headerlink" title="问题 A: 高速"></a>问题 A: 高速</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 15  解决: 4<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1027&amp;pid=0&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1915" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1915&amp;cid=1027" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>]</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>教练开车去东北，因为比赛地点在东北。共有 n 座城，已知教练在 s 城，比赛地点在 t 城，n 座城之间共有 m 条高速，每条高速连接两座城市，每两座城市之间最多两条高速。每条高速都有权值 v，表示两个城市之间最快可以 v 小时到达。</p>
+<p>然而高速不是永久开放的，每条高速都会有一段开放时间 [ a，b ]，表示该高速在 a ~ b 小时范围之间开放，其余时间处于关闭状态，不能通过任何车辆。例如 [ 24，27 ]表示该路在第 24 小时到 27 小时之间开放。</p>
+<p>已知教练在 0 时刻出发，他最快多少小时可以到达 t 城。</p>
+<p>（PS：由于刹车坏掉了，因此车一旦启动就不能停下来，也就是说车不能停于某点或某边，不过车可以来回无限次在两地之间穿梭）</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>多组测试样例，首行输入 t，表示 t 组样例。</p>
+<p>图为无向图，s 城固定为 1 点，t 城固定为 n 点。</p>
+<p>每组样例第 1 行，输入n，m（1 &lt; n ≤ 100，0 &lt; m ≤ 1000）。</p>
+<p>接下来 m 行，每行 5 个数值x，y，v，l，f。表示 x 与 y 有一条高速，耗时为 v。该路开放时间为[ l，f ]。</p>
+<p>数据保证教练可以到达终点，只不过是时间问题。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出一个数值，即最少耗时。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">5 4</span><br><span class="line">2 3 1 5 11</span><br><span class="line">2 5 1 3 18</span><br><span class="line">4 3 1 7 14</span><br><span class="line">1 4 1 0 15</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tag：图论、分时最短路</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">//最短路</span><br><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int maxx = 0x3f3f3f3f;</span><br><span class="line">const int maxn = 1e5+7;</span><br><span class="line">int t,n,m,cnt;</span><br><span class="line">int dis[maxn];  //当前该点到原点最短距离</span><br><span class="line">bool vis[maxn]; //是否访问过</span><br><span class="line">int head[maxn]; //点集</span><br><span class="line">struct EDGE&#123;</span><br><span class="line">    int next,to,w,l,r;  //上一条边，下一个点，权值，左值，右值</span><br><span class="line">&#125;edge[2*maxn];  //边集</span><br><span class="line">struct NODE&#123;</span><br><span class="line">    int u,dis;</span><br><span class="line">    NODE()&#123;&#125;</span><br><span class="line">	NODE(int u,ll w):u(u),dis(w)&#123;&#125;</span><br><span class="line">	bool operator &lt;(const NODE &amp;a)const&#123;</span><br><span class="line">		return dis&gt;a.dis;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;node[2*maxn];  //点集加最短距离</span><br><span class="line">void add(int u, int v, int w, int l,int r)&#123; //构建边集</span><br><span class="line">    edge[cnt].next = head[u];</span><br><span class="line">    edge[cnt].to = v;</span><br><span class="line">    edge[cnt].w = w;</span><br><span class="line">    edge[cnt].l = l;</span><br><span class="line">    edge[cnt].r = r;</span><br><span class="line">    head[u] = cnt;</span><br><span class="line">    cnt++;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;    //初始化</span><br><span class="line">    cnt = 0;</span><br><span class="line">    memset(head,-1,sizeof(head));</span><br><span class="line">    memset(dis,maxx,sizeof(dis));</span><br><span class="line">    memset(vis,false,sizeof(vis));</span><br><span class="line">&#125;</span><br><span class="line">void read()&#123;    //读入数据</span><br><span class="line">    int u,v,w,l,r;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">    for(int i = 0;i &lt; m; i++)&#123;</span><br><span class="line">        scanf(&quot;%d%d%d%d%d&quot;,&amp;u,&amp;v,&amp;w,&amp;l,&amp;r);</span><br><span class="line">        add(u,v,w,l,r);</span><br><span class="line">        add(v,u,w,l,r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void init_data(int kk)&#123; //初始化数据</span><br><span class="line">    vis[kk] = false;</span><br><span class="line">    dis[kk] = maxx;</span><br><span class="line">&#125;</span><br><span class="line">int solve(int s)&#123;</span><br><span class="line">    priority_queue&lt;NODE&gt;q;  //储存最短距离</span><br><span class="line">    q.push(NODE(s,0));  //读入原点</span><br><span class="line">    while(!q.empty())&#123;  //队列为空则无法到达</span><br><span class="line">        int kk = q.top().u; //储存当前最短距离下标</span><br><span class="line">        int minD = q.top().dis; //储存当前最短距离</span><br><span class="line">        q.pop();</span><br><span class="line">        if(kk==n)   //若下标为目标值，return</span><br><span class="line">            return minD;</span><br><span class="line">        vis[kk] = true; //该点是否访问</span><br><span class="line">        for(int l = head[kk]; l!=-1; l=edge[l].next)&#123;   //松弛边</span><br><span class="line">            if(!vis[edge[l].to]&amp;&amp;minD&lt;=edge[l].r&amp;&amp;minD&gt;=edge[l].l&amp;&amp;minD + edge[l].w &lt; dis[edge[l].to])&#123;</span><br><span class="line">                dis[edge[l].to] = minD + edge[l].w;</span><br><span class="line">                q.push(NODE(edge[l].to,dis[edge[l].to]));   //将松弛后的边压入队列</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        init_data(kk);  //初始化数据</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        init(); //初始化</span><br><span class="line">        read(); //读入</span><br><span class="line">        printf(&quot;%d\n&quot;,solve(1));    //解决方案</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-C-千年老二"><a href="#问题-C-千年老二" class="headerlink" title="问题 C: 千年老二"></a>问题 C: 千年老二</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 24  解决: 12<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1028&amp;pid=2&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1913" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1913&amp;cid=1028" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>]</p>
+<h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>雷婷与万钧是青梅竹马，无论是考试还是玩游戏，雷婷总是第一，而万钧总是第二，尽管万钧有做第一的实力，但他每次都会把第一让给雷婷，仅因为每次读榜单时雷霆万钧听起来是那么顺耳。这天，雷婷参加了 acm 选拔，万钧也跟着雷婷参加。题目是这样的：</p>
+<p>有 n 个节点，编号为 1~n，有 m 条边，每条边都有一个距离。两点之间最多只有 1 条边。现在你需要选取 n-1 条边，使得所有点都连接起来都有通路。n-1 条边距离之和越小分数越高。</p>
+<p>万钧立马意识到这道题是求最小生成树的，并且每个人的答案不能相同，万钧根据瞪眼法立马瞪出了答案，然而他还是等待雷婷先做完。现在雷婷已经找到了距离最短的1种方案，不过他俩太心有灵犀了，答案一模一样，万钧想获得第 2 名，请你帮万钧想一种方案，距离之和越短越好，但不能和雷婷的结果相同。一条边不同即可认为不同。如果找不到输出 -1。当然存在一种情况，如果雷婷的方案是没有方案求出最短距离，即表示该图没有最小生成树，即输出 -1。总之雷婷的方案是最优解的一种。</p>
+<h2 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h2><p>存在多组数据，第一行一个正整数 t，表示有 t 组数据。</p>
+<p>每组数据第一行有两个整数 n 和 m（2 ≤ n ≤ 100，1 ≤ m ≤ 1000)，之后 m 行，每行三个正整数 s，e，w，表示 s 到 e 的双向路的权值为 w。</p>
+<h2 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h2><p>输出次小生成树的值（如果存在多个最小生成树或仅有一个树，则次小生成树就是最小生成树，输出-1），如果不存在输出 -1。</p>
+<h2 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">3 3</span><br><span class="line">3 1 3</span><br><span class="line">1 2 1</span><br><span class="line">2 3 2</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tag：图论、次小生成树</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">//次小生成树</span><br><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int L=1e5+7;</span><br><span class="line">const int inf=0x3f3f3f3f;</span><br><span class="line">const int maxn=1000+7;</span><br><span class="line">int father[maxn],n,m,num[maxn],nPos;    //父节点（并查集），点数，边数，最小生成树点集，当前访问方位</span><br><span class="line">struct node&#123;</span><br><span class="line">    int s,y,w;</span><br><span class="line">&#125;edge[L];   //边集，左端点，右端点，权值</span><br><span class="line">void init()&#123;    //初始化并查集</span><br><span class="line">    for(int i=0;i&lt;=n;i++)</span><br><span class="line">        father[i]=i;</span><br><span class="line">&#125;</span><br><span class="line">int root(int x)&#123;    //并查集，构造父节点</span><br><span class="line">    return father[x]==x?x:father[x]=root(father[x]);</span><br><span class="line">&#125;</span><br><span class="line">void unite(int x,int y)&#123;    //并查集，合并两个联通图</span><br><span class="line">    x=root(x);</span><br><span class="line">    y=root(y);</span><br><span class="line">    if(x!=y)</span><br><span class="line">        father[y]=x;</span><br><span class="line">&#125;</span><br><span class="line">int alike(int x,int y)&#123; //并查集，判断是否为同一连通图</span><br><span class="line">    return root(x)==root(y);</span><br><span class="line">&#125;</span><br><span class="line">int cmp(node a,node b)&#123; //sort结构体排序</span><br><span class="line">    return a.w&lt;b.w;</span><br><span class="line">&#125;</span><br><span class="line">int secondTree(int pos) //次小生成树</span><br><span class="line">&#123;</span><br><span class="line">    init(); //初始化</span><br><span class="line">    int sum=0,cnt=0;</span><br><span class="line">    for(int i=0;i&lt;m;i++)    //对于删去边后的图进行最小生成树运算</span><br><span class="line">    &#123;</span><br><span class="line">        if(cnt==n-1)</span><br><span class="line">            break;</span><br><span class="line">        if(i==pos)</span><br><span class="line">            continue;</span><br><span class="line">        if(!alike(edge[i].s,edge[i].y))&#123;</span><br><span class="line">            unite(edge[i].s,edge[i].y);</span><br><span class="line">            sum+=edge[i].w;</span><br><span class="line">            cnt++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cnt!=n-1?-1:sum; //判断删除边后是否能构成最小生成树</span><br><span class="line">&#125;</span><br><span class="line">int kruskal()&#123;  //最小生成树</span><br><span class="line">    init();</span><br><span class="line">    sort(edge,edge+m,cmp);  //对边进行权值排序</span><br><span class="line">    int sum=0,cnt=0;</span><br><span class="line">    for(int i=0;i&lt;m;i++)    //每次选择最小且未访问过的一条边</span><br><span class="line">    &#123;</span><br><span class="line">        if(cnt==n-1)</span><br><span class="line">            break;</span><br><span class="line">        if(!alike(edge[i].s,edge[i].y))&#123;</span><br><span class="line">            unite(edge[i].s,edge[i].y);</span><br><span class="line">            sum+=edge[i].w;</span><br><span class="line">            cnt++;</span><br><span class="line">            num[++nPos]=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cnt!=n-1?-1:sum; //判断边是否大于等于n-1，否则输出-1</span><br><span class="line">&#125;</span><br><span class="line">void read()&#123;    //读入数据</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);</span><br><span class="line">    for(int i=0;i&lt;m;i++)</span><br><span class="line">        scanf(&quot;%d%d%d&quot;,&amp;edge[i].s,&amp;edge[i].y,&amp;edge[i].w);</span><br><span class="line">&#125;</span><br><span class="line">void solve()&#123;   //解决方案</span><br><span class="line">    int Min=inf;</span><br><span class="line">    nPos=0;</span><br><span class="line">    int mst=kruskal();  //最小生成树值</span><br><span class="line">    if(mst==-1) &#123;   //没有最小生成树即输出-1</span><br><span class="line">        printf(&quot;-1\n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=1;i&lt;=nPos;i++)&#123;   //对最小生成树的每条边进行遍历，选择删边后的最小值</span><br><span class="line">        int secmst=secondTree(num[i]);</span><br><span class="line">        if(secmst!=-1)  //若没有次小生成树输出-1</span><br><span class="line">            Min=min(Min,secmst);</span><br><span class="line">        &#125;</span><br><span class="line">    if(Min!=inf&amp;&amp;Min!=mst)</span><br><span class="line">        printf(&quot;%d\n&quot;,Min); //输出结果</span><br><span class="line">    else</span><br><span class="line">        printf(&quot;-1\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int t;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        read(); //读入数据</span><br><span class="line">        solve();    //解决方案</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="问题-F-给力台球厅"><a href="#问题-F-给力台球厅" class="headerlink" title="问题 F: 给力台球厅"></a>问题 F: 给力台球厅</h1><p>时间限制: 1 Sec  内存限制: 128 MB<br>提交: 10  解决: 3<br>[<a href="http://sustoj.com/JudgeOnline/submitpage.php?cid=1028&amp;pid=5&amp;langmask=0" target="_blank" rel="noopener">提交</a>][<a href="http://sustoj.com/JudgeOnline/problemstatus.php?id=1912" target="_blank" rel="noopener">状态</a>][<a href="http://sustoj.com/JudgeOnline/bbs.php?pid=1912&amp;cid=1028" target="_blank" rel="noopener">讨论版</a>][命题人:<a href="http://sustoj.com/JudgeOnline/userinfo.php?user=qianyouyou" target="_blank" rel="noopener">qianyouyou</a>]</p>
+<h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>教练爱打台球。这天偶遇一家台球厅，便进去看看。然而这家台球厅貌似和平常的台球厅不太一样，它的每张桌面上的洞都是随机分布在桌面上的，球也是随机摆放的。</p>
+<p>教练立即意识到，此台球厅的桌面不符合正态分布之概率密度函数，而是呈离散分布，顿时患有强迫症的教练心里就不舒服了。为了平缓一下翻腾的内心，教练随机选取了一张球和洞数量一样的球桌，望着奇怪的桌面与奇怪的球，教练脑袋上不禁长出了大把大把的草：如果能求出所有球入洞的最短距离之和该有多好啊。</p>
+<p>现有一个桌面面积为 n×m 的台球桌，将台球桌分成 n×m 个小格，台球桌上有许多的洞和许多的球，均匀分布在小格里，且每个小格只有三种状态，有球，有洞，空白。球用 @ 表示，洞用 # 表示，空白的地方用 * 表示。每个洞只能容纳一个球，球每次只能按照上下左右的方向移动，且每移动一格视为移动 1 个单位长度。当一个球被另一个球挡住时，它可以跳球，所以每一个球都可以完全无视其他球或洞的存在而继续前行，直到进自己心仪的洞。现求所有球进洞的距离之和最小是多少。如果你能帮教练解决这道题，恭喜你就是 ACM 队员了（每个球只能进一个洞，每个洞内有球的话就变成空白状态）</p>
+<h2 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h2><p>多组测试样例，首行输入 m，n，即矩形台球桌面的边长。(2 ≤ m，n ≤ 20，球最多100个，洞最多100个，保证洞和球数量相等)</p>
+<h2 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h2><p>输出一个整数，即所有球入洞的距离最短是多少。</p>
+<h2 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">2 2</span><br><span class="line">*#</span><br><span class="line">@*</span><br><span class="line">7 8</span><br><span class="line">****#***</span><br><span class="line">****#***</span><br><span class="line">****#***</span><br><span class="line">@@@@#@@@</span><br><span class="line">****#***</span><br><span class="line">****#***</span><br><span class="line">****#***</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">28</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>tag：图论、最小费用最大流</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">//网络流</span><br><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int INF = 0x3f3f3f3f; //无穷大</span><br><span class="line">const int maxn = 60007;</span><br><span class="line">const int maxm = 1000007;</span><br><span class="line">int vis[maxn],d[maxn],pre[maxn],a[maxn],m,n;    //是否访问，最短路，前置节点，流量，边集，点集</span><br><span class="line">char mp[107][107];  //台球地图</span><br><span class="line">struct Edge&#123;</span><br><span class="line">    int u, v, c, cost, next;</span><br><span class="line">&#125;edge[maxm];    //网络流边集</span><br><span class="line"></span><br><span class="line">int s[maxn], cnt;   //每个点流量</span><br><span class="line"></span><br><span class="line">void init()&#123;    //初始化</span><br><span class="line">	cnt = 0;</span><br><span class="line">	memset(s, -1, sizeof(s));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void add(int u, int v, int c, int cost)&#123;    //对两点之间进行单向边建立</span><br><span class="line">	edge[cnt].u = u;</span><br><span class="line">	edge[cnt].v = v;</span><br><span class="line">	edge[cnt].cost = cost;</span><br><span class="line">	edge[cnt].c = c;</span><br><span class="line">	edge[cnt].next = s[u];</span><br><span class="line">	s[u] = cnt++;   //建立单向边</span><br><span class="line">	edge[cnt].u = v;</span><br><span class="line">	edge[cnt].v = u;</span><br><span class="line">	edge[cnt].cost = -cost;</span><br><span class="line">	edge[cnt].c = 0;</span><br><span class="line">	edge[cnt].next = s[v];</span><br><span class="line">	s[v] = cnt++;   //建立双向边</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool spfa(int ss, int ee,int &amp;flow,int &amp;cost)&#123;  //以距离为费用寻找最短路，以最短路为当前增广路</span><br><span class="line">	queue&lt;int&gt; q;</span><br><span class="line">	memset(d, INF, sizeof d);</span><br><span class="line">	memset(vis, 0, sizeof vis); //初始化</span><br><span class="line">	d[ss] = 0, vis[ss] = 1, pre[ss] = 0, a[ss] = INF;</span><br><span class="line">	q.push(ss);</span><br><span class="line">	while (!q.empty())&#123; //spfa以费用为距离寻找最短路</span><br><span class="line">		int u = q.front();q.pop();</span><br><span class="line">		vis[u] = 0;</span><br><span class="line">		for (int i = s[u]; ~i; i = edge[i].next)&#123;   //和当前点相连所有边松弛过程</span><br><span class="line">			int v = edge[i].v;</span><br><span class="line">			if (edge[i].c&gt;0&amp;&amp; d[v]&gt;d[u] + edge[i].cost)&#123;    //松弛过程</span><br><span class="line">				d[v] = d[u] + edge[i].cost;</span><br><span class="line">				pre[v] = i;</span><br><span class="line">				a[v] = min(a[u], edge[i].c);    //取最小值</span><br><span class="line">				if (!vis[v])&#123;</span><br><span class="line">					vis[v] = 1;</span><br><span class="line">					q.push(v);     //压入待松弛队列</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (d[ee] == INF) return 0; //判断是否有最短路，无说明最大流完成</span><br><span class="line">	flow += a[ee];</span><br><span class="line">	cost += d[ee]*a[ee];</span><br><span class="line">	int u = ee;</span><br><span class="line">	while (u != ss)&#123;    //求当前最短路下的流量和</span><br><span class="line">		edge[pre[u]].c -= a[ee];</span><br><span class="line">		edge[pre[u] ^ 1].c += a[ee];</span><br><span class="line">		u = edge[pre[u]].u;</span><br><span class="line">	&#125;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int MCMF(int ss, int ee)&#123;   //最小费用最大流</span><br><span class="line">	int cost = 0, flow=0;   //初始化</span><br><span class="line">	while (spfa(ss, ee, flow, cost));   //寻找增广路径，直到没有增广路径为止</span><br><span class="line">	return cost;    //返回最大流费用</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct point&#123;</span><br><span class="line">    int x,y;    //球坐标，洞坐标</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void solve()&#123;</span><br><span class="line">    point H[107],P[107];    //建立球集与洞集</span><br><span class="line">    int h=0,p=0;</span><br><span class="line">    for(int i=0;i&lt;n;i++)&#123;   //输入地图</span><br><span class="line">        scanf(&quot;%s&quot;,&amp;mp[i]);</span><br><span class="line">        for(int j=0;j&lt;m;j++)&#123;</span><br><span class="line">            if(mp[i][j]==&apos;#&apos;)&#123;  //若为洞则坐标加入洞集</span><br><span class="line">                H[h].x=i;</span><br><span class="line">                H[h].y=j;</span><br><span class="line">                h++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(mp[i][j]==&apos;@&apos;)&#123; //若为球则坐标加入球集</span><br><span class="line">                P[p].x=i;</span><br><span class="line">                P[p].y=j;</span><br><span class="line">                p++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    init(); //初始化</span><br><span class="line">    for(int i=0;i&lt;h;i++)</span><br><span class="line">        for(int j=0;j&lt;p;j++)&#123;</span><br><span class="line">        int c=fabs(H[i].x-P[j].x)+fabs(H[i].y-P[j].y);</span><br><span class="line">             add(i+1,h+j+1,1,c);</span><br><span class="line">        &#125;   //建立球与洞之间的路径</span><br><span class="line">    for(int i=0;i&lt;h;i++)    //建立超级源点</span><br><span class="line">        add(0,i+1,1,0);</span><br><span class="line">    for(int i=0;i&lt;p;i++)    //建立超级汇点</span><br><span class="line">        add(h+1+i,h+p+1,1,0);</span><br><span class="line">    printf(&quot;%d\n&quot;,MCMF(0,h+p+1));   //最小费用最大流</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123;</span><br><span class="line">        if(!(m||n))</span><br><span class="line">            break;</span><br><span class="line">        solve();    //解决方案</span><br><span class="line">    &#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+	
+	  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><hr>纸短情长啊<i class="fa fa-paw"></i>文章结束了<i class="fa fa-paw"></i>但我们的故事还在继续</div>
+    
+</div>
+    
+	  </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/最短路/" rel="tag"><i class="fa fa-tag"></i> 最短路</a>
+          
+            <a href="/tags/最小费用最大流/" rel="tag"><i class="fa fa-tag"></i> 最小费用最大流</a>
+          
+            <a href="/tags/次小生成树/" rel="tag"><i class="fa fa-tag"></i> 次小生成树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/26/2018-09-26/" rel="next" title="利用容斥原理求解范围内互素数对数例题">
+                <i class="fa fa-chevron-left"></i> 利用容斥原理求解范围内互素数对数例题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/02/2018-10-02/" rel="prev" title="NAIPC2016-F.Mountain Scenes">
+                NAIPC2016-F.Mountain Scenes <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA4NC8xMjYxOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">126</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠CSDN" target="_blank">浅悠悠CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="渣渣灰CSDN" target="_blank">渣渣灰CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/messhiro" title="赵神CSDN" target="_blank">赵神CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.matrix67.com/" title="matrix67博客" target="_blank">matrix67博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://amon1997.com/" title="曹静的博客" target="_blank">曹静的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/sophia__yu" title="杨祥钰CSDN" target="_blank">杨祥钰CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
+	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-A-高速"><span class="nav-number">1.</span> <span class="nav-text">问题 A: 高速</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入"><span class="nav-number">1.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出"><span class="nav-number">1.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入"><span class="nav-number">1.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出"><span class="nav-number">1.5.</span> <span class="nav-text">样例输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-C-千年老二"><span class="nav-number">2.</span> <span class="nav-text">问题 C: 千年老二</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-1"><span class="nav-number">2.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-1"><span class="nav-number">2.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-1"><span class="nav-number">2.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-1"><span class="nav-number">2.5.</span> <span class="nav-text">样例输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题-F-给力台球厅"><span class="nav-number">3.</span> <span class="nav-text">问题 F: 给力台球厅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入-2"><span class="nav-number">3.2.</span> <span class="nav-text">输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出-2"><span class="nav-number">3.3.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输入-2"><span class="nav-number">3.4.</span> <span class="nav-text">样例输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样例输出-2"><span class="nav-number">3.5.</span> <span class="nav-text">样例输出</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
