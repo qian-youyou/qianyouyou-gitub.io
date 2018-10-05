@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[ACM算法专用模板(持续更新中)]]></title>
     <url>%2F2018%2F10%2F05%2F2018-10-05%2F</url>
-    <content type="text"><![CDATA[图论网络流DINIC123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;const int maxn = 1e5+7;const int inf = 0x3f3f3f3f;int n, m, sx, ex, cnt;int head[maxn], pre[maxn];struct EDGE&#123; int u, next, to, c;&#125;edge[maxn&lt;&lt;3];void add_edge(int u, int v, int c)&#123; edge[cnt].u = u; edge[cnt].next = head[u]; edge[cnt].to = v; edge[cnt].c = c&lt;=inf ? c : inf; head[u] = cnt++;&#125;void add(int u, int v, int c)&#123; add_edge(u, v, c); add_edge(v, u, 0);//双向边容量为c&#125;void init()&#123; //memset(edge, 0, sizeof(edge)); memset(head, -1, sizeof(head)); cnt = 0;&#125;void read()&#123; sx = 1, ex = n; for(int i = 0; i &lt; m; i++)&#123; int u, v, w; scanf(&quot;%d%d%d&quot;,&amp;u, &amp;v, &amp;w); add(u, v, w); &#125;&#125;bool BFS(int sx, int ex)&#123; memset(pre, 0, sizeof(pre)); queue&lt;int&gt;que; que.push(sx); pre[sx] = 1; while(!que.empty())&#123; int kk = que.front(); que.pop(); for(int i = head[kk]; i != -1; i = edge[i].next)&#123; int v = edge[i].to; if(!pre[v]&amp;&amp;edge[i].c)&#123; pre[v] = pre[kk] + 1; que.push(v); &#125; &#125; &#125; return pre[ex] != 0;&#125;int DFS(int pos, int flow)&#123; if(pos == ex || flow == 0) return flow; int f = flow; for(int i = head[pos]; i != -1; i = edge[i].next)&#123; int tmp, v = edge[i].to; if(edge[i].c &amp;&amp; pre[pos] + 1 == pre[v] &amp;&amp; (tmp = DFS(v, min(edge[i].c, flow)))&gt;0)&#123; edge[i].c -= tmp; edge[i^1].c += tmp; flow -= tmp; if(flow == 0)&#123; break; &#125; &#125; &#125; return f - flow;&#125;int Dinic(int sx, int ex)&#123; int flow = 0; while(BFS(sx, ex))&#123; flow += DFS(sx, inf); &#125; return flow;&#125;int main()&#123; while(~scanf(&quot;%d%d&quot;,&amp;m, &amp;n))&#123; init(); read(); printf(&quot;%d\n&quot;, Dinic(sx, ex)); &#125; return 0;&#125; DINIC(邻接矩阵)12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;queue&gt;using namespace std;const int inf = 0x3f3f3f3f;const int maxn = 307;struct NODE&#123; int c; int f;&#125;;int sx,ex;int pre[maxn];NODE road[maxn][maxn];int n, m, N;bool BFS()&#123; memset(pre,0,sizeof(pre)); queue&lt;int&gt;q; q.push(sx); pre[sx] = 1; while(!q.empty())&#123; int d = q.front(); q.pop(); for(int i = 1;i&lt;=N;i++)&#123; if(!pre[i]&amp;&amp;road[d][i].c-road[d][i].f)&#123; pre[i] = pre[d] + 1; q.push(i); &#125; &#125; &#125; return pre[ex]!=0;&#125;int dfs(int pos, int flow)&#123; int f = flow; if(pos==ex) return flow; for(int i = 1; i &lt;= N; i++)&#123; if(road[pos][i].c - road[pos][i].f &amp;&amp; pre[pos] + 1 == pre[i])&#123; int a = road[pos][i].c - road[pos][i].f; int t = dfs(i, min(a, flow)); road[pos][i].f += t; road[i][pos].f -= t; flow -= t; &#125; &#125; return f - flow;&#125;int dinic()&#123; int sum = 0; while(BFS())&#123; sum+=dfs(sx,inf); &#125; return sum;&#125;void init()&#123; N = n; sx = 0; ex = N; memset(road,0,sizeof(road));&#125;void read()&#123; int u,v,w; for(int i = 1;i&lt;=m;i++)&#123; scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w); road[u][v].c+=w; &#125;&#125;int main()&#123; while(~scanf(&quot;%d%d&quot;,&amp;m,&amp;n))&#123; init(); read(); printf(&quot;%d\n&quot;,dinic()); &#125; return 0;&#125; MCMF1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;const int maxm = 1e5+7;const int maxn = 1e4+7;const int inf = 0x3f3f3f3f;int n, m, cnt, sx, ex;int head[maxn], pre[maxn], dis[maxn];bool vis[maxn];struct EDGE&#123; int next; int to; int w; int c;&#125;edge[maxm];void init()&#123; sx = 0; ex = 1; cnt = 0; memset(edge, 0, sizeof(edge)); memset(head, -1, sizeof(head));&#125;void add_edge(int u, int v, int c, int w)&#123; edge[cnt].next = head[u]; edge[cnt].to = v; edge[cnt].c = c&lt;=inf ? c : inf; edge[cnt].w = w; head[u] = cnt++;&#125;void add(int u, int v, int c, int w)&#123; add_edge(u, v, c, w); add_edge(v, u, 0, -w);&#125;bool SPFA(int sx, int ex)&#123; memset(pre, -1, sizeof(pre)); memset(dis, inf, sizeof(dis)); memset(vis, false, sizeof(vis)); dis[sx] = 0; queue&lt;int&gt;que; que.push(sx); while(!que.empty())&#123; int kk = que.front(); que.pop(); vis[kk] = false; for(int i = head[kk]; i != -1; i = edge[i].next)&#123; EDGE tmp = edge[i]; if(tmp.c &amp;&amp; dis[tmp.to]&gt;dis[kk]+tmp.w)&#123; dis[tmp.to] = dis[kk] + tmp.w; pre[tmp.to] = i; if(!vis[tmp.to])&#123; vis[tmp.to] = true; que.push(tmp.to); &#125; &#125; &#125; &#125; return pre[ex] != -1;&#125;int MCMF(int sx, int ex)&#123; int flow = 0, min_flow = inf, cost = 0; while(SPFA(sx, ex))&#123; for(int i = pre[ex]; i != -1; i = pre[edge[i^1].to])&#123; min_flow = min(min_flow, edge[i].c); &#125; for(int i = pre[ex]; i != -1; i = pre[edge[i^1].to])&#123; edge[i].c -= min_flow; edge[i^1].c += min_flow; cost += min_flow * edge[i].w; &#125; flow += min_flow; &#125; return cost;&#125;void read()&#123; int u, v, c, w; ex = n+1; for(int i = 0;i&lt;m;i++)&#123; scanf(&quot;%d%d%d%d&quot;,&amp;u,&amp;v,&amp;c,&amp;w); add(u,v,c, w); &#125;&#125;int main()&#123; while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123; if(n+m==0)&#123; break; &#125; init(); read(); printf(&quot;%d\n&quot;,MCMF(sx, ex)); &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[标签：并查集，ST表，线段树，树状数组，莫队，LCA，Trie树，KMP，AC自动机，后缀自动机，gcd，exgcd，中国剩余定理，欧拉筛，欧拉函数打表，逆元，生成函数，匈牙利算法，KM算法，Floyed，dijkstra，dijkstra+heap优化，SPFA及LLL与SLF优化，Dinic，MCMF 数据结构并查集12345678910111213141516int fa[maxn];void init()&#123; for(int i = 0; i &lt; maxn; i++)&#123; fa[i] = i; &#125;&#125;int root(int x)&#123; return x==fa[x] ? x : x=root(fa[x]);&#125;void Union(int px, int py)&#123; px = fa[px]; py = fa[py]; if(px != py)&#123; fa[py] = px; &#125;&#125; 图论网络流DINIC123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;const int maxn = 1e5+7;const int inf = 0x3f3f3f3f;int n, m, sx, ex, cnt;int head[maxn], pre[maxn];struct EDGE&#123; int u, next, to, c;&#125;edge[maxn&lt;&lt;3];void add_edge(int u, int v, int c)&#123; edge[cnt].u = u; edge[cnt].next = head[u]; edge[cnt].to = v; edge[cnt].c = c&lt;=inf ? c : inf; head[u] = cnt++;&#125;void add(int u, int v, int c)&#123; add_edge(u, v, c); add_edge(v, u, 0);//双向边容量为c&#125;void init()&#123; //memset(edge, 0, sizeof(edge)); memset(head, -1, sizeof(head)); cnt = 0;&#125;void read()&#123; sx = 1, ex = n; for(int i = 0; i &lt; m; i++)&#123; int u, v, w; scanf(&quot;%d%d%d&quot;,&amp;u, &amp;v, &amp;w); add(u, v, w); &#125;&#125;bool BFS(int sx, int ex)&#123; memset(pre, 0, sizeof(pre)); queue&lt;int&gt;que; que.push(sx); pre[sx] = 1; while(!que.empty())&#123; int kk = que.front(); que.pop(); for(int i = head[kk]; i != -1; i = edge[i].next)&#123; int v = edge[i].to; if(!pre[v]&amp;&amp;edge[i].c)&#123; pre[v] = pre[kk] + 1; que.push(v); &#125; &#125; &#125; return pre[ex] != 0;&#125;int DFS(int pos, int flow)&#123; if(pos == ex || flow == 0) return flow; int f = flow; for(int i = head[pos]; i != -1; i = edge[i].next)&#123; int tmp, v = edge[i].to; if(edge[i].c &amp;&amp; pre[pos] + 1 == pre[v] &amp;&amp; (tmp = DFS(v, min(edge[i].c, flow)))&gt;0)&#123; edge[i].c -= tmp; edge[i^1].c += tmp; flow -= tmp; if(flow == 0)&#123; break; &#125; &#125; &#125; return f - flow;&#125;int Dinic(int sx, int ex)&#123; int flow = 0; while(BFS(sx, ex))&#123; flow += DFS(sx, inf); &#125; return flow;&#125;int main()&#123; while(~scanf(&quot;%d%d&quot;,&amp;m, &amp;n))&#123; init(); read(); printf(&quot;%d\n&quot;, Dinic(sx, ex)); &#125; return 0;&#125; DINIC(邻接矩阵)12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;queue&gt;using namespace std;const int inf = 0x3f3f3f3f;const int maxn = 307;struct NODE&#123; int c; int f;&#125;;int sx,ex;int pre[maxn];NODE road[maxn][maxn];int n, m, N;bool BFS()&#123; memset(pre,0,sizeof(pre)); queue&lt;int&gt;q; q.push(sx); pre[sx] = 1; while(!q.empty())&#123; int d = q.front(); q.pop(); for(int i = 1;i&lt;=N;i++)&#123; if(!pre[i]&amp;&amp;road[d][i].c-road[d][i].f)&#123; pre[i] = pre[d] + 1; q.push(i); &#125; &#125; &#125; return pre[ex]!=0;&#125;int dfs(int pos, int flow)&#123; int f = flow; if(pos==ex) return flow; for(int i = 1; i &lt;= N; i++)&#123; if(road[pos][i].c - road[pos][i].f &amp;&amp; pre[pos] + 1 == pre[i])&#123; int a = road[pos][i].c - road[pos][i].f; int t = dfs(i, min(a, flow)); road[pos][i].f += t; road[i][pos].f -= t; flow -= t; &#125; &#125; return f - flow;&#125;int dinic()&#123; int sum = 0; while(BFS())&#123; sum+=dfs(sx,inf); &#125; return sum;&#125;void init()&#123; N = n; sx = 0; ex = N; memset(road,0,sizeof(road));&#125;void read()&#123; int u,v,w; for(int i = 1;i&lt;=m;i++)&#123; scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w); road[u][v].c+=w; &#125;&#125;int main()&#123; while(~scanf(&quot;%d%d&quot;,&amp;m,&amp;n))&#123; init(); read(); printf(&quot;%d\n&quot;,dinic()); &#125; return 0;&#125; MCMF1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;queue&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;using namespace std;const int maxm = 1e5+7;const int maxn = 1e4+7;const int inf = 0x3f3f3f3f;int n, m, cnt, sx, ex;int head[maxn], pre[maxn], dis[maxn];bool vis[maxn];struct EDGE&#123; int next; int to; int w; int c;&#125;edge[maxm];void init()&#123; sx = 0; ex = 1; cnt = 0; memset(edge, 0, sizeof(edge)); memset(head, -1, sizeof(head));&#125;void add_edge(int u, int v, int c, int w)&#123; edge[cnt].next = head[u]; edge[cnt].to = v; edge[cnt].c = c&lt;=inf ? c : inf; edge[cnt].w = w; head[u] = cnt++;&#125;void add(int u, int v, int c, int w)&#123; add_edge(u, v, c, w); add_edge(v, u, 0, -w);&#125;bool SPFA(int sx, int ex)&#123; memset(pre, -1, sizeof(pre)); memset(dis, inf, sizeof(dis)); memset(vis, false, sizeof(vis)); dis[sx] = 0; queue&lt;int&gt;que; que.push(sx); while(!que.empty())&#123; int kk = que.front(); que.pop(); vis[kk] = false; for(int i = head[kk]; i != -1; i = edge[i].next)&#123; EDGE tmp = edge[i]; if(tmp.c &amp;&amp; dis[tmp.to]&gt;dis[kk]+tmp.w)&#123; dis[tmp.to] = dis[kk] + tmp.w; pre[tmp.to] = i; if(!vis[tmp.to])&#123; vis[tmp.to] = true; que.push(tmp.to); &#125; &#125; &#125; &#125; return pre[ex] != -1;&#125;int MCMF(int sx, int ex)&#123; int flow = 0, min_flow = inf, cost = 0; while(SPFA(sx, ex))&#123; for(int i = pre[ex]; i != -1; i = pre[edge[i^1].to])&#123; min_flow = min(min_flow, edge[i].c); &#125; for(int i = pre[ex]; i != -1; i = pre[edge[i^1].to])&#123; edge[i].c -= min_flow; edge[i^1].c += min_flow; cost += min_flow * edge[i].w; &#125; flow += min_flow; &#125; return cost;&#125;void read()&#123; int u, v, c, w; ex = n+1; for(int i = 0;i&lt;m;i++)&#123; scanf(&quot;%d%d%d%d&quot;,&amp;u,&amp;v,&amp;c,&amp;w); add(u,v,c, w); &#125;&#125;int main()&#123; while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123; if(n+m==0)&#123; break; &#125; init(); read(); printf(&quot;%d\n&quot;,MCMF(sx, ex)); &#125; return 0;&#125;]]></content>
       <categories>
         <category>程序人生</category>
         <category>算法</category>
@@ -54,8 +54,8 @@
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
         <tag>组合数学</tag>
-        <tag>容斥原理</tag>
         <tag>gcd</tag>
+        <tag>容斥原理</tag>
       </tags>
   </entry>
   <entry>
@@ -130,8 +130,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>划分</tag>
         <tag>动态规划</tag>
+        <tag>划分</tag>
       </tags>
   </entry>
   <entry>
@@ -775,8 +775,8 @@
         <tag>C/C++</tag>
         <tag>算法</tag>
         <tag>python</tag>
-        <tag>暴力枚举</tag>
         <tag>组合数学</tag>
+        <tag>暴力枚举</tag>
       </tags>
   </entry>
   <entry>
@@ -1332,8 +1332,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>算法</tag>
-        <tag>并查集</tag>
         <tag>pat天梯赛</tag>
+        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -1401,8 +1401,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
+    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
@@ -1413,8 +1413,8 @@
   </entry>
   <entry>
     <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
+    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
+    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
       <categories>
         <category>心路历程</category>
         <category>随笔</category>
