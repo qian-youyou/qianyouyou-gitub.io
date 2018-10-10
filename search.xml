@@ -801,8 +801,8 @@
         <tag>C/C++</tag>
         <tag>算法</tag>
         <tag>python</tag>
-        <tag>暴力枚举</tag>
         <tag>组合数学</tag>
+        <tag>暴力枚举</tag>
       </tags>
   </entry>
   <entry>
@@ -952,9 +952,9 @@
       </categories>
       <tags>
         <tag>算法</tag>
+        <tag>组合数学</tag>
         <tag>数论</tag>
         <tag>高斯消元</tag>
-        <tag>组合数学</tag>
         <tag>容斥原理</tag>
       </tags>
   </entry>
