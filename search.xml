@@ -156,8 +156,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>划分</tag>
         <tag>动态规划</tag>
+        <tag>划分</tag>
       </tags>
   </entry>
   <entry>
@@ -471,8 +471,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>二分图</tag>
         <tag>匹配</tag>
+        <tag>二分图</tag>
         <tag>网络流</tag>
         <tag>最大流</tag>
         <tag>最小费用最大流</tag>
@@ -505,10 +505,10 @@
         <category>图论</category>
       </categories>
       <tags>
-        <tag>KM算法</tag>
-        <tag>二分图</tag>
         <tag>匹配</tag>
+        <tag>二分图</tag>
         <tag>匈牙利算法</tag>
+        <tag>KM算法</tag>
         <tag>网络流</tag>
         <tag>最大流</tag>
       </tags>
@@ -801,8 +801,8 @@
         <tag>C/C++</tag>
         <tag>算法</tag>
         <tag>python</tag>
-        <tag>组合数学</tag>
         <tag>暴力枚举</tag>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -952,9 +952,9 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>组合数学</tag>
         <tag>数论</tag>
         <tag>高斯消元</tag>
+        <tag>组合数学</tag>
         <tag>容斥原理</tag>
       </tags>
   </entry>
@@ -986,10 +986,10 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
-        <tag>KM算法</tag>
-        <tag>二分图</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
+        <tag>二分图</tag>
+        <tag>KM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1003,9 +1003,9 @@
       </categories>
       <tags>
         <tag>算法</tag>
+        <tag>匹配</tag>
         <tag>图论</tag>
         <tag>二分图</tag>
-        <tag>匹配</tag>
         <tag>匈牙利算法</tag>
       </tags>
   </entry>
@@ -1421,8 +1421,8 @@
         <tag>C/C++</tag>
         <tag>stl</tag>
         <tag>算法</tag>
-        <tag>vector</tag>
         <tag>pat天梯赛</tag>
+        <tag>vector</tag>
       </tags>
   </entry>
   <entry>
@@ -1513,9 +1513,9 @@
         <category>C++基础</category>
       </categories>
       <tags>
+        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>stl</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -1527,8 +1527,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>正则表达式</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
