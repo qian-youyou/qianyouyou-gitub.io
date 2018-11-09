@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2018/11/09/2018-11-09/</loc>
+    <lastmod>2018-11-09T12:52:32.941Z</lastmod>
+    <data>
+        <display>
+        <title>昨世今生</title>
+        <pubTime>2018-11-09T06:47:12.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="心路历程" url="http://qianyouyou.cn/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+          
+             
+              <breadCrumb title="散文" url="http://qianyouyou.cn/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/%E6%95%A3%E6%96%87/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2018/10/05/2018-10-05/</loc>
     <lastmod>2018-10-13T09:58:13.047Z</lastmod>
     <data>
@@ -3620,9 +3641,9 @@
          
         <tag>算法</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>vector</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
