@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-11-09T12:52:32.941Z</updated>
+  <updated>2018-11-18T09:07:04.975Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>求最小的有2^(500500)个因子的数</title>
+    <link href="http://qianyouyou.cn/2018/11/18/2018-11-18/"/>
+    <id>http://qianyouyou.cn/2018/11/18/2018-11-18/</id>
+    <published>2018-11-18T08:50:07.000Z</published>
+    <updated>2018-11-18T09:07:04.975Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道，120有16个因子(不信自己数一数)。事实上120也是最小的有16个因子的数。</p><p>请你找出最小的有2的500500次方个因子的数。</p><p>因为数据过大，可以结果对500500507取模。</p><p>思路：</p><p>以120为例，120的质因数分解为<code>2*2*2*3*5</code>。那么和16有什么关系呢？很明显，从这5个数中随机选[0-5]个数共有多少种方法呢。刚好16种。及<code>4*2*2</code>种。2有4种选法，3有2种（选或不选），5也2种。所以组合方式为16种。</p><p>现在看这道题，2^500500个因子，与2相关，1个素数p有2^1种，3个p有2^2种，7个有1^3种……</p><p>现在我们有500500个位置，那么1个p占1位，若p有多个，则剩下的2个占1位，然后剩下的4个1位，8个1位……而2^32已经超int范围了，所以次方最大为16。然后我们打表求出前500500个素数，对着500500个素数中分别插入2^2,2^4,2^8,2^16,3^2,3^4,3^8,5^2……插入的前提是p^n要小于500500个数中的最大数。最后求出这500500个数之后，只需相乘就是该数了。有了思路就可以写代码了。</p><p>答案取模500500507后为35407281</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod = 500500507;</span><br><span class="line">const ll mi = 500500+1;</span><br><span class="line">const ll maxn = 2e7;</span><br><span class="line">ll a[4] = &#123;2, 4, 8, 16&#125;;</span><br><span class="line">ll prime[mi+100];</span><br><span class="line">ll check[maxn], tot;</span><br><span class="line">void init()&#123;</span><br><span class="line">    memset(check, 0, sizeof(check));</span><br><span class="line">    prime[tot++] = 1;</span><br><span class="line">    for (ll i = 2; i &lt; maxn; ++i)&#123;</span><br><span class="line">        if(!check[i])&#123;</span><br><span class="line">            prime[tot++] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        if(tot == mi)&#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        for (ll j = 1; j &lt; tot; ++j)&#123;</span><br><span class="line">            if (i * prime[j] &gt; maxn)&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            check[i*prime[j]] = 1;</span><br><span class="line">            if (i % prime[j] == 0)&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll Pow(ll a, ll b)&#123;</span><br><span class="line">    ll ans = 1;</span><br><span class="line">    for(ll i = 1; i &lt;= b; i++)&#123;</span><br><span class="line">        ans *= a;</span><br><span class="line">        if(ans &gt; prime[tot-1])&#123;</span><br><span class="line">            ans = prime[tot-1]+1;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    priority_queue&lt;ll&gt;que;</span><br><span class="line">    que.push(1);</span><br><span class="line">    ll Size = 1;</span><br><span class="line">    ll Top = 4;</span><br><span class="line">    for(ll i = 1; i &lt; mi; i++)&#123;</span><br><span class="line">        if(Size &gt;= mi)&#123;</span><br><span class="line">            if(prime[i] &gt;= que.top())&#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                que.pop();</span><br><span class="line">                que.push(prime[i]);</span><br><span class="line">                for(ll j = 0; j &lt; Top; j++)&#123;</span><br><span class="line">                    if(Pow(prime[i], a[j]) &gt;= prime[tot-1])&#123;</span><br><span class="line">                        Top = j;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(Pow(prime[i], a[j]) &gt;= que.top())&#123;</span><br><span class="line">                        Top = j;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else&#123;</span><br><span class="line">                        que.pop();</span><br><span class="line">                        que.push(Pow(prime[i], a[j]));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            que.push(prime[i]);</span><br><span class="line">            Size++;</span><br><span class="line">            for(ll j = 0; j &lt; Top; j++)&#123;</span><br><span class="line">                if(Pow(prime[i], a[j]) &gt;= prime[tot-1])&#123;</span><br><span class="line">                    Top = j;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                if(Size &gt;= mi)&#123;</span><br><span class="line">                    if(Pow(prime[i], a[j]) &gt;= que.top())&#123;</span><br><span class="line">                        Top = j;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else&#123;</span><br><span class="line">                        que.pop();</span><br><span class="line">                        que.push(Pow(prime[i], a[j]));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    if(Pow(prime[i], a[j]) &gt;= prime[tot-1])&#123;</span><br><span class="line">                        Top = j;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                    que.push(Pow(prime[i], a[j]));</span><br><span class="line">                    Size++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ll ans = 1;</span><br><span class="line">    int SI = 0;</span><br><span class="line">    while(!que.empty())&#123;</span><br><span class="line">        ans *= que.top();</span><br><span class="line">        que.pop();</span><br><span class="line">        ans%=mod;</span><br><span class="line">        SI++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们知道，120有16个因子(不信自己数一数)。事实上120也是最小的有16个因子的数。&lt;/p&gt;
+&lt;p&gt;请你找出最小的有2的500500次方个因子的数。&lt;/p&gt;
+&lt;p&gt;因为数据过大，可以结果对500500507取模。&lt;/p&gt;
+&lt;p&gt;思路：&lt;/p&gt;
+&lt;p&gt;以120为例，120
+      
+    
+    </summary>
+    
+      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+    
+      <category term="算法" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="组合数学" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+    
+      <category term="组合数学" scheme="http://qianyouyou.cn/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="数论" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>昨世今生</title>
@@ -638,37 +673,6 @@
     
       <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>数论小问题</title>
-    <link href="http://qianyouyou.cn/2018/09/16/2018-09-16/"/>
-    <id>http://qianyouyou.cn/2018/09/16/2018-09-16/</id>
-    <published>2018-09-16T08:23:17.000Z</published>
-    <updated>2018-09-18T08:34:32.904Z</updated>
-    
-    <content type="html"><![CDATA[<p>输入x和y，有一个游戏，两人玩，第一轮赢的人得1分，第二轮2分…以此类推，n轮中至少需要几轮才能使得甲获得x分乙获得y分？</p><p>答案：n = min( n*(n+1)/2&gt;=x+y )</p><p>当时看到此题时脑海中浮现的并不是分数什么的，而是一个阶梯状的管子，往里面灌水，x代表一定容量的水，y代表一定容量的水，然后管子每升高1个高度就会多1个容量，最终刚好为n<em>(n+1)/2或n</em>(n+1)/2+1，n<em>(n+1)/2即x+y=n</em>(n+1)/2，否则为n*(n+1)/2+1。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;输入x和y，有一个游戏，两人玩，第一轮赢的人得1分，第二轮2分…以此类推，n轮中至少需要几轮才能使得甲获得x分乙获得y分？&lt;/p&gt;
-&lt;p&gt;答案：n = min( n*(n+1)/2&amp;gt;=x+y )&lt;/p&gt;
-&lt;p&gt;当时看到此题时脑海中浮现的并不是分数什么的，而是一个阶梯状
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数论" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/"/>
-    
-    
-      <category term="数论" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
   

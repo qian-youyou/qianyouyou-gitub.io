@@ -3,6 +3,34 @@
 
 
     
+  <url>
+    <loc>http://qianyouyou.cn/2018/11/18/2018-11-18/</loc>
+    <lastmod>2018-11-18T09:07:04.975Z</lastmod>
+    <data>
+        <display>
+        <title>求最小的有2^(500500)个因子的数</title>
+        <pubTime>2018-11-18T08:50:07.000Z</pubTime>
+        
+        <tag>组合数学</tag>
+         
+        <tag>数论</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="算法" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
+          
+             
+              <breadCrumb title="组合数学" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://qianyouyou.cn/2018/11/09/2018-11-09/</loc>
@@ -3641,9 +3669,9 @@
          
         <tag>算法</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>vector</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
