@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[备战焦作日常小练之PrimeGame]]></title>
+    <url>%2F2018%2F11%2F21%2F2018-11-21%2F</url>
+    <content type="text"><![CDATA[Given a suqence of nn integers a_iai. Let \text{mul}(l, r) = \prod_{i = l}^{r} a_imul(l,r)=∏i=lrai and \text{fac}(l, r)fac(l,r) be the number of distinct prime factors of \text{mul}(l, r)mul(l,r). Please calculate \sum_{i = 1}^{n}\sum_{j = i}^{n}\text{fac}(i, j)∑i=1n∑j=infac(i,j) InputThe first line contains one integer nn (1 \le n \le 10^61≤n≤106) \text{—}— the length of the sequence. The second line contains nn integers a_iai (1 \le i \le n, 1 \le a_i \le 10^61≤i≤n,1≤ai≤106) \text{—}— the sequence. OutputPrint the answer to the equation. 样例输入1复制121099 62 10 47 53 9 83 33 15 24 样例输出1复制1248 样例输入2复制12106 7 5 5 4 9 9 1 8 12 样例输出2复制1134 题目来源ACM-ICPC Nanjing Onsite 2018 题意 n个数，求所有[i,j]区间内每个数不重复的素数因素之和。 题解 将每个数分解成不同素数之积。例如例1，99分解成3和11，62分解成2和31，10分解成2和5，47分解成47，53为53，9为3，83为83，33为3和11，15为3和5，24为2和3。 第1个数出现次数为n次，第2个为(n-1) 2次，第3个为(n-3) 3次……则素数因数不重复的前提下和母数出现次数相同。但由于某些区间存在相同素数，所以我们规定假设某一位数的素数因数p所在位置为c,上一个这个素数p位置为b，则这次这个素数p出现次数为(n + 1 - c) * (c - b)。当然所以素数的初始位置为0，没出现一次就将该位置更新。 12345678910111213141516171819202122232425262728293031323334353637#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const int maxn = 1e6+7;struct NODE&#123; int size; ll prime[20];&#125;node[maxn];int n;int pos[maxn];bool isPrime[maxn];void init()&#123; for(ll i = 2; i &lt; maxn; i++)&#123; if(!isPrime[i])&#123; node[i].prime[node[i].size++] = i; for(ll j = i+i; j &lt; maxn; j+=i)&#123; isPrime[j] = true; node[j].prime[node[j].size++] = i; &#125; &#125; &#125;&#125;int main()&#123; init(); scanf(&quot;%d&quot;, &amp;n); ll ans = 0; for(int i = 1; i &lt;= n; i++)&#123; ll tmp; scanf(&quot;%lld&quot;, &amp;tmp); for(int j = 0; j &lt; node[tmp].size; j++)&#123; ans += (ll)(n + 1 - i)*(i - pos[node[tmp].prime[j]]); pos[node[tmp].prime[j]] = i; &#125; &#125; printf(&quot;%lld\n&quot;, ans); return 0;&#125;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>算法</category>
+        <category>数论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>ACM/ICPC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[求最小的有2^(500500)个因子的数]]></title>
     <url>%2F2018%2F11%2F18%2F2018-11-18%2F</url>
     <content type="text"><![CDATA[我们知道，120有16个因子(不信自己数一数)。事实上120也是最小的有16个因子的数。 请你找出最小的有2的500500次方个因子的数。 因为数据过大，可以结果对500500507取模。 思路： 以120为例，120的质因数分解为2*2*2*3*5。那么和16有什么关系呢？很明显，从这5个数中随机选[0-5]个数共有多少种方法呢。刚好16种。及4*2*2种。2有4种选法，3有2种（选或不选），5也2种。所以组合方式为16种。 现在看这道题，2^500500个因子，与2相关，1个素数p有2^1种，3个p有2^2种，7个有1^3种…… 现在我们有500500个位置，那么1个p占1位，若p有多个，则剩下的2个占1位，然后剩下的4个1位，8个1位……而2^32已经超int范围了，所以次方最大为16。然后我们打表求出前500500个素数，对着500500个素数中分别插入2^2,2^4,2^8,2^16,3^2,3^4,3^8,5^2……插入的前提是p^n要小于500500个数中的最大数。最后求出这500500个数之后，只需相乘就是该数了。有了思路就可以写代码了。 答案取模500500507后为35407281 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;const ll mod = 500500507;const ll mi = 500500+1;const ll maxn = 2e7;ll a[4] = &#123;2, 4, 8, 16&#125;;ll prime[mi+100];ll check[maxn], tot;void init()&#123; memset(check, 0, sizeof(check)); prime[tot++] = 1; for (ll i = 2; i &lt; maxn; ++i)&#123; if(!check[i])&#123; prime[tot++] = i; &#125; if(tot == mi)&#123; break; &#125; for (ll j = 1; j &lt; tot; ++j)&#123; if (i * prime[j] &gt; maxn)&#123; break; &#125; check[i*prime[j]] = 1; if (i % prime[j] == 0)&#123; break; &#125; &#125; &#125;&#125;ll Pow(ll a, ll b)&#123; ll ans = 1; for(ll i = 1; i &lt;= b; i++)&#123; ans *= a; if(ans &gt; prime[tot-1])&#123; ans = prime[tot-1]+1; break; &#125; &#125; return ans;&#125;int main()&#123; init(); priority_queue&lt;ll&gt;que; que.push(1); ll Size = 1; ll Top = 4; for(ll i = 1; i &lt; mi; i++)&#123; if(Size &gt;= mi)&#123; if(prime[i] &gt;= que.top())&#123; break; &#125; else&#123; que.pop(); que.push(prime[i]); for(ll j = 0; j &lt; Top; j++)&#123; if(Pow(prime[i], a[j]) &gt;= prime[tot-1])&#123; Top = j; break; &#125; if(Pow(prime[i], a[j]) &gt;= que.top())&#123; Top = j; break; &#125; else&#123; que.pop(); que.push(Pow(prime[i], a[j])); &#125; &#125; &#125; &#125; else&#123; que.push(prime[i]); Size++; for(ll j = 0; j &lt; Top; j++)&#123; if(Pow(prime[i], a[j]) &gt;= prime[tot-1])&#123; Top = j; break; &#125; if(Size &gt;= mi)&#123; if(Pow(prime[i], a[j]) &gt;= que.top())&#123; Top = j; break; &#125; else&#123; que.pop(); que.push(Pow(prime[i], a[j])); &#125; &#125; else&#123; if(Pow(prime[i], a[j]) &gt;= prime[tot-1])&#123; Top = j; break; &#125; que.push(Pow(prime[i], a[j])); Size++; &#125; &#125; &#125; &#125; ll ans = 1; int SI = 0; while(!que.empty())&#123; ans *= que.top(); que.pop(); ans%=mod; SI++; &#125; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125;]]></content>
@@ -1461,8 +1475,8 @@
         <tag>C/C++</tag>
         <tag>stl</tag>
         <tag>算法</tag>
-        <tag>vector</tag>
         <tag>pat天梯赛</tag>
+        <tag>vector</tag>
       </tags>
   </entry>
   <entry>
