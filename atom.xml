@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2018-12-11T06:32:08.697Z</updated>
+  <updated>2019-02-16T04:30:09.776Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>不蒜子统计失效问题解决</title>
+    <link href="http://qianyouyou.cn/2019/02/16/2019-02-16/"/>
+    <id>http://qianyouyou.cn/2019/02/16/2019-02-16/</id>
+    <published>2019-02-16T04:21:23.000Z</published>
+    <updated>2019-02-16T04:30:09.776Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h4><p>hexo想要开启站点统计，只需找到_config.yml配置文件，把busuanzi_count的enable设置为true即可。但近期，这个不蒜子的统计功能就失效了。查阅了<a href="http://busuanzi.ibruce.info/" target="_blank" rel="noopener">不蒜子官方</a>的说法，</p><blockquote><p>“因七牛强制过期『dn-lbstatics.qbox.me』域名，与客服沟通无果，只能更换域名到『busuanzi.ibruce.info』！”</p></blockquote><p>七牛云强行关闭域名，导致本站在七牛云存的图片也无法正常加载。</p><h4 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h4><p>找到原来不蒜子的域名文件，并替换掉旧的域名。<br> 文件路径：\themes\next\layout_third-party\analytics\busuanzi-counter.swig，只需要替换src对应的域名即可，如下是替换后的域名。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src=&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;关于&quot;&gt;&lt;a href=&quot;#关于&quot; class=&quot;headerlink&quot; title=&quot;关于&quot;&gt;&lt;/a&gt;关于&lt;/h4&gt;&lt;p&gt;hexo想要开启站点统计，只需找到_config.yml配置文件，把busuanzi_count的enable设置为true即可。但近期，这
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="JavaScript" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/"/>
+    
+      <category term="hexo教程" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/JavaScript/hexo%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="http://qianyouyou.cn/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>默剧</title>
     <link href="http://qianyouyou.cn/2018/12/11/2018-12-11/"/>
     <id>http://qianyouyou.cn/2018/12/11/2018-12-11/</id>
     <published>2018-12-11T06:28:29.000Z</published>
-    <updated>2018-12-11T06:32:08.697Z</updated>
+    <updated>2019-02-16T04:29:36.582Z</updated>
     
     <content type="html"><![CDATA[<p>默剧 </p><p>浅悠悠(摘星集)12.11 </p><p>1 </p><p>霏霏思雨， </p><p>雨里等你， </p><p>不念凄寂， </p><p>只念你。 </p><p>2 </p><p>借一方清水涟漪， </p><p>泛起眷恋的气息。 </p><p>你无声色的思绪， </p><p>是我解不开的迷。 </p><p>3 </p><p>你我此刻的局， </p><p>像演一出默剧。 </p><p>静静观戏的你， </p><p>从不发表建议。 </p><p>留下我， </p><p>也沉默在这孤单角色里。 </p><p>4 </p><p>一纸夙愿， </p><p>写进风里。 </p><p>青骢双骑， </p><p>想和你。 </p><p>5 </p><p>借一曲寂寥旋律， </p><p>点缀这孤独的戏。 </p><p>没有言语的默剧， </p><p>我用风雨吸引你。 </p><p>6 </p><p>说不出的千言万语， </p><p>丢在风里， </p><p>把这独角戏的结局， </p><p>寄在雨里。 </p><p>淋着雨， </p><p>盼着你储存温度的消息。 </p><p>7 </p><p>寒风十里， </p><p>我在等雨。 </p><p>风里雨里， </p><p>不见你。 </p><p>8 </p><p>借一道惊雷霹雳， </p><p>撕裂无言的默剧。 </p><p>期待下一场大雨， </p><p>洗刷过往的回忆。 </p><p>9 </p><p>将那洗不掉的泪痕， </p><p>淹没心底， </p><p>你我没有句点的剧， </p><p>绝口不提。 </p><p>留下你， </p><p>是我心口掩不住的秘密。 </p><p>10 </p><p>相逢似雨， </p><p>遥遥无期。 </p><p>从此， </p><p>只爱清酒， </p><p>不爱你。 </p>]]></content>
     
@@ -43,6 +72,12 @@
     
     </summary>
     
+      <category term="诗词歌赋" scheme="http://qianyouyou.cn/categories/%E8%AF%97%E8%AF%8D%E6%AD%8C%E8%B5%8B/"/>
+    
+      <category term="摘星集" scheme="http://qianyouyou.cn/categories/%E8%AF%97%E8%AF%8D%E6%AD%8C%E8%B5%8B/%E6%91%98%E6%98%9F%E9%9B%86/"/>
+    
+    
+      <category term="原创诗词" scheme="http://qianyouyou.cn/tags/%E5%8E%9F%E5%88%9B%E8%AF%97%E8%AF%8D/"/>
     
   </entry>
   
@@ -650,35 +685,6 @@
       <category term="数论" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E8%AE%BA/"/>
     
       <category term="gcd" scheme="http://qianyouyou.cn/tags/gcd/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NOI手拉手问题</title>
-    <link href="http://qianyouyou.cn/2018/09/18/2018-09-18-1/"/>
-    <id>http://qianyouyou.cn/2018/09/18/2018-09-18-1/</id>
-    <published>2018-09-18T07:08:24.000Z</published>
-    <updated>2018-09-18T08:03:32.264Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>n个人n双手，每一次选择两个空手让这两个空手拉起来，然后这两个手不再是空手。一个人有两只手，问最终所有手都拉起来构成环的个数的期望。PS：一个人的左手和右手也可以拉起来构成一个环。</p><p>例如：n为2时，期望为4/3，假设从第一个人的左手开始，他的左手和右手和第2个人的左手和右手拉起来的概率都为1/3，其中自己的左手和右手拉起来构成环数为2，其他为1，则期望为<code>1/3*2+1/3*1+1/3*1</code></p><h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>1+1/3+1/5+……1/(2n-1)</p><p>如果直接看公式很容易理解，每多一个人，就多了两只手，假设除了这个人以外其他人的期望都算出来了，假设期望为F(n)，那么对于这个人来说无非两种情况，要么和自己拉，要么和别人拉，和自己拉的概率为1/(2n-1)，和别人拉的概率为(2n-2)/(2n-1)。和自己拉的话很好理解，在之前的期望上加1就好了，和别人拉的话就可以把这两个人绑定起来当成一个人就好了，期望就是之前的期望。所以用公式的话就是<code>F(n+1)=F(n)*(2n-2)/(2n-1)+(F(n)+1)*1/(2n-1)</code>,化简就得<code>F(n+1)=F(n)+1/(2n-1)</code>，递归得F(n)=1+1/3+1/5+……1/(2n-1)</p><p>根据调和级数推到公式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ld long double</span><br><span class="line">const int maxn = 1e7+7;</span><br><span class="line">ld a[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    a[0] = 0;</span><br><span class="line">    a[1]=1;</span><br><span class="line">    for(int i = 2;i&lt;maxn;i++)&#123;</span><br><span class="line">        a[i]=a[i-1]+1.0/(2*i-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    //freopen(&quot;head.in&quot;,&quot;r&quot;,stdin);</span><br><span class="line">    //freopen(&quot;head.out&quot;,&quot;w&quot;,stdout);</span><br><span class="line">    long long tmp;</span><br><span class="line">    init();</span><br><span class="line">    cin&gt;&gt;tmp;</span><br><span class="line">    if(tmp*1.0&gt;=maxn)</span><br><span class="line">        cout&lt;&lt;log(2*tmp-1) - log(((2*tmp-1)-1)/2)/ 2 + 0.57721566490153286060651209 / 2&lt;&lt;endl;</span><br><span class="line">    else</span><br><span class="line">        cout&lt;&lt;a[tmp]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;问题描述：&quot;&gt;&lt;a href=&quot;#问题描述：&quot; class=&quot;headerlink&quot; title=&quot;问题描述：&quot;&gt;&lt;/a&gt;问题描述：&lt;/h2&gt;&lt;p&gt;n个人n双手，每一次选择两个空手让这两个空手拉起来，然后这两个手不再是空手。一个人有两只手，问最终所有手都拉起来构成
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="概率轮" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%AE%97%E6%B3%95/%E6%A6%82%E7%8E%87%E8%BD%AE/"/>
-    
-    
-      <category term="期望" scheme="http://qianyouyou.cn/tags/%E6%9C%9F%E6%9C%9B/"/>
     
   </entry>
   
