@@ -122,15 +122,15 @@
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="数论欧几里得算法（gcd）欧几里得算法又称辗转相除法，设两个数为a,b,则a,b最大公约数为gcd(a,b)=gcd(b,a%b) 证明设a&amp;gt;=b, c = gcd( a, b), a = kc, b = jc,则k,j互素（否则c不为a，b最大公约数），则设 r = a % b,则a = mb + r,则r = a - mb = kc - mjc = ( k - mj ) c，因为k,j互">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%85%AC%E5%BC%8F.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86.png">
-<meta property="og:updated_time" content="2018-08-17T12:43:40.704Z">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%85%AC%E5%BC%8F.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86.png">
+<meta property="og:updated_time" content="2019-02-16T07:53:15.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[数论]数论与与组合数学与线性代数中的常用算法总结">
 <meta name="twitter:description" content="数论欧几里得算法（gcd）欧几里得算法又称辗转相除法，设两个数为a,b,则a,b最大公约数为gcd(a,b)=gcd(b,a%b) 证明设a&amp;gt;=b, c = gcd( a, b), a = kc, b = jc,则k,j互素（否则c不为a，b最大公约数），则设 r = a % b,则a = mb + r,则r = a - mb = kc - mjc = ( k - mj ) c，因为k,j互">
-<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.png">
+<meta name="twitter:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.png">
 
 
 
@@ -522,8 +522,8 @@
 <p>　　其中要理解base <em> =base这一步：因为 base </em> base==base2，下一步再乘，就是base2 <em> base2==base4，然后同理  base4 </em> base4=base8，由此可以做到base–&gt;base2–&gt;base4–&gt;base8–&gt;base16–&gt;base32…….指数正是 2^i ，再看上面的例子，a¹¹= a1<em>a2</em>a8，这三项就可以完美解决了</p>
 <h4 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h4><p><strong>矩阵乘法</strong></p>
 <p>简单的说矩阵就是二维数组，数存在里面，矩阵乘法的规则:A*B=C</p>
-<p><strong><img src="http://p7woygi8q.bkt.clouddn.com/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.png" alt="img"></strong></p>
-<p>其中c[i][j]为A的第i行与B的第j列对应乘积的和，即:<img src="http://p7woygi8q.bkt.clouddn.com/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%85%AC%E5%BC%8F.png" alt="img"></p>
+<p><strong><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95.png" alt="img"></strong></p>
+<p>其中c[i][j]为A的第i行与B的第j列对应乘积的和，即:<img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%85%AC%E5%BC%8F.png" alt="img"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const int N=100;  </span><br><span class="line">int c[N][N];  </span><br><span class="line">void multi(int a[][N],int b[][N],int n)//n是矩阵大小，n&lt;N  </span><br><span class="line">&#123;  </span><br><span class="line">    memset(c,0,sizeof c);  </span><br><span class="line">    for(int i=1;i&lt;=n;i++)  </span><br><span class="line">        for(int j=1;j&lt;=n;j++)  </span><br><span class="line">        for(int k=1;k&lt;=n;k++)  </span><br><span class="line">        c[i][j]+=a[i][k]*b[k][j];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>方法很简单，把快速幂算法中的乘法改成矩阵的乘法就可以了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const int N=10;  </span><br><span class="line">int tmp[N][N];  </span><br><span class="line">void multi(int a[][N],int b[][N],int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    memset(tmp,0,sizeof tmp);  </span><br><span class="line">    for(int i=0;i&lt;n;i++)  </span><br><span class="line">        for(int j=0;j&lt;n;j++)  </span><br><span class="line">        for(int k=0;k&lt;n;k++)  </span><br><span class="line">        tmp[i][j]+=a[i][k]*b[k][j];  </span><br><span class="line">    for(int i=0;i&lt;n;i++)  </span><br><span class="line">        for(int j=0;j&lt;n;j++)  </span><br><span class="line">        a[i][j]=tmp[i][j];  </span><br><span class="line">&#125;  </span><br><span class="line">int res[N][N];  </span><br><span class="line">void Pow(int a[][N],int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    memset(res,0,sizeof res);//n是幂，N是矩阵大小  </span><br><span class="line">    for(int i=0;i&lt;N;i++) res[i][i]=1;  </span><br><span class="line">    while(n)  </span><br><span class="line">    &#123;  </span><br><span class="line">        if(n&amp;1)  </span><br><span class="line">            multi(res,a,N);//res=res*a;复制直接在multi里面实现了；  </span><br><span class="line">        multi(a,a,N);//a=a*a  </span><br><span class="line">        n&gt;&gt;=1;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -542,7 +542,7 @@
 <h4 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h4><p>假如p是质数，若p不能整除a，则 a^(p-1) ≡1（mod p），若p能整除a，则a^(p-1) ≡0（mod p）。</p>
 <p>若p是质数，且a,p互质，那么 a的(p-1)次方除以p的余数恒等于1。</p>
 <h5 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a><strong>证明</strong></h5><p>因为p是质数，且（a，p)=1，所以φ(p)=p-1。由欧拉定理可得a^(p-1) ≡1（mod p）。证毕。对于该式又有a^p ≡a（mod p），所以，费马小定理的另一种表述为：假如p是质数，且(a,p)=1，那么a^p ≡a（mod p）。</p>
-<h4 id="孙子定理（中国剩余定理）"><a href="#孙子定理（中国剩余定理）" class="headerlink" title="孙子定理（中国剩余定理）"></a>孙子定理（中国剩余定理）</h4><p><img src="http://p7woygi8q.bkt.clouddn.com/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86.png" alt=""></p>
+<h4 id="孙子定理（中国剩余定理）"><a href="#孙子定理（中国剩余定理）" class="headerlink" title="孙子定理（中国剩余定理）"></a>孙子定理（中国剩余定理）</h4><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86.png" alt=""></p>
 <h3 id="高斯消元"><a href="#高斯消元" class="headerlink" title="高斯消元"></a>高斯消元</h3><p>高斯消元法，是线性代数中的一个算法，可用来为线性方程组求解，求出矩阵的秩，以及求出可逆方阵的逆矩阵。当用于一个矩阵时，高斯消元法会产生出一个“行梯阵式”。利用矩阵化成的行阶梯型可以方便的得出未知数的解。</p>
 <p>要用高斯消元，一般也会需要一定的推理，得出线性方程组，再利用高斯消元求解。</p>
 <h2 id="组合数学"><a href="#组合数学" class="headerlink" title="组合数学"></a>组合数学</h2><h3 id="排列组合"><a href="#排列组合" class="headerlink" title="排列组合"></a>排列组合</h3><h4 id="加法原理"><a href="#加法原理" class="headerlink" title="加法原理"></a>加法原理</h4><p>加法原理：做一件事，完成它可以有 n 类办法，第一类办法的方法属于集合 A1，第二类办法的方法属于集合 A2，……，第 n 类办法的方法属于集合 An，那么完成这件事的方法属于集合 A1UA2U…UAn。</p>
@@ -553,7 +553,7 @@
 <p>组合的定义及其计算公式：从 n 个不同元素中，任取 m(m≤n）个元素并成一组，叫做从 n 个不同元素中取出 m 个元素的一个组合；从 n 个不同元素中取出 m(m≤n）个元素的所有组合的个数，叫做从 n 个不同元素中取出 m 个元素的组合数。用符号 C(n,m) 表示。C(n,m)==A(n,m)/m！；C(n,m)=C(n,n-m）。（n&gt;=m) </p>
 <p>其他排列与组合公式 从 n 个元素中取出 m 个元素的循环排列数=A(n,m)/m=n!/m(n-m)!. n 个元素被分成 k 类，每类的个数分别是 n1,n2,…nk 这 n 个元素的全排列数为 n!/(n1！×n2！×…×nk!). k 类元素，每类的个数无限，从中取出 m 个元素的组合数为 C(m+k-1,m）。</p>
 <h3 id="容斥原理"><a href="#容斥原理" class="headerlink" title="容斥原理"></a>容斥原理</h3><p>设 A1,A2 为有限集合，其元素个数分别为|A1|，|A2|,则| A1∪A2|=| A1+A2|-| A1∩A2|<br>这个定理，常称作包含排斥原理，也就是容斥原理。</p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86.png" alt=""></p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86.png" alt=""></p>
 <p>对于需要用到容斥原理的题型，一般都比较容易看出来用的方法，而且一般采用深搜的方法进行运算</p>
 
       
@@ -732,7 +732,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">136</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

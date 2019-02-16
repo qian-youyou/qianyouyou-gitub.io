@@ -122,15 +122,15 @@
 <meta property="og:site_name" content="浅悠悠的个人博客">
 <meta property="og:description" content="物联网时代，微信和qq带给我们生活诸多便利。如今办公学习交流通讯已经越来越离不开微信和qq了。但是目前仍存在一些缺陷，比如如果想某条消息发给全部好友，必须得一个一个的发送。尤其是节假日发送节日祝福时该缺陷越发明显。微信针对此现象推出了群发功能，但qq目前还没有该功能。因此此次借此小程序练习C++，用C++打造qq聊天一键群发功能。该小程序还在完善中。目前只能作用于电脑Windows操作系统，并且电">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/YBFUJCK%29LL7%7B%5BO4OJ0Q$8$1.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/SB%7D%7DDL9H3VT9M@QQ$E%7DIK~2.png">
-<meta property="og:image" content="http://p7woygi8q.bkt.clouddn.com/QQHelper.ico">
-<meta property="og:updated_time" content="2018-08-18T02:59:28.883Z">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/YBFUJCK%29LL7%7B%5BO4OJ0Q$8$1.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/QQHELPER%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/QQHelper.ico">
+<meta property="og:updated_time" content="2019-02-16T07:33:22.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[C++实战qqHelper]C++打造qq消息一键群发工具">
 <meta name="twitter:description" content="物联网时代，微信和qq带给我们生活诸多便利。如今办公学习交流通讯已经越来越离不开微信和qq了。但是目前仍存在一些缺陷，比如如果想某条消息发给全部好友，必须得一个一个的发送。尤其是节假日发送节日祝福时该缺陷越发明显。微信针对此现象推出了群发功能，但qq目前还没有该功能。因此此次借此小程序练习C++，用C++打造qq聊天一键群发功能。该小程序还在完善中。目前只能作用于电脑Windows操作系统，并且电">
-<meta name="twitter:image" content="http://p7woygi8q.bkt.clouddn.com/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png">
+<meta name="twitter:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png">
 
 
 
@@ -507,9 +507,9 @@
       
         <p>物联网时代，微信和qq带给我们生活诸多便利。如今办公学习交流通讯已经越来越离不开微信和qq了。但是目前仍存在一些缺陷，比如如果想某条消息发给全部好友，必须得一个一个的发送。尤其是节假日发送节日祝福时该缺陷越发明显。微信针对此现象推出了群发功能，但qq目前还没有该功能。因此此次借此小程序练习C++，用C++打造qq聊天一键群发功能。该小程序还在完善中。目前只能作用于电脑Windows操作系统，并且电脑聊天界面发送按钮需切换到按Enter直接发送，不要选择Ctrl+Enter。当前仅有发送功能，因此消息的对象是所有好友。之后有时间会陆续添加暂停，继续等操作。</p>
 <p>具体代码以及实现过程在代码中逐条说明。这里就不具体说明了。</p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png" alt=""></p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/YBFUJCK%29LL7%7B%5BO4OJ0Q$8$1.png" alt=""></p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/SB%7D%7DDL9H3VT9M@QQ$E%7DIK~2.png" alt=""></p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/%5BHH@%29DN@ZX@RS53DTVQ1KZ8.png" alt=""></p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/YBFUJCK%29LL7%7B%5BO4OJ0Q$8$1.png" alt=""></p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/QQHELPER%E6%88%AA%E5%9B%BE.png" alt=""></p>
 <p>QQmessage.h</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#pragma once</span><br><span class="line">class QQmessage</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	QQmessage();</span><br><span class="line">	~QQmessage();</span><br><span class="line"></span><br><span class="line">	//类的入口 </span><br><span class="line">	static QQmessage *Instance()</span><br><span class="line">	&#123;</span><br><span class="line">		static QQmessage object;</span><br><span class="line">		</span><br><span class="line">		return &amp;object;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//入口函数</span><br><span class="line">	void Start(const wchar_t *msg);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	//开始线程</span><br><span class="line">	static unsigned int WINAPI RunThreadproc(void* param);</span><br><span class="line">	</span><br><span class="line">	//发送主函数</span><br><span class="line">	void SendAll();</span><br><span class="line"></span><br><span class="line">	//找到QQ窗口</span><br><span class="line">	HWND FindQQWindow();</span><br><span class="line"></span><br><span class="line">	//模拟按键</span><br><span class="line">	void PressKey(BYTE vkey);</span><br><span class="line"></span><br><span class="line">	//发送消息</span><br><span class="line">	void SendMsg();</span><br><span class="line"></span><br><span class="line">	//添加文本到剪贴板</span><br><span class="line">	void AddTextToClipboard();</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	CString m_msg;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>QQmessage.cpp</p>
@@ -531,7 +531,7 @@
 <p>targetver.h</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#pragma once</span><br><span class="line"></span><br><span class="line">// 包括 SDKDDKVer.h 将定义可用的最高版本的 Windows 平台。</span><br><span class="line"></span><br><span class="line">// 如果要为以前的 Windows 平台生成应用程序，请包括 WinSDKVer.h，并将</span><br><span class="line">// 将 _WIN32_WINNT 宏设置为要支持的平台，然后再包括 SDKDDKVer.h。</span><br><span class="line"></span><br><span class="line">#include &lt;SDKDDKVer.h&gt;</span><br></pre></td></tr></table></figure>
 <p>资源文件</p>
-<p><img src="http://p7woygi8q.bkt.clouddn.com/QQHelper.ico" alt=""></p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/QQHelper.ico" alt=""></p>
 
       
     </div>
@@ -692,7 +692,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">135</span>
+                  <span class="site-state-item-count">136</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

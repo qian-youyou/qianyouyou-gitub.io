@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[七牛云测试域名到期图片转移腾讯云COS过程]]></title>
+    <url>%2F2019%2F02%2F16%2F2019-02-16-1%2F</url>
+    <content type="text"><![CDATA[今天终于把七牛云到期的测试域名所属空间的博客照片迁移到腾讯云。腾讯云有一定量免费空间供用户使用，希望腾讯云短期内不要出对没钱用户的制裁条款。当然，出了我们也不用慌，再迁移便是，正所谓不折腾不舒服斯基。果然免费的都是要付出其它代价的～ 备份七牛云图片到本地批量下载七牛云图片到本地的步骤1、下载以下工具包解压到当地硬盘，比如 D 盘，那么解压之后就获得一个 qiniu 文件夹，里面包含有两个文件，分别是 qshell.conf 和 qshell.exe 文件。 批量下载七牛云图片到本地工具包（密码: xp1p） 2、用记事本或者 Notepad++ 软件打开 qshell.conf 文件，然后根据里面的要求填写相应的内容并保存。完成之后大概如下： 123456789101. &#123;2. &quot;dest_dir&quot; : &quot;//images&quot;,3. &quot;bucket&quot; : &quot;blog&quot;,4. &quot;domain&quot; : &quot;http://********.com&quot;,5. &quot;access_key&quot; :&quot;******************&quot;,6. &quot;secret_key&quot; :&quot;******************&quot;,7. &quot;is_private&quot; :false,8. &quot;prefix&quot; : &quot;&quot;,9. &quot;suffix&quot; : &quot;&quot;10. &#125; 其中 access_key 和 secret_key 的值可以在七牛云后台中的个人中心的密钥管理中获得。 3、运行电脑的 CMD，比如刚才我们是解压在 D 盘，那么就在CMD 中分别输入 d:、cd qiniu 和 qshell qdownload 10 qshell.conf 命令后即可自动下载七牛云的图片到本地指定的文件夹中，其中最后一条命令的 10 就是 10 线程的意思，一般是越大越快。 一般情况下等待一段时间就会自动下载完毕，我这次下载了带有前缀 boke112 的图片，图片不多，所以很快就下载完了。 申请腾讯云自行申请。 批量替换文章里的图片链接本人参考网上一篇批量修改文件内容的Python代码，魔改后。成功实现了批量修改本地Markdown文章图片链接。下面把Python代码贴出来供大家参考，轻拍～（Python版本2.7） 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#coding=utf-8#可加入中文注释#!/usr/bin/python# -*- coding: UTF-8 -*-#函数功能：将指定文件夹下所有文件和子文件夹下的文件遍历，并修改文件内容import osfpath =&quot;/Users/fsf/PycharmProjects/Python2_tencentcloud/test&quot;#这里是你的第一级文件夹的路径def filechanger(path): filenames = os.listdir(path)#将path路径下的所有文件名存入列表filenames for filename in filenames:#循环遍历每个文件 domain = os.path.abspath(path)#获取规范的路径 filename = os.path.join(domain,filename)#带路径的文件名 if os.path.isdir(filename): # 如果是文件夹进入递归 filechanger(filename) continue fread = open(filename,&apos;r&apos;) fwrite = open(&quot;%s.backup&quot;%filename,&apos;w&apos;) for line in fread.readlines(): src_str = line if src_str.find(&apos;![&apos;) != -1: start = src_str.index(&apos;![&apos;) + 2 end = src_str.index(&apos;](&apos;) sub = src_str[start:end] start1 = end + 2 end1 = src_str.index(&apos;)&apos;) sub1 = src_str[start1:end1] sub2 = src_str[(end1 - 4):end1] s1 = &apos;https://xxxxxxxxx-3334.cos.ap-hongkong.myqcloud.com/&apos; s11 = &apos;https://xxxxxxxxx-3334.cos.ap-hongkong.myqcloud.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7&apos; # sub3 = src_str[:start1] + &apos;../images/&apos; + sub + sub2 + src_str[end1] + src_str[(end1+1):] s2 = sub + sub2 + src_str[end1] + src_str[(end1+1):] if src_str[start:(start + 12)] == &apos;屏幕快照&apos;: s22 = s11 + src_str[(start + 12):end] + sub2 + src_str[end1] + src_str[(end1+1):] sub3 = src_str[:start1] + s22.replace(&apos; &apos;, &apos;%20&apos;) else: sub3 = src_str[:start1] + s1 + s2.replace(&apos; &apos;,&apos;%20&apos;) fwrite.write(sub3) # 修改后写入新文件 print(sub3) else: fwrite.write(src_str) print(src_str) continue fread.close() fwrite.close() os.remove(filename)#如果想更改数据后想保留原文件以及修改文件名可屏蔽这一句和下一句 os.rename(&quot;%s.backup&quot; % filename, filename)#filechanger(fpath) 自18年9月，终于把七牛云到期的测试域名所属空间的博客照片迁移到腾讯云。腾讯云有一定量免费空间供用户使用（发博文时免费额度：50 GB 标准存储容量，10 GB CDN 回源流量，100 万次读请求，100 万次写请求。费用实例），希望腾讯云短期内不要出对没钱用户的制裁条款。当然，出了我们也不用慌，再迁移便是，正所谓不折腾不舒服斯基。果然免费的都是要付出其它代价的～]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[不蒜子统计失效问题解决]]></title>
     <url>%2F2019%2F02%2F16%2F2019-02-16%2F</url>
-    <content type="text"><![CDATA[关于hexo想要开启站点统计，只需找到_config.yml配置文件，把busuanzi_count的enable设置为true即可。但近期，这个不蒜子的统计功能就失效了。查阅了不蒜子官方的说法， “因七牛强制过期『dn-lbstatics.qbox.me』域名，与客服沟通无果，只能更换域名到『busuanzi.ibruce.info』！” 七牛云强行关闭域名，导致本站在七牛云存的图片也无法正常加载。 具体操作找到原来不蒜子的域名文件，并替换掉旧的域名。 文件路径：\themes\next\layout_third-party\analytics\busuanzi-counter.swig，只需要替换src对应的域名即可，如下是替换后的域名。 1&lt;script async src=&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;]]></content>
+    <content type="text"><![CDATA[关于hexo想要开启站点统计，只需找到_config.yml配置文件，把busuanzi_count的enable设置为true即可。但近期，这个不蒜子的统计功能就失效了。查阅了不蒜子官方的说法， “因七牛强制过期『dn-lbstatics.qbox.me』域名，与客服沟通无果，只能更换域名到『busuanzi.ibruce.info』！” 由于七牛云9月底强行关闭测试域名，导致本博客在七牛云存的所有图片也无法正常加载了。 具体操作找到原来不蒜子的域名文件，并替换掉旧的域名。 文件路径：\themes\next\layout_third-party\analytics\busuanzi-counter.swig，只需要替换src对应的域名即可，如下是替换后的域名。 1&lt;script async src=&quot;https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;]]></content>
       <categories>
         <category>程序人生</category>
         <category>JavaScript</category>
@@ -724,9 +729,9 @@
       <tags>
         <tag>图论</tag>
         <tag>最短路</tag>
+        <tag>SPFA算法</tag>
         <tag>最小生成树</tag>
         <tag>拓扑排序</tag>
-        <tag>SPFA算法</tag>
       </tags>
   </entry>
   <entry>
