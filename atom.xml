@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2019-02-16T08:54:56.218Z</updated>
+  <updated>2019-02-17T13:18:20.607Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>gdb调试常用命令总结</title>
+    <link href="http://qianyouyou.cn/2019/02/17/2019-02-17/"/>
+    <id>http://qianyouyou.cn/2019/02/17/2019-02-17/</id>
+    <published>2019-02-17T13:12:47.000Z</published>
+    <updated>2019-02-17T13:18:20.607Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a><strong>1 简介</strong></h2><p>​     GDB（GNU Debugger）是GCC的调试工具。其功能强大，现描述如下：     GDB主要帮忙你完成下面四个方面的功能：     1.启动你的程序，可以按照你的自定义的要求随心所欲的运行程序。     2.可让被调试的程序在你所指定的调置的断点处停住。（断点可以是条件表达式）     3.当程序被停住时，可以检查此时你的程序中所发生的事。     4.动态的改变你程序的执行环境。</p><h2 id="2-生成调试信息"><a href="#2-生成调试信息" class="headerlink" title="2 生成调试信息"></a><strong>2 生成调试信息</strong></h2><p>​     一般来说GDB主要调试的是C/C++的程序。要调试C/C++的程序，首先在编译时，我们必须要把调试信息加到可执行文件中。使用编译器（cc/gcc/g++）的 -g 参数可以做到这一点。如：</p><p>​     gcc -g hello.c -o hello</p><p>​     g++ -g hello.cpp -o hello</p><p>​     如果没有-g，你将看不见程序的函数名、变量名，所代替的全是运行时的内存地址。当你用-g把调试信息加入之后，并成功编译目标代码以后，让我们来看看如何用gdb来调试他。</p><h2 id="3-启动GDB的方法"><a href="#3-启动GDB的方法" class="headerlink" title="3 启动GDB的方法"></a><strong>3 启动GDB的方法</strong></h2><p>​     gdb program</p><p>​     program 也就是你的执行文件，一般在当前目录下。</p><h2 id="4-程序运行上下文"><a href="#4-程序运行上下文" class="headerlink" title="4 程序运行上下文"></a><strong>4 程序运行上下文</strong></h2><h3 id="4-1-程序运行参数"><a href="#4-1-程序运行参数" class="headerlink" title="4.1 程序运行参数"></a><strong>4.1 程序运行参数</strong></h3><p>​     set args 可指定运行时参数。（如：set args 10 20 30 40 50 ）</p><p>​     show args 命令可以查看设置好的运行参数。</p><p>​     run  启动程序</p><h3 id="4-2-工作目录"><a href="#4-2-工作目录" class="headerlink" title="4.2 工作目录"></a><strong>4.2 工作目录</strong></h3><p>​     cd 相当于shell的cd命令。</p><p>​     pwd 显示当前的所在目录。</p><h2 id="5-设置断点"><a href="#5-设置断点" class="headerlink" title="5 设置断点"></a><strong>5 设置断点</strong></h2><h3 id="5-1-简单断点"><a href="#5-1-简单断点" class="headerlink" title="5.1 简单断点"></a><strong>5.1 简单断点</strong></h3><p>​     break 设置断点，可以简写为b</p><p>​     b 10 设置断点，在源程序第10行</p><p>​     b func 设置断点，在func函数入口处</p><h3 id="5-2-多文件设置断点"><a href="#5-2-多文件设置断点" class="headerlink" title="5.2 多文件设置断点"></a><strong>5.2 多文件设置断点</strong></h3><p>​     在进入指定函数时停住:</p><p>​     C++中可以使用class::function或function(type,type)格式来指定函数名。如果有名称空间，可以使用namespace::class::function或者function(type,type)格式来指定函数名。</p><p>​     break filename:linenum – 在源文件filename的linenum行处停住</p><p>​     break filename:function – 在源文件filename的function函数的入口处停住</p><p>​     break class::function或function(type,type) – 在类class的function函数的入口处停住</p><p>​     break namespace::class::function – 在名称空间为namespace的类class的function函数的入口处停住</p><h3 id="5-3-查询所有断点"><a href="#5-3-查询所有断点" class="headerlink" title="5.3 查询所有断点"></a><strong>5.3 查询所有断点</strong></h3><p>​     info b</p><h2 id="6条件断点"><a href="#6条件断点" class="headerlink" title="6条件断点"></a><strong>6条件断点</strong></h2><p>​     一般来说，为断点设置一个条件，我们使用if关键词，后面跟其断点条件。</p><p>​     设置一个条件断点</p><p>​     b test.c:8 if intValue == 5</p><h2 id="7-维护停止点"><a href="#7-维护停止点" class="headerlink" title="7 维护停止点"></a><strong>7 维护停止点</strong></h2><p>​     delete [range…] 删除指定的断点，如果不指定断点号，则表示删除所有的断点。range 表示断点号的范围（如：3-7）。其简写命令为d。</p><p>​          比删除更好的一种方法是disable停止点，disable了的停止点，GDB不会删除，当你还需要时，enable即可，就好像回收站一样。</p><p>​     disable  [range…]</p><p>​          disable所指定的停止点，如果什么都不指定，表示disable所有的停止点。简写命令是dis.</p><p>​     enable [range…]</p><p>​          enable所指定的停止点，如果什么都不指定，表示enable所有的停止点。简写命令是ena.</p><h2 id="8-调试代码"><a href="#8-调试代码" class="headerlink" title="8 调试代码"></a><strong>8 调试代码</strong></h2><p>​     run 运行程序，可简写为r</p><p>​     next 单步跟踪，函数调用当作一条简单语句执行，可简写为n</p><p>​     step 单步跟踪，函数调进入被调用函数体内，可简写为s</p><p>​     finish 退出进入的函数</p><p>​     until 在一个循环体内单步跟踪时，这个命令可以运行程序直到退出循环体,可简写为u。</p><p>​     continue 继续运行程序，可简写为c</p><h2 id="9-查看运行时数据"><a href="#9-查看运行时数据" class="headerlink" title="9 查看运行时数据"></a><strong>9 查看运行时数据</strong></h2><p>​     print 打印变量、字符串、表达式等的值，可简写为p</p><p>​     p count 打印count的值</p><h2 id="10-自动显示"><a href="#10-自动显示" class="headerlink" title="10 自动显示"></a><strong>10 自动显示</strong></h2><p>​     你可以设置一些自动显示的变量，当程序停住时，或是在你单步跟踪时，这些变量会自动显示。相关的GDB命令是display。</p><p>​     display 变量名</p><p>​     info display – 查看display设置的自动显示的信息。</p><p>​     undisplay num（info display时显示的编号）</p><p>​     delete display dnums… – 删除自动显示，dnums意为所设置好了的自动显式的编号。如果要同时删除几个，编号可以用空格分隔，如果要删除一个范围内的编号，可以用减号表示（如：2-5）</p><p>​     disable display dnums…</p><p>​     enable display dnums…</p><p>​     disable和enalbe不删除自动显示的设置，而只是让其失效和恢复。</p><h2 id="11-查看修改变量的值"><a href="#11-查看修改变量的值" class="headerlink" title="11. 查看修改变量的值"></a>11. 查看修改变量的值</h2><p>​     (gdb) ptype width – 查看变量width的类型</p><p>​          type = double</p><p>​     (gdb) p width  – 打印变量width 的值</p><p>​          $4 = 13</p><p>​     你可以使用set var命令来告诉GDB，width不是你GDB的参数，而是程序的变量名，如：</p><p>​          (gdb) set var width=47</p><p>​     在你改变程序变量取值时，最好都使用set var格式的GDB命令。</p><h2 id="12-显示源代码"><a href="#12-显示源代码" class="headerlink" title="12 显示源代码"></a><strong>12 显示源代码</strong></h2><p>​     GDB 可以打印出所调试程序的源代码，当然，在程序编译时一定要加上 –g 的参数，把源程序信息编译到执行文件中。不然就看不到源程序了。当程序停下来以后，</p><p>​     GDB会报告程序停在了那个文件的第几行上。你可以用list命令来打印程序的源代码。默认打印10行，还是来看一看查看源代码的GDB命令吧。</p><p>​     list linenum</p><p>​          Print lines centered around line number linenum in the current source file.</p><p>​     list function</p><p>​          显示函数名为function的函数的源程序。</p><p>​     list</p><p>​          显示当前行后面的源程序。</p><p>​     list -</p><p>​          显示当前行前面的源程序。</p><p>​     一般是打印当前行的上5行和下5行，如果显示函数是是上2行下8行，默认是10行，当然，你也可以定制显示的范围，使用下面命令可以设置一次显示源程序的行数。</p><p>​          set listsize count</p><p>​     设置一次显示源代码的行数。(unless the list argument explicitly specifies some other number)</p><p>​          show listsize</p><p>​     查看当前listsize的设置。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1 简介&quot;&gt;&lt;/a&gt;&lt;strong&gt;1 简介&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;​     GDB（GNU Debugger）是GCC的调试工具。其功能强大，现描述如下：
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+    
+      <category term="gdb调试" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/gdb%E8%B0%83%E8%AF%95/"/>
+    
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
+    
+      <category term="gdb调试" scheme="http://qianyouyou.cn/tags/gdb%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>七牛云测试域名到期图片转移腾讯云COS过程</title>
@@ -643,37 +674,6 @@
       <category term="动态规划" scheme="http://qianyouyou.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
       <category term="划分" scheme="http://qianyouyou.cn/tags/%E5%88%92%E5%88%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[容斥原理]Hard to prepare</title>
-    <link href="http://qianyouyou.cn/2018/09/20/2018-09-20/"/>
-    <id>http://qianyouyou.cn/2018/09/20/2018-09-20/</id>
-    <published>2018-09-20T05:02:52.000Z</published>
-    <updated>2018-09-20T05:37:52.008Z</updated>
-    
-    <content type="html"><![CDATA[<p>After Incident, a feast is usually held in Hakurei Shrine. This time Reimu asked Kokoro to deliver a Nogaku show during the feast. To enjoy the show, every audience has to wear a Nogaku mask, and seat around as a circle.</p><p>There are N guests Reimu serves. Kokoro has 2^k2k masks numbered from 0,1,\cdots,0,1,⋯, 2^k - 12k−1, and every guest wears one of the masks. The masks have dark power of Dark Nogaku, and to prevent guests from being hurt by the power, two guests seating aside must ensure that if their masks are numbered ii and jj , then ii XNOR jj must be positive. (two guests can wear the same mask). XNOR means ~(ii^jj) and every number has kk bits. (11 XNOR 1 = 11=1, 00XNOR 0 = 10=1, 11 XNOR 0 = 00=0)</p><p>You may have seen 《A Summer Day’s dream》, a doujin Animation of Touhou Project. Things go like the anime, Suika activated her ability, and the feast will loop for infinite times. This really troubles Reimu: to not make her customers feel bored, she must prepare enough numbers of different Nogaku scenes. Reimu find that each time the same guest will seat on the same seat, and She just have to prepare a new scene for a specific mask distribution. Two distribution plans are considered different, if any guest wears different masks.</p><p>In order to save faiths for Shrine, Reimu have to calculate that to make guests not bored, how many different Nogaku scenes does Reimu and Kokoro have to prepare. Due to the number may be too large, Reimu only want to get the answer modules 1e9+71e9+7 . Reimu did never attend Terakoya, so she doesn’t know how to calculate in module. So Reimu wishes you to help her figure out the answer, and she promises that after you succeed she will give you a balloon as a gift.</p><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>First line one number TT , the number of testcases; (T \le 20)(T≤20) .</p><p>Next TT lines each contains two numbers, NNand k(0&lt;N, k \le 1e6)k(0&lt;N,k≤1e6) .</p><h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each testcase output one line with a single number of scenes Reimu and Kokoro have to prepare, the answer modules 1e9+71e9+7 .</p><h4 id="样例输入复制"><a href="#样例输入复制" class="headerlink" title="样例输入复制"></a>样例输入复制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">3 1</span><br><span class="line">4 2</span><br></pre></td></tr></table></figure><h4 id="样例输出复制"><a href="#样例输出复制" class="headerlink" title="样例输出复制"></a>样例输出复制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">84</span><br></pre></td></tr></table></figure><h4 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a>题目来源</h4><p><a href="https://nanti.jisuanke.com/?kw=ACM-ICPC%202018%20%E5%BE%90%E5%B7%9E%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B" target="_blank" rel="noopener">ACM-ICPC 2018 徐州赛区网络预赛</a></p><p><strong>题目描述</strong></p><p>有n个位置围成一个圈，2^k个数，每个位置随便放置一个数，要求范围在1到2^k之间，然而每个数都有一个互斥的数，且互斥的两个数不会和其他的重复，要求相邻位置不能有互斥的数。</p><p><strong>题解</strong></p><p>首先用快速幂求出2^k然后赋给k，即k = 2^k。然后假设这n个数依次排开，那么每一个数不能是上一个元素的互斥数，那么第1个元素共k种，那么之后每一种为k-1种。即<code>k*(k-1)^(n-1)</code>，然而这样的话最后一个元素可以为第一个元素的互斥数，因此要减去相应的数，根据容斥原理最终列出实在为<code>k*(k-1)^(n-1)-k*(k-1)^(n-2)+k*(k-1)^(n-3)-k*(k-1)^(n-4)……</code>然而这样做会超时，因此我们可以合并，即加一次减一次合并到一起重新得到公式。</p><p>当然我们也可以换一种思考方式，很容易想到，第1个数有<img src="https://private.codecogs.com/gif.latex?%5Csmall%202%5Ek" alt="\small 2^k">种选择，第2个数到第n-1个数都有<img src="https://private.codecogs.com/gif.latex?%5Csmall%202%5Ek-1" alt="\small 2^k-1">种选择，第n个数有<img src="https://private.codecogs.com/gif.latex?%5Csmall%202%5Ek-2" alt="\small 2^k-2">种选择。</p><p>所以答案就是<img src="https://private.codecogs.com/gif.latex?%5Csmall%202%5Ek%282%5Ek-2%29%282%5Ek-1%29%5E%7Bn-2%7D" alt="\small 2^k(2^k-2)(2^k-1)^{n-2}"></p><p>但是这样会出现漏算：在第1个数和第n-1个数相同的情况下，第n个数有<img src="https://private.codecogs.com/gif.latex?%5Csmall%202%5Ek-1" alt="\small 2^k-1">种选择， 而并非<img src="https://private.codecogs.com/gif.latex?%5Csmall%202%5Ek-2" alt="\small 2^k-2">种</p><p>然后仔细分析可以发现，漏算的情况你可以把第1个数和第n-1个数当成同一个数，这样序列长度就变成n-2了，问题规模变小</p><p>递归或递推即可</p><p><strong>代码</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">const ll mod = 1e9+7;</span><br><span class="line">ll quick_pow(ll ans, ll res, ll n)&#123;</span><br><span class="line">    while(n)&#123;</span><br><span class="line">        if(n&amp;1)</span><br><span class="line">            ans = ans * res % mod;</span><br><span class="line">        res = res * res % mod;</span><br><span class="line">        n&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line">ll solve(ll n, ll k)&#123;</span><br><span class="line">    ll ans = 0;</span><br><span class="line">    ll i = (n&amp;1)+2;</span><br><span class="line">    ll res = pow(k-1,i-2);</span><br><span class="line">    for(;i&lt;=n;i+=2)&#123;</span><br><span class="line">        ans = (ans + res) % mod;</span><br><span class="line">        res = res * (k - 1) % mod * (k - 1) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    ans = ans * k % mod * (k - 2) % mod;</span><br><span class="line">    ans = (ans + k) % mod;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    ll t,n,k;</span><br><span class="line">    scanf(&quot;%lld&quot;,&amp;t);</span><br><span class="line">    while(t--)&#123;</span><br><span class="line">        scanf(&quot;%lld%lld&quot;,&amp;n,&amp;k);</span><br><span class="line">        k = quick_pow(1,2,k);</span><br><span class="line">        printf(&quot;%lld\n&quot;,solve(n,k));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;After Incident, a feast is usually held in Hakurei Shrine. This time Reimu asked Kokoro to deliver a Nogaku show during the feast. To enj
-      
-    
-    </summary>
-    
-      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="组合数学" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
-    
-    
-      <category term="组合数学" scheme="http://qianyouyou.cn/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
-    
-      <category term="容斥原理" scheme="http://qianyouyou.cn/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
