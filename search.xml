@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[[转]const指针与指向const的指针]]></title>
+    <url>%2F2019%2F02%2F23%2F2019-02-23%2F</url>
+    <content type="text"><![CDATA[最近在复习Ｃ＋＋，指针这块真的是重难点，很久了也没有去理会，今晚好好总结一下const指针，好久没有写过博客了，记录一下~ const指针的定义： const指针是指针变量的值一经初始化，就不可以改变指向，初始化是必要的。其定义形式如下： type *const 指针名称; 声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int * pOne; //指向整形常量 的指针，它指向的值不能修改 int * const pTwo; //指向整形的常量指针 ，它不能在指向别的变量，但指向（变量）的值可以修改。 const int *const pThree; //指向整形常量 的常量指针 。它既不能再指向别的常量，指向的值也不能修改。 理解这些声明的技巧在于，查看关键字const右边来确定什么被声明为常量 ，如果该关键字的右边是类型，则值是常量；如果关键字的右边是指针变量，则指针本身是常量。下面的代码有助于说明这一点： 123const int *p1; //the int pointed to is constantint * const p2; // p2 is constant, it can&apos;t point to anything else const指针和const成员函数 可以将关键字用于成员函数。例如： ;) 123456789101112131415161718192021class Rectangle&#123; pubilc: ..... void SetLength(int length)&#123;itslength = length;&#125; int GetLength() const &#123;return itslength;&#125; //成员函数声明为常量 ..... private: int itslength; int itswidth;&#125;; ;) 当成员函数被声明为const时，如果试图修改对象的数据，编译器将视为错误。 如果声明了一个指向const对象的指针，则通过该指针只能调用const方法（成员函数）。 示例声明三个不同的Rectangle对象： ;) 1234567Rectangle* pRect = new Rectangle;const Rectangle * pConstRect = new Rectangle; //指向const对象Rectangle* const pConstPtr = new Rectangle;// pConstRect是指向const对象的指针，它只能使用声明为const的成员函数，如GetLength（）。 ;) const指针和指向const的指针当使用带有const的指针时其实有两种意思。一种指的是你不能修改指针本身的内容，另一种指的是你不能修改指针指向的内容。听起来有点混淆一会放个例子上来就明白了。 先说指向const的指针，它的意思是指针指向的内容是不能被修改的。它有两种写法。 const int p; （推荐） int const p; 第一种可以理解为，p是一个指针，它指向的内容是const int 类型。p本身不用初始化它可以指向任何标示符，但它指向的内容是不能被改变的。 第二种很容易被理解成是p是一个指向int的const指针（指针本身不能被修改），但这样理解是错误的，它也是表示的是指向const的指针（指针指向的内容是不能被修改的），它跟第一种表达的是一个意思。为了避免混淆推荐大家用第一种。 再说const指针，它的意思是指针本身的值是不能被修改的。它只有一种写法 int const p=一个地址; (因为指针本身的值是不能被修改的所以它必须被初始化） 这种形式可以被理解为，p是一个指针，这个指针是指向int 的const指针。它指向的值是可以被改变的如p=3; 还有一种情况是这个指针本身和它指向的内容都是不能被改变的，请往下看。 const int const p=一个地址; int const const p=一个地址; 看了上面的内容是不是有点晕，没关系，你不用去背它，用的多了就知道了，还有个技巧，通过上面的观察我们不难总结出一点规律，是什么呢？这个规律就是： 指向const的指针（指针指向的内容不能被修改）const关健字总是出现在的左边而const指针（指针本身不能被修改）const关健字总是出现在的右边，那不用说两个const中间加个*肯定是指针本身和它指向的内容都是不能被改变的。有了这个规则是不是就好记多了。 ;) 12345678910111213141516171819202122232425262728293031Code highlighting produced by Actipro CodeHighlighter (freeware)http://www.CodeHighlighter.com/--&gt; 1 #include &lt;iostream&gt;using namespace std;int main(int argc, char *argv[])&#123; int a=3; int b; /*定义指向const的指针（指针指向的内容不能被修改）*/ const int* p1; int const* p2; /*定义const指针(由于指针本身的值不能改变所以必须得初始化）*/ int* const p3=&amp;a; /*指针本身和它指向的内容都是不能被改变的所以也得初始化*/ const int* const p4=&amp;a; int const* const p5=&amp;b; p1=p2=&amp;a; //正确 *p1=*p2=8; //不正确（指针指向的内容不能被修改） *p3=5; //正确 p3=p1; //不正确（指针本身的值不能改变） p4=p5;//不正确 （指针本身和它指向的内容都是不能被改变） *p4=*p5=4; //不正确（指针本身和它指向的内容都是不能被改变） return 0; &#125; ;) const用法小结：const最常用的就是定义常量，除此之外，它还可以修饰函数的参数、返回值和函数的定义体。\1. const修饰函数的参数如果参数作输出用，不论它是什么数据类型，也不论它采用“指针传递”还是“引用传递”，都不能加const 修饰，否则该参数将失去输出功能。const 只能修饰输入参数：如果输入参数采用“指针传递”，那么加const 修饰可以防止意外地改动该指针，起到保护作用。将“const &amp;”修饰输入参数的用法总结如下：(1)对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const 引用传递”，目的是提高效率。例如将void Func(A a) 改为void Func(const A &amp;a)。(2)对于内部数据类型的输入参数，不要将“值传递”的方式改为“const 引用传递”。否则既达不到提高效率的目的，又降低了函数的可理解性。例如void Func(int x) 不应该改为void Func(const int &amp;x)。 \2. const 修饰函数的返回值如果给以“指针传递”方式的函数返回值加const 修饰，那么函数返回值（即指针）的内容不能被修改，该返回值只能被赋给加const 修饰的同类型指针。例如函数const char GetString(void);如下语句将出现编译错误：char str = GetString();正确的用法是const char *str = GetString();如果返回值不是内部数据类型，将函数A GetA(void) 改写为const A &amp; GetA(void)的确能提高效率。但此时千万千万要小心，一定要搞清楚函数究竟是想返回一个对象的“拷贝”还是仅返回“别名”就可以了，否则程序会出错。函数返回值采用“引用传递”的场合并不多，这种方式一般只出现在类的赋值函数中，目的是为了实现链式表达。例如： ;) 1234567class A&#123;A &amp; operate = (const A &amp;other); // 赋值函数&#125;;A a, b, c; // a, b, c 为A 的对象a = b = c; // 正常的链式赋值(a = b) = c; // 不正常的链式赋值，但合法 ;) 如果将赋值函数的返回值加const 修饰，那么该返回值的内容不允许被改动。上例中，语句 a = b = c 仍然正确，但是语句 (a = b) = c 则是非法的。 \3. const修饰成员函数关于Const函数的几点规则：a. const对象只能访问const成员函数,而非const对象可以访问任意的成员函数,包括const成员函数.b. const对象的成员是不可修改的,然而const对象通过指针维护的对象却是可以修改的.c. const成员函数不可以修改对象的数据,不管对象是否具有const性质.它在编译时,以是否修改成员数据为依据,进行检查.d. 然而加上mutable修饰符的数据成员,对于任何情况下通过任何手段都可修改,自然此时的const成员函数是可以修改它的 版权所有，转载请注明转载地址：http://www.cnblogs.com/lihuidashen/p/4378884.html]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C/C++</category>
+        <category>C语言</category>
+      </categories>
+      <tags>
+        <tag>C/C++</tag>
+        <tag>const</tag>
+        <tag>指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[[转]#pragma命令详解]]></title>
     <url>%2F2019%2F02%2F22%2F2019-02-22%2F</url>
     <content type="text"><![CDATA[每种C和C++的实现支持对其宿主机或操作系统唯一的功能。例如，一些程序需要精确控制超出数据所在的储存空间，或着控制特定函数接受参数的方式。#pragma指示使每个编译程序在保留C和C++语言的整体兼容性时提供不同机器和操作系统特定的功能。编译指示被定义为机器或操作系统特定的，并且通常每种编译程序是不同的。 语法： #pragma token_string “token_string”是一系列字符用来给出所需的特定编译程序指令和参数。数字符号“#”必须是包含编译指令的行中第一个非空白字符；而空白字符可以隔开数字符号“#”和关键字“pragma”。在#pragma后面，写任何翻译程序能够作为预处理符号分析的文本。#pragma的参数类似于宏扩展。 如果编译程序发现它不认得一个编译指示，它将给出一个警告，可是编译会继续下去。 为了提供新的预处理功能，或者为编译程序提供由实现定义的信息，编译指示可以用在一个条件语句内。C和C++编译程序可以识别下列编译程序指令。 alloc_text comment init_seg* optimize auto_inline component inline_depth pack bss_seg data_seg inline_recursion pointers_to_members* check_stack function intrinsic setlocale code_seg hdrstop message vtordisp* const_seg include_alias once warning *仅用于C++编译程序。 1 alloc_text #pragma alloc_text( “textsection”, function1, … ) 命名特别定义的函数驻留的代码段。该编译指示必须出现在函数说明符和函数定义之间。 alloc_text编译指示不处理C++成员函数或重载函数。它仅能应用在以C连接方式说明的函数——就是说，函数是用extern “C”连接指示符说明的。如果你试图将这个编译指示应用于一个具有C++连接方式的函数时，将出现一个编译程序错误。 由于不支持使用__based的函数地址，需要使用alloc_text编译指示来指定段位置。由textsection指定的名字应该由双引号括起来。 alloc_text编译指示必须出现在任何需要指定的函数说明之后，以及这些函数的定义之前。 在alloc_text编译指示中引用的函数必须和该编译指示处于同一个模块中。如果不这样做，使以后一个未定义的函数被编译到一个不同的代码段时，错误会也可能不会被捕获。即使程序一般会正常运行，但是函数不会分派到应该在的段。 alloc_text的其它限制如下： 它不能用在一个函数内部。 它必须用于函数说明以后，函数定义以前。 2 auto_inline #pragma auto_inline( [{on | off}] ) 当指定off时将任何一个可以被考虑为作为自动嵌入扩展候选的函数排除出该范围。为了使用auto_inline编译指示，将其紧接着写在一个函数定义之前或之后（不是在其内部）。该编译指示将在其出现以后的第一个函数定义开始起作用。auto_inline编译指示对显式的inline函数不起作用。 3 bss_seg #pragma data_seg( [“section-name”[, “section-class”] ] ) 为未初始化数据指定缺省段。data_seg编译指示除了工作于已初始化数据而不是未初始化的以外具有一样的效果。在一些情况下，你能使用bss_seg将所有未初始化数据安排在一个段中来加速你的装载时间。 #pragma bss_seg( “MY_DATA” ) 将导致把#pragma语句之后的未初始化的数据安排在一个叫做MY_DATA的段中。 用bss_seg编译指示分配的数据不包含任何关于其位置的信息。 第二个参数section-class是用于兼容2.0版本以前的Visual C++的，现在将忽略它。 4 check_stack #pragma check_stack([ {on | off}] ) #pragma check_stack{+ | –} 如果指定off（或者“-”）指示编译程序关闭堆栈探测，或者指定on（或“+”）打开堆栈探测。如果没有给出参数，堆栈探测将根据默认设置决定。该编译指示将在出现该指示之后的第一个函数开始生效。堆栈探测既不是宏和能够生成嵌入代码函数的一部分。 如果你没有给出check­_stack编译指示的参数，堆栈检查将恢复到在命令行指定的行为。详细情况见编译程序参考。#pragma check_stack和/Gs选项的互相作用情况在表2.1中说明。 表 2.1 使用check_stack编译指示 编译指示 用/Gs选项编译？ 行为 #pragma check_stack()或#pragma check_stack 是 后续的函数关闭堆栈检查 #pragma check_stack()或#pragma check_stack 否 后续的函数打开堆栈检查 #pragma check_stack(on)或#pragma check_stack(+) 是或者否 后续的函数打开堆栈检查 #pragma check_stack(off)或#pragma check_stack(-) 是或者否 后续的函数关闭堆栈检查 5 code_seg #pragma code_seg( [“section-name”[,”section-class”] ] ) 指定分配函数的代码段。code_seg编译指示为函数指定默认的段。你也能够像段名一样指定一个可选的类名。使用没有段名字符串的#pragma code_seg将恢复分配到编译开始时候的状态。 6 const_seg #pragma const_seg( [“section-name”[, “section-class”] ] ) 指定用于常量数据的默认段。data_seg编译指示除了可以工作于所有数据以外具有一样的效果。你能够使用该编译指示将你的常量数据保存在一个只读的段中。 #pragma const_seg( “MY_DATA” ) 导致在#pragma语句后面的常量数据分配在一个叫做MY_DATA的段中。 用const_seg编译指示分配的数据不包含任何关于其位置的信息。 第二个参数section-class是用于兼容2.0版本以前的Visual C++的，现在将忽略它。 7 comment #pragma comment( comment-type [, commentstring] ) 将描述记录安排到目标文件或可执行文件中去。comment-type是下面说明的五个预定义标识符中的一个，用来指定描述记录的类型。可选的commentstring是一个字符串文字值用于为一些描述类型提供附加的信息。因为commentstring是一个字符串文字值，所以它遵从字符串文字值的所有规则，例如换码字符、嵌入的引号（”）和联接。 7-1 compiler 在目标文件中放置编译程序名和版本号。该描述记录被连接程序忽略。如果你为这个记录类型提供一个commentstring参数，编译程序将生成一个警告。 7-2 exestr 将commentstring放置到目标文件中去。在连结时，这个字符串再被放到可执行文件去中。当可执行文件被装载时这个字符串不会被装入内存，然而，它可以被一个能够在文件中搜索可打印字符串的程序找到。该描述记录的一个用处是在可执行文件中嵌入版本号或者类似的信息。 7-3 lib 将一个库搜索记录放置到目标文件中去。该描述类型必须有包含你要连接程序搜索的库名（和可能的路径）的commentstring参数。因为在目标文件中该库名先于默认的库搜索记录，所以连接程序将如同你在命令行输入这些库一样来搜索它们。你可以在一个源文件中放置多个库搜索记录，每个记录将按照它们出现在源文件中的顺序出现在目标文件中。 7-4 linker 在目标文件中放置连接程序选项。你可以用这个描述类型指定连接程序选项来代替在Project Setting对话框中Link页内的选项。例如，你可以指定/include选项以强迫包含一个符号： #pragma comment(linker, “/include:__mySymbol”) 7-5 user 在目标文件中包含一个普通描述记录。commentstring参数包含描述的文本。该描述记录将被连接程序忽略。 下面的编译指示导致连接程序在连接时搜索EMAPI.LIB库。连接程序首先在当前工作目录然后在LIB环境变量指定的路径中搜索。 #pragma comment( lib, “emapi” ) 下面的编译指示导致编译程序将其名字和版本号放置到目标文件中去。 The following pragma causes the compiler to place the name and version number of the compiler in the object file: #pragma comment( compiler ) 注意，对于具有commentstring参数的描述记录，你可以使用其它用作字符串文字量的宏来提供宏扩展为字符串文字量。你也能够联结任何字符串文字量和宏的组合来扩展成为一个字符串文字量。例如，下面的语句是可以接受的： #pragma comment( user, “Compiled on “ DATE “ at “ TIME ) 8 component #pragma component( browser, { on | off }[, references [, name ]] ) #pragma component( minrebuild, on | off ) 从源文件内控制浏览信息和依赖信息的收集。 8-1 浏览信息（Browser） 你可以将收集打开或关闭，你也可以指定收集时忽略特别的名字。 使用on或off在编译指示以后控制浏览信息的收集。例如： #pragma component(browser, off) 终止编译程序收集浏览信息。 注意，为了用这个编译指示打开浏览信息的收集，必须先从Project Setting对话框或者命令行允许浏览信息。 references选项可以有也可以没有name参数。使用没有name参数的references选项将打开或者关闭引用信息的收集（然而继续收集其它浏览信息）。例如： #pragma component(browser, off, references) 终止编译程序收集引用信息。 使用有name和off参数的references选项将阻止从浏览信息窗口中出现引用到的名字。用这个语法将忽略你不感兴趣的名字和类型从而减少浏览信息文件的大小。例如： #pragma component(browser, off, references, DWORD) 从这一点以后忽略DWORD的引用。你能够用on恢复DWORD的引用收集： #pragma component(browser, on, references, DWORD) 这是唯一的方法可以恢复收集指定名字的引用，你必须显式地打开任何你关闭的名字。 为了防止预处理程序扩展名字（就像扩展NULL到0），用引号括起来： #pragma component(browser, off, references, “NULL”) 8-2 最小化重建（Minimal Rebuild） Visual C++的最小化重建功能要求编译程序创建并保存需要大量磁盘空间的C++类依赖信息。为了节省磁盘空间，你能够在你不需要收集依赖信息时使用#pragma component(minrebuild,off)，例如，没有改变过头文件。在未修改过的类之后插入#pragma component(minrebuild,on)重新打开依赖信息。 详见Enable Minimal Rebuild(/Gm)编译程序选项。 9 data_seg #pragma data_seg( [“section-name”[, “section-class”] ] ) 指定数据的默认段。例如： #pragma data_seg( “MY_DATA” ) 导致在#pragma语句后分配的数据保存在一个叫做MY_DATA的段中。 用data_seg编译指示分配的数据不包含任何关于其位置的信息。 第二个参数section-class是用于兼容2.0版本以前的Visual C++的，现在将忽略它。 10 function #pragma function( function1 [, function2, …] ) 指定必须生成对编译指示中参数列表内函数的调用。如果你使用intrinsic编译指示（或者/Oi）来告诉编译程序生成内含函数（内含函数如同嵌入代码一样生成，不作为一个函数调用），你能够用function编译指示显式地强迫函数调用。当遇到一个function编译指示，它将在其后面遇到的第一个包含有内含函数的函数定义处生效。其持续作用到源文件的尾部或者出现对同一个内含函数指定intrinsic编译指示。function编译指示只能用于函数外——在全局层次。 为了列出具有内含形式的函数表，参见#pragma intrinsic。 11 hdrstop #pragma hdrstop [( “filename” )] 控制预编译头文件的工作方式。filename是要使用或者创建（依赖于是否指定了/Yu或/Yc）预编译头文件的名字。如果 filename不包括一个指定路径，将假定预编译头文件和源文件处于同一个目录中。当指定自动预编译头文件选项/YX时，所有指定的文件名将被忽略。 如果有/YX或者/Yc选项，而且C或C++文件包含了一个hdrstop编译指示时，编译程序保存编译指示之前的编译状态。编译指示之后的编译状态不被保存。 hdrstop编译选项不能出现在一个头文件内。它只能出现在源文件的文件级，它也不能出现在任何数据或者函数的说明或定义之中。 注意，除非指定没有文件名的/YX选项或者/Yu或/Yc选项，否则hdrstop编译指示将被忽略。 用一个文件名命名要保存编译状态的预编译头文件。在hdrstop和filename之间的空格是可选的。在hdrstop编译指示中的文件名是一个字符串，这样它服从于C或C++的字符串规则。特别的，你必须像下面例子里面显示的用引号括起来。 #pragma hdrstop( “c:\projects\include\myinc.pch” ) 预编译头文件的文件名按照如下规则决定，按照优先次序： /Fp编译程序选项的参数； 由#pragma hdrstop的filename参数； 原文件名的基本文件名加上.PCH扩展名。 12 include_alias #pragma include_alias( “long_filename”, “short_filename” ) #pragma include_alias( &lt;long_filename&gt;, &lt;short_filename&gt; ) 指定作为long_filename别名的short_filename。一些文件系统允许超出8.3FAT文件系统限制的长头文件名。编译程序不能简单地将长文件名截断为8.3名字，因为长头文件名的前8个字符可能不是唯一的。无论何时编译程序遇到long_filename串，它代替short_filename，并且用short_filename搜索头文件。这个编译指示必须出现在相应的#include指示之前。例如： // First eight characters of these two files not unique. #pragma include_alias( “AppleSystemHeaderQuickdraw.h”, “quickdra.h” ) #pragma include_alias( “AppleSystemHeaderFruit.h”, “fruit.h” ) #pragma include_alias( “GraphicsMenu.h”, “gramenu.h” ) #include “AppleSystemHeaderQuickdraw.h” #include “AppleSystemHeaderFruit.h” #include “GraphicsMenu.h” 这个别名在搜索时精确匹配，包括拼写和双引号、尖括号。include_alias编译指示在文件名上执行简单的字符串匹配，不进行其它的文件名验证。例如，给出下列指示： #pragma include_alias(“mymath.h”, “math.h”) #include “./mymath.h” #include “sys/mymath.h” 并不执行别名替代，因为头文件名字符串没有精确匹配。另外，在/Yu，/Yc和/YX编译程序选项，或hdrstop编译指示中作为参数的头文件名不被替换。例如，如果你的源文件包含下列指示： #include &lt;AppleSystemHeaderStop.h&gt; 相应的编译程序选项必须是： /YcAppleSystemHeaderStop.h 你能够用include­_alias编译指示将任何头文件映射到其它文件。例如： #pragma include_alias( “api.h”, “c:\version1.0\api.h” ) #pragma include_alias( &lt;stdio.h&gt;, &lt;newstdio.h&gt; ) #include “api.h” #include &lt;stdio.h&gt; 不要混淆用双引号和尖括号括起来的文件名。例如，给出上面的#pragma include_alias指示时，在下面的#include指示中编译程序不执行替换。 #include &lt;api.h&gt; #include “stdio.h” 还有，下面的指示将产生一个错误： #pragma include_alias(&lt;header.h&gt;, “header.h”) // Error 注意，在错误信息中报告的文件名，或者预定义宏FILE的值，是执行替换以后的文件名。例如，在下列指示之后： #pragma include_alias( “VeryLongFileName.H”, “myfile.h” ) #include “VeryLongFileName.H” 文件VeryLongFileName.H产生下列错误信息： myfile.h(15) : error C2059 : syntax error 还要注意的是不支持传递性。给出下面的指示： #pragma include_alias( “one.h”, “two.h” ) #pragma include_alias( “two.h”, “three.h” ) #include “one.h” 编译程序将搜索two.h而不是three.h。 13 init_seg C++特有 #pragma init_seg({ compiler | lib | user | “section-name” [, “func-name”]} ) 指定影响启动代码执行的关键字或代码段。因为全局静态对象的初始化可以包含执行代码，所以你必须指定一个关键字来定义什么时候构造对象。在使用需要初始化的动态连接库（DLL）或程序库时使用init_seg编译指示是尤其重要的。 init_seg编译指示的选项有： 13-1 compiler 由Microsoft C运行时间库保留。在这个组中的对象将第一个构造。 13-2 lib 用于第三方类库开发者的初始化。在这个组中的对象将在标记为构造compiler的对象之后，其它对象之前构造。 13-3 user 用于任何其它用户。在这个组中的对象将最后构造。 13-4 section-name 允许显式地指定初始化段。在用户指定的section-name中的对象将不会隐式地构造，而它们的地址将会被放置在由section-name命名的段中。 13-5 func-name 指定当程序退出时，作为atexit函数调用的函数。这个函数必须具有和atexit函数相同的形式： int funcname(void (__cdecl *)(void)); 如果你需要延迟初始化，你能够选择指定显式的段名。随后你必须调用每个静态对象的构造函数。 14 inline_depth #pragma inline_depth( [0… 255] ) 通过控制能够被扩展的一系列函数调用（从0到255次）来控制嵌入函数扩展的发生次数，这个编译指示控制用inline，__inline标记的或在/Ob2选项下能自动嵌入的嵌入函数。 inline_depth编译指示控制能够被扩展的一系列函数调用。例如，如果嵌入深度是4，并且如果A调用B然后调用C，所有的3次调用都将做嵌入扩展。然而，如果设置的最近一次嵌入深度是2，则只有A和B被扩展，而C仍然作为函数调用。 为了使用这个编译指示，你必须设置编译程序选项/Ob为1或者2。用这个编译指示指定的深度设定在该指示后面的第一个函数开始生效。如果你在括号内不指定一个值，inline_depth设置嵌入深度到默认值8。 在扩展时，嵌入深度可以被减少而不能被增加。如果嵌入深度是6，同时在扩展过程中预处理程序遇到一个inline_depth编译指示设置为8，则深度保持为6。 嵌入深度0将拒绝嵌入扩展，深度255将设置在嵌入扩展时没有限制。如果用一个没有指定值的编译指示，则使用为默认值。 15 inline_recursion #pragma inline_recursion( [{on | off}] ) 控制直接或者相互间的递归函数调用式的嵌入扩展。用这个编译指示控制用inline，__inline标记的或在/Ob2选项下能自动嵌入的嵌入函数。使用这个编译指示需要设置编译程序选项/Ob为1或者2。默认的inline_recursion状态是off。这个编译指示在出现该编译指示之后第一个函数调用起作用，并不影响函数的定义。 inline_recursion编译指示控制如何扩展递归函数。如果inline_recursion是off，并且如果一个嵌入函数调用了它自己（直接的或者间接的），函数将仅仅扩展一次。如果inline_recursion是on,函数将扩展多次直到达到inline_depth的值或者容量限制。 16 intrinsic #pragma intrinsic( function1 [, function2, …] ) 指定对在编译指示参数表中函数调用是内含的。编译程序像嵌入代码一样生成内含函数，而不是函数调用。下面列出了具有内含形式的库函数。一旦遇到intrinsic编译指示，它从第一个包含指定内含函数的函数定义开始起作用。作用持续到源文件尾部或者出现包含相同内含函数的function编译指示。intrinsic编译指示只能用在函数定义外——在全局层次。 下列函数具有内含形式： _disable _enable _inp _inpw _lrotl _lrotr _outp _outpw _rotl _rotr _strset abs fabs labs memcmp memcpy memset strcat strcmp strcpy strlen 使用内含函数的程序更快，因为它们没有函数调用的额外代价，然而因为有附加的代码生成，可能比较大。 注意，_alloca和setjmp函数总是内含的，这个行为不受intrinsic编译指示影响。 下列浮点函数没有内含形式。然而它们具有直接将参数通过浮点芯片传送而不是推入程序堆栈的版本。 acos asin cosh fmod pow sinh tanh 当你同时指定/Oi和/Og编译程序选项（或者任何包含/Og，/Ox，/O1和/O2的选项）时下列浮点函数具有真正的内含形式。 atan exp log10 sqrt atan2 log sin tan cos 你可以用编译程序选项/Op或/Za来覆盖真内含浮点选项的生成。在这种情况下，函数会像一般库函数一样被生成，同时直接将参数通过浮点芯片传送而不是推入程序堆栈。 17 message #pragma message( messagestring ) 不中断编译，发送一个字符串文字量到标准输出。message编译指示的典型运用是在编译时显示信息。 下面的代码段用message编译指示在编译过程中显示一条信息： #if _M_IX86 == 500 #pragma message( “Pentium processor build” ) #endif messagestring参数可以是一个能够扩展成字符串文字量的宏，并且你能够用字符串文字量和宏的任何组合来构造。例如，下面的语句显示被编译文件的文件名和文件最后一次修改的日期和时间。 #pragma message( “Compiling “ FILE ) #pragma message( “Last modified on “ TIMESTAMP ) 18 once #pragma once 指定在创建过程中该编译指示所在的文件仅仅被编译程序包含（打开）一次。该编译指示的一种常见用法如下： //header.h #pragma once // Your C or C++ code would follow: 19 optimize 仅在专业版和企业版中存在 #pragma optimize( “[optimization-list]”, {on | off} ) 代码优化仅有Visual C++专业版和企业版支持。详见Visual C++ Edition。 指定在函数层次执行的优化。optimize编译选项必须在函数外出现，并且在该编译指示出现以后的第一个函数定义开始起作用。on和off参数打开或关闭在optimization-list指定的选项。 optimization-list能够是0或更多个在表2.2中给出的参数： 表 2.2 optimize编译指示的参数 参数 优化类型 a 假定没有别名。 g 允许全局优化。 p 增强浮点一致性。 s 或 t 指定更短或者更快的机器代码序列。 w 假定在函数调用中没有别名。 y 在程序堆栈中生成框架指针。 这些和在/O编译程序选项中使用的是相同的字母。例如： #pragma optimize( “atp”, on ) 用空字符串（””）的optimize编译指示是一种特别形式。它要么关闭所有的优化选项，要么恢复它们到原始（或默认）的设定。 #pragma optimize( “”, off ) #pragma optimize( “”, on ) 20 pack #pragma pack( [ n] ) 指定结构和联合成员的紧缩对齐。尽管用/Zp选项设定整个翻译单元的结构和联合成员的紧缩对齐，可以用pack编译指示在数据说明层次设定紧缩对齐。从出现该编译指示后的第一个结构或者联合说明开始生效。这个编译指示不影响定义。 当你使用#pragma pack(n)，其中n是1，2，4，8或者16，第一个以后的每个结构成员保存在较小的成员类型或者n字节边界上。如果你使用没有参数的#pragma pack，结构成员将被紧缩到由/Zp指定的值。默认的/Zp紧缩的大小是/Zp8。 编译程序还支持下面的增强语法： #pragma pack( [ [ { push | pop}, ] [ identifier, ] ] [ n ] ) 该语法允许你将使用不同紧缩编译指示的组件合并到同一个翻译单元内。 每次出现有push参数的pack编译指示将保存当前的紧缩对齐值到一个内部的编译程序堆栈。编译指示的参数列表从左向右读取。如果你使用了push，当前紧缩值被保存。如果你提供了一个n值，这个值将成为新的紧缩值。如果你指定了一个你选定的标示符，这个标示符将和新的紧缩值关联。 每次出现有pop参数的pack编译指示从内部编译程序堆栈顶部取出一个值并将那个值作为新的紧缩对齐。如果你用了pop，而内部编译程序堆栈是空的，对齐值将从命令行得到，同时给出一个警告。如果你用了pop并指定了n的值，那个值将成为新的紧缩值。如果你用了pop并指定了一个标示符，将移去所有保存在堆栈中的的值直到匹配的找到匹配的标示符，和该标示符关联的紧缩值也被从堆栈中移出来成为新的紧缩值。如果没有找到匹配的标示符，将从命令行获取紧缩值并产生一个1级警告。默认的紧缩对齐是8。 pack编译指示的新的增强功能允许你编写头文件保证在使用头文件之前和其后的紧缩值是一样的： /* File name: include1.h */ #pragma pack( push, enter_include1 ) / Your include-file code … / #pragma pack( pop, enter_include1 ) / End of include1.h / 在前面的例子中，进入头文件时将当前紧缩值和标示符enter_include1关联并推入，被记住。在头文件尾部的pack编译选项移去所有在头文件中可能遇到的紧缩值并移去和enter_include1关联的紧缩值。这样头文件保证了在使用头文件之前和其后的紧缩值是一样的。 新功能也允许你在你的代码内用pack编译指示为不同的代码，例如头文件设定不同的紧缩对齐。 #pragma pack( push, before_include1 ) #include “include1.h” #pragma pack( pop, before_include1 ) 在上一个例子中，你的代码受到保护，防止了在include.h中的任何紧缩值的改变。 21 pointers_to_members C++特有 #pragma pointers_to_members(pointer-declaration, [most-general-representation] ) 指定是否能够在相关类定义之前说明一个指向类成员的指针，并且用于控制指针的大小和解释指针的代码。你能够在你的源代码中使用pointers_to_members编译知识来代替/vmx编译程序选项。 pointer-declaration参数指出是否在相关函数定义之前或其后你已经说明了一个指向成员的指针。pointer-declaration参数是下面两个符号之一： 参数 说明 full_generality 生成安全的，但是有时不能优化的代码。如果有一些指向成员的指针在相关类定义之前说明，你要用full_generality。这个参数总是使用由most-general-representation指定的指针表示方式。 best_case 对于所有指向成员的指针用最佳的表示方式生成安全的，优化的代码。需要在说明一个指向类成员指针之前定义类。默认是best_case。 most-general-representaion参数指出在一个翻译单元中编译程序能够安全引用任何指向类成员指针的最小指针表示方式。这个参数可以是下列之一： 参数 说明 single_inheritance 最普通的表示方式是单继承，指向成员函数。如果用于指向具有多重或者虚拟继承方式类成员的指针，将产生一个错误。 multi_inheritance 最普通的表示方式是多重继承，指向成员函数。如果用于指向具有虚拟继承方式类成员的指针，将产生一个错误。 virtual_inheritance 最普通的表示方式是虚拟继承，指向成员函数。不会产生错误。当使用#pragma pointers_to_members (full_generality)时这是默认的参数。 22 setlocale #pragma setlocale( “locale-string” ) 定义用于翻译宽字符常数和字符串文字量时用的地区（国家和语言）。由于用于从多字节字符转换到宽字符的算法根据地区或者由于在运行可执行程序不同的地方进行编译而不同，这个编译指示提供一种在编译时指定目标地区的方式。这保证宽字符字符串将以正确的格式保存。默认的locale-string是“C”。“C”地区将字符串中的每个字符作为wchar_t（即unsigned int）映射其值。 23 vtordisp C++特有 #pragma vtordisp({on | off} ) 允许隐藏的附加vtordisp构造函数/析构函数替换成员。vtordisp编译指示仅能够用于具有虚拟基类的代码。如果派生类从一个虚拟基类重载了一个虚拟函数，并且如果派生类的构造函数或析构函数用指向虚拟基类的指针调用了这个函数，编译程序将根据虚拟基类在类中引入一个附加的隐藏“vtordisp”域。 vtodisp编译选项影响它后面的类布局。/vd0和/vd1选项为整个模块指定了相同的行为。指定off将禁止隐藏的vtordisp成员，指定on（默认）将在它们需要的时候允许vtordisp。仅在不可能出现类的构造函数和析构函数通过this指针调用其指向对象中的虚拟函数时才关闭vtordisp。 #pragma vtordisp( off ) class GetReal : virtual public { … }; #pragma vtordisp( on ) 24 warning #pragma warning( warning-specifier : warning-number-list [,warning-specifier : warning-number-list…] ) #pragma warning( push[ , n ] ) #pragma warning( pop ) 允许有选择地修改编译程序警告信息的行为。 warning-specifier能够是下列值之一： warning-specifier 含义 once 只显示指定信息一次。 default 对指定信息应用默认的编译程序选项。 1,2,3,4 对指定信息引用给定的警告等级。 disable 不显示指定信息。 error 对指定信息作为错误显示。 warning-number_list能够包含任何警告编号。如下，在一个编译指示中可以指定多个选项： #pragma warning( disable : 4507 34; once : 4385; error : 164 ) 这等价于： #pragma warning( disable : 4507 34 ) // Disable warning messages ​ // 4507 and 34. #pragma warning( once : 4385 ) // Issue warning 4385 ​ // only once. #pragma warning( error : 164 ) // Report warning 164 ​ // as an error. 对于那些关于代码生成的，大于4699的警告标号，warning编译指示仅在函数定义外时有效。如果指定的警告编号大于4699并且用于函数内时被忽略。下面例子说明了用warning编译指示禁止、然后恢复有关代码生成警告信息的正确位置： int a; #pragma warning( disable : 4705 ) void func() { ​ a; } #pragma warning( default : 4705 ) warning编译指示也支持下面语法： #pragma warning( push [ ,n ] ) #pragma warning( pop ) 这里n表示警告等级（1到4）。 warning(push)编译指示保存所有警告的当前警告状态。warning(push,n)保存所有警告的当前状态并将全局警告等级设置为n。 warning(pop)弹出最后一次推入堆栈中的警告状态。任何在push和pop之间改变的警告状态将被取消。考虑下面的例子： #pragma warning( push ) #pragma warning( disable : 4705 ) #pragma warning( disable : 4706 ) #pragma warning( disable : 4707 ) // Some code #pragma warning( pop ) 在这些代码的结束，pop恢复了所有警告的状态（包括4705，4706和4707）到代码开始时候的样子。 当你编写头文件时，你能用push和pop来保证任何用户修改的警告状态不会影响正常编译你的头文件。在头文件开始的地方使用push，在结束地方使用pop。例如，假定你有一个不能顺利在4级警告下编译的头文件，下面的代码改变警告等级到3，然后在头文件的结束时恢复到原来的警告等级。 #pragma warning( push, 3 ) // Declarations/ definitions #pragma warning( pop )]]></content>
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>C语言基础</category>
+        <category>C++</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -133,9 +148,14 @@
     <content type="text"><![CDATA[用专业术语来说, 进程是程序的一次动态执行.说简单点, 就是进程是系统中的某个任务.操作系统中有多个任务需要执行, 那么怎样执行才能使它们同步呢? 即如何让任务并发执行互不影响呢? 这就引出了进程同步中的经典问题: 生产者消费者问题, 哲学家进餐问题, 读写问题 生产者-消费者问题有一群生产者进程在生产产品, 并将这些产品提供给消费者进程取消费. 为使生产者进程与消费者进程能并发进行, 在两者间设置了一个具有n个缓冲区的缓冲池, 生产者进程将其所生产的产品翻入缓冲区中, 消费者进程可从一个缓冲区中取走产品取消费.生产者消费者进程都以异步方式进行, 但它们之间必须保持同步, 不允许消费者进程到空缓冲区去取产品, 也不允许生产者进程向已满的缓冲区投放产品. 一个缓冲池中有n个缓冲区, 只要缓冲池未满, 生产者便可以投放产品; 缓冲池为空, 消费者便可以消费产品 法一:记录型信号量1234567891011121314151617181920212223242526272829303132333435//生产者消费者问题//记录型信号量//缓冲池中有n个缓冲区, 互斥信号量mutex, //信号量empty表示空缓冲区数量, full表示满缓冲区的数量int in = out = 0;item buffer[n];semaphore mutex = 1, empty = n, full = 0;void producer() &#123; do &#123; producer an item nextp; wait(empty); wait(mutex); buffer[in] = nextp; in = (in + 1) % n; signal(mutex); signal(full); &#125; while(true);&#125;void consumer() &#123; do &#123; wait(full); wait(mutex); nextc = buffer[out]; out = (out + 1) % n; signal(mutex); signal(empty); consumer the item in nextc; &#125; while(true);&#125;void main() &#123; cobegin producer(); consumer(); coend&#125; 注意: 对信号量的wait()和signal()操作必定是成对出现的. 法二:AND型信号量1234567891011121314151617181920212223242526272829303132//AND型信号量//Swait(empty, mutex)代替wait(empty)和wait(mutex)//Ssignal(mutex,full)代替signal(mutext)和signal(full)//Swait(full, mutex)代替wait(full)和wait(mutex)//Ssignal(mutex, empty)代替signal(mutex)和signal(empty)int in = out = 0;item buffer[n];semaphore mutex = 1, empty = n, full = 0;void producer() &#123; do &#123; producer an item nextp; Swait(empty, mutex); buffer[in] = nextp; in = (in + 1) % n; Ssignal(mutex, full); &#125; while(true);&#125;void consumer() &#123; do &#123; Swait(full, mutex); nextc = buffer[out]; out = (out + 1) % n; Ssignal(mutex, empty); consumer the item in nextc; &#125; while(true);&#125;void main() &#123; cobegin producer(); consumer(); coend&#125; 法三: 管程12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758//管程//建立管程producerconsumer,PC/*put(x), 生产者利用该过程将自己生产的产品投放到缓冲池中, 并用整型变量count表示缓冲池中已有的产品数目,当count&gt;=N时, 表示缓冲池已满,生产者需等待.get(x), 消费者利用该过程从缓冲池中取出一个产品, 当count&lt;=0时, 表示缓冲池已无可用的产品, 消费者需等待condition 为notfull和notemptycwait(condition), 当管程被一个进程占用时, 其他进程调用该进程时阻塞, 并挂在条件condition的队列上csignal(condition), 唤醒在cwait执行后阻塞在条件condition队列上的进程, 如果这样的进程不止一个, 则选择其中一个实施唤醒操作, 如果队列为空, 则无操作而返回.*/Monitor producerconsumer &#123; item buffer[N]; int in, out; condition notfull, notempty; int count; public: void put(item x) &#123; if (count &gt;= N) cwait(notfull); buffer[in] = x; in = (in + 1) % N; count++; ssignal(notempty); &#125; void get(item x) &#123; if (count &lt;= 0) cwait(notempty); x = buffer[out]; out = (out + 1) % N; count--; csignal(notfull); &#125; &#123; in = 0; out = 0; count = 0; &#125;&#125;PC;void producer() &#123; item x; while (true) &#123; producer an item in nextp; PC.put(x); &#125;&#125;void consumer() &#123; item x; while (true) &#123; PC.get(x); consumer the item in nextc; &#125;&#125;void main() &#123; cobegin producer(); consumer(); coend&#125; 哲学家进餐问题五个哲学家公用一张圆桌, 分别坐在周围的五张桌子上, 在圆桌上有五个碗和五只筷子交叉排列, 它们的生活方式是交替的进行思考和进餐. 哲学家进行思考时不用筷子, 饥饿时取一只他两边的任意一只筷子(默认取左边的筷子, 没有时取右边的, 都没有时就取不了), 当他有两只筷子时就能进餐. 进餐后, 放下筷子继续思考.若只有一只筷子, 不放弃该筷子并等待拥有另一只筷子时再进餐. 用一个信号量表示一只筷子, 共五个信号量 semaphore chopsitck[5] = {1, 1, 1, 1, 1}; , 为 1 表示筷子未拿起, 为0表示筷子被拿起.那么第i为科学家的进餐活动就可以描述为 法一:记录型信号量12345678do &#123; wait(chopstick[i]); wait(chopstick[(i + 1) % 5]); //eat signal(chopstick[i]); signal(chopstick[(i + 1) % 5]); //think&#125; while (true); 假设五位哲学家都要拿筷子(都拿左手边), 那么将没有人可以 用餐, 就会陷入死锁状态.则哲学家进餐的解决方法: 1.至多允许四位哲学家拿同一边的筷子, 则可让至少一位哲学家先用餐, 用餐完后释放筷子进而让其他哲学家有机会用餐. 2.五位哲学家先竞争奇数(偶数)好筷子, 在竞争偶数(奇数)号筷子, 总会有一位哲学家能进餐. 法二: AND型信号量12345678//AND型信号量semaphore chopstick[5] = &#123;1, 1, 1, 1, 1&#125;;do &#123; //think Swait(chopsitck[(i + 1) % 5], chopsitck[i]); //eat Ssignal(chopsitck[(i + 1) % 5], chopsitck[i]);&#125; while (true); 读者-写者问题一个数据文件或记录可被多个进程所共享, 则我们称这个文件或记录为共享对象.读文件的进程称为Reader进程, 写文件的进程称为Writer进程.共享对象可以被多个Reader进程, 因为读进程并不会破坏数据, 但是Writer进程在任何时刻只能有一个, 且须与其他对象互斥的访问共享对象, 否则多个写进程会造成冲突. 读写者问题即一个Writer进程必须与其他进程互斥的访问共享对象. 设置写互斥信号量wmutex 设置读互斥信号量rmutex 整型变量readcount表示正在读的进程数目(Reader) 当readcount!=0时, 表示有Reader进程,此时不能进行Writer进程. 法一: 123456789101112131415161718192021222324252627282930313233343536//记录型信号量semaphore rmutext = 1, wmutext = 1;int readcount = 0;void Reader() &#123; do &#123; wait(rmutex); if (readcount == 0) &#123; wait(wmutex); &#125; readcount++; signal(rmutex); perform read operation; wait(rmutex); readcount--; if (readcount == 0) &#123; signal(wmutext); &#125; signal(rmutex); &#125; while (true);&#125;void Writer() &#123; do &#123; wait(wmutex); perform write operation; signal(wmutex); &#125; while (true);&#125;void main() &#123; cobegin Reader(); Writer(); coend&#125; 法二: 引入RN, 表示最多允许RN个Reader进程同时读 信号量L初始为RN 123456789101112131415161718192021222324252627//信号量集int RN;semaphore L = RN, mx = 1;void Reader() &#123; do &#123; Swait(L, 1, 1); Swait(mx, 1, 0); perform read operation; Ssignal(L, 1); &#125; while (true);&#125;void Writer() &#123; do &#123; Swait(mx, 1, 1; L, RN, 0); perform write operation; Ssignal(mx, 1); &#125; while (true);&#125;void main() &#123; cobegin Reader(); Writer(); coend&#125;]]></content>
       <categories>
         <category>程序人生</category>
-        <category>操作系统</category>
+        <category>系统编程</category>
         <category>多线程</category>
       </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>多线程</tag>
+        <tag>进程</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[强连通图经典算法——Tarjan算法]]></title>
@@ -283,8 +303,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>动态规划</tag>
         <tag>划分</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -335,8 +355,8 @@
     <content type="text"><![CDATA[在应用中，常用诸如点、圆等简单的几何对象代表现实世界中的实体。在涉及这些几何对象的问题中，常需要了解其邻域中其他几何对象的信息。例如，在空中交通控制问题中，若将飞机作为空间中移动的一个点来看待，则具有最大碰撞危险的2架飞机，就是这个空间中最接近的一对点。这类问题是计算几何学中研究的基本问题之一。下面我们着重考虑平面上的最接近点对问题。 ​ 最接近点对问题的提法是:给定平面上n个点，找其中的一对点，使得在n个点的所有点对中，该点对的距离最小。 ​ 严格地说，最接近点对可能多于1对。为了简单起见，这里只限于找其中的一对。 参考解答 ​ 这个问题很容易理解，似乎也不难解决。我们只要将每一点与其他n-1个点的距离算出，找出达到最小距离的两个点即可。然而，这样做效率太低，需要O(n2)的计算时间。在问题的计算复杂性中我们可以看到，该问题的计算时间下界为Ω(nlogn)。这个下界引导我们去找问题的一个θ(nlogn)算法。 这个问题显然满足分治法的第一个和第二个适用条件，我们考虑将所给的平面上n个点的集合S分成2个子集S1和S2，每个子集中约有n/2个点，·然后在每个子集中递归地求其最接近的点对。在这里，一个关键的问题是如何实现分治法中的合并步骤，即由S1和S2的最接近点对，如何求得原集合S中的最接近点对，因为S1和S2的最接近点对未必就是S的最接近点对。如果组成S的最接近点对的2个点都在S1中或都在S2中，则问题很容易解决。但是，如果这2个点分别在S1和S2中，则对于S1中任一点p，S2中最多只有n/2个点与它构成最接近点对的候选者，仍需做n2/4次计算和比较才能确定S的最接近点对。因此，依此思路，合并步骤耗时为O(n2)。整个算法所需计算时间T(n)应满足: T(n)=2T(n/2)+O(n2) ​ 它的解为T(n)=O(n2)，即与合并步骤的耗时同阶，显示不出比用穷举的方法好。从解递归方程的套用公式法，我们看到问题出在合并步骤耗时太多。这启发我们把注意力放在合并步骤上。 ​ 为了使问题易于理解和分析，我们先来考虑一维的情形。此时S中的n个点退化为x轴上的n个实数x1,x2,..,xn。最接近点对即为这n个实数中相差最小的2个实数。我们显然可以先将x1,x2,..,xn排好序，然后，用一次线性扫描就可以找出最接近点对。这种方法主要计算时间花在排序上，因此如在排序算法中所证明的，耗时为O(nlogn)。然而这种方法无法直接推广到二维的情形。因此，对这种一维的简单情形，我们还是尝试用分治法来求解，并希望能推广到二维的情形。 ​ 假设我们用x轴上某个点m将S划分为2个子集S1和S2，使得S1={x∈S|x≤m}；S2={x∈S|x&gt;m}。这样一来，对于所有p∈S1和q∈S2有p ​ 递归地在S1和S2上找出其最接近点对{p1,p2}和{q1,q2}，并设δ=min{|p1-p2|,|q1-q2|}，S中的最接近点对或者是{p1,p2}，或者是{q1,q2}，或者是某个{p3,q3}，其中p3∈S1且q3∈S2。如图1所示。 图1 一维情形的分治法 我们注意到，如果S的最接近点对是{p3,q3}，即|p3-q3|&lt;δ，则p3和q3两者与m的距离不超过δ，即|p3-m|&lt;δ，|q3-m|&lt;δ，也就是说，p3∈(m-δ,m]，q3∈(m,m+δ]。由于在S1中，每个长度为δ的半闭区间至多包含一个点（否则必有两点距离小于δ），并且m是S1和S2的分割点，因此(m-δ,m]中至多包含S中的一个点。同理，(m,m+δ]中也至多包含S中的一个点。由图1可以看出，如果(m-δ,m]中有S中的点，则此点就是S1中最大点。同理，如果(m,m+δ]中有S中的点，则此点就是S2中最小点。因此，我们用线性时间就能找到区间(m-δ,m]和(m,m+δ]中所有点，即p3和q3。从而我们用线性时间就可以将S1的解和S2的解合并成为S的解。也就是说，按这种分治策略，合并步可在O(n)时间内完成。这样是否就可以得到一个有效的算法了呢？还有一个问题需要认真考虑，即分割点m的选取，及S1和S2的划分。选取分割点m的一个基本要求是由此导出集合S的一个线性分割，即S=S1∪S2 ，S1∩S2=Φ，且S1{x|x≤m}；S2{x|x&gt;m}。容易看出，如果选取m=[max(S)+min(S)]/2，可以满足线性分割的要求。选取分割点后，再用O(n)时间即可将S划分成S1={x∈S|x≤m}和S2={x∈S|x&gt;m}。然而，这样选取分割点m，有可能造成划分出的子集S1和S2的不平衡。例如在最坏情况下，|S1|=1，|S2|=n-1，由此产生的分治法在最坏情况下所需的计算时间T(n)应满足递归方程: T(n)=T(n-1)+O(n) ​ 它的解是T(n)=O(n2)。这种效率降低的现象可以通过分治法中”平衡子问题”的方法加以解决。也就是说，我们可以通过适当选择分割点m，使S1和S2中有大致相等个数的点。自然地，我们会想到用S的n个点的坐标的中位数来作分割点。在选择算法中介绍的选取中位数的线性时间算法使我们可以在O(n)时间内确定一个平衡的分割点m。 ​ 至此，我们可以设计出一个求一维点集S中最接近点对的距离的算法CPAIR1如下。 function CPAIR1(S); begin if |S|=2 then δ=|x[2]-x[1]| // x[1..n]存放的是S中n个点的坐标 else if (|S|=1) then δ:=∞ else begin m:=S中各点的坐标值的中位数; 构造S1和S2,使S1={x∈S|x≤m}，S2={x∈S|x&gt;m}; δ1:=CPAIRI(S1); δ2:=CPAIRI(S2); p:=max(S1); q:=min(S2); δ:=min(δ1,δ2,q-p); end; return(δ); end; 由以上的分析可知，该算法的分割步骤和合并步骤总共耗时O(n)。因此，算法耗费的计算时间T(n)满足递归方程： ​ 解此递归方程可得T(n)=O(nlogn)。 ​ 这个算法看上去比用排序加扫描的算法复杂，然而这个算法可以向二维推广。 ​ 下面我们来考虑二维的情形。此时S中的点为平面上的点，它们都有2个坐标值x和y。为了将平面上点集S线性分割为大小大致相等的2个子集S1和S2，我们选取一垂直线l:x=m来作为分割直线。其中m为S中各点x坐标的中位数。由此将S分割为S1={p∈S|px≤m}和S2={p∈S|px&gt;m}。从而使S1和S2分别位于直线l的左侧和右侧，且S=S1∪S2 。由于m是S中各点x坐标值的中位数，因此S1和S2中的点数大致相等。 ​ 递归地在S1和S2上解最接近点对问题，我们分别得到S1和S2中的最小距离δ1和δ2。现设δ=min(δ1,δ1)。若S的最接近点对(p,q)之间的距离d(p,q)&lt;δ则p和q必分属于S1和S2。不妨设p∈S1，q∈S2。那么p和q距直线l的距离均小于δ。因此，我们若用P1和P2分别表示直线l的左边和右边的宽为δ的2个垂直长条，则p∈P1，q∈P2，如图2所示。 图2 距直线l的距离小于δ的所有点 在一维的情形，距分割点距离为δ的2个区间(m-δ,m](m,m+δ]中最多各有S中一个点。因而这2点成为唯一的末检查过的最接近点对候选者。二维的情形则要复杂些，此时，P1中所有点与P2中所有点构成的点对均为最接近点对的候选者。在最坏情况下有n2/4对这样的候选者。但是P1和P2中的点具有以下的稀疏性质，它使我们不必检查所有这n2/4对候选者。考虑P1中任意一点p,它若与P2中的点q构成最接近点对的候选者，则必有d(p,q)&lt;δ。满足这个条件的P2中的点有多少个呢？容易看出这样的点一定落在一个δ×2δ的矩形R中，如图3所示。 图3 包含点q的δ×2δ的矩形R ​ 由δ的意义可知P2中任何2个S中的点的距离都不小于δ。由此可以推出矩形R中最多只有6个S中的点。事实上，我们可以将矩形R的长为2δ的边3等分，将它的长为δ的边2等分，由此导出6个（δ/2）×（2δ/3）的矩形。如图4(a)所示。 图4 矩形R中点的稀疏性 ​ 若矩形R中有多于6个S中的点，则由鸽舍原理易知至少有一个δ×2δ的小矩形中有2个以上S中的点。设u,v是这样2个点，它们位于同一小矩形中，则 ​ 因此d(u,v)≤5δ/6&lt;δ 。这与δ的意义相矛盾。也就是说矩形R中最多只有6个S中的点。图4(b)是矩形R中含有S中的6个点的极端情形。由于这种稀疏性质，对于P1中任一点p，P2中最多只有6个点与它构成最接近点对的候选者。因此，在分治法的合并步骤中，我们最多只需要检查6×n/2=3n对候选者，而不是n2/4对候选者。这是否就意味着我们可以在O(n)时间内完成分治法的合并步骤呢？现在还不能作出这个结论，因为我们只知道对于P1中每个S1中的点p最多只需要检查P2中的6个点，但是我们并不确切地知道要检查哪6个点。为了解决这个问题，我们可以将p和P2中所有S2的点投影到垂直线l上。由于能与p点一起构成最接近点对候选者的S2中点一定在矩形R中，所以它们在直线l上的投影点距p在l上投影点的距离小于δ。由上面的分析可知，这种投影点最多只有6个。因此，若将P1和P2中所有S的点按其y坐标排好序，则对P1中所有点p，对排好序的点列作一次扫描，就可以找出所有最接近点对的候选者，对P1中每一点最多只要检查P2中排好序的相继6个点。 ​ 至此，我们可以给出用分治法求二维最接近点对的算法CPAIR2如下: function CPAIR2(S); begin if |S|=2 then δ:=S中这2点的距离 else if |S|=0 then δ:=∞ else begin \1. m:=S中各点x坐标值的中位数; 构造S1和S2，使S1={p∈S|px≤m}和S2={p∈S|px&gt;m} \2. δ1:=CPAIR2(S1);δ2:=CPAIR2(S2); \3. δm:=min(δ1,δ2); \4. 设P1是S1中距垂直分割线l的距离在δm之内的所有点组成的集合， P2是S2中距分割线l的距离在δm之内所有点组成的集合。将P1和P2中的点依其y坐标值从小到大排序，并设P1和P2是相应的已排好序的点列; 通过扫描P1以及对于P1中每个点检查P2中与其距离在δm之内的所有点(最多6个)可以完成合并。当P1中的扫描指针逐次向上移动 时，P2*中的扫描指针可在宽为2δm的一个区间内移动。设δl是按 这种扫描方式找到的点对间的最小距离; \6. δ=min(δm,δl); end; return(δ); end; 下面我们来分析一下算法CPAIR2的计算复杂性。设对于n个点的平面点集S，算法耗时T(n)。算法的第1步和第5步用了O(n)时间，第3步和第6步用了常数时间，第2步用了2T(n/2)时间。若在每次执行第4步时进行排序，则在最坏情况下第4步要用O(nlogn)时间。这不符合我们的要求。因此，在这里我们要作一个技术上的处理。我们采用设计算法时常用的预排序技术，即在使用分治法之前，预先将S中n个点依其y坐标值排好序，设排好序的点列为P。在执行分治法的第4步时，只要对P作一次线性扫描，即可抽取出我们所需要的排好序的点列P1和P2。然后，在第5步中再对P1*作一次线性扫描，即可求得δl。因此，第4步和第5步的两遍扫描合在一起只要用O(n)时间。这样一来，经过预排序处理后的算法CPAIR2所需的计算时间T(n)满足递归方程： ​ 显而易见T(n)=O(nlogn)，预排序所需的计算时间为O(n1ogn)。因此，整个算法所需的计算时间为O(nlogn)。在渐近的意义下，此算法已是最优的了。]]></content>
       <categories>
         <category>程序人生</category>
-        <category>训练之路</category>
-        <category>分治</category>
+        <category>算法</category>
+        <category>计算几何</category>
       </categories>
       <tags>
         <tag>分治</tag>
@@ -424,14 +444,13 @@
       <categories>
         <category>训练之路</category>
         <category>算法</category>
-        <category>A*算法</category>
+        <category>搜索</category>
       </categories>
       <tags>
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
         <tag>最短路</tag>
         <tag>A*算法</tag>
-        <tag>k短路</tag>
       </tags>
   </entry>
   <entry>
@@ -772,8 +791,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>stl</tag>
         <tag>算法</tag>
+        <tag>stl</tag>
       </tags>
   </entry>
   <entry>
@@ -786,8 +805,8 @@
         <category>stl</category>
       </categories>
       <tags>
-        <tag>stl</tag>
         <tag>算法</tag>
+        <tag>stl</tag>
       </tags>
   </entry>
   <entry>
@@ -821,7 +840,7 @@
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>文件</category>
+        <category>C语言</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -863,7 +882,7 @@
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>结构体</category>
+        <category>C语言</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -893,7 +912,7 @@
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>结构体</category>
+        <category>C语言</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -907,7 +926,7 @@
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>指针</category>
+        <category>C语言</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -921,7 +940,7 @@
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>C语言基础</category>
+        <category>C语言</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -942,8 +961,8 @@
         <tag>C/C++</tag>
         <tag>算法</tag>
         <tag>python</tag>
-        <tag>组合数学</tag>
         <tag>暴力枚举</tag>
+        <tag>组合数学</tag>
       </tags>
   </entry>
   <entry>
@@ -1311,7 +1330,7 @@
   </entry>
   <entry>
     <title><![CDATA[[杂项项目]C语言实现小游戏——控制台扫雷]]></title>
-    <url>%2F2018%2F04%2F20%2F2018-04-20-3%2F</url>
+    <url>%2F2018%2F04%2F20%2F2018-04-20-2%2F</url>
     <content type="text"><![CDATA[程序比较简单，需要输入坐标x，y进行翻牌。当时现场演示时不到50分钟边讲边写的，实现了基本的扫雷功能，只是没有计分计时排名之类的辅助功能。由于程序较简单，也没必要再加工了。另外本程序的特点是第一次输入一定不会是雷。此外，如果翻牌后周围没有雷，即为0，将会搜索周围所以为0的牌。此处用到了dfs。仅供参考。 项目版： mine.h 1234567#pragma once #define BOOM 10 #define SIZE 10 void init(char(*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int a, int b);//初始化扫雷页面void dfs(char(*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int i, int j);//如果展开面为0，通过深搜将周围所以为0的区域展开 int check(char(*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int x, int y);//判断胜利条件 void show(char(*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int x, int y);//展示扫雷页面 mine.cpp 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #include&lt;string.h&gt; #include&lt;time.h&gt; #include&quot;mine.h&quot; int stemp[8][2] = &#123; &#123; 0,1 &#125;,&#123; 0,-1 &#125;,&#123; 1,0 &#125;,&#123; -1,0 &#125;,&#123; 1,1 &#125;,&#123; -1,-1 &#125;,&#123; 1,-1 &#125;,&#123; -1,1 &#125; &#125;;//深搜时上下左右四个方向搜索 void init(char (*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int a, int b) &#123; int x, y; visit[a][b] = 0; for (int i = 0; i &lt; 10; i++) &#123; do &#123; x = rand() % SIZE + 1; y = rand() % SIZE + 1; &#125; while (visit[x][y] == 0); if (visit[x][y] == -1) &#123; visit[x][y] == 0; MAP[x][y] = &apos;*&apos;; &#125; &#125; for (int i = 1; i &lt;= SIZE; i++) &#123; for (int j = 1; j &lt;= SIZE; j++) &#123; if (MAP[i][j] != &apos;*&apos;) &#123; MAP[i][j] = &apos;0&apos;; for (int k = 0; k &lt; 8; k++) &#123; if (MAP[i + stemp[k][0]][j + stemp[k][1]] == &apos;*&apos;) MAP[i][j]++; &#125; &#125; &#125; &#125; &#125; void dfs(char(*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int i, int j) &#123; visit[i][j] = 1; for (int k = 0; k &lt; 8; k++) &#123; if (MAP[i + stemp[k][0]][j + stemp[k][1]] == &apos;0&apos;&amp;&amp;visit[i + stemp[k][0]][j + stemp[k][1]] != 1) dfs(MAP, visit, i + stemp[k][0], j + stemp[k][1]); else if (MAP[i + stemp[k][0]][j + stemp[k][1]] != &apos;*&apos;&amp;&amp;visit[i + stemp[k][0]][j + stemp[k][1]] != 1) visit[i + stemp[k][0]][j + stemp[k][1]] = 1; &#125; &#125; int check(char(*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int x, int y) &#123; if (MAP[x][y] == &apos;*&apos;) &#123; visit[x][y] = 1; return 1; &#125; else if (MAP[x][y] == &apos;0&apos;) &#123; dfs(MAP, visit, x, y); &#125; else visit[x][y] = 1; int temp = 0; for (int i = 1; i &lt;= SIZE; i++) for (int j = 1; j &lt;= SIZE; j++) &#123; if (visit[i][j] == -1) temp++; &#125; if (temp == BOOM) return 2; return 0; &#125; void show(char(*MAP)[SIZE + 2], int(*visit)[SIZE + 2], int x, int y) &#123; printf(&quot;-------------------------------------------------\n&quot;); for (int i = 0; i &lt;= SIZE + 1; i++) &#123; printf(&quot;|&quot;); for (int j = 0; j &lt;= SIZE + 1; j++) &#123; if (visit[i][j] == 1) &#123; printf(&quot; %c &quot;, MAP[i][j]); printf(&quot;|&quot;); &#125; else &#123; printf(&quot; &quot;); printf(&quot;|&quot;); &#125; &#125; printf(&quot;\n&quot;); printf(&quot;-------------------------------------------------\n&quot;); &#125; &#125; main.cpp 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #include&lt;string.h&gt; #include&lt;time.h&gt; #include&quot;mine.h&quot; char MAP[SIZE + 2][SIZE + 2]; int visit[SIZE + 2][SIZE + 2]; int x, y;//坐标 int main() &#123; srand(time(0)); memset(visit, -1, sizeof(visit)); MAP[0][0] = &apos; &apos;; for (int i = 1; i &lt;= SIZE; i++) &#123; MAP[0][i] = &apos;A&apos; + i - 1; MAP[i][0] = &apos;a&apos; + i - 1; MAP[SIZE + 1][i] = &apos;A&apos; + i - 1; MAP[i][SIZE + 1] = &apos;a&apos; + i - 1; &#125; for (int i = 1; i &lt;= SIZE + 1; i++) &#123; visit[0][i] = 1; visit[i][0] = 1; visit[SIZE + 1][i] = 1; visit[i][SIZE + 1] = 1; &#125; show(MAP, visit, x, y); scanf(&quot;%d%d&quot;, &amp;y, &amp;x); init(MAP,visit, x, y); memset(visit, -1, sizeof(visit)); for (int i = 1; i &lt;= SIZE + 1; i++) &#123; visit[0][i] = 1; visit[i][0] = 1; visit[SIZE + 1][i] = 1; visit[i][SIZE + 1] = 1; &#125; check(MAP, visit, x, y); system(&quot;cls&quot;); show(MAP, visit, x, y); while (MAP[x][y] != &apos;*&apos;) &#123; scanf(&quot;%d%d&quot;, &amp;y, &amp;x); int res = check(MAP, visit, x, y); system(&quot;cls&quot;); show(MAP, visit, x, y); if (res == 2) &#123; printf(&quot;Win\n&quot;); system(&quot;pause&quot;); return 0; &#125; else if (res == 1) &#123; printf(&quot;Lose\n&quot;); system(&quot;pause&quot;); return 0; &#125; &#125; return 0; &#125; 另附原始版： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129#include&lt;stdio.h&gt; #include&lt;stdlib.h&gt; #include&lt;string.h&gt; #include&lt;time.h&gt; #define BOOM 10 #define SIZE 10 char MAP[SIZE + 2][SIZE + 2]; int visit[SIZE + 2][SIZE + 2]; int x, y; int stemp[8][2] = &#123; &#123;0,1&#125;,&#123;0,-1&#125;,&#123;1,0&#125;,&#123;-1,0&#125;,&#123;1,1&#125;,&#123;-1,-1&#125;,&#123;1,-1&#125;, &#123;-1,1&#125; &#125;; void init(int a, int b) &#123; int x, y; visit[a][b] = 0; for (int i = 0; i &lt; 10; i++) &#123; do &#123; x = rand() % SIZE + 1; y = rand() % SIZE + 1; &#125; while (visit[x][y] == 0); if (visit[x][y] == -1) &#123; visit[x][y] == 0; MAP[x][y] = &apos;*&apos;; &#125; &#125; for (int i = 1; i &lt;= SIZE; i++) &#123; for (int j = 1; j &lt;= SIZE; j++) &#123; if (MAP[i][j] != &apos;*&apos;) &#123; MAP[i][j] = &apos;0&apos;; for (int k = 0; k &lt; 8; k++) &#123; if (MAP[i + stemp[k][0]][j + stemp[k][1]] == &apos;*&apos;) MAP[i][j]++; &#125; &#125; &#125; &#125; &#125; void dfs(int i, int j) &#123; visit[i][j] = 1; for (int k = 0; k &lt; 8; k++) &#123; if (MAP[i + stemp[k][0]][j + stemp[k][1]] == &apos;0&apos;&amp;&amp;visit[i + stemp[k][0]][j + stemp[k][1]] != 1) dfs(i + stemp[k][0], j + stemp[k][1]); else if (MAP[i + stemp[k][0]][j + stemp[k][1]] != &apos;*&apos;&amp;&amp;visit[i + stemp[k][0]][j + stemp[k][1]] != 1) visit[i + stemp[k][0]][j + stemp[k][1]] = 1; &#125; &#125; int check() &#123; if (MAP[x][y] == &apos;*&apos;) &#123; visit[x][y] = 1; return 1; &#125; else if (MAP[x][y] == &apos;0&apos;) &#123; dfs(x, y); &#125; else visit[x][y] = 1; int temp = 0; for (int i = 1; i &lt;= SIZE; i++) for (int j = 1; j &lt;= SIZE; j++) &#123; if (visit[i][j] == -1) temp++; &#125; if (temp == BOOM) return 2; return 0; &#125; void show() &#123; printf(&quot;-------------------------------------------------\n&quot;); for (int i = 0; i &lt;= SIZE + 1; i++) &#123; printf(&quot;|&quot;); for (int j = 0; j &lt;= SIZE + 1; j++) &#123; if (visit[i][j] == 1) &#123; printf(&quot; %c &quot;, MAP[i][j]); printf(&quot;|&quot;); &#125; else &#123; printf(&quot; &quot;); printf(&quot;|&quot;); &#125; &#125; printf(&quot;\n&quot;); printf(&quot;-------------------------------------------------\n&quot;); &#125; &#125; int main() &#123; srand(time(0)); memset(visit, -1, sizeof(visit)); MAP[0][0] = &apos; &apos;; for (int i = 1; i &lt;= SIZE; i++) &#123; MAP[0][i] = &apos;A&apos; + i - 1; MAP[i][0] = &apos;a&apos; + i - 1; MAP[SIZE + 1][i] = &apos;A&apos; + i - 1; MAP[i][SIZE + 1] = &apos;a&apos; + i - 1; &#125; for (int i = 1; i &lt;= SIZE + 1; i++) &#123; visit[0][i] = 1; visit[i][0] = 1; visit[SIZE + 1][i] = 1; visit[i][SIZE + 1] = 1; &#125; show(); scanf(&quot;%d%d&quot;, &amp;x, &amp;y); init(x, y); memset(visit, -1, sizeof(visit)); for (int i = 1; i &lt;= SIZE + 1; i++) &#123; visit[0][i] = 1; visit[i][0] = 1; visit[SIZE + 1][i] = 1; visit[i][SIZE + 1] = 1; &#125; check(); system(&quot;cls&quot;); show(); while (MAP[x][y] != &apos;*&apos;) &#123; scanf(&quot;%d%d&quot;, &amp;x, &amp;y); int res = check(); system(&quot;cls&quot;); show(); if (res == 2) &#123; printf(&quot;Win\n&quot;); system(&quot;pause&quot;); return 0; &#125; else if (res == 1) &#123; printf(&quot;Lose\n&quot;); system(&quot;pause&quot;); return 0; &#125; &#125; return 0; &#125;]]></content>
       <categories>
         <category>程序人生</category>
@@ -1326,7 +1345,7 @@
   </entry>
   <entry>
     <title><![CDATA[[杂项项目]纯C语言实现随机生成数独九宫格]]></title>
-    <url>%2F2018%2F04%2F20%2F2018-04-20-2%2F</url>
+    <url>%2F2018%2F04%2F20%2F2018-04-20-1%2F</url>
     <content type="text"><![CDATA[一年前的程序，可以生成一个数独的九宫格。当时想这种方法想了3天，终于实现了。由于当时刚熟悉指针，因此指针用的比较多。本人比较懒，先把代码贴出来，后序补充具体实现方法。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256257258#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;time.h&gt; void main() &#123; int a[9][9] = &#123; 0 &#125;; int *p[3][3], *m[3][6], *n[3][6], *r[9][4], *aa[9][9]; int **q[9]; int i, j, k, l, h, t, s = 0; void rank(int *x, int *y); bool check(int a[9][9], int n); srand((int)time(0)); for (i = 0; i &lt; 3; i++) for (j = 0; j &lt; 3; j++) p[i][j] = &amp;a[i * 3 + 1][j * 3 + 1]; for (k = 0; k &lt; 9; k++) q[k] = &amp;p[k / 3][k % 3]; for (i = 0; i &lt; 3; i++) for (j = 0; j &lt; 6; j++) &#123; m[i][j] = &amp;a[i * 3 + 1][2 * j - j / 2]; n[i][j] = &amp;a[2 * j - j / 2][i * 3 + 1]; &#125; for (k = 0; k &lt; 9; k++) for (l = 0; l &lt; 4; l++) r[k][l] = &amp;a[(k / 3) * 3 + (l / 2) * 2][(k % 3) * 3 + (l % 2) * 2]; for (i = 0; i &lt; 9; i++) for (j = 0; j &lt; 9; j++) aa[i][j] = &amp;a[i][j]; step1: for (i = 0; i &lt; 9; i++) &#123; next1: **q[i] = rand() % 10; if (**q[i] == 0) goto next1; for (j = 0; j &lt; i; j++) if (**q[j] == **q[i]) goto next1; &#125; step2: for (i = 0; i &lt; 3; i++) for (j = 0; j &lt; 6; j++) &#123; next2: *m[i][j] = rand() % 10; if (*m[i][j] == 0) goto next2; for (k = 0; k &lt; 3; k++) if (*m[i][j] == *p[i][k]) goto next2; for (k = 0; k &lt; j; k++) if (*m[i][j] == *m[i][k]) goto next2; for (k = 0; k &lt; i; k++) if (*m[i][j] == *m[k][j]) goto step2; &#125; step3: for (i = 0; i &lt; 3; i++) &#123; next4: for (j = 0; j &lt; 6; j++) &#123; next3: *n[i][j] = rand() % 10; if (*n[i][j] == 0) goto next3; for (k = 0; k &lt; 3; k++) if (*n[i][j] == *p[k][i]) goto next3; for (k = 0; k &lt; j; k++) if (*n[i][j] == *n[i][k]) goto next3; for (l = 0; l &lt; 2; l++) &#123; if (*n[i][j] == *m[j / 2][i * 2 + l]) goto next4; &#125; for (k = 0; k &lt; i; k++) if (*n[i][j] == *n[k][j]) goto step3; &#125; &#125; step4: for (i = 0; i &lt; 3; i++) &#123; for (h = 0; h &lt; 2; h++) &#123; next6: for (l = 0; l &lt; 3; l++) for (j = 0; j &lt; 2; j++) &#123; next5: *r[i * 3 + l][h * 2 + j] = rand() % 10; if (*r[i * 3 + l][h * 2 + j] == 0) goto next5; if (*r[i * 3 + l][h * 2 + j] == **q[i * 3 + l]) goto next5; for (k = 0; k &lt; h * 2 + j; k++) if (*r[i * 3 + l][h * 2 + j] == *r[i * 3 + l][k]) goto next5; for (k = 0; k &lt; 2; k++) &#123; if (*r[i * 3 + l][h * 2 + j] == *m[i][l * 2 + k]) goto next5; if (*r[i * 3 + l][h * 2 + j] == *n[l][i * 2 + k]) goto next5; &#125; for (k = 0; k &lt;= l * 3 + j * 2; k++) for (t = 0; t &lt; k; t++) if (a[i * 3 + h * 2][k] == a[i * 3 + h * 2][t]) goto next6; &#125; &#125; &#125; step5: for (i = 0; i &lt; 3; i++) &#123; if (check(a, i) == false) &#123; for (j = 0; j &lt; 9; j++) &#123; rank(aa[j][i * 3], aa[j][i * 3 + 2]); if (check(a, i) == false) rank(aa[j][i * 3], aa[j][i * 3 + 2]); else if (check(a, i) == true) break; &#125; &#125; if (check(a, i) == false) &#123; for (j = 0; j &lt; 9; j++) &#123; for (k = 8; k &gt; j; k--) &#123; rank(aa[j][i * 3], aa[j][i * 3 + 2]); rank(aa[k][i * 3], aa[k][i * 3 + 2]); if (check(a, i) == false) &#123; rank(aa[j][i * 3], aa[j][i * 3 + 2]); rank(aa[k][i * 3], aa[k][i * 3 + 2]); &#125; else if (check(a, i) == true) break; &#125; if (check(a, i) == true) break; &#125; &#125; if (check(a, i) == false) &#123; for (l = 0; l &lt; 9; l++) &#123; for (j = l + 1; j &lt; 9; j++) &#123; for (k = 8; k &gt; j; k--) &#123; rank(aa[l][i * 3], aa[l][i * 3 + 2]); rank(aa[j][i * 3], aa[j][i * 3 + 2]); rank(aa[k][i * 3], aa[k][i * 3 + 2]); if (check(a, i) == false) &#123; rank(aa[l][i * 3], aa[l][i * 3 + 2]); rank(aa[j][i * 3], aa[j][i * 3 + 2]); rank(aa[k][i * 3], aa[k][i * 3 + 2]); &#125; else if (check(a, i) == true) break; &#125; if (check(a, i) == true) break; &#125; if (check(a, i) == true) break; &#125; &#125; if (check(a, i) == false) &#123; for (l = 0; l &lt; 6; l++) &#123; for (h = l + 1; h &lt; 7; h++) &#123; for (j = h + 1; j &lt; 8; j++) &#123; for (k = 8; k &gt; j; k--) &#123; rank(aa[l][i * 3], aa[l][i * 3 + 2]); rank(aa[h][i * 3], aa[h][i * 3 + 2]); rank(aa[j][i * 3], aa[j][i * 3 + 2]); rank(aa[k][i * 3], aa[k][i * 3 + 2]); if (check(a, i) == false) &#123; rank(aa[l][i * 3], aa[l][i * 3 + 2]); rank(aa[h][i * 3], aa[h][i * 3 + 2]); rank(aa[j][i * 3], aa[j][i * 3 + 2]); rank(aa[k][i * 3], aa[k][i * 3 + 2]); &#125; else if (check(a, i) == true) break; &#125; if (check(a, i) == true) break; &#125; if (check(a, i) == true) break; &#125; if (check(a, i) == true) break; &#125; &#125; if (check(a, i) == false) goto step4; &#125; printf(&quot;+---------------+---------------+---------------+\n&quot;); printf(&quot;| | | |\n&quot;); for (i = 0; i &lt; 9; i++) &#123; printf(&quot;| &quot;); for (j = 0; j &lt; 9; j++) &#123; printf(&quot;%-4d&quot;, a[i][j]); if ((j + 1) % 3 == 0) printf(&quot;| &quot;); &#125; printf(&quot;\n&quot;); printf(&quot;| | | |\n&quot;); if ((i + 1) % 3 == 0) &#123; printf(&quot;+---------------+---------------+---------------+\n&quot;); if (i &lt; 8) printf(&quot;| | | |\n&quot;); &#125; &#125; system(&quot;pause&quot;); &#125; void rank(int *x, int *y) &#123; int t; t = *x; *x = *y; *y = t; &#125; bool check(int a[9][9], int n) &#123; int i, j; for (i = 0; i &lt; 9; i++) for (j = 0; j &lt; i; j++) if (a[i][n * 3] == a[j][n * 3]) return false; return true; &#125;]]></content>
       <categories>
         <category>程序人生</category>
@@ -1360,7 +1379,7 @@
       <categories>
         <category>训练之路</category>
         <category>算法</category>
-        <category>BFS</category>
+        <category>搜索</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -1377,7 +1396,7 @@
       <categories>
         <category>训练之路</category>
         <category>算法</category>
-        <category>DFS</category>
+        <category>搜索</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -1388,12 +1407,12 @@
   </entry>
   <entry>
     <title><![CDATA[[位运算]位运算的4个简单应用]]></title>
-    <url>%2F2018%2F04%2F13%2F2018-04-13%20-%201%2F</url>
+    <url>%2F2018%2F04%2F13%2F2018-04-13-1%2F</url>
     <content type="text"><![CDATA[\1. 不用任何比较判断两个数中大的那个数 我们将两个数做差，得到另一个数，判断这个数的符号位就可以了。当然，不能直接使用判断语句，所以我们使用位运算来操作。 \2. 两个相同的数异或结果等于0。 就这道题而言，在运算过程中会产生一个中间值，即a与b的异或结果，a异或b再异或b就会等于a，如果第二次异或a就会等于b。 所以直接三个异或就可以搞定 \3. 整数的二进制中有多少个1 每次循环采用n&amp;=(n-1)，这样可以跳过二进制位是0的数。 \4. 数组中只有一个数出现了奇数次，其他数都出现偶数次，找出这个数 这道题还是使用了异或的性质，两个相同的数异或等于0，遍历一遍数组就可以得到出现奇数次的那个数。]]></content>
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>位运算</category>
+        <category>C语言</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -1401,20 +1420,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F04%2F11%2F2018-04-11%2F</url>
-    <content type="text"><![CDATA[每个人曾经都是这样。生病时才会回忆健康的时光是多么舒畅，重病时才会怀念轻病时的日子是多么安详。陷入低谷时才会醒悟平坦的道路上多么晴朗，堕入深渊时才会感谢低谷时的阳光多么豁亮。终于明白，每时每刻的我们都是幸运的，因为任何苦难之后都可能会加上一个“更”字。]]></content>
-      <categories>
-        <category>心路历程</category>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[C语言允许初始化列表中末尾出现多余的逗号]]></title>
-    <url>%2F2018%2F04%2F01%2F2018-04-1%2F</url>
+    <url>%2F2018%2F04%2F01%2F2018-04-01%2F</url>
     <content type="text"><![CDATA[C语言允许初始化列表中出现多余的逗号，例如： 1int days[] = &#123; 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, &#125;; 为什么这种特性是有用的？ 123456789101112#include &lt;stdio.h&gt; int main(int argc,char** argv)&#123; enum qs&#123; Va = 5, Vb, Vc, &#125; s; printf(&quot;a=%d,b=%d,c=%d&quot;,Va,Vb,Vc); return 0; &#125; 像enum枚举中的条目有可能是根据其它资源来的，而程序员会制作代码生成工具来生成它，所以就允许enum中的多余逗号。像int i = 9,j = 0;这种用法完全可以拆成int i=9;int j=0;因此不会增加代码生成器的负担，所以不支持int i=9,j=0,; 像这种代码，如果用代码生成器去读资源然后写进去，那么每生成一行都需要在末尾加一个逗号来分隔。C允许最后一行有多余的逗号，那就可以不用单独去处理最后一行了，减轻了代码生成器的制作负担，同时因为不用自行删除最后一个逗号，代码生成器的编写也就更不容易出错了。]]></content>
       <categories>
         <category>程序人生</category>
@@ -1443,12 +1450,12 @@
   </entry>
   <entry>
     <title><![CDATA[C/C++八进制赋值与输入常见陷阱]]></title>
-    <url>%2F2018%2F03%2F29%2F2018-03-29%20-%201%2F</url>
+    <url>%2F2018%2F03%2F29%2F2018-03-29-1%2F</url>
     <content type="text"><![CDATA[在C语言及C++中，一个整形数值前如果有一个数字0，则代表该整形数值为八进制数。例如int a，a = 010，则a的十进制数值为8，八进制数值为10。但是在输入a的时候，输入010，如果用scanf（“%d”，&amp;a），则将会被当做十进制10识别。而在c++中使用cout&lt;&lt;a时，也将会被默认为十进制输入。以下是测试用例。 12345678910#include&lt;iostream&gt; using namespace std; int main() &#123; int a = 010; cout &lt;&lt;&quot;将010赋给a时：a = &quot;&lt;&lt; a &lt;&lt; endl; cout &lt;&lt; &quot;请输入a:&quot;; cin &gt;&gt; a; cout &lt;&lt; &quot;将010输入给a时：a = &quot; &lt;&lt; a; return 0; &#125; 由此可知，cout默认是以十进制进行输入的。因此，我们在赋值与输入时，得格外注意进制之间的转换。例如： 12345678struct temp&#123; int a; int b; int c; &#125;temp_1 = &#123; 001, 010, 222 &#125;; 我们经常会在赋值时为了将数值对齐显得美观而在数值之前添加0，这样往往会导致得到的结果错误，因为系统将之默认为八进制赋值。]]></content>
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>C语言基础</category>
+        <category>C语言</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -1495,7 +1502,7 @@
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>结构体</category>
+        <category>C++基础</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -1520,12 +1527,12 @@
   </entry>
   <entry>
     <title><![CDATA[[BFS]愿天下有情人都是失散多年的兄妹]]></title>
-    <url>%2F2018%2F03%2F26%2F2018-03-26-2%2F</url>
+    <url>%2F2018%2F03%2F26%2F2018-03-26-1%2F</url>
     <content type="text"><![CDATA[题目概述：L2-016. 愿天下有情人都是失散多年的兄妹时间限制 200 ms 内存限制 65536 kB 代码长度限制 8000 B 判题程序 Standard 作者 陈越 呵呵。大家都知道五服以内不得通婚，即两个人最近的共同祖先如果在五代以内（即本人、父母、祖父母、曾祖父母、高祖父母）则不可通婚。本题就请你帮助一对有情人判断一下，他们究竟是否可以成婚？ 输入格式： 输入第一行给出一个正整数N（2 &lt;= N &lt;= 104），随后N行，每行按以下格式给出一个人的信息： 本人ID 性别 父亲ID 母亲ID 其中ID是5位数字，每人不同；性别M代表男性、F代表女性。如果某人的父亲或母亲已经不可考，则相应的ID位置上标记为-1。 接下来给出一个正整数K，随后K行，每行给出一对有情人的ID，其间以空格分隔。 注意：题目保证两个人是同辈，每人只有一个性别，并且血缘关系网中没有乱伦或隔辈成婚的情况。 输出格式： 对每一对有情人，判断他们的关系是否可以通婚：如果两人是同性，输出“Never Mind”；如果是异性并且关系出了五服，输出“Yes”；如果异性关系未出五服，输出“No”。 输入样例： 12345678910111213141516171819202122232425262728293031323334352400001 M 01111 -100002 F 02222 0333300003 M 02222 0333300004 F 04444 0333300005 M 04444 0555500006 F 04444 0555500007 F 06666 0777700008 M 06666 0777700009 M 00001 0000200010 M 00003 0000600011 F 00005 0000700012 F 00008 0888800013 F 00009 0001100014 M 00010 0999900015 M 00010 0999900016 M 10000 0001200017 F -1 0001200018 F 11000 0001300019 F 11100 0001800020 F 00015 1111000021 M 11100 0002000022 M 00016 -100023 M 10012 0001700024 M 00022 10013900021 0002400019 0002400011 0001200022 0001800001 0000400013 0001600017 0001500019 0002100010 00011 输出样例： 123456789Never MindYesNever MindNoYesNoYesNoNo 1分析： 利用广度优先搜索，将每个人及双亲放入集合mab中，假如集合长度为改变，则说明mab中已存在这个人，则证明双方是近亲。visit用来记录层数。五层时结束搜索。 AC代码BFS： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;iostream&gt; #include&lt;set&gt; #include&lt;queue&gt; #include&lt;cstring&gt; #define MAXN 100005 using namespace std; struct inf &#123; int fa; int ma; char sex; &#125;; inf node[MAXN]; int visit[MAXN]; bool flag[MAXN]; int N; bool BFS(int x1,int x2) &#123; memset(visit, 0, sizeof(visit)); queue&lt;int&gt;family; set&lt;int&gt;mab; family.push(x1); family.push(x2); visit[x1] = 1; visit[x2] = 1; while (!family.empty()) &#123; int top = family.front(); family.pop(); int size = mab.size(); mab.insert(top); if (mab.size() == size) &#123; return true; break; &#125; if (visit[top] &lt;= 4) &#123; if (node[top].fa) &#123; family.push(node[top].fa); visit[node[top].fa] += visit[top] + 1; &#125; if (node[top].ma) &#123; family.push(node[top].ma); visit[node[top].ma] += visit[top] + 1; &#125; &#125; &#125; return false; &#125; int main() &#123; cin &gt;&gt; N; memset(node, 0, sizeof(node)); memset(flag, 0, sizeof(flag)); while (N--) &#123; int id, fa, ma; char ch[2]; scanf(&quot;%d%s%d%d&quot;, &amp;id, ch, &amp;fa, &amp;ma); node[id].sex = ch[0]; flag[id] = true; if (fa != -1) &#123; node[id].fa = fa; node[fa].sex = &apos;M&apos;; flag[fa] = true; &#125; if (ma != -1) &#123; node[id].ma = ma; node[ma].sex = &apos;F&apos;; flag[ma] = true; &#125; &#125; cin &gt;&gt; N; while (N--) &#123; int per1, per2; cin &gt;&gt; per1 &gt;&gt; per2; if (node[per1].sex == node[per2].sex) printf(&quot;Never Mind\n&quot;); else &#123; if (BFS(per1, per2)) printf(&quot;No\n&quot;); else printf(&quot;Yes\n&quot;); &#125; &#125; return 0; &#125;]]></content>
       <categories>
         <category>训练之路</category>
         <category>算法</category>
-        <category>BFS</category>
+        <category>搜索</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -1545,46 +1552,10 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>stl</tag>
         <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>stl</tag>
         <tag>vector</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%2F</url>
-    <content type="text"><![CDATA[我终究是个小人物，却整日想着帮助身边的人找到归属。哪怕最后只剩下我一个人。然而，我从未后悔。因为走过的路，总有花香相陪。前程的路，还有清风相随。]]></content>
-      <categories>
-        <category>心路历程</category>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F03%2F13%2F2018-03-13%20-%201%2F</url>
-    <content type="text"><![CDATA[每个人都会仰赖自己的知识和认识，并被这些东西所束缚着，还将这些东西称为现实。知识和认识是很暧昧的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>
-      <categories>
-        <category>心路历程</category>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[随笔]]></title>
-    <url>%2F2018%2F02%2F22%2F2018-02-22%2F</url>
-    <content type="text"><![CDATA[缘，妙不可言，在于你永远无法预料，下一秒将会和谁分离，一个转身，永不相见：在于你永远无法预料，下一秒将会和谁相遇，一个眼神，为他沦陷。]]></content>
-      <categories>
-        <category>心路历程</category>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
   <entry>
@@ -1606,7 +1577,7 @@
       <categories>
         <category>程序人生</category>
         <category>算法</category>
-        <category>搜索</category>
+        <category>基础算法</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -1631,7 +1602,7 @@
   </entry>
   <entry>
     <title><![CDATA[sstream和strstream的用法]]></title>
-    <url>%2F2018%2F01%2F24%2F2018-01-24%20-%201%2F</url>
+    <url>%2F2018%2F01%2F24%2F2018-01-24-1%2F</url>
     <content type="text"><![CDATA[在C++有两种字符串流,也称为数组I/O流，一种在 strstream 中定义，另一种在 sstream 中定义。它们实现的东西基本一样。strstream里包含： 1234class strstreambuf;class istrstream;class ostrstream;class strstream; 它们是基于C类型字符串char*编写的 sstream中包含： 1234class stringbuf;class istringstream;class ostringstream;class stringstream; 它们是基于std::string编写的 因此ostrstream::str()返回的是char*类型的字符串而ostringstream::str()返回的是std::string类型的字符串在使用的时候要注意到二者的区别，一般情况下推荐使用std::string类型的字符串当然如果为了保持和C的兼容，使用strstream也是不错的选择。但要记住一点,strstream虽仍然是C++语言标准的一部分,但已被C++标准宣称为“deprecated”，也就是不再提倡使用了，也说不定以后干粹就没了。 先介绍一下sstream 123456789//strigstream流以空格为边界符,使用其须包含sstream头文件//istringstream 用法istringstream istring;string ss(&quot;ss 8346520&quot;);istring.str(ss);int i=0;string s;istring&gt;&gt;s&gt;&gt;i;cout&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i&lt;&lt;endl; 或者 12345istringstream istring(&quot;ss 8346520&quot;);int i=0;string s;istring&gt;&gt;s&gt;&gt;i;cout&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i&lt;&lt;endl; 都将打印：s内容是ss,i内容是8346520的结果; 1234567891011//ostringstream 用法string s=&quot;test&quot;;int i=8346520;int j=0;string s1;ostringstream ostring; //不能写成ostringstream ostring&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i;ostring&lt;&lt;s&lt;&lt;&quot; &quot;&lt;&lt;i;cout&lt;&lt;ostring.str()&lt;&lt;endl; //ostring流内保存内容是test 8346520istringstream istring(ostring.str());istring&gt;&gt;s1&gt;&gt;j;//要注意此处的顺序;cout&lt;&lt;s1&lt;&lt;&quot;――――&quot;&lt;&lt;j&lt;&lt;endl; 简单说说strstream:基于数组的类有istrstream、ostrstream和strstream。它们分别用来创建输入、输出和输入／输出流。这些类的基类之一是strstreambuf，它定义了派生类使用的几个底层的具体属性。除了strstreambuf以外，istream也是istrstream的基类。类ostrstream包括了类ostream。strstream也包括了类iostream。所以，所有基于数组的类和“普通”I／O类一样存取相同的成员函数。创建基于数组的输出流要将一个输出流和一个数组关联起来，可使用下列ostream的构造函数：ostrstream ostr（char＊buf，int size，int mode＝ios：：out）；其中，buf是指向数组的指针，该数组接收写入流的字符。数组的长度由参数size确定。缺省时，流以输出方式打开，但也可以将几项或在一起复合为所需的方式（例如，可以包含ios：：app使输出添加在数组中已存在的信息的尾部）。mode的缺省值可以满足大多数的要求。一旦打开了一个基于数组的输出流，所有对这个流的输出就放在数组中。但是，任何输出都不能写到数组的限界之外，任何这种企图都会导致错误。 下面是一个介绍基于数组的输出流的简单程序。 12345678910111213141516#include &lt;iostream&gt;#include &lt;strstream&gt;using namespace std;int main()&#123;int arraysize=50;char *pbuffer=new char[arraysize];ostrstream ostr(pbuffer,arraysize,ios::out);ostr&lt;&lt;&quot;Hello&quot;&lt;&lt;&quot; &quot;;ostr&lt;&lt;99-14&lt;&lt;hex&lt;&lt;&quot; &quot;;ostr.setf(ios::showbase);ostr&lt;&lt;100&lt;&lt;ends; //使用ostrstream输出到流对象的时候,要用ends结束字符串cout&lt;&lt;pbuffer;delete[] pbuffer;return 0;&#125; 使用数组作输入:要将输入流和数组关联起来，可使用下列istrstream的构造函数： 1istrstream istr（char*buf）； 其中，buf是指向数组的指针，该数组作为每次向流输入的字符源。buf所指的数组必须以空结束。空结束符从不从数组中读取。 下面是一个用字符串输入的例子: 1234567891011121314151617181920#include &lt;iostream&gt;#include &lt;strstream&gt;using namespace std;int main()&#123;const char s[]=&quot;10 Hello 15 12.23 done&quot;;istrstream ins(s);int i;char str[80];float f;//reading： 10 Helloins &gt;&gt;i;ins &gt;&gt;str;cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;str&lt;&lt;endl;// reading：f 12.23 done.ins&gt;&gt;i;ins&gt;&gt;f;ins&gt;&gt;str;cout&lt;&lt;hex&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;f&lt;&lt;&quot; &quot;&lt;&lt;str;return 0;&#125;]]></content>
       <categories>
         <category>程序人生</category>
@@ -1639,8 +1610,8 @@
         <category>C++基础</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
+        <tag>字符串</tag>
         <tag>stl</tag>
       </tags>
   </entry>
@@ -1659,7 +1630,7 @@
   </entry>
   <entry>
     <title><![CDATA[梦的索引]]></title>
-    <url>%2F2017%2F05%2F20%2F2017-5-20%2F</url>
+    <url>%2F2017%2F05%2F20%2F2017-05-20%2F</url>
     <content type="text"><![CDATA[梦的索引 浅悠悠 5.20 to.** (从此，某人不理我) 一 风，轻拢着寒衣， 愁云，悄然漫入天际。 夜，显得如此孤寂。 寂静，淹没了每一个字节， 而我，沉浸在如梦般的程序。 不妨覆盖这寂寞的夜色， 将整个世界虚拟。 二 调用一个time函数， 永不熄灭的星空由我来设计。 早晨迎接春的花香， 午后拥抱夏的暖阳， 黄昏品尝秋的硕果， 静夜寻觅冬的足迹。 四季以奇幻的循环交替。 三 调用一个process函数， 柏拉图的理想国由我来开辟。 辽阔的天空一碧如洗， 雄鹰与黄鹂整齐地共鸣， 城市以和谐的进程刷新， 物竞天择已被仁爱更替。 世界如蒲公英般无忧无虑。 四 再定义一个爱你的函数， 永恒是爱的生命周期。 星空因你而努力闪耀， 四季因你而相伴朝夕， 花儿酿香渲染着你的气息， 阳光拂晓映射着你的甜蜜。 在这个世界里， 你是唯一的主题。 五 我将自己作为参数， 向爱你的函数传递， 却意外发现你并不在我的域。 我开始不断重载爱的定义， 将你我的变量封存在同一结构体。 但很快系统出现了bug。 当进程陷入死循环时， 才发现此算法不可逆。 六 也许你已在我的世界 永远赋上了静态的属性。 系统不断将思念返回压入我的堆栈， 而我的内存此刻已满满是你。 我向系统申请最后一点内存， 打开心的端口监听你的信息， 返回却总是操作失败的消息。 七 我想重写爱的模板， 再一次将爱传递， 却无法返回你也爱我的信息。 我试图虚拟出最后一点内存， 将“你爱我吗”的字符串压入栈尾， 打开最后的端口传递给你。 八 倘若返回值为真， 我愿释放掉整个世界的内存， 从此只储存关于你的回忆。 否则我愿析构自己， 将所有的喜怒哀乐封进内域。 从此不需要让你知道， 我一直爱你。 九 此端，彼岸， 谁在孤独地将二叉树上的结点遍历？ 谁苦苦寻找连接着爱的网络服务器？ 虚拟，现实， 我是茫茫内存中哪一个孤独的进程？ 又是匆匆人海里哪一个寻梦的躯体？ 十 我能编译出整个世界， 却无法虚拟真实的你。 爱的程序， 也解不开你我的局。 也许程序注定是梦， 而你， 永远是我梦的索引。]]></content>
       <categories>
         <category>诗词歌赋</category>
