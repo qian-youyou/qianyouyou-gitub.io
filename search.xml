@@ -22,7 +22,7 @@
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>
-        <category>C++</category>
+        <category>C++基础</category>
       </categories>
       <tags>
         <tag>C/C++</tag>
@@ -303,8 +303,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>划分</tag>
         <tag>动态规划</tag>
+        <tag>划分</tag>
       </tags>
   </entry>
   <entry>
@@ -791,8 +791,8 @@
         <category>题解</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>stl</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -805,8 +805,8 @@
         <category>stl</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>stl</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -961,8 +961,8 @@
         <tag>C/C++</tag>
         <tag>算法</tag>
         <tag>python</tag>
-        <tag>暴力枚举</tag>
         <tag>组合数学</tag>
+        <tag>暴力枚举</tag>
       </tags>
   </entry>
   <entry>
@@ -1552,9 +1552,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>stl</tag>
         <tag>算法</tag>
         <tag>pat天梯赛</tag>
-        <tag>stl</tag>
         <tag>vector</tag>
       </tags>
   </entry>
@@ -1610,8 +1610,8 @@
         <category>C++基础</category>
       </categories>
       <tags>
-        <tag>C/C++</tag>
         <tag>字符串</tag>
+        <tag>C/C++</tag>
         <tag>stl</tag>
       </tags>
   </entry>
