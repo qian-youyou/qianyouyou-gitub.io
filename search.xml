@@ -161,21 +161,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F10%2F15%2F2018-04-24%2F</url>
-    <content type="text"><![CDATA[Welcome to My Blog! This is my very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server11$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-      <categories>
-        <category>程序人生</category>
-        <category>JavaScript</category>
-        <category>hexo教程</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>github</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[最小割求解最大权闭合子图]]></title>
     <url>%2F2018%2F10%2F10%2F2018-10-10%2F</url>
     <content type="text"><![CDATA[定义有一个有向图，每一个点都有一个权值（可以为正或负或0），选择一个权值和最大的子图，使得每个点的后继都在子图里面，这个子图就叫最大权闭合子图。 如下图： 能选的子图有Ø,{4},{3,4},{2,4},{1,2,3,4},它们的权值分别为0,-1,5,-6,4. 所以最大权闭合子图为{3,4}，权值为5. 解法这个问题可以转化为最小割问题，用网络流解决。 从源点s向每个正权点连一条容量为权值的边，每个负权点向汇点t连一条容量为权值的绝对值的边，有向图原来的边容量全部为无限大。 求它的最小割，割掉后，与源点s连通的点构成最大权闭合子图，权值为（正权值之和-最小割）。 如何理解割掉一条边的含义由于原图的边都是无穷大，那么割边一定是与源点s或汇点t相连的。 割掉s与i的边，表示不选择i点作为子图的点； 割掉i与t的边，表示选择i点为子图的点。 如果s与i有边，表示i存在子图中； 如果i与t有边，表示i不存在于子图中。 合法性只有s与t不连通时，才能得到闭合子图。 如果s与t连通，则存在点i,j，使得s到i有边，i到j连通，j到t有边，所以j一定是i的后继，但选择了i，没有选择j，不是闭合子图。 如果s与t不连通，选择了正权点i，一定选择了i后继中的所有负权点。设j是i的后继中的正权点，则割掉s到j的边是没有意义的，最小割不会割掉它，则j一点被选中，所以i的所有后继都被选中，符合闭合图的定义。 最优性最小割=(不选的正权之和+要选的负权绝对值之和） 最大权闭合子图=（正权之和-不选的正权之和-要选的负权绝对值之和）=正权值和-最小割 因为正权值和，是定值，而最小割保证值最小，所以最大权闭合子图一定最优。 例题POJ2987_Firing]]></content>
@@ -1275,10 +1260,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -1292,10 +1277,10 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
       </tags>
   </entry>
@@ -1309,11 +1294,26 @@
         <category>hexo教程</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>hexo</tag>
         <tag>github</tag>
         <tag>node.js</tag>
+        <tag>前端</tag>
         <tag>html/css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F04%2F24%2F2018-04-24%2F</url>
+    <content type="text"><![CDATA[Welcome to My Blog! This is my very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server11$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>JavaScript</category>
+        <category>hexo教程</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>github</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
   <entry>
@@ -1341,9 +1341,9 @@
         <category>爬虫</category>
       </categories>
       <tags>
+        <tag>前端</tag>
         <tag>python</tag>
         <tag>爬虫</tag>
-        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
