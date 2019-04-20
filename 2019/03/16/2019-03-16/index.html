@@ -114,18 +114,18 @@
 
 
 
-<meta name="description" content="01-文件IO#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;sys/stat.h&amp;gt;#include &amp;lt;fcntl.h&amp;gt;  open/close 函数原型:  int open(const char *pathname,        int flags); int open(const char *pathname,        int fl">
+<meta name="description" content="01-文件IO123#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;sys/stat.h&amp;gt;#include &amp;lt;fcntl.h&amp;gt; open/close 函数原型:  int open(const char *pathname,        int flags); int open(const char *pathname,        int">
 <meta name="keywords" content="C&#x2F;C++,Linux,操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux文件和目录操作函数总结">
 <meta property="og:url" content="http://qianyouyou.cn/2019/03/16/2019-03-16/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="01-文件IO#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;sys/stat.h&amp;gt;#include &amp;lt;fcntl.h&amp;gt;  open/close 函数原型:  int open(const char *pathname,        int flags); int open(const char *pathname,        int fl">
+<meta property="og:description" content="01-文件IO123#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;sys/stat.h&amp;gt;#include &amp;lt;fcntl.h&amp;gt; open/close 函数原型:  int open(const char *pathname,        int flags); int open(const char *pathname,        int">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-16T14:16:28.448Z">
+<meta property="og:updated_time" content="2019-04-19T15:18:13.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux文件和目录操作函数总结">
-<meta name="twitter:description" content="01-文件IO#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;sys/stat.h&amp;gt;#include &amp;lt;fcntl.h&amp;gt;  open/close 函数原型:  int open(const char *pathname,        int flags); int open(const char *pathname,        int fl">
+<meta name="twitter:description" content="01-文件IO123#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;sys/stat.h&amp;gt;#include &amp;lt;fcntl.h&amp;gt; open/close 函数原型:  int open(const char *pathname,        int flags); int open(const char *pathname,        int">
 
 
 
@@ -463,7 +463,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,501
+                  1,505
                 </span>
               
 
@@ -500,7 +500,7 @@
       
 
       
-        <h1 id="01-文件IO"><a href="#01-文件IO" class="headerlink" title="01-文件IO"></a>01-文件IO</h1><p>#include &lt;sys/types.h&gt;<br>#include &lt;sys/stat.h&gt;<br>#include &lt;fcntl.h&gt; </p>
+        <h1 id="01-文件IO"><a href="#01-文件IO" class="headerlink" title="01-文件IO"></a>01-文件IO</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/stat.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="open-close"><a href="#open-close" class="headerlink" title="open/close"></a>open/close</h2><ul>
 <li><p>函数原型:</p>
 <ul>
@@ -512,7 +512,7 @@
 <ul>
 <li><p>flags</p>
 <ul>
-<li><p>必选项 O_RDONLY,         O_WRONLY, O_RDWR</p>
+<li><p>必选项 O_RDONLY, O_WRONLY, O_RDWR</p>
 </li>
 <li><p>可选项 </p>
 <ul>
@@ -556,7 +556,7 @@
 </li>
 </ul>
 <h2 id="read"><a href="#read" class="headerlink" title="read"></a>read</h2><ul>
-<li><p>函数原型: ssize_t       read(int fd, void *buf, size_t count);</p>
+<li><p>函数原型: ssize_t read(int fd, void *buf, size_t count);</p>
 <ul>
 <li><p>参数:</p>
 <ul>
@@ -576,7 +576,7 @@
 </li>
 </ul>
 <h2 id="write"><a href="#write" class="headerlink" title="write"></a>write</h2><ul>
-<li><p>函数原型: ssize_t write(int       fd, const void *buf, size_t count);</p>
+<li><p>函数原型: ssize_t write(int fd, const void *buf, size_t count);</p>
 <ul>
 <li><p>参数:</p>
 <ul>
@@ -595,7 +595,7 @@
 </li>
 </ul>
 <h2 id="lseek"><a href="#lseek" class="headerlink" title="lseek"></a>lseek</h2><ul>
-<li><p>函数原型: off_t lseek(int fd,       off_t offset, int whence);</p>
+<li><p>函数原型: off_t lseek(int fd, off_t offset, int whence);</p>
 <ul>
 <li>SEEK_SET</li>
 <li>SEEK_CUR</li>
@@ -648,44 +648,31 @@
 </ul>
 </li>
 </ul>
-<h1 id="02-stat-lstat函数"><a href="#02-stat-lstat函数" class="headerlink" title="02-stat/lstat函数"></a>02-stat/lstat函数</h1><p>#include &lt;unistd.h&gt;</p>
-<p>#include &lt;sys/types.h&gt;</p>
-<p>#include &lt;sys/stat.h&gt;</p>
-<h2 id="获取文件属性"><a href="#获取文件属性" class="headerlink" title="获取文件属性"></a>获取文件属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="02-stat-lstat函数"><a href="#02-stat-lstat函数" class="headerlink" title="02-stat/lstat函数"></a>02-stat/lstat函数</h1><h2 id="获取文件属性"><a href="#获取文件属性" class="headerlink" title="获取文件属性"></a>获取文件属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys/types.h&gt;</span><br><span class="line">#include &lt;sys/stat.h&gt;</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>st_mode – 16位整数</p>
 </li>
-<li><ul>
 <li><p>0-2 bit – 其他人权限</p>
-</li>
-<li><ul>
+<ul>
 <li>S_IROTH      00004  读权限</li>
 <li>S_IWOTH    00002  写权限</li>
 <li>S_IXOTH      00001  执行权限</li>
 <li>S_IRWXO     00007         掩码, 过滤        st_mode中除其他人权限以外的信息</li>
-</ul>
-</li>
-<li><p>3-5 bit – 所属组权限</p>
-</li>
-<li><ul>
+<li>3-5 bit – 所属组权限<ul>
 <li>S_IRGRP      00040  读权限</li>
 <li>S_IWGRP    00020  写权限</li>
 <li>S_IXGRP      00010   执行权限</li>
 <li>S_IRWXG    00070  掩码, 过滤        st_mode中除所属组权限以外的信息</li>
 </ul>
 </li>
-<li><p>6-8 bit – 文件所有者权限</p>
-</li>
-<li><ul>
+<li>6-8 bit – 文件所有者权限<ul>
 <li>S_IRUSR      00400    读权限</li>
 <li>S_IWUSR    00200    写权限</li>
 <li>S_IXUSR      00100     执行权限</li>
 <li>S_IRWXU   00700     掩码, 过滤        st_mode中除文件所有者权限以外的信息</li>
 </ul>
 </li>
-<li><p>12-15 bit – 文件类型</p>
-</li>
-<li><ul>
+<li>12-15 bit – 文件类型<ul>
 <li>S_IFSOCK         0140000 套接字</li>
 <li>S_IFLNK            0120000 符号链接（软链接）</li>
 <li>S_IFREG            0100000 普通文件</li>
@@ -701,13 +688,10 @@
 <li><p>int stat(const char <em>path,      struct stat </em>buf);</p>
 </li>
 <li><p>int lstat(const char <em>path,      struct stat </em>buf);</p>
-</li>
-<li><ul>
-<li><p>lstat读取的链接文件本身的属性</p>
-</li>
+<ul>
+<li>lstat读取的链接文件本身的属性</li>
 <li><p>stat读取的是连接文件指向的文件的属性</p>
-</li>
-<li><ul>
+<ul>
 <li>追踪，穿透</li>
 </ul>
 </li>
@@ -798,7 +782,7 @@
 <li><h2 id="文件重命名"><a href="#文件重命名" class="headerlink" title="文件重命名"></a>文件重命名</h2></li>
 </ol>
 <ul>
-<li>int rename(const char <em>oldpath,       const char </em>newpath);</li>
+<li>int rename(const char <em>oldpath, const char </em>newpath);</li>
 </ul>
 <ol start="2">
 <li><h2 id="修改当前进程-应用程序-的路径-cd"><a href="#修改当前进程-应用程序-的路径-cd" class="headerlink" title="修改当前进程(应用程序)的路径 cd"></a>修改当前进程(应用程序)的路径 cd</h2></li>
@@ -814,7 +798,7 @@
 <li><h2 id="获取当前进程的工作目录-pwd"><a href="#获取当前进程的工作目录-pwd" class="headerlink" title="获取当前进程的工作目录 pwd"></a>获取当前进程的工作目录 pwd</h2></li>
 </ol>
 <ul>
-<li><p>char <em>getcwd(char </em>buf, size_t       size);</p>
+<li><p>char <em>getcwd(char </em>buf, size_t size);</p>
 <ul>
 <li><p>返回值:</p>
 <ul>
@@ -1153,7 +1137,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">145</span>
+                  <span class="site-state-item-count">147</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
