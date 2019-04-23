@@ -114,18 +114,18 @@
 
 
 
-<meta name="description" content="无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使之执行。 基本属性1.多态性 从诞生、运行，直至消灭。 2.多个不同的进程可以包括相同的程序 3.三种基本状态 它们之间可进行转换。 4.并发性并发执行的进程轮流占用处理器。 基本状态1">
+<meta name="description" content="进程调度这一部分之前老师讲过，相关算法其实或多或少知道，但是提到进程调度就有点联系不起来了，当时也没怎么关注是什么算法，如果提一个短作业什么的肯定就知道全部了。总之现在总结一下吧。 概念无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使">
 <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程相关知识总结">
+<meta property="og:title" content="进程调度相关知识总结">
 <meta property="og:url" content="http://qianyouyou.cn/2019/04/22/2019-04-22/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使之执行。 基本属性1.多态性 从诞生、运行，直至消灭。 2.多个不同的进程可以包括相同的程序 3.三种基本状态 它们之间可进行转换。 4.并发性并发执行的进程轮流占用处理器。 基本状态1">
+<meta property="og:description" content="进程调度这一部分之前老师讲过，相关算法其实或多或少知道，但是提到进程调度就有点联系不起来了，当时也没怎么关注是什么算法，如果提一个短作业什么的肯定就知道全部了。总之现在总结一下吧。 概念无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-23T09:19:16.778Z">
+<meta property="og:updated_time" content="2019-04-23T11:31:01.940Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="进程相关知识总结">
-<meta name="twitter:description" content="无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使之执行。 基本属性1.多态性 从诞生、运行，直至消灭。 2.多个不同的进程可以包括相同的程序 3.三种基本状态 它们之间可进行转换。 4.并发性并发执行的进程轮流占用处理器。 基本状态1">
+<meta name="twitter:title" content="进程调度相关知识总结">
+<meta name="twitter:description" content="进程调度这一部分之前老师讲过，相关算法其实或多或少知道，但是提到进程调度就有点联系不起来了，当时也没怎么关注是什么算法，如果提一个短作业什么的肯定就知道全部了。总之现在总结一下吧。 概念无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使">
 
 
 
@@ -161,7 +161,7 @@
 
 
 
-  <title>进程相关知识总结 | 浅悠悠的个人博客</title>
+  <title>进程调度相关知识总结 | 浅悠悠的个人博客</title>
   
 
 
@@ -369,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">进程相关知识总结</h1>
+          <h1 class="post-title" itemprop="name headline">进程调度相关知识总结</h1>
         
 
         <div class="post-meta">
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,087
+                  2,173
                 </span>
               
 
@@ -489,7 +489,8 @@
       
 
       
-        <p>无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使之执行。</p>
+        <p>进程调度这一部分之前老师讲过，相关算法其实或多或少知道，但是提到进程调度就有点联系不起来了，当时也没怎么关注是什么算法，如果提一个短作业什么的肯定就知道全部了。总之现在总结一下吧。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使之执行。</p>
 <h2 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h2><p>1.多态性 从诞生、运行，直至消灭。</p>
 <p>2.多个不同的进程可以包括相同的程序</p>
 <p>3.三种基本状态 它们之间可进行转换。</p>
@@ -834,7 +835,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本属性"><span class="nav-number">1.</span> <span class="nav-text">基本属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本状态"><span class="nav-number">2.</span> <span class="nav-text">基本状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理机"><span class="nav-number">3.</span> <span class="nav-text">处理机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式"><span class="nav-number">4.</span> <span class="nav-text">方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#剥夺方式"><span class="nav-number">4.1.</span> <span class="nav-text">剥夺方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非剥夺方式"><span class="nav-number">4.2.</span> <span class="nav-text">非剥夺方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程调度算法"><span class="nav-number">5.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-先来先服务调度算法（FCFS）"><span class="nav-number">5.1.</span> <span class="nav-text">1.先来先服务调度算法（FCFS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-短作业优先调度算法（SJ-P-F）"><span class="nav-number">5.2.</span> <span class="nav-text">2.短作业优先调度算法（SJ(P)F）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-高优先权优先调度算法"><span class="nav-number">5.3.</span> <span class="nav-text">3.高优先权优先调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-基于时间片的轮转调度算法"><span class="nav-number">5.4.</span> <span class="nav-text">4.基于时间片的轮转调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-多级反馈队列调度算法"><span class="nav-number">5.5.</span> <span class="nav-text">5.多级反馈队列调度算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本属性"><span class="nav-number">2.</span> <span class="nav-text">基本属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本状态"><span class="nav-number">3.</span> <span class="nav-text">基本状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理机"><span class="nav-number">4.</span> <span class="nav-text">处理机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式"><span class="nav-number">5.</span> <span class="nav-text">方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#剥夺方式"><span class="nav-number">5.1.</span> <span class="nav-text">剥夺方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非剥夺方式"><span class="nav-number">5.2.</span> <span class="nav-text">非剥夺方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程调度算法"><span class="nav-number">6.</span> <span class="nav-text">进程调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-先来先服务调度算法（FCFS）"><span class="nav-number">6.1.</span> <span class="nav-text">1.先来先服务调度算法（FCFS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-短作业优先调度算法（SJ-P-F）"><span class="nav-number">6.2.</span> <span class="nav-text">2.短作业优先调度算法（SJ(P)F）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-高优先权优先调度算法"><span class="nav-number">6.3.</span> <span class="nav-text">3.高优先权优先调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-基于时间片的轮转调度算法"><span class="nav-number">6.4.</span> <span class="nav-text">4.基于时间片的轮转调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-多级反馈队列调度算法"><span class="nav-number">6.5.</span> <span class="nav-text">5.多级反馈队列调度算法</span></a></li></ol></li></ol></div>
             
 
           </div>
