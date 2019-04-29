@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2019-04-28T07:39:18.813Z</updated>
+  <updated>2019-04-29T10:31:32.515Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机系统漫游——&quot;Hello,World&quot;的漫漫计算机旅程</title>
+    <link href="http://qianyouyou.cn/2019/04/29/2019-04-29/"/>
+    <id>http://qianyouyou.cn/2019/04/29/2019-04-29/</id>
+    <published>2019-04-29T07:52:39.000Z</published>
+    <updated>2019-04-29T10:31:32.515Z</updated>
+    
+    <content type="html"><![CDATA[<p>欲练Programmer，必先Coder。Coder+Programmer，方成Developer。</p><p>每一个Coder都是从”Hello,World”开始的。那么既然是修仙第一天，那我们就从”Hello,World”开始吧。</p><p>本文主要介绍一个简简单单的”Hello,World”程序是如何在计算机系统乃至网络跑起来的。（当然不会写的太复杂啦，毕竟这是一个漫长的过程）。</p><p>翠花，上代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">printf(&quot;Hello,World\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="信息就是位-上下文"><a href="#信息就是位-上下文" class="headerlink" title="信息就是位+上下文"></a>信息就是位+上下文</h1><p>hello程序的生命周期是从一个hello.c的源文件开始的。而源程序实际是一个由0、1组成的位（比特）序列，8位一组，称为字节。每个字节表示程序中的某些文本字节。大多数系统以ASCII码表示文本字符。例如以上代码就可以ASII表示为：</p><table><thead><tr><th>#</th><th>i</th><th>n</th><th>c</th><th>l</th><th>u</th><th>d</th><th>e</th><th>SP</th><th>&lt;</th><th>s</th><th>t</th><th>d</th><th>i</th><th>o</th><th>.</th></tr></thead><tbody><tr><td>35</td><td>105</td><td>110</td><td>99</td><td>108</td><td>117</td><td>100</td><td>101</td><td>32</td><td>60</td><td>115</td><td>116</td><td>100</td><td>105</td><td>111</td><td>46</td></tr><tr><td>h</td><td>&gt;</td><td>\n</td><td>i</td><td>n</td><td>t</td><td>SP</td><td>m</td><td>a</td><td>i</td><td>n</td><td>(</td><td>）</td><td>{</td><td>\n</td><td>SP</td></tr><tr><td>104</td><td>62</td><td>10</td><td>105</td><td>110</td><td>116</td><td>32</td><td>109</td><td>97</td><td>105</td><td>110</td><td>40</td><td>41</td><td>123</td><td>10</td><td>32</td></tr><tr><td>SP</td><td>SP</td><td>SP</td><td>p</td><td>r</td><td>i</td><td>n</td><td>t</td><td>f</td><td>(</td><td>“</td><td>H</td><td>e</td><td>l</td><td>l</td><td>o</td></tr><tr><td>32</td><td>32</td><td>32</td><td>112</td><td>114</td><td>105</td><td>110</td><td>116</td><td>102</td><td>40</td><td>34</td><td>72</td><td>101</td><td>108</td><td>108</td><td>111</td></tr><tr><td>,</td><td>W</td><td>o</td><td>r</td><td>l</td><td>d</td><td>\</td><td>n</td><td>“</td><td>)</td><td>;</td><td>\n</td><td>SP</td><td>SP</td><td>SP</td><td>SP</td></tr><tr><td>44</td><td>87</td><td>111</td><td>114</td><td>108</td><td>100</td><td>92</td><td>110</td><td>34</td><td>41</td><td>59</td><td>10</td><td>32</td><td>32</td><td>32</td><td>32</td></tr><tr><td>r</td><td>e</td><td>t</td><td>u</td><td>r</td><td>n</td><td>SP</td><td>0</td><td>;</td><td>\n</td><td>}</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>114</td><td>101</td><td>116</td><td>117</td><td>114</td><td>110</td><td>32</td><td>48</td><td>59</td><td>10</td><td>125</td><td></td><td></td><td></td><td></td></tr></tbody></table><p>hello.c是以字节序的方式存储在文件中的。系统中的所有信息（磁盘文件，用户信息，网络传输数据等）均由一串比特表示。区分不同数据对象的唯一方式是读这些数据对象时的上下文。比如不同的上下文中，一个同样的字节序列可能表示整数，浮点数，字符串或者机器指令。</p><h1 id="程序到可执行文件的过程"><a href="#程序到可执行文件的过程" class="headerlink" title="程序到可执行文件的过程"></a>程序到可执行文件的过程</h1><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/2019-04-29-%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9F.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;欲练Programmer，必先Coder。Coder+Programmer，方成Developer。&lt;/p&gt;
+&lt;p&gt;每一个Coder都是从”Hello,World”开始的。那么既然是修仙第一天，那我们就从”Hello,World”开始吧。&lt;/p&gt;
+&lt;p&gt;本文主要介绍一个简简
+      
+    
+    </summary>
+    
+    
+      <category term="修仙笔记" scheme="http://qianyouyou.cn/tags/%E4%BF%AE%E4%BB%99%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="计算机系统" scheme="http://qianyouyou.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>大话存储器</title>
@@ -597,38 +624,6 @@
     
     
       <category term="诗集" scheme="http://qianyouyou.cn/tags/%E8%AF%97%E9%9B%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>备战焦作日常小练之PrimeGame</title>
-    <link href="http://qianyouyou.cn/2018/11/21/2018-11-21/"/>
-    <id>http://qianyouyou.cn/2018/11/21/2018-11-21/</id>
-    <published>2018-11-21T09:07:44.000Z</published>
-    <updated>2019-04-27T15:35:56.735Z</updated>
-    
-    <content type="html"><![CDATA[<p>Given a suqence of nn integers a_iai.</p><p>Let \text{mul}(l, r) = \prod_{i = l}^{r} a_imul(l,r)=∏i=lrai and \text{fac}(l, r)fac(l,r) be the number of distinct prime factors of \text{mul}(l, r)mul(l,r).</p><p>Please calculate \sum_{i = 1}^{n}\sum_{j = i}^{n}\text{fac}(i, j)∑i=1n∑j=infac(i,j)</p><h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>The first line contains one integer nn (1 \le n \le 10^61≤n≤106) \text{—}— the length of the sequence.</p><p>The second line contains nn integers a_iai (1 \le i \le n, 1 \le a_i \le 10^61≤i≤n,1≤ai≤106) \text{—}— the sequence.</p><h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>Print the answer to the equation.</p><h4 id="样例输入1复制"><a href="#样例输入1复制" class="headerlink" title="样例输入1复制"></a>样例输入1复制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">99 62 10 47 53 9 83 33 15 24</span><br></pre></td></tr></table></figure><h4 id="样例输出1复制"><a href="#样例输出1复制" class="headerlink" title="样例输出1复制"></a>样例输出1复制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">248</span><br></pre></td></tr></table></figure><h4 id="样例输入2复制"><a href="#样例输入2复制" class="headerlink" title="样例输入2复制"></a>样例输入2复制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10</span><br><span class="line">6 7 5 5 4 9 9 1 8 12</span><br></pre></td></tr></table></figure><h4 id="样例输出2复制"><a href="#样例输出2复制" class="headerlink" title="样例输出2复制"></a>样例输出2复制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">134</span><br></pre></td></tr></table></figure><h4 id="题目来源"><a href="#题目来源" class="headerlink" title="题目来源"></a>题目来源</h4><p><a href="https://nanti.jisuanke.com/?kw=ACM-ICPC%20Nanjing%20Onsite%202018" target="_blank" rel="noopener">ACM-ICPC Nanjing Onsite 2018</a></p><p>题意</p><p>n个数，求所有[i,j]区间内每个数不重复的素数因素之和。</p><p>题解</p><p>将每个数分解成不同素数之积。例如例1，99分解成3和11，62分解成2和31，10分解成2和5，47分解成47，53为53，9为3，83为83，33为3和11，15为3和5，24为2和3。</p><p>第1个数出现次数为n次，第2个为(n-1) <em> 2次，第3个为(n-3) </em> 3次……则素数因数不重复的前提下和母数出现次数相同。但由于某些区间存在相同素数，所以我们规定假设某一位数的素数因数p所在位置为c,上一个这个素数p位置为b，则这次这个素数p出现次数为(n + 1 - c) * (c - b)。当然所以素数的初始位置为0，没出现一次就将该位置更新。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const int maxn = 1e6+7;</span><br><span class="line">struct NODE&#123;</span><br><span class="line">    int size;</span><br><span class="line">    ll prime[20];</span><br><span class="line">&#125;node[maxn];</span><br><span class="line">int n;</span><br><span class="line">int pos[maxn];</span><br><span class="line">bool isPrime[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    for(ll i = 2; i &lt; maxn; i++)&#123;</span><br><span class="line">        if(!isPrime[i])&#123;</span><br><span class="line">            node[i].prime[node[i].size++] = i;</span><br><span class="line">            for(ll j = i+i; j &lt; maxn; j+=i)&#123;</span><br><span class="line">                isPrime[j] = true;</span><br><span class="line">            node[j].prime[node[j].size++] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    ll ans = 0;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++)&#123;</span><br><span class="line">        ll tmp;</span><br><span class="line">        scanf(&quot;%lld&quot;, &amp;tmp);</span><br><span class="line">        for(int j = 0; j &lt; node[tmp].size; j++)&#123;</span><br><span class="line">            ans += (ll)(n + 1 - i)*(i - pos[node[tmp].prime[j]]);</span><br><span class="line">            pos[node[tmp].prime[j]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Given a suqence of nn integers a_iai.&lt;/p&gt;
-&lt;p&gt;Let \text{mul}(l, r) = \prod_{i = l}^{r} a_imul(l,r)=∏i=lrai and \text{fac}(l, r)fac(l,r) be
-      
-    
-    </summary>
-    
-      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
-    
-      <category term="算法" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="ACM/ICPC" scheme="http://qianyouyou.cn/tags/ACM-ICPC/"/>
-    
-      <category term="数论" scheme="http://qianyouyou.cn/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
   
