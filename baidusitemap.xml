@@ -5,18 +5,26 @@
     
   <url>
     <loc>http://qianyouyou.cn/2019/04/29/2019-04-29/</loc>
-    <lastmod>2019-04-29T10:31:32.515Z</lastmod>
+    <lastmod>2019-04-29T12:27:05.518Z</lastmod>
     <data>
         <display>
         <title>计算机系统漫游——"Hello,World"的漫漫计算机旅程</title>
         <pubTime>2019-04-29T07:52:39.000Z</pubTime>
         
-        <tag>修仙笔记</tag>
+        <tag>操作系统</tag>
          
-        <tag>计算机系统</tag>
+        <tag>编译原理</tag>
+         
+        <tag>存储器</tag>
          
          
            
+             
+              <breadCrumb title="修仙笔记" url="http://qianyouyou.cn/categories/%E4%BF%AE%E4%BB%99%E7%AC%94%E8%AE%B0/"/>
+          
+             
+              <breadCrumb title="计算机系统" url="http://qianyouyou.cn/categories/%E4%BF%AE%E4%BB%99%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/"/>
+          
         </display>
     </data>
     </url>
