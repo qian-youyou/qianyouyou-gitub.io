@@ -114,18 +114,22 @@
 
 
 
-<meta name="description" content="语法分析词法分析">
+<meta name="description" content="程序编译过程： 源程序 -&amp;gt; 词法分析程序 -&amp;gt; 语法分析程序 -&amp;gt; 语义分析程序 -&amp;gt; 中间代码生成程序 -&amp;gt; 代码优化程序 -&amp;gt; 目标代码生成程序 -&amp;gt; 目标程序 语法分析例： &amp;lt;句子&amp;gt; → &amp;lt;主语&amp;gt;&amp;lt;谓语&amp;gt; &amp;lt;主语&amp;gt; → &amp;lt;代词&amp;gt;&amp;lt;名词&amp;gt; &amp;lt;代词&amp;gt; → 你 | 我 |">
 <meta name="keywords" content="编译原理,词法分析,语法分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="语法分析与词法分析指北">
 <meta property="og:url" content="http://qianyouyou.cn/2019/05/01/2019-05-01/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="语法分析词法分析">
+<meta property="og:description" content="程序编译过程： 源程序 -&amp;gt; 词法分析程序 -&amp;gt; 语法分析程序 -&amp;gt; 语义分析程序 -&amp;gt; 中间代码生成程序 -&amp;gt; 代码优化程序 -&amp;gt; 目标代码生成程序 -&amp;gt; 目标程序 语法分析例： &amp;lt;句子&amp;gt; → &amp;lt;主语&amp;gt;&amp;lt;谓语&amp;gt; &amp;lt;主语&amp;gt; → &amp;lt;代词&amp;gt;&amp;lt;名词&amp;gt; &amp;lt;代词&amp;gt; → 你 | 我 |">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-05T03:43:19.081Z">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-01.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-01-1.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-01-2.png">
+<meta property="og:updated_time" content="2019-05-05T11:38:29.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="语法分析与词法分析指北">
-<meta name="twitter:description" content="语法分析词法分析">
+<meta name="twitter:description" content="程序编译过程： 源程序 -&amp;gt; 词法分析程序 -&amp;gt; 语法分析程序 -&amp;gt; 语义分析程序 -&amp;gt; 中间代码生成程序 -&amp;gt; 代码优化程序 -&amp;gt; 目标代码生成程序 -&amp;gt; 目标程序 语法分析例： &amp;lt;句子&amp;gt; → &amp;lt;主语&amp;gt;&amp;lt;谓语&amp;gt; &amp;lt;主语&amp;gt; → &amp;lt;代词&amp;gt;&amp;lt;名词&amp;gt; &amp;lt;代词&amp;gt; → 你 | 我 |">
+<meta name="twitter:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-01.png">
 
 
 
@@ -452,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8
+                  1,340
                 </span>
               
 
@@ -468,7 +472,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -489,7 +493,98 @@
       
 
       
-        <h1 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h1><h1 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h1>
+        <p>程序编译过程：</p>
+<p>源程序 -&gt; 词法分析程序 -&gt; <strong>语法分析程序</strong> -&gt; <strong>语义分析程序</strong> -&gt; 中间代码生成程序 -&gt; 代码优化程序 -&gt; 目标代码生成程序 -&gt; 目标程序</p>
+<h1 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h1><p>例：</p>
+<p>&lt;句子&gt; → &lt;主语&gt;&lt;谓语&gt;</p>
+<p>&lt;主语&gt; → &lt;代词&gt;&lt;名词&gt;</p>
+<p>&lt;代词&gt; → 你 | 我 | 他</p>
+<p>&lt;名词&gt; → 老王 | 大学生 | 英语</p>
+<p>&lt;谓语&gt; → &lt;动词&gt;&lt;直接宾语&gt;</p>
+<p>&lt;动词&gt; → 是 | 学习 | 热爱</p>
+<p>&lt;直接宾语&gt; → &lt;代词&gt; | &lt;名词&gt;</p>
+<p>“我是大学生”符合以上规则，是句子。“我大学生是”不符合上面规则，不是句子。</p>
+<p>&lt;句子&gt; → &lt;主语&gt;&lt;谓语&gt;</p>
+<p>→ &lt;代词&gt;&lt;谓语&gt;</p>
+<p>→ 我&lt;谓语&gt;</p>
+<p>→ 我&lt;动词&gt;&lt;直接宾语&gt;</p>
+<p>→ 我是&lt;直接宾语&gt;</p>
+<p>→ 我是&lt;名词&gt;</p>
+<p>→ 我是大学生</p>
+<h2 id="符号和字符串"><a href="#符号和字符串" class="headerlink" title="符号和字符串"></a>符号和字符串</h2><h3 id="字母表"><a href="#字母表" class="headerlink" title="字母表"></a>字母表</h3><p>字母表即符号集，例如汉字的字母表包括汉字，数字标点等，C语言包括if，while之类的保留字组成。</p>
+<h3 id="符号串"><a href="#符号串" class="headerlink" title="符号串"></a>符号串</h3><p>由字母表中的符号组成的任何又穷序列（顺序很重要）。例如A = {a, b, c}的符号串有a，b，ab，ba， aa等等。</p>
+<h3 id="符号串的头尾，固有头固有尾"><a href="#符号串的头尾，固有头固有尾" class="headerlink" title="符号串的头尾，固有头固有尾"></a>符号串的头尾，固有头固有尾</h3><p>abc的头是 ε, a, ab, abc，除abc外均为固有头。尾是ε, c, bc, abc，除abc外均为固有尾。</p>
+<h3 id="符号串方幂"><a href="#符号串方幂" class="headerlink" title="符号串方幂"></a>符号串方幂</h3><p>x = AB。x^0 = ε。x^1 = AB。x^2 = ABAB。x^3 = ABABAB。</p>
+<h3 id="符号串的集合"><a href="#符号串的集合" class="headerlink" title="符号串的集合"></a>符号串的集合</h3><p>A = {a, b}。B = {c, d}。AB = {ac, ad, bc, bd}。</p>
+<h2 id="文法定义"><a href="#文法定义" class="headerlink" title="文法定义"></a>文法定义</h2><p>G(VN, VT, P, S)。</p>
+<p>VN为非终结符（例如&lt;谓语&gt;，可以继续转换。通常用大写字母表示，例如A）</p>
+<p>VT为终结符（例如“老王”，可直接匹配，不能再向下转换。通常用小写字母表示，例如a）</p>
+<p>P（规则，例如&lt;主语&gt; → &lt;代词&gt;&lt;名词&gt;。又例如S →Aa）。</p>
+<p>S起点（例如&lt;句子&gt;就是起点）</p>
+<h2 id="文法类型"><a href="#文法类型" class="headerlink" title="文法类型"></a>文法类型</h2><p>3型∈2型∈1型∈0型，3型最严谨，向右兼容。</p>
+<h3 id="0型递归文法"><a href="#0型递归文法" class="headerlink" title="0型递归文法"></a>0型递归文法</h3><p>a→b，a至少含1个非终结符，b为任意。</p>
+<p>凡是递归可枚举的都是0型，包括A→ε，aA→aa等情况。</p>
+<h3 id="1型上下文有关文法"><a href="#1型上下文有关文法" class="headerlink" title="1型上下文有关文法"></a>1型上下文有关文法</h3><p>a→b，a至少含1个非终结符，b不为ε。</p>
+<p>0型除去ε的情况就是1型。也就是非终结符不能为ε。</p>
+<p>包括aA→aa等情况。</p>
+<h3 id="2型上下文无关文法"><a href="#2型上下文无关文法" class="headerlink" title="2型上下文无关文法"></a>2型上下文无关文法</h3><p>a→b，a必须是非终结符（only one）。</p>
+<p>不包括aA→aa等情况。</p>
+<p>可以A→aa。</p>
+<h3 id="3型正规文法"><a href="#3型正规文法" class="headerlink" title="3型正规文法"></a>3型正规文法</h3><p>非终结符转换时头必须有一个终结符。例如：</p>
+<p>S→aB</p>
+<p>S→bA</p>
+<p>A→a</p>
+<p>A→aS</p>
+<p>A→bAA</p>
+<p>B→b</p>
+<p>B→bS</p>
+<p>B→aBB</p>
+<h2 id="语法树"><a href="#语法树" class="headerlink" title="语法树"></a>语法树</h2><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-01.png" alt=""></p>
+<h2 id="句型分析"><a href="#句型分析" class="headerlink" title="句型分析"></a>句型分析</h2><ul>
+<li>自顶向下语法分析（由S向句子推，最终和句子匹配，看能否得到句子）</li>
+<li>自底向上语法分析（由句子向S推，最终看能否得到S）</li>
+</ul>
+<h1 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h1><p>输入源程序；扫描、分解字符串，识别出一个个单词（定义符、标识符、运算符、界符、常数）</p>
+<h2 id="词法分析输出"><a href="#词法分析输出" class="headerlink" title="词法分析输出"></a>词法分析输出</h2><p>读入源程序，输出担此符号。单词符号可分为以下5种：</p>
+<p>关键字（if，else，while，int等）</p>
+<p>标识符（a，fun，val等自定义的变量名）</p>
+<p>常数（1，1.2，true，“abc”）</p>
+<p>运算符（+，-，=，&lt;=，==）</p>
+<p>界符（，；’)’）等。</p>
+<p>词法分析输出单词符号常常采用二元组形式（单词种别，单词自身值）。</p>
+<h2 id="阶段"><a href="#阶段" class="headerlink" title="阶段"></a>阶段</h2><p>扫描阶段：从左向右扫描输入源程序，删除注释、压缩空白字符；</p>
+<p>词法分析阶段：按照语言的词法规则识别各类单词，并产生相应的单词符号。</p>
+<h2 id="正规文法"><a href="#正规文法" class="headerlink" title="正规文法"></a>正规文法</h2><p>&lt;标识符&gt; → l | l &lt;字母数字&gt;</p>
+<p>&lt;字母数字&gt; → l | d |l &lt;字母数字&gt; | d&lt;字母数字&gt;</p>
+<p>（l字母，d数字）</p>
+<p>例如:</p>
+<p>A→aB</p>
+<p>A→a</p>
+<h2 id="正规式"><a href="#正规式" class="headerlink" title="正规式"></a>正规式</h2><p>a            {a}</p>
+<p>a|b            {a,b}</p>
+<p>ab            {ab}</p>
+<p>(a|b)(a|b)    {aa,ab,ba,bb}</p>
+<p>a*            {ε,a,aa,aaa…}</p>
+<p>(a|b)*        {ε,a,aab,abaa…所有a,b组成的串}</p>
+<p>(a|b)*(aa|bb)(a|b)*        {aaabbaab……}</p>
+<h2 id="有穷自动机"><a href="#有穷自动机" class="headerlink" title="有穷自动机"></a>有穷自动机</h2><h3 id="确定有穷自动机-DFA"><a href="#确定有穷自动机-DFA" class="headerlink" title="确定有穷自动机(DFA)"></a>确定有穷自动机(DFA)</h3><p>DFA M = （K, ∑, f, S, Z）</p>
+<p>K：有穷集，每个元素称为一种状态（图表示就是点集）。</p>
+<p>∑：有穷字母表，每个元素称为一个输入符号，所以也叫输入符号表（图表示就是边集）。</p>
+<p>f：转换函数，一个节点通过某条边到另一个结点（或自身）。</p>
+<p>S：唯一一个初态（起点）</p>
+<p>Z：终态集。（就是终点的集合）</p>
+<h3 id="不确定有穷自动机-NFA"><a href="#不确定有穷自动机-NFA" class="headerlink" title="不确定有穷自动机(NFA)"></a>不确定有穷自动机(NFA)</h3><p>NFA M = （K, ∑, f, S, Z）</p>
+<p>K：有穷集，每个元素称为一种状态（图表示就是点集）。</p>
+<p>∑：有穷字母表，每个元素称为一个输入符号，所以也叫输入符号表（图表示就是边集）。</p>
+<p>f：转换函数，一个节点通过某一类边到另外许多结点的集合（或自身）。</p>
+<p>S：初态集（多个起点）</p>
+<p>Z：终态集。（就是终点的集合）</p>
+<p>很容易发现，不确定有穷自动机和确定有穷自动机的区别就是DFA每个结点每类单向边只有一条，且起点只有一个，而NFA可以有多条，且起点可以有多个。例如NFA中S—a—&gt;A，S—a,b—&gt;S，S—a,b—&gt;D，但DFA不允许，a，b由S指向其他结点（或自身）的话只能存在一条。</p>
+<h2 id="正则式转自动机"><a href="#正则式转自动机" class="headerlink" title="正则式转自动机"></a>正则式转自动机</h2><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-01-1.png" alt=""></p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-01-2.png" alt=""></p>
+<h2 id="正规文法转自动机"><a href="#正规文法转自动机" class="headerlink" title="正规文法转自动机"></a>正规文法转自动机</h2><p>正规文法由于为第3型文法，所以S→aA，S为起点，→为边，a为边名，A为下一个结点。</p>
+<h2 id="NFA转DFA"><a href="#NFA转DFA" class="headerlink" title="NFA转DFA"></a>NFA转DFA</h2><p><a href="https://blog.csdn.net/dala_da/article/details/78704560" target="_blank" rel="noopener">参考链接</a></p>
+
       
     </div>
     
@@ -572,8 +667,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/05/2019-05-05/" rel="prev" title="自上而下与自下而上语法分析">
-                自上而下与自下而上语法分析 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/05/2019-05-05/" rel="prev" title="自顶向下语法分析指北">
+                自顶向下语法分析指北 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -799,7 +894,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法分析"><span class="nav-number">1.</span> <span class="nav-text">语法分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词法分析"><span class="nav-number">2.</span> <span class="nav-text">词法分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法分析"><span class="nav-number">1.</span> <span class="nav-text">语法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#符号和字符串"><span class="nav-number">1.1.</span> <span class="nav-text">符号和字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字母表"><span class="nav-number">1.1.1.</span> <span class="nav-text">字母表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号串"><span class="nav-number">1.1.2.</span> <span class="nav-text">符号串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号串的头尾，固有头固有尾"><span class="nav-number">1.1.3.</span> <span class="nav-text">符号串的头尾，固有头固有尾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号串方幂"><span class="nav-number">1.1.4.</span> <span class="nav-text">符号串方幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号串的集合"><span class="nav-number">1.1.5.</span> <span class="nav-text">符号串的集合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文法定义"><span class="nav-number">1.2.</span> <span class="nav-text">文法定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文法类型"><span class="nav-number">1.3.</span> <span class="nav-text">文法类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0型递归文法"><span class="nav-number">1.3.1.</span> <span class="nav-text">0型递归文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1型上下文有关文法"><span class="nav-number">1.3.2.</span> <span class="nav-text">1型上下文有关文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2型上下文无关文法"><span class="nav-number">1.3.3.</span> <span class="nav-text">2型上下文无关文法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3型正规文法"><span class="nav-number">1.3.4.</span> <span class="nav-text">3型正规文法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法树"><span class="nav-number">1.4.</span> <span class="nav-text">语法树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#句型分析"><span class="nav-number">1.5.</span> <span class="nav-text">句型分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词法分析"><span class="nav-number">2.</span> <span class="nav-text">词法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析输出"><span class="nav-number">2.1.</span> <span class="nav-text">词法分析输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阶段"><span class="nav-number">2.2.</span> <span class="nav-text">阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正规文法"><span class="nav-number">2.3.</span> <span class="nav-text">正规文法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正规式"><span class="nav-number">2.4.</span> <span class="nav-text">正规式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有穷自动机"><span class="nav-number">2.5.</span> <span class="nav-text">有穷自动机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#确定有穷自动机-DFA"><span class="nav-number">2.5.1.</span> <span class="nav-text">确定有穷自动机(DFA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不确定有穷自动机-NFA"><span class="nav-number">2.5.2.</span> <span class="nav-text">不确定有穷自动机(NFA)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则式转自动机"><span class="nav-number">2.6.</span> <span class="nav-text">正则式转自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正规文法转自动机"><span class="nav-number">2.7.</span> <span class="nav-text">正规文法转自动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFA转DFA"><span class="nav-number">2.8.</span> <span class="nav-text">NFA转DFA</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[自上而下与自下而上语法分析]]></title>
+    <title><![CDATA[自顶向下语法分析指北]]></title>
     <url>%2F2019%2F05%2F05%2F2019-05-05%2F</url>
-    <content type="text"><![CDATA[语法分析 |——自顶向下语法分析—— |——确定分析 ​ | |——不确定分析 ​ | ​ |——自底向上语法分析—— |——算符优先分析 ​ | |——LR分析 自顶向下语法分析（LL1文法）确定分析例1：G[S]: S -&gt; pA | qB A -&gt; cAd | a B -&gt; dB | b W = pccadd。 推导过程如下：S =&gt; pA =&gt; pcAd =&gt; pccAdd =&gt; pccadd。 ​ S S S S ​ / \ / \ / \ / \ ​ p A =&gt; p A =&gt; p A =&gt; p A ​ / | \ / | \ / | \ ​ c A d c A d c A d ​ / | \ / | \ ​ c A d c A d ​ | ​ a 例2：G[S]： S-&gt;Ap S-&gt;Bq A-&gt;a A-&gt;cA B-&gt;b B-&gt;dB W = ccap，推导过程： S =&gt; aP =&gt; cAp =&gt; ccAp =&gt; ccap。 FIRST(a)a的开始符号集或首符号集。 例2：FIRST(Ap) = {a, c}。 FIRST(Bq) = {b, d}。 FIRST(S) = {a, b, c, d}。 ###FOLLOW(A) 若Aa，a ∈ FOLLOW(A)。若a = ε，则# ∈ FOLLOW(A)。 SELECT(A-&gt;a)a不为ε，则SELECT(A-&gt;a) = FIRST(a)。 否则，SELECT(A-&gt;a) = FIRST(a) - ε + FOLLOW(A)。 LL(1)定义：第1个L表示从左往右扫描字符串。 第2个L表示采用最左推导。 1表示只需向右看1个字符即可选择哪个产生式。（为了提高效率，最多为2）。 充要条件：SELLECT(A-&gt;a) ∩ SELECT(A-&gt;b) = 空集。（a，b不能同时能ε）。 通俗理解就是a和b不能有相同前缀。 LL(1)文法判别步骤求出能推出 ε 的非终结符。（未定，是，否） 计算FIRST集 计算FOLLOW集 计算SELECT集 不确定分析（简）]]></content>
+    <content type="text"><![CDATA[语法分析 自顶向下语法分析 确定分析 不确定分析 自底向上语法分析 算符优先分析 LR分析 自顶向下语法分析确定分析(LL(1)文法)例1：G[S]: S -&gt; pA | qB A -&gt; cAd | a B -&gt; dB | b W = pccadd。 推导过程如下：S =&gt; pA =&gt; pcAd =&gt; pccAdd =&gt; pccadd。 ​ S S S S ​ / \ / \ / \ / \ ​ p A =&gt; p A =&gt; p A =&gt; p A/ | \ / | \ / | \ ​ c A d c A d c A d/ | \ / | \ ​ c A d c A d ​ |a 例2：G[S]： S-&gt;Ap S-&gt;Bq A-&gt;a A-&gt;cA B-&gt;b B-&gt;dB W = ccap，推导过程： S =&gt; aP =&gt; cAp =&gt; ccAp =&gt; ccap。 FIRST(a)a的开始符号集或首符号集。 例2：FIRST(Ap) = {a, c}。 FIRST(Bq) = {b, d}。 FIRST(S) = {a, b, c, d}。 ###FOLLOW(A) 若Aa，a ∈ FOLLOW(A)。若a = ε，则# ∈ FOLLOW(A)。 SELECT(A-&gt;a)a不为ε，则SELECT(A-&gt;a) = FIRST(a)。 否则，SELECT(A-&gt;a) = FIRST(a) - ε + FOLLOW(A)。 LL(1)定义：第1个L表示从左往右扫描字符串。 第2个L表示采用最左推导。 1表示只需向右看1个字符即可选择哪个产生式。（为了提高效率，最多为2）。 充要条件：SELLECT(A-&gt;a) ∩ SELECT(A-&gt;b) = 空集。（a，b不能同时能ε）。 通俗理解就是a和b不能有相同前缀。 LL(1)文法判别步骤求出能推出 ε 的非终结符。（未定，是，否） 计算FIRST集 计算FOLLOW集 计算SELECT集 方法递归子程序法对应文法中每个非终结符编写一个递归过程，每个过程的功能是识别由非终结符推出的串，当某非终结符的产生式有多个候选时能够按LL(1)形式可唯一确定地选择某个候选进行推导。 当文法满足LL(1)条件时，构造不带回溯的自上而下分析程序。 该分析程序由一组递归过程组成，每个过程对应文法的一个非终结符。 注意不是所有的aij的first集的交集都为空，仅针对一个VN的候选式有如此的约定。 预测分析法特征 :根据当前输入符号，为当前要处理的非终结符选择产生式。 表驱动的预测分析器包含： 一个输入缓冲区 一个栈 一张分析表 一个输出流 预测分析表M预测分析表是一个M[A，a]形式的矩阵。 其中： A为非终结符，a为终结符或#。 M[A，a]中存放着一条关于A的产生式，指出当A面临a时所应采取的候选； M[A，a]中也可能存放一条“出错标志”，指出Ａ不应该面临a。 例：对于文法G E→TE’ E’ → +TE’|ε T →FT’ T’→*FT’| ε F→(E)|id 其预测分析表为： 解： 12345678910111213141516171819FIRST(E)=&#123; (, id &#125;FIRST(E’)=&#123;+, ε&#125;FIRST(T’)=&#123; *, ε&#125;FIRST(T)=&#123; (, id &#125;FIRST(F)=&#123; (, id &#125;FOLLOW(E) =&#123;#, )&#125;FOLLOW(E’)=&#123;), #&#125;FOLLOW(T’)=&#123;+, ), # &#125;FOLLOW(T) =&#123;+, ), #&#125;FOLLOW(F) =&#123;id, ), *, #&#125; 预测分析器预测分析程序的算法： 输入：串w和文法G的分析表M 输出：如果w属于L（G），则输出w的最左推导，否则报错 方法：开始时，#S在栈里，w#在输入缓冲区 令ip指向w #的第一个符号，令X是栈顶符号，a是ip指向的符号 预测分析器的工作方式：当前栈顶符号X和当前输入符号为a，则语法分析器的动作为： 如果X=a≠#，则POP，advance 如果X ∈VN,查M[X，a]表，若M[X，a]=X→UVW,则用WVU替换栈顶；若M[X，a]=error,则调用错误恢复程序。 如果X=a=#,分析成功。 句子id+id*id的分析过程： 不确定分析（简）原理：匹配，匹配不了回溯继续匹配，直到全部匹配不了或匹配成功为止。（非常暴力） 由于相同左部的产生式的右部FIRST集交集不为空而引起回溯。 S-&gt;xAy S-&gt;ab|a 由于相同左部非终结符的右部可为 ε ，且非终结符的FOLLOW集中含有其他产生式右部FIRST集的元素。 S-&gt;aAS S-&gt;b A-&gt;bAS A-&gt;ε 由于文法含有左递归。 S-&gt;Sa S-&gt;b 部分不确定分析转确定分析左递归消除直接左递归消除采用下列变换公式消除直接左递归，把直接左递归改写为右递归。 如：G[S]： S→Sa | b 可改写为： S→bS’ S’→aS’|ε 改写后的文法所描述的L(G)={ba^n| n&gt;=0} 一般而言，假定关于P的全部产生式是 P→Pa1 | Pa2 | … | Pam | b1 | b2|…|bn 其中，每个a都不等于ε，而每个都不以P开头，那么，消除P的直接左递归性就是改写这些规则： P→b1P’ | b2P’ | … | bnP’ P’→a1P’ | a2P’ |… | amP’ | ε 间接左递归消除间接左递归的消除需先将间接左递归变为直接左递归，然后再按第1种方法消除直接左递归。 代入法将一个产生式规则右部的a中的Vn N替换为N的候选式。如果N有n个候选式，右边a重复n次，而且每一次重复都有N的不同候选式来代替N。 例如：N →a | Bc | ε 在S→Nq中的代入结果S→aq | Bcq | q。 回溯消除回溯产生的根源：头字符集合的问题。例如A-&gt;ab|a。 提取公因子经过反复提取左因子，就能够把每个非终结符（包括新引进者）的所有候选首符集变成为两两不相交。 例：考察文法G[S]: S → iCtS | iCtSeS | aC → b 解：由于S的前两个候选项中含有左因子iCtS，提取左因子之后，等价文法G’如下： S → iCtSS’ | a S’ →eS |ε C → b]]></content>
       <categories>
         <category>程序人生</category>
         <category>编译原理</category>
@@ -16,7 +16,7 @@
   <entry>
     <title><![CDATA[语法分析与词法分析指北]]></title>
     <url>%2F2019%2F05%2F01%2F2019-05-01%2F</url>
-    <content type="text"><![CDATA[语法分析词法分析]]></content>
+    <content type="text"><![CDATA[程序编译过程： 源程序 -&gt; 词法分析程序 -&gt; 语法分析程序 -&gt; 语义分析程序 -&gt; 中间代码生成程序 -&gt; 代码优化程序 -&gt; 目标代码生成程序 -&gt; 目标程序 语法分析例： &lt;句子&gt; → &lt;主语&gt;&lt;谓语&gt; &lt;主语&gt; → &lt;代词&gt;&lt;名词&gt; &lt;代词&gt; → 你 | 我 | 他 &lt;名词&gt; → 老王 | 大学生 | 英语 &lt;谓语&gt; → &lt;动词&gt;&lt;直接宾语&gt; &lt;动词&gt; → 是 | 学习 | 热爱 &lt;直接宾语&gt; → &lt;代词&gt; | &lt;名词&gt; “我是大学生”符合以上规则，是句子。“我大学生是”不符合上面规则，不是句子。 &lt;句子&gt; → &lt;主语&gt;&lt;谓语&gt; → &lt;代词&gt;&lt;谓语&gt; → 我&lt;谓语&gt; → 我&lt;动词&gt;&lt;直接宾语&gt; → 我是&lt;直接宾语&gt; → 我是&lt;名词&gt; → 我是大学生 符号和字符串字母表字母表即符号集，例如汉字的字母表包括汉字，数字标点等，C语言包括if，while之类的保留字组成。 符号串由字母表中的符号组成的任何又穷序列（顺序很重要）。例如A = {a, b, c}的符号串有a，b，ab，ba， aa等等。 符号串的头尾，固有头固有尾abc的头是 ε, a, ab, abc，除abc外均为固有头。尾是ε, c, bc, abc，除abc外均为固有尾。 符号串方幂x = AB。x^0 = ε。x^1 = AB。x^2 = ABAB。x^3 = ABABAB。 符号串的集合A = {a, b}。B = {c, d}。AB = {ac, ad, bc, bd}。 文法定义G(VN, VT, P, S)。 VN为非终结符（例如&lt;谓语&gt;，可以继续转换。通常用大写字母表示，例如A） VT为终结符（例如“老王”，可直接匹配，不能再向下转换。通常用小写字母表示，例如a） P（规则，例如&lt;主语&gt; → &lt;代词&gt;&lt;名词&gt;。又例如S →Aa）。 S起点（例如&lt;句子&gt;就是起点） 文法类型3型∈2型∈1型∈0型，3型最严谨，向右兼容。 0型递归文法a→b，a至少含1个非终结符，b为任意。 凡是递归可枚举的都是0型，包括A→ε，aA→aa等情况。 1型上下文有关文法a→b，a至少含1个非终结符，b不为ε。 0型除去ε的情况就是1型。也就是非终结符不能为ε。 包括aA→aa等情况。 2型上下文无关文法a→b，a必须是非终结符（only one）。 不包括aA→aa等情况。 可以A→aa。 3型正规文法非终结符转换时头必须有一个终结符。例如： S→aB S→bA A→a A→aS A→bAA B→b B→bS B→aBB 语法树 句型分析 自顶向下语法分析（由S向句子推，最终和句子匹配，看能否得到句子） 自底向上语法分析（由句子向S推，最终看能否得到S） 词法分析输入源程序；扫描、分解字符串，识别出一个个单词（定义符、标识符、运算符、界符、常数） 词法分析输出读入源程序，输出担此符号。单词符号可分为以下5种： 关键字（if，else，while，int等） 标识符（a，fun，val等自定义的变量名） 常数（1，1.2，true，“abc”） 运算符（+，-，=，&lt;=，==） 界符（，；’)’）等。 词法分析输出单词符号常常采用二元组形式（单词种别，单词自身值）。 阶段扫描阶段：从左向右扫描输入源程序，删除注释、压缩空白字符； 词法分析阶段：按照语言的词法规则识别各类单词，并产生相应的单词符号。 正规文法&lt;标识符&gt; → l | l &lt;字母数字&gt; &lt;字母数字&gt; → l | d |l &lt;字母数字&gt; | d&lt;字母数字&gt; （l字母，d数字） 例如: A→aB A→a 正规式a {a} a|b {a,b} ab {ab} (a|b)(a|b) {aa,ab,ba,bb} a* {ε,a,aa,aaa…} (a|b)* {ε,a,aab,abaa…所有a,b组成的串} (a|b)*(aa|bb)(a|b)* {aaabbaab……} 有穷自动机确定有穷自动机(DFA)DFA M = （K, ∑, f, S, Z） K：有穷集，每个元素称为一种状态（图表示就是点集）。 ∑：有穷字母表，每个元素称为一个输入符号，所以也叫输入符号表（图表示就是边集）。 f：转换函数，一个节点通过某条边到另一个结点（或自身）。 S：唯一一个初态（起点） Z：终态集。（就是终点的集合） 不确定有穷自动机(NFA)NFA M = （K, ∑, f, S, Z） K：有穷集，每个元素称为一种状态（图表示就是点集）。 ∑：有穷字母表，每个元素称为一个输入符号，所以也叫输入符号表（图表示就是边集）。 f：转换函数，一个节点通过某一类边到另外许多结点的集合（或自身）。 S：初态集（多个起点） Z：终态集。（就是终点的集合） 很容易发现，不确定有穷自动机和确定有穷自动机的区别就是DFA每个结点每类单向边只有一条，且起点只有一个，而NFA可以有多条，且起点可以有多个。例如NFA中S—a—&gt;A，S—a,b—&gt;S，S—a,b—&gt;D，但DFA不允许，a，b由S指向其他结点（或自身）的话只能存在一条。 正则式转自动机 正规文法转自动机正规文法由于为第3型文法，所以S→aA，S为起点，→为边，a为边名，A为下一个结点。 NFA转DFA参考链接]]></content>
       <categories>
         <category>程序人生</category>
         <category>编译原理</category>
@@ -388,8 +388,8 @@
         <tag>数据结构</tag>
         <tag>图论</tag>
         <tag>数论</tag>
-        <tag>博弈论</tag>
         <tag>动态规划</tag>
+        <tag>博弈论</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -562,8 +562,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>计算几何</tag>
         <tag>分治</tag>
+        <tag>计算几何</tag>
       </tags>
   </entry>
   <entry>
@@ -697,8 +697,8 @@
         <tag>算法</tag>
         <tag>最短路</tag>
         <tag>Dijkstra算法</tag>
-        <tag>Bellman-Ford算法</tag>
         <tag>SPFA算法</tag>
+        <tag>Bellman-Ford算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1193,8 +1193,8 @@
         <tag>C/C++</tag>
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
-        <tag>线性dp</tag>
         <tag>动态规划</tag>
+        <tag>线性dp</tag>
       </tags>
   </entry>
   <entry>
@@ -1283,8 +1283,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>高斯消元</tag>
         <tag>数论</tag>
+        <tag>高斯消元</tag>
         <tag>容斥原理</tag>
       </tags>
   </entry>
@@ -1314,8 +1314,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>KM算法</tag>
       </tags>
@@ -1330,8 +1330,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>匈牙利算法</tag>
       </tags>

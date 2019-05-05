@@ -569,7 +569,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/05/2019-05-05/" itemprop="url">自上而下与自下而上语法分析</a></h1>
+                <a class="post-title-link" href="/2019/05/05/2019-05-05/" itemprop="url">自顶向下语法分析指北</a></h1>
         
 
         <div class="post-meta">
@@ -647,7 +647,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  333
+                  1,438
                 </span>
               
 
@@ -663,7 +663,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  6
                 </span>
               
             </div>
@@ -686,11 +686,27 @@
       
         
           
-          语法分析        |——自顶向下语法分析——    |——确定分析
-​            |                            |——不确定分析
-​            |
-​            |——自底向上语法分析——    |——算符优先分析
-​      
+          
+语法分析
+自顶向下语法分析
+确定分析
+不确定分析
+
+
+自底向上语法分析
+算符优先分析
+LR分析
+
+
+
+
+
+自顶向下语法分析确定分析(LL(1)文法)例1：G[S]:
+S -&gt; pA | qB
+A -&gt; cAd | a
+B -&gt; dB | b
+W = pccadd。
+推导过程如下：
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -846,7 +862,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8
+                  1,340
                 </span>
               
 
@@ -862,7 +878,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -885,8 +901,12 @@
       
         
           
-          语法分析词法分析
-          
+          程序编译过程：
+源程序 -&gt; 词法分析程序 -&gt; 语法分析程序 -&gt; 语义分析程序 -&gt; 中间代码生成程序 -&gt; 代码优化程序 -&gt; 目标代码生成程序 -&gt; 目标程序
+语法分析例：
+&lt;句子&gt; → &lt;主语&gt;&lt;谓语&gt;
+&lt;
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/05/01/2019-05-01/#more" rel="contents">
