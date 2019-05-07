@@ -4,6 +4,33 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2019/05/07/2019-05-07/</loc>
+    <lastmod>2019-05-07T15:37:30.142Z</lastmod>
+    <data>
+        <display>
+        <title>[转]探索C++虚函数在g++中的实现</title>
+        <pubTime>2019-05-07T15:23:56.000Z</pubTime>
+        
+        <tag>C/C++</tag>
+         
+        <tag>多态</tag>
+         
+        <tag>虚函数表</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="C/C++" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2019/05/05/2019-05-05/</loc>
     <lastmod>2019-05-05T12:14:24.265Z</lastmod>
     <data>
@@ -38,9 +65,9 @@
         
         <tag>编译原理</tag>
          
-        <tag>词法分析</tag>
-         
         <tag>语法分析</tag>
+         
+        <tag>词法分析</tag>
          
          
            

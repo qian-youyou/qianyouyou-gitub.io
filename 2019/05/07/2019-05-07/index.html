@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://qianyouyou.cn"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C/C++,多态,虚函数表," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="为了探索C++虚函数的实现，我们首先编写几个用来测试的类，代码如下： C++ 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &amp;lt;iostream&amp;gt;using namespace std;class Base1&amp;#123;public:">
+<meta name="keywords" content="C&#x2F;C++,多态,虚函数表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转]探索C++虚函数在g++中的实现">
+<meta property="og:url" content="http://qianyouyou.cn/2019/05/07/2019-05-07/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="为了探索C++虚函数的实现，我们首先编写几个用来测试的类，代码如下： C++ 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &amp;lt;iostream&amp;gt;using namespace std;class Base1&amp;#123;public:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-07-3.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-07-2.png">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-07-1.png">
+<meta property="og:updated_time" content="2019-05-07T15:37:30.142Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[转]探索C++虚函数在g++中的实现">
+<meta name="twitter:description" content="为了探索C++虚函数的实现，我们首先编写几个用来测试的类，代码如下： C++ 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#include &amp;lt;iostream&amp;gt;using namespace std;class Base1&amp;#123;public:">
+<meta name="twitter:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-07-3.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2019/05/07/2019-05-07/"/>
+
+
+
+
+
+  <title>[转]探索C++虚函数在g++中的实现 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/qian-youyou" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2019/05/07/2019-05-07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[转]探索C++虚函数在g++中的实现</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-07T23:23:56+08:00">
+                2019-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,657
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为了探索C++虚函数的实现，我们首先编写几个用来测试的类，代码如下：</p>
+<p>C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class Base1</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void f() &#123;</span><br><span class="line">        cout &lt;&lt; &quot;Base1::f()&quot; &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Base2</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void g() &#123;</span><br><span class="line">        cout &lt;&lt; &quot;Base2::g()&quot; &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Derived : public Base1, public Base2</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void f() &#123;</span><br><span class="line">        cout &lt;&lt; &quot;Derived::f()&quot; &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    virtual void g() &#123;</span><br><span class="line">        cout &lt;&lt; &quot;Derived::g()&quot; &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    virtual void h() &#123;</span><br><span class="line">        cout &lt;&lt; &quot;Derived::h()&quot; &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">    Derived ins;</span><br><span class="line">    Base1 &amp;b1 = ins;</span><br><span class="line">    Base2 &amp;b2 = ins;</span><br><span class="line">    Derived &amp;d = ins;</span><br><span class="line"></span><br><span class="line">    b1.f();</span><br><span class="line">    b2.g();</span><br><span class="line">    d.f();</span><br><span class="line">    d.g();</span><br><span class="line">    d.h();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码采用了多继承，是为了更多的分析出g++的实现本质，用UML简单的画一下继承关系：</p>
+<p>示例代码UML图</p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-07-3.png" alt=""></p>
+<p>代码的输出结果和预期的一致，C++实现了虚函数覆盖功能，代码输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Derived::f()</span><br><span class="line">Derived::g()</span><br><span class="line">Derived::f()</span><br><span class="line">Derived::g()</span><br><span class="line">Derived::h()</span><br></pre></td></tr></table></figure>
+<h2 id="开始分析！"><a href="#开始分析！" class="headerlink" title="开始分析！"></a>开始分析！</h2><p>我写这篇文章的重点是尝试解释g++编译在底层是如何实现虚函数覆盖和动态绑定的，因此我假定你已经明白基本的虚函数概念以及虚函数表（vtbl）和虚函数表指针（vptr）的概念和在继承实现中所承担的作用，如果你还不清楚这些概念，建议你在继续阅读下面的分析前先补习一下相关知识，陈皓的 <a href="http://blog.csdn.net/haoel/article/details/1948051" target="_blank" rel="noopener">《C++虚函数表解析》</a> 系列是一个不错的选择。</p>
+<p>通过本文，我将尝试解答下面这三个问题：</p>
+<ol>
+<li>g++如何实现虚函数的动态绑定？</li>
+<li>vtbl在何时被创建？vptr又是在何时被初始化？</li>
+<li>在Linux中运行的C++程序虚拟存储器中，vptr、vtbl存放在虚拟存储的什么位置？</li>
+</ol>
+<p>首先是第一个问题：</p>
+<h3 id="g-如何实现虚函数的动态绑定？"><a href="#g-如何实现虚函数的动态绑定？" class="headerlink" title="g++如何实现虚函数的动态绑定？"></a>g++如何实现虚函数的动态绑定？</h3><p>这个问题乍看简单，大家都知道是通过vptr和vtbl实现的，那就让我们刨根问底的看一看，g++是如何利用vptr和vtbl实现的。</p>
+<p>第一步，使用 -fdump-class-hierarchy 参数导出g++生成的类内存结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Vtable for Base1</span><br><span class="line">Base1::_ZTV5Base1: 3u entries</span><br><span class="line">0     (int (*)(...))0</span><br><span class="line">4     (int (*)(...))(&amp; _ZTI5Base1)</span><br><span class="line">8     Base1::f</span><br><span class="line"></span><br><span class="line">Class Base1</span><br><span class="line">   size=4 align=4</span><br><span class="line">   base size=4 base align=4</span><br><span class="line">Base1 (0xb6acb438) 0 nearly-empty</span><br><span class="line">    vptr=((&amp; Base1::_ZTV5Base1) + 8u)</span><br><span class="line"></span><br><span class="line">Vtable for Base2</span><br><span class="line">Base2::_ZTV5Base2: 3u entries</span><br><span class="line">0     (int (*)(...))0</span><br><span class="line">4     (int (*)(...))(&amp; _ZTI5Base2)</span><br><span class="line">8     Base2::g</span><br><span class="line"></span><br><span class="line">Class Base2</span><br><span class="line">   size=4 align=4</span><br><span class="line">   base size=4 base align=4</span><br><span class="line">Base2 (0xb6acb474) 0 nearly-empty</span><br><span class="line">    vptr=((&amp; Base2::_ZTV5Base2) + 8u)</span><br><span class="line"></span><br><span class="line">Vtable for Derived</span><br><span class="line">Derived::_ZTV7Derived: 8u entries</span><br><span class="line">0     (int (*)(...))0</span><br><span class="line">4     (int (*)(...))(&amp; _ZTI7Derived)</span><br><span class="line">8     Derived::f</span><br><span class="line">12    Derived::g</span><br><span class="line">16    Derived::h</span><br><span class="line">20    (int (*)(...))-0x000000004</span><br><span class="line">24    (int (*)(...))(&amp; _ZTI7Derived)</span><br><span class="line">28    Derived::_ZThn4_N7Derived1gEv</span><br><span class="line"></span><br><span class="line">Class Derived</span><br><span class="line">   size=8 align=4</span><br><span class="line">   base size=8 base align=4</span><br><span class="line">Derived (0xb6b12780) 0</span><br><span class="line">    vptr=((&amp; Derived::_ZTV7Derived) + 8u)</span><br><span class="line">  Base1 (0xb6acb4b0) 0 nearly-empty</span><br><span class="line">      primary-for Derived (0xb6b12780)</span><br><span class="line">  Base2 (0xb6acb4ec) 4 nearly-empty</span><br><span class="line">      vptr=((&amp; Derived::_ZTV7Derived) + 28u)</span><br></pre></td></tr></table></figure>
+<p>如果看不明白这些乱七八糟的输出，没关系（当然能看懂更好），把上面的输出转换成图的形式就清楚了：</p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-07-2.png" alt=""></p>
+<p>vptr和vtbl</p>
+<p>其中有几点尤其值得注意：</p>
+<ol>
+<li>我用来测试的机器是32位机，所有vptr占4个字节，每个vtbl中的函数指针也是4个字节</li>
+<li>每个类的主要（primal）vptr放在类内存空间的起始位置（由于我没有声明任何成员变量，可能看不清楚）</li>
+<li>在多继承中，对应各个基类的vptr按继承顺序依次放置在类内存空间中，且子类与第一个基类共用同一个vptr</li>
+<li>子类中声明的虚函数除了覆盖各个基类对应函数的指针外，还额外添加一份到第一个基类的vptr中（体现了共用的意义）</li>
+</ol>
+<p>有了内存布局后，接下来观察g++是如何在这样的内存布局上进行动态绑定的。</p>
+<p>g++对每个类的指针或引用对象，如果是其类声明中虚函数，使用位于其内存空间首地址上的vptr寻找找到vtbl进而得到函数地址。如果是父类声明而子类未覆盖的虚函数，使用对应父类的vptr进行寻址。</p>
+<p>先来验证一下，使用 objdump -S 得到 b1.f() 的汇编指令：</p>
+<p>Assembly (x86)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">b1.f();</span><br><span class="line"> 8048734:       8b 44 24 24             mov    0x24(%esp),%eax    # 得到Base1对象的地址</span><br><span class="line"> 8048738:       8b 00                   mov    (%eax),%eax        # 对对象首地址上的vptr进行解引用，得到vtbl地址</span><br><span class="line"> 804873a:       8b 10                   mov    (%eax),%edx        # 解引用vtbl上第一个虚函数的地址</span><br><span class="line"> 804873c:       8b 44 24 24             mov    0x24(%esp),%eax</span><br><span class="line"> 8048740:       89 04 24                mov    %eax,(%esp)</span><br><span class="line"> 8048743:       ff d2                   call   *%edx              # 调用函数</span><br></pre></td></tr></table></figure>
+<p>其过程和我们的分析完全一致，聪明的你可能发现了，b2怎么办呢？Derived类的实例内存首地址上的vptr并不是Base2类的啊！答案实际上是因为g++在引用赋值语句 Base2 &amp;b2 = ins 上动了手脚：</p>
+<p>Assembly (x86)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Derived ins;</span><br><span class="line"> 804870d:       8d 44 24 1c             lea    0x1c(%esp),%eax</span><br><span class="line"> 8048711:       89 04 24                mov    %eax,(%esp)</span><br><span class="line"> 8048714:       e8 c3 01 00 00          call   80488dc &lt;_ZN7DerivedC1Ev&gt;</span><br><span class="line">    Base1 &amp;b1 = ins;</span><br><span class="line"> 8048719:       8d 44 24 1c             lea    0x1c(%esp),%eax</span><br><span class="line"> 804871d:       89 44 24 24             mov    %eax,0x24(%esp)</span><br><span class="line">    Base2 &amp;b2 = ins;</span><br><span class="line"> 8048721:       8d 44 24 1c             lea    0x1c(%esp),%eax   # 获得ins实例地址</span><br><span class="line"> 8048725:       83 c0 04                add    $0x4,%eax         # 添加一个指针的偏移量</span><br><span class="line"> 8048728:       89 44 24 28             mov    %eax,0x28(%esp)   # 初始化引用</span><br><span class="line">    Derived &amp;d = ins;</span><br><span class="line"> 804872c:       8d 44 24 1c             lea    0x1c(%esp),%eax</span><br><span class="line"> 8048730:       89 44 24 2c             mov    %eax,0x2c(%esp)</span><br></pre></td></tr></table></figure>
+<p>虽然是指向同一个实例的引用，根据引用类型的不同，g++编译器会为不同的引用赋予不同的地址。例如b2就获得一个指针的偏移量，因此才保证了vptr的正确性。</p>
+<p>PS：我们顺便也证明了C++中的引用的真实身份就是指针…</p>
+<p>接下来进入第二个问题：</p>
+<h3 id="vtbl在何时被创建？vptr又是在何时被初始化？"><a href="#vtbl在何时被创建？vptr又是在何时被初始化？" class="headerlink" title="vtbl在何时被创建？vptr又是在何时被初始化？"></a>vtbl在何时被创建？vptr又是在何时被初始化？</h3><p>既然我们已经知道了g++是如何通过vptr和vtbl来实现虚函数魔法的，那么vptr和vtbl又是在什么时候被创建的呢？</p>
+<p>vptr是一个相对容易思考的问题，因为vptr明确的属于一个实例，所以vptr的赋值理应放在类的构造函数中。 g++为每个有虚函数的类在构造函数末尾中隐式的添加了为vptr赋值的操作 。</p>
+<p>同样通过生成的汇编代码验证：</p>
+<p>Assembly (x86)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Derived : public Base1, public Base2</span><br><span class="line">&#123;</span><br><span class="line"> 80488dc:       55                      push   %ebp</span><br><span class="line"> 80488dd:       89 e5                   mov    %esp,%ebp</span><br><span class="line"> 80488df:       83 ec 18                sub    $0x18,%esp</span><br><span class="line"> 80488e2:       8b 45 08                mov    0x8(%ebp),%eax</span><br><span class="line"> 80488e5:       89 04 24                mov    %eax,(%esp)</span><br><span class="line"> 80488e8:       e8 d3 ff ff ff          call   80488c0 &lt;_ZN5Base1C1Ev&gt;</span><br><span class="line"> 80488ed:       8b 45 08                mov    0x8(%ebp),%eax</span><br><span class="line"> 80488f0:       83 c0 04                add    $0x4,%eax</span><br><span class="line"> 80488f3:       89 04 24                mov    %eax,(%esp)</span><br><span class="line"> 80488f6:       e8 d3 ff ff ff          call   80488ce &lt;_ZN5Base2C1Ev&gt;</span><br><span class="line"> 80488fb:       8b 45 08                mov    0x8(%ebp),%eax</span><br><span class="line"> 80488fe:       c7 00 48 8a 04 08       movl   $0x8048a48,(%eax)</span><br><span class="line"> 8048904:       8b 45 08                mov    0x8(%ebp),%eax</span><br><span class="line"> 8048907:       c7 40 04 5c 8a 04 08    movl   $0x8048a5c,0x4(%eax)</span><br><span class="line"> 804890e:       c9                      leave</span><br><span class="line"> 804890f:       c3                      ret</span><br></pre></td></tr></table></figure>
+<p>可以看到在代码中，Derived类的构造函数为实例的两个vptr赋初值，可是，这两个初值居然是立即数！立即数！立即数！ 这说明了vtbl的生成并不是运行时的，而是在编译期就已经确定了存放在这两个地址上的 ！</p>
+<p>这个地址不出意料的属于.rodata（只读数据段），使用 objdump -s -j .rodata 提取出对应的内存观察：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">80489e0 03000000 01000200 00000000 42617365  ............Base</span><br><span class="line"> 80489f0 313a3a66 28290042 61736532 3a3a6728  1::f().Base2::g(</span><br><span class="line"> 8048a00 29004465 72697665 643a3a66 28290044  ).Derived::f().D</span><br><span class="line"> 8048a10 65726976 65643a3a 67282900 44657269  erived::g().Deri</span><br><span class="line"> 8048a20 7665643a 3a682829 00000000 00000000  ved::h()........</span><br><span class="line"> 8048a30 00000000 00000000 00000000 00000000  ................</span><br><span class="line"> 8048a40 00000000 a08a0408 34880408 68880408  ........4...h...</span><br><span class="line"> 8048a50 94880408 fcffffff a08a0408 60880408  ............`...</span><br><span class="line"> 8048a60 00000000 c88a0408 08880408 00000000  ................</span><br><span class="line"> 8048a70 00000000 d88a0408 dc870408 37446572  ............7Der</span><br><span class="line"> 8048a80 69766564 00000000 00000000 00000000  ived............</span><br><span class="line"> 8048a90 00000000 00000000 00000000 00000000  ................</span><br><span class="line"> 8048aa0 889f0408 7c8a0408 00000000 02000000  ....|...........</span><br><span class="line"> 8048ab0 d88a0408 02000000 c88a0408 02040000  ................</span><br><span class="line"> 8048ac0 35426173 65320000 a89e0408 c08a0408  5Base2..........</span><br><span class="line"> 8048ad0 35426173 65310000 a89e0408 d08a0408  5Base1..........</span><br></pre></td></tr></table></figure>
+<p>由于程序运行的机器是小端机，经过简单的转换就可以得到第一个vptr所指向的内存中的第一条数据为0x80488834，如果把这个数据解释为函数地址到汇编文件中查找，会得到：</p>
+<p>Assembly (x86)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">08048834 &lt;_ZN7Derived1fEv&gt;:</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Derived : public Base1, public Base2</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    virtual void f() &#123;</span><br><span class="line"> 8048834:       55                      push   %ebp</span><br><span class="line"> 8048835:       89 e5                   mov    %esp,%ebp</span><br><span class="line"> 8048837:       83 ec 18                sub    $0x18,%esp</span><br></pre></td></tr></table></figure>
+<p>Bingo！ g++在编译期就为每个类确定了vtbl的内容，并且在构造函数中添加相应代码使vptr能够指向已经填好的vtbl的地址 。</p>
+<p>这也同时为我们解答了第三个问题：</p>
+<p>在Linux中运行的C++程序虚拟存储器中，vptr、vtbl存放在虚拟存储的什么位置？</p>
+<p>直接看图：</p>
+<p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-07-1.png" alt=""></p>
+<p>虚函数在虚拟存储器中的位置</p>
+<p>图中灰色部分应该是你已经熟悉的，彩色部分内容和相关联的箭头描述了虚函数调用的过程（图中展示的是通过new在堆区创建实例的情况，与示例代码有所区别，小失误，不要在意）： 当调用虚函数时，首先通过位于栈区的实例的指针找到位于堆区中的实例地址，然后通过实例内存开头处的vptr找到位于.rodata段的vtbl，再根据偏移量找到想要调用的函数地址，最后跳转到代码段中的函数地址执行目标函数 。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>研究这些问题的起因是因为公司代码出现了非常奇葩的行为，经过追查定位到虚函数表出了问题，因此才有机会脚踏实地的对虚函数实现进行一番探索。</p>
+<p>也许你会想，即使我不明白这些底层原理，也一样可以正常的使用虚函数，也一样可以写出很好的面相对象的代码啊？</p>
+<p>这一点儿也没有错，但是，C++作为全宇宙最复杂的程序设计语言，它提供的功能异常强大，无异于武侠小说中锋利无比的屠龙宝刀。但武功不好的菜鸟如果胡乱舞弄宝刀，却很容易反被其所伤。只有了解了C++底层的原理和机制，才能让我们把C++这把屠龙宝刀使用的更加得心应手，变化出更加华丽的招式，成为真正的武林高手。</p>
+<h1 id="转"><a href="#转" class="headerlink" title="转"></a>转</h1><p>本文转自<a href="http://blog.kongfy.com/2015/08/%E6%8E%A2%E7%B4%A2c%E8%99%9A%E5%87%BD%E6%95%B0%E5%9C%A8g%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">http://blog.kongfy.com/2015/08/探索c虚函数在g中的实现/</a> </p>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><hr>纸短情长啊<i class="fa fa-paw"></i>文章结束了<i class="fa fa-paw"></i>但我们的故事还在继续</div>
+    
+</div>
+    
+	  </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+          
+            <a href="/tags/多态/" rel="tag"><i class="fa fa-tag"></i> 多态</a>
+          
+            <a href="/tags/虚函数表/" rel="tag"><i class="fa fa-tag"></i> 虚函数表</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/05/2019-05-05/" rel="next" title="自顶向下语法分析指北">
+                <i class="fa fa-chevron-left"></i> 自顶向下语法分析指北
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA4NC8xMjYxOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">154</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">134</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠CSDN" target="_blank">浅悠悠CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="渣渣灰CSDN" target="_blank">渣渣灰CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/messhiro" title="赵神CSDN" target="_blank">赵神CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.matrix67.com/" title="matrix67博客" target="_blank">matrix67博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://amon1997.com/" title="曹静的博客" target="_blank">曹静的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/sophia__yu" title="杨祥钰CSDN" target="_blank">杨祥钰CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
+	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始分析！"><span class="nav-number">1.</span> <span class="nav-text">开始分析！</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#g-如何实现虚函数的动态绑定？"><span class="nav-number">1.1.</span> <span class="nav-text">g++如何实现虚函数的动态绑定？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vtbl在何时被创建？vptr又是在何时被初始化？"><span class="nav-number">1.2.</span> <span class="nav-text">vtbl在何时被创建？vptr又是在何时被初始化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#转"><span class="nav-number"></span> <span class="nav-text">转</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
