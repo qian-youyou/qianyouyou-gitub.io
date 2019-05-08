@@ -725,8 +725,8 @@
         <tag>算法</tag>
         <tag>最短路</tag>
         <tag>Dijkstra算法</tag>
-        <tag>Bellman-Ford算法</tag>
         <tag>SPFA算法</tag>
+        <tag>Bellman-Ford算法</tag>
       </tags>
   </entry>
   <entry>
@@ -828,8 +828,8 @@
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
         <tag>数论</tag>
-        <tag>费马大定理</tag>
         <tag>CCPC</tag>
+        <tag>费马大定理</tag>
       </tags>
   </entry>
   <entry>
@@ -1006,8 +1006,8 @@
         <category>C/C++</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>STL</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1019,8 +1019,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>STL</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1205,8 +1205,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>并查集</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -1743,8 +1743,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>STL</tag>
+        <tag>算法</tag>
         <tag>pat天梯赛</tag>
         <tag>vector</tag>
       </tags>
@@ -1779,7 +1779,7 @@
   <entry>
     <title><![CDATA[C++类的3种继承方式]]></title>
     <url>%2F2018%2F01%2F24%2F2018-01-24%2F</url>
-    <content type="text"><![CDATA[简单地说下C++类的3种继承方式，分别是public继承，protected继承，private继承。 最常用的还是public继承。class默认的是private继承，它的member如果没写权限也是默认 private。struct则相反，默认的是public继承。结合下面的图示和代码，对C++的继承就有了 比较清晰的认识了。 继承之后，derived class 继承过后的member的属性就是图中所示。 代码主要从： 1.基类成员对其对象的可见性： 基类成员对派生类的可见性： 基类成员对派生类对象的可见性： 这3个方面谈的。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465#include &lt;iostream&gt; class base&#123; public: base()&#123; a = 0; b = 1; c = 2; &#125; int a; protected: int b; private: int c; &#125;; class derived1 : public base&#123;//public继承 public: void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; class derived2 : protected base&#123;//protected继承 public: void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; class derived3 : private base&#123;//private继承 public: void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; class derived4 : public derived3&#123;//base的member不能被private继承的派生类的子类访问 public: void fun()&#123; // std::cout&lt;&lt;a; &#125; &#125;; class derived5 : base&#123;//默认private继承 void fun()&#123;//derived class可以访问public和protected member std::cout&lt;&lt;base::a&lt;&lt;base::b; // std::cout&lt;&lt;base::c;//不能访问 &#125; &#125;; int main(void) &#123; base b1; derived1 d1; derived2 d2; derived3 d3; d1.fun(); d2.fun(); d3.fun(); std::cout&lt;&lt;b1.a;//base class Object只能访问public member std::cout&lt;&lt;d1.a;//public继承时 derived class Object只能访问base class的public member //std::cout&lt;&lt;d1.b&lt;&lt;d1.c;//不能访问 //std::cout&lt;&lt;d2.a&lt;&lt;d2.b;//protected继承时 derived class Object不能问访base class的member //std::cout&lt;&lt;d3.a;//private继承时 derived class Object不能问访base class的member return 0; &#125;]]></content>
+    <content type="text"><![CDATA[众所周知，C++类中的成员(函数/变量)拥有三种访问权限： public:用该关键字修饰的成员表示公有成员，该成员不仅可以在类内可以被访问，在类外也是可以被访问的，是类对外提供的可访问接口； private:用该关键字修饰的成员表示私有成员，该成员仅在类内可以被访问，在类体外是隐藏状态； protected:用该关键字修饰的成员表示保护成员，保护成员在类体外同样是隐藏状态，但是对于该类的派生类来说，相当于公有成员，在派生类中可以被访问。 对一个类的派生类来说，在继承基类的过程中，不仅包含了基类的所有成员，还增加了自己的成员，而派生类中成员的访问权限则会因为继承权限方式的不同而不同。 相对于派生类成员的访问权限比较简单(派生类成员的访问权限就是取决于派生类中定义的权限)，从基类中继承的成员的访问权限就相对较为复杂，这并不是简单地照搬基类的成员访问权限。基类成员在派生类中的访问权限与继承的方式有着密切的关系，在不同的继承方式下，访问权限也是不同的，总结如下： **若继承方式是public，基类成员在派生类中的访问权限保持不变，也就是说，基类中的成员访问权限，在派生类中仍然保持原来的访问权限；** **若继承方式是private，基类所有成员在派生类中的访问权限都会变为私有(private)权限；** **若继承方式是protected，基类的共有成员和保护成员在派生类中的访问权限都会变为保护(protected)权限，私有成员在派生类中的访问权限仍然是私有(private)权限。** 注意： C++中struct与class的唯一区别是类内成员struct默认为public，class默认为private。 同一类的对象之间类内可以互相访问任意成员，派生类与基类之间类内可访问除私有成员外的任意成员，所有类外只能访问公有成员。 无论哪种继承方式，基类的公有和保护成员都可以被派生类的成员访问。 无论哪种继承方式，基类的私有成员都不可以被派生类的成员和对象访问。 只有公有继承时，基类的公有成员才可以被派生类的对象访问。 在被继承时，基类的保护成员及和公有成员行为一致。 在被类的对象访问时，保护成员和私有成员的行为一致。]]></content>
       <categories>
         <category>程序人生</category>
         <category>C/C++</category>

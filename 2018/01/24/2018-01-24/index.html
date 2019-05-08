@@ -114,20 +114,20 @@
 
 
 
-<meta name="description" content="简单地说下C++类的3种继承方式，分别是public继承，protected继承，private继承。 最常用的还是public继承。class默认的是private继承，它的member如果没写权限也是默认 private。struct则相反，默认的是public继承。结合下面的图示和代码，对C++的继承就有了 比较清晰的认识了。  继承之后，derived class 继承过后的member的">
+<meta name="description" content="众所周知，C++类中的成员(函数/变量)拥有三种访问权限： public:用该关键字修饰的成员表示公有成员，该成员不仅可以在类内可以被访问，在类外也是可以被访问的，是类对外提供的可访问接口；  private:用该关键字修饰的成员表示私有成员，该成员仅在类内可以被访问，在类体外是隐藏状态；  protected:用该关键字修饰的成员表示保护成员，保护成员在类体外同样是隐藏状态，但是对于该类的派生类">
 <meta name="keywords" content="C&#x2F;C++,继承">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++类的3种继承方式">
 <meta property="og:url" content="http://qianyouyou.cn/2018/01/24/2018-01-24/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="简单地说下C++类的3种继承方式，分别是public继承，protected继承，private继承。 最常用的还是public继承。class默认的是private继承，它的member如果没写权限也是默认 private。struct则相反，默认的是public继承。结合下面的图示和代码，对C++的继承就有了 比较清晰的认识了。  继承之后，derived class 继承过后的member的">
+<meta property="og:description" content="众所周知，C++类中的成员(函数/变量)拥有三种访问权限： public:用该关键字修饰的成员表示公有成员，该成员不仅可以在类内可以被访问，在类外也是可以被访问的，是类对外提供的可访问接口；  private:用该关键字修饰的成员表示私有成员，该成员仅在类内可以被访问，在类体外是隐藏状态；  protected:用该关键字修饰的成员表示保护成员，保护成员在类体外同样是隐藏状态，但是对于该类的派生类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://my.csdn.net/uploads/201204/24/1335243383_3191.jpg">
-<meta property="og:updated_time" content="2019-04-27T14:42:09.286Z">
+<meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/18-01-24-%E7%BB%A7%E6%89%BF-1.png">
+<meta property="og:updated_time" content="2019-05-08T10:30:10.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++类的3种继承方式">
-<meta name="twitter:description" content="简单地说下C++类的3种继承方式，分别是public继承，protected继承，private继承。 最常用的还是public继承。class默认的是private继承，它的member如果没写权限也是默认 private。struct则相反，默认的是public继承。结合下面的图示和代码，对C++的继承就有了 比较清晰的认识了。  继承之后，derived class 继承过后的member的">
-<meta name="twitter:image" content="http://my.csdn.net/uploads/201204/24/1335243383_3191.jpg">
+<meta name="twitter:description" content="众所周知，C++类中的成员(函数/变量)拥有三种访问权限： public:用该关键字修饰的成员表示公有成员，该成员不仅可以在类内可以被访问，在类外也是可以被访问的，是类对外提供的可访问接口；  private:用该关键字修饰的成员表示私有成员，该成员仅在类内可以被访问，在类体外是隐藏状态；  protected:用该关键字修饰的成员表示保护成员，保护成员在类体外同样是隐藏状态，但是对于该类的派生类">
+<meta name="twitter:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/18-01-24-%E7%BB%A7%E6%89%BF-1.png">
 
 
 
@@ -454,7 +454,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  507
+                  738
                 </span>
               
 
@@ -470,7 +470,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -491,22 +491,33 @@
       
 
       
-        <p>简单地说下C++类的3种继承方式，分别是public继承，protected继承，private继承。</p>
-<p>最常用的还是public继承。class默认的是private继承，它的member如果没写权限也是默认</p>
-<p>private。struct则相反，默认的是public继承。结合下面的图示和代码，对C++的继承就有了</p>
-<p>比较清晰的认识了。</p>
-<p><img src="http://my.csdn.net/uploads/201204/24/1335243383_3191.jpg" alt="img"></p>
-<p>继承之后，derived class 继承过后的member的属性就是图中所示。</p>
-<p>代码主要从：</p>
-<p>1.基类成员对其对象的可见性：  </p>
-<ol start="2">
-<li><p>基类成员对派生类的可见性：  </p>
-</li>
-<li><p>基类成员对派生类对象的可见性：</p>
-</li>
+        <p>众所周知，C++类中的成员(函数/变量)拥有三种访问权限：</p>
+<pre><code>public:用该关键字修饰的成员表示公有成员，该成员不仅可以在类内可以被访问，在类外也是可以被访问的，是类对外提供的可访问接口；
+
+private:用该关键字修饰的成员表示私有成员，该成员仅在类内可以被访问，在类体外是隐藏状态；
+
+protected:用该关键字修饰的成员表示保护成员，保护成员在类体外同样是隐藏状态，但是对于该类的派生类来说，相当于公有成员，在派生类中可以被访问。
+
+对一个类的派生类来说，在继承基类的过程中，不仅包含了基类的所有成员，还增加了自己的成员，而派生类中成员的访问权限则会因为继承权限方式的不同而不同。
+
+相对于派生类成员的访问权限比较简单(派生类成员的访问权限就是取决于派生类中定义的权限)，从基类中继承的成员的访问权限就相对较为复杂，这并不是简单地照搬基类的成员访问权限。基类成员在派生类中的访问权限与继承的方式有着密切的关系，在不同的继承方式下，访问权限也是不同的，总结如下：
+
+**若继承方式是public，基类成员在派生类中的访问权限保持不变，也就是说，基类中的成员访问权限，在派生类中仍然保持原来的访问权限；**
+
+**若继承方式是private，基类所有成员在派生类中的访问权限都会变为私有(private)权限；**
+
+**若继承方式是protected，基类的共有成员和保护成员在派生类中的访问权限都会变为保护(protected)权限，私有成员在派生类中的访问权限仍然是私有(private)权限。**
+</code></pre><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/18-01-24-%E7%BB%A7%E6%89%BF-1.png" alt=""></p>
+<p>注意：</p>
+<ol>
+<li>C++中struct与class的唯一区别是类内成员struct默认为public，class默认为private。</li>
+<li>同一类的对象之间类内可以互相访问任意成员，派生类与基类之间类内可访问除私有成员外的任意成员，所有类外只能访问公有成员。</li>
+<li>无论哪种继承方式，基类的公有和保护成员都可以被派生类的成员访问。</li>
+<li>无论哪种继承方式，基类的私有成员都不可以被派生类的成员和对象访问。</li>
+<li>只有公有继承时，基类的公有成员才可以被派生类的对象访问。</li>
+<li>在被继承时，基类的保护成员及和公有成员行为一致。</li>
+<li>在被类的对象访问时，保护成员和私有成员的行为一致。</li>
 </ol>
-<p>这3个方面谈的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;  </span><br><span class="line">  </span><br><span class="line">class base&#123;  </span><br><span class="line">public:  </span><br><span class="line">    base()&#123;  </span><br><span class="line">        a = 0;  </span><br><span class="line">        b = 1;  </span><br><span class="line">        c = 2;  </span><br><span class="line">    &#125;  </span><br><span class="line">    int a;  </span><br><span class="line">protected:  </span><br><span class="line">    int b;  </span><br><span class="line">private:  </span><br><span class="line">    int c;  </span><br><span class="line">&#125;;  </span><br><span class="line">  </span><br><span class="line">class derived1 : public base&#123;//public继承  </span><br><span class="line">public:  </span><br><span class="line">    void fun()&#123;//derived class可以访问public和protected member  </span><br><span class="line">        std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl;  </span><br><span class="line">    //  std::cout&lt;&lt;base::c;//不能访问  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">class derived2 : protected base&#123;//protected继承  </span><br><span class="line">public:  </span><br><span class="line">    void fun()&#123;//derived class可以访问public和protected member  </span><br><span class="line">        std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl;  </span><br><span class="line">     // std::cout&lt;&lt;base::c;//不能访问  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">class derived3 : private base&#123;//private继承  </span><br><span class="line">public:  </span><br><span class="line">    void fun()&#123;//derived class可以访问public和protected member  </span><br><span class="line">        std::cout&lt;&lt;base::a&lt;&lt;base::b&lt;&lt;std::endl;  </span><br><span class="line">     // std::cout&lt;&lt;base::c;//不能访问  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">class derived4 : public derived3&#123;//base的member不能被private继承的派生类的子类访问  </span><br><span class="line">public:  </span><br><span class="line">    void fun()&#123;  </span><br><span class="line">    //  std::cout&lt;&lt;a;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">class derived5 : base&#123;//默认private继承  </span><br><span class="line">    void fun()&#123;//derived class可以访问public和protected member  </span><br><span class="line">        std::cout&lt;&lt;base::a&lt;&lt;base::b;  </span><br><span class="line">        // std::cout&lt;&lt;base::c;//不能访问  </span><br><span class="line">    &#125;     </span><br><span class="line">&#125;;  </span><br><span class="line">int main(void)  </span><br><span class="line">&#123;  </span><br><span class="line">    base b1;  </span><br><span class="line">    derived1 d1;  </span><br><span class="line">    derived2 d2;  </span><br><span class="line">    derived3 d3;  </span><br><span class="line">    d1.fun();  </span><br><span class="line">    d2.fun();  </span><br><span class="line">    d3.fun();  </span><br><span class="line">    std::cout&lt;&lt;b1.a;//base class Object只能访问public member  </span><br><span class="line">    std::cout&lt;&lt;d1.a;//public继承时 derived class Object只能访问base class的public member  </span><br><span class="line">    //std::cout&lt;&lt;d1.b&lt;&lt;d1.c;//不能访问  </span><br><span class="line">    //std::cout&lt;&lt;d2.a&lt;&lt;d2.b;//protected继承时 derived class Object不能问访base class的member  </span><br><span class="line">    //std::cout&lt;&lt;d3.a;//private继承时 derived class Object不能问访base class的member  </span><br><span class="line">    return 0;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
