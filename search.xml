@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[最少区间覆盖问题]]></title>
     <url>%2F2019%2F05%2F09%2F2019-05-09%2F</url>
     <content type="text"><![CDATA[题目有一个包，若干路由器，包在每个路由器处有一个最大跳的步长，问至少几跳能到达终点。每一个数为正整数。 样例：[2,3,1,1,1] 输出： 2 解释： 0-&gt;1-&gt;4 代码 思路1动态规划，及数组记录当前最优值，类似于筛法求素数。 123456789101112const int inf = 0x3f3f3f3f;int solve(vector&lt;int&gt;v)&#123; int len = v.size(); vector&lt;int&gt;dp(len, inf); dp[0] = 0; for(int i = 0; i &lt; len &amp;&amp; dp[i] != inf; ++i)&#123; for(int j = 1; j &lt;= v[i]; ++j)&#123; dp[j] = min(dp[j], dp[i] + 1); &#125; &#125; return dp[len - 1] != inf ? dp[len - 1] : -1;&#125; 思路2排序，下标为左界，值＋下标为右值，构成区域块，选最少的块覆盖全部区域，覆盖不了等于到不了终点。左值（右值）排序后右值（左值）贪心比较。 总结刚拿到该题，以为是做过的题，之前做的是能否到达终点。结果忽略了求最少的步数，写完才发现理解错了。然后就慌了，思路就混乱了。就没有然后了。 还是比较适合笔试题，一个人自在，心里有了包袱就自乱阵脚，好水的题都能出错。]]></content>
       <categories>
-        <category>修炼之路</category>
+        <category>训练之路</category>
         <category>动态规划</category>
       </categories>
       <tags>
@@ -432,9 +432,9 @@
         <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>图论</tag>
-        <tag>博弈论</tag>
         <tag>数论</tag>
         <tag>动态规划</tag>
+        <tag>博弈论</tag>
         <tag>计算几何</tag>
       </tags>
   </entry>
@@ -480,8 +480,8 @@
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
         <tag>组合数学</tag>
-        <tag>容斥原理</tag>
         <tag>gcd</tag>
+        <tag>容斥原理</tag>
       </tags>
   </entry>
   <entry>
@@ -607,8 +607,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>计算几何</tag>
         <tag>分治</tag>
+        <tag>计算几何</tag>
       </tags>
   </entry>
   <entry>
@@ -907,9 +907,9 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>高斯消元</tag>
         <tag>矩阵论</tag>
         <tag>快速幂</tag>
+        <tag>高斯消元</tag>
       </tags>
   </entry>
   <entry>
@@ -1222,8 +1222,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>ACM/ICPC</tag>
         <tag>并查集</tag>
+        <tag>ACM/ICPC</tag>
       </tags>
   </entry>
   <entry>
@@ -1238,8 +1238,8 @@
         <tag>C/C++</tag>
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
-        <tag>线性dp</tag>
         <tag>动态规划</tag>
+        <tag>线性dp</tag>
       </tags>
   </entry>
   <entry>
@@ -1762,8 +1762,8 @@
         <tag>C/C++</tag>
         <tag>STL</tag>
         <tag>算法</tag>
-        <tag>vector</tag>
         <tag>pat天梯赛</tag>
+        <tag>vector</tag>
       </tags>
   </entry>
   <entry>
