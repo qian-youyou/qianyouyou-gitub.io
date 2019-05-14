@@ -114,13 +114,13 @@
 
 
 
-<meta name="description" content="面试时总在这里吃亏，对此，本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。 存储器管理首先得声明，在引入虚拟存储器之前，存储器通常是将整个进程所有资源引入内存的。 存储器的层次结构 程序的装入和链接装入 绝对装入方式 编译程序将产生绝对地址的目标代码根据地址将程序和数据存入内存。  编程人员要熟悉内存。 程序在内存中不能移动。 不适用于多道程序设计环境。">
+<meta name="description" content="本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。 存储器管理首先得声明，在引入虚拟存储器之前，存储器通常是将整个进程所有资源引入内存的。 存储器的层次结构 程序的装入和链接装入 绝对装入方式 编译程序将产生绝对地址的目标代码根据地址将程序和数据存入内存。  编程人员要熟悉内存。 程序在内存中不能移动。 不适用于多道程序设计环境。   可重定位装入方式（静态">
 <meta name="keywords" content="操作系统,虚拟存储器,分页,分段">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大话存储器">
 <meta property="og:url" content="http://qianyouyou.cn/2019/04/27/2019-04-27/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="面试时总在这里吃亏，对此，本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。 存储器管理首先得声明，在引入虚拟存储器之前，存储器通常是将整个进程所有资源引入内存的。 存储器的层次结构 程序的装入和链接装入 绝对装入方式 编译程序将产生绝对地址的目标代码根据地址将程序和数据存入内存。  编程人员要熟悉内存。 程序在内存中不能移动。 不适用于多道程序设计环境。">
+<meta property="og:description" content="本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。 存储器管理首先得声明，在引入虚拟存储器之前，存储器通常是将整个进程所有资源引入内存的。 存储器的层次结构 程序的装入和链接装入 绝对装入方式 编译程序将产生绝对地址的目标代码根据地址将程序和数据存入内存。  编程人员要熟悉内存。 程序在内存中不能移动。 不适用于多道程序设计环境。   可重定位装入方式（静态">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-27.png">
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-27-1.png">
@@ -136,10 +136,10 @@
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-27-0.png">
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-27-7.png">
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-27-8.png">
-<meta property="og:updated_time" content="2019-05-10T03:32:56.991Z">
+<meta property="og:updated_time" content="2019-05-14T15:04:24.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大话存储器">
-<meta name="twitter:description" content="面试时总在这里吃亏，对此，本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。 存储器管理首先得声明，在引入虚拟存储器之前，存储器通常是将整个进程所有资源引入内存的。 存储器的层次结构 程序的装入和链接装入 绝对装入方式 编译程序将产生绝对地址的目标代码根据地址将程序和数据存入内存。  编程人员要熟悉内存。 程序在内存中不能移动。 不适用于多道程序设计环境。">
+<meta name="twitter:description" content="本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。 存储器管理首先得声明，在引入虚拟存储器之前，存储器通常是将整个进程所有资源引入内存的。 存储器的层次结构 程序的装入和链接装入 绝对装入方式 编译程序将产生绝对地址的目标代码根据地址将程序和数据存入内存。  编程人员要熟悉内存。 程序在内存中不能移动。 不适用于多道程序设计环境。   可重定位装入方式（静态">
 <meta name="twitter:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-27.png">
 
 
@@ -467,7 +467,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  10,656
+                  10,645
                 </span>
               
 
@@ -504,7 +504,7 @@
       
 
       
-        <p>面试时总在这里吃亏，对此，本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。</p>
+        <p>本人花了两天时间彻彻底底把操作系统书进程与存储器部分看了一遍，废话不多说，直接进入正题吧。</p>
 <h1 id="存储器管理"><a href="#存储器管理" class="headerlink" title="存储器管理"></a>存储器管理</h1><p>首先得声明，在引入虚拟存储器之前，存储器通常是将整个进程所有资源引入内存的。</p>
 <h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-27.png" alt=""></p>
 <h2 id="程序的装入和链接"><a href="#程序的装入和链接" class="headerlink" title="程序的装入和链接"></a>程序的装入和链接</h2><h3 id="装入"><a href="#装入" class="headerlink" title="装入"></a>装入</h3><ol>
