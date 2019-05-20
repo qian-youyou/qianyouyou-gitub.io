@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2019/05/20/2019-05-20/</loc>
+    <lastmod>2019-05-20T07:14:34.507Z</lastmod>
+    <data>
+        <display>
+        <title>戳气球问题</title>
+        <pubTime>2019-05-20T07:02:20.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+        <tag>动态规划</tag>
+         
+        <tag>区间dp</tag>
+         
+         
+           
+             
+              <breadCrumb title="训练之路" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
+          
+             
+              <breadCrumb title="动态规划" url="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2019/05/18/2019-05-18/</loc>
+    <lastmod>2019-05-18T13:38:23.832Z</lastmod>
+    <data>
+        <display>
+        <title>日常笔记</title>
+        <pubTime>2019-05-18T12:47:33.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2019/04/22/2019-04-22/</loc>
     <lastmod>2019-05-18T12:30:34.160Z</lastmod>
     <data>
@@ -427,9 +469,9 @@
         
         <tag>编译原理</tag>
          
-        <tag>词法分析</tag>
-         
         <tag>语法分析</tag>
+         
+        <tag>词法分析</tag>
          
          
            
@@ -1274,9 +1316,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>指针</tag>
-         
         <tag>const</tag>
+         
+        <tag>指针</tag>
          
          
            
@@ -1424,9 +1466,9 @@
         
         <tag>算法</tag>
          
-        <tag>数论</tag>
-         
         <tag>组合数学</tag>
+         
+        <tag>数论</tag>
          
          
            
@@ -1540,11 +1582,11 @@
          
         <tag>图论</tag>
          
-        <tag>博弈论</tag>
-         
         <tag>数论</tag>
          
         <tag>动态规划</tag>
+         
+        <tag>博弈论</tag>
          
         <tag>计算几何</tag>
          
@@ -1633,9 +1675,9 @@
          
         <tag>组合数学</tag>
          
-        <tag>容斥原理</tag>
-         
         <tag>gcd</tag>
+         
+        <tag>容斥原理</tag>
          
          
            
@@ -1876,9 +1918,9 @@
         
         <tag>算法</tag>
          
-        <tag>计算几何</tag>
-         
         <tag>分治</tag>
+         
+        <tag>计算几何</tag>
          
          
            
@@ -2088,9 +2130,9 @@
          
         <tag>Dijkstra算法</tag>
          
-        <tag>Bellman-Ford算法</tag>
-         
         <tag>SPFA算法</tag>
+         
+        <tag>Bellman-Ford算法</tag>
          
          
            
@@ -2312,9 +2354,9 @@
         <title>8.23网络流专项训练题解</title>
         <pubTime>2018-08-23T08:02:47.000Z</pubTime>
         
-        <tag>二分图</tag>
-         
         <tag>匹配</tag>
+         
+        <tag>二分图</tag>
          
         <tag>网络流</tag>
          
@@ -2374,13 +2416,13 @@
         <title>图论3(网络流 + 二分图 + 匹配)</title>
         <pubTime>2018-08-19T12:38:54.000Z</pubTime>
         
-        <tag>KM算法</tag>
+        <tag>匹配</tag>
          
         <tag>二分图</tag>
          
-        <tag>匹配</tag>
-         
         <tag>匈牙利算法</tag>
+         
+        <tag>KM算法</tag>
          
         <tag>网络流</tag>
          
@@ -2407,11 +2449,11 @@
         <title>那些年我们一起学过的线性代数</title>
         <pubTime>2018-08-17T12:38:28.000Z</pubTime>
         
-        <tag>高斯消元</tag>
-         
         <tag>矩阵论</tag>
          
         <tag>快速幂</tag>
+         
+        <tag>高斯消元</tag>
          
          
            
@@ -2872,9 +2914,9 @@
         
         <tag>C/C++</tag>
          
-        <tag>指针</tag>
-         
         <tag>const</tag>
+         
+        <tag>指针</tag>
          
          
            
@@ -2976,9 +3018,9 @@
          
         <tag>ACM/ICPC</tag>
          
-        <tag>线性dp</tag>
-         
         <tag>动态规划</tag>
+         
+        <tag>线性dp</tag>
          
          
            
@@ -3179,9 +3221,9 @@
         
         <tag>算法</tag>
          
-        <tag>数论</tag>
-         
         <tag>组合数学</tag>
+         
+        <tag>数论</tag>
          
         <tag>高斯消元</tag>
          
@@ -3210,13 +3252,13 @@
         
         <tag>算法</tag>
          
-        <tag>图论</tag>
+        <tag>匹配</tag>
          
-        <tag>KM算法</tag>
+        <tag>图论</tag>
          
         <tag>二分图</tag>
          
-        <tag>匹配</tag>
+        <tag>KM算法</tag>
          
          
            
@@ -3241,11 +3283,11 @@
         
         <tag>算法</tag>
          
+        <tag>匹配</tag>
+         
         <tag>图论</tag>
          
         <tag>二分图</tag>
-         
-        <tag>匹配</tag>
          
         <tag>匈牙利算法</tag>
          
@@ -3931,9 +3973,9 @@
          
         <tag>算法</tag>
          
-        <tag>vector</tag>
-         
         <tag>pat天梯赛</tag>
+         
+        <tag>vector</tag>
          
          
            
