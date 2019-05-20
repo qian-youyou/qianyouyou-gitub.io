@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2019-05-20T07:14:34.507Z</updated>
+  <updated>2019-05-18T13:38:23.832Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -17,34 +17,24 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>戳气球问题</title>
-    <link href="http://qianyouyou.cn/2019/05/20/2019-05-20/"/>
-    <id>http://qianyouyou.cn/2019/05/20/2019-05-20/</id>
-    <published>2019-05-20T07:02:20.000Z</published>
-    <updated>2019-05-20T07:14:34.507Z</updated>
+    <title>日常笔记</title>
+    <link href="http://qianyouyou.cn/2019/05/18/2019-05-18/"/>
+    <id>http://qianyouyou.cn/2019/05/18/2019-05-18/</id>
+    <published>2019-05-18T12:47:33.000Z</published>
+    <updated>2019-05-18T13:38:23.832Z</updated>
     
-    <content type="html"><![CDATA[<p>有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。</p><p>现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] <em> nums[i] </em> nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。</p><p>求所能获得硬币的最大数量。</p><p>说明:</p><p>你可以假设 nums[-1] = nums[n] = 1，但注意它们不是真实存在的所以并不能被戳破。<br>0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100<br>示例:</p><p>输入: [3,1,5,8]<br>输出: 167<br>解释: nums = [3,1,5,8] –&gt; [3,5,8] –&gt;   [3,8]   –&gt;  [8]  –&gt; []<br>     coins =  3<em>1</em>5      +  3<em>5</em>8    +  1<em>3</em>8      + 1<em>8</em>1   = 167</p><p>思路：</p><p>可以利用区间动态规划，dp[i][j]表示i到j之间的最优解（不包括i，j），那么dp[i][j]就等于max(dp[i][j], dp[i][k] + dp[k][j] + nums[i] * nums[j] * nums[k])。</p><p>即我们假设求i到j之间的最优解，k为i和j之间的数，那么当前i到j之间以k为基准将要戳k（也就是k是i到j中最后一个戳的）的最优解就等于k左半部分最优解加k右半部分最优解加k、j、i的乘积，遍历k求出最大的一个就好了。当然dp初始值要为0，这样第一次戳i时dp[i-1][i+1]就理所当然等于0 + nums[i+1] <em> nums[i] </em> nums[i - 1] + 0。</p><p>nums首部先插入1，再在末尾补1。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxCoins(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if(nums.empty())&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        nums.insert(nums.begin(), 1);</span><br><span class="line">        nums.push_back(1);</span><br><span class="line">        dp.resize(nums.size(), vector&lt;int&gt;(nums.size(), 0));</span><br><span class="line">        for(int i = 2; i &lt; nums.size(); ++i)&#123;</span><br><span class="line">            for(int j = 0; j + i &lt; nums.size(); ++j)&#123;</span><br><span class="line">                for(int k = j + 1; k &lt; j + i; ++k)&#123;</span><br><span class="line">                    dp[j][j + i] = max(dp[j][j + i], dp[j][k] + dp[k][j + i] + nums[k] * nums[j] * nums[j + i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[0][nums.size() - 1];</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt;dp;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>由于写一篇博客很很费劲，经常学习一天的内容写博客就得花费一天，费时费力。所以本篇博客主要记录一些日常琐碎的笔记。</p><h1 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h1><h2 id="面向过程C语言"><a href="#面向过程C语言" class="headerlink" title="面向过程C语言"></a>面向过程C语言</h2><h2 id="面向对象C"><a href="#面向对象C" class="headerlink" title="面向对象C++"></a>面向对象C++</h2><h3 id="C与C-的区别"><a href="#C与C-的区别" class="headerlink" title="C与C++的区别"></a>C与C++的区别</h3><p>C为面向过程语言，C++与C不是对立关系，而是包容关系。C++不仅包含面向过程的C，还可以面向对象，也可以泛型编程。简而言之，C++分为面向过程，面向对象，泛型编程模板，STL标准模板库四部分。</p><h3 id="运算符"><a href="#运算符" class="headerlink" title="::运算符"></a>::运算符</h3><p>作用域运算符，全局作用域直接加::</p><h3 id="namespace命名空间"><a href="#namespace命名空间" class="headerlink" title="namespace命名空间"></a>namespace命名空间</h3><p><strong>用途</strong> 解决名称冲突问题</p><ul><li>必须在全局作用域下声明</li><li>命名空间下可以放入 函数、变量、结构体、类…</li><li>命名空间可以嵌套命名空间</li><li>命名空间是开放的，可以随时加入新的成员，添加并合并</li><li>匿名命名空间 static</li><li>可以起别名</li></ul><h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><h4 id="using声明"><a href="#using声明" class="headerlink" title="using声明"></a>using声明</h4><p>using std::X，使用某变量或对象。如果该部分作用域已经存在同样的名称对象，则会产生二义性而报错。</p><h4 id="using编译命令"><a href="#using编译命令" class="headerlink" title="using编译命令"></a>using编译命令</h4><p>using namespace X，使用命名空间。跟编译器说的。</p><h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>const int a = 10；不分配内存，只在编译器符号表中。</p><p>const int a = b；分配内存</p><p>C++默认const内链接，C外链接即默认extern。</p><h3 id="const与define"><a href="#const与define" class="headerlink" title="const与define"></a>const与define</h3><p>const有作用域，有类型。define无作用域，无类型</p><h2 id="泛型编程模板与STL"><a href="#泛型编程模板与STL" class="headerlink" title="泛型编程模板与STL"></a>泛型编程模板与STL</h2><h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h2 id="系统编程"><a href="#系统编程" class="headerlink" title="系统编程"></a>系统编程</h2><h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><h2 id="web编程"><a href="#web编程" class="headerlink" title="web编程"></a>web编程</h2><h1 id="数据结构与算法"><a href="#数据结构与算法" class="headerlink" title="数据结构与算法"></a>数据结构与算法</h1><h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h2 id="虚拟存储"><a href="#虚拟存储" class="headerlink" title="虚拟存储"></a>虚拟存储</h2><h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h2><h2 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h2><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。&lt;/p&gt;
-&lt;p&gt;现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] &lt;em&gt; nums[i] &lt;/em&gt; nums[right] 个硬币。 这
+        &lt;p&gt;由于写一篇博客很很费劲，经常学习一天的内容写博客就得花费一天，费时费力。所以本篇博客主要记录一些日常琐碎的笔记。&lt;/p&gt;
+&lt;h1 id=&quot;C-C&quot;&gt;&lt;a href=&quot;#C-C&quot; class=&quot;headerlink&quot; title=&quot;C/C++&quot;&gt;&lt;/a&gt;C/C++&lt;/h1&gt;&lt;
       
     
     </summary>
     
-      <category term="训练之路" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/"/>
-    
-      <category term="动态规划" scheme="http://qianyouyou.cn/categories/%E8%AE%AD%E7%BB%83%E4%B9%8B%E8%B7%AF/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-    
-      <category term="算法" scheme="http://qianyouyou.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="动态规划" scheme="http://qianyouyou.cn/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-      <category term="区间dp" scheme="http://qianyouyou.cn/tags/%E5%8C%BA%E9%97%B4dp/"/>
     
   </entry>
   
