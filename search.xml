@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[戳气球问题]]></title>
+    <url>%2F2019%2F05%2F20%2F2019-05-20%2F</url>
+    <content type="text"><![CDATA[有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] nums[i] nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。 求所能获得硬币的最大数量。 说明: 12345678910111213141516你可以假设 nums[-1] = nums[n] = 1，但注意它们不是真实存在的所以并不能被戳破。0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100示例:输入: [3,1,5,8]输出: 167 解释: nums = [3,1,5,8] --&gt; [3,5,8] --&gt; [3,8] --&gt; [8] --&gt; \[] coins = 315 + 358 + 138 + 181 = 167思路：可以利用区间动态规划，dp\[i]\[j]表示i到j之间的最优解（不包括i，j），那么dp\[i]\[j]就等于max(dp\[i]\[j], dp\[i][k] + dp\[k]\[j] + nums[i] \* nums[j] \* nums[k])。即我们假设求i到j之间的最优解，k为i和j之间的数，那么当前i到j之间以k为基准将要戳k（也就是k是i到j中最后一个戳的）的最优解就等于k左半部分最优解加k右半部分最优解加k、j、i的乘积，遍历k求出最大的一个就好了。当然dp初始值要为0，这样第一次戳i时dp\[i-1]\[i+1]就理所当然等于0 + nums[i+1] * nums[i] * nums[i - 1] + 0。nums首部先插入1，再在末尾补1。 123456789101112131415161718192021class Solution &#123;public: int maxCoins(vector&lt;int&gt;&amp; nums) &#123; if(nums.empty())&#123; return 0; &#125; nums.insert(nums.begin(), 1); nums.push_back(1); dp.resize(nums.size(), vector&lt;int&gt;(nums.size(), 0)); for(int i = 2; i &lt; nums.size(); ++i)&#123; for(int j = 0; j + i &lt; nums.size(); ++j)&#123; for(int k = j + 1; k &lt; j + i; ++k)&#123; dp[j][j + i] = max(dp[j][j + i], dp[j][k] + dp[k][j + i] + nums[k] * nums[j] * nums[j + i]); &#125; &#125; &#125; return dp[0][nums.size() - 1]; &#125;private: vector&lt;vector&lt;int&gt;&gt;dp;&#125;;]]></content>
+      <categories>
+        <category>训练之路</category>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>区间dp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[自底向上优先分析]]></title>
     <url>%2F2019%2F05%2F13%2F2019-05-13%2F</url>
     <content type="text"><![CDATA[优先分析法 简单优先分析法 按一定规则求出该文法所有符号即包括终结符和非终结符之间的优先关系。 实质是一种规范规约。 准确，规范，但效率低。 实用性不大。 算符优先分析法 只规定算符之间的优先关系，即仅终结符之间的优先关系。 不是规范规约。 不准确规范，但效率高。 采用适当方法加以弥补缺点。 简单优先分析法算符与普通=,&gt;,&lt;区别算符有顺序，例如a·=b和b·=a不一样。 普通算符无顺序，例如a&lt;b和b&gt;a一样。 优先关系 X ·= Y(A→…XY…) S→bAa。b ·= A，A ·= a。 X ·&lt; Y(A → …XB…, B ⇨ Y…) S→bAb，A +⇨ (B, A+⇨a。b ·&lt; (，b ·= a。 X ·&gt; Y(A → …BD…, B +⇨ …X，D *⇨ Y…) S→bAb，A +⇨ …), A+⇨B,A+⇨a。) ·&gt; b，a ·&gt; b， B ·&gt; b。 定义 在文法符号集V中，任意两个符号之间最多只有一种优先关系成立。 在文法中任意两个产生式没有相同的右部。 步骤将输入符号串a1a…an#依次逐个存入符号栈S中，直到遇到栈顶符号ai的优先性·&gt;下一个带输入符号aj为止。 栈顶当前符号ai为句柄尾，由此向左在栈中找句柄的头符号ak，即找到ak-1&lt;·ak，为止。 由句柄ak…ai在文法产生式中查找右部尾ak…ai的产生式，若找到则用左部代替句柄，若找不到则为出错，断定不合法。 重复1，2，3.直到只剩开始符为止。 算符优先分析法优先关系和简单优先分析相比仅有终结符才能有优先级比较。其余优先符关系同于上式。 a ·= b(A→…ab…或A→…aBb…) a ·&lt; b(A → …aB…, B ⇨ b…或B ⇨ Cb…) a ·&gt; b(A → …Bb…, B ⇨ …a或B ⇨ …aC) 定义 若一文法G中不存在A→…BC…，其中B,C为非终极符，则G为算符文法。 G为不含ε文法，满足算符优先关系。 若a与b之间只存在一种优先关系，则G为算符优先文法。 算符优先关系表构造FIRSTVT(B) = {b | B +⇨ b…或B +⇨ Cb…} LASTVT(B) = {a | B +⇨ …a 或B +⇨ …aC} ·=：A→…ab…，若或A→…aBb…,则a·=b ·&lt;：A→…aB…，若b∈FIRSTVT(B)，则a·&lt;b ·&gt;：A→…Bb…，若a∈LASTVT(B)，则a·&gt;b 算符优先分析算法]]></content>
@@ -63,8 +77,8 @@
       </categories>
       <tags>
         <tag>编译原理</tag>
-        <tag>语法分析</tag>
         <tag>词法分析</tag>
+        <tag>语法分析</tag>
       </tags>
   </entry>
   <entry>
