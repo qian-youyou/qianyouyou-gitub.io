@@ -114,18 +114,18 @@
 
 
 
-<meta name="description" content="有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left]  nums[i]  nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。 求所能">
+<meta name="description" content="有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] * nums[i] * nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。 求">
 <meta name="keywords" content="算法,动态规划,区间dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="戳气球问题">
 <meta property="og:url" content="http://qianyouyou.cn/2019/05/20/2019-05-20/index.html">
 <meta property="og:site_name" content="浅悠悠的个人博客">
-<meta property="og:description" content="有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left]  nums[i]  nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。 求所能">
+<meta property="og:description" content="有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] * nums[i] * nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。 求">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-20T10:51:13.154Z">
+<meta property="og:updated_time" content="2019-05-20T11:45:25.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="戳气球问题">
-<meta name="twitter:description" content="有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left]  nums[i]  nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。 求所能">
+<meta name="twitter:description" content="有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。 现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] * nums[i] * nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。 求">
 
 
 
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  520
+                  504
                 </span>
               
 
@@ -490,10 +490,15 @@
 
       
         <p>有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。</p>
-<p>现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] <em> nums[i] </em> nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。</p>
+<p>现在要求你戳破所有的气球。每当你戳破一个气球 i 时，你可以获得 nums[left] * nums[i] * nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。</p>
 <p>求所能获得硬币的最大数量。</p>
 <p>说明:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">你可以假设 nums[-1] = nums[n] = 1，但注意它们不是真实存在的所以并不能被戳破。</span><br><span class="line">0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100</span><br><span class="line">示例:</span><br><span class="line"></span><br><span class="line">输入: [3,1,5,8]</span><br><span class="line">输出: 167 </span><br><span class="line">解释: nums = [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; \[]</span><br><span class="line">     coins =  315      +  358    +  138      + 181   = 167</span><br><span class="line"></span><br><span class="line">思路：</span><br><span class="line"></span><br><span class="line">可以利用区间动态规划，dp\[i]\[j]表示i到j之间的最优解（不包括i，j），那么dp\[i]\[j]就等于max(dp\[i]\[j], dp\[i][k] + dp\[k]\[j] + nums[i] \* nums[j] \* nums[k])。</span><br><span class="line"></span><br><span class="line">即我们假设求i到j之间的最优解，k为i和j之间的数，那么当前i到j之间以k为基准将要戳k（也就是k是i到j中最后一个戳的）的最优解就等于k左半部分最优解加k右半部分最优解加k、j、i的乘积，遍历k求出最大的一个就好了。当然dp初始值要为0，这样第一次戳i时dp\[i-1]\[i+1]就理所当然等于0 + nums[i+1] * nums[i] * nums[i - 1] + 0。</span><br><span class="line"></span><br><span class="line">nums首部先插入1，再在末尾补1。</span><br></pre></td></tr></table></figure>
+<p>你可以假设 nums[-1] = nums[n] = 1，但注意它们不是真实存在的所以并不能被戳破。<br>0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100<br>示例:</p>
+<p>输入: [3,1,5,8]<br>输出: 167<br>解释: nums = [3,1,5,8] –&gt; [3,5,8] –&gt;   [3,8]   –&gt;  [8]  –&gt; []<br>     coins =  315      +  358    +  138      + 181   = 167</p>
+<p>思路：</p>
+<p>可以利用区间动态规划，dp[i][j]表示i到j之间的最优解（不包括i，j），那么dp[i][j]就等于max(dp[i][j], dp[i][k] + dp[k][j] + nums[i] * nums[j] * nums[k])。</p>
+<p>即我们假设求i到j之间的最优解，k为i和j之间的数，那么当前i到j之间以k为基准将要戳k（也就是k是i到j中最后一个戳的）的最优解就等于k左半部分最优解加k右半部分最优解加k、j、i的乘积，遍历k求出最大的一个就好了。当然dp初始值要为0，这样第一次戳i时dp[i-1][i+1]就理所当然等于0 + nums[i+1] <em> nums[i] </em> nums[i - 1] + 0。</p>
+<p>nums首部先插入1，再在末尾补1。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxCoins(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if(nums.empty())&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        nums.insert(nums.begin(), 1);</span><br><span class="line">        nums.push_back(1);</span><br><span class="line">        dp.resize(nums.size(), vector&lt;int&gt;(nums.size(), 0));</span><br><span class="line">        for(int i = 2; i &lt; nums.size(); ++i)&#123;</span><br><span class="line">            for(int j = 0; j + i &lt; nums.size(); ++j)&#123;</span><br><span class="line">                for(int k = j + 1; k &lt; j + i; ++k)&#123;</span><br><span class="line">                    dp[j][j + i] = max(dp[j][j + i], dp[j][k] + dp[k][j + i] + nums[k] * nums[j] * nums[j + i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[0][nums.size() - 1];</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt;dp;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
