@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2019/07/28/2019-07-28/</loc>
+    <lastmod>2019-07-28T07:46:02.628Z</lastmod>
+    <data>
+        <display>
+        <title>宽敞的心态，宽敞的世界</title>
+        <pubTime>2019-07-28T06:00:49.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="心路历程" url="http://qianyouyou.cn/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
+          
+             
+              <breadCrumb title="散文" url="http://qianyouyou.cn/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/%E6%95%A3%E6%96%87/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2019/07/08/2019-07-08/</loc>
     <lastmod>2019-07-08T14:09:51.832Z</lastmod>
     <data>
@@ -1935,9 +1956,9 @@
          
         <tag>组合数学</tag>
          
-        <tag>动态规划</tag>
-         
         <tag>划分</tag>
+         
+        <tag>动态规划</tag>
          
          
            
@@ -3371,9 +3392,9 @@
         
         <tag>算法</tag>
          
-        <tag>匹配</tag>
-         
         <tag>图论</tag>
+         
+        <tag>匹配</tag>
          
         <tag>二分图</tag>
          
@@ -3402,9 +3423,9 @@
         
         <tag>算法</tag>
          
-        <tag>匹配</tag>
-         
         <tag>图论</tag>
+         
+        <tag>匹配</tag>
          
         <tag>二分图</tag>
          
@@ -4092,9 +4113,9 @@
          
         <tag>算法</tag>
          
-        <tag>pat天梯赛</tag>
-         
         <tag>vector</tag>
+         
+        <tag>pat天梯赛</tag>
          
          
            
