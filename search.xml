@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[在任务跳转问题上，C#的委托delegate与工厂方法模式的异曲同工之妙]]></title>
+    <url>%2F2019%2F08%2F28%2F2019-08-28%2F</url>
+    <content type="text"><![CDATA[在玩游戏时，常常会有任务跳转。但当跳转类型过多时，对游戏研发者来说，就是一件头疼的事了。之前在做游戏城镇等级模块时，就遇到了任务跳转过多的问题。刚接到任务跳转这个需求时，由于入门未深，便用if-else写的。可以想象一百多行的if-else或者switch是多么壮观啊。。。 但是当我们只为了完成当日任务，而不为长远维护考虑，那未来将是一件可怕的事情。而且那样的代码，像我这样的人看着也不舒服。 最近看了C#高级语法，赫然发现C#中的委托不就是C++中的函数指针嘛。于是，对于上述if-else，便有解了。 我们只需要写一个委托，对应创建一个数组对象，每个跳转类型封装一个方法，再用委托来回调，这样的代码，主方法里只需1行就搞定。 有没有发现，和设计模式中的工厂方法模式有异曲同工之妙呢。日后维护起来也方便许多。 接下来我们详细介绍下C#中的委托吧。 C# 委托（Delegate）C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。委托（Delegate） 是存有对某个方法的引用的一种引用类型变量。引用可在运行时被改变。 委托（Delegate）特别用于实现事件和回调方法。所有的委托（Delegate）都派生自 System.Delegate 类。 声明委托（Delegate）委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。 例如，假设有一个委托： 1public delegate int MyDelegate (string s); 上面的委托可被用于引用任何一个带有一个单一的 string 参数的方法，并返回一个 int 类型变量。 声明委托的语法如下： 1delegate &lt;return type&gt; &lt;delegate-name&gt; &lt;parameter list&gt; 实例化委托（Delegate）一旦声明了委托类型，委托对象必须使用 new 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 new 语句的参数就像方法调用一样书写，但是不带有参数。例如： 1234public delegate void printString(string s);...printString ps1 = new printString(WriteToScreen);printString ps2 = new printString(WriteToFile); 下面的实例演示了委托的声明、实例化和使用，该委托可用于引用带有一个整型参数的方法，并返回一个整型值。 12345678910111213141516171819202122232425using System;delegate int NumberChanger(int n);namespace DelegateAppl&#123; class TestDelegate &#123; static int num = 10; public static int AddNum(int p) &#123; num += p; return num; &#125; public static int MultNum(int q) &#123; num *= q; return num; &#125; public static int getNum() &#123; return num; &#125; static void Main(string[] args) &#123; // 创建委托实例 NumberChanger nc1 = new NumberChanger(AddNum); NumberChanger nc2 = new NumberChanger(MultNum); // 使用委托对象调用方法 nc1(25); Console.WriteLine(&quot;Value of Num: &#123;0&#125;&quot;, getNum()); nc2(5); Console.WriteLine(&quot;Value of Num: &#123;0&#125;&quot;, getNum()); Console.ReadKey(); &#125; &#125;&#125; 当上面的代码被编译和执行时，它会产生下列结果： 12Value of Num: 35Value of Num: 175 委托的多播（Multicasting of a Delegate）委托对象可使用 “+” 运算符进行合并。一个合并委托调用它所合并的两个委托。只有相同类型的委托可被合并。”-“ 运算符可用于从合并的委托中移除组件委托。 使用委托的这个有用的特点，您可以创建一个委托被调用时要调用的方法的调用列表。这被称为委托的 多播（multicasting），也叫组播。下面的程序演示了委托的多播： 1234567891011121314151617181920using System;delegate int NumberChanger(int n); namespace DelegateAppl&#123; class TestDelegate &#123; static int num = 10; public static int AddNum(int p) &#123; num += p; return num; &#125; public static int MultNum(int q) &#123; num *= q; return num; &#125; public static int getNum() &#123; return num; &#125; static void Main(string[] args) &#123; // 创建委托实例 NumberChanger nc; NumberChanger nc1 = new NumberChanger(AddNum); NumberChanger nc2 = new NumberChanger(MultNum); nc = nc1; nc += nc2; // 调用多播 nc(5); Console.WriteLine(&quot;Value of Num: &#123;0&#125;&quot;, getNum()); Console.ReadKey(); &#125; &#125;&#125; 当上面的代码被编译和执行时，它会产生下列结果： 1Value of Num: 75 委托（Delegate）的用途下面的实例演示了委托的用法。委托 printString 可用于引用带有一个字符串作为输入的方法，并不返回任何东西。 我们使用这个委托来调用两个方法，第一个把字符串打印到控制台，第二个把字符串打印到文件： 1234567891011121314151617181920212223242526using System;using System.IO;namespace DelegateAppl&#123; class PrintString &#123; static FileStream fs; static StreamWriter sw; // 委托声明 public delegate void printString(string s); // 该方法打印到控制台 public static void WriteToScreen(string str) &#123; Console.WriteLine(&quot;The String is: &#123;0&#125;&quot;, str); &#125; // 该方法打印到文件 public static void WriteToFile(string s) &#123; fs = new FileStream(&quot;c:\\message.txt&quot;, FileMode.Append, FileAccess.Write); sw = new StreamWriter(fs); sw.WriteLine(s); sw.Flush(); sw.Close(); fs.Close(); &#125; // 该方法把委托作为参数，并使用它调用方法 public static void sendString(printString ps) &#123; ps(&quot;Hello World&quot;); &#125; static void Main(string[] args) &#123; printString ps1 = new printString(WriteToScreen); printString ps2 = new printString(WriteToFile); sendString(ps1); sendString(ps2); Console.ReadKey(); &#125; &#125;&#125; 当上面的代码被编译和执行时，它会产生下列结果： 1The String is: Hello World]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>C#</category>
+      </categories>
+      <tags>
+        <tag>Unity3D</tag>
+        <tag>Unity</tag>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[宽敞的心态，宽敞的世界]]></title>
     <url>%2F2019%2F07%2F28%2F2019-07-28%2F</url>
-    <content type="text"><![CDATA[忽然发现，来上海也有一段时间了。 还记得没来上海时，身边回荡着各种声音，上了年纪的长辈们鼓励我年轻人就应该出去闯一闯；父母则是抱着忧虑的念头，总说大城市生活压力大，骗子多，无时无刻都得防备；朋友们相对而言更担心的是我一个人出远门的安全。那时候，心中荡漾的，不清楚是期待，还是恐惧。 初来上海时，东奔西跑的找房租房，生活上高昂的消费让自己不得不开始学会记录支出，还有工作上初来乍到的各种不适应，总弄得自己身心疲惫；那时候，为最后一个挤上公交地铁而庆幸，为了早起而不得不早睡的无奈。心中徘徊的，应该是厌倦，还有抱怨吧。 现在呢，发现人们口中的大城市，并没有像人们所描述的那么繁华，也没有人们所描述的那样让人苦不堪言。渐渐地，我发现自己爱上了这里。 其实啊，上海没变，世界也没变，只有我们的心态变了。 就像人们议论程序员这个行业，一提到程序员，最多的话题就是996，也就是朝九晚九，每周6天。听到这词，即使没有工作，也难免会让人感觉疲惫。但是，真的如此吗。就像我，工作一段时间，感觉每天都很充实。每周有两天双休，但每次到了双休，玩一天游戏，或者什么也不干，剩下的只有空虚，所以周末能加班就加班，因为加班使自己感到生活的充实与价值。 还记得刚来学校时，因为热爱编程，而报了计算机专业。当时，那时候，没日没夜敲代码是我的快乐。快找实习时，也是没日没夜敲代码，只是感觉到的是苦涩。而工作一段时间后，当我又开始忙碌地敲代码时，感觉到的是充实。同样是敲代码，在学校时因为热爱，在找实习时因为迷茫和环境的影响而决定苦涩，现在，是找到了方向。所以，所谓的忙碌，只不过是旁观者的看法。当一个人真正热爱自己的工作时，别人不要求你加班，你也想自己去加班。 人们都说上海节奏快，但我坚信时代造英雄。 昨天父亲又给我打了个电话，尽管只是平常地问候，但我却草草结束了话题。我后来发现，渐渐地，我越来越不怎么和父亲说话了。因为每次父亲跟我洽谈，总是告诫我一些关于社会让人多么的无奈，或者大城市节奏太快压力太大，亦或是社会上到处都是坏人，即使同一屋檐下也要上一把锁。这并不是我放弃一个人的想法，而是我们那个小城镇普遍的想法。 受我父亲的影响，刚上大学时，因为父亲说西安是贼城，当时我坐个公交都得把包背到前面。但久而久之，我发现并不是所有人都是坏人，那些不美好只不过是世界的冰山一角，但更多地是世界的美好，许多人身上都是有光的。只是这冰山一角给人的心理带来了防备，但当我们以这冰山一角来定义世界时，将必定错过整个世界。 2G时代，将互联网带上中国，成就了搜狐、新浪、网易。3G时代，将互联网带到了生活，成就了百度、阿里、腾讯，号称BAT。4G时代，将互联网带到了人们随身携带的手机，成就了头条、美团、滴滴，号称TMD。如今5G时代的到来，一切皆有可能，如果还停留在旧时代的舒适圈，不肯加快脚步，那么城乡差距就会越来越大。 放宽心态，多看看世界好的一面，那么哪来那么多烦恼呢。 如今，我每周周末都会去公寓周围的大超市去逛逛，有时候什么也不买，仅仅是因为里面的音乐让自己舒心。感受了一周的充实，偶尔给自己放个小假，你会发现，生活并不单调。 追随时代的大步伐，难免会疲惫。偶尔停下脚步，慢下来，感受自己心中所聆听到的声音，你会发现，快节奏的生活，也会有慢下来的情调。]]></content>
+    <content type="text"><![CDATA[忽然发现，来上海也有一段时间了。 还记得没来上海时，身边回荡着各种声音，上了年纪的长辈们鼓励我年轻人就应该出去闯一闯；父母则是抱着忧虑的念头，总说大城市生活压力大，骗子多，无时无刻都得防备；朋友们相对而言更担心的是我一个人出远门的安全。那时候，心中荡漾的，不清楚是期待，还是恐惧。 初来上海时，东奔西跑的找房租房，生活上高昂的消费让自己不得不开始学会记录支出，还有工作上初来乍到的各种不适应，总弄得自己身心疲惫；那时候，为最后一个挤上公交地铁而庆幸，为了早起而不得不早睡的无奈。心中徘徊的，应该是厌倦，还有抱怨吧。 现在呢，发现人们口中的大城市，并没有像人们所描述的那么繁华，也没有人们所描述的那样让人苦不堪言。渐渐地，我发现自己爱上了这里。 其实啊，上海没变，世界也没变，只有我们的心态变了。 就像人们议论程序员这个行业，一提到程序员，最多的话题就是996，也就是朝九晚九，每周6天。听到这词，即使没有工作，也难免会让人感觉疲惫。但是，真的如此吗。就像我，工作一段时间，感觉每天都很充实。每周有两天双休，但每次到了双休，玩一天游戏，或者什么也不干，剩下的只有空虚，所以周末能加班就加班，因为加班使自己感到生活的充实与价值。 还记得刚来学校时，因为热爱编程，而报了计算机专业。那时候，没日没夜敲代码是我的快乐。快找实习时，也是没日没夜敲代码，只是感觉到的是苦涩。而工作一段时间后，当我又开始忙碌地敲代码时，感觉到的是充实。同样是敲代码，在学校时因为热爱，在找实习时因为迷茫和环境的影响而决定苦涩，现在，是找到了方向。所以，所谓的忙碌，只不过是旁观者的看法。当一个人真正热爱自己的工作时，别人不要求你加班，你也想自己去加班。 人们都说上海节奏快，但我坚信时代造英雄。 昨天父亲又给我打了个电话，尽管只是平常地问候，但我却草草结束了话题。我后来发现，渐渐地，我越来越不怎么和父亲说话了。因为每次父亲跟我洽谈，总是告诫我一些关于社会让人多么的无奈，或者大城市节奏太快压力太大，亦或是社会上到处都是坏人，即使同一屋檐下也要上一把锁。这并不是我父亲一个人的想法，而是我们那个小城镇普遍的想法。 受我父亲的影响，刚上大学时，因为父亲说西安是贼城，当时我坐个公交都得把包背到前面。但久而久之，我发现并不是所有人都是坏人，那些不美好只不过是世界的冰山一角，但更多地是世界的美好，许多人身上都是有光的。只是这冰山一角给人的心理带来了防备，但当我们以这冰山一角来定义世界时，将必定错过整个世界。 2G时代，将互联网带上中国，成就了搜狐、新浪、网易。3G时代，将互联网带到了生活，成就了百度、阿里、腾讯，号称BAT。4G时代，将互联网带到了人们随身携带的手机，成就了头条、美团、滴滴，号称TMD。如今5G时代的到来，一切皆有可能，如果还停留在旧时代的舒适圈，不肯加快脚步，那么城乡差距就会越来越大。 放宽心态，多看看世界好的一面，那么哪来那么多烦恼呢。 如今，我每周周末都会去公寓周围的大超市去逛逛，有时候什么也不买，仅仅是因为里面的音乐让自己舒心。感受了一周的充实，偶尔给自己放个小假，你会发现，生活并不单调。 追随时代的大步伐，难免会疲惫。偶尔停下脚步，慢下来，感受自己心中所聆听到的声音，你会发现，快节奏的生活，也会有慢下来的情调。]]></content>
       <categories>
         <category>心路历程</category>
         <category>散文</category>
@@ -652,8 +666,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>划分</tag>
         <tag>动态规划</tag>
+        <tag>划分</tag>
       </tags>
   </entry>
   <entry>
@@ -841,8 +855,8 @@
         <tag>算法</tag>
         <tag>最短路</tag>
         <tag>Dijkstra算法</tag>
-        <tag>SPFA算法</tag>
         <tag>Bellman-Ford算法</tag>
+        <tag>SPFA算法</tag>
       </tags>
   </entry>
   <entry>
@@ -944,8 +958,8 @@
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
         <tag>数论</tag>
-        <tag>CCPC</tag>
         <tag>费马大定理</tag>
+        <tag>CCPC</tag>
       </tags>
   </entry>
   <entry>
@@ -1458,8 +1472,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>KM算法</tag>
       </tags>
@@ -1474,8 +1488,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>匈牙利算法</tag>
       </tags>
@@ -1861,8 +1875,8 @@
         <tag>C/C++</tag>
         <tag>STL</tag>
         <tag>算法</tag>
-        <tag>vector</tag>
         <tag>pat天梯赛</tag>
+        <tag>vector</tag>
       </tags>
   </entry>
   <entry>
