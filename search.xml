@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[原创位运算版算法解决24点问题]]></title>
+    <url>%2F2019%2F09%2F26%2F2019-09-26%2F</url>
+    <content type="text"><![CDATA[首先说一下什么是24点吧。随机4个数，这四个数能否通过加减乘除得到24。比如1,2,3,3，就可以通过2 3 (3 + 1) = 24。再比如3,8,8,3，就可以通过8 / (3 - 3 / 8)得到。而1,1,1,1永远无法得到24点。我们如今需要判断当前4个数能否得到24点（当然求具体步骤也可以的，只需要代码中稍微加点东西） 我的方法是采用位运算，也就是二进制表示状态，0001表示第1个数，0010表示第2个数，0100表示第3个数，1000表示第4个数，0011表示第1个数和第2个数间所有的操作，同理1111就表示4个数之间所有的操作，1111可以有1100与0011进行加减乘除操作得到，也可以通过1011和0100得到……我们最后只需看1111里面是否有24即可（保存步骤的话需要自定义结构体，既添加字符状态）。 我们用set容器来存储当前状态下的所有结果（去重），那么set[1]即0001就是保存第一个数，set[2]即0010就是保存第二个数，set[3]即0011就是保存第一个数和第二个数的所有结果……某set可由其他两set的数据得出（例如0011可由0010和0001得到），则每次依次遍历其他两个set中所有元素再将新的结果插入到当前set中，这样从1遍历到15即可。 通过列真值表，00=0,01=0,10=1,11=0，我们可以得到a与!b即可得到想要的结果c，例如1011与!0010得到1001，当然c必须保证c不等于a且c不为0。而为了剪枝，我们也可以让c小于b。因此可以添加以下条件： 12int k = (i &amp; (~j));if(k != 0 &amp;&amp; k != i &amp;&amp; k &lt; j) 两个数之间加减乘除共有6种结果，a+b,a-b,b-a,a * b, a / b, b / a，因此我们将相应结果存入set（集合为了去重，如果需要详细步骤则可用其他容器，不必用set，因为步骤需要保存状态）。 12345678910for(it = m_set[j].begin(); it != m_set[j].end(); it++)&#123; for(it2 = m_set[k].begin(); it2 != m_set[k].end(); it2++)&#123; m_set[i].insert((*it) + (*it2)); m_set[i].insert((*it) * (*it2)); m_set[i].insert((*it) - (*it2)); m_set[i].insert((*it2) - (*it)); if((*it2) != 0) m_set[i].insert((*it) / (*it2)); if((*it) != 0) m_set[i].insert((*it2) / (*it)); &#125;&#125; 这样我们就可以通过4层循环（因为只有4个数嘛，n范围也就是4）完成24点的判断了。以下是详细代码。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;bits/stdc++.h&gt;using namespace std;set&lt;double&gt;m_set[1 &lt;&lt; 4];const double ens = 1e-10;double a[4];int main()&#123; while(cin &gt;&gt; a[0] &gt;&gt; a[1] &gt;&gt; a[2] &gt;&gt; a[3])&#123; for(int i = 0; i &lt; 16; ++i)&#123; m_set[i].clear(); &#125; for(int i = 0; i &lt; 4; ++i)&#123; m_set[1 &lt;&lt; i].insert(a[i]); &#125; for(int i = 1; i &lt; 16; ++i)&#123; for(int j = 1; j &lt; i; ++j)&#123; int k = (i &amp; (~j)); if(k != 0 &amp;&amp; k != i &amp;&amp; k &lt; j)&#123; //cout &lt;&lt; k &lt;&lt; &quot;&amp;~&quot; &lt;&lt; j &lt;&lt; &quot;=&quot; &lt;&lt; i &lt;&lt; endl; set&lt;double&gt;::iterator it, it2; for(it = m_set[j].begin(); it != m_set[j].end(); it++)&#123; for(it2 = m_set[k].begin(); it2 != m_set[k].end(); it2++)&#123; m_set[i].insert((*it) + (*it2)); m_set[i].insert((*it) * (*it2)); m_set[i].insert((*it) - (*it2)); m_set[i].insert((*it2) - (*it)); if((*it2) != 0) m_set[i].insert((*it) / (*it2)); if((*it) != 0) m_set[i].insert((*it2) / (*it)); &#125; &#125; &#125; &#125; &#125; set&lt;double&gt;::iterator it; for(it = m_set[15].begin(); it != m_set[15].end(); it++)&#123; if(fabs(*it - 24) &lt; ens)&#123; break; &#125; &#125; if(it != m_set[15].end())&#123; cout &lt;&lt; &quot;yes&quot; &lt;&lt; endl; &#125;else&#123; cout &lt;&lt; &quot;no&quot; &lt;&lt; endl; &#125; &#125; return 0;&#125; 另附原始递归代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include&lt;bits/stdc++.h&gt;using namespace std;const double ins = 0.0000001;double val[4];bool dfs(int cur, double res)&#123; double ans = res; if(fabs(ans - 24) &lt; ins &amp;&amp; cur == 4)&#123; return true; &#125;else if (cur &gt;= 4)&#123; return false; &#125; if(dfs(cur + 1, ans + val[cur]) || dfs(cur + 1, ans - val[cur]) || dfs(cur + 1, -ans + val[cur]) || (cur &gt; 0 &amp;&amp; dfs(cur + 1, ans * val[cur])) || dfs(cur + 1, cur &gt; 0 ? ans / val[cur] : 1 / val[cur]) || (ans != 0 &amp;&amp; dfs(cur + 1, val[cur] / ans)) )&#123; return true; &#125; return false;&#125;int main()&#123; double v[4]; for(int i = 0; i &lt; 4; ++i)&#123; cin &gt;&gt; v[i]; &#125; bool flag = false; for(int i = 0; i &lt; 4; ++i)&#123; for(int j = 0; j &lt; 4; ++j)&#123; if(j == i)&#123; continue; &#125; for(int k = 0; k &lt; 4; ++k)&#123; if(k == i || k == j)&#123; continue; &#125; val[0] = v[i]; val[1] = v[j]; val[2] = v[k]; val[3] = v[6 - i - j - k]; flag = dfs(0, 0); if(flag)&#123; break; &#125; &#125; if(flag)&#123; break; &#125; &#125; if(flag)&#123; break; &#125; &#125; if(flag)&#123; cout &lt;&lt; &quot;Yes&quot; &lt;&lt; endl; &#125;else&#123; cout &lt;&lt; &quot;No&quot; &lt;&lt; endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>程序人生</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[在任务跳转问题上，C#的委托delegate与工厂方法模式的异曲同工之妙]]></title>
     <url>%2F2019%2F08%2F28%2F2019-08-28%2F</url>
     <content type="text"><![CDATA[在玩游戏时，常常会有任务跳转。但当跳转类型过多时，对游戏研发者来说，就是一件头疼的事了。之前在做游戏城镇等级模块时，就遇到了任务跳转过多的问题。刚接到任务跳转这个需求时，由于入门未深，便用if-else写的。可以想象一百多行的if-else或者switch是多么壮观啊。。。 但是当我们只为了完成当日任务，而不为长远维护考虑，那未来将是一件可怕的事情。而且那样的代码，像我这样的人看着也不舒服。 最近看了C#高级语法，赫然发现C#中的委托不就是C++中的函数指针嘛。于是，对于上述if-else，便有解了。 我们只需要写一个委托，对应创建一个数组对象，每个跳转类型封装一个方法，再用委托来回调，这样的代码，主方法里只需1行就搞定。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199200201202203204205206207208209210211212213214215216217218219220221222223224225226227228229230231232233234235236237238239240241242243244245246247248249250251252253254255256using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.UI;public class UICityRichLevelItem : ScreenBaseHandler&#123; //public RawImage imgIcon; public Text textProgress; public Text textDegreeOfCompletion; public Slider slideProgress; public GameObject imgBg; public GameObject imgCompleteFinish; public GameObject imgCompleteGoto; public UI_Event btnGoto; public GameObject imgCompleteDelivery; public UI_Event btnDelivery; private int typeId; private int taskId; private bool isDelivery; private string TaskDescription; private int allNum; private int submitId; //需要提交的id private const int NumOfTaskTypes = 9; //任务种类数量 private const int DeliveryOfGoodsTaskId = 9; //提交货物类型id private delegate void JumpTask(); JumpTask [] jumpTask = new JumpTask[NumOfTaskTypes]; public override void Init() &#123; isDelivery = false; allNum = 0; submitId = 0; btnGoto.onClick = (eventData, ev) =&gt; BtnGotoOnClick(); btnDelivery.onClick = (eventData, ev) =&gt; BtnDeliveryOnClick(); jumpTask[0] = new JumpTask(JumpTaskType_0); jumpTask[1] = new JumpTask(JumpTaskType_1); jumpTask[2] = new JumpTask(JumpTaskType_2); jumpTask[3] = new JumpTask(JumpTaskType_3); jumpTask[4] = new JumpTask(JumpTaskType_4); jumpTask[5] = new JumpTask(JumpTaskType_5); jumpTask[6] = new JumpTask(JumpTaskType_6); jumpTask[7] = new JumpTask(JumpTaskType_7); jumpTask[8] = new JumpTask(JumpTaskType_8); &#125; public void SetItem (TableCityRichEvent.Data next) &#123; taskId = next.mId; typeId = next.mFunctionType; if (next.mFunctionParameter.Count == 1) &#123; allNum = next.mFunctionParameter[0]; &#125; else &#123; submitId = next.mFunctionParameter[0]; allNum = next.mFunctionParameter[1]; &#125; TaskDescription = next.mEventsDes; textDegreeOfCompletion.text = &quot;0/&quot; + allNum; textProgress.text = JointStr(TaskDescription, textDegreeOfCompletion.text); slideProgress.maxValue = allNum; slideProgress.value = 0; if (isDeliveryOfGoodsTask()) &#123; int num = StorageManager.instance.GetAllCommodityUnlockNumById(submitId); textDegreeOfCompletion.text = num + &quot;/&quot; + allNum; textProgress.text = JointStr(TaskDescription, textDegreeOfCompletion.text); slideProgress.value = num &gt; allNum ? allNum : num; &#125; isCompleted(allNum, (int)slideProgress.value); &#125; public int GetTypeItem() &#123; return typeId; &#125; public bool HasChecked() &#123; return isDelivery; &#125; public bool SetCurNum (int curNum) &#123; if (!isDeliveryOfGoodsTask()) &#123; slideProgress.value = curNum; textDegreeOfCompletion.text = curNum + &quot;/&quot; + allNum; textProgress.text = JointStr(TaskDescription, textDegreeOfCompletion.text); &#125; if (curNum &gt;= allNum) &#123; isDelivery = true; slideProgress.value = curNum; &#125; isCompleted(allNum, curNum); return curNum &gt;= allNum; &#125; private string JointStr(string str1, string str2) &#123; return str1 + &quot; &quot; + str2; &#125; private void isCompleted(int maxx, int cur) &#123; if (isDeliveryOfGoodsTask()) &#123; imgCompleteDelivery.SetActive(!isDelivery); imgCompleteGoto.SetActive(false); imgCompleteFinish.SetActive(isDelivery); &#125; else &#123; imgCompleteDelivery.SetActive(false); imgCompleteGoto.SetActive(maxx &gt; cur); imgCompleteFinish.SetActive(maxx &lt;= cur); &#125; &#125; public bool isDeliveryOfGoodsTask() &#123; return TaskHash(typeId) == DeliveryOfGoodsTaskId; &#125; private void BtnGotoOnClick() &#123; jumpTask[TaskHash(typeId)](); &#125; public void SetBg(bool flag) &#123; imgBg.SetActive(flag); &#125; private void BtnDeliveryOnClick() &#123; int num = StorageManager.instance.GetAllCommodityUnlockNumById(submitId); if (isDelivery == false &amp;&amp; num &gt;= allNum) &#123; TCPNetworkAttribute.Instance.ReqRichlevelSubmit(taskId); UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.Init(); //isDelivery = true; //SetCurNum(allNum); &#125; &#125; private int TaskHash(int id) &#123; return id / 1000; &#125; private void JumpTaskType_0() //默认 &#123; UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.Init(); &#125; private void JumpTaskType_1() //出航 &#123; if (TaskHash(typeId) == 1) &#123; int[] types = &#123; (int)IntentionType.Fishing, (int)IntentionType.Fishing, (int)IntentionType.Merchant, (int)IntentionType.Explore &#125;; //捕鱼，战峙，贸易，探索 UISetOut_MainPage.intentionType = (IntentionType)types[typeId % 1000 - 1]; &#125; UISetOut_MainPage config = MenuManager.instance.CreateMenu&lt;UISetOut_MainPage&gt;(); config.OpenScreen(); UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.CloseScreen(); &#125; private void JumpTaskType_2() //建造 &#123; UIBuildingHandle config = MenuManager.instance.CreateMenu&lt;UIBuildingHandle&gt;(); config.OpenScreen(); UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.CloseScreen(); &#125; private void JumpTaskType_3() //更路簿 &#123; UILinkDistrict config = MenuManager.instance.CreateMenu&lt;UILinkDistrict&gt;(); config.OpenScreen(); UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.CloseScreen(); &#125; private void JumpTaskType_4() //易市 &#123; UIMarketHandle config = MenuManager.instance.CreateMenu&lt;UIMarketHandle&gt;(); config.OpenScreen(); UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.CloseScreen(); &#125; private void JumpTaskType_5() //区域解锁 &#123; UIUnLockZoneHandle handle = MenuManager.instance.CreateMenu&lt;UIUnLockZoneHandle&gt;(); TableLockZone.Data mTableData = null; List&lt;TableLockZone.Data&gt; lst_zone_table = TableManager.instance.GetLockZoneAll(); int i = 0; for (; i &lt; lst_zone_table.Count; i++) &#123; mTableData = lst_zone_table[i]; int id = mTableData.mId; if (LockZoneManager.instance.IsReadyZoneUnlock(id)) &#123; break; &#125; &#125; if (i &lt; lst_zone_table.Count &amp;&amp; mTableData != null) &#123; handle.SetZone(mTableData); handle.OpenScreen(); &#125; UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.CloseScreen(); &#125; private void JumpTaskType_6() //船坞 &#123; UIShipHouseHandle config = MenuManager.instance.CreateMenu&lt;UIShipHouseHandle&gt;(); //config.gameObject.transform.Find(&quot;Canvas&quot;).GetComponent&lt;Canvas&gt;().sortingOrder = 3; config.OpenScreen(); UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.CloseScreen(); &#125; private void JumpTaskType_7() //广场 &#123; UIPiazzaHandle config = MenuManager.instance.CreateMenu&lt;UIPiazzaHandle&gt;(); BuildingControl control = BuildingManager.instance.GetBuildingControlByTableId(12); config.InitFactory(control); config.OpenScreen(); UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.CloseScreen(); &#125; private void JumpTaskType_8() //人物等级 &#123; UIPlayerInfo item = MenuManager.instance.FindMenu&lt;UIPlayerInfo&gt;(); item.Init(); item.OpenScreen(0); &#125;&#125; 有没有发现，和设计模式中的工厂方法模式有异曲同工之妙呢。日后维护起来也方便许多。 接下来我们详细介绍下C#中的委托吧。 C# 委托（Delegate）C# 中的委托（Delegate）类似于 C 或 C++ 中函数的指针。委托（Delegate） 是存有对某个方法的引用的一种引用类型变量。引用可在运行时被改变。 委托（Delegate）特别用于实现事件和回调方法。所有的委托（Delegate）都派生自 System.Delegate 类。 声明委托（Delegate）委托声明决定了可由该委托引用的方法。委托可指向一个与其具有相同标签的方法。 例如，假设有一个委托： 1public delegate int MyDelegate (string s); 上面的委托可被用于引用任何一个带有一个单一的 string 参数的方法，并返回一个 int 类型变量。 声明委托的语法如下： 1delegate &lt;return type&gt; &lt;delegate-name&gt; &lt;parameter list&gt; 实例化委托（Delegate）一旦声明了委托类型，委托对象必须使用 new 关键字来创建，且与一个特定的方法有关。当创建委托时，传递到 new 语句的参数就像方法调用一样书写，但是不带有参数。例如： 1234public delegate void printString(string s);...printString ps1 = new printString(WriteToScreen);printString ps2 = new printString(WriteToFile); 下面的实例演示了委托的声明、实例化和使用，该委托可用于引用带有一个整型参数的方法，并返回一个整型值。 12345678910111213141516171819202122232425using System;delegate int NumberChanger(int n);namespace DelegateAppl&#123; class TestDelegate &#123; static int num = 10; public static int AddNum(int p) &#123; num += p; return num; &#125; public static int MultNum(int q) &#123; num *= q; return num; &#125; public static int getNum() &#123; return num; &#125; static void Main(string[] args) &#123; // 创建委托实例 NumberChanger nc1 = new NumberChanger(AddNum); NumberChanger nc2 = new NumberChanger(MultNum); // 使用委托对象调用方法 nc1(25); Console.WriteLine(&quot;Value of Num: &#123;0&#125;&quot;, getNum()); nc2(5); Console.WriteLine(&quot;Value of Num: &#123;0&#125;&quot;, getNum()); Console.ReadKey(); &#125; &#125;&#125; 当上面的代码被编译和执行时，它会产生下列结果： 12Value of Num: 35Value of Num: 175 委托的多播（Multicasting of a Delegate）委托对象可使用 “+” 运算符进行合并。一个合并委托调用它所合并的两个委托。只有相同类型的委托可被合并。”-“ 运算符可用于从合并的委托中移除组件委托。 使用委托的这个有用的特点，您可以创建一个委托被调用时要调用的方法的调用列表。这被称为委托的 多播（multicasting），也叫组播。下面的程序演示了委托的多播： 1234567891011121314151617181920using System;delegate int NumberChanger(int n); namespace DelegateAppl&#123; class TestDelegate &#123; static int num = 10; public static int AddNum(int p) &#123; num += p; return num; &#125; public static int MultNum(int q) &#123; num *= q; return num; &#125; public static int getNum() &#123; return num; &#125; static void Main(string[] args) &#123; // 创建委托实例 NumberChanger nc; NumberChanger nc1 = new NumberChanger(AddNum); NumberChanger nc2 = new NumberChanger(MultNum); nc = nc1; nc += nc2; // 调用多播 nc(5); Console.WriteLine(&quot;Value of Num: &#123;0&#125;&quot;, getNum()); Console.ReadKey(); &#125; &#125;&#125; 当上面的代码被编译和执行时，它会产生下列结果： 1Value of Num: 75 委托（Delegate）的用途下面的实例演示了委托的用法。委托 printString 可用于引用带有一个字符串作为输入的方法，并不返回任何东西。 我们使用这个委托来调用两个方法，第一个把字符串打印到控制台，第二个把字符串打印到文件： 1234567891011121314151617181920212223242526using System;using System.IO;namespace DelegateAppl&#123; class PrintString &#123; static FileStream fs; static StreamWriter sw; // 委托声明 public delegate void printString(string s); // 该方法打印到控制台 public static void WriteToScreen(string str) &#123; Console.WriteLine(&quot;The String is: &#123;0&#125;&quot;, str); &#125; // 该方法打印到文件 public static void WriteToFile(string s) &#123; fs = new FileStream(&quot;c:\\message.txt&quot;, FileMode.Append, FileAccess.Write); sw = new StreamWriter(fs); sw.WriteLine(s); sw.Flush(); sw.Close(); fs.Close(); &#125; // 该方法把委托作为参数，并使用它调用方法 public static void sendString(printString ps) &#123; ps(&quot;Hello World&quot;); &#125; static void Main(string[] args) &#123; printString ps1 = new printString(WriteToScreen); printString ps2 = new printString(WriteToFile); sendString(ps1); sendString(ps2); Console.ReadKey(); &#125; &#125;&#125; 当上面的代码被编译和执行时，它会产生下列结果： 1The String is: Hello World]]></content>
@@ -164,8 +177,8 @@
       </categories>
       <tags>
         <tag>编译原理</tag>
-        <tag>词法分析</tag>
         <tag>语法分析</tag>
+        <tag>词法分析</tag>
       </tags>
   </entry>
   <entry>
@@ -666,8 +679,8 @@
       <tags>
         <tag>算法</tag>
         <tag>组合数学</tag>
-        <tag>动态规划</tag>
         <tag>划分</tag>
+        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -855,8 +868,8 @@
         <tag>算法</tag>
         <tag>最短路</tag>
         <tag>Dijkstra算法</tag>
-        <tag>SPFA算法</tag>
         <tag>Bellman-Ford算法</tag>
+        <tag>SPFA算法</tag>
       </tags>
   </entry>
   <entry>
@@ -971,8 +984,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>二分图</tag>
         <tag>匹配</tag>
+        <tag>二分图</tag>
         <tag>网络流</tag>
         <tag>最大流</tag>
         <tag>最小费用最大流</tag>
@@ -1003,10 +1016,10 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>KM算法</tag>
-        <tag>二分图</tag>
         <tag>匹配</tag>
+        <tag>二分图</tag>
         <tag>匈牙利算法</tag>
+        <tag>KM算法</tag>
         <tag>网络流</tag>
         <tag>最大流</tag>
       </tags>
@@ -1136,8 +1149,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>STL</tag>
         <tag>算法</tag>
+        <tag>STL</tag>
       </tags>
   </entry>
   <entry>
@@ -1149,8 +1162,8 @@
         <category>C/C++</category>
       </categories>
       <tags>
-        <tag>STL</tag>
         <tag>算法</tag>
+        <tag>STL</tag>
       </tags>
   </entry>
   <entry>
@@ -1472,10 +1485,10 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
-        <tag>KM算法</tag>
-        <tag>二分图</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
+        <tag>二分图</tag>
+        <tag>KM算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1488,9 +1501,9 @@
       </categories>
       <tags>
         <tag>算法</tag>
+        <tag>匹配</tag>
         <tag>图论</tag>
         <tag>二分图</tag>
-        <tag>匹配</tag>
         <tag>匈牙利算法</tag>
       </tags>
   </entry>
@@ -1713,8 +1726,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>BFS</tag>
         <tag>算法</tag>
+        <tag>BFS</tag>
         <tag>八数码</tag>
         <tag>康托展开</tag>
         <tag>hash</tag>
@@ -1786,8 +1799,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>C陷阱与缺陷</tag>
         <tag>进制</tag>
+        <tag>C陷阱与缺陷</tag>
       </tags>
   </entry>
   <entry>
@@ -1815,8 +1828,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
+        <tag>pat天梯赛</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
@@ -1858,9 +1871,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>算法</tag>
         <tag>BFS</tag>
         <tag>pat天梯赛</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1873,10 +1886,10 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>STL</tag>
-        <tag>pat天梯赛</tag>
         <tag>算法</tag>
+        <tag>STL</tag>
         <tag>vector</tag>
+        <tag>pat天梯赛</tag>
       </tags>
   </entry>
   <entry>
@@ -1901,9 +1914,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>BFS</tag>
         <tag>算法</tag>
         <tag>DFS</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
