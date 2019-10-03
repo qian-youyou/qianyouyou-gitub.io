@@ -125,7 +125,7 @@
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-10-03-%E4%BC%A0%E7%BB%9F%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F.png">
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-10-03-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F.png">
 <meta property="og:image" content="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-10-03-Fast%E9%9B%86%E7%BE%A4.png">
-<meta property="og:updated_time" content="2019-10-03T06:05:58.636Z">
+<meta property="og:updated_time" content="2019-10-03T06:34:00.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FastDFS分布式文件系统总结">
 <meta name="twitter:description" content="分布式存储首先，什么是分布式存储，简而言之，就是将数据存储到多个存储设备（服务器）上。 分布式与传统网络存储系统区别传统的网络存储系统采用集中的存储服务器存放所有数据，存储服务器成为系统性能的瓶颈，也是可靠性和安全性的焦点，不能满足大规模存储应用的需要。 分布式网络存储系统采用可扩展的系统结构，利用多台存储服务器分担存储负荷，利用位置服务器定位存储信息，它不但提高了系统的可靠性、可用性和存取效率，">
@@ -456,7 +456,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  591
+                  356
                 </span>
               
 
@@ -472,7 +472,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -499,54 +499,6 @@
 <p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-10-03-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F.png" alt=""></p>
 <h1 id="FastDFS"><a href="#FastDFS" class="headerlink" title="FastDFS"></a>FastDFS</h1><p>FastDFS是一款开源的分布式文件系统，通过纯C实现，支持Linux, FreeBSD等Unix系统类Google FS, 不是通用的文件系统，只能够通过专有API访问，目前提供了C，Java和PHP API为互联网应用量身定做，解决大容量文件存储问题，追求高性能和高扩展性 FastDFS可以看做是基于文件的key-value存储系统，称为分布式文件存储服务更为合适。</p>
 <p>功能包括：文件存储、文件同步、文件访问（文件上传、文件下载、文件删除）等，解决了大容量存储和负载均衡的问题。</p>
-<ul>
-<li><p>为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标</p>
-</li>
-<li><p>可以很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
-<ul>
-<li>图片服务器</li>
-<li>图床</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li><p>fastDFS特点:</p>
-</li>
-<li><ul>
-<li>应用层级的文件系统</li>
-<li>不能挂载和卸载，也就是不能进行mount操作</li>
-</ul>
-</li>
-<li><p>fastDFS框架中的三个角色</p>
-</li>
-<li><ul>
-<li>追踪器 - tracker</li>
-<li>存储节点 - storage</li>
-</ul>
-</li>
-<li><ul>
-<li>客户端 - client</li>
-</ul>
-</li>
-<li><p>fastDFS三个角色之间的关系</p>
-</li>
-<li><ul>
-<li><p>Client和Storage主动连接Tracker。</p>
-</li>
-<li><p>Storage主动向Tracker报告其状态信息</p>
-<ul>
-<li>磁盘剩余空间</li>
-<li>文件同步状况</li>
-<li>文件上传下载次数</li>
-</ul>
-</li>
-<li><p>Storage会启动一个单独的线程来完成对一台Tracker的连接和定时报告。</p>
-</li>
-<li><p>一个组包含的Storage不是通过配置文件设定的，而是通过Tracker获取到的。</p>
-</li>
-</ul>
-</li>
-</ol>
 <h2 id="FastDFS集群"><a href="#FastDFS集群" class="headerlink" title="FastDFS集群"></a>FastDFS集群</h2><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-10-03-Fast%E9%9B%86%E7%BE%A4.png" alt=""></p>
 
       
