@@ -285,8 +285,8 @@
         <category>数据结构</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
+        <tag>字符串</tag>
         <tag>算法</tag>
         <tag>数据结构</tag>
         <tag>链表</tag>
@@ -983,8 +983,8 @@
         <tag>算法</tag>
         <tag>ACM/ICPC</tag>
         <tag>数论</tag>
-        <tag>CCPC</tag>
         <tag>费马大定理</tag>
+        <tag>CCPC</tag>
       </tags>
   </entry>
   <entry>
@@ -1738,8 +1738,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>BFS</tag>
+        <tag>算法</tag>
         <tag>八数码</tag>
         <tag>康托展开</tag>
         <tag>hash</tag>
@@ -1840,8 +1840,8 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
@@ -1883,9 +1883,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
-        <tag>算法</tag>
         <tag>BFS</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1899,8 +1899,8 @@
       <tags>
         <tag>C/C++</tag>
         <tag>STL</tag>
-        <tag>算法</tag>
         <tag>pat天梯赛</tag>
+        <tag>算法</tag>
         <tag>vector</tag>
       </tags>
   </entry>
@@ -1926,9 +1926,9 @@
       </categories>
       <tags>
         <tag>C/C++</tag>
+        <tag>BFS</tag>
         <tag>算法</tag>
         <tag>DFS</tag>
-        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -1953,9 +1953,9 @@
         <category>C/C++</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C/C++</tag>
         <tag>STL</tag>
+        <tag>字符串</tag>
         <tag>字符串流</tag>
       </tags>
   </entry>
@@ -1968,8 +1968,8 @@
         <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>正则表达式</tag>
         <tag>字符串</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
