@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[FastDFS分布式文件系统总结]]></title>
     <url>%2F2019%2F10%2F03%2F2019-10-03%2F</url>
-    <content type="text"><![CDATA[分布式存储首先，什么是分布式存储，简而言之，就是将数据存储到多个存储设备（服务器）上。 分布式与传统网络存储系统区别传统的网络存储系统采用集中的存储服务器存放所有数据，存储服务器成为系统性能的瓶颈，也是可靠性和安全性的焦点，不能满足大规模存储应用的需要。 分布式网络存储系统采用可扩展的系统结构，利用多台存储服务器分担存储负荷，利用位置服务器定位存储信息，它不但提高了系统的可靠性、可用性和存取效率，还易于扩展。 FastDFSFastDFS集群]]></content>
+    <content type="text"></content>
       <categories>
         <category>程序人生</category>
         <category>操作系统</category>
