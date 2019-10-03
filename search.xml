@@ -11,9 +11,9 @@
       <tags>
         <tag>操作系统</tag>
         <tag>Linux</tag>
+        <tag>大数据</tag>
         <tag>分布式</tag>
         <tag>FastDFS</tag>
-        <tag>大数据</tag>
       </tags>
   </entry>
   <entry>
@@ -74,8 +74,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>大数据</tag>
         <tag>数据分析</tag>
+        <tag>大数据</tag>
       </tags>
   </entry>
   <entry>
@@ -193,8 +193,8 @@
       </categories>
       <tags>
         <tag>编译原理</tag>
-        <tag>语法分析</tag>
         <tag>词法分析</tag>
+        <tag>语法分析</tag>
       </tags>
   </entry>
   <entry>
@@ -884,8 +884,8 @@
         <tag>算法</tag>
         <tag>最短路</tag>
         <tag>Dijkstra算法</tag>
-        <tag>Bellman-Ford算法</tag>
         <tag>SPFA算法</tag>
+        <tag>Bellman-Ford算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1501,8 +1501,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>KM算法</tag>
       </tags>
@@ -1517,8 +1517,8 @@
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>图论</tag>
         <tag>匹配</tag>
+        <tag>图论</tag>
         <tag>二分图</tag>
         <tag>匈牙利算法</tag>
       </tags>
