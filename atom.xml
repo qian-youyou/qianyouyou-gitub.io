@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2019-10-03T07:35:21.523Z</updated>
+  <updated>2019-10-20T23:57:43.089Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈构造函数</title>
+    <link href="http://qianyouyou.cn/2019/10/21/2019-10-21/"/>
+    <id>http://qianyouyou.cn/2019/10/21/2019-10-21/</id>
+    <published>2019-10-20T23:36:23.000Z</published>
+    <updated>2019-10-20T23:57:43.089Z</updated>
+    
+    <content type="html"><![CDATA[<p>说道构造函数，大家可能都不陌生，但构造函数到底是什么作用呢。这个问题就好像我们大家都会用C++，但没几人敢说自己精通C++一样。我们先来看一看最简单的例子吧。</p><h2 id="question"><a href="#question" class="headerlink" title="question"></a>question</h2><p>已知类a继承类b且包含类c，求a，b，c的构造顺序。</p><h3 id="answer"><a href="#answer" class="headerlink" title="answer"></a>answer</h3><p>b &gt; c &gt; a</p><p>这个答案大家肯定知道，但为什么呢，对于该问题一般那些资深C++开发者一眼就能看出你是有自己的理解还是书本式的记忆，因此不要试图用书本式的解释。</p><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>其实构造函数也没那么神秘，就是用来初始化数据，为对象的创建做准备的。这不废话么。有了这个认识，那为什么上面是bca，而不是其他顺序呢。好像没什么必然的联系。但是，以初始化为主的构造函数，那没有数据的话怎么初始化数据呢。因此，a包含c，那么c就是a数据的一部分，没有c的话a就无法初始化。因此c &gt; a。a继承于b，子类和父类的关系根据名称也知道，子类继承了父类的数据，父类也是子类的一部分，因此b &gt; a。abc这三者的关系就好似儿子、父亲和儿子的细胞。没有父亲，就没有儿子的全部，自然也没有儿子的细胞。所以答案自然而然。</p><h2 id="初始化顺序"><a href="#初始化顺序" class="headerlink" title="初始化顺序"></a>初始化顺序</h2><p>直接初始化&gt;初始化列表&gt;构造函数</p><h2 id="RAII"><a href="#RAII" class="headerlink" title="RAII"></a>RAII</h2><p>在C++11特性中，出现了RAII的思想，就是构造中分配内存，析构中释放内存。这也是智能指针保证安全性的原因。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;说道构造函数，大家可能都不陌生，但构造函数到底是什么作用呢。这个问题就好像我们大家都会用C++，但没几人敢说自己精通C++一样。我们先来看一看最简单的例子吧。&lt;/p&gt;
+&lt;h2 id=&quot;question&quot;&gt;&lt;a href=&quot;#question&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+    
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
+    
+      <category term="构造函数" scheme="http://qianyouyou.cn/tags/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>FastDFS分布式文件系统总结</title>
@@ -600,42 +630,6 @@
     
     
       <category term="散文" scheme="http://qianyouyou.cn/tags/%E6%95%A3%E6%96%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进程的描述与控制VS处理机调度与死锁</title>
-    <link href="http://qianyouyou.cn/2019/04/22/2019-04-22/"/>
-    <id>http://qianyouyou.cn/2019/04/22/2019-04-22/</id>
-    <published>2019-04-22T13:20:04.000Z</published>
-    <updated>2019-05-18T12:30:34.160Z</updated>
-    
-    <content type="html"><![CDATA[<p>成也进程，败也进程，不为成败，只为进程。</p><h1 id="进程的描述与控制"><a href="#进程的描述与控制" class="headerlink" title="进程的描述与控制"></a>进程的描述与控制</h1><h2 id="前驱图"><a href="#前驱图" class="headerlink" title="前驱图"></a>前驱图</h2><p>每个结点可用来表示一个进程或进程段，乃至一条语句，结点间的有向边则表示两个结点间存在偏序或前趋关系。<img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-22-1.png" alt=""></p><p>例如上图P1与P2之间有前趋关系，所以P1与P2只能顺序执行。再如P2与P3之间没有前趋关系，所以P2与P3可以并发执行。</p><p>说白了就是有向无环图，可以利用拓扑排序进行执行。</p><h2 id="进程概述"><a href="#进程概述" class="headerlink" title="进程概述"></a>进程概述</h2><p>简单理解，进程就是程序段+数据段+PCB。</p><h3 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h3><p>由于多道程序环境下，程序的执行属于并发执行，此时它们将失去封闭性，并且具有间断性，以及运行结果不可在现性的特征。由此决定了程序是不能参与并发执行的，否则，程序的运行便失去了意义。为了能使程序并发执行，并且对并发执行的程序加以描述和控制，人们引入了进程。</p><p>为使每个并发执行程序（含数据）都能独立运行，在操作系统中加入一个专门的数据结构——进程控制块（Process Control Block，PCB）</p><p>系统利用PCB描述进程的基本情况和活动过程。一般情况下，我们把进程实体简称为进程，所谓创建进程就是创建进程实体中的PCB；撤销进程就是撤销进程的PCB。</p><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul><li>进程是程序的一次执行。</li><li>进程是一个程序及其数据在处理机尚顺序执行是所发生的活动。</li><li>进程是具有独立功能的程序在一个数据集合上执行的过程，<strong>它是系统执行资源分配和调度的一个独立单位</strong>。</li></ul><h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ul><li><strong>动态性</strong>：进程是进程实体的执行过程，由创建而生，调度而执行，撤销而亡。进程实体具有生命周期，而程序仅是一组有序命令的集合，存在于某种介质之上，因而是静态的。</li><li><strong>并发性</strong>：多个进程实体同存于内存之中，且能在一段时间同时运行。程序没有PCB，因而不能并发。</li><li><strong>独立性</strong>：进程实体是一个能独立运行，独立获得资源，独立接受调度的基本单位。而程序没有PCB，固不能执行以上操作。</li><li><strong>异步性</strong>：进程是按异步方式运行的，即按各自独立的、不可预知的速度推进，因而结果不可再现。为此，OS中引入进程的概念，并配置相应的同步机制。</li></ul><h3 id="状态及转换"><a href="#状态及转换" class="headerlink" title="状态及转换"></a>状态及转换</h3><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-22.png" alt=""></p><h4 id="三基态："><a href="#三基态：" class="headerlink" title="三基态："></a>三基态：</h4><ul><li><strong>就绪状态</strong>：进程已处于准备好运行的状态，只差CPU，在就绪队列等待调度。</li><li><strong>执行状态</strong>：进程已获得CPU，并立即执行。</li><li><strong>阻塞状态</strong>：正在运行的进程由于发生某种事件（I/O请求，申请缓冲区失败等）暂时无法继续执行，而让受阻进程处于暂停状态。进入阻塞队列。阻塞时进程自身的主动行为。</li></ul><h4 id="创建与终止状态："><a href="#创建与终止状态：" class="headerlink" title="创建与终止状态："></a>创建与终止状态：</h4><ul><li><strong>创建状态</strong>：申请空白PCB，并向PCB填写控制和管理进程的信息，然后分配资源，最后转入就绪队列中。</li><li><strong>终止状态</strong>：等待操作系统善后处理，然后PCB清零，返还系统。</li></ul><h4 id="挂起状态："><a href="#挂起状态：" class="headerlink" title="挂起状态："></a>挂起状态：</h4><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-04-22.jpg" alt=""></p><p>当操作作用于某个进程时，该进程处于静止状态。</p><h5 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h5><ol><li>终端用户需要。例如运行时改bug。</li><li>父进程请求。</li><li>符合调节需要。</li><li>操作系统需要。例如检查运行情况。</li></ol><h3 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a>PCB</h3><h4 id="PCB中的信息"><a href="#PCB中的信息" class="headerlink" title="PCB中的信息"></a>PCB中的信息</h4><ol><li><strong>进程描述符</strong>：进程标识符用于唯一标识进程。</li><li><strong>处理机状态</strong>：进程切换时保留现场以及现场恢复。</li><li><strong>进程调度信息</strong>：进程状态及相关进程调度信息。</li><li><strong>进程控制信息</strong>：用于进程控制所需信息。</li></ol><h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2><p>进程控制一般由OS原语实现。</p><h3 id="操作系统内核"><a href="#操作系统内核" class="headerlink" title="操作系统内核"></a>操作系统内核</h3><ol><li>支撑功能<ul><li>中断处理。</li><li>始终处理。</li><li>原语操作。原语由若干指令组成，用于完成一定功能的过程。原子操作，一个操作中所有行动要么全做，要么不做。</li></ul></li><li>资源管理功能<ul><li>进程管理。</li><li>存储器管理。</li><li>设备管理。</li></ul></li></ol><h3 id="进程的创建与终止"><a href="#进程的创建与终止" class="headerlink" title="进程的创建与终止"></a>进程的创建与终止</h3><p>创建原语：Creat</p><p>终止原语：Holt</p><h3 id="进程的阻塞与唤醒"><a href="#进程的阻塞与唤醒" class="headerlink" title="进程的阻塞与唤醒"></a>进程的阻塞与唤醒</h3><p>阻塞原语：block</p><p>唤醒原语：wakeup</p><h3 id="进程的挂起与激活"><a href="#进程的挂起与激活" class="headerlink" title="进程的挂起与激活"></a>进程的挂起与激活</h3><p>挂起原语：suspend</p><p>激活原语：active</p><h2 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h2><h3 id="硬件同步机制"><a href="#硬件同步机制" class="headerlink" title="硬件同步机制"></a>硬件同步机制</h3><ol><li>关中断</li><li>利用Test-and-Set指令实现互斥</li><li>利用Swap指令实现进程互斥</li></ol><h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><ol><li>整型信号量</li><li>记录型信号量</li><li>AND型信号量</li><li>信号量集</li></ol><h3 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h3><p>信号量机制功能强大，但使用时对信号量的操作分散，而且难以控制，读写和维护都很困难。因此后来又提出了一种集中式同步进程——管程。其基本思想是将共享变量和对它们的操作集中在一个模块中，操作系统或并发程序就由这样的模块构成。这样模块之间联系清晰，便于维护和修改，易于保证正确性。 </p><h3 id="经典进程同步问题"><a href="#经典进程同步问题" class="headerlink" title="经典进程同步问题"></a>经典进程同步问题</h3><p>生产者-消费者问题</p><p>读者-写者问题</p><p>哲学家进餐问题</p><h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ol><li><p>共享存储器系统</p></li><li><p>管道（pipe）通信系统</p></li><li><p>消息传递系统</p><ul><li><p>消息传递的实际功能以一对原语的形式提供：</p><ul><li>send(destination,message)</li><li>receive(source,message)</li></ul><p>这是进程间进程消息传递所需要的最小操作集。</p><p>一个进程以消息的形式给另一个指定的目标进程发送消息；</p><p>进程通过执行receive原语接收消息，receive原语中指明发送消息的源进程和消息。</p></li></ul></li><li><p>客户机-服务机系统</p><ul><li>套接字socket</li></ul></li></ol><h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>作为调度和分派的基本单位。</p><p>每个线程有一个线程控制块TCB。</p><h1 id="处理机调度与死锁"><a href="#处理机调度与死锁" class="headerlink" title="处理机调度与死锁"></a>处理机调度与死锁</h1><h2 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h2><p>无论是在批处理系统还是分时系统中，用户进程数一般都多于处理机数、这将导致它们互相争夺处理机。另外，系统进程也同样需要使用处理机。这就要求进程调度程序按一定的策略，动态地把处理机分配给处于就绪队列中的某一个进程，以使之执行。</p><h3 id="处理机调度层次"><a href="#处理机调度层次" class="headerlink" title="处理机调度层次"></a>处理机调度层次</h3><p><strong>高级、中级和低级调度作业从提交开始直到完成，往往要经历下述三级调度：</strong></p><p>高级调度：(High-Level Scheduling)又称为作业调度，它决定把外存上后备作业调入内存运行；</p><p>低级调度：(Low-Level Scheduling)又称为进程调度，它决定把就绪队列的某进程获得CPU；</p><p>中级调度：(Intermediate-Level Scheduling)又称为在虚拟存储器中引入，在内、外存对换区进行进程对换。把不能正常运行的进程调至外存等待。</p><h4 id="处理机调度算法"><a href="#处理机调度算法" class="headerlink" title="处理机调度算法"></a>处理机调度算法</h4><p>CPU利用率 = CPU有效工作时间 / (CPU有效工作时间 + CPU空闲等待时间)</p><h4 id="批处理系统"><a href="#批处理系统" class="headerlink" title="批处理系统"></a>批处理系统</h4><p>周转时间Ti = 完成时间 - 到达时间</p><p>平均周转时间T = 1/n( T1 + …… + Ti + …… + Tn )</p><p>带权周转时间为周转时间/运行时间（越小越好）</p><h4 id="分时系统"><a href="#分时系统" class="headerlink" title="分时系统"></a>分时系统</h4><p>响应时间快，均衡性好。</p><h4 id="实时系统"><a href="#实时系统" class="headerlink" title="实时系统"></a>实时系统</h4><p>考虑截至时间，提高可预测性。</p><h3 id="作业与作业调度"><a href="#作业与作业调度" class="headerlink" title="作业与作业调度"></a>作业与作业调度</h3><h4 id="作业（Job）"><a href="#作业（Job）" class="headerlink" title="作业（Job）"></a>作业（Job）</h4><p>程序的集合+数据的集合+作业说明书+JCB。</p><p>三个状态：后备状态，运行状态，收容状态。</p><p>三个阶段：收容阶段（创建JCB），运行阶段，完成阶段（回收JCB）。</p><h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><ol><li>接纳多少作业</li><li>接纳哪些作业</li></ol><h4 id="作业调度算法"><a href="#作业调度算法" class="headerlink" title="作业调度算法"></a>作业调度算法</h4><h5 id="先来先服务算法（first-come-first-served，FCFS）"><a href="#先来先服务算法（first-come-first-served，FCFS）" class="headerlink" title="先来先服务算法（first-come first-served，FCFS）"></a>先来先服务算法（first-come first-served，FCFS）</h5><p>系统按照作业到达的优先顺序调度。</p><p>不利于短作业。</p><h5 id="短作业优先算法（short-job-first，SJF）"><a href="#短作业优先算法（short-job-first，SJF）" class="headerlink" title="短作业优先算法（short job first，SJF）"></a>短作业优先算法（short job first，SJF）</h5><p>系统以作业长短为优先级。</p><p>不利于长作业，容易出现进程饥饿现象。</p><h5 id="优先级调度算法（priority-scheduling-algorithm，PSA）"><a href="#优先级调度算法（priority-scheduling-algorithm，PSA）" class="headerlink" title="优先级调度算法（priority-scheduling algorithm，PSA）"></a>优先级调度算法（priority-scheduling algorithm，PSA）</h5><p>根据作业紧迫程度，由外界赋予优先级。</p><h5 id="高响应比有限调度算法（Highest-Rseponse-Ratio-Next，HRRN）"><a href="#高响应比有限调度算法（Highest-Rseponse-Ratio-Next，HRRN）" class="headerlink" title="高响应比有限调度算法（Highest Rseponse Ratio Next，HRRN）"></a>高响应比有限调度算法（Highest Rseponse Ratio Next，HRRN）</h5><p>动态优先级，根据长短赋初值，根据等待时间加权。作业越短，初值越大，等待时间越长，加权越大。</p><p>Rp = 响应时间/要求服务时间</p><h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><h4 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h4><h5 id="剥夺方式"><a href="#剥夺方式" class="headerlink" title="剥夺方式"></a>剥夺方式</h5><p>当一个进程正在运行时，系统可以基于某种原则，剥夺已分配给它的处理机，将之分配给其它进程。剥夺原则有：优先权原则、短进程优先原则、时间片原则。</p><h5 id="非剥夺方式"><a href="#非剥夺方式" class="headerlink" title="非剥夺方式"></a>非剥夺方式</h5><p>分派程序一旦把处理机分配给某进程后便让它一直运行下去，直到进程完成或发生某事件而阻塞时，才把处理机分配给另一个进程。</p><h4 id="任务-1"><a href="#任务-1" class="headerlink" title="任务"></a>任务</h4><ol><li>保存处理机现场信息。</li><li>按某种算法选取进程。</li><li>把处理器分配给进程。</li></ol><h4 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h4><p>进程调度也称为低级调度，它所调度的对象为进程（或者内核级线程），而进程调度算法主要有以下几种：</p><h5 id="基于时间片的轮转调度算法"><a href="#基于时间片的轮转调度算法" class="headerlink" title="基于时间片的轮转调度算法"></a>基于时间片的轮转调度算法</h5><p>它的原理通俗来讲就是队列中每一个进程都获得了一定的执行时间，从几ms到几百ms，当一个执行时间结束，计时器会发出一个信号，此时正在执行的进程将被中断，同时此进程将被放在队列的末尾，然后执行这时候的队列的队首进程，因此队列中每一个进程都将获得一定时间执行。</p><h5 id="先来先服务调度算法（FCFS）"><a href="#先来先服务调度算法（FCFS）" class="headerlink" title="先来先服务调度算法（FCFS）"></a>先来先服务调度算法（FCFS）</h5><p>先来先服务调度算法是一种最简单的调度算法，可用于作业调度，也可用于进程调度。</p><h5 id="短作业优先调度算法（SJ-P-F）"><a href="#短作业优先调度算法（SJ-P-F）" class="headerlink" title="短作业优先调度算法（SJ(P)F）"></a>短作业优先调度算法（SJ(P)F）</h5><p>短作业（进程）优先调度算法是指短作业或者短进程的优先调度算法，它们分别作用于作业调度和进程调度，它是先来先服务调度算法的一种优化版本。</p><h5 id="高优先权优先调度算法"><a href="#高优先权优先调度算法" class="headerlink" title="高优先权优先调度算法"></a>高优先权优先调度算法</h5><p>为了解决在短作业优先调度算法中进程的紧迫程度问题，我们引入高优先权优先调度算法，高优先权调度算法的方法也很简单，就是在队列中选取优先权最高的进程装入内存，该算法又分为以下两类：</p><p>①非抢占式优先权算法<br>如果系统已经分配好一个优先权最高的进程，它会一直被执行，直到结束或者因为某事件放弃执行，此时系统才会选择另外一个优先权最高的进程，这种调度算法主要被用于批处理系统中。</p><p>②抢占式优先权算法<br>系统在队列中把一个优先权最高的进程执行，但如果在执行中又出现一个优先权更高的进程，此时当前进程被停止，换入另外一个优先权更高的进程，这种调度算法主要被用于要求比较严格的实时系统，以及对性能要求较高的批处理和分时系统中。</p><p>优先权的类型：</p><p>优先权的类型被分为静态优先权和动态优先权。</p><p>静态优先权就是给定某个整形数字来表示进程的优先级，数字越小表示优先级越高，数字越大，进程优先级越低。</p><p>动态优先权随着进程的创建而被创建，可以随着进程的推进或者等待时间而变化。</p><h5 id="多队列调度算法"><a href="#多队列调度算法" class="headerlink" title="多队列调度算法"></a>多队列调度算法</h5><p>进程就绪队列由一个拆成多个，不同类型进程分配不同就绪队列，不同就绪队列采用不同算法。一个就绪队列可以设置不同优先级，不同就绪队列本身也可设优先级。</p><p>系统根据不同的用户选用不同的调度策略。</p><h5 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h5><p>设置多个就绪队列，每个队列的优先级逐渐降低，同时每个队列的执行时间也各不相同，优先级越高的队列，执行时间越短，优先级越低的队列，执行时间越长。<br>当一个进程进入内存后，首先进入第一个队列的末尾，按照先来先服务的调度算法进行调度，如果在第一个队列的执行时间内未执行完成，此时把此进程放入第二个队列的末尾，按照之前的方法进行执行，直到在某一个队列的队首执行完成。</p><p>当第一个队列全部执行完成，此时系统才会执行第二个队列，但是如果此时又有新的进程进入，此时执行完毕这个时间段，立刻把此进程分配给新的作业。</p><h5 id="根据公平原则的调度算法"><a href="#根据公平原则的调度算法" class="headerlink" title="根据公平原则的调度算法"></a>根据公平原则的调度算法</h5><p>公平分配每个进程相同的处理机时间，或按进程比例公平分配用户相同的处理机时间。</p><h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><h3 id="锁与信号量"><a href="#锁与信号量" class="headerlink" title="锁与信号量"></a>锁与信号量</h3><p>锁强调于资源，信号量强调于执行次序。</p><h3 id="资源分类"><a href="#资源分类" class="headerlink" title="资源分类"></a>资源分类</h3><p>重用性资源与消耗性资源</p><p>可抢占性资源与不可抢占资源</p><h3 id="死锁起因"><a href="#死锁起因" class="headerlink" title="死锁起因"></a>死锁起因</h3><p>源于多个进程对资源的争夺，不仅对<strong>不可抢占资源</strong>金进行争夺时容易产生死锁，而且对<strong>消耗性资源</strong>抢夺也会产生死锁。还有就是进程推进不当引起死锁。</p><h3 id="死锁产生必要条件"><a href="#死锁产生必要条件" class="headerlink" title="死锁产生必要条件"></a>死锁产生必要条件</h3><ol><li>互斥条件（不能破坏该条件）</li><li>请求与保持条件</li><li>不可抢占条件</li><li>循环等待条件</li></ol><h3 id="处理死锁的方法"><a href="#处理死锁的方法" class="headerlink" title="处理死锁的方法"></a>处理死锁的方法</h3><p>以下四种方法从上往下防范程度逐渐减弱，但资源利用率与并发程度逐渐提高。</p><h4 id="预防死锁"><a href="#预防死锁" class="headerlink" title="预防死锁"></a>预防死锁</h4><h5 id="破坏”请求保持条件“"><a href="#破坏”请求保持条件“" class="headerlink" title="破坏”请求保持条件“"></a>破坏”请求保持条件“</h5><ol><li>一次性分配所有需要的资源。</li><li>用到时再调用资源，用完即释放资源。</li></ol><h5 id="破坏”不可抢占条件“"><a href="#破坏”不可抢占条件“" class="headerlink" title="破坏”不可抢占条件“"></a>破坏”不可抢占条件“</h5><p>调用资源时如果资源被占用，则必须释放已有所有资源，用时再调用。</p><h5 id="破坏”循环等待条件“"><a href="#破坏”循环等待条件“" class="headerlink" title="破坏”循环等待条件“"></a>破坏”循环等待条件“</h5><p>先给进程编号并排序，再按照顺序分配资源。</p><h4 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h4><h5 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h5><p><strong>银行家算法的数据结构</strong><br>可利用资源向量（Available）：系统还可以分配的资源</p><p>最大需求矩阵（Max）：进程的最大资源需要</p><p>分配矩阵（Alloction）：进程已经获得的资源</p><p>需求矩阵（Need）：进程还需要获得的资源</p><p><strong>银行家算法</strong></p><p>假设 P1 进程提出请求 K 个资源</p><p>如果 K &lt;= Need，就继续步骤；否则出错，因为请求资源 K 不能超过还需要获得的资源</p><p>如果 K &lt;= Available，就继续步骤；否则出错，因为请求资源 K 不能超过系统还可以分配的资源 </p><p>Available系统试探分配资源，并修改下列数据</p><p>Available = Available - K；表示分配给 P1 K 个资源后，还剩多少系统可分配资源</p><p>Allocation = Allocation + K；表示 P1 已经获得的资源</p><p>Need = Need - K；表示进程 P1 还需要获得的资源</p><p>此时系统执行安全性算法，计算进程是否处于安全性状态</p><p>PS：此时是执行的试探分配，为的是检查进程是否处于安全状态，不处于则试探分配作废</p><p><strong>安全性算法</strong></p><p>安全性算法是银行家算法在第五步执行的子算法，用于检查进程的安全状态</p><p>两个向量</p><p>工作向量（Work）：系统提供给进程的各类资源数目</p><p>Finish：表示系统是否有足够的资源分配给进程，这是一个布尔值。初始化为 false。</p><p><strong>算法描述</strong></p><p>在进程集合中找到下述条件的进程</p><p>Finish[ i ] = false;</p><p>Need &lt;= Work</p><p>进程执行完毕</p><p>Work = Work + Allocation</p><p>Finish [ i ] = true</p><p>返回继续执行 1 ，寻找其他的进程分配资源</p><p>若所有的 Finish 为 true 则安全</p><h4 id="检测死锁"><a href="#检测死锁" class="headerlink" title="检测死锁"></a>检测死锁</h4><p>资源分配图。</p><h4 id="解除死锁"><a href="#解除死锁" class="headerlink" title="解除死锁"></a>解除死锁</h4><p>杀死进程。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;成也进程，败也进程，不为成败，只为进程。&lt;/p&gt;
-&lt;h1 id=&quot;进程的描述与控制&quot;&gt;&lt;a href=&quot;#进程的描述与控制&quot; class=&quot;headerlink&quot; title=&quot;进程的描述与控制&quot;&gt;&lt;/a&gt;进程的描述与控制&lt;/h1&gt;&lt;h2 id=&quot;前驱图&quot;&gt;&lt;a href=
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="操作系统" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="操作系统" scheme="http://qianyouyou.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-      <category term="进程" scheme="http://qianyouyou.cn/tags/%E8%BF%9B%E7%A8%8B/"/>
-    
-      <category term="线程" scheme="http://qianyouyou.cn/tags/%E7%BA%BF%E7%A8%8B/"/>
-    
-      <category term="死锁" scheme="http://qianyouyou.cn/tags/%E6%AD%BB%E9%94%81/"/>
-    
-      <category term="进程调度" scheme="http://qianyouyou.cn/tags/%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/"/>
     
   </entry>
   
