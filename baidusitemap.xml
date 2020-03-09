@@ -4,6 +4,68 @@
 
     
   <url>
+    <loc>http://qianyouyou.cn/2020/03/09/2020-03-09/</loc>
+    <lastmod>2020-03-09T05:35:43.881Z</lastmod>
+    <data>
+        <display>
+        <title>Nginx+fastDFS搭建图床服务端</title>
+        <pubTime>2020-03-09T03:56:46.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>大数据</tag>
+         
+        <tag>分布式</tag>
+         
+        <tag>FastDFS</tag>
+         
+        <tag>Nginx</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="Linux" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2019/10/03/2019-10-03/</loc>
+    <lastmod>2020-03-09T04:02:26.856Z</lastmod>
+    <data>
+        <display>
+        <title>FastDFS分布式文件系统总结</title>
+        <pubTime>2019-10-03T04:36:04.000Z</pubTime>
+        
+        <tag>操作系统</tag>
+         
+        <tag>Linux</tag>
+         
+        <tag>大数据</tag>
+         
+        <tag>分布式</tag>
+         
+        <tag>FastDFS</tag>
+         
+         
+           
+             
+              <breadCrumb title="程序人生" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+          
+             
+              <breadCrumb title="Linux" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://qianyouyou.cn/2020/01/23/2020-01-23/</loc>
     <lastmod>2020-01-23T05:16:15.391Z</lastmod>
     <data>
@@ -80,31 +142,6 @@
              
               <breadCrumb title="C/C++" url="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://qianyouyou.cn/2019/10/03/2019-10-03/</loc>
-    <lastmod>2019-10-03T07:35:21.523Z</lastmod>
-    <data>
-        <display>
-        <title>FastDFS分布式文件系统总结</title>
-        <pubTime>2019-10-03T04:36:04.000Z</pubTime>
-        
-        <tag>操作系统</tag>
-         
-        <tag>Linux</tag>
-         
-        <tag>大数据</tag>
-         
-        <tag>分布式</tag>
-         
-        <tag>FastDFS</tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -768,9 +805,9 @@
         
         <tag>编译原理</tag>
          
-        <tag>语法分析</tag>
-         
         <tag>词法分析</tag>
+         
+        <tag>语法分析</tag>
          
          
            
@@ -2429,9 +2466,9 @@
          
         <tag>Dijkstra算法</tag>
          
-        <tag>Bellman-Ford算法</tag>
-         
         <tag>SPFA算法</tag>
+         
+        <tag>Bellman-Ford算法</tag>
          
          
            
