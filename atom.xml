@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qianyouyou.cn/"/>
-  <updated>2020-03-10T05:14:03.641Z</updated>
+  <updated>2020-03-11T13:44:56.169Z</updated>
   <id>http://qianyouyou.cn/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Qt5中QObject::connect()传参为lambda注意问题</title>
+    <link href="http://qianyouyou.cn/2020/03/11/2020-03-11/"/>
+    <id>http://qianyouyou.cn/2020/03/11/2020-03-11/</id>
+    <published>2020-03-11T13:25:42.000Z</published>
+    <updated>2020-03-11T13:44:56.169Z</updated>
+    
+    <content type="html"><![CDATA[<p> 在 Qt 5 中，<code>QObject::connect()</code>有五个重载： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">QMetaObject::Connection connect(const QObject *, const char *,</span><br><span class="line">                                const QObject *, const char *,</span><br><span class="line">                                Qt::ConnectionType);</span><br><span class="line"> </span><br><span class="line">QMetaObject::Connection connect(const QObject *, const QMetaMethod &amp;,</span><br><span class="line">                                const QObject *, const QMetaMethod &amp;,</span><br><span class="line">                                Qt::ConnectionType);</span><br><span class="line"> </span><br><span class="line">QMetaObject::Connection connect(const QObject *, const char *,</span><br><span class="line">                                const char *,</span><br><span class="line">                                Qt::ConnectionType) const;</span><br><span class="line"> </span><br><span class="line">QMetaObject::Connection connect(const QObject *, PointerToMemberFunction,</span><br><span class="line">                                const QObject *, PointerToMemberFunction,</span><br><span class="line">                                Qt::ConnectionType)</span><br><span class="line"> </span><br><span class="line">QMetaObject::Connection connect(const QObject *, PointerToMemberFunction,</span><br><span class="line">                                Functor);</span><br></pre></td></tr></table></figure><p>由于做界面窗口最大化按钮时，第一次点击最大化窗口，第二次还原为原大小窗口，因此需要自己写一个函数。而为了避免代码冗余，于是在connect传参时使用了lambda表达式，代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">connect(ui-&gt;btn_group, &amp;ButtonGroup::maxWindow, [=]()</span><br><span class="line">&#123;</span><br><span class="line">    static bool flag = false;</span><br><span class="line">    if(!flag)</span><br><span class="line">    &#123;</span><br><span class="line">        this-&gt;showMaximized();</span><br><span class="line">        flag = true;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        this-&gt;showNormal();</span><br><span class="line">        flag = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>于是编译错误，提示</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">no matching function for call to (类名):：connect()……</span><br></pre></td></tr></table></figure><p>看到这个错误，首先想到的是参数问题，由于connect()参数为四个，虽然lambda表达式默认可以省略this参数，但还是添加上试试</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(ui-&gt;btn_group, &amp;ButtonGroup::maxWindow, this, [=]()&#123;&#125;);</span><br></pre></td></tr></table></figure><p>结果还是编译错误。后来上网查阅相关错误，结果大多数人的错误基本都是传参问题，但基本没有用lambda表达式的。于是删掉lambda表达式改用函数调用，结果编译通过。因此错误锁定在lambda表达式上。</p><p>后来发现，lambda表达式是C++11范畴，于是在pro文件当中添加以下代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONFIG += c++11</span><br></pre></td></tr></table></figure><p>编译通过。</p><p>因此Qt使用lambda表达式时，首先使用的编译器要支持要用的C++11 特性，其次，在.pro中加上 <code>CONFIG += c++11</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 在 Qt 5 中，&lt;code&gt;QObject::connect()&lt;/code&gt;有五个重载： &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line
+      
+    
+    </summary>
+    
+      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/C-C/"/>
+    
+    
+      <category term="C/C++" scheme="http://qianyouyou.cn/tags/C-C/"/>
+    
+      <category term="Qt" scheme="http://qianyouyou.cn/tags/Qt/"/>
+    
+      <category term="UI" scheme="http://qianyouyou.cn/tags/UI/"/>
+    
+      <category term="lambda表达式" scheme="http://qianyouyou.cn/tags/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Nginx+fastDFS搭建图床服务端</title>
@@ -573,47 +607,6 @@
       <category term="多态" scheme="http://qianyouyou.cn/tags/%E5%A4%9A%E6%80%81/"/>
     
       <category term="虚函数表" scheme="http://qianyouyou.cn/tags/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自顶向下语法分析指北</title>
-    <link href="http://qianyouyou.cn/2019/05/05/2019-05-05/"/>
-    <id>http://qianyouyou.cn/2019/05/05/2019-05-05/</id>
-    <published>2019-05-05T03:43:44.000Z</published>
-    <updated>2019-05-05T12:14:24.265Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>语法分析<ul><li>自顶向下语法分析<ul><li>确定分析</li><li>不确定分析</li></ul></li><li>自底向上语法分析<ul><li>算符优先分析</li><li>LR分析</li></ul></li></ul></li></ul><h1 id="自顶向下语法分析"><a href="#自顶向下语法分析" class="headerlink" title="自顶向下语法分析"></a>自顶向下语法分析</h1><h2 id="确定分析-LL-1-文法"><a href="#确定分析-LL-1-文法" class="headerlink" title="确定分析(LL(1)文法)"></a>确定分析(LL(1)文法)</h2><h3 id="例1："><a href="#例1：" class="headerlink" title="例1："></a>例1：</h3><p>G[S]:</p><p>S -&gt; pA | qB</p><p>A -&gt; cAd | a</p><p>B -&gt; dB | b</p><p>W = pccadd。</p><p>推导过程如下：S =&gt; pA =&gt; pcAd =&gt; pccAdd =&gt; pccadd。</p><ul><li>​          S                      S                          S                          S<br> ​        /    \                    /    \                        /    \                        /    \<br> ​       p      A    =&gt;          p      A        =&gt;          p      A        =&gt;          p      A<pre><code>/   |   \                       /   |   \                      /   |   \</code></pre>  ​                        c     A     d                c     A     d                c     A     d<pre><code>/   |   \                      /   |   \</code></pre>  ​                                            c     A     d                c     A     d<br>  ​                                                                       |<pre><code>a</code></pre></li></ul><h3 id="例2："><a href="#例2：" class="headerlink" title="例2："></a>例2：</h3><p>G[S]：</p><p>S-&gt;Ap</p><p>S-&gt;Bq</p><p>A-&gt;a</p><p>A-&gt;cA</p><p>B-&gt;b</p><p>B-&gt;dB</p><p>W = ccap，推导过程：</p><p>S =&gt; aP =&gt; cAp =&gt; ccAp =&gt; ccap。</p><h3 id="FIRST-a"><a href="#FIRST-a" class="headerlink" title="FIRST(a)"></a>FIRST(a)</h3><p>a的开始符号集或首符号集。</p><p>例2：FIRST(Ap) = {a, c}。</p><p>FIRST(Bq) = {b, d}。</p><p>FIRST(S) = {a, b, c, d}。</p><p>###FOLLOW(A)</p><p>若Aa，a ∈ FOLLOW(A)。若a = ε，则# ∈ FOLLOW(A)。</p><h3 id="SELECT-A-gt-a"><a href="#SELECT-A-gt-a" class="headerlink" title="SELECT(A-&gt;a)"></a>SELECT(A-&gt;a)</h3><p>a不为ε，则SELECT(A-&gt;a) = FIRST(a)。</p><p>否则，SELECT(A-&gt;a) = FIRST(a) - ε + FOLLOW(A)。</p><h3 id="LL-1"><a href="#LL-1" class="headerlink" title="LL(1)"></a>LL(1)</h3><h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><p>第1个L表示从左往右扫描字符串。</p><p>第2个L表示采用最左推导。</p><p>1表示只需向右看1个字符即可选择哪个产生式。（为了提高效率，最多为2）。</p><h4 id="充要条件："><a href="#充要条件：" class="headerlink" title="充要条件："></a>充要条件：</h4><p>SELLECT(A-&gt;a) ∩ SELECT(A-&gt;b) = 空集。（a，b不能同时能ε）。</p><p>通俗理解就是a和b不能有相同前缀。</p><h4 id="LL-1-文法判别步骤"><a href="#LL-1-文法判别步骤" class="headerlink" title="LL(1)文法判别步骤"></a>LL(1)文法判别步骤</h4><p>求出能推出 ε 的非终结符。（未定，是，否）</p><p>计算FIRST集</p><p>计算FOLLOW集</p><p>计算SELECT集</p><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="递归子程序法"><a href="#递归子程序法" class="headerlink" title="递归子程序法"></a>递归子程序法</h4><p>对应文法中每个非终结符编写一个递归过程，每个过程的功能是识别由非终结符推出的串，当某非终结符的产生式有多个候选时能够按LL(1)形式可唯一确定地选择某个候选进行推导。</p><p>当文法满足LL(1)条件时，构造不带回溯的自上而下分析程序。</p><p>该分析程序由一组递归过程组成，每个过程对应文法的一个非终结符。</p><h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>不是所有的aij的first集的交集都为空，仅针对一个VN的候选式有如此的约定。</p><h4 id="预测分析法"><a href="#预测分析法" class="headerlink" title="预测分析法"></a>预测分析法</h4><h5 id="特征"><a href="#特征" class="headerlink" title="特征 :"></a>特征 :</h5><p>根据当前输入符号，为当前要处理的非终结符选择产生式。</p><p>表驱动的预测分析器包含：</p><ul><li>一个输入缓冲区</li><li>一个栈</li><li>一张分析表</li><li>一个输出流</li></ul><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-05-1.png" alt=""></p><h5 id="预测分析表M"><a href="#预测分析表M" class="headerlink" title="预测分析表M"></a>预测分析表M</h5><p>预测分析表是一个M[A，a]形式的矩阵。</p><p>其中： A为非终结符，a为终结符或#。</p><p>M[A，a]中存放着一条关于A的产生式，指出当A面临a时所应采取的候选；</p><p>M[A，a]中也可能存放一条“出错标志”，指出Ａ不应该面临a。</p><p>例：对于文法G       </p><ol><li>E→TE’</li><li>E’ → +TE’|ε</li><li>T →FT’</li><li>T’→*FT’| ε</li><li>F→(E)|id  </li></ol><p>其预测分析表为：</p><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-05-2.png" alt="1557056948767"></p><p>解：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">FIRST(E)=&#123; (, id &#125;</span><br><span class="line"></span><br><span class="line">FIRST(E’)=&#123;+, ε&#125;</span><br><span class="line"></span><br><span class="line">FIRST(T’)=&#123; *, ε&#125;</span><br><span class="line"></span><br><span class="line">FIRST(T)=&#123; (, id &#125;</span><br><span class="line"></span><br><span class="line">FIRST(F)=&#123; (, id &#125;</span><br><span class="line"></span><br><span class="line">FOLLOW(E) =&#123;#, )&#125;</span><br><span class="line"></span><br><span class="line">FOLLOW(E’)=&#123;), #&#125;</span><br><span class="line"></span><br><span class="line">FOLLOW(T’)=&#123;+, ),  # &#125;</span><br><span class="line"></span><br><span class="line">FOLLOW(T) =&#123;+, ),  #&#125;</span><br><span class="line"></span><br><span class="line">FOLLOW(F) =&#123;id, ), *,  #&#125;</span><br></pre></td></tr></table></figure><h5 id="预测分析器"><a href="#预测分析器" class="headerlink" title="预测分析器"></a>预测分析器</h5><p>预测分析程序的算法：</p><ul><li><p>输入：串w和文法G的分析表M</p></li><li><p>输出：如果w属于L（G），则输出w的最左推导，否则报错</p></li><li><p>方法：开始时，#S在栈里，w#在输入缓冲区</p><p>令ip指向w #的第一个符号，令X是栈顶符号，a是ip指向的符号</p></li></ul><p>预测分析器的工作方式：当前栈顶符号X和当前输入符号为a，则语法分析器的动作为：</p><ol><li>如果X=a≠#，则POP，advance</li><li>如果X ∈VN,查M[X，a]表，若M[X，a]=X→UVW,则用WVU替换栈顶；若M[X，a]=error,则调用错误恢复程序。</li><li>如果X=a=#,分析成功。</li></ol><p>句子id+id*id的分析过程：</p><p><img src="https://qianyouyou-1258651414.cos.ap-chengdu.myqcloud.com/img/19-05-05-3.png" alt="1557057317524"></p><h2 id="不确定分析（简）"><a href="#不确定分析（简）" class="headerlink" title="不确定分析（简）"></a>不确定分析（简）</h2><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p>匹配，匹配不了回溯继续匹配，直到全部匹配不了或匹配成功为止。（非常暴力）</p><ol><li><p>由于相同左部的产生式的右部FIRST集交集不为空而引起回溯。</p><p>S-&gt;xAy</p><p>S-&gt;ab|a</p></li><li><p>由于相同左部非终结符的右部可为 ε ，且非终结符的FOLLOW集中含有其他产生式右部FIRST集的元素。</p><p>S-&gt;aAS</p><p>S-&gt;b</p><p>A-&gt;bAS</p><p>A-&gt;ε</p></li><li><p>由于文法含有左递归。</p><p>S-&gt;Sa</p><p>S-&gt;b</p></li></ol><h2 id="部分不确定分析转确定分析"><a href="#部分不确定分析转确定分析" class="headerlink" title="部分不确定分析转确定分析"></a>部分不确定分析转确定分析</h2><h3 id="左递归消除"><a href="#左递归消除" class="headerlink" title="左递归消除"></a>左递归消除</h3><h4 id="直接左递归消除"><a href="#直接左递归消除" class="headerlink" title="直接左递归消除"></a>直接左递归消除</h4><p>采用下列变换公式消除直接左递归，把直接左递归改写为右递归。</p><p>如：G[S]： S→Sa | b</p><p>可改写为：</p><p>S→bS’</p><p>S’→aS’|ε </p><p>改写后的文法所描述的L(G)={ba^n| n&gt;=0}</p><p>一般而言，假定关于P的全部产生式是</p><p>P→Pa1 | Pa2 | … | Pam | b1 | b2|…|bn 其中，每个a都不等于ε，而每个都不以P开头，那么，消除P的直接左递归性就是改写这些规则：</p><p>P→b1P’ | b2P’ | … | bnP’</p><p>P’→a1P’ | a2P’ |… | amP’ | ε </p><h4 id="间接左递归消除"><a href="#间接左递归消除" class="headerlink" title="间接左递归消除"></a>间接左递归消除</h4><p>间接左递归的消除需先将间接左递归变为直接左递归，然后再按第1种方法消除直接左递归。</p><h5 id="代入法"><a href="#代入法" class="headerlink" title="代入法"></a>代入法</h5><p>将一个产生式规则右部的a中的Vn N替换为N的候选式。如果N有n个候选式，右边a重复n次，而且每一次重复都有N的不同候选式来代替N。</p><p>例如：N →a | Bc | ε  在S→Nq中的代入结果S→aq | Bcq | q。</p><h3 id="回溯消除"><a href="#回溯消除" class="headerlink" title="回溯消除"></a>回溯消除</h3><p>回溯产生的根源：头字符集合的问题。例如A-&gt;ab|a。</p><h4 id="提取公因子"><a href="#提取公因子" class="headerlink" title="提取公因子"></a>提取公因子</h4><p>经过反复提取左因子，就能够把每个非终结符（包括新引进者）的所有候选首符集变成为两两不相交。</p><p>例：考察文法G[S]:</p><p>S → iCtS | iCtSeS | aC → b </p><p>解：由于S的前两个候选项中含有左因子iCtS，提取左因子之后，等价文法G’如下：</p><p>S → iCtSS’ | a</p><p>S’ →eS |ε</p><p>C → b</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;语法分析&lt;ul&gt;
-&lt;li&gt;自顶向下语法分析&lt;ul&gt;
-&lt;li&gt;确定分析&lt;/li&gt;
-&lt;li&gt;不确定分析&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;自底向上语法分析&lt;ul&gt;
-&lt;li&gt;算符优先分析&lt;/li&gt;
-&lt;li&gt;LR分析&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-      
-    
-    </summary>
-    
-      <category term="程序人生" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-      <category term="编译原理" scheme="http://qianyouyou.cn/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-    
-      <category term="编译原理" scheme="http://qianyouyou.cn/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="语法分析" scheme="http://qianyouyou.cn/tags/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
