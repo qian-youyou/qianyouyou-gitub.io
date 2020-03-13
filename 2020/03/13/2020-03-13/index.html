@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("http://qianyouyou.cn"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "28d5c19f"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.2.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,大数据,分布式," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="浅悠悠的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="云盘服务端代码经历两天bug之后终于部署到了自己的服务器上。因此总结一下这两天所出现的所有问题，日后再出现同样的问题便可解决。 过程 服务端代码部署到虚拟机并启动  发现问题，Qt客户端注册与登录无响应  检查客户端登录注册代码，发现没有问题  检查客户端收到的错误码，发现客户端并未收到服务端反馈的错误码  查询服务端Nginx服务器log日志，发现80端口请求注册登录端口未成功  检查登录注册端">
+<meta name="keywords" content="Linux,大数据,分布式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式云盘部署服务端的漫漫bug路">
+<meta property="og:url" content="http://qianyouyou.cn/2020/03/13/2020-03-13/index.html">
+<meta property="og:site_name" content="浅悠悠的个人博客">
+<meta property="og:description" content="云盘服务端代码经历两天bug之后终于部署到了自己的服务器上。因此总结一下这两天所出现的所有问题，日后再出现同样的问题便可解决。 过程 服务端代码部署到虚拟机并启动  发现问题，Qt客户端注册与登录无响应  检查客户端登录注册代码，发现没有问题  检查客户端收到的错误码，发现客户端并未收到服务端反馈的错误码  查询服务端Nginx服务器log日志，发现80端口请求注册登录端口未成功  检查登录注册端">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gitee.com/fuhai/jpress/raw/master/doc/images/install_02.jpg">
+<meta property="og:updated_time" content="2020-03-13T14:05:28.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分布式云盘部署服务端的漫漫bug路">
+<meta name="twitter:description" content="云盘服务端代码经历两天bug之后终于部署到了自己的服务器上。因此总结一下这两天所出现的所有问题，日后再出现同样的问题便可解决。 过程 服务端代码部署到虚拟机并启动  发现问题，Qt客户端注册与登录无响应  检查客户端登录注册代码，发现没有问题  检查客户端收到的错误码，发现客户端并未收到服务端反馈的错误码  查询服务端Nginx服务器log日志，发现80端口请求注册登录端口未成功  检查登录注册端">
+<meta name="twitter:image" content="https://gitee.com/fuhai/jpress/raw/master/doc/images/install_02.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.2.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qianyouyou.cn/2020/03/13/2020-03-13/"/>
+
+
+
+
+
+  <title>分布式云盘部署服务端的漫漫bug路 | 浅悠悠的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://www.qianyouyou.cn" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>   
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浅悠悠的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">When there is no sunshine,talking to the moon.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qianyouyou.cn/2020/03/13/2020-03-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王骏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浅悠悠的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">分布式云盘部署服务端的漫漫bug路</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-13T20:04:27+08:00">
+                2020-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/程序人生/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,992
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>云盘服务端代码经历两天bug之后终于部署到了自己的服务器上。因此总结一下这两天所出现的所有问题，日后再出现同样的问题便可解决。</p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><ol>
+<li><p>服务端代码部署到虚拟机并启动</p>
+</li>
+<li><p>发现问题，Qt客户端注册与登录无响应</p>
+</li>
+<li><p>检查客户端登录注册代码，发现没有问题</p>
+</li>
+<li><p>检查客户端收到的错误码，发现客户端并未收到服务端反馈的错误码</p>
+</li>
+<li><p>查询服务端Nginx服务器log日志，发现80端口请求注册登录端口未成功</p>
+</li>
+<li><p>检查登录注册端口，发现未启动端口，排除客户端的问题</p>
+</li>
+<li><p>关闭防火墙，仍无法启动端口</p>
+</li>
+<li><p>重新启动服务端代码，查看服务端cgi程序的log日志，发现并没有log日志</p>
+</li>
+<li><p>spawn-fcgi启动报错提示spawn-fcgi: child exited with: 127</p>
+</li>
+<li><p>尝试执行 <code>spawn-fcgi</code> 命令 ，发现没有问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">qianyouyou:~ $ spawn-fcgi</span><br><span class="line">Usage: spawn-fcgi [options] [-- &lt;fcgiapp&gt; [fcgi app arguments]]</span><br><span class="line">spawn-fcgi v1.6.5 - spawns FastCGI processes</span><br><span class="line">Options:</span><br><span class="line">省略一万字</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行cgi程序，发现问题<code>No such file or directory</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 找一下 libfcgi.so 位置在哪里。</span><br><span class="line">qianyouyou:~ $ whereis libfcgi.so</span><br><span class="line">libfcgi: /usr/local/lib/libfcgi.so /usr/local/lib/libfcgi.a /usr/local/lib/libfcgi.la</span><br><span class="line"></span><br><span class="line"># 然后查看一下 /usr/local/lib/ 下面有什么。</span><br><span class="line">qianyouyou:~ $ ll /usr/local/lib/libfcgi.so*</span><br><span class="line">lrwxrwxrwx 1 root root   16 Jan  8 16:07 /usr/local/lib/libfcgi.so -&gt; libfcgi.so.0.0.0*</span><br><span class="line">-rwxr-xr-x 1 root root 124K Jan  8 16:07 /usr/local/lib/libfcgi.so.0.0.0*</span><br><span class="line"></span><br><span class="line"># 原来没有 libfcgi.so.0 这个文件， 那我们就创造一个吧。</span><br><span class="line">qianyouyou:~ $ sudo ln -s /usr/local/lib/libfcgi.so.0.0.0 /usr/local/lib/libfcgi.so.0</span><br><span class="line"></span><br><span class="line"># 执行cgi还是不行，于是我把 libfcgi.so.0 在 /usr/lib64/ 和 /usr/lib/ 里都链接了一份。</span><br><span class="line">qianyouyou:~ $ sudo ln -s /usr/local/lib/libfcgi.so.0.0.0 /usr/lib/libfcgi.so.0</span><br><span class="line">qianyouyou:~ $ sudo ln -s /usr/local/lib/libfcgi.so.0.0.0 /usr/lib64/libfcgi.so.0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//fcgi和glog都需要建立软连接, 正常情况下只要在/usr/lib目录下建立链接就可以了，如果不行的话在/usr/lib64目录下也建立链接</span><br><span class="line"># ln -s /usr/local/lib/libfcgi.so.0  /usr/lib/libfcgi.so.0</span><br><span class="line"># ln -s /usr/local/lib/libfcgi.so.0  /usr/lib64/libfcgi.so.0</span><br><span class="line"># ln -s /usr/local/lib/libglog.so.0  /usr/lib/libglog.so.0</span><br><span class="line"># ln -s /usr/local/lib/libglog.so.0  /usr/lib64/libglog.so.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依然提示<code>No such file or directory</code>，重新make编译代码，提示找不到<code>mysql/mysql.h</code></p>
+</li>
+<li><p>发现问题，虚拟机装了mysql-server，没有装mysql-devel，安装mysql-devel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Ununtu安装</span><br><span class="line">sudo apt-get install libmysql++-dev</span><br><span class="line"># CentOS安装</span><br><span class="line">sudo yum install -y mysql-devel</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>make成功，重新启动成功，查看相应端口已启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ant | grep 10000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端登录注册失败，返回错误码，查询服务端log日志，发现没有相应数据库表</p>
+</li>
+<li><p>远程链接数据库，创建相应数据表</p>
+</li>
+<li><p>虚拟机服务端部署成功</p>
+</li>
+<li><p>代码部署到服务器，make同样提示没有<code>mysql/mysql.h</code></p>
+</li>
+<li><p>安装mysql-devel未成功，提示冲突</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Transaction check error: file /usr/include/mysql/client_plugin.h from install of mariadb-1:5.5.41-2.el7_0.x86_64 conflicts with file from package MySQL-client-5.0.96-1.glibc23.x86_64</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查阅yum安装如何避免冲突，删掉冲突文件，均没有用(后发现由于文件夹为软连接)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># yum查看依赖库</span><br><span class="line">yum search mysql</span><br><span class="line"></span><br><span class="line">yum install mysql-devel --exclude a    #a为冲突包名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由于已安装mysql为自定义文件夹，因此锁定问题为找不到自定义文件夹库</p>
+</li>
+<li><p>创建预编译链接，创建静态库动态库链接。<a href="https://blog.csdn.net/qq_22203741/article/details/77742800" target="_blank" rel="noopener">查阅</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 一次性命令</span><br><span class="line">export C_INCLUDE_PATH=/www/server/mysql/include:$C_INCLUDE_PATH</span><br><span class="line">export CPLUS_INCLUDE_PATH=/www/server/mysql/include:$CPLUS_INCLUDE_PATH</span><br><span class="line">export LD_LIBRARY_PATH=/www/server/mysql/lib:$LD_LIBRARY_PATH</span><br><span class="line">export LIBRARY_PATH=/www/server/mysql/lib:$LIBRARY_PATH</span><br><span class="line"></span><br><span class="line"># 所有用户都执行需将以上命令添加至/etc/profile</span><br><span class="line"></span><br><span class="line"># 动态库路径可添加至/etc/ld.so.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>make成功，但除了login与upload外其余端口均为启动</p>
+</li>
+<li><p>执行login可执行文件，提示没有<code>libmysqlcient.so.20</code></p>
+</li>
+<li><p>下载libmysqlclient.so.20，执行可执行文件，仍然报错</p>
+</li>
+<li><p>更换mysql版本为5.7</p>
+</li>
+<li><p>原本部署的博客无法访问。重新配置博客，博客访问成功。<a href="http://jpress.io/article/category/install" target="_blank" rel="noopener">网站1</a><a href="https://blog.shiyunhong.com/3025.html" target="_blank" rel="noopener">网站2</a></p>
+</li>
+<li><p>服务端重新启动，云盘服务端启动成功</p>
+</li>
+<li><p>客户端启动，可注册，不可登录</p>
+</li>
+<li><p>检查服务端代码，发现代码没问题</p>
+</li>
+<li><p>重新编译，提示没有任何文件改动，删除cgi所有.o文件，重新编译成功。</p>
+</li>
+<li><p>服务器云盘部署成功。</p>
+</li>
+</ol>
+<h1 id="防火墙相关"><a href="#防火墙相关" class="headerlink" title="防火墙相关"></a>防火墙相关</h1><p>一、CentOS 7快速开放端口：</p>
+<p>CentOS升级到7之后，发现无法使用iptables控制Linuxs的端口，baidu之后发现Centos 7使用firewalld代替了原来的iptables。下面记录如何使用firewalld开放Linux端口：</p>
+<p>开启端口</p>
+<p>[root@centos7 ~]# firewall-cmd –zone=public –add-port=80/tcp –permanent</p>
+<p>查询端口号80 是否开启：</p>
+<p>[root@centos7 ~]# firewall-cmd –query-port=80/tcp</p>
+<p>重启防火墙：</p>
+<p>[root@centos7 ~]# firewall-cmd –reload</p>
+<p>查询有哪些端口是开启的:</p>
+<p>[root@centos7 ~]# firewall-cmd –list-port</p>
+<p>命令含义：</p>
+<p>–zone #作用域<br>–add-port=80/tcp #添加端口，格式为：端口/通讯协议<br>–permanent #永久生效，没有此参数重启后失效</p>
+<p>关闭firewall：</p>
+<p>systemctl stop firewalld.service #停止firewall</p>
+<p>systemctl disable firewalld.service #禁止firewall开机启动</p>
+<p>二、CentOS6防火墙开放端口：</p>
+<p>在我们使用CentOS系统的时候，CentOS防火墙有时是需要改变设置的。CentOS防火墙默认是打开的，设置CentOS防火墙开放端口方法如下：</p>
+<p>打开iptables的配置文件：vi /etc/sysconfig/iptables</p>
+<p>修改CentOS防火墙时注意：一定要给自己留好后路,留VNC一个管理端口和SSh的管理端口</p>
+<p>下面是一个iptables的示例：</p>
+<p># Firewall configuration written by system-config-securitylevel<br># Manual customization of this file is not recommended.<br>*filter<br>:INPUT ACCEPT [0:0]<br>:FORWARD ACCEPT [0:0]<br>:OUTPUT ACCEPT [0:0]<br>:RH-Firewall-1-INPUT - [0:0]<br>-A INPUT -j RH-Firewall-1-INPUT<br>-A FORWARD -j RH-Firewall-1-INPUT<br>-A RH-Firewall-1-INPUT -i lo -j ACCEPT<br>-A RH-Firewall-1-INPUT -p icmp –icmp-type any -j ACCEPT<br>-A RH-Firewall-1-INPUT -p 50 -j ACCEPT<br>-A RH-Firewall-1-INPUT -p 51 -j ACCEPT<br>-A RH-Firewall-1-INPUT -m state –state ESTABLISHED,RELATED -j ACCEPT<br>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 53 -j ACCEPT<br>-A RH-Firewall-1-INPUT -m state –state NEW -m udp -p udp –dport 53 -j ACCEPT<br>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 22 -j ACCEPT<br>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 25 -j ACCEPT<br>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 443 -j ACCEPT<br>-A RH-Firewall-1-INPUT -j REJECT –reject-with icmp-host-prohibited<br>COMMIT</p>
+<p>修改CentOS防火墙需要注意的是，你必须根据自己服务器的情况来修改这个文件。</p>
+<p>举例来说，如果你不希望开放80端口提供web服务，那么应该相应的删除这一行：<br>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT</p>
+<p>全部修改完之后重启iptables:service iptables restart</p>
+<p>你可以验证一下是否规则都已经生效：iptables -L</p>
+<p>这样，我们就完成了CentOS防火墙的设置修改。</p>
+<h1 id="库相关"><a href="#库相关" class="headerlink" title="库相关"></a>库相关</h1><p><strong>方法一：在编译自己的项目时添加-L和-I编译选项</strong></p>
+<p> 1）添加头文件路径： -I     #指明头文件的路径  </p>
+<p>2）添加库文件路径： -L    #指定目录。link的时候，去找的目录。gcc会先从-L指定的目录去找，然后才查找默认路径。（告诉gcc,-l库名最可能在这个目录下）。 -l     #指定文件（库名），linking options  </p>
+<p>注：-l紧接着就是库名，这里的库名不是真正的库文件名。比如说数学库，它的库名是m，他的库文件名是libm.so。再比如说matlab eigen库，它的库名是eng，它的库文件名是libeng.so。很容易总结得：把库文件名的头lib和尾.so去掉就是库名了。在使用时，“-leng”就告诉gcc在链接阶段引用共享函数库libeng.so。</p>
+<p><strong>方法二：将库路径添加到环境变量</strong></p>
+<p>1）添加头文件路径：  在/etc/profile中添加（根据语言不同，任选其一）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export C_INCLUDE_PATH=C_INCLUDE_PATH:头文件路径            #c </span><br><span class="line"></span><br><span class="line">export CPLUS_INCLUDE_PATH=CPLUS_INCLUDE_PATH:头文件路径    #c++ </span><br><span class="line"></span><br><span class="line">export OBJC_INCLUDE_PATH=OBJC_INCLUDE_PATH:头文件路径      #java</span><br></pre></td></tr></table></figure>
+<p>终端重启后需执行一次source。 </p>
+<p>另有一种方法：在/etc/ld.so.conf文件中加入自定义的lib库的路径，然后执行<code>sudo /sbin/ldconfig</code>，这个方法对所有终端有效。  </p>
+<p>2）添加库文件路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LIBRARY_PATH    #used by gcc before compilation to search for directories containing libraries that need to be linked to your program.</span><br><span class="line">LD_LIBRARY_PATH    #used by your program to search for directories containing the libraries after it has been successfully compiled and linked.</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MATLAB=/opt/MATLAB/R2012a</span><br><span class="line">export LIBRARY_PATH=$LIBRARY_PATH:$MATLAB/bin/glnxa64</span><br><span class="line">export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MATLAB/bin/glnxa64</span><br></pre></td></tr></table></figure>
+<p>题外话，顺便提一下LIBRARY_PATH和LD_LIBRARY_PATH的区别： </p>
+<p>我们知道Linux下有2种库：static libraries和shared libraries。如（这里）阐述的，静态库是在编译期间会被链接并拷贝到你的程序中，因此运行时不再需要该静态库。动态库在编译时并不会被拷贝到你的程序中，而是在程序运行时才被载入，因此在程序运行时还需要动态库存在，这时就会用到LD_LIBRARY_PATH指定的路径去查找这个动态库。The libraries can be static or shared. If it is static then the code is copied over into your program and you don’t need to search for the library after your program is compiled and linked. If your library is shared then it needs to be dynamically linked to your program and that’s when LD_LIBRARY_PATH comes into play.</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>库文件在连接（静态库和共享 库）和运行（仅限共享库的程序，静态库会和可执行编译到一起）时被使用，其搜索路径是在系统中进行设置的。一般 Linux 系统把 /lib 和 /usr/lib 两个目录作为默认的库搜索路径，所以使用这两个目录中的库时不需要进行设置搜索路径即可直接使用。对于处于默认库搜索路径之外的库，需要将库的位置添加到 库的搜索路径之中。</p>
+<p>设置库文件的搜索路径总的来说有以下几种：</p>
+<ul>
+<li>LIBRARY_PATH、LD_LIBRARY_PATH等 环境变量：指定连接、运行时库文件路径；</li>
+<li>/etc/ld.so.conf 文件：添加链接时库文件的搜索路径，运行时还需要使用ldconfig命令将路径刷新到ld.so.cache中；</li>
+<li>g++/gcc参数-L、-l、-I：指定链接时库文件的路径、名字和头文件，运行时还需要使用环境变量或者在文件/etc/ld.so.conf中指定（或者放到默认/lib路径），然后ldconfig；</li>
+</ul>
+<p>在/etc/profile中添加如下环境变量。</p>
+<p> 编译时用到的环境变量： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#gcc找到头文件的路径</span><br><span class="line">C_INCLUDE_PATH=/usr/include/libxml2:/MyLib</span><br><span class="line">export C_INCLUDE_PATH</span><br><span class="line"> </span><br><span class="line">#g++找到头文件的路径</span><br><span class="line">CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/include/libxml2:/MyLib</span><br><span class="line">export CPLUS_INCLUDE_PATH</span><br><span class="line"> </span><br><span class="line">#gcc和g++在编译的链接(link)阶段查找库文件的目录列表</span><br><span class="line">LIBRARY_PATH=$LIBRARY_PATH:/MyLib</span><br><span class="line">export LIBRARY_PATH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">对于头文件的搜索路径:export  C_INCLUDE_PATH=&lt;your include path&gt;;</span><br><span class="line">对于库文件的搜索路径:export  LIBRARY_PATH=&lt;your lib path&gt;;</span><br></pre></td></tr></table></figure>
+<p>运行时环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#程序运行时查找ku文件的路径</span><br><span class="line">LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/MyLib</span><br><span class="line">export LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<h1 id="mysql相关"><a href="#mysql相关" class="headerlink" title="mysql相关"></a>mysql相关</h1><h2 id="设置远程连接"><a href="#设置远程连接" class="headerlink" title="设置远程连接"></a>设置远程连接</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><ol>
+<li><p>编辑mysql配置文件，把其中<code>bind-address = 127.0.0.1</code>注释了。<code>vi /etc/mysql/mysql.conf.d/mysqld.cnf</code> </p>
+</li>
+<li><p>使用root进入mysql命令行，执行如下2个命令，示例中mysql的root账号和密码：root</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">grant all privileges on 库名.表名 to &apos;用户名&apos;@&apos;IP地址&apos;</span><br><span class="line">identified by &apos;密码&apos; with grant option;</span><br><span class="line"></span><br><span class="line">#例：</span><br><span class="line">mysql&gt; grant all on . to root@&apos;%&apos; identified by &apos;root&apos; with grant option;</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>重启mysql<code>/etc/init.d/mysql restart</code></li>
+</ol>
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><ol>
+<li>编辑mysql配置文件，把其中bind-address = 127.0.0.1注释了。<code>vi /etc/mysql/mysql.conf.d/mysqld.cnf</code> </li>
+<li>使用root进入mysql命令行，执行如下2个命令，示例中mysql的root账号密码：root</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   mysql –u root -p        </span><br><span class="line"></span><br><span class="line">   mysql&gt; use mysql; </span><br><span class="line"></span><br><span class="line">   mysql&gt; update user set host = &apos;%&apos; where user = &apos;root&apos;;</span><br><span class="line"></span><br><span class="line">   mysql&gt; flush privileges;</span><br><span class="line">   </span><br><span class="line">#第一句是以权限用户root登录</span><br><span class="line">#第二句：选择mysql库</span><br><span class="line">#第三句：修改host值（以通配符%的内容增加主机/IP地址），当然也可以直接增加IP地址</span><br><span class="line">#第四句：刷新MySQL的系统权限相关表</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>重启mysql<code>/etc/init.d/mysql restart</code></li>
+</ol>
+<h2 id="修改MySQL默认编码"><a href="#修改MySQL默认编码" class="headerlink" title="修改MySQL默认编码"></a>修改MySQL默认编码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">......  </span><br><span class="line">[mysqld]  </span><br><span class="line">......   </span><br><span class="line">character-set-server=utf8  </span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h2 id="设置表名不区分大小写"><a href="#设置表名不区分大小写" class="headerlink" title="设置表名不区分大小写"></a>设置表名不区分大小写</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">......  </span><br><span class="line">[mysqld]  </span><br><span class="line">......   </span><br><span class="line">character-set-server=utf8</span><br><span class="line">lower_case_table_names=1</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h1 id="Jpress相关"><a href="#Jpress相关" class="headerlink" title="Jpress相关"></a>Jpress相关</h1><h2 id="通过宝塔进行安装"><a href="#通过宝塔进行安装" class="headerlink" title="通过宝塔进行安装"></a>通过宝塔进行安装</h2><p>宝塔是一个优秀的可视化服务器管理工具，提供了web操作面板，方便我们通过宝塔的web面板对服务器进行管理，例如</p>
+<p>1、数据库安装、账号密码管理和数据管理 2、FTP账号的管理 3、各种服务器软件的安装，php、tomcat、nginx等 4、文件管理</p>
+<p>宝塔的官网网站： <a href="http://www.bt.cn/" target="_blank" rel="noopener">http://www.bt.cn</a></p>
+<p>通过宝塔进行安装 JPress，大概分为以下几个步骤：</p>
+<p>1、购买服务器并安装宝塔 2、通过宝塔的后台面板安装nginx、Mysql和tomcat。 3、创建网站，并启用tomcat功能 4、上传JPress的war包，并解压缩 5、访问网站，走jpress自动安装过程</p>
+<h3 id="1、购买服务器并安装宝塔"><a href="#1、购买服务器并安装宝塔" class="headerlink" title="1、购买服务器并安装宝塔"></a>1、购买服务器并安装宝塔</h3><p>购买服务器建议购买阿里云的 centos 7.4 以上 ，里面不要安装其他任何功能（笔者在centos 7.2 下安装宝塔，nginx是无法使用的，centos 7.4 没问题）</p>
+<p>安装宝塔非常简单，用 root 账号进入Linux服务，然后执行如下命令即可自动安装宝塔：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://</span><br><span class="line">download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+<p>需要注意的是：安装的过程中控制台会打印安装的过程，在安装完成后，控制台会输出宝塔的登陆地址、账号和密码。</p>
+<p>重要事情说三遍：</p>
+<blockquote>
+<p>登陆地址、账号和密码，这部分务必要记住。 登陆地址、账号和密码，这部分务必要记住。 登陆地址、账号和密码，这部分务必要记住。</p>
+</blockquote>
+<h3 id="2、通过宝塔的后台，安装nginx、mysql和tomcat"><a href="#2、通过宝塔的后台，安装nginx、mysql和tomcat" class="headerlink" title="2、通过宝塔的后台，安装nginx、mysql和tomcat"></a>2、通过宝塔的后台，安装nginx、mysql和tomcat</h3><p>可以在宝塔的后台，通过 <code>软件管理 &gt; 运行环境</code> 可以找到 nginx、mysql 和 tomcat。</p>
+<p>点击安装即可。</p>
+<p>需要注意的是各个软件的版本号：</p>
+<ul>
+<li>nginx ： 1.14</li>
+<li>tomcat ： 8.5</li>
+<li>mysql ： 5.6</li>
+</ul>
+<h3 id="3、创建网站"><a href="#3、创建网站" class="headerlink" title="3、创建网站"></a>3、创建网站</h3><p>在宝塔后台，通 <code>网站 &gt; 添加网站</code> 创建一个新的网站。</p>
+<p>创建网站的时候需要注意的是，创建mysql数据库的时候，版本要选择 <code>utf8mb4</code> 编码。</p>
+<p>在宝塔后台的 <code>网站</code> 里，点击网站域名，在 <code>tomcat</code> 菜单里，启用 tomcat 功能。 <img src="https://gitee.com/fuhai/jpress/raw/master/doc/images/install_02.jpg" alt="img"></p>
+<h3 id="4、上传war，并解压缩"><a href="#4、上传war，并解压缩" class="headerlink" title="4、上传war，并解压缩"></a>4、上传war，并解压缩</h3><p>在宝塔后台的 <code>网站</code> 里，点击根目录对应的目录链接，然后上传 jpress.war 到此目录。</p>
+<p>因为宝塔无法对 .war 这种文件格式解压缩，所以需要重命名为 jpress.zip ，当然也可以在本地先把 jpress.war 先重命名为 jpress.zip 然后再上传也可以。</p>
+<p>操作完成后，点击 jpress.zip 的解压缩即可。</p>
+<h3 id="5、访问网站走jpress自动安装过程"><a href="#5、访问网站走jpress自动安装过程" class="headerlink" title="5、访问网站走jpress自动安装过程"></a>5、访问网站走jpress自动安装过程</h3><p>访问你的域名，JPress自动引导进行安装，在JPress安装向导的过程中，只需要填写宝塔创建完毕的数据库账号和密码即可。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><blockquote>
+<p>问题：宝塔安装初次安装JPress无法正常启动？</p>
+<p>答：</p>
+<p>1、请查看下 /WEB-INF/classes 目录下是否有 <code>jboot.porperties</code> 和 <code>install.lock</code> 这两个文件，如果有的话请删除。</p>
+<p>2、尝试重启 nginx 和 tomcat。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"><hr>文章结束了，但我们的故事还在继续</div>
+    
+</div>
+    
+	  </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="王骏 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay-reward-image.jpg" alt="王骏 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/大数据/" rel="tag"><i class="fa fa-tag"></i> 大数据</a>
+          
+            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/11/2020-03-11/" rel="next" title="Qt5中QObject::connect()传参为lambda注意问题">
+                <i class="fa fa-chevron-left"></i> Qt5中QObject::connect()传参为lambda注意问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjA4NC8xMjYxOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="王骏" />
+            
+              <p class="site-author-name" itemprop="name">王骏</p>
+              <p class="site-description motion-element" itemprop="description">浪打浮沉惊白昼，沧海一笑浅悠悠。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">175</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">151</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qian-youyou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.15249144478@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://vjudge.net/user/15249144478" target="_blank" title="vjduge">
+                      
+                        <i class="fa fa-fw fa-globe"></i>vjduge</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5264080143/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.baidu.com/" target="_blank" title="baidu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>baidu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/qian_youyou" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qian_youyou" title="浅悠悠CSDN" target="_blank">浅悠悠CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/por_una_cabze" title="渣渣灰CSDN" target="_blank">渣渣灰CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.csdn.net/messhiro" title="赵神CSDN" target="_blank">赵神CSDN</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.matrix67.com/" title="matrix67博客" target="_blank">matrix67博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://amon1997.com/" title="曹静的博客" target="_blank">曹静的博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/sophia__yu" title="杨祥钰CSDN" target="_blank">杨祥钰CSDN</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+	  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38592976&auto=1&height=66"></iframe>
+	  
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#过程"><span class="nav-number">1.</span> <span class="nav-text">过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防火墙相关"><span class="nav-number">2.</span> <span class="nav-text">防火墙相关</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#库相关"><span class="nav-number">3.</span> <span class="nav-text">库相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">3.1.</span> <span class="nav-text">环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql相关"><span class="nav-number">4.</span> <span class="nav-text">mysql相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置远程连接"><span class="nav-number">4.1.</span> <span class="nav-text">设置远程连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法1"><span class="nav-number">4.1.1.</span> <span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法2"><span class="nav-number">4.1.2.</span> <span class="nav-text">方法2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改MySQL默认编码"><span class="nav-number">4.2.</span> <span class="nav-text">修改MySQL默认编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置表名不区分大小写"><span class="nav-number">4.3.</span> <span class="nav-text">设置表名不区分大小写</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jpress相关"><span class="nav-number">5.</span> <span class="nav-text">Jpress相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过宝塔进行安装"><span class="nav-number">5.1.</span> <span class="nav-text">通过宝塔进行安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、购买服务器并安装宝塔"><span class="nav-number">5.1.1.</span> <span class="nav-text">1、购买服务器并安装宝塔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、通过宝塔的后台，安装nginx、mysql和tomcat"><span class="nav-number">5.1.2.</span> <span class="nav-text">2、通过宝塔的后台，安装nginx、mysql和tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、创建网站"><span class="nav-number">5.1.3.</span> <span class="nav-text">3、创建网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、上传war，并解压缩"><span class="nav-number">5.1.4.</span> <span class="nav-text">4、上传war，并解压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、访问网站走jpress自动安装过程"><span class="nav-number">5.1.5.</span> <span class="nav-text">5、访问网站走jpress自动安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">5.1.6.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王骏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+版权由 <a class="theme-link" target="_blank" href="https://qian-youyou.github.io">王骏</a> 所有</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/qian-youyou">wj.Mist.5.2.0</a></div>
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 光顾人数：前世
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      次邂逅
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 浏览次数：今生
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次回眸
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.2.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.2.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
