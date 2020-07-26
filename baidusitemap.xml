@@ -5,11 +5,26 @@
     
   <url>
     <loc>http://qianyouyou.cn/2020/05/14/2020-05-14/</loc>
-    <lastmod>2020-07-26T15:35:03.997Z</lastmod>
+    <lastmod>2020-07-26T16:03:10.213Z</lastmod>
     <data>
         <display>
         <title>请逗留一刻吧，是那样美丽</title>
         <pubTime>2020-05-14T11:22:06.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://qianyouyou.cn/2020/07/01/2020-07-01/</loc>
+    <lastmod>2020-07-26T15:54:25.165Z</lastmod>
+    <data>
+        <display>
+        <title>基于云存储的图像管理平台设计与实现</title>
+        <pubTime>2020-07-01T15:52:26.000Z</pubTime>
         
          
            
@@ -3630,9 +3645,9 @@
          
         <tag>组合数学</tag>
          
-        <tag>数论</tag>
-         
         <tag>高斯消元</tag>
+         
+        <tag>数论</tag>
          
         <tag>容斥原理</tag>
          
